@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .css('background', 'rgba(0, 0, 0, 0.0)');
         } else {
             $('.navbar')
-                .css('background', 'rgba(0, 0, 0, 0.75)');
+                .css('background', 'rgba(0, 0, 0, 0.90)');
         }
     });
 });

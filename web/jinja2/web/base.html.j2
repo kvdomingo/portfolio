@@ -15,6 +15,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
 
+    <link rel="stylesheet" href="{{ static('web/css/base.css') }}"
+
     <title>Kenneth V. Domingo</title>
 
     {% if not settings.DEBUG and settings.ON_HEROKU %}
@@ -23,7 +25,6 @@
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'UA-162676656-2');
         </script>
 
@@ -39,16 +40,6 @@
         <meta name="twitter:image:alt" content="Kenneth V. Domingo" />
         <meta name="twitter:description" content="Portfolio and CV of Kenneth V. Domingo" />
     {% endif %}
-
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Oxygen', sans-serif;
-        }
-    </style>
 </head>
 
 <body>
@@ -57,7 +48,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
@@ -71,7 +62,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="nav-portfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.7);">
-                        <a class="dropdown-item" href="https://photography.kvdomingo.xyz">Photography</a>
+                        <a class="dropdown-item" href="{{ url('photography:index') }}">Photography</a>
                         <a class="dropdown-item" href="#">Video/Image Processing</a>
                         <a class="dropdown-item" href="#">Web Development</a>
                         <a class="dropdown-item" href="#">App Development</a>

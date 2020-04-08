@@ -1,8 +1,9 @@
 .cover-photo {
+    background-attachment: fixed;
     background-position-x: 50%;
     background-position-y: 100%;
+    background-repeat: no-repeat;
     background-size: cover;
     border-radius: 0;
     box-shadow: none;
-    /* height: 768px; */
 }
