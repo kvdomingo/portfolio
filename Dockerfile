@@ -6,12 +6,13 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
-ENV DJANGO_SETTINGS_MODULE kvdomingo.settings
 
 COPY requirements.txt /app/
 
 RUN pip install -r requirements.txt
 
 COPY . /app/
+
+ENV DJANGO_SETTINGS_MODULE kvdomingo.settings
 
 CMD python manage.py runserver 0.0.0.0:8000
