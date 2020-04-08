@@ -1,0 +1,73 @@
+{% extends 'web/base.html.j2' %}
+
+{% block body %}
+
+<script src="{{ static('web/js/index.js') }}"></script>
+<link rel="stylesheet" href="{{ static('web/css/index.css') }}" />
+<style>
+    .cover-photo-src {
+        background-image: url("{{ '../..' + static('web/media/private/index_cover.jpg') }}");
+    }
+</style>
+
+<div class="card card-image cover-photo cover-photo-src">
+    <div class="text-white rgba-black-strong h-100 py-5 px-4">
+        <div class="container py-5">
+            <h1 class="card-title display-4 my-4 py-2">Hi, I'm Kenneth!</h1>
+            <p class="lead my-3">
+                Physicist, programmer, and bioinformatician by day; photographer and musician by night.
+            </p>
+            <p class="my-3 py-3">
+                I am a graduating BS Applied Physics student from the University of the Philippines-Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory under Dr. Maricor Soriano, with a research concentration on signal, video and image processing. Python is my programming language of choice for general applications. Additionally, my skillset includes web and app development, primarily using Python and React Native frameworks, respectively. In fact, I developed this website entirely by myself!<br /><br />
+
+                Currently, I am also a photographer and the Executive Officer for Promotions and Documentation of UP Iris, a campus-wide photography organization.<br /><br />
+
+                Inquiries? Collaborations?
+            </p>
+            <a class="btn btn-amber">Contact</a>
+            <a class="btn btn-amber">Blog</a>
+            <a class="btn btn-amber">Portfolio</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h1 class="display-4">Technologies I use</h1>
+        <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 my-5">
+            {% set img_urls = [
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1920px-Python_logo_and_wordmark.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg',
+                'https://seeklogo.com/images/F/flask-logo-44C507ABB7-seeklogo.com.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/768px-Keras_logo.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/768px-HTML5_logo_and_wordmark.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/544px-CSS3_logo_and_wordmark.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/885px-Node.js_logo.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/f/fd/JQuery-Logo.svg',
+                'https://cdn.worldvectorlogo.com/logos/react.svg',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mapbox_logo_2017.svg/768px-Mapbox_logo_2017.svg.png',
+                'http://pngimg.com/uploads/github/github_PNG40.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Jinja_software_logo.svg/1920px-Jinja_software_logo.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_di_Heroku.png',
+                'https://developers.google.com/analytics/images/terms/logo_lockup_analytics_icon_vertical_black_2x.png',
+                'https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1067px-PHP-logo.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/810px-Postgresql_elephant.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/768px-MongoDB_Logo.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Arduino_Logo.svg/1080px-Arduino_Logo.svg.png',
+                'https://www.raspberrypi.org/app/uploads/2011/10/Raspi-PGB001-300x267.png',
+            ] %}
+            {% for image in img_urls %}
+                <div class="col my-auto pb-4">
+                    <img src="{{ image }}" class="img-fluid" />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
