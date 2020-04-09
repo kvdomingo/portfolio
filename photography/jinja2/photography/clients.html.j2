@@ -1,0 +1,30 @@
+{% extends 'photography/base.html.j2' %}
+
+{% block gallery %}
+
+<link rel="stylesheet" href="{{ static('photography/css/index.css') }}" />
+
+<div class="row row-cols-1 row-cols-md-3">
+    {% set clients = [
+        ('UP Club for the Environment and Tourism', 'clients-upecotour'),
+        ('UP Sigma Alpha Nu Sorority', 'clients-upsan'),
+        ("UP Reserve Officers' Training Corps", 'clients-uprotc'),
+        ('UP Corps of Sponsors', 'clients-upcos'),
+        ('UP Phi Delta Alpha Sorority', 'clients-uppda'),
+    ] %}
+    {% for (im, imfull), (client, href) in zip(images, clients) %}
+        <div class="col mb-4">
+            <div class="card card-image h-100" style="background-image: url('{{ im.url }}'); background-size: cover; background-position: 50% 50%;">
+                <div class="text-white text-center rgba-black-light py-5 px-5">
+                    <div class="py-5">
+                        <a href="{{ url('photography:gallery', args=(href,)) }}" class="btn btn-outline-white btn-lg card-title my-5">{{ client }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ static('photography/js/index.js') }}"></script>
+
+{% endblock %}

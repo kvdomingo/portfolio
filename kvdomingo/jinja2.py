@@ -12,5 +12,6 @@ def environment(**options):
         'settings': settings,
         'static': static,
         'url': reverse,
+        'zip': zip,
     })
     return env
