@@ -2,8 +2,7 @@
 
 {% block body %}
 
-<script src="{{ static('web/js/index.js') }}"></script>
-<link rel="stylesheet" href="{{ static('web/css/index.css') }}" />
+<link rel="stylesheet" href="{{ static('web/css/index.css') }}"/>
 <style>
     .cover-photo-src {
         background-image: url("{{ '../..' + static('web/media/private/index_cover.jpg') }}");
@@ -69,5 +68,7 @@
         </div>
     </div>
 </div>
+
+<script src="{{ static('web/js/index.js') }}"></script>
 
 {% endblock %}

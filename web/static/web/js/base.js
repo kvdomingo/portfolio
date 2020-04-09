@@ -5,4 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdownMenu.parent().toggleClass('open');
         }
     });
+
+    $('.navbar-toggle').on('click', function() {
+        $('.overlay').fadeIn('slow');
+    });
+    $('.navbar-overlay').on('click', function() {
+        $(this).fadeOut();
+        $('.navbar-collapse').removeClass('in').addClass('collapse');
+    });
 });

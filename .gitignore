@@ -130,3 +130,6 @@ dmypy.json
 
 # Linter
 .jshintrc
+
+# Large media
+*.psd
