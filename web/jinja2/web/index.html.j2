@@ -24,16 +24,16 @@
 
                 Inquiries? Collaborations?
             </p>
-            <a class="btn btn-amber">Contact</a>
-            <a class="btn btn-amber">Blog</a>
-            <a class="btn btn-amber">Portfolio</a>
+            <a class="btn btn-outline-white" href="mailto:kennethd353@gmail.com">Contact</a>
+            <a class="btn btn-outline-white disabled">Blog</a>
+            <a class="btn btn-outline-white" href="{{ url('web:cv') }}">CV</a>
         </div>
     </div>
 </div>
 
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <h1 class="display-4">Technologies I use</h1>
+        <h1 class="h1 h1-responsive text-center pb-4">Technologies I use</h1>
         <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 my-5">
             {% set img_urls = [
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1920px-Python_logo_and_wordmark.svg.png',
@@ -50,7 +50,7 @@
                 'https://cdn.worldvectorlogo.com/logos/react.svg',
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png',
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mapbox_logo_2017.svg/768px-Mapbox_logo_2017.svg.png',
-                'http://pngimg.com/uploads/github/github_PNG40.png',
+                'https://pngimg.com/uploads/github/github_PNG40.png',
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Jinja_software_logo.svg/1920px-Jinja_software_logo.svg.png',
                 'https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_di_Heroku.png',
                 'https://developers.google.com/analytics/images/terms/logo_lockup_analytics_icon_vertical_black_2x.png',

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
@@ -16,8 +16,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
 
     <link rel="stylesheet" href="{{ static('web/css/base.css') }}" />
+    <script src="{{ static('web/js/base.js') }}"></script>
 
-    <title>Kenneth V. Domingo</title>
+    <title>{{ active_page }} | Kenneth V. Domingo</title>
 
     {% if not settings.DEBUG and settings.ON_HEROKU %}
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162676656-2"></script>
@@ -43,29 +44,26 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top px-5 py-3 mb-4" style="box-shadow: none; transition: background 0.5s;">
-        <a class="navbar-brand" href="#"><h1 class="display-5">K V D</h1></a>
+    <nav class="navbar navbar-expand-lg px-5 py-3 mb-4 {{ 'fixed-top navbar-dark' if active_page == 'Home' else 'sticky-top navbar-light' }}" style="box-shadow: none; transition: background 0.5s; {{ "background: rgba(255, 255, 255, 0.90)" if active_page != 'Home' }}">
+        <a class="navbar-brand" href="{{ url('web:index') }}"><h1 class="display-5">K V D</h1></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ url('web:index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="{{ url('web:cv') }}">CV</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="nav-portfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.7);">
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.8);">
                         <a class="dropdown-item" href="{{ url('photography:index') }}">Photography</a>
-                        <a class="dropdown-item" href="#">Video/Image Processing</a>
-                        <a class="dropdown-item" href="#">Web Development</a>
-                        <a class="dropdown-item" href="#">App Development</a>
+                        <a class="dropdown-item disabled" href="#">Video/Image Processing</a>
+                        <a class="dropdown-item disabled" href="#">Web Development</a>
+                        <a class="dropdown-item disabled" href="#">App Development</a>
                     </div>
                 </li>
             </ul>
@@ -77,7 +75,7 @@
 
     <footer class="page-footer grey darken-5 pt-5">
         <div class="container-fluid text-center py-4">
-            <h1 class="display-5">K V D</h1>
+            <h1 class="display-5"><a href="{{ url('web:index') }}">K V D</a></h1>
             <a href="mailto:kennethd353@gmail.com">kennethd353@gmail.com</a><br />
             <div class="my-3">
                 <h4 style="display: inline;"><a class="mx-2" href="https://m.me/arockentothemoon" target="_blank"><i class="fab fa-facebook-messenger"></i></a></h4>

@@ -1,0 +1,121 @@
+{% extends 'web/base.html.j2' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ static('web/css/cv.css') }}" />
+
+<div class="container px-md-5 pb-4">
+
+    <h1 class="h2-responsive py-4"><i class="fas fa-graduation-cap mr-3"></i>Education</h1>
+    <div class="container px-md-5">
+        <ul class="timeline">
+            <li>
+                <h2 class="h5 mb-0 d-md-inline">University of the Philippines-Diliman</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Aug 2015 &ndash; Jun 2020 (exp.)</div>
+                <p class="lead my-0">National Institute of Physics</p>
+                <p class="text-muted">B.S. Applied Physics (Major in Instrumentation)</p>
+            </li>
+            <li>
+                <h2 class="h5 mb-0 d-md-inline">Harvard University</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Dec 2019 &ndash; Apr 2020</div>
+                <p class="lead my-0">Continuing Education Module</p>
+                <p class="text-muted">
+                    CS50W: Web Programming with Python and JavaScript<br />
+                    CS50M: Mobile App Development with React Native
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <h1 class="h2-responsive py-4"><i class="fas fa-briefcase mr-3"></i>Work Experience</h1>
+    <div class="container px-md-5">
+        <ul class="timeline">
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Backend/Web Developer</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Mar 2020 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://traceph.org" target="_blank">TracePH</a></p>
+                <p>
+                    Volunteer developer for a COVID-19 contact tracing app in the Philippines.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Executive Officer for Promotions and Documentation</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Jan 2020 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://facebook.com/upiris" target="_blank">UP Iris</a></p>
+                <p>
+                    Oversaw all organization matters regarding publicity and documentation of both internal and external events.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Photographer</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>May 2019 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://facebook.com/upiris" target="_blank">UP Iris</a></p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Student Researcher</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Oct 2017 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://sites.google.com/site/instrumentationphysicslab/" target="_blank">Instrumentation Physics Laboratory</a></p>
+                <p>
+                    Processing and analysis of videos, images, and other signals using classical signal processing methods, compressive sensing, and machine learning.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Intern</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Jan &ndash; Feb 2020</div>
+                <p class="lead my-0 pb-3"><a href="https://pgc.up.edu.ph/" target="_blank">Philippine Genome Center</a></p>
+                <p>
+                    Underwent training in bioinformatics; developed a <a href="https://github.com/kvdomingo/primerdriver/releases" target="_blank">command-line tool</a> and <a href="https://primerdriver.herokuapp.com" target="_blank">web application</a> for designing primers for site-directed mutagenesis.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Intern</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Jun &ndash; Nov 2019</div>
+                <p class="lead my-0 pb-3"><a href="https://therestisnoiseph.com" target="_blank">The Rest is Noise PH</a></p>
+                <p>
+                    Provided analytics to determine key points to target in order to maximize marketing; involved in project planning and on-site production for <a href="https://www.bandwagon.asia/articles/all-of-the-noise-2019-the-rest-is-noise-photo-gallery" target="_blank">All of The Noise 2019</a> held at Century City Mall, City of Makati.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">Student Assistant</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Dec 2018 &ndash; Jan 2019</div>
+                <p class="lead my-0 pb-3"><a href="http://202.90.159.82/philcomars/" target="_blank">Philippine Coral Reef and Mangrove Remote Sensing Project</a></p>
+                <p>
+                    Performed ground-truth validation of images involving corals classified by a deep neural network.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <h1 class="h2-responsive py-4"><i class="fas fa-project-diagram mr-3"></i>Projects</h1>
+    <div class="container px-md-5">
+        <ul class="timeline">
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">TracePH</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Mar 2020 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://traceph.org" target="_blank">Project Website</a></p>
+                <p>
+                    Volunteered as one of the designers of an Android/iOS app to perform contact tracing of COVID-19 cases in the Philippines, spearheaded by the UP Diliman College of Science.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">COVID-19 PH Tracker Dashboard</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Mar 2020 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://ncovenience.herokuapp.com" target="_blank">Project Website</a></p>
+                <p>
+                    Designed an information hub, dashboard, and API regarding COVID-19 data in the Philippines.
+                </p>
+            </li>
+            <li class="py-1">
+                <h2 class="h5 mb-0 d-md-inline">PrimerDriver</h2>
+                <div class="timeline-date text-muted float-md-right my-md-0 my-2"><i class="far fa-clock mr-1"></i>Jan 2020 &ndash; Present</div>
+                <p class="lead my-0 pb-3"><a href="https://primerdriver.herokuapp.com" target="_blank">Project Website</a> | <a href="https://github.com/kvdomingo/primerdriver/releases" target="_blank">Download CLI</a></p>
+                <p>
+                    A command-line tool and web application to design PCR primers for site-directed mutagenesis.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}

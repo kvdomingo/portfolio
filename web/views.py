@@ -3,6 +3,13 @@ from django.shortcuts import render
 
 def index(request):
     context = {
-        'active_page': 'index',
+        'active_page': 'Home',
     }
     return render(request, 'web/index.html.j2', context)
+
+
+def cv(request):
+    context = {
+        'active_page': 'CV',
+    }
+    return render(request, 'web/cv.html.j2', context)
