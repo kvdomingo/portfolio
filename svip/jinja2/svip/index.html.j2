@@ -1,0 +1,20 @@
+{% extends 'svip/base.html.j2' %}
+
+{% block blog %}
+
+<div class="row row-cols-1 row-cols-md-4">
+    {% for post in post_list %}
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-body">{{ post.body[:100] }}...</p>
+                    <a href="{{ url('svip:post', args=(post.slug,)) }}" class="btn btn-primary my-3">Read more &rarr;</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import pytz
 import cloudinary
 from jinja2 import DebugUndefined, Undefined
 from dotenv import load_dotenv
@@ -46,12 +47,14 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'web.apps.WebConfig',
     'photography.apps.PhotographyConfig',
+    'svip.apps.SvipConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +135,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Manila'
 
+LOCAL_TZ = pytz.timezone(TIME_ZONE)
+
 USE_I18N = True
 
 USE_L10N = True
@@ -154,6 +159,16 @@ cloudinary.config(
     api_key=os.environ['CLOUDINARY_API_KEY'],
     api_secret=os.environ['CLOUDINARY_API_SECRET']
 )
+
+# TinyMCE configuration
+
+TINYMCE_DEFAULT_CONFIG = {
+    'mode': 'textareas',
+    'plugins': 'table,spellchecker,paste,searchreplace',
+    'theme': 'advanced',
+    'cleanup_on_startup': True,
+}
+
 
 ON_HEROKU = bool(int(os.environ['ON_HEROKU']))
 

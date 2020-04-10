@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
     path('', include('photography.urls')),
+    path('', include('svip.urls')),
 ]
