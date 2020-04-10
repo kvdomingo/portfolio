@@ -6,10 +6,15 @@
     {% for post in post_list %}
         <div class="col">
             <div class="card mb-4">
+                <div class="view overlay">
+                    <img class="card-img-top cld-responsive" data-src="{{ post.cover }}" alt="{{ post.title }}" />
+                    <a href="{{ url('svip:post', args=(post.slug,)) }}">
+                        <div class="mask rgba-black-light"></div>
+                    </a>
+                </div>
                 <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-body">{{ post.body[:100] }}...</p>
-                    <a href="{{ url('svip:post', args=(post.slug,)) }}" class="btn btn-primary my-3">Read more &rarr;</a>
+                    <h4 class="card-title">{{ post.title }}</h4>
+                    <p class="card-body py-0 my-0">{{ post.body[:100] }}...</p>
                 </div>
             </div>
         </div>
