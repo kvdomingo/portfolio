@@ -54,9 +54,12 @@
         <meta name="og:description" content="Portfolio and CV of Kenneth V. Domingo" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_PH" />
+        <meta property="og:image" content="{{ static('web/media/private/logo-black.png') }}"
         <meta property="twitter:card" content="summary" />
         <meta property="twitter:creator" content="@rockentothemoon" />
         <meta property="twitter:site" content="@rockentothemoon" />
+        <meta name="twitter:title" content="Kenneth V. Domingo" />
+        <meta name="twitter:image" content="{{ static('web/media/private/logo-black.png') }}" />
         <meta name="twitter:image:alt" content="Kenneth V. Domingo" />
         <meta name="twitter:description" content="Portfolio and CV of Kenneth V. Domingo" />
     {% endif %}
@@ -86,7 +89,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="nav-portfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.8);">
+                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.8);">
                         <a class="dropdown-item" href="{{ url('photography:index') }}">Photography</a>
                         <a class="dropdown-item" href="{{ url('svip:index') }}">Video/Image Processing</a>
                         <a class="dropdown-item disabled" href="#">Web Development</a>
