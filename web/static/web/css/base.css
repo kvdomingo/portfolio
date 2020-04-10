@@ -3,8 +3,27 @@ html {
 }
 
 body {
-    font-family: 'Oxygen', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
+
+@media (min-width: 576px) {
+    html {
+        font-size: 1rem
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 1.05rem
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 1.1rem
+    }
+}
+
 
 @media screen and (min-width: 768px) {
     .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu {

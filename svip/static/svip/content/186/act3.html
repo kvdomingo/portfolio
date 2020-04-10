@@ -1,25 +1,25 @@
 <h3>File formats</h3>
 
 <p>
-    The image I used for the comparison of file sizes is an HDR image of the Oblation Plaza overlooking University Avenue during sunset taken by myself, shown in Fig. <a href="#fig:original">1</a>. Its histogram is shown in Fig. <a href="#fig:histogram">2</a>. I've already post-processed the image so that it displays properly on print or on non-HDR-capable devices. Thefile sizes themselves are shown in Table <a href="#tab:sizes">1</a>. In the interest of minimizing the size of this document, I will no longer include the images saved in other le formats if there is no perceivable change in quality/characteristics.
+    The image I used for the comparison of file sizes is an HDR image of the Oblation Plaza overlooking University Avenue during sunset taken by myself, shown in Fig. <a href="#fig:original">1</a>. Its histogram is shown in Fig. <a href="#fig:histogram">2</a>. I've already post-processed the image so that it displays properly on print or on non-HDR-capable devices. Thefile sizes themselves are shown in Table <a href="#tab:sizes">1</a>. In the interest of minimizing the size of this document, I will no longer include the images saved in other file formats if there is no perceivable change in quality/characteristics.
 </p>
 
-<div class="container text-center my-5 px-5">
-    <img id="fig:original" class="cld-responsive img-fluid mx-auto" style="max-width: 800px;" alt="" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805.png" />
-    <p class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <img id="fig:original" class="cld-responsive img-fluid" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805.png" />
+    <p>
         Figure 1: Image used for comparison of file sizes.
     </p>
 </div>
 
-<div class="container text-center my-5 px-5">
-    <img id="fig:histogram" class="cld-responsive img-fluid mx-auto" style="max-width: 800px;" alt="" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/histogram.png" />
-    <p class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <img id="fig:histogram" class="cld-responsive img-fluid" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/histogram.png" />
+    <p>
         Figure 2: Red, green, blue, and gray histograms of Fig. <a href="#fig:original">1</a>.
     </p>
 </div>
 
-<div class="container text-center my-5 px-5">
-    <p id="tab:sizes" class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <p id="tab:sizes">
         Table 1: File sizes for various saved formats of Fig. <a href="#fig:original">1</a>.
     </p>
     <table class="table table-bordered">
@@ -62,29 +62,29 @@
     In order to produce a binary image, I applied a threshold of 192 to Fig. <a href="#fig:original">1</a>. The result is shown in Fig. <a href="#fig:binary">3</a>.
 </p>
 
-<div class="container text-center my-5 px-5">
-    <img id="fig:binary" class="cld-responsive img-fluid mx-auto" style="max-width: 800px;" alt="" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_bin.png" />
-    <p class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <img id="fig:binary" class="cld-responsive img-fluid" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_bin.png" />
+    <p>
         Figure 3: Fig. <a href="#fig:original">1</a> saved as a binary image.
     </p>
 </div>
 
 <p>
-    In order to produce an indexed image, Ifirst imported the image into Photoshop and set it to Index mode. I then extracted the 256 most common colors and saved them as a Photoshop Color Table (<code>.act</code>). I then applied this color indexing to the image and saved it one as a <code>TIFF</code> and one as a <code>GIF</code>. The result of the <code>TIFF</code> indexing along with its color table is shown in Fig. <a href="#fig:tiff">4</a> and Table <a href="#tab:index">2</a>, respectively. Notice that the ground portion of the image still looks decent because the boundaries of each color are considerably well-defined. However, the sky portion exhibits some visible degradation due to the smooth gradients in the original image. The <code>GIF</code> indexing in Fig. <a href="#fig:gif">5</a> exhibits degradation even in the ground portion. I found out that this was due to the difference in the way the colors are sampled. In the former, the sampling of colors is locally adaptive, which allows transition of colors to be smoother, while in the latter, the sampling is uniform.
+    In order to produce an indexed image, Ifirst imported the image into Photoshop and set it to Index mode. I then extracted the 256 most common colors and saved them as a Photoshop Color Table (<code>.act</code>). I then applied this color indexing to the image and saved it, one as a <code>TIFF</code> and one as a <code>GIF</code>. The result of the <code>TIFF</code> indexing along with its color table is shown in Fig. <a href="#fig:tiff">4</a> and Table <a href="#tab:index">2</a>, respectively. Notice that the ground portion of the image still looks decent because the boundaries of each color are considerably well-defined. However, the sky portion exhibits some visible degradation due to the smooth gradients in the original image. The <code>GIF</code> indexing in Fig. <a href="#fig:gif">5</a> exhibits degradation even in the ground portion. I found out that this was due to the difference in the way the colors are sampled. In the former, the sampling of colors is locally adaptive, which allows transition of colors to be smoother, while in the latter, the sampling is uniform.
 </p>
 
-<div class="container text-center my-5 px-5">
-    <img id="fig:tiff" class="cld-responsive img-fluid mx-auto" style="max-width: 800px;" alt="" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_tiff_indexed.png" />
-    <p class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <img id="fig:tiff" class="cld-responsive img-fluid mx-auto" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_tiff_indexed.png" />
+    <p>
         Figure 4: Fig. <a href="#fig:original">1</a> saved as a <code>TIFF</code> indexed image.
     </p>
 </div>
 
-<div class="container text-center my-5 px-5">
-    <p id="tab:index" class="px-5">
+<div class="container text-center my-5 px-md-5 table-responsive w-responsive">
+    <p id="tab:index" class="px-md-5">
         Table 2: First and last few elements of the color table for Fig. <a href="#fig:tiff">4</a>.
     </p>
-    <table class="table table-bordered">
+    <table class="table table-bordered px-md-5">
         <thead>
             <tr>
                 <th scope="col">Index</th>
@@ -148,9 +148,9 @@
     </table>
 </div>
 
-<div class="container text-center my-5 px-5">
-    <img id="fig:gif" class="cld-responsive img-fluid mx-auto" style="max-width: 800px;" alt="" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_gif_indexed.png" />
-    <p class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <img id="fig:gif" class="cld-responsive img-fluid" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_gif_indexed.png" />
+    <p class="px-md-5">
         Figure 5: Fig. <a href="#fig:original">1</a> saved as a <code>GIF</code> indexed image.
     </p>
 </div>
@@ -161,7 +161,7 @@
 </p>
 
 <p>
-    One of therst formats to have taken up this challenge is the Graphics Interchange Format (<code>GIF</code>) in 1987 [<a href="#Roelofs1999">1</a>]. It uses the Lempel-Ziv-Welch (<code>LZW</code>) lossless compression algorithm, which provides up to 25% compression. However, <code>GIF</code> is a pixel-dependent, 8-bit indexed format, so images could not show their full color range in this format. The le format quickly fell out of favor when its compression technique was patented in 1995 by Unisys Corporation [<a href="#Wiggins2001">2</a>], who attempted to collect royalties from <code>GIF</code> users. Capitalism strikes again!
+    One of the first formats to have taken up this challenge is the Graphics Interchange Format (<code>GIF</code>) in 1987 [<a href="#Roelofs1999">1</a>]. It uses the Lempel-Ziv-Welch (<code>LZW</code>) lossless compression algorithm, which provides up to 25% compression. However, <code>GIF</code> is a pixel-dependent, 8-bit indexed format, so images could not show their full color range in this format. The le format quickly fell out of favor when its compression technique was patented in 1995 by Unisys Corporation [<a href="#Wiggins2001">2</a>], who attempted to collect royalties from <code>GIF</code> users. <b>Capitalism strikes again!</b>
 </p>
 
 <p>
@@ -169,7 +169,7 @@
 </p>
 
 <p>
-    In 1986, the Tagged Image File Format (<code>TIFF</code>) was developed by Microsoft and Aldus (now merged with Adobe), and takes its name due to its heavy dependence on tags, which relay the image information to the program accessing thele. It is highly versatile, supports a wide range of sizes, resolutions and color depths [<a href="#Wiggins2001">2</a>], and can use <code>LZW</code>, <code>ZIP</code>, or other compression methods. However, its large le size as a consequence of its complexity limits its practical use.
+    In 1986, the Tagged Image File Format (<code>TIFF</code>) was developed by Microsoft and Aldus (now merged with Adobe), and takes its name due to its heavy dependence on tags, which relay the image information to the program accessing thele. It is highly versatile, supports a wide range of sizes, resolutions and color depths [<a href="#Wiggins2001">2</a>], and can use <code>LZW</code>, <code>ZIP</code>, or other compression methods. However, its large file size as a consequence of its complexity limits its practical use.
 </p>
 
 <p>
@@ -181,7 +181,7 @@
     Some of the libraries that can be used for image processing in Python include the <code>matplotlib</code>, <code>opencv2</code>, and <code>PIL</code> modules. Some basic functions include:
     <ul>
         <li>
-            <code>cv2.imread</code>: reads an image from the computer and loads it as an $n$-dimensional <code>numpy</code> array.
+            <code>cv2.imread</code>: reads an image from the computer and loads it as an n-dimensional <code>numpy</code> array.
         </li>
         <li>
             <code>matplotlib.pyplot.savefig</code>: saves a valid <code>numpy</code> array as an image with the specied file format.

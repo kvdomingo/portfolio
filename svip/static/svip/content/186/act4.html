@@ -1,5 +1,5 @@
 <p>
-    For this activity, I generated the basic shapes using the Python Imaging Library (PIL). This let me dene the centroid and pseudo-radius (distance from the centroid to the midpoint of an edge) for each shape analytically, and therefore, I know precisely what their dimensions and areas will be. The shapes are shown in Fig. 1, all with size 1024 $\times$ 1024.
+    For this activity, I generated the basic shapes using the Python Imaging Library (PIL). This let me define the centroid and pseudo-radius (distance from the centroid to the midpoint of an edge) for each shape analytically, and therefore, I know precisely what their dimensions and areas will be. The shapes are shown in Fig. 1, all with size 1024 $\times$ 1024.
 </p>
 
 <div id="fig-shapes" class="container text-center my-5">
@@ -13,7 +13,7 @@
     For extracting the edges of the shapes, I explored a few edge detection algorithms, eventually settling with the following:
     <ul>
         <li>
-            <b>PIL's <code>FIND_EDGES</code> filter</b>: this built-in function works like a charm and can be easily implemented as a one-liner. The documentation doesn't describe what it does exactly, but after digging through the source code [<a href="#Wiredfool2016">1</a>], it found that it simply convolves an image with a spot kernel of the form
+            <strong>PIL's <code>FIND_EDGES</code> filter</strong>: this built-in function works like a charm and can be easily implemented as a one-liner. The documentation doesn't describe what it does exactly, but after digging through the source code [<a href="#Wiredfool2016">1</a>], it found that it simply convolves an image with a spot kernel of the form
             <span id="eq-spot">
                 \begin{equation}
                     G =
@@ -26,7 +26,7 @@
             </span>
         </li>
         <li>
-            <b>Sobel filter</b>: approximates the gradient of an image's intensity function [<a href="#Sobel2014">2</a>]. Convolves images with two kernels (one for each direction)
+            <strong>Sobel filter</strong>: approximates the gradient of an image's intensity function [<a href="#Sobel2014">2</a>]. Convolves images with two kernels (one for each direction)
             <span id="eq-sobel">
                 \begin{align}
                     G_x & =
@@ -40,7 +40,7 @@
             </span>
         </li>
         <li>
-            <b>Prewitt filter</b>: also approximates the gradient of image intensity and acts in two directions, similar to the Sobellter [<a href="#Prewitt1970">3</a>]. Its kernel is of the form
+            <strong>Prewitt filter</strong>: also approximates the gradient of image intensity and acts in two directions, similar to the Sobel filter [<a href="#Prewitt1970">3</a>]. Its kernel is of the form
             <span id="eq-prewitt">
                 \begin{align}
                     G_x & =
@@ -54,7 +54,7 @@
             </span>
         </li>
         <li>
-            <b>Laplacian filter</b>: calculates the second-order derivatives of the image intensity in one pass [<a href="#Laplacian2018">4</a>]. Because of its sensitivity to noise, Ifirst applied a 3 $\times$ 3 Gaussan lter with 0 standard deviation before applying the Laplacianilter. Its kernel is of the form
+            <strong>Laplacian filter</strong>: calculates the second-order derivatives of the image intensity in one pass [<a href="#Laplacian2018">4</a>]. Because of its sensitivity to noise, I first applied a 3 $\times$ 3 Gaussan filter with 0 standard deviation before applying the Laplacian filter. Its kernel is of the form
             <span id="eq-canny">
                 \begin{equation}
                     G_x =
@@ -67,7 +67,7 @@
             </span>
         </li>
         <li>
-            <b>Canny filter</b>: a multistage edge-detection algorithm which is highly versatile and effcient [<a href="#Canny1986">5</a>].
+            <strong>Canny filter</strong>: a multistage edge-detection algorithm which is highly versatile and efficient [<a href="#Canny1986">5</a>].
         </li>
     </ul>
 </p>
@@ -111,14 +111,14 @@
 </div>
 
 <p>
-    Notice how the Sobel &amp; Prewittlters perform very similarly because they are both gradient-based methods. Due to their directional dependence, we can notice how the edges, particularly on the lower-right portions, are not being detected very well. Upon closer examination, however, the edges <i>are</i> being detected but are very faint (low magnitude). Spot and Canny, on the other hand, produce very clean and accurate edges. Laplacian also detects a clean edge but is somewhat low in magnitude.
+    Notice how the Sobel &amp; Prewitt filters perform very similarly because they are both gradient-based methods. Due to their directional dependence, we can notice how the edges, particularly on the lower-right portions, are not being detected very well. Upon closer examination, however, the edges <i>are</i> being detected but are very faint (low magnitude). Spot and Canny, on the other hand, produce very clean and accurate edges. Laplacian also detects a clean edge but is somewhat low in magnitude.
 </p>
 
-<div class="container text-center my-5 px-5">
-    <p id="table-areas" class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <p id="table-areas">
         Table 1: Actual and calculated areas (px$^2$) of each shape and their corresponding relative errors. The percentages in bold indicate the best-performing algorithm for each shape.
     </p>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-responsive">
         <thead>
             <tr>
                 <th scope="col">Shape</th>
@@ -147,7 +147,7 @@
                 <td>0.11%</td>
                 <td>0.11%</td>
                 <td>0.11%</td>
-                <td><b>0.10%</b></td>
+                <td><strong>0.10%</strong></td>
             </tr>
             <tr>
                 <td>square</td>
@@ -161,7 +161,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><b>0.03%</b></td>
+                <td><strong>0.03%</strong></td>
                 <td>0.22%</td>
                 <td>0.22%</td>
                 <td>0.22%</td>
@@ -179,7 +179,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><b>0.06%</b></td>
+                <td><strong>0.06%</strong></td>
                 <td>0.31%</td>
                 <td>0.31%</td>
                 <td>0.32%</td>
@@ -201,7 +201,7 @@
                 <td>0.22%</td>
                 <td>0.22%</td>
                 <td>0.22%</td>
-                <td><b>0.09%</b></td>
+                <td><strong>0.09%</strong></td>
             </tr>
         </tbody>
     </table>
@@ -216,14 +216,14 @@
         \end{equation}
     </span>
 
-    Via Green's theorem, I was able to obtain the Amphitheater's area in pixels. However, this cannot be converted directly to real units using (<a href="#eq-calibration">6</a>) because our current units are area, while the conversion equation only works for units of length. Since the amphitheater appears fairly circular, I used the formula for the area of a circle $A = \pi r^2$ and solved for $r$. I can now plug in this $r$ directly into (<a href="#eq-calibration">6</a>) andfinally, multiply it again by $\pi r$ to get the area in real units. The calculated areas for the different algorithms are shown in Table <a href="#tab-amphi">2</a>, and the edge-traced images are shown in Fig. <a href="#fig-amphi">6</a>.
+    Via Green's theorem, I was able to obtain the Amphitheater's area in pixels. However, this cannot be converted directly to real units using (<a href="#eq-calibration">6</a>) because our current units are area, while the conversion equation only works for units of length. Since the amphitheater appears fairly circular, I used the formula for the area of a circle $A = \pi r^2$ and solved for $r$. I can now plug in this $r$ directly into (<a href="#eq-calibration">6</a>) and finally, multiply it again by $\pi r$ to get the area in real units. The calculated areas for the different algorithms are shown in Table <a href="#tab-amphi">2</a>, and the edge-traced images are shown in Fig. <a href="#fig-amphi">6</a>.
 </p>
 
-<div class="container text-center my-5 px-5">
-    <p id="table-areas" class="px-5">
+<div class="container text-center my-5 px-md-5 w-responsive">
+    <p id="table-areas" class="px-md-5">
         Table 1: Actual and calculated areas (px$^2$) of each shape and their corresponding relative errors. The percentages in bold indicate the best-performing algorithm for each shape.
     </p>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-responsive">
         <thead>
             <tr>
                 <th scope="col">Actual</th>
@@ -245,7 +245,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><b>2.55%</b></td>
+                <td><strong>2.55%</strong></td>
                 <td>3.22%</td>
                 <td>3.22%</td>
                 <td>3.20%</td>
@@ -296,7 +296,7 @@
 </div>
 
 <p>
-    We can observe that in general, the spotlter works best in edge detection. Upon further investigation, I found out that the spot kernel is actually a variant of the Laplacian kernel and produces exceptional results on arbitrary images.
+    We can observe that in general, the spot filter works best in edge detection. Upon further investigation, I found out that the spot kernel is actually a variant of the Laplacian kernel and produces exceptional results on arbitrary images.
 </p>
 
 
@@ -315,7 +315,7 @@
         N. Tsankashvili, <a href="https://medium.com/@nikatsanka/comparing-edge-detection-methods-638a2919476e" target="_blank">Comparing edge detection methods</a> (2018).
     </li>
     <li id="Canny1986">
-        J. F. Canny, A computational approach to edge detection, <i>IEEE transactions on pattern analysis and machine intelligence</i> <b>8</b>, 679 (1986).
+        J. F. Canny, A computational approach to edge detection, <i>IEEE transactions on pattern analysis and machine intelligence</i> <strong>8</strong>, 679 (1986).
     </li>
     <li id="Soriano2019">
         M. N. Soriano, <i>Measuring area from images</i> (2019).
