@@ -7,7 +7,14 @@
 <div class="grid">
     <div class="grid-sizer"></div>
     {% for im, imfull in images %}
-        <div class="grid-item {{ 'grid-item--width2' if im.width > im.height }} px-md-3 px-0 py-2 ml-0">
+        {% if im.width > 2*im.height %}
+            {% set grid_item = 'grid-item--width3' %}
+        {% elif im.height < im.width < 2*im.height  %}
+            {% set grid_item = 'grid-item--width2' %}
+        {% else %}
+            {% set grid_item = 'grid-item' %}
+        {% endif %}
+        <div class="grid-item {{ grid_item }} px-md-3 px-0 py-2 ml-0">
             <a class="col my-auto" href="{{ imfull }}" data-lightbox="horizontals">
                 <img data-src="{{ im.url }}" class="cld-responsive cld-shadow w-100 ml-0 img-fluid" />
             </a>

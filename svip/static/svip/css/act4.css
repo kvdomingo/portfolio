@@ -1,0 +1,13 @@
+div.row-cols-1 {
+    counter-reset: subfig-counter;
+    list-style-type: lower-alpha;
+}
+
+div.row-cols-1 div.col p.subfigure {
+    counter-increment: subfig-counter;
+}
+
+div.row-cols-1 div.col p.subfigure::before {
+    content: '(' counter(subfig-counter, lower-alpha) ')';
+    margin-right: 0.25rem;
+}

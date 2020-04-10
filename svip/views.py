@@ -18,7 +18,7 @@ def post(request, slug):
     query = BlogPost.objects.filter(slug=slug).first()
     query.created = query.created.replace(tzinfo=pytz.utc).astimezone(settings.LOCAL_TZ)
     context = {
-        'active_page': 'Video/Image Processing',
+        'active_page': query.title,
         'post': query,
     }
     return render(request, 'svip/post.html.j2', context)
