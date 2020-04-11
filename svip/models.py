@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from tinymce import models as mcemodels
+from datetime import datetime
 
 
-def set_time_aware(d):
-    return d.astimezone(settings.LOCAL_TZ)
+def set_aware_time():
+    return datetime.now().astimezone(settings.LOCAL_TZ)
 
 STATUS = (
     (0, 'Draft'),
@@ -18,7 +19,7 @@ SUBJECT = (
 )
 
 class BlogPost(models.Model):
-    created = models.DateTimeField(default=set_time_aware)
+    created = models.DateTimeField(default=set_aware_time)
     modified = models.DateTimeField(auto_now=True)
     subject = models.IntegerField(choices=SUBJECT, default=0)
     title = models.CharField(max_length=256, unique=True)
