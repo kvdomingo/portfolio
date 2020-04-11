@@ -118,93 +118,95 @@
     <p id="table-areas">
         Table 1: Actual and calculated areas (px$^2$) of each shape and their corresponding relative errors. The percentages in bold indicate the best-performing algorithm for each shape.
     </p>
-    <table class="table table-bordered table-striped table-responsive">
-        <thead>
-            <tr>
-                <th scope="col">Shape</th>
-                <th scope="col">Actual</th>
-                <th scope="col">Spot</th>
-                <th scope="col">Sobel</th>
-                <th scope="col">Prewitt</th>
-                <th scope="col">Laplacian</th>
-                <th scope="col">Canny</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>circle</td>
-                <td>502,655</td>
-                <td>501,584</td>
-                <td>503,187</td>
-                <td>503,187</td>
-                <td>503,198</td>
-                <td>503,182</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>0.21%</td>
-                <td>0.11%</td>
-                <td>0.11%</td>
-                <td>0.11%</td>
-                <td><strong>0.10%</strong></td>
-            </tr>
-            <tr>
-                <td>square</td>
-                <td>640,000</td>
-                <td>639,800</td>
-                <td>641,404</td>
-                <td>641,404</td>
-                <td>641,416</td>
-                <td>641,398</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td><strong>0.03%</strong></td>
-                <td>0.22%</td>
-                <td>0.22%</td>
-                <td>0.22%</td>
-                <td>0.22%</td>
-            </tr>
-            <tr>
-                <td>trapezoid</td>
-                <td>426,667</td>
-                <td>426,399</td>
-                <td>428,002</td>
-                <td>428,002</td>
-                <td>428,013</td>
-                <td>427,731</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td><strong>0.06%</strong></td>
-                <td>0.31%</td>
-                <td>0.31%</td>
-                <td>0.32%</td>
-                <td>0.25%</td>
-            </tr>
-            <tr>
-                <td>triangle</td>
-                <td>320,000</td>
-                <td>319,102</td>
-                <td>320,705</td>
-                <td>320,705</td>
-                <td>320,714</td>
-                <td>320,304</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>0.28%</td>
-                <td>0.22%</td>
-                <td>0.22%</td>
-                <td>0.22%</td>
-                <td><strong>0.09%</strong></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Shape</th>
+                    <th scope="col">Actual</th>
+                    <th scope="col">Spot</th>
+                    <th scope="col">Sobel</th>
+                    <th scope="col">Prewitt</th>
+                    <th scope="col">Laplacian</th>
+                    <th scope="col">Canny</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>circle</td>
+                    <td>502,655</td>
+                    <td>501,584</td>
+                    <td>503,187</td>
+                    <td>503,187</td>
+                    <td>503,198</td>
+                    <td>503,182</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>0.21%</td>
+                    <td>0.11%</td>
+                    <td>0.11%</td>
+                    <td>0.11%</td>
+                    <td><strong>0.10%</strong></td>
+                </tr>
+                <tr>
+                    <td>square</td>
+                    <td>640,000</td>
+                    <td>639,800</td>
+                    <td>641,404</td>
+                    <td>641,404</td>
+                    <td>641,416</td>
+                    <td>641,398</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>0.03%</strong></td>
+                    <td>0.22%</td>
+                    <td>0.22%</td>
+                    <td>0.22%</td>
+                    <td>0.22%</td>
+                </tr>
+                <tr>
+                    <td>trapezoid</td>
+                    <td>426,667</td>
+                    <td>426,399</td>
+                    <td>428,002</td>
+                    <td>428,002</td>
+                    <td>428,013</td>
+                    <td>427,731</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>0.06%</strong></td>
+                    <td>0.31%</td>
+                    <td>0.31%</td>
+                    <td>0.32%</td>
+                    <td>0.25%</td>
+                </tr>
+                <tr>
+                    <td>triangle</td>
+                    <td>320,000</td>
+                    <td>319,102</td>
+                    <td>320,705</td>
+                    <td>320,705</td>
+                    <td>320,714</td>
+                    <td>320,304</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>0.28%</td>
+                    <td>0.22%</td>
+                    <td>0.22%</td>
+                    <td>0.22%</td>
+                    <td><strong>0.09%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <p>
@@ -219,40 +221,42 @@
     Via Green's theorem, I was able to obtain the Amphitheater's area in pixels. However, this cannot be converted directly to real units using (<a href="#eq-calibration">6</a>) because our current units are area, while the conversion equation only works for units of length. Since the amphitheater appears fairly circular, I used the formula for the area of a circle $A = \pi r^2$ and solved for $r$. I can now plug in this $r$ directly into (<a href="#eq-calibration">6</a>) and finally, multiply it again by $\pi r$ to get the area in real units. The calculated areas for the different algorithms are shown in Table <a href="#tab-amphi">2</a>, and the edge-traced images are shown in Fig. <a href="#fig-amphi">6</a>.
 </p>
 
-<div class="container text-center my-5 px-md-5 w-responsive">
+<div class="container text-center my-5 w-responsive">
     <p id="table-areas" class="px-md-5">
         Table 1: Actual and calculated areas (px$^2$) of each shape and their corresponding relative errors. The percentages in bold indicate the best-performing algorithm for each shape.
     </p>
-    <table class="table table-bordered table-striped table-responsive">
-        <thead>
-            <tr>
-                <th scope="col">Actual</th>
-                <th scope="col">Spot</th>
-                <th scope="col">Sobel</th>
-                <th scope="col">Prewitt</th>
-                <th scope="col">Laplacian</th>
-                <th scope="col">Canny</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>4485.92</td>
-                <td>4600.44</td>
-                <td>4630.52</td>
-                <td>4630.55</td>
-                <td>4629.64</td>
-                <td>4634.90</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><strong>2.55%</strong></td>
-                <td>3.22%</td>
-                <td>3.22%</td>
-                <td>3.20%</td>
-                <td>3.32%</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Actual</th>
+                    <th scope="col">Spot</th>
+                    <th scope="col">Sobel</th>
+                    <th scope="col">Prewitt</th>
+                    <th scope="col">Laplacian</th>
+                    <th scope="col">Canny</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4485.92</td>
+                    <td>4600.44</td>
+                    <td>4630.52</td>
+                    <td>4630.55</td>
+                    <td>4629.64</td>
+                    <td>4634.90</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><strong>2.55%</strong></td>
+                    <td>3.22%</td>
+                    <td>3.22%</td>
+                    <td>3.20%</td>
+                    <td>3.32%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div id="fig-amphi" class="container text-center my-5">
@@ -266,20 +270,12 @@
             <p class="subfigure">Applying threshold and isolating the ROI</p>
         </div>
         <div class="col">
-            <img class="cld-responsive img-fluid mx-auto" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi.png" />
-            <p class="subfigure">Applying threshold and isolating the ROI</p>
-        </div>
-        <div class="col">
             <img class="cld-responsive img-fluid mx-auto" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_spot.png" />
             <p class="subfigure">spot</p>
         </div>
         <div class="col">
             <img class="cld-responsive img-fluid mx-auto" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_sobel.png" />
-            <p class="subfigure">Sobel</p>
-        </div>
-        <div class="col">
-            <img class="cld-responsive img-fluid mx-auto" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_prewitt.png" />
-            <p class="subfigure">Prewitt</p>
+            <p class="subfigure">Sobel/Prewitt</p>
         </div>
         <div class="col">
             <img class="cld-responsive img-fluid mx-auto" data-src="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_laplacian.png" />

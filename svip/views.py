@@ -16,7 +16,7 @@ def index(request):
 
 def post(request, slug):
     query = BlogPost.objects.filter(slug=slug).first()
-    query.created = query.created.replace(tzinfo=pytz.utc).astimezone(settings.LOCAL_TZ)
+    query.created = query.created.replace(tzinfo=pytz.utc).astimezone(settings.LOCAL_TZ).strftime("%H:%M, %d %b %Y")
     context = {
         'active_page': query.title,
         'post': query,
