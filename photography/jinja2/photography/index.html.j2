@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="{{ static('photography/css/index.css') }}" />
 
-<div class="grid">
+<div class="grid text-center">
     <div class="grid-sizer"></div>
     {% for im, imfull in images %}
         {% if im.width > 2*im.height %}
@@ -14,9 +14,9 @@
         {% else %}
             {% set grid_item = 'grid-item' %}
         {% endif %}
-        <div class="grid-item {{ grid_item }} px-md-3 px-0 py-2 ml-0">
+        <div class="grid-item {{ grid_item }} px-md-3 px-0 py-2 mx-0 pr-4 pr-md-0">
             <a class="col my-auto" href="{{ imfull }}" data-lightbox="horizontals">
-                <img data-src="{{ im.url }}" class="cld-responsive cld-shadow w-100 ml-0 img-fluid" />
+                <img data-src="{{ im.url }}" class="cld-responsive cld-shadow img-fluid" />
             </a>
         </div>
     {% endfor %}

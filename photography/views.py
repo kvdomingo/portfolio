@@ -20,6 +20,7 @@ def gallery(request, group):
     images = functions.get_resources(f'{settings.ASSET_DIR}/{group}')
     context = {
         'active_page': group.split('-')[0].capitalize() if ('clients' in group) else group.capitalize(),
+        'group': group,
         'images': images,
     }
     return render(request, 'photography/index.html.j2', context)

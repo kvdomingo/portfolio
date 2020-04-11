@@ -160,15 +160,6 @@ cloudinary.config(
     api_secret=os.environ['CLOUDINARY_API_SECRET']
 )
 
-# TinyMCE configuration
-
-TINYMCE_DEFAULT_CONFIG = {
-    'mode': 'textareas',
-    'plugins': 'table,spellchecker,paste,searchreplace',
-    'theme': 'advanced',
-    'cleanup_on_startup': True,
-}
-
 
 ON_HEROKU = bool(int(os.environ['ON_HEROKU']))
 

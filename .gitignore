@@ -133,3 +133,6 @@ dmypy.json
 
 # Large media
 *.psd
+
+# Post drafts
+**/svip/content/

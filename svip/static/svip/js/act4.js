@@ -1,6 +1,6 @@
 var e = React.createElement;
 
-class Subfigure extends React.Component {
+class SubfigureCap extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -11,7 +11,7 @@ class Subfigure extends React.Component {
     }
 
     render() {
-        return this.props.images.map(image => [
+        return this.props.images.map((image, i) => [
             e(
                 'div',
                 { className: 'col' },
@@ -21,13 +21,23 @@ class Subfigure extends React.Component {
                         {
                             className: 'cld-responsive img-fluid mx-auto',
                             'data-src': 'https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/' + image + '.png',
+                            key: i,
                         },
                         null,
                     ),
                     e(
-                        'p',
-                        { className: 'subfigure' },
-                        image.split('_').slice(-1)[0]
+                        'div',
+                        { className: 'subfigure d-inline' },
+                        [
+                            e(
+                                'p',
+                                {
+                                    className: 'd-inline text-capitalize',
+                                    key: i,
+                                },
+                                image.split('_').slice(-1)[0]
+                            )
+                        ]
                     ),
                 ]
             )
@@ -46,7 +56,7 @@ const shape_data = [
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         e(
-            Subfigure,
+            SubfigureCap,
             { images: shape_data },
             null,
         ),
@@ -61,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ReactDOM.render(
             e(
-                Subfigure,
+                SubfigureCap,
                 { images: data },
                 null
             ),

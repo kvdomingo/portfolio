@@ -3,11 +3,11 @@ div.row-cols-1 {
     list-style-type: lower-alpha;
 }
 
-div.row-cols-1 div.col p.subfigure {
+div.row-cols-1 div.col div.subfigure {
     counter-increment: subfig-counter;
 }
 
-div.row-cols-1 div.col p.subfigure::before {
+div.row-cols-1 div.col div.subfigure::before {
     content: '(' counter(subfig-counter, lower-alpha) ')';
     margin-right: 0.25rem;
 }

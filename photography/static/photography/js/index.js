@@ -1,4 +1,4 @@
-const img_dir = "kdphotography/portfolio/static/portfolio/media-private";
+var img_dir = "kdphotography/portfolio/static/portfolio/media-private";
 
 document.addEventListener('DOMContentLoaded', () => {
     $('#v-pills-tab a').each(function() {

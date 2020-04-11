@@ -12,3 +12,8 @@ ol.reference li::before {
     margin-left: -2rem;
     margin-right: 1rem;
 }
+
+.math-container {
+    display: block;
+    overflow-x: auto;
+}

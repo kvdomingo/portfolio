@@ -14,7 +14,7 @@ const educationInfo = [
         university: 'Harvard University',
         startDate: 'Dec 2019',
         endDate: 'Apr 2020',
-        institute: 'Continuing Education Module',
+        institute: 'Division of Continuing Education',
         course: [
             'CS50W: Web Programming with Python and JavaScript',
             'CS50M: Mobile App Development with React Native',
