@@ -1,7 +1,8 @@
-from django.db import models
-from django.utils import timezone
 from tinymce import models as mcemodels
 from datetime import datetime
+from django.db import models
+from django.utils import timezone
+from django.conf import settings
 
 
 def set_aware_time():
