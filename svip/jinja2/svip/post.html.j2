@@ -1,5 +1,15 @@
 {% extends 'svip/base.html.j2' %}
 
+{% block sidenav %}
+    {% for course in course_list %}
+        <a href="{{ url('svip:subject', args=(course.slug,)) }}" class="nav-link my-1 {{ 'active' if active_page_slug == course.slug }}" role="tab">
+            {{ course.name }}<br />
+            <small>{{ course.title }}</small>
+        </a>
+    {% endfor %}
+{% endblock %}
+
+
 {% block blog %}
 
 <link rel="stylesheet" href="{{ static('svip/css/post.css') }}" />

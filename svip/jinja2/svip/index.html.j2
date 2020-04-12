@@ -1,16 +1,31 @@
 {% extends 'svip/base.html.j2' %}
 
+{% block sidenav %}
+    {% for course in course_list %}
+        <a href="{{ url('svip:subject', args=(course.slug,)) }}" class="nav-link my-1" role="tab">
+            {{ course.name }}<br />
+            <small>{{ course.title }}</small>
+        </a>
+    {% endfor %}
+{% endblock %}
+
+
 {% block blog %}
 
 <link rel="stylesheet" href="{{ static('svip/css/index.css') }}" />
 
 <div class="row row-cols-1 row-cols-md-3">
-    {% for post in post_list %}
+    {% for course in course_list %}
         <div class="col mb-4">
-            <div class="card card-image card-cover h-100" style="background-image: url('{{ post.cover }}');">
+            <div class="card card-image card-cover h-100">
                 <div class="text-white text-center align-items-center h-100 rgba-black-strong py-5 px-4">
-                    <div class="py-5 h-100">
-                        <a class="card-title btn btn-outline-white my-5" href="{{ url('svip:post', args=(post.slug,)) }}">{{ post.title }}</a>
+                    <div class="h-100">
+                        <a class="card-title btn btn-outline-white my-3" href="{{ url('svip:subject', args=(course.slug,)) }}">
+                            {{ course.name }}: {{ course.title }}
+                        </a>
+                        <p class="card-text">
+                            {{ course.description }}
+                        </p>
                     </div>
                 </div>
             </div>

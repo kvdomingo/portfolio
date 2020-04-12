@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import reverse
-from .models import BlogPost
+from .models import BlogPost, Course
 
 
 def make_published(modeladmin, request, queryset):
@@ -21,10 +21,16 @@ class PostAdmin(admin.ModelAdmin):
     actions = (make_published, make_unpublished)
 
     def view_on_site(self, obj):
-        return reverse('svip:post', args=(obj.slug,))
+        return reverse('svip:post', args=(obj.subject.slug, obj.slug))
+
+
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ('slug', 'name', 'title')
+    list_display_links = ('name', )
 
 
 admin.site.index_title = 'Admin'
 admin.site.site_title = 'Kenneth V. Domingo'
 admin.site.site_header = 'kvdomingo.xyz administration'
 admin.site.register(BlogPost, PostAdmin)
+admin.site.register(Course, CourseAdmin)

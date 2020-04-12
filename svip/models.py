@@ -22,7 +22,11 @@ SUBJECT = (
 class BlogPost(models.Model):
     created = models.DateTimeField(default=set_aware_time)
     modified = models.DateTimeField(auto_now=True)
-    subject = models.IntegerField(choices=SUBJECT, default=0)
+    subject = models.ForeignKey(
+        'Course',
+        on_delete=models.CASCADE,
+        to_field='number',
+    )
     title = models.CharField(max_length=256, unique=True)
     slug = models.SlugField(max_length=256, unique=True)
     body = HTMLField('Body')
@@ -34,3 +38,14 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return f'{self.subject}: {self.title}'
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=256)
+    number = models.IntegerField(unique=True)
+    slug = models.SlugField(max_length=256, unique=True)
+    title = models.CharField(max_length=256)
+    description = models.TextField()
+
+    def __str__(self):
+        return f'{self.name}'
