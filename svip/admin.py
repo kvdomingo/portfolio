@@ -14,7 +14,7 @@ make_unpublished.short_description = 'Unpublish selected articles'
 class PostAdmin(admin.ModelAdmin):
     list_display = ('subject', 'title', 'slug', 'status', 'created', 'modified')
     list_display_links = ('title',)
-    list_filter = ('status', 'subject')
+    list_filter = ('status', 'subject__name')
     list_editable = ('status',)
     search_fields = ['title', 'body']
     prepropulated_fields = {'slug': ('title',)}

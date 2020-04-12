@@ -1,47 +1,5 @@
 var e = React.createElement;
 
-class Subfigure extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    capitalize(s) {
-        if (typeof s !== 'string') return '';
-        return s.charAt(0).toUpperCase() + s.slice(1);
-    }
-
-    render() {
-        return e(
-            'div',
-            { className: 'col my-auto' },
-            [
-                e(
-                    'img',
-                    {
-                        id : this.props.id,
-                        className: 'cld-responsive img-fluid mx-auto',
-                        'data-src': 'https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/5-EnhanceHistogram/' + this.props.url + '.png',
-                    },
-                    null,
-                ),
-                e(
-                    'div',
-                    { className: 'subfigure d-inline' },
-                    [
-                        e(
-                            'p',
-                            {
-                                className: 'd-inline',
-                            },
-                            this.props.caption
-                        )
-                    ]
-                ),
-            ],
-        );
-    }
-}
-
 const image_data = [
     {
         url: 'original',
@@ -82,8 +40,8 @@ const crush_data = [
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         image_data.map((image, i) => e(
-            Subfigure,
-            { ...image, id: image.key },
+            MultiFigure,
+            { ...image, id: image.key, folder: '5-EnhanceHistogram' },
             null,
         )),
         document.querySelector('#fig-enhance div'),
@@ -91,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ReactDOM.render(
         crush_data.map((image, i) => e(
-            Subfigure,
-            { ...image, id: image.key },
+            MultiFigure,
+            { ...image, id: image.key, folder: '5-EnhanceHistogram' },
             null,
         )),
         document.querySelector('#fig-crushed div'),

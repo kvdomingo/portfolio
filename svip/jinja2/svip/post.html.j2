@@ -13,7 +13,7 @@
 {% block blog %}
 
 <link rel="stylesheet" href="{{ static('svip/css/post.css') }}" />
-<link rel="stylesheet" href="{{ static('svip/css/act4.css') }}" />
+<link rel="stylesheet" href="{{ static('svip/css/MultiFigure.css') }}" />
 
 <div class="container">
     <h1>{{ post.title }}</h1>
@@ -26,14 +26,7 @@
     </p>
 </div>
 
-{% if post.slug == 'measuring-area' %}
-    <script src="{{ static('svip/js/act4.js') }}"></script>
-{% elif post.slug == 'enhance-histogram' %}
-    <script src="{{ static('svip/js/act5.js') }}"></script>
-{% elif post.slug == 'enhance-color' %}
-    <script src="{{ static('svip/js/act6.js') }}"></script>
-{% elif post.slug == 'image-segmentation' %}
-    <script src="{{ static('svip/js/act7.js') }}"></script>
-{% endif %}
+<script src="{{ static('svip/js/MultiFigure.js') }}"></script>
+<script src="{{ static('svip/js/' + post.slug + '.js') }}"></script>
 
 {% endblock %}
