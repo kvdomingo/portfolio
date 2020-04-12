@@ -1,0 +1,8 @@
+# Group 1
+User-Agent: Googlebot
+Disallow: /nogooglebot/
+
+# Group 2
+User-Agent: *
+Disallow: /private/
+Disallow: /junk/
