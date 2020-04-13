@@ -1,5 +1,14 @@
 {% extends 'svip/base.html.j2' %}
 
+{% block head %}
+    {% set meta_desc = 'Portfolio of Kenneth V. Domingo with relevant coursework such as signal, video, and image processing' %}
+    <meta name="keywords" content="signal processing, image processing, video processing, computational physics, applied physics, coursework, kvdomingo, Kenneth V. Domingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
 {% block blog %}
 
 <link rel="stylesheet" href="{{ static('svip/css/index.css') }}" />

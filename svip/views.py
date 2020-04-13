@@ -1,5 +1,4 @@
 import pytz
-from django.views import generic
 from django.shortcuts import render
 from django.conf import settings
 from .models import BlogPost, Course
@@ -31,6 +30,7 @@ def subject(request, subject_slug):
 
 
 def post(request, subject_slug, post_slug):
+    subject = Course.objects.filter(slug=subject_slug).first()
     subjects = Course.objects.order_by('number').all()
     post = BlogPost.objects.filter(slug=post_slug).first()
     post.created = post.created.replace(tzinfo=pytz.utc).astimezone(settings.LOCAL_TZ).strftime("%H:%M, %d %b %Y")
@@ -39,5 +39,6 @@ def post(request, subject_slug, post_slug):
         'active_page_slug': subject_slug,
         'course_list': subjects,
         'post': post,
+        'subject': subject,
     }
     return render(request, 'svip/post.html.j2', context)

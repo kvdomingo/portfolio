@@ -1,8 +1,5 @@
-# Group 1
-User-Agent: Googlebot
-Disallow: /nogooglebot/
-
-# Group 2
 User-Agent: *
-Disallow: /private/
-Disallow: /junk/
+Allow: /svip/ap186/
+Allow: /photography/
+Disallow: /admin/
+Noindex: /admin/

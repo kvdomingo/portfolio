@@ -1,5 +1,14 @@
 {% extends 'photography/base.html.j2' %}
 
+{% block head %}
+    {% set meta_desc = active_page.capitalize() + ' section of the photography portfolio of Kenneth V. Domingo' %}
+    <meta name="keywords" content="photography, latest, live, clients, portraits, portfolio, kvdomingo, Kenneth V. Domingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
 {% block gallery %}
 
 <link rel="stylesheet" href="{{ static('photography/css/index.css') }}" />

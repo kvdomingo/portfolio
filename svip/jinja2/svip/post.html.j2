@@ -1,5 +1,15 @@
 {% extends 'svip/base.html.j2' %}
 
+{% block head %}
+    {% set meta_desc = subject.name + " - " + post.title %}
+    <meta name="keywords" content="{{ post.keywords }}, applied physics, computational physics, kvdomingo, Kenneth V. Domingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
+
 {% block sidenav %}
     {% for course in course_list %}
         <a href="{{ url('svip:subject', args=(course.slug,)) }}" class="nav-link my-1 {{ 'active' if active_page_slug == course.slug }}" role="tab">
@@ -21,12 +31,20 @@
     <p class="text-muted d-inline">
         {{ post.created }}
     </p>
-    <p class="mt-5">
+    <p class="my-5">
         {{ post.body }}
+    </p>
+    <p class="my-5">
+        <div class="text-muted">
+            Keywords:
+            {% for keyword in post.keywords.split(', ') %}
+                <span class="badge badge-light mx-1 my-1">{{ keyword }}</span>
+            {% endfor %}
+        </div>
     </p>
 </div>
 
 <script src="{{ static('svip/js/MultiFigure.js') }}"></script>
-<script src="{{ static('svip/js/' + post.slug + '.js') }}"></script>
+<script src="{{ static('svip/js/' + active_page_slug + post.slug + '.js') }}"></script>
 
 {% endblock %}

@@ -30,6 +30,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=256, unique=True)
     slug = models.SlugField(max_length=256, unique=True)
     body = HTMLField('Body')
+    keywords = models.CharField(max_length=256, blank=True)
     cover = models.URLField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
 

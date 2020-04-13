@@ -10,6 +10,6 @@ def index(request):
 
 def cv(request):
     context = {
-        'active_page': 'CV',
+        'active_page': 'Curriculum Vitae',
     }
     return render(request, 'web/cv.html.j2', context)

@@ -1,11 +1,21 @@
 {% extends 'web/base.html.j2' %}
 
+{% block head %}
+    {% set meta_desc = 'CV and Portfolio of Kenneth V. Domingo including photography, relevant coursework, and web and app development' %}
+    <meta name="keywords" content="Kenneth V. Domingo, Kenneth Domingo Photography, Python, photography, physics, applied physics, kvdomingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
+
 {% block body %}
 
 <link rel="stylesheet" href="{{ static('web/css/index.css') }}"/>
 <style>
     .cover-photo-src {
-        background-image: url("{{ '../..' + static('web/media/private/index_cover.jpg') }}");
+        background-image: url("https://res.cloudinary.com/kdphotography-assets/image/upload/v1/kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1.jpg");
     }
 </style>
 
@@ -36,34 +46,34 @@
         <h1 class="h1 h1-responsive text-center pb-4">Technologies I use</h1>
         <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 my-5">
             {% set img_urls = [
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1920px-Python_logo_and_wordmark.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg',
-                'https://seeklogo.com/images/F/flask-logo-44C507ABB7-seeklogo.com.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/768px-Keras_logo.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/768px-HTML5_logo_and_wordmark.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/544px-CSS3_logo_and_wordmark.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/885px-Node.js_logo.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/f/fd/JQuery-Logo.svg',
-                'https://cdn.worldvectorlogo.com/logos/react.svg',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mapbox_logo_2017.svg/768px-Mapbox_logo_2017.svg.png',
-                'https://pngimg.com/uploads/github/github_PNG40.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Jinja_software_logo.svg/1920px-Jinja_software_logo.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_di_Heroku.png',
-                'https://developers.google.com/analytics/images/terms/logo_lockup_analytics_icon_vertical_black_2x.png',
-                'https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1067px-PHP-logo.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/810px-Postgresql_elephant.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/768px-MongoDB_Logo.svg.png',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Arduino_Logo.svg/1080px-Arduino_Logo.svg.png',
-                'https://www.raspberrypi.org/app/uploads/2011/10/Raspi-PGB001-300x267.png',
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1920px-Python_logo_and_wordmark.svg.png', 'Python'),
+                ('https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg', 'Django'),
+                ('https://seeklogo.com/images/F/flask-logo-44C507ABB7-seeklogo.com.png', 'Flask'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png', 'Plot.ly'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/768px-Keras_logo.svg.png', 'Keras'),
+                ('https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg', 'TensorFlow'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/768px-HTML5_logo_and_wordmark.svg.png', 'HTML'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/544px-CSS3_logo_and_wordmark.svg.png', 'CSS'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png', 'JavaScript'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/885px-Node.js_logo.svg.png', 'Node.js'),
+                ('https://upload.wikimedia.org/wikipedia/commons/f/fd/JQuery-Logo.svg', 'jQuery'),
+                ('https://cdn.worldvectorlogo.com/logos/react.svg', 'React.js/React Native'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png', 'Vue.js'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mapbox_logo_2017.svg/768px-Mapbox_logo_2017.svg.png', 'Mapbox'),
+                ('https://git-scm.herokuapp.com/images/logos/downloads/Git-Logo-2Color.png', 'Git'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Jinja_software_logo.svg/1920px-Jinja_software_logo.svg.png', 'Jinja'),
+                ('https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_di_Heroku.png', 'Heroku'),
+                ('https://developers.google.com/analytics/images/terms/logo_lockup_analytics_icon_vertical_black_2x.png', 'Google Analytics'),
+                ('https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png', 'Docker'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1067px-PHP-logo.svg.png', 'PHP'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/810px-Postgresql_elephant.svg.png', 'PostgreSQL'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/768px-MongoDB_Logo.svg.png', 'MongoDB'),
+                ('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Arduino_Logo.svg/1080px-Arduino_Logo.svg.png', 'Arduino'),
+                ('https://www.raspberrypi.org/app/uploads/2011/10/Raspi-PGB001-300x267.png', 'Raspberry Pi'),
             ] %}
-            {% for image in img_urls %}
+            {% for image, alt in img_urls %}
                 <div class="col my-auto pb-4">
-                    <img src="{{ image }}" class="img-fluid" />
+                    <img src="{{ image }}" class="img-fluid" alt="{{ alt }}" />
                 </div>
             {% endfor %}
         </div>

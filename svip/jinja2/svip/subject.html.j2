@@ -1,5 +1,14 @@
 {% extends 'svip/base.html.j2' %}
 
+{% block head %}
+    {% set meta_desc = "Portfolio & coursework on " + this_subject.name + " (" + this_subject.title + "): " + this_subject.description %}
+    <meta name="keywords" content="{{ this_subject.description }}, applied physics, computational physics, kvdomingo, Kenneth V. Domingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
 {% block sidenav %}
     {% for course in course_list %}
         <a href="{{ url('svip:subject', args=(course.slug,)) }}" class="nav-link my-1 {{ 'active' if active_page_slug == course.slug }}" role="tab">

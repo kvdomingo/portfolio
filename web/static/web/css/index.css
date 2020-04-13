@@ -1,7 +1,6 @@
 .cover-photo {
     background-attachment: fixed;
-    background-position-x: 50%;
-    background-position-y: 100%;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 0;
