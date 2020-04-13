@@ -1,0 +1,921 @@
+id,created,modified,subject_id,title,body,cover,slug,status,keywords
+2,2019-08-14 05:19:26,2020-04-13 17:58:57.055863,186,Activity 2: Practical Image Processing II,"<p>Today's activity involved the basics on digitally extracting values from hand-drawn plots. The image I used is shown in Fig. <a href=""#fig:radial-profile"">1</a>. For the pixel coordinate extraction, I used Photoshop, and for everything else, Python's <code>matplotlib</code> module.</p>
+<div class=""container text-center my-md-5 px-md-5 w-responsive""><img id=""fig:radial-profile"" class=""cld-responsive img-fluid px-md-5"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/2-Practical2/graph-image.png"" /><br />
+<p>Figure 1: Radial profiles of the electron excitation emission \( N_{\nu p} \) and the laser-induced fluorescence \( N_{\nu l} \) for lithium resonance line (670.8 nm) [<a href=""#Kadota1984"">1</a>].</p>
+</div>
+<p>In order to determine the pixel-to-centimeter conversion factor, I first tabulated the pixel coordinates of the \( x \) and \( y \) axis units. I noticed that the ticks were not equidistant, and that the \( x \) and \( y \) axes were not of the same scale, so I performed linear regression by plotting the pixel vs cm values separately for both axes. The calibration curves can then be obtained from Fig. <a href=""#fig:calibration"">2</a>. The conversion factors obtained were: <span id=""eq:calibrate""> \begin{align} x_{\mathrm{cm}} &amp; = (0.02)x_{\mathrm{px}} - 6.62 \\ y_{\mathrm{cm}} &amp; = (-0.04)y_{\mathrm{px}} + 14.50 \end{align} </span> Using these conversion factors, it's simply a matter of plugging in pixel values into (<a href=""#eq:calib"">1</a>) or (<a href=""#eq:calib"">2</a>) in order to extract the real cm units. In Fig. <a href=""#fig:radial-profile"">1</a>, we can see three elements: a bell curve, a sigmoid-like curve, and an apparently straight line (it actually curves ever so slightly upward). To extract the values of the bell curve, I simply took the pixel location of the center of the round markers. For the sigmoid, I sampled at points on the line immediately adjacent to the hollow markers. For the dashed line, I sampled at each \( x \) axis unit.</p>
+<div class=""container-fluid text-center my-md-5 px-md-5 w-responsive""><img id=""fig:calibration"" class=""cld-responsive img-fluid"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/2-Practical2/calibration_curves.png"" />
+<p class=""px-md-5"">Figure 2: Calibration curves for the \( x \) and \( y \) axes.</p>
+</div>
+<p>After performing the necessary conversions, I could then plot my extracted curves while overlaying original image all in one go. Because <code>matplotlib</code>'s <code>imshow</code> function displays images in terms of pixels, I had to specify its <code>extent</code> and <code>aspect</code> parameters. To do this, I have to determine the length and width of the image as a whole, i.e., I have to extend the axes of the original plot so that it encompasses the image as a whole. This task is already trivial since I have already calculated conversion factors earlier. The end product is shown in Fig. <a href=""#fig:fit"">3</a>.</p>
+<div class=""container text-center my-md-5 px-md-5 w-responsive""><img id=""fig:fit"" class=""cld-responsive img-fluid"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/2-Practical2/final_overlay.png"" />
+<p class=""px-md-5"">Figure 3: Original image overlayed with the extracted curves.</p>
+</div>
+<p>Even though it was suggested to use Paint, GIMP, and/or a spreadsheet software, I opted to use Photoshop and matplotlib since I have been accustomed to using them and I believe I can work faster and more eciently by using them. Personally, I find using Excel cumbersome and <em>makalat tignan</em> for data processing, and I am especially not fond of the appearance of its plots.</p>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Kadota1984"">K. Kadota, H. Matsuoka, H. J. Ramos, S. Miyake, K. Tsuchida, J. Fujita, T. Usui, and T. Oda, Neutral beam probe spectroscopy for edge plasma diagnostics, <a href=""http://dx.doi.org/10.1016/0022-3115(84)90494-X"" target=""_blank"" rel=""noopener""><em>J. Nucl. Mater.</em> <strong>128-129</strong>, 960</a> (1984).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_400/v1/svip/186/2-Practical2/final_overlay.png",practical-2,1,"image processing, practical, pixel calibration, plot overlay, pixel coordinate"
+3,2019-08-15 02:23:09,2020-04-13 18:00:04.906845,186,Activity 3: Image Types and Formats,"<h3>File formats</h3>
+<p>The image I used for the comparison of file sizes is an HDR image of the Oblation Plaza overlooking University Avenue during sunset taken by myself, shown in Fig. <a href=""#fig:original"">1</a>. Its histogram is shown in Fig. <a href=""#fig:histogram"">2</a>. I've already post-processed the image so that it displays properly on print or on non-HDR-capable devices. Thefile sizes themselves are shown in Table <a href=""#tab:sizes"">1</a>. In the interest of minimizing the size of this document, I will no longer include the images saved in other file formats if there is no perceivable change in quality/characteristics.</p>
+<div class=""container text-center my-5 px-md-5 w-responsive""><img id=""fig:original"" class=""cld-responsive img-fluid"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805.png"" />
+<p>Figure 1: Image used for comparison of file sizes.</p>
+</div>
+<div class=""container text-center my-5 px-md-5 w-responsive""><img id=""fig:histogram"" class=""cld-responsive img-fluid"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/histogram.png"" />
+<p>Figure 2: Red, green, blue, and gray histograms of Fig. <a href=""#fig:original"">1</a>.</p>
+</div>
+<div class=""container text-center my-5 px-md-5 w-responsive"">
+<p id=""tab:sizes"">Table 1: File sizes for various saved formats of Fig. <a href=""#fig:original"">1</a>.</p>
+<table class=""table table-bordered"">
+<thead>
+<tr>
+<th scope=""col"">Format</th>
+<th scope=""col"">Size (kB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16-bit <code>BMP</code></td>
+<td>3,418</td>
+</tr>
+<tr>
+<td>8-bit <code>PNG</code></td>
+<td>3,240</td>
+</tr>
+<tr>
+<td>24-bit <code>JPG</code></td>
+<td>1,474</td>
+</tr>
+<tr>
+<td>8-bit <code>TIFF</code></td>
+<td>1,053</td>
+</tr>
+<tr>
+<td>8-bit <code>GIF</code></td>
+<td>533</td>
+</tr>
+<tr>
+<td><code>JPG</code> (binary)</td>
+<td>391</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In order to produce a binary image, I applied a threshold of 192 to Fig. <a href=""#fig:original"">1</a>. The result is shown in Fig. <a href=""#fig:binary"">3</a>.</p>
+<div class=""container text-center my-5 px-md-5 w-responsive""><img id=""fig:binary"" class=""cld-responsive img-fluid"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_bin.png"" />
+<p>Figure 3: Fig. <a href=""#fig:original"">1</a> saved as a binary image.</p>
+</div>
+<p>In order to produce an indexed image, Ifirst imported the image into Photoshop and set it to Index mode. I then extracted the 256 most common colors and saved them as a Photoshop Color Table (<code>.act</code>). I then applied this color indexing to the image and saved it, one as a <code>TIFF</code> and one as a <code>GIF</code>. The result of the <code>TIFF</code> indexing along with its color table is shown in Fig. <a href=""#fig:tiff"">4</a> and Table <a href=""#tab:index"">2</a>, respectively. Notice that the ground portion of the image still looks decent because the boundaries of each color are considerably well-defined. However, the sky portion exhibits some visible degradation due to the smooth gradients in the original image. The <code>GIF</code> indexing in Fig. <a href=""#fig:gif"">5</a> exhibits degradation even in the ground portion. I found out that this was due to the difference in the way the colors are sampled. In the former, the sampling of colors is locally adaptive, which allows transition of colors to be smoother, while in the latter, the sampling is uniform.</p>
+<div class=""container text-center my-5 px-md-5 w-responsive""><img id=""fig:tiff"" class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_tiff_indexed.png"" />
+<p>Figure 4: Fig. <a href=""#fig:original"">1</a> saved as a <code>TIFF</code> indexed image.</p>
+</div>
+<div class=""container text-center my-5 px-md-5 w-responsive"">
+<p id=""tab:index"" class=""px-md-5"">Table 2: First and last few elements of the color table for Fig. <a href=""#fig:tiff"">4</a>.</p>
+<div class=""table-responsive"">
+<table class=""table table-bordered px-md-5"">
+<thead>
+<tr>
+<th scope=""col"">Index</th>
+<th scope=""col"">R</th>
+<th scope=""col"">G</th>
+<th scope=""col"">B</th>
+<th scope=""col"">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>74</td>
+<td>24</td>
+<td>26</td>
+<td style=""background-color: #4a181a;"">&nbsp;</td>
+</tr>
+<tr>
+<td>1</td>
+<td>177</td>
+<td>168</td>
+<td>169</td>
+<td style=""background-color: #b1a8a9;"">&nbsp;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>248</td>
+<td>168</td>
+<td>184</td>
+<td style=""background-color: #f8a8b8;"">&nbsp;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>232</td>
+<td>168</td>
+<td>184</td>
+<td style=""background-color: #e8a8b8;"">&nbsp;</td>
+</tr>
+<tr>
+<td>\( \vdots \)</td>
+<td>\( \vdots \)</td>
+<td>\( \vdots \)</td>
+<td>\( \vdots \)</td>
+<td>\( \vdots \)</td>
+</tr>
+<tr>
+<td>254</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td style=""background-color: #070707;"">&nbsp;</td>
+</tr>
+<tr>
+<td>255</td>
+<td>255</td>
+<td>255</td>
+<td>255</td>
+<td style=""background-color: #ffffff;"">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class=""container text-center my-5 px-md-5 w-responsive""><img id=""fig:gif"" class=""cld-responsive img-fluid"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/3-ImageTypes/DSC_8805_gif_indexed.png"" />
+<p class=""px-md-5"">Figure 5: Fig. <a href=""#fig:original"">1</a> saved as a <code>GIF</code> indexed image.</p>
+</div>
+<h3>History</h3>
+<p>Camera sensors are composed of arrays of light-sensitive detectors, and each component of these detectors have varying sensitivities and transfer functions which convert incident light into the red, green, and blue channels. In the <code>RAW</code> file format, the raw information captured by the sensor is stored without any compression or manipulation. This technology is still used at present especially by professional camera manufacturers&mdash;such as Nikon's <code>NEF</code> format and Canon's <code>CR2</code> format&mdash;in order to preserve all the information received by the camera's sensor, which provides an advantage when post-processing later on, especially when shooting in low light. As imaging technology developed, so has our ability to reproduce larger images. Eventually, storage capacity became an issue, which birthed the challenge of data compression.</p>
+<p>One of the first formats to have taken up this challenge is the Graphics Interchange Format (<code>GIF</code>) in 1987 [<a href=""#Roelofs1999"">1</a>]. It uses the Lempel-Ziv-Welch (<code>LZW</code>) lossless compression algorithm, which provides up to 25% compression. However, <code>GIF</code> is a pixel-dependent, 8-bit indexed format, so images could not show their full color range in this format. The le format quickly fell out of favor when its compression technique was patented in 1995 by Unisys Corporation [<a href=""#Wiggins2001"">2</a>], who attempted to collect royalties from <code>GIF</code> users. <strong>Capitalism strikes again!</strong></p>
+<p>In the early 1990's, the International Organization for Standardization (ISO) and the International Telecommunication Union (ITU) formed a joint committee called the Joint Photographic Expert Group, the creator of the eponymous <code>JPEG</code> format. Its most common incarnation is the 24-bit version, which allocates 8 bits for each color channel, and its strength lies in its lossy discrete cosine transform (DCT)-based compression format to achieve up to 5% compression. The way it is encoded allows the user to set the compression level desired, and for normal day-to-day usage, the data it discards is usually imperceptible.</p>
+<p>In 1986, the Tagged Image File Format (<code>TIFF</code>) was developed by Microsoft and Aldus (now merged with Adobe), and takes its name due to its heavy dependence on tags, which relay the image information to the program accessing thele. It is highly versatile, supports a wide range of sizes, resolutions and color depths [<a href=""#Wiggins2001"">2</a>], and can use <code>LZW</code>, <code>ZIP</code>, or other compression methods. However, its large file size as a consequence of its complexity limits its practical use.</p>
+<p>In 1995, the Portable Network Graphics (<code>PNG</code>) format was created as the spiritual successor of <code>GIF</code> and hailed by some as the future of bit-mapped images [<a href=""#Wiggins2001"">2</a>]. Out of all the formats discussed here, it is probably the most flexible and allows for lossless compression, device-independent gamma correction, device-independent brightness consistency, transparency (now better-known as the alpha channel), redundant self-verication of data integrity, interlacing, and various pixel mapping schemes (indexed, grayscale, or true-color RGB).</p>
+<h3>Programming basic imaging functions</h3>
+<p>Some of the libraries that can be used for image processing in Python include the <code>matplotlib</code>, <code>opencv2</code>, and <code>PIL</code> modules. Some basic functions include:</p>
+<ul>
+<li><code>cv2.imread</code>: reads an image from the computer and loads it as an n-dimensional <code>numpy</code> array.</li>
+<li><code>matplotlib.pyplot.savefig</code>: saves a valid <code>numpy</code> array as an image with the specied file format.</li>
+<li><code>PIL._getexif</code>: extracts the image metadata and stores it as a dictionary.</li>
+<li><code>matplotlib.pyplot.hist</code>: plots the histogram of an image.</li>
+<li><code>cv2.COLOR_RGB2GRAY</code>: converts an RGB image to grayscale; can be passed as an argument in <code>cv.imread</code>.</li>
+</ul>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Roelofs1999"">G. Roelofs, <a href=""http://www.libpng.org/pub/png/pnghist.html"" target=""_blank"" rel=""noopener"">History of the portable networks graphics format</a> (1999).</li>
+<li>R. H. Wiggins, C. Davidson, R. Harnsberger, J. R. Lauman, and P. A. Goede, Image formats: Past, present, and future, <a href=""http://dx.doi.org/10.1148/radiographics.21.3.g01ma25789"" target=""_blank"" rel=""noopener""><em>RadioGraphics</em> <strong>21</strong></a> (2001).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_400/v1/svip/186/3-ImageTypes/DSC_8805.png",image-types,1,"image type, image format, photography, hdr, compression, lookup table, color index"
+4,2019-08-20 06:25:09,2020-04-13 18:01:14.036795,186,Activity 4: Measuring Area from Images,"<p>For this activity, I generated the basic shapes using the Python Imaging Library (PIL). This let me define the centroid and pseudo-radius (distance from the centroid to the midpoint of an edge) for each shape analytically, and therefore, I know precisely what their dimensions and areas will be. The shapes are shown in Fig. 1, all with size 1024 \( \times \) 1024.</p>
+<div id=""fig-shapes"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-4"">&nbsp;</div>
+<p>Figure 1: Basic binary shapes generated using the Python PIL library.</p>
+</div>
+<p>For extracting the edges of the shapes, I explored a few edge detection algorithms, eventually settling with the following:</p>
+<ul>
+<li><strong>PIL's <code>FIND_EDGES</code> filter</strong>: this built-in function works like a charm and can be easily implemented as a one-liner. The documentation doesn't describe what it does exactly, but after digging through the source code [<a href=""#Wiredfool2016"">1</a>], it found that it simply convolves an image with a spot kernel of the form <span id=""eq-spot""> \begin{equation} G = \begin{pmatrix} -1 &amp; -1 &amp; -1 \\ -1 &amp; 8 &amp; -1 \\ -1 &amp; -1 &amp; -1 \end{pmatrix} \end{equation} </span></li>
+<li><strong>Sobel filter</strong>: approximates the gradient of an image's intensity function [<a href=""#Sobel2014"">2</a>]. Convolves images with two kernels (one for each direction) <span id=""eq-sobel""> \begin{equation} G_x = \begin{pmatrix} -1 &amp; 0 &amp; 1 \\ -2 &amp; 0 &amp; 2 \\ -1 &amp; 0 &amp; 1 \end{pmatrix} = G_y^\top \end{equation} </span></li>
+<li><strong>Prewitt filter</strong>: also approximates the gradient of image intensity and acts in two directions, similar to the Sobel filter [<a href=""#Prewitt1970"">3</a>]. Its kernel is of the form <span id=""eq-prewitt""> \begin{equation} G_x = \begin{pmatrix} 1 &amp; 0 &amp; -1 \\ 1 &amp; 0 &amp; -1 \\ 1 &amp; 0 &amp; -1 \end{pmatrix} = G_y^\top \end{equation} </span></li>
+<li><strong>Laplacian filter</strong>: calculates the second-order derivatives of the image intensity in one pass [<a href=""#Laplacian2018"">4</a>]. Because of its sensitivity to noise, I first applied a 3 \( \times \) 3 Gaussan filter with 0 standard deviation before applying the Laplacian filter. Its kernel is of the form <span id=""eq-canny""> \begin{equation} G_x = \begin{pmatrix} 0 &amp; -1 &amp; 0 \\ -1 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 0 \end{pmatrix} \end{equation} </span></li>
+<li><strong>Canny filter</strong>: a multistage edge-detection algorithm which is highly versatile and efficient [<a href=""#Canny1986"">5</a>].</li>
+</ul>
+<p>From the traced edges, the area it encloses can be calculated using a discretized form of Green's theorem [<a href=""#Soriano2019"">6</a>] <span id=""eq-green""> \begin{equation} A = \frac{1}{2} \sum_{i=1}^N \left( x_{i-1} y_i - y_{i-1} x_i \right) \end{equation} </span> where \( x_i, y_i \) are the pixel coordinates, and \( N \) is the number of pixels on the boundary. The results for each algorithm, along with their relative errors, are shown in Table <a href=""#table-areas"">1</a>, and the edge-traced images are shown in Figs. <a href=""#fig-circles"">2</a>-<a href=""#fig-triangles"">5</a>.</p>
+<div id=""fig-circles"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-5"">&nbsp;</div>
+<p>Figure 2: Edges extracted from the circle using different algorithms.</p>
+</div>
+<div id=""fig-squares"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-5"">&nbsp;</div>
+<p>Figure 3: Edges extracted from the square using different algorithms.</p>
+</div>
+<div id=""fig-trapezoids"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-5"">&nbsp;</div>
+<p>Figure 4: Edges extracted from the trapezoid using different algorithms.</p>
+</div>
+<div id=""fig-triangles"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-5"">&nbsp;</div>
+<p>Figure 5: Edges extracted from the triangle using different algorithms.</p>
+</div>
+<p>Notice how the Sobel &amp; Prewitt filters perform very similarly because they are both gradient-based methods. Due to their directional dependence, we can notice how the edges, particularly on the lower-right portions, are not being detected very well. Upon closer examination, however, the edges <em>are</em> being detected but are very faint (low magnitude). Spot and Canny, on the other hand, produce very clean and accurate edges. Laplacian also detects a clean edge but is somewhat low in magnitude.</p>
+<div class=""container text-center my-5 px-md-5 w-responsive"">
+<p id=""table-areas"">Table 1: Actual and calculated areas (px\( ^2 \)) of each shape and their corresponding relative errors. The percentages in bold indicate the best-performing algorithm for each shape.</p>
+<div class=""table-responsive"">
+<table class=""table table-bordered table-striped"">
+<thead>
+<tr>
+<th scope=""col"">Shape</th>
+<th scope=""col"">Actual</th>
+<th scope=""col"">Spot</th>
+<th scope=""col"">Sobel</th>
+<th scope=""col"">Prewitt</th>
+<th scope=""col"">Laplacian</th>
+<th scope=""col"">Canny</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>circle</td>
+<td>502,655</td>
+<td>501,584</td>
+<td>503,187</td>
+<td>503,187</td>
+<td>503,198</td>
+<td>503,182</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>0.21%</td>
+<td>0.11%</td>
+<td>0.11%</td>
+<td>0.11%</td>
+<td><strong>0.10%</strong></td>
+</tr>
+<tr>
+<td>square</td>
+<td>640,000</td>
+<td>639,800</td>
+<td>641,404</td>
+<td>641,404</td>
+<td>641,416</td>
+<td>641,398</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><strong>0.03%</strong></td>
+<td>0.22%</td>
+<td>0.22%</td>
+<td>0.22%</td>
+<td>0.22%</td>
+</tr>
+<tr>
+<td>trapezoid</td>
+<td>426,667</td>
+<td>426,399</td>
+<td>428,002</td>
+<td>428,002</td>
+<td>428,013</td>
+<td>427,731</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><strong>0.06%</strong></td>
+<td>0.31%</td>
+<td>0.31%</td>
+<td>0.32%</td>
+<td>0.25%</td>
+</tr>
+<tr>
+<td>triangle</td>
+<td>320,000</td>
+<td>319,102</td>
+<td>320,705</td>
+<td>320,705</td>
+<td>320,714</td>
+<td>320,304</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>0.28%</td>
+<td>0.22%</td>
+<td>0.22%</td>
+<td>0.22%</td>
+<td><strong>0.09%</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>I chose the CS Amphitheater as a location of interest for calculating the area on a map. I obtained its actual area using Google Earth's Ruler tool, then proceeded to import it into Photoshop. I then applied enough threshold so that the yellow line was clear and isolated from the other white spots. I manually erased any remaining white artifacts until only the circle and the line indicating the radius were left. I then measured the length of the radius in pixels, this time using Photoshop's Ruler tool. Since the actual radius in meters was also provided by Google Earth's Ruler tool, I was able to formulate the pixel-to-meter conversion as <span id=""eq-calibration""> \begin{equation} x_{\mathrm{m}} = x_{\mathrm{px}} \times \frac{37.62\textrm{ m}}{389\textrm{ px}} \end{equation} </span> Via Green's theorem, I was able to obtain the Amphitheater's area in pixels. However, this cannot be converted directly to real units using (<a href=""#eq-calibration"">6</a>) because our current units are area, while the conversion equation only works for units of length. Since the amphitheater appears fairly circular, I used the formula for the area of a circle \( A = \pi r^2 \) and solved for \( r \). I can now plug in this \( r \) directly into (<a href=""#eq-calibration"">6</a>) and finally, multiply it again by \( \pi r \) to get the area in real units. The calculated areas for the different algorithms are shown in Table <a href=""#tab-amphi"">2</a>, and the edge-traced images are shown in Fig. <a href=""#fig-amphi"">6</a>.</p>
+<div class=""container text-center my-5 w-responsive"">
+<p id=""table-areas"" class=""px-md-5"">Table 1: Actual and calculated areas (px\(^2\)) of each shape and their corresponding relative errors. The percentages in bold indicate the best-performing algorithm for each shape.</p>
+<div class=""table-responsive"">
+<table class=""table table-bordered table-striped"">
+<thead>
+<tr>
+<th scope=""col"">Actual</th>
+<th scope=""col"">Spot</th>
+<th scope=""col"">Sobel</th>
+<th scope=""col"">Prewitt</th>
+<th scope=""col"">Laplacian</th>
+<th scope=""col"">Canny</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4485.92</td>
+<td>4600.44</td>
+<td>4630.52</td>
+<td>4630.55</td>
+<td>4629.64</td>
+<td>4634.90</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><strong>2.55%</strong></td>
+<td>3.22%</td>
+<td>3.22%</td>
+<td>3.20%</td>
+<td>3.32%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id=""fig-amphi"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-2"">
+<div class=""col""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_map.png"" />
+<div class=""subfigure"">Enclosed area in Google Earth</div>
+</div>
+<div class=""col""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi.png"" />
+<div class=""subfigure"">Applying threshold and isolating the ROI</div>
+</div>
+<div class=""col""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_spot.png"" />
+<div class=""subfigure"">spot</div>
+</div>
+<div class=""col""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_sobel.png"" />
+<div class=""subfigure"">Sobel/Prewitt</div>
+</div>
+<div class=""col""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_laplacian.png"" />
+<div class=""subfigure"">Laplacian</div>
+</div>
+<div class=""col""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/4-MeasuringArea/csamphi_canny.png"" />
+<div class=""subfigure"">Canny</div>
+</div>
+</div>
+<p>Figure 6: Detecting the edges of the CS Amphitheater.</p>
+</div>
+<p>We can observe that in general, the spot filter works best in edge detection. Upon further investigation, I found out that the spot kernel is actually a variant of the Laplacian kernel and produces exceptional results on arbitrary images.</p>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Wiredfool2016"">wiredfool, A. Clark, Hugo, A. Murray, A. Karpinsky, C. Gohlke, B. Crowell, D. Schmidt, A. Houghton, and S. Johnson, <a href=""https://github.com/python-pillow/Pillow/tree/5.4.x"" target=""_blank"" rel=""noopener"">Pillow: The friendly PIL fork</a> (2016).</li>
+<li id=""Sobel2014"">I. Sobel, An isotropic 3 \( \times \) 3 image gradient operator, <em>Presentation at Stanford A.I. Project 1968</em> (2014).</li>
+<li id=""Prewitt1970"">J. M. S. Prewitt, Object enhancement and extraction, <em>Picture processing and psychopictorics</em> (1970).</li>
+<li id=""Laplacian2018"">N. Tsankashvili, <a href=""https://medium.com/@nikatsanka/comparing-edge-detection-methods-638a2919476e"" target=""_blank"" rel=""noopener"">Comparing edge detection methods</a> (2018).</li>
+<li id=""Canny1986"">J. F. Canny, A computational approach to edge detection, <em>IEEE transactions on pattern analysis and machine intelligence</em> <strong>8</strong>, 679 (1986).</li>
+<li id=""Soriano2019"">M. N. Soriano, <em>Measuring area from images</em> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,w_400,c_scale/v1/svip/186/4-MeasuringArea/csamphi_map.png",measuring-area,1,"image processing, measuring area, edge detection, image filter, green's theorem, google earth"
+5,2019-08-26 08:55:49,2020-04-13 18:02:08.053479,186,Activity 5: Enhancement by Histogram Manipulation,"<p>For this activity, I chose a low-light portrait that I shot at the Light Bridge at the Mind Museum (Fig.&nbsp;<a href=""#fig-original"">1a</a>) last April. I imported it as <code>uint8</code> for ease in the histogram manipulation later on (something to do with indexing). Its histogram is shown in Fig.&nbsp;<a href=""#fig-orig-hist"">1e</a>. Notice that the histogram values range only from 0 to 226. The ""spike"" at the end most likely corresponds to the clipped highlights evident in the light stripes that can be seen in the original, unprocessed image. This spike is also reflected in its CDF, shown in Fig.&nbsp;<a href=""#fig-orig-cdf"">1i</a>.</p>
+<p>The first order of business is contrast stretching, which is essentially stretching the histogram so that it encompasses the entire data space available for the data type, in this case, 0 to 255. We first convert the image to <code>float32</code> by dividing it by 255 in order to constrain the pixel values between 0 and 1. Since the global maximum of the original image is 226, no pixel will have an exact value of 1. We want to stretch the data so that its maximum is exactly 1, so we transform the pixel intensities [<a href=""#Soriano2019"">1</a>] according to <span id=""eq-transform""> \begin{equation} I^\prime (x, y) = \frac{I(x, y) - I_{\mathrm{min}}}{I_{\mathrm{max}} - I_{\mathrm{min}}} \end{equation} </span> We then cast the image back into <code>uint8</code> by multiplying by 255 and rounding off. The result of this process is shown in Fig.&nbsp;<a href=""#fig-constretch"">1b</a>. At face value, there is no discernible change since the global maximum of the original image is fairly close to 255. However, in the eyes of a photographer, there are substantial contrast &amp; detail enhancements, particularly in the regions with rapid light falloff, such as on the shirt. If you zoom in quite a bit, the side of the face which is better lit has more pronounced details. The light stripes also appear less clipped, and are now a tad brighter. Looking into its histogram (Fig.&nbsp;<a href=""#fig-constretch-hist"">1f</a>), we see that the brighter range of pixels are now more even, and now encompass the full range of values up to 255, and the ""stretching"" is evident by the lack of some pixels in the lower range. The CDF (Fig.&nbsp;<a href=""#fig-constretch-cdf"">1j</a>) also reflects a smoother increase in the upper range of values.</p>
+<p>Next, we perform histogram equalization. Generating the desired CDF (Fig.&nbsp;<a href=""#fig-histeq-cdf"">1k</a>) is trivial: we just use \( G(z) = z \) in the range [0, 255] for both \( x \) and \( y \) axes since we intend to retain its data type. By importing the image as an unsigned integer type, it makes the job of backprojection much easier as we only need to take the pixel values of the original image and use that as an index tofind the corresponding pixel value in the desired CDF. The resulting image is shown in Fig.&nbsp;<a href=""#fig-histeq"">1c</a>. We can see from its histogram in Fig.&nbsp;<a href=""#fig-histeq-hist"">1g</a> that the pixel values are now uniformly spread out throughout the data range. Since the bulk of the pixel values were originally in the lower range, the image now looks more properly exposed, albeit less in contrast.</p>
+<p>Finally, we try to simulate a nonlinear response by generating a sigmoid CDF (Fig.&nbsp;<a href=""#fig-nonlinear-cdf"">1l</a>) of the form <span id=""eq-sigmoid""> \begin{equation} G(z) = \frac{1}{1 + e^{-z}} \end{equation} </span> and scaling it to <code>uint8</code> then rounding off. The resultant image can be seen in Fig.&nbsp;<a href=""#fig-nonlinear"">1d</a>, and its histogram in Fig.&nbsp;<a href=""#fig-nonlinear-hist"">1h</a>. Once again, the image appears more properly exposed, but now is high in contrast. We can also see in the histogram that the middle values are stretched more than the outer values.</p>
+<div id=""fig-enhance"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-4"">&nbsp;</div>
+<p>Figure 1: Grayscale-converted image and its histogram manipulations, their respective histograms, and their respective CDFs.</p>
+</div>
+<p>Upon further reading, this is actually the method used for a technique called adaptive equalization [<a href=""#Walt2014"">2</a>]. The CDF is a nonlinear response, usually of a sigmoid-like shape which is shifted along the \( x \) axis and/or varied in slope, depending on where most of the original pixel values are clustered, and I generally use this to correct the exposure of images without blowing out the highlights or crushing the shadows. I also recognized the S-curve of the CDF and its effect on the image, and I realized that the CDF is actually what is called the tone curve in photo editing programs such as Lightroom and Photoshop. To test this, I tried to perform a technique called <em>crushing the blacks/whites</em>, which is used to simulate a fadedfilm look, wherein the tone curve is shaped like a sigmoid, but the endpoints are clipped, i.e., the global minimum should be greater than 0 and the global maximum should be less than 255 sort of like the opposite of contrast stretching. To do this, I generated a sigmoid CDF (Fig.&nbsp;<a href=""#fig-sigmoid-cdf"">2a</a>) with a bias and scaled it to a value less than 255, so that its minimum and maximum \( y \) values are 42 and 197, respectively. Using the same process as before, lo-and-behold, I got the expected result in Fig.&nbsp;<a href=""#fig-sigmoid"">2b</a>, and it definitely looks like it was taken with the classic Kodak Tri-X film. Its histogram in Fig.&nbsp;<a href=""#fig-sigmoid"">2c</a> also shows the squeezing of the pixel values and conrms that the technique acts like <em>contrast compressing</em>.</p>
+<div id=""fig-crushed"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-3"">&nbsp;</div>
+<p>Figure 2: ""Crushed blacks/whites"" post-processing technique using histogram manipulation.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>Enhancement by histogram manipulation</em> (2019).</li>
+<li id=""Walk2014"">S. van der Walt, J. L. Schonberger, J. Nunez-Iglesias, F. Boulogne, J. D. Warner, N. Yager, E. Gouillart, T. Yu, and the scikit-image contributors, <a href=""https://scikit-image.org/docs/dev/auto_examples/color_exposure/plot_equalize.html"" target=""_blank"" rel=""noopener"">Histogram equalization</a> (2014).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,c_scale,w_400/v1/svip/186/5-EnhanceHistogram/crushed.png",enhance-histogram,1,"histogram manipulation, contrast stretching, histogram equalization, crushed blacks"
+6,2019-09-03 03:00:37,2020-04-13 18:02:39.391499,186,Activity 6: Enhancing Color Images,"<p>For this activity, I will be using the raw image (Fig.&nbsp;<a href=""#fig-original"">1a</a>) I took during the FST Week Concert at the College of Fine Arts. I felt this would be a good image to work on since there is a signicant and discernible color cast due to the lighting of the venue. The photo was taken with auto white balance (which didn't do a really good job of white balancing).</p>
+<h3>Contrast Stretching</h3>
+<p>I imported the original image as <code>uint8</code>. However, when performing any manipulation, I converted itfirst to <code>float64</code> before casting it back to <code>uint8</code> for displaying and saving purposes. Upon examination, I realized it was futile to perform contrast stretching since the maximum value of each channel was already <code>1.0</code>. Further reading brought me to an article [<a href=""#Wang2011"">1</a>], where we can discard a certain percentile from the low and high ends of the histogram and stretch the remaining bins to fill the full range, according to <span id=""eq-constretch""> \begin{equation} I_C^\prime = \frac{I_C - C_{low}}{C_{high} - C_{low}} \times C_{max} + C_{min} \end{equation} </span> where \( C \) refers to the channel being manipulated. The <em>high</em> and <em>low</em> values refer to the \( p \)th percentile of histogram values that are set as the upper and lower thresholds, respectively. This is actually the algorithm used by GIMP's auto white balance. We can see from the resulting image in Fig.&nbsp;<a href=""#fig-constretch"">1b</a> that the reddish color cast has generally been removed, and the guitarist's skin tone looks much more realistic.</p>
+<h3>Gray World</h3>
+<p>This algorithm assumes that the average color of the image is gray. The pixel values are manipulated according to [<a href=""#Soriano2019"">2</a>] <span id=""eq-grayworld""> \begin{equation} I_C^\prime = I_C \times \frac{\langle I \rangle}{\langle C \rangle} \end{equation} </span> where \( \langle I \rangle \) is the overall average and \( \langle C \rangle \) is the channel average. The result of this manipulation is shown in Fig.&nbsp;<a href=""#fig-grayworld"">1c</a>. Note that the image is at roughly the same exposure level as the original because we did not perform contrast stretching on this one, but the white balance is similar to that of contrast stretching.</p>
+<h3>White Patch</h3>
+<p>This method is similar to how the White Balance Eyedropper Tool in image processing programs such as Lightroom or Photoshop work. Fig.&nbsp;<a href=""#fig-patch"">2</a> shows the location where I extracted a patch that is supposed to be white (upper 12th fret marker on the guitar). The result is shown in Fig.&nbsp;<a href=""#fig-whitepatch"">1d</a>. We can see that the guitarist's skin tone still looks realistic, and the background is now a warmer white as compared to the previous algorithms.</p>
+<div id=""fig-enhance"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-4"">&nbsp;</div>
+<p>Figure 1: Image enhanced using different algorithms (top) and their respective histograms (bottom).</p>
+</div>
+<div id=""fig-patch"" class=""container text-center my-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/6-EnhanceColor/patch.jpg"" /></div>
+</div>
+<p>Figure 2: Extracted white patch location. The size of the bounding box has been exaggerated for easy location. The object of interest is the fret marker on the upper portion of the box.</p>
+</div>
+<h3>Auto White Balance Algorithm through Average Equalization and Threshold (AWBAAET)</h3>
+<p>To combine everything, [<a href=""#Tai2012"">3</a>] proposes a method that modifies the gray world and contrast-stretching algorithms and uses a weighted sum of them to perform automatic white balancing. The modified gray world algorithm is <span id=""eq-grayworld-mod""> \begin{equation} I_C^\prime = I_C + (\langle A \rangle - \langle C \rangle) \end{equation} </span> and the modified contrast-stretching is <span id=""eq-constretch-mod""> \begin{equation} I_C^\prime = \frac{I_C - C_{low}}{C_{high} - C_{low}} \times I_{max} + I_{min} \end{equation} </span> where \( C_{low} \) and \( C_{high} \) are the lower and upper thresholds, respectively, and \( I_{min} \) and \( I_{max} \) are the overall maximum and minimum pixel values, respectively. The image intensity values are scaled according to the thresholds and not the extrema as to avoid over-stretching. The weight is then calculated as <span id=""eq-weight""> \begin{equation} w = \frac{ | \langle C_b \rangle - \langle C_r \rangle | + | \sigma_{\mathrm{max}} - \sigma_{\mathrm{min}} | }{n} \end{equation} </span> where \( \langle C_b \rangle , \langle C_r \rangle \) are calculated by converting the image to YC<sub>r</sub>C<sub>b</sub> and taking the averages of the C channels, and \( \sigma \) are the standard deviations of the RGB channels. The paper stated that \( n \) was a constant taken to be 200 and was obtained experimentally, but do not elaborate on how exactly it was obtained. Essentially, \( w \) is the weight of the heavy color cast. The final image is obtained by <span id=""eq-weight""> \begin{equation} I^\prime = w \cdot I_{\mathrm{CS}} + (1 - w) \cdot I_{\mathrm{GW}} \end{equation} </span> where \( I_{\mathrm{CS}} \) and \( I_{\mathrm{GW}} \) are the images enhanced using the modified contrast stretching and gray world algorithms, respectively. The result is shown in Fig.&nbsp;<a href=""#fig-awbaet"">3c</a> alongside the other algorithms for comparison. Because of the heavy red color cast in the original image, the CS portion of the algorithm is given a greater weight, so the final image looks more like the CS-corrected image.</p>
+<div id=""fig-awbaet"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-3"">&nbsp;</div>
+<p>Figure 3: Comparison of the dierent auto white balance algorithms.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""#Wang2011"">S. Wang, Y. Zhang, P. Deng, and F. Zhou, Fast automatic white balancing method by color histogram stretching, <a href=""http://dx.doi.org/10.1109/CISP.2011.6100338"" target=""_blank"" rel=""noopener""><em>4th International Congress on Signal and Image Processing</em>, 979-983</a> (2011).</li>
+<li id=""Soriano2019"">M. N. Soriano, <em>Enhancing color images</em> (2019).</li>
+<li id=""Tai2012"">S. C. Tai, Y. Y. Chang, and C. P. Yeh, Automatic White Balance algorithm through the average equalization and threshold, in <a href=""http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6269338&amp;isnumber=6269316"" target=""_blank"" rel=""noopener""><em>2012 8th International Conference on Information Science and Digital Content Technology (ICIDT2012)</em>, vol. 3, 571-576</a>, (2012).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,c_scale,w_400/v1/svip/186/6-EnhanceColor/contrast_stretch.jpg",enhance-color,1,"contrast stretching, white balance, gray world, white patch, awbaaet"
+7,2019-09-11 05:34:40,2020-04-13 18:03:24.127111,186,Activity 7: Image Segmentation,"<h3>Grayscale Segmentation</h3>
+<p>As a warmup for this activity, let's start with a grayscale image of a check (Fig.&nbsp;<a href=""#fig-check-orig"">1a</a>).</p>
+<div id=""fig-check"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-2"">&nbsp;</div>
+<p>Figure 1: Grayscale check and its histogram.</p>
+</div>
+<p>First we'll try to segment the text manually. Looking at its histogram (Fig.&nbsp;<a href=""#fig-check-hist"">1b</a>), we can see that there is a high concentration of pixel values around 200, which corresponds to the background. For now, 125 looks like a good threshold value, so we'll choose to display only pixel values less than 125. The output (Fig.&nbsp;<a href=""#fig-check-seg-random"">2a</a>) shows that we have a decent segmentation, and we can choose to leave it at that. However, we don't want to just randomly pick a threshold that looks ""good enough"", so we'll try a slightly more elaborate method. I recall that when I was applying for IPL, I read and presented a paper, whose very rough gist is that it made use of Otsu's method of thresholding to detect malaria in red blood cells [<a href=""#Mas2015"">1</a>]. Otsu's method searches exhaustively for the threshold value that minimizes the intra-class variance [<a href=""#Wiki2019"">2</a>] and works most effectively if the gray histogram is bimodal. Looking back at Fig.&nbsp;<a href=""#fig-check-hist"">1b</a>, we can see two general peaks: one about 200 and another about 150, so we expect that Otsu's method will work just fine. Applying Otsu's method yields a threshold value of 146, and the result is shown in Fig.&nbsp;<a href=""#fig-check-seg-otsu"">2b</a>. Aside from the text being much clearer, we won't see much difference because it's quite a simple image. We'll check again later on to see how well this method fares with color images.</p>
+<div id=""fig-check-seg"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-2"">&nbsp;</div>
+<p>Figure 2: Check segmented using different methods.</p>
+</div>
+<h3>Color Segmentation</h3>
+<p>For the testing phase of this section, Ifirst used the image of a Macbeth ColorChecker to verify final segmentation outputs and histograms. The image is first converted to NCC space [<a href=""#Soriano2019"">3</a>] via <span id=""eq-ncc""> \begin{align} I &amp; = R + G + B \\ r &amp; = \frac{R}{I} \\ g &amp; = \frac{G}{I} \end{align} </span></p>
+<ol type=""1"">
+<li>
+<h4>Parametric Segmentation</h4>
+<p>The means \( \mu_r, \mu_g \) and standard deviations \( \sigma_r, \sigma_g \) of the \( r \) and \( g \) channels of the region of interest (ROI) are computed, and the probabilities that the original image values \( x := (r, g) \) belong to the ROI are computed via <span id=""eq-param"" class=""math-container""> \begin{equation} \mathrm{Pr}(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left[ -\frac{(x - \mu_r)^2}{2\sigma_r^2} \right] \end{equation} </span> assuming that the \( r \) and \( g \) pixel values are normally distributed. The final segmented image is produced by obtaining the joint probability \( \mathrm{Pr}(r) \times \mathrm{Pr}(g) \).</p>
+</li>
+<li>
+<h4>Non-parametric Segmentation</h4>
+<p>The ROI \( r, g \) values are binned into 32 \( \times \) 32 unique combinations of \( r, g \) values to form a 2D histogram. This will serve as the lookup table (LUT) for segmenting the original image. The backprojection portion of the code was formulated with some help from [<a href=""#Bartolome2015"">4</a>].</p>
+</li>
+</ol>
+<h3>Implementation</h3>
+<ol type=""1"">
+<li>
+<h4>Macbeth ColorChecker</h4>
+<p>For the first trial, the region of interest is the red patch from the Macbeth ColorChecker. The original image along with outputs from the two algorithms are shown in Figs.&nbsp;<a href=""#fig-macbeth-first"">5</a>&ndash;<a href=""#fig-macbeth-last"">9</a>.</p>
+<div id=""fig-macbeth-first"" class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/mac_red_out.png"" /></div>
+</div>
+<p>Figure 5: A Macbeth ColorChecker (left) and the output from parametric (middle) and non-parametric (right) algorithms. The specific region of interest is the bright green box outlining a portion of the red patch. Both algorithms segment the ROI pretty well, with the non-parametric algorithm appearing to be more sensitive.</p>
+</div>
+<div class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/mac_blue_out.png"" /></div>
+</div>
+<p>Figure 6: The specific ROI is the bright green box outlining a portion of the middle blue patch. The parametric algorithm keeps the segmentation confined to the concerned patch, while the non-parametric algorithm is slightly detecting the other blue patches at the ROI's lower-left and upper-right corners.</p>
+</div>
+<div class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/mac_green_out.png"" /></div>
+</div>
+<p>Figure 7: The specific ROI is the bright green box outlining the plant on the upper left corner. Both algorithms segmented not only the plant, but also the olive-green patch, as well as some portions on the person's clothes. Closer examination of the original image shows that there are some green reflections off the clothes, suggesting the imaging location is surrounded by a few plants.</p>
+</div>
+<div class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/mac_white_out.png"" /></div>
+</div>
+<p>Figure 8: The specific ROI is the bright green box outlining the white patch. The parametric algorithm better confines the segmented area to the white patch, while the non-parametric algorithm segmented the white patch along with the two adjacent gray patches and the person's clothes (which is also generally white).</p>
+</div>
+<div id=""fig-macbeth-last"" class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/mac_black_out.png"" /></div>
+</div>
+<p>Figure 9: The specific ROI is the bright green box outlining a portion of the black patch. Both algorithms segment the black patch along with the ColorChecker's borders and portions of the adjacent gray patches.</p>
+</div>
+</li>
+<li>
+<h4>Skin</h4>
+<p>To realize these methods' effectivity in a more practical situation, let's try applying them to images with more chromatic and luminant variety. I'll be using a fairly simple portrait which has a well-defined background and foreground, taken with natural light, and I'll try to segment only the skin. Let's call the subject Clarize. Note that the image has already been post-processed, meaning white balance corrections, contrast adjustments, exposure corrections, and artistic color grading have all been applied. As a human observer, the separation between foreground and background is pretty clear-cut. However, we can expect a machine to have some problems because the color of Clarize's shirt is quite close to the color of her skin and to the background. Notice also that due to direct sunlight, there is a lot of specular reflection on her face and hands. Also, due to the image being taken at high ISO (around 400, to account for the fast shutter speed used in order for the confetti not to blur, and the considerably narrow aperture used in order for as much of the elements to be in focus as possible), we can observe some visible grain in the shadows, particularly on the side of her right forearm facing away from the light. Figures&nbsp;<a href=""#fig-skin-first"">10</a>-<a href=""#fig-skin-last"">13</a> show the results of varying the location of the ROI.</p>
+<p>We can observe that although parametric segmentation seems to work best in the Macbeth trial, non-parametric segmentation seems to work consistently better when it comes to practical images because pixel values are rarely normally distributed about the mean.</p>
+<div id=""fig-skin-first"" class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/jena_arm_out.png"" /></div>
+</div>
+<p>Figure 10: Clarize (left) parametric output (middle) and non-parametric output (right). The specific ROI is the bright green box outlining a portion of her right forearm. This first attempt was quite good. Again, non-parametric appears to be more sensitive, but both of them fail to account for the regions of the skin with high specular reflection.</p>
+</div>
+<div class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/jena_hand_out.png"" /></div>
+</div>
+<p>Figure 11: The specic ROI is the bright green box outlining a portion of her right hand. Once again, non-parametric wins this one as more of the specular regions have been segmented. However, this comes at a cost of segmenting some of the creases on her shirt. The parametric method performs quite poorly as less of the skin has been segmented as compared to Fig.&nbsp;<a href=""#fig-skin-first"">10</a>.</p>
+</div>
+<div class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/jena_cheek_out.png"" /></div>
+</div>
+<p>Figure 12: The specific ROI is the bright green box outlining a portion of her left cheek. Once again, we can observe an improvement in non-parametric segmentation, while parametric segmentation got worse. The non-parametric method was able to segment even more of the regions with high intensity specular reflection, but again, at the cost of segmenting more of the shirt due to their similarity in color.</p>
+</div>
+<div id=""fig-skin-last"" class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/jena_forehead_out.png"" /></div>
+</div>
+<p>Figure 13: The specific ROI is the bright green box outlining a portion of her forehead. This one was able to segment the most skin out of all the sampling ROIs, but also segmented a lot of unwanted pixels. This is because we have captured some of the specular reflection, whose color closely matches that of the background and the shirt.</p>
+</div>
+</li>
+<li>
+<h4>Cancer Cells</h4>
+<p>For the last application we'll try segmenting a sample of red blood cells with acute lymphoma, sourced from [<a href=""#Levey2013"">5</a>], using everything we've discussed so far. The original image along with its parametric and non-parametric segmentation outputs are shown in Fig.&nbsp;<a href=""#fig-cancer"">14</a>, while the output from Otsu's method is in Fig.&nbsp;<a href=""#fig-cancer-otsu"">15</a>. The reason we are applying Otsu's method for this image and not for the Macbeth or Clarize images is because we have a clear-cut foreground and background in this image. The Macbeth image contains too many different patches of different colors, so its histogram is hardly bimodal. The Clarize image does have a separable foreground/background, but what we want to segment is the skin, not the foreground; Otsu's method will most likely segment Clarize's entire body.</p>
+<div id=""fig-cancer"" class=""container text-center my-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/cancer_giemsa.png"" /></div>
+</div>
+<p>Figure 14: Healthy and cancerous red blood cells (left) parametric output (middle) and non-parametric output (right). The specific ROI is the bright green box outlining a portion of a giemsa-stained cancerous cell on the top left corner. Notice that both methods perform similarly and manage to capture only the stained cells.</p>
+</div>
+<div id=""fig-cancer-otsu"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/7-ImageSegment/cancer_otsu.png"" /></div>
+</div>
+<p>Figure 15: Cancer cell segmentation via Otsu's method. At first glance, this does method does not seem to be appropriate as it segments all the cells. However, according to [<a href=""#Mas2015"">1</a>], healthy RBCs can be characterized as hollow, torus-like shapes when they are Otsu-thresholded; if a significant amount of the RBC's nucleus is segmented, that could indicate something wrong with the cell. In the image, we can see that the cancerous cells are completely segmented, so we can say from this interpretation that Otsu's method is a valid segmentation algorithm for applications such as this.</p>
+</div>
+</li>
+</ol>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Mas2015"">D. Mas, B. Ferrer, D. Cojoc, S. Finaurini, V. Mico, and J. Garcia, Novel image processing approach to detect malaria, <a href=""http://dx.doi.org/10.1016/j.optcom.2015.03.064"" target=""_blank"" rel=""noopener""><em>Optics Communications</em> <strong>350</strong>, 13</a> (2015).</li>
+<li id=""Wiki2019"">Wikipedia, <a href=""https://en.wikipedia.org/wiki/Otsu%27s_method"" target=""_blank"" rel=""noopener"">Otsu's method</a> (2019).</li>
+<li id=""Bartolome2015"">M. F. Bartolome, <a href=""https://barteezy.wordpress.com/2015/10/05/activity-7-image-segmentationo/"" target=""_blank"" rel=""noopener"">Activity 7 &ndash; Image segmentation</a> (2015).</li>
+<li id=""Levey2013"">S. Levey, <a href=""https://www.imperial.ac.uk/news/118017/scientists-seek-cancer-cells-hiding-from/"" target=""_blank"" rel=""noopener"">Scientists seek out cancer cells hiding from treatment</a> (2013).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,w_400,c_scale/v1/svip/186/7-ImageSegment/cancer_otsu.png",image-segmentation,1,"image segmentation, parametric segmentation, nonparametric segmentation, color segmentation, grayscale segmentation, macbeth colorchecker, otsu's method"
+8,2019-09-19 02:13:12,2020-04-13 18:03:53.247160,186,Activity 8: Morphological Operations,"<p>For this activity [<a href=""#Soriano2019"">1</a>], we make use of several shapes, namely:</p>
+<ul>
+<li>a 5 \( \times \) 5 square</li>
+<li>a 4 \( \times \) 3 triangle</li>
+<li>a hollow 10 \( \times \) 10 box, 2 units thick</li>
+<li>a 5 \( \times \) 5 plus sign, 1 unit thick</li>
+</ul>
+<p>to be manipulated by several structuring elements, namely</p>
+<ul>
+<li>2 \( \times \) 2 ones</li>
+<li>2 \( \times \) 1 ones</li>
+<li>1 \( \times \) 2 ones</li>
+<li>3 \( \times \) 3 cross</li>
+<li>2 \( \times \) 2 antidiagonal line</li>
+</ul>
+<p>All the shapes were generated by Python's imaging library (PIL), and the operations were performed using OpenCV. For the shapes, their origin is located at the shape's geometric center, while for the structuring elements, their origin is located at the lower- left corner. The result for the dilation of the images is shown in Fig.&nbsp;<a href=""#fig-dilate"">1</a>, while Fig.&nbsp;<a href=""#fig-erode"">2</a> shows the result for erosion.</p>
+<div id=""fig-dilate"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/8-Morphological/dilate.png"" /></div>
+</div>
+<p>Figure 1: The result of dilation on the images. The first column shows the original images used, while the first row shows the structuring elements.</p>
+</div>
+<div id=""fig-erode"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/8-Morphological/erode.png"" /></div>
+</div>
+<p>Figure 2: The result of erosion on the images. The first column shows the original images used, while the first row shows the structuring elements.</p>
+</div>
+<h3>References</h3>
+<ol>
+<li id=""Soriano2019"">M. N. Soriano, <em>Morphological operations</em> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400,dpr_auto/v1/svip/186/8-Morphological/erode.png",morphology-ops,1,"morphological operation, opencv, dilation, erotion, structuring element"
+9,2019-10-04 06:00:51,2020-04-13 18:04:36.590407,186,Activity 9: Playing Notes by Image Processing,"<p>For this activity [<a href=""#Soriano2019"">1</a>], I recreated the tapping part of Tom's Story's ""Anchors"" using Guitar Pro and exported it as a <code>png</code>. The excerpt is shown in Fig.&nbsp;<a href=""#fig-excerpt"">1</a>. Notice that the song is in the key of G, as denoted by the sharp accidental next to the treble clef. This sort of makes things easier as we won't have to worry about accidentals in the rest of the sheet, but this only works assuming that there are no borrowed chords or if we work strictly within the major mode. The methodology I will be following is based on [<a href=""#Harris2015"">2</a>], with some inspiration from [<a href=""#Romero2016"">3</a>] and [<a href=""#Medrana2016"">4</a>].</p>
+<div id=""fig-excerpt"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/9-PlayingNotes/anc_truncated.png"" /></div>
+</div>
+<p>Figure 1: Tapping portion of ""Anchors"" by Tom's Story.</p>
+</div>
+<h4>Pre-processing</h4>
+<p>First, the image is binarized using Otsu's method. The full track consists of 5 rows, so the image is first separated by row. This is achieved by searching for blocks with high variation and minimum vertical size [<a href=""#Gent2017"">5</a>]. The location of the staff lines can be obtained by projecting the image onto the \( y \)-axis; the staff lines show up as five distinct peaks. After obtaining their index locations using Python's <code>peakutils</code> library, the staff lines can be removed by using an opening morphological operator with a horizontal line. The result of this operation is shown in Fig.&nbsp;<a href=""#fig-nostaff"">2</a>.</p>
+<div id=""fig-excerpt"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/9-PlayingNotes/anc_nolines.png"" /></div>
+</div>
+<p>Figure 2: First row, binarized with staff lines removed.</p>
+</div>
+<h4>Object detection</h4>
+<p>The quarter, eighth, and sixteenth notes can easily be detected because their common denominator is their filled ellipsoid bodies. Telling them apart will depend on their connection to adjacent notes (or lack thereof). To do this, the image is eroded by a vertical line so that only the note body and horizontal stems remain (Fig.&nbsp;<a href=""#fig-nostems"">3</a>). Next, the location of the note bodies are obtained by further eroding the image using an ellipse kernel and using the Determinant of Hessian blob detection algorithm from the <code>skimage</code> library (Fig.&nbsp;<a href=""#fig-bodies"">4</a>). We then go back to the prior image and scan the entire column spanned by one blob. If a large peak is detected, then the note is classied as an eighth. If two peaks are detected, then the classication is a sixteenth. If no other features are detected, the classication is quarter.</p>
+<p>Whole and half notes are detected by detecting the location of regions enclosing an empty space using watershed algorithm [<a href=""#Bienek2000"">6</a>]. Similarly, we can tell apart whole and half notes by scanning the columns spanned by the note and looking for other features. Other features such as dotted notes and rests will not be detected.</p>
+<div id=""fig-nostems"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/9-PlayingNotes/anc_cutstem.png"" /></div>
+</div>
+<p>Figure 3: First row with eroded vertical stems.</p>
+</div>
+<div id=""fig-bodies"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/9-PlayingNotes/anc_notebodies.png"" /></div>
+</div>
+<p>Figure 4: First row with only the note bodies.</p>
+</div>
+<h4>Audio synthesis</h4>
+<p>For this section, I used the <code>midiutil</code> library to generate and save the notes as a MIDI file. Earlier, we saved the locations of the staff lines. We can use this to calculate the thickness of the staff lines and the spacing between them in pixels, which are more or less equal. We dene standard A (A\( _5 \)) to be 440 Hz, such that middle A (A\( _4 \)) is 220 Hz. From there, we can determine the frequency of every other note by incrementing by a factor of \( \sqrt[12]{2} \), assuming equal temperament. Since we are in the major mode of G, the note intervals are defined by W-W-H-W-W-W-H, which gives us the heptatonic sequence G-A-B-C-D-E-F#. For easy reference, we set our origin to be G4 (second staff line), with a frequency of 196 Hz. In order to know the duration of one note, the sheet defines one quarter note to be 180 bpm, i.e., 0.33 seconds per quarter note. Instead of storing a lookup table for each note, we store instead the note intervals defined earlier whether we are jumping a whole step or a half step (&nbsp;\( \times \sqrt[12]{2} \) or \( \sqrt[6]{2} \), respectively) based on the number of lines (or spaces) away from middle G. With this, coupled with the note duration, we are ready to generate our audio. The <code>MIDIFile</code> function renders notes as if they were played on a piano. The final render can be accessed <a href=""https://drive.google.com/open?id=11aks0IiNcZTAsTAgSVODbeYYmv8XWWPF"">here</a>.</p>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>Playing notes by image processing</em> (2019).</li>
+<li id=""Harris2015"">S. Harris and V. Prateek, <em>Sheet music reader</em> (2015).</li>
+<li id=""Romero2016"">R. A. Romero, <a href=""https://raaromeroap186.wordpress.com/2016/12/04/a9-playing-notes-by-image-processing/"">A9 - playing notes by image processing</a> (2016).</li>
+<li id=""Medrana2016"">M. L. Medrana, <a href=""http://devential.ml/2016/12/05/AP186-A9/"">Playing notes through image processing (AP186 A9)</a> (2016).</li>
+<li id=""Gent2017"">P. van Gent, <a href=""http://www.paulvangent.com/2017/12/07/deep-learning-music/"">Deep learning music with Python</a> (2017).</li>
+<li id=""Bienek2000"">A. Bienek and A. Moga, An efficient watershed algorithm based on connected components, <em>Pattern Recognition</em> <strong>33</strong>, 907 (2000).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,w_400,c_scale/v1/svip/186/9-PlayingNotes/anc_truncated.png",playing-notes,1,"playing notes, image processing, computer vision, image segmentation, otsu's method, object detection, staff detection, morphological operation, audio synthesis"
+10,2019-10-06 13:02:04,2020-04-13 18:05:01.584782,186,Activity 10: Blob Analysis,"<p>For this activity [<a href=""#Soriano2019"">1</a>], we'll use the provided image of a cell. First, we convert it to grayscale (Fig.&nbsp;<a href=""#fig-gray"">1a</a>) and obtain its histogram (Fig.&nbsp;<a href=""#fig-gray-hist"">1b</a>). Notice that there is a huge peak somewhere between the 200 and 250 grayscale values, and another relatively smaller peak at around 200. We can interpret the huge peak as the background values and the small peak as the cell values. Thus, we can use Otsu's method to automatically select the best threshold value. From here, we can use the <code>skimage</code> library to automatically detect the blobs and label them. Each detected unique blob is labeled by assigning it a unique integer. A total of 150 blobs were detected. The result of the blob detection and labeling is shown in Fig.&nbsp;<a href=""#fig-label"">1c</a>, and its grayscale histogram in Fig.&nbsp;<a href=""#fig-label-hist"">1d</a>. Note that Otsu's method was able to separate the two peaks.</p>
+<div id=""fig-excerpt"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/10-BlobAnalysis/cell_blob.png"" /></div>
+</div>
+<p>Figure 1: (a) Grayscaled cell image, (b) grayscale histogram, (c) Filtered and labeled cell blobs, and (d) cell blobs histogram.</p>
+</div>
+<p>Initial inspection of the blob detection showed that there were some smaller blobs being detected. Using the <code>regionprops</code> function to obtain the blob areas, it was observed that there was a fairly narrow peak at around 175 px\( ^2 \), with some outlier values &lt; 100 and &gt; 300 px2. We then perform filtering by blob area such that only blobs with \( 100 &lt; A &lt; 300 \) px\( ^2 \) remain. The final area histogram is shown in Fig.&nbsp;<a href=""#fig-hist-area"">2a</a>. This distribution gives us a best estimate of the cell area of \( \boxed{A = 172 \pm 26 \textrm{ px}^2} \).</p>
+<p>We also obtain the eccentricities of the blobs and filter them this time by the best estimate of the blob area. The resulting histogram is shown in Fig.&nbsp;<a href=""#fig-hist-ecc"">2b</a>. The best estimate for the eccentricity of the filtered blobs is \( \boxed{e = 0.47 \pm 0.25} \). This means that most of the blobs, even those that appear circular in Fig.&nbsp;<a href=""#fig-label"">1c</a>, are ever so slightly elliptical.</p>
+<p>We also obtain the major axis lengths&mdash;which we will essentially treat as the blob diameter&mdash;of the the blobs and filter them again by the best estimate of the blob area. The resulting histogram is shown in Fig.&nbsp;<a href=""#fig-hist-major"">2c</a>. The best estimate for the major axis lengths of the filtered blobs is \( \boxed{2a = 16 \pm 1 \textrm{ px}} \). This shows that the cell blobs do not vary much in diameter.</p>
+<p>Finally, we obtain the perimeter of the blobs. Following the same procedures as before, we obtain a histogram in Fig.&nbsp;<a href=""#fig-hist-perimeter"">2d</a> and a best estimate of the perimeter \( \boxed{P = 59 \pm 10 \textrm{ px}} \).</p>
+<div id=""fig-hists"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-4"">&nbsp;</div>
+<p>Figure 2: Histogram of the blob properties.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A10 - Blob analysis</em> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,w_400,c_scale/v1/svip/186/10-BlobAnalysis/3468.jpg",blob-analysis,1,"blob analysis, image labelling, morphological operation, region properties"
+11,2019-10-16 06:59:39,2020-04-13 18:05:44.473973,186,Activity 11: Basic Video Processing,"<h3>Experimental Phase</h3>
+<p>For this activity [<a href=""#Soriano2019"">1</a>], I paired up with Rene Principe and we decided to perform a simple experiment to obtain the acceleration due to gravity. We used a Nikon D3400 with a SIGMA 24-70mm lens. We set it to ISO 200, f/2.8, recording at 1080p60 at 50mm to eliminate any significant vignetting or lens distortion. We placed the camera on a tripod at a fixed distance away from a uniformly-lit wall and dropped a bright pink ball from rest such that its centroid was roughly aligned with the upper edge of the frame, and was allowed to freely fall. The bottom edge of the frame was aligned with the corner of the wall. The room was closed and there was no airconditioning, so we can assume that there are no signicant forces pushing it away from its plane of fall. Using a caliper, the ball was determined to have a diameter of 6.5 cm.</p>
+<h3>Computational Phase</h3>
+<ol>
+<li>
+<h4>Pre-processing</h4>
+<p>The raw video files were first trimmed in Adobe Premiere Pro such that the clip starts at the moment the ball is dropped and ends either when the ball stops bouncing or goes out of the frame. The video was then rotated into portrait mode such that the ground direction is downwards. Finally, it was exported as <code>mp4</code>. Shown below is the unprocessed video, oriented such that the ground is on the left and serves as the zero position.</p>
+<div class=""text-center my-4 embed-responsive embed-responsive-16by9""><iframe class=""embed-responsive-item"" src=""https://www.youtube-nocookie.com/embed/oDfhiUiOIRk"" frameborder=""0"" allowfullscreen=""""></iframe></div>
+</li>
+<li>
+<h4>Segmentation and Morphological Cleaning</h4>
+<p>Using Python, I first picked an arbitrary frame such that the entire ball can be seen in the frame. Using my code for a <a href=""../../../../../svip/ap186/image-segmentation"">previous activity</a> on non-parametric segmentation, I selected the ROI such that it encompassed a rectangular portion of the ball, taking care not to include the background. After obtaining the ROI and its histogram, non-parametric segmentation can automatically detect the ball for all succeeding frames. Next, I applied Otsu's method to binarize the frames, followed by an elliptical closing operator of size 11 \( \times \) 11. I then used the <code>regionprops</code> function from the <code>skimage</code> library to obtain the segmented ball's properties per frame, in particular the centroid and diameter properties. The result of these operations is shown in Fig.&nbsp;<a href=""#fig-frames"">1</a>.</p>
+<div id=""fig-frames"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-6"">&nbsp;</div>
+<p>Figure 1: Representative frames as a result of successful segmentation and morphological cleaning. Notice in the middle frames that the ball appears to be squashed. This is due to the motion blur along the vertical, and in this case, the color of the ball starts to ""blend"" with the background. During this phenomenon, we measure the diameter horizontally, since there is no discernible motion blur along this direction.</p>
+</div>
+<p>Shown below is the segmented video:</p>
+<div class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive w-25 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/v1/svip/186/11-BasicVideo/segmented.gif"" /></div>
+</div>
+</div>
+</li>
+<li>
+<h4>Calibration</h4>
+<p>The diameter of the ball was averaged for the first 30 frames (just before it bounces for the first time), and using the actual diameter obtained earlier, its pixel-to-length calibration is <span id=""eq-calibration"" class=""math-container""> \begin{equation} \mathrm{meters = pixels \times \frac{diameter(meters)}{diameter(pixels)}} \end{equation} </span> Thus, the position of the ball in real units at any time can be obtained, and its velocity and acceleration can be computed using central difference algorithm. Its motion curves are shown in Fig.&nbsp;<a href=""#fig-motion"">2</a>.</p>
+</li>
+<li>
+<h4>Obtaining \( g \)</h4>
+<p>Calculating the acceleration due to gravity \( g \) can be done in two ways. First, we can isolate the position curve up to the point when it first bounces (first 30 frames), and fit this curve to an equation of the form <span id=""eq-calibration"" class=""math-container""> \begin{equation} f(t; g, v_0, x_0) = gt^2 + v_0 t + x_0 \end{equation} </span> via nonlinear least-squares fitting. Using this method, we obtain a value of \( \boxed{g = -9.68 \textrm{ m/s}^2} \) which deviates by 1.31% from the theoretical value of \( -9.81 \textrm{ m/s}^2 \)</p>
+<div id=""fig-excerpt"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/11-BasicVideo/motion.png"" /></div>
+</div>
+<p>Figure 2: Position, velocity &amp; acceleration curves of the free-falling ball.</p>
+</div>
+<p>Another way this can be done is by taking again the first 30 frames and averaging their acceleration values which we obtained earlier. This method yields \( \boxed{g = -9.61 \textrm{ m/s}^2} \), which deviates by 2.04% from the theoretical.</p>
+</li>
+</ol>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A11 - Basic video processing</em> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/dpr_auto,c_scale,w_400/v1/svip/186/11-BasicVideo/cover.png",basic-video,1,"video processing, free fall, newton's law, image segmentation, morphological operation, gravity, acceleration, motion"
+12,2019-10-22 12:36:38,2020-04-13 18:06:45.144135,186,Activity 12: Feature Extraction,"<p>For this activity [<a href=""#Soriano2019"">1</a>], I obtained the Fruits-360 dataset from Kaggle [<a href=""#Muresan2018"">2</a>] which contains thousands of labeled fruit images under the same lighting and capture settings but with varying angles. I took 50 samples each from the set of apples, oranges, and bananas.</p>
+<h3>Feature extraction: La*b* color space</h3>
+<p>I first imported the images into Python and converted them to \( L^* a^* b^* \) color space. For each image, I extracted the mean values from the \( a^* \) and \( b^* \) channels. The \( a^* \) channel represents a chromaticity from green to red, while the \( b^* \) channel represents a chromaticity from blue to yellow.</p>
+<h3>Feature extraction: Eccentricity \( e \)</h3>
+<p>Using the same images, I applied Otsu's method since the images contain only one fruit on a plain white background. Each fruit is then easily detected as a single large blob. I then used the <code>regionprops</code> function to extract the eccentricity property from each detected blob. An \( e = 0 \) corresponds to a perfect circle, while an \( e = 1 \) corresponds to a parabola. Values \( 0 &lt; e &lt; 1 \) are ellipses.</p>
+<h3>Results</h3>
+<p>Figure&nbsp;<a href=""#fig-abe"">1</a> shows the feature space of the selected dataset in \( a^* \), \( b^* \), and \( e \). We can observe that all the classes show distinct clustering.</p>
+<div id=""fig-abe"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/12-FeatureExtract/feature_space.png"" /></div>
+</div>
+</div>
+<p>Figure 1: Feature space in \( a^* \), \( b^* \), and \( e \) of apples, bananas, and oranges.</p>
+</div>
+<p>The projections on each of the planes are shown in Fig.&nbsp;<a href=""#fig-projection"">2</a>. The banana cluster shows a large variation in eccentricity but mostly resides in high-eccentricity space. This can be attributed to the various rotations of the banana images, but are still signicantly elongated compared to the other fruit classes. Apples and oranges overlap in \( a^* \) space (red and orange have very close chromaticities), but can be separated in the \( b^* \)-\( e \) space (orange is closer to yellow than red is; apples are less rounded compared to oranges). If we needed to reduce the complexity, it is sufficient to choose between either \( a^* \)-\( b^* \) or \( b^* \)-\( e \) feature spaces, though the former appears to maximize the class separation.</p>
+<div id=""fig-projection"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-3"">&nbsp;</div>
+<p>Figure 2: Feature space projections on different planes.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A12 - Feature extraction</em> (2019).</li>
+<li id=""Muresan2018"">H. Muresan and M. Oltean, Fruit recognition from images using deep learning, <a href=""http://dx.doi.org/10.2478/ausi-2018-0002"" target=""_blank"" rel=""noopener""><em>Acta Univ. Sapientiae, Informatica</em> <strong>10</strong>, 26</a> (2018).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/12-FeatureExtract/feature_space.png",feature-extract,1,"feature extraction, color space, fruits, dataset, region properties, feature space, machine learning, separability"
+13,2019-10-29 06:03:01,2020-04-13 18:07:28.293816,186,Activity 13: Perceptron,"<p>For this activity [<a href=""#Soriano2019"">1</a>], I used the features extracted from the fruits (50 each of apples, mangoes, bananas) from the <a href=""../../../../../svip/ap186/feature-extract"">previous activity</a>. The feature space in \( a^* \)-\( b^* \) (obtained from the La*b* color space) is shown in Fig.&nbsp;<a href=""#fig-features"">1</a>.</p>
+<div id=""fig-features"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/13-Perceptron/ab-space.png"" /></div>
+</div>
+</div>
+<p>Figure 1: Feature space in \( a^* \)-\( b^* \).</p>
+</div>
+<p>Since we'll be working with a linear classifier for now, we need to process only two classes at a time. We design the perceptron so that it follows a simple weight update rule <span id=""eq-weight-update"" class=""math-container""> \begin{equation} \Delta w_j = \eta (y^i - z^i) x_j^i \end{equation} </span> where \( y \) is the ground truth label, \( z \) is the predicted label, and \( \eta \) is the learning rate, which we set to \( 10^{-2} \). The perceptron is trained for 100 epochs or until the sum of squares error (SSE) drops below some selected tolerance \( \epsilon = 10^{-6} \) and the decision boundary is obtained from the final weights. The decision boundary and decision contours for each class pair is shown in Fig.&nbsp;<a href=""#fig-decision"">2</a>.</p>
+<div id=""fig-decision"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-3"">&nbsp;</div>
+<p>Figure 2: Decision boundaries for each class pair.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A13 - Perceptron</em> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/13-Perceptron/ban-app_decision.png",perceptron,1,"perceptron, mcculloch-pitts, machine learning, feature extraction, feature space, linear classifier, class separability, decision boundary"
+14,2019-11-07 10:10:45,2020-04-13 18:08:13.157379,186,Activity 14: Logistic Regression,"<p>For this activity [<a href=""#Soriano2019"">1</a>], I used the banana dataset from [<a href=""#Mazen2019"">2</a>] which has 273 images of bananas separated by underripe, midripe, yellowish-green, and overripe labels.</p>
+<h3>Feature extraction: RGB</h3>
+<p>For the training set, I decided to take only images of underripe (green) and ripe (yellow) bananas and assign them class numbers 0 and 1, respectively. The feature vector extracted from the images consist only of the mean of each color channel (whose values are normalized to 1), without any further preprocessing or segmentation. I simply reused my code from the <a href=""../../../../../svip/ap186/perceptron"">previous activity</a>, with minor modications. The feature space in RGB is shown in Fig.&nbsp;<a href=""#fig-rgb"">1</a>.</p>
+<div id=""fig-rgb"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/14-LogisticRegression/RGB_extract.png"" /></div>
+</div>
+</div>
+<p>Figure 1: Feature space of ripe (1) and unripe (0) bananas in RGB.</p>
+</div>
+<p>After training all the ripe/unripe images, I then fed in the midripe images and plotted their activations. We can see from Fig.&nbsp;<a href=""#fig-rgb-activation"">2</a> that the predictions appear biased toward the upper half, which subjectively does not agree with the corresponding images. Preferably, the predictions are nicely distributed about the center. To this end, I try another approach.</p>
+<div id=""fig-rgb-activation"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/14-LogisticRegression/RGB_preds.png"" /></div>
+</div>
+</div>
+<p>Figure 2: Final activations of the midripe banana images in RGB.</p>
+</div>
+<h3>Feature extraction: La*b*</h3>
+<p>In order to be able to plot the decision contours as well as reduce the computational complexity, I decided to convert the images to La*b* color space and feed only the a*b* features. Also, I decided to feed in overripe bananas as class 1 in order to be able to include ripe and overripe predictions. Figure&nbsp;<a href=""#fig-lab"">3</a> shows the feature space in L*a*b*, and we can see that the two classes are easily separable.</p>
+<div id=""fig-lab"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/14-LogisticRegression/Lab_extract.png"" /></div>
+</div>
+</div>
+<p>Figure 3: Feature space of overripe (1) and unripe (0) bananas in La*b*.</p>
+</div>
+<p>Plotting the midripe activations in Fig.&nbsp;<a href=""#fig-lab-activation"">4</a> now shows that the predictions are nicely distributed around the activation region.</p>
+<div id=""fig-lab-activation"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/14-LogisticRegression/Lab_preds.png"" /></div>
+</div>
+</div>
+<p>Figure 4: Final activations of the midripe banana images in La*b*.</p>
+</div>
+<p>In Fig.&nbsp;<a href=""#fig-decision"">5</a>, we show the decision contours on the feature plane. In this view, we can see the sigmoid activation as a contour map&mdash;with blue being 0 and red being 1&mdash;and our training set falls in the extremes, save for a few outliers.</p>
+<div id=""fig-decision"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/14-LogisticRegression/Lab_decision.png"" /></div>
+</div>
+</div>
+<p>Figure 5: Decision contours of overripe (1) and unripe (0) bananas in a*b* feature space.</p>
+</div>
+<p>In Fig.&nbsp;<a href=""#fig-activation"">6</a>, we show representative images for varying activation levels. We can confirm that an activation \( \approx \) 0 corresponds to unripe (green) bananas, an activation \( \approx \) 1 corresponds to overripe (yellow-brown) bananas while the regime which is approximately linear may correspond to midripe/ripe bananas. Specifically, the range \( \approx \) 0.2-0.4 corresponds to the midripe (yellowish-green) bananas, while the range \( \approx \) 0.6-0.8 corresponds to the ripe (dominantly yellow) bananas.</p>
+<div id=""fig-activation"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/14-LogisticRegression/sigmoid_map.png"" /></div>
+</div>
+</div>
+<p>Figure 6: Images of bananas of varying ripeness corresponding to their activation levels.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A14 - Logistic regression</em> (2019).</li>
+<li id=""Mazen2019"">F. Mazen and A. Nashat, Ripeness classification of bananas using an artificial neural network, <a href=""http://dx.doi.org/10.1007/s13369-018-03695-5"" target=""_blank"" rel=""noopener""><em>Arabian Journal for Science and Engineering</em></a> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/14-LogisticRegression/Lab_decision.png",logistic-regression,1,"machine learning, logistic regression, color space, feature extraction, banana, sigmoid, activation"
+15,2019-11-19 12:44:18,2020-04-13 18:10:01.214865,186,Activity 15: Expectation Maximization,"<p>For this activity [<a href=""#Soriano2019"">1</a>], I used the separated banana, apple, and orange feature data from a <a href=""../../../../../svip/ap186/feature-extract"">previous activity</a>. The fruits form clear clusters in a*b* feature space and is suitable for this activity. Figure&nbsp;<a href=""#fig-clusters"">1</a> shows the clustering of the fruit data.</p>
+<div id=""fig-clusters"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/15-ExpectationMax/ab-space.png"" /></div>
+</div>
+</div>
+<p>Figure 1: a*-b* feature space of fruit data.</p>
+</div>
+<p>Since we are working only with two dimensions (two features), we assume a 2D Gaussian distribution, given by <span id=""eq-gaussian"" class=""math-container""> \begin{equation} p_l (\mathbf{x} | \mathbf{\mu}_l, \mathbf{\Sigma}_l) = \frac{1}{2\pi | \mathbf{\Sigma}_l |^{1/2}} \exp\left[ -\frac{1}{2} (\mathbf{x} - \mathbf{\mu}_l)^\top \mathbf{\Sigma}_l^{-1} (\mathbf{x} - \mathbf{\mu}_l) \right] \end{equation} </span> In the interest of computational efficiency, we define an intermediate matrix \( \mathbf{\omega} \) whose elements are given by <span id=""eq-intermediate"" class=""math-container""> \begin{equation} \omega_{li} = p_l (\mathbf{x}_i | \mathbf{\mu}_l, \mathbf{\Sigma}_l) \end{equation} </span> which are used throughout one entire iteration, in order to avoid redundant calculation of exponentials and matrix inversions. We then iterate with the update rules <span id=""eq-update"" class=""math-container""> \begin{align} P_l^\prime &amp; = \frac{1}{N} \sum_{i=1}^N P(l | \mathbf{x}_i, \mathbf{\Theta}^g) \\ \mathbf{\mu}_l^\prime &amp; = \frac{\sum_{i=1}^N \mathbf{x}_i P(l | \mathbf{x}_i, \mathbf{\Theta}^g)}{\sum_{i=1}^N P(l | \mathbf{x}_i, \mathbf{\Theta}^g)} \\ \mathbf{\Sigma}_l^\prime &amp; = \frac{\sum_{i=1}^N P(l | \mathbf{x}_i, \mathbf{\Theta}^g) (\mathbf{x}_i - \mathbf{\mu}_l^\prime) (\mathbf{x}_i - \mathbf{\mu}_l^\prime)^\top}{\sum_{i=1}^N P(l | \mathbf{x}_i, \mathbf{\Theta}^g)} \end{align} </span> until the log-likelihood goes above some pre-set value. The log-likelihood is given by <span id=""eq-log"" class=""math-container""> \begin{equation} L = \ln\left[ \sum_i \sum_l P_l^\prime p_l (\mathbf{x}_i | \mathbf{\mu}_l, \mathbf{\Sigma}_l) \right] \end{equation} </span> The PDF shown in Fig.&nbsp;<a href=""#fig-pdf"">2</a> is obtained at an average of 31 epochs.</p>
+<div id=""fig-pdf"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/15-ExpectationMax/em-feature-space.png"" /></div>
+</div>
+</div>
+<p>Figure 2: Estimated PDF in the a*b* feature space of bananas, apples, and oranges.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A15 - Expectation maximization</em> (2019).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/15-ExpectationMax/em-feature-space.png",expectation-maximization,1,"machine learning, expectation maximization, gaussian distribution, multivariate distribution, feature space, color space, class separability, probability distribution function"
+16,2019-11-21 07:12:52,2020-04-13 18:10:51.803348,186,Activity 16: Support Vector Machines,"<p>For this For this activity [<a href=""#Soriano2019"">1</a>, <a href=""#Veksler"">2</a>], I used the extracted fruit color features in a*b* space from a <a href=""../../../../../svip/ap186/feature-extract"">previous activity</a>. I used only the data for oranges and apples, and assigned them labels of -1 &amp; +1, respectively. The objective for SVM is <span id=""eq-svm"" class=""math-container""> \begin{equation} \min \frac{1}{2} || \mathbf{w} ||_2^2 \quad \textrm{subject to} \quad y_i (\mathbf{w}^\top \mathbf{x}_i + b) \geq 1 \quad \forall i \end{equation} </span> which is a quadratic and hence, convex problem. Here, \( \mathbf{w} \) is the reference vector perpendicular to the decision line, \( \mathbf{x} \) is the feature vector, \( y \) is the output classication, and \( b \) is the bias. Using the Python <code>CVXPY</code> library [<a href=""#Diamond2016"">3</a>], we can setup the above objective and constraint as-is and directly obtain \( \mathbf{w} \). Since we have two features, the separating hyperplane is a line defined by <span id=""eq-hyperplane"" class=""math-container""> \begin{equation} g(x) = -\frac{w_1}{w_2}x - \frac{b}{w_2} \end{equation} </span> where \( w_i \) are the elements of \( \mathbf{w} \). The width of the margin is defined by <span id=""eq-margin"" class=""math-container""> \begin{equation} m = \frac{1}{|| \mathbf{w} ||_2} \end{equation} </span> so we can plot the margins on opposite sides of the decision line using the trigonometric identity <span id=""eq-trigo"" class=""math-container""> \begin{equation} g_\pm (x) = g(x) \pm m \sqrt{1 + \left( \frac{w_1}{w_2} \right)^2} \end{equation} </span> Figure&nbsp;<a href=""#fig-decision"">1</a> shows the optimum decision boundary with maximized margins in the a*-b* feature space, along with the input data points and support vectors.</p>
+<div id=""fig-decision"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive w-75 mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/16-SVM/svm-db.png"" /></div>
+</div>
+</div>
+<p>Figure 1: Decision boundary for oranges and apples data in a*-b* feature space. The yellow region corresponds to a classification of -1 (oranges), while the red region corresponds to +1 (apples). The vectors highlighted in blue are the support vectors. The solid line is the decision boundary, while the dashed lines are the margins.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A16 - Support Vector Machines</em> (2019).</li>
+<li id=""Veksler"">O. Veksler, <em>CS434a/541a: Pattern Recognition - Lecture 11</em> (n.d.).</li>
+<li id=""Diamond2016"">S. Diamond and S. Boyd, CVXPY: A Python-embedded modeling language for convex optimization, <em>Journal of Machine Learning Research</em> <strong>17</strong>, 1 (2016).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/16-SVM/svm-db.png",support-vector-machine,1,"machine learning, support vector machine, feature space, color space, pattern recognition, hyperplane, decision boundary, class separability, trigonometry"
+17,2019-11-28 06:01:54,2020-04-13 18:12:56.966465,186,Activity 17: Neural Networks,"<h3>Function fitter</h3>
+<p>For this activity [<a href=""#Soriano2019"">1</a>], we willfirst explore the applications of a neural network&mdash;or more accurately, a multilayer perceptron (MLP)&mdash;as a universal function fitter. Designing a neural network architecture can be quite tedious as there are a lot of hyperparameters to tune in order for you to get desired results. After several attempts of trial-and-error, I ended up with the network shown in Fig.&nbsp;<a href=""#fig-network"">1</a> (all network visualizations were done using [<a href=""#Lenail2019"">2</a>]). For the training data, I generated 1000 random numbers distributed uniformly in the range [-1, +1] as the input, and the corresponding function as the output. Specifically, the functions used were:</p>
+<ul>
+<li>linear: \( f(x) = x \)</li>
+<li>quadratic: \( f(x) = x^2 \)</li>
+<li>cubic: \( f(x) = x^3 \)</li>
+<li>hyperbolic tangent: \( f(x) = \tanh(x) \)</li>
+<li>logistic sigmoid: \( f(x) = \frac{1}{1 + \exp(-x)} \)</li>
+<li>sinusoid: \( f(x) = \sin(2\pi \nu x) \)</li>
+</ul>
+<div id=""fig-network"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/17-NeuralNetworks/func-fit.png"" /></div>
+</div>
+</div>
+<p>Figure 1: Network architecture for the function fitter.</p>
+</div>
+<p>The first hidden layer of the network contains 500 nodes, which are all activated by a rectified linear unit (ReLU), defined by <span id=""eq-relu"" class=""math-container""> \begin{align} g(x) &amp; = \max(0, x) \\ g^\prime (x) &amp; = \begin{cases} 0 &amp; x \leq 0 \\ 1 &amp; x &gt; 0 \end{cases} \end{align} </span> The second hidden layer contains 10 nodes, also activated by ReLU. The output layer is a single node which maps everything calculated so far to a single output value. Thus, the function arguments (random numbers \( \in \) [-1, +1]) comprise an entire dataset \( \mathcal{M} \). The network objective is to minimize the \( \ell_2 \) loss, defined as <span id=""eq-l2loss"" class=""math-container""> \begin{equation} \ell_2 (\mathbf{y}, \hat{\mathbf{y}}) = \frac{1}{2} || \hat{\mathbf{y}} - \mathbf{y} ||_2^2 \end{equation} </span> where \( \mathbf{y}, \hat{\mathbf{y}} \) are the ground truth and predicted outputs, respectively, and \( || \mathbf{y} ||_2 := \left( \sum_i y_i^2 \right)^{1/2} \) is the \( \ell_2 \) norm operator. The network is trained until the loss drops below a value of <code>0.01</code>. I opted to use the \( \ell_2 \) loss instead of the sum-of-squares error or mean-squared error because, from experience, the former is more perceptually accurate.</p>
+<p>For the test data, I generated 1000 equally-spaced numbers in the range [-1, +1]. Figure&nbsp;<a href=""fig-preds"">2</a> shows the predictions for each function.</p>
+<div id=""fig-preds"" class=""container text-center my-5"">
+<div class=""row row-cols-1 row-cols-md-3"">&nbsp;</div>
+<p>Figure 2: Neural network as a universal function fitter.</p>
+</div>
+<h3>Fruit classification</h3>
+<p>For this section, I used my extracted a*-b* color features of bananas, apples, and oranges from <a href=""../../../../../svip/ap186/feature-extract"">previous activities</a>. The architecture I came up with is shown in Fig.&nbsp;<a href=""#fig-network-classifier"">3</a>. The dataset consists of 50 feature vectors for each fruit (total of 150 feature vectors), which were split 80% for training and 20% for testing.</p>
+<div id=""fig-network-classifier"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/17-NeuralNetworks/fruit-net.png"" /></div>
+</div>
+<p>Figure 3: Network architecture for the fruit classifier.</p>
+</div>
+<p>The network was designed such that the first hidden layer contains as many nodes as data points. Layers are added which contain 1/10 as many nodes as the previous layer, until the number of nodes in the current layer is on the order of magnitude of 10<sup>1</sup>. The output layer contains as many nodes as the classes. The hidden layers are activated by a ReLU except for the last, which is activated by a logistic sigmoid, defined as <span id=""eq-sigmoid"" class=""math-container""> \begin{align} g(x) &amp; = \frac{1}{1 + e^{-x}} \\ g^\prime (x) &amp; = g(x) (1 - g(x)) \end{align} </span> and the output layer is activated by a softmax, defined by <span id=""eq-softmax"" class=""math-container""> \begin{align} g(x) &amp; = \frac{e^{x_i}}{\sum_j e^{x_j}} \\ g^\prime (x) &amp; = g(x_i) (\delta_{ik} - g(x_k)) \end{align} </span> which outputs probabilities such that the sum of the output nodes should equal unity. Thus, for this dataset, the network topology is 120-12-3 (two hidden layers, 3 nodes in output layer).</p>
+<p>This time, the network objective is to minimize the mean-squared error (MSE), and the network is trained until it drops below a value of <code>0.01</code>. Feeding in the test data shows a test accuracy of 100%, and the decision boundaries are shown in Fig.&nbsp;<a href=""#fig-decision"">4</a>. This is not surprising since the fruit feature vectors form distinct clusters and do not overlap. Now, let's consider adding more samples to the training/testing sets. Using the fruits dataset from [<a href=""#Muresan2018"">3</a>], I added more varieties of apples, bananas, and oranges, as well as an additional class of cherries. Figure&nbsp;<a href=""#fig-features-more"">5</a> shows the distribution of their feature vectors in a*-b* space. Notice now that the clusters occupy more area and are almost touching each other.</p>
+<div id=""fig-decision"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""container px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/17-NeuralNetworks/ban-app-ora-decision.png"" /></div>
+</div>
+</div>
+<p>Figure 4: Decision boundaries for bananas, apples, and oranges in a*-b* feature space.</p>
+</div>
+<div id=""fig-features-more"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""container px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/17-NeuralNetworks/fruits-train.png"" /></div>
+</div>
+</div>
+<p>Figure 5: a*-b* feature space of apples, bananas, oranges, and cherries.</p>
+</div>
+<p>With a total of 4752 feature vectors, I split the data 50-50 among the train-test sets. Therefore, the network topology now is 2376-237-23-4 (3 hidden layers, 4 output nodes). Plugging in the test data afterwards yields a test accuracy of 99.96%, and the decision boundaries are shown in Fig.&nbsp;<a href=""#fig-decision-more"">6</a>.</p>
+<div id=""fig-decision-more"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/17-NeuralNetworks/multiple-decision.png"" /></div>
+</div>
+</div>
+<p>Figure 6: Decision boundaries for bananas, apples, oranges, and cherries in a*-b* feature space.</p>
+</div>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A17 - Neural Networks</em> (2019).</li>
+<li id=""Lenail2019"">A. LeNail, Publication-ready neural network architecture schematics, <a href=""http://dx.doi.org/10.21105/joss.00747"" target=""_blank"" rel=""noopener""><em>Journal of Open Source Software</em> <strong>4</strong>, 747</a> (2019).</li>
+<li id=""Muresan2018"">H. Muresan and M. Oltean, Fruit recognition from images using deep learning, <a href=""http://dx.doi.org/10.2478/ausi-2018-0002"" target=""_blank"" rel=""noopener""><em>Acta Univ. Sapientiae, Informatica</em> <strong>10</strong>, 26</a> (2018).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/17-NeuralNetworks/func-fit.png",neural-networks,1,"machine learning, neural network, multilayer perceptron, function fitter, hyperparameter, rectified linear unit, gradient descent, classifier, loss function, fully-connected, densely-connected"
+18,2019-12-02 11:29:51,2020-04-13 18:14:25.987673,186,Activity 18: Convolutional Neural Networks,"<p>For this activity [<a href=""#Soriano2019"">1</a>], I will be using the Keras API with the TensorFlow backend with GPU support to make training faster, to easily monitor loss values and metrics, and quickly tune the network's hyperparameters to our liking. All experiments were performed on a laptop running on Windows 10, Intel Core i5-7300HQ, 24GB RAM, and an NVIDIA GeForce GTX 1060 with 6GB VRAM.</p>
+<h3>Dataset</h3>
+<p>I will be using this dataset [<a href=""#Kaggle2015"">2</a>] for training and this dataset [<a href=""#Kaggle2017"">3</a>] for testing. Both datasets contain thousands of color images of cats and dogs that are roughly equally distributed. The images are not staged so they may contain other objects in the frame other than the intended subject, or even more than one cat/dog. The images are named by the class label followed by its sequence number (e.g., cat.0001.jpg). This makes it easier to pre-process later on.</p>
+<ol type=""1"">
+<li>
+<h4>Input pipeline</h4>
+<p>We store the image filenames in a <code>pandas DataFrame</code> and not the images themselves. This is because due to the number of images, it is unlikely that they will fit in the GPU memory all at once (it is also a standard design paradigm to store pointers to the data rather than the data themselves, especially if you do not know what specific type of data it contains). After a few trials, the optimal batch size was determined to be 128. This means that only 128 images will be loaded in memory at a time. The data flow is as follows:</p>
+<ol>
+<li>Image is read from persistent storage (such as a hard drive).</li>
+<li>Image is loaded to RAM, and CPU performs pre-processing.</li>
+<li>Image is copied to GPU memory for training.</li>
+</ol>
+<p>In the above steps, transfer from RAM to GPU contributes most of the overhead, and usually, the GPU can be trained on the entire dataset much faster than the CPU can preprocess it. In order to optimize the use of resources, we parallelize the CPU and GPU operations such that the CPU prepares the next batch while the network is being trained on the GPU. A visualization of the parallelization as compared to standard serial programming is shown in Fig.&nbsp;<a href=""#fig-parallelize"">1</a>.</p>
+<div id=""fig-parallelize"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/18-CNN/parallelize.png"" /></div>
+</div>
+</div>
+<p>Figure 1: Comparison of standard serial programming with the parallelization scheme [<a href=""#Agarwal2019"">4</a>].</p>
+</div>
+</li>
+<li>
+<h4>Pre-processing</h4>
+<p>Upon importing the images from disk, we rescale the image intensity values so that they only span the range [0, 1]. Next, we augment the data by performing random affine transformations such as rotation, shear, flip, zoom, and translation. Finally, all images are reshaped to 224 \( \times \) 224 px. 20% of the training set will be set aside for validation. The parallelization scheme will be handling the batching of the images.</p>
+</li>
+</ol>
+<h3>Architecture</h3>
+<p>Our convolutional network architecture draws ideas from the designs of [<a href=""#Krizhevsky2012"">5</a>, <a href=""#Strika2019"">6</a>]. The visualization of the network is shown in Fig.&nbsp;<a href=""#fig-architecture"">2</a>.</p>
+<div id=""fig-architecture"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1"">
+<div class=""col my-auto""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/18-CNN/nn.png"" /></div>
+</div>
+<p>Figure 2: The architecture of the convolutional network used. Visualization generated using [<a href=""#Lenail2019"">7</a>].</p>
+</div>
+<p>Our input image has a dimension of 224 \( \times \) 224 \( \times \) 3. The first layer is a 2D convolutional layer with 32 filters and a kernel size of 3 \( \times \) 3, followed by a ReLU activation, and then by a max pooling layer with a pool size of 3 \( \times \) 3 and a stride of 2. This is succeeded by 3 more layers which repeat the same sequence, but with 64, 128, and 128 convolution filters, respectively. After the last convolutional layer, a dropout layer with a factor of 0.5 is employed. This randomly sets a fraction of the previous layer's weights to zero&mdash;in this case, half of the weights&mdash;to prevent overfitting. This is followed by a 512-unit fully-connected layer, activated by ReLU. The output layer is a lone fully-connected unit which is activated by a sigmoid. All layers are initialized with a random Gaussian distribution of zero mean and unit standard deviation, and all biases are initialized to zero. Because our output has only one node but we expect it return a binary value, we select our loss function to be the binary cross entropy, defined as <span id=""eq-crossentropy"" class=""math-container""> \begin{equation} H = -\frac{1}{N} \sum_{i=1}^N y_i \log[p(y_i)] + (1 - y_i)\log[1 - p(y_i)] \end{equation} </span> where \( y_i \) is the label, and \( p(y_i) \) is the predicted probability of an image of having label \( y_i \) for all \( N \) images [<a href=""#Godoy2018"">8</a>]. For the optimizer, we use stochastic gradient descent (SGD) with learning rate \( \eta \) = 0.01, momentum \( \mu \) = 0.9, and a decay of 5 \( \times \) 10<sup>4</sup>. We also use a learning rate scheduler, which reduces the learning rate by a factor of 10 if the validation loss does not improve over 5 epochs. Lastly, we also utilize a checkpointer, which saves a snapshot of the model weights if the validation loss decreases after an epoch. While monitoring the loss and accuracy, we now train the network until the validation loss drops below <code>0.1</code> or when the validation loss starts to diverge from the training loss.</p>
+<h3>Results</h3>
+<p>Figure&nbsp;<a href=""#fig-loss"">3</a> shows the loss and accuracy curves after training the network. At around epoch 20, the validation loss and accuracy start to level out. Training was manually stopped at epoch 53 after observing no further improvement in validation loss. We restored the best weights which were obtained at epoch 40, which had a validation loss and accuracy of 0.26 and 90.10%, respectively. Overall training took around 45 minutes.</p>
+<div id=""fig-loss"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/18-CNN/loss-acc.png"" /></div>
+</div>
+</div>
+<p>Figure 3: Loss and accuracy curves for the training and validation sets.</p>
+</div>
+<p>Feeding the test images in the network yields a loss of 0.09 and an excellent 97.03% accuracy. Sample predictions are shown in Fig.&nbsp;<a href=""#fig-preds"">4</a>. Only one out of the 18 predictions is wrong. Upon observation we can see why the network may have been confused: due to the dark color of the cat.</p>
+<div id=""fig-preds"" class=""container text-center my-5 px-md-5"">
+<div class=""row row-cols-1 px-md-5"">
+<div class=""col my-auto px-md-5"">
+<div class=""px-md-5""><img class=""cld-responsive img-fluid mx-auto"" data-src=""https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,dpr_auto,w_auto/v1/svip/186/18-CNN/outputs.png"" /></div>
+</div>
+</div>
+<p>Figure 4: Sample filenames and predictions of cat and dog images.</p>
+</div>
+<p>For increasing the accuracy of the network, one may consider adding another dropout layer after the deep fully-connected layer, playing around with the convolutional layer parameters, and using a deeper network.</p>
+<h3>References</h3>
+<ol class=""reference"">
+<li id=""Soriano2019"">M. N. Soriano, <em>A18 - Convolutional Neural Networks</em> (2019).</li>
+<li id=""Kaggle2015"">Kaggle, <a href=""https://www.kaggle.com/c/dogs-vs-cats/data"" target=""_blank"" rel=""noopener""><em>Dogs vs cats</em></a> (2015).</li>
+<li id=""Kaggle2017"">Kaggle, <a href=""https://www.kaggle.com/tongpython/cat-and-dog"" target=""_blank"" rel=""noopener""><em>Cats and dogs dataset to train a DL model</em></a> (2017).</li>
+<li id=""Agarwal2019"">A. Agarwal, <a href=""https://towardsdatascience.com/building-efficient-data-pipelines-using-tensorflow-8f647f03b4ce"" target=""_blank"" rel=""noopener""><em>Building efficient data pipelines using TensorFlow</em></a> (2019),</li>
+<li id=""Krizhevsky2012"">A. Krizhevsky, I. Sutskever, and G. E. Hinton, ImageNet classication with deep convolutional neural networks, <em>Advances in Neural Information Processing Systems</em> <strong>25</strong>, 1097 (2012).</li>
+<li id=""Strika2019"">L. Strika, <a href=""https://www.kdnuggets.com/2019/07/convolutional-neural-networks-python-tutorial-tensorflow-keras.html"" target=""_blank"" rel=""noopener""><em>Convolutional neural networks: A Python tutorial using TensorFlow and Keras</em></a> (2019).</li>
+<li id=""Lenail2019"">A. LeNail, NN-SVG: Publication-ready neural network architecture schematics, <a href=""http://dx.doi.org/10.21105/joss.00747"" target=""_blank"" rel=""noopener""><em>Journal of Open Source Software</em> <strong>4</strong>, 747</a> (2019).</li>
+<li id=""Godoy2018"">D. Godoy, <a href=""https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a"" target=""_blank"" rel=""noopener""><em>Understanding binary cross-entropy/log loss: a visual explanation</em></a> (2018).</li>
+</ol>","https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/svip/186/18-CNN/nn.png",convolutional-nets,1,"machine learning, convolutional neural network, classifier, parallelization, tensorflow, gpu acceleration, fully-connected, densely-connected, rectified linear unit, softmax, binary crossentropy, momentum, keras, cat, dog"
