@@ -43,6 +43,7 @@ def client_gallery(request, client_slug):
     images = functions.get_resources(f'{settings.ASSET_DIR}/clients/{client_slug}')
     context = {
         'active_page': client.name,
+        'client': client,
         'group': client_slug,
         'images': images,
     }

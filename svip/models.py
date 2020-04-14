@@ -20,6 +20,7 @@ class BlogPost(models.Model):
         'Course',
         on_delete=models.CASCADE,
         to_field='number',
+        related_name='posts',
     )
     title = models.CharField(max_length=256, unique=True)
     slug = models.SlugField(max_length=256, unique=True)
@@ -44,6 +45,7 @@ class Course(models.Model):
     slug = models.SlugField(max_length=256, unique=True)
     title = models.CharField(max_length=256)
     description = models.TextField()
+    cover = models.URLField(blank=True)
 
     def __str__(self):
         return f'{self.name}'

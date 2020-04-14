@@ -20,7 +20,7 @@ class MultiFigure extends React.Component {
                     {
                         id : this.props.id,
                         className: 'cld-responsive img-fluid mx-auto',
-                        'data-src': `https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/186/${this.props.folder}/${this.props.url}`,
+                        'data-src': `https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto,dpr_auto/v1/svip/${this.props.subject}/${this.props.folder}/${this.props.url}`,
                     },
                     null,
                 ),
