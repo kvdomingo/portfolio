@@ -13,12 +13,6 @@ STATUS = (
     (1, 'Published'),
 )
 
-SUBJECT = (
-    (0, None),
-    (186, 'Applied Physics 186'),
-    (187, 'Applied Physics 187'),
-)
-
 class BlogPost(models.Model):
     created = models.DateTimeField(default=set_aware_time)
     modified = models.DateTimeField(auto_now=True)
@@ -30,12 +24,15 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=256, unique=True)
     slug = models.SlugField(max_length=256, unique=True)
     body = HTMLField('Body')
-    keywords = models.CharField(max_length=256, blank=True)
+    keywords = models.TextField(max_length=256, blank=True)
     cover = models.URLField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         ordering = ['-created']
+
+    def get_absolute_url(self):
+        return f'/svip/{self.subject.slug}/{self.slug}/'
 
     def __str__(self):
         return f'{self.subject}: {self.title}'

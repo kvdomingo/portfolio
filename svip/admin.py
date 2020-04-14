@@ -29,8 +29,5 @@ class CourseAdmin(admin.ModelAdmin):
     list_display_links = ('name', )
 
 
-admin.site.index_title = 'Admin'
-admin.site.site_title = 'Kenneth V. Domingo'
-admin.site.site_header = 'kvdomingo.xyz administration'
 admin.site.register(BlogPost, PostAdmin)
 admin.site.register(Course, CourseAdmin)

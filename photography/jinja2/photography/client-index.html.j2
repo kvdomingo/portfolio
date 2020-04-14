@@ -1,0 +1,36 @@
+{% extends 'photography/base.html.j2' %}
+
+{% block head %}
+    {% set meta_desc = active_page + 'client section of the photography portfolio of Kenneth V. Domingo' %}
+    <meta name="keywords" content="photography, latest, live, clients, portraits, portfolio, kvdomingo, Kenneth V. Domingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
+{% block gallery %}
+
+<link rel="stylesheet" href="{{ static('photography/css/index.css') }}" />
+
+<div class="grid text-center">
+    <div class="grid-sizer"></div>
+    {% for im, imfull in images %}
+        {% if im.width > 2*im.height %}
+            {% set grid_item = 'grid-item--width3' %}
+        {% elif im.height < im.width < 2*im.height  %}
+            {% set grid_item = 'grid-item--width2' %}
+        {% else %}
+            {% set grid_item = 'grid-item' %}
+        {% endif %}
+        <div class="grid-item {{ grid_item }} px-md-3 px-0 py-2 mx-0 pr-4 pr-md-0">
+            <a class="col my-auto" href="{{ imfull }}" data-lightbox="horizontals">
+                <img data-src="{{ im.url }}" class="cld-responsive cld-shadow img-fluid" />
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ static('photography/js/index.js') }}"></script>
+
+{% endblock %}
