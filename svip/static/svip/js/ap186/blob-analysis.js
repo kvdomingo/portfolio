@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         hist_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '10-BlobAnalysis' },
+            { ...image, id: image.key, folder: '10-BlobAnalysis', subject: '186' },
             null,
         )),
         document.querySelector('#fig-hists div'),

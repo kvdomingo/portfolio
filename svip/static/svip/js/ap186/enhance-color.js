@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         image_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '6-EnhanceColor' },
+            { ...image, id: image.key, folder: '6-EnhanceColor', subject: '186' },
             null,
         )),
         document.querySelector('#fig-enhance div'),
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         wb_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '6-EnhanceColor' },
+            { ...image, id: image.key, folder: '6-EnhanceColor', subject: '186' },
             null,
         )),
         document.querySelector('#fig-awbaet div'),

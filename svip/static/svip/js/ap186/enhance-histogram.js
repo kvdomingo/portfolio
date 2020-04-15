@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         image_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '5-EnhanceHistogram' },
+            { ...image, id: image.key, folder: '5-EnhanceHistogram', subject: '186' },
             null,
         )),
         document.querySelector('#fig-enhance div'),
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         crush_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '5-EnhanceHistogram' },
+            { ...image, id: image.key, folder: '5-EnhanceHistogram', subject: '186' },
             null,
         )),
         document.querySelector('#fig-crushed div'),

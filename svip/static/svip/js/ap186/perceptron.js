@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '13-Perceptron' },
+            { ...image, id: image.key, folder: '13-Perceptron', subject: '186' },
             null,
         )),
         document.querySelector('#fig-decision div'),

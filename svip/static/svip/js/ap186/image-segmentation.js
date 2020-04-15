@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         check_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '7-ImageSegment' },
+            { ...image, id: image.key, folder: '7-ImageSegment', subject: '186' },
             null,
         )),
         document.querySelector('#fig-check div'),
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         check_seg_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '7-ImageSegment' },
+            { ...image, id: image.key, folder: '7-ImageSegment', subject: '186' },
             null,
         )),
         document.querySelector('#fig-check-seg div'),

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         frame_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '11-BasicVideo' },
+            { ...image, id: image.key, folder: '11-BasicVideo', subject: '186' },
             null,
         )),
         document.querySelector('#fig-frames div'),

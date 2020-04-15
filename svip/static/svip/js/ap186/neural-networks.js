@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         funcfit_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '17-NeuralNetworks' },
+            { ...image, id: image.key, folder: '17-NeuralNetworks', subject: '186' },
             null,
         )),
         document.querySelector('#fig-preds div'),

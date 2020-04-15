@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         frame_data.map((image, i) => e(
             MultiFigure,
-            { ...image, id: image.key, folder: '12-FeatureExtract' },
+            { ...image, id: image.key, folder: '12-FeatureExtract', subject: '186' },
             null,
         )),
         document.querySelector('#fig-projection div'),
