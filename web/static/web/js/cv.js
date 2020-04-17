@@ -1,30 +1,37 @@
-var e = React.createElement;
+document.addEventListener('DOMContentLoaded', function () {
+    ReactDOM.render(React.createElement(
+        'ul',
+        { className: 'timeline' },
+        educationInfo.map(function (educ) {
+            return React.createElement(
+                React.Fragment,
+                null,
+                React.createElement(EducationTimeline, educ)
+            );
+        })
+    ), document.getElementById('education'));
 
-document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
-        educationInfo.map(educ => e(
-            EducationTimeline,
-            { ...educ },
-            null,
-        )),
-        document.querySelector('#education')
-    );
+    ReactDOM.render(React.createElement(
+        'ul',
+        { className: 'timeline' },
+        workInfo.map(function (work) {
+            return React.createElement(
+                React.Fragment,
+                null,
+                React.createElement(WorkTimeline, work)
+            );
+        })
+    ), document.getElementById('work'));
 
-    ReactDOM.render(
-        workInfo.map(work => e(
-            WorkTimeline,
-            { ...work },
-            null,
-        )),
-        document.querySelector('#work')
-    );
-
-    ReactDOM.render(
-        projectInfo.map(proj => e(
-            ProjectTimeline,
-            { ...proj },
-            null,
-        )),
-        document.querySelector('#projects')
-    );
+    ReactDOM.render(React.createElement(
+        'ul',
+        { className: 'timeline' },
+        projectInfo.map(function (proj) {
+            return React.createElement(
+                React.Fragment,
+                null,
+                React.createElement(ProjectTimeline, proj)
+            );
+        })
+    ), document.getElementById('projects'));
 });
