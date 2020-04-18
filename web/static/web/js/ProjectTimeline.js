@@ -11,21 +11,24 @@ var projectInfo = [{
     name: 'DetectPH',
     startDate: 'Mar 2020',
     endDate: 'present',
-    href: 'https://detectph.com/',
+    site: 'https://detectph.com/',
+    download: null,
     description: 'Volunteered as one of the designers of an Android/iOS app to perform contact tracing of COVID-19 cases in the Philippines, spearheaded by the UP Diliman College of Science.'
 }, {
     key: 'covid19ph',
     name: 'COVID-19 PH Tracker Dashboard',
     startDate: 'Mar 2020',
     endDate: 'present',
-    href: 'https://ncovenience.herokuapp.com/',
+    site: 'https://ncovenience.herokuapp.com/',
+    download: null,
     description: 'Designed an information hub, dashboard, and API regarding COVID-19 data in the Philippines.'
 }, {
     key: 'primerdriver',
     name: 'PrimerDriver',
     startDate: 'Jan 2020',
     endDate: 'Feb 2020',
-    href: 'https://primerdriver.herokuapp.com/',
+    site: 'https://primerdriver.herokuapp.com/',
+    download: 'https://github.com/kvdomingo/primerdriver/releases',
     description: 'A command-line tool and web application to design PCR primers for site-directed mutagenesis.'
 }];
 
@@ -60,8 +63,18 @@ var ProjectTimeline = function (_React$Component) {
                     { className: 'lead my-0 pb-3' },
                     React.createElement(
                         'a',
-                        { href: this.props.href, target: '_blank' },
-                        'Project Website'
+                        { href: this.props.site, target: '_blank' },
+                        'Project Website '
+                    ),
+                    this.props.download && React.createElement(
+                        React.Fragment,
+                        null,
+                        '| ',
+                        React.createElement(
+                            'a',
+                            { href: this.props.download, target: '_blank' },
+                            'Download'
+                        )
                     )
                 ),
                 React.createElement(

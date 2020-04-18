@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
-    <link rel="shortcut icon" href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1586798478/logo/favicon.png" />
+    <link rel="shortcut icon" href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    {# <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> #}
+    {# <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet"> #}
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -57,12 +58,12 @@
         <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_PH" />
-        <meta property="og:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1586798478/logo/logo-black.png" />
+        <meta property="og:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" />
 
         <meta property="twitter:card" content="summary" />
         <meta property="twitter:creator" content="@rockentothemoon" />
         <meta property="twitter:site" content="@rockentothemoon" />
-        <meta name="twitter:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1586798478/logo/logo-black.png" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" />
         <meta name="twitter:title" content="{{ active_page }} | Kenneth V. Domingo" />
         <meta name="twitter:image:alt" content="{{ active_page }} | Kenneth V. Domingo" />
 
@@ -73,16 +74,16 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg px-5 py-3 mb-4 {{ 'fixed-top navbar-dark' if active_page == 'Home' else 'sticky-top navbar-light' }}" style="box-shadow: none; transition: background 0.5s; {{ "background: rgba(255, 255, 255, 0.90)" if active_page != 'Home' }}">
+    <nav class="navbar navbar-expand-lg px-5 py-3 mb-4 navbar-slick {{ 'fixed-top navbar-dark' if active_page == 'Home' else 'sticky-top navbar-light' }}" style="{{ "background: rgba(255, 255, 255, 0.90)" if active_page != 'Home' }}">
         <a class="navbar-brand" href="{{ url('web:index') }}">
             {% if active_page == 'Home' %}
-                <img src="https://res.cloudinary.com/kdphotography-assets/image/upload/v1586798479/logo/logo-white.png" height="30" alt="KVD logo" />
+                <img src="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-white.png" class="navbar-slick-brand" alt="KVD logo" />
             {% else %}
-                <img src="https://res.cloudinary.com/kdphotography-assets/image/upload/v1586798478/logo/logo-black.png" height="30" alt="KVD logo" />
+                <img src="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" class="navbar-slick-brand" alt="KVD logo" />
             {% endif %}
         </a>
         <div class="overlay"></div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -95,11 +96,10 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="nav-portfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
-                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.8);">
+                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-default" aria-labelledby="nav-portfolio" style="background-color: rgba(255, 255, 255, 0.9);">
                         <a class="dropdown-item" href="{{ url('photography:index') }}">Photography</a>
                         <a class="dropdown-item" href="{{ url('svip:index') }}">Coursework</a>
-                        <a class="dropdown-item disabled" href="#">Web Development</a>
-                        <a class="dropdown-item disabled" href="#">App Development</a>
+                        <a class="dropdown-item disabled text-muted" href="#">Web Development</a>
                     </div>
                 </li>
             </ul>
@@ -116,9 +116,6 @@
             </a>
             <a href="mailto:hello@kvdomingo.xyz" class="d-block my-2">hello@kvdomingo.xyz</a><br />
             <div class="my-1">
-                <h4 style="display: inline;"><a class="mx-2" href="https://m.me/arockentothemoon" target="_blank"><i class="fab fa-facebook-messenger"></i></a></h4>
-                <h4 style="display: inline;"><a class="mx-2" href="https://facebook.com/arockentothemoon" target="_blank"><i class="fab fa-facebook-square"></i></a></h4>
-                <h4 style="display: inline;"><a class="mx-2" href="https://twitter.com/rockentothemoon" target="_blank"><i class="fab fa-twitter-square"></i></a></h4>
                 <h4 style="display: inline;"><a class="mx-2" href="https://linkedin.com/kvdomingo" target="_blank"><i class="fab fa-linkedin"></i></a></h4>
                 <h4 style="display: inline;"><a class="mx-2" href="https://github.com/kvdomingo" target="_blank"><i class="fab fa-github"></i></a></h4>
             </div>

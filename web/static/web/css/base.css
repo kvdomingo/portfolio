@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 @media (min-width: 576px) {
@@ -41,4 +41,14 @@ body {
     .navbar .dropdown-toggle, .nav-tabs .dropdown-toggle {
         margin-bottom: 0;
     }
+}
+
+.navbar-slick {
+    box-shadow: none;
+    transition: background 0.5s, padding 0.5s;
+}
+
+.navbar-slick-brand {
+    height: 30px;
+    transition: height 0.5s;
 }
