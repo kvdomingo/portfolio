@@ -6,32 +6,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var educationInfo = [{
-    key: 'upd',
-    university: 'University of the Philippines',
-    startDate: 'Aug 2015',
-    endDate: 'Jun 2020 (exp.)',
-    institute: 'National Institute of Physics',
-    course: ['B.S. Applied Physics (Major in Instrumentation)']
-}, {
-    key: 'cs50',
-    university: 'Harvard University',
-    startDate: 'Dec 2019',
-    endDate: 'Apr 2020',
-    institute: 'Division of Continuing Education',
-    course: ['CS50W: Web Programming with Python and JavaScript', 'CS50M: Mobile App Development with React Native']
-}];
+var TimelineElement = function (_React$Component) {
+    _inherits(TimelineElement, _React$Component);
 
-var EducationTimeline = function (_React$Component) {
-    _inherits(EducationTimeline, _React$Component);
+    function TimelineElement(props) {
+        _classCallCheck(this, TimelineElement);
 
-    function EducationTimeline(props) {
-        _classCallCheck(this, EducationTimeline);
-
-        return _possibleConstructorReturn(this, (EducationTimeline.__proto__ || Object.getPrototypeOf(EducationTimeline)).call(this, props));
+        return _possibleConstructorReturn(this, (TimelineElement.__proto__ || Object.getPrototypeOf(TimelineElement)).call(this, props));
     }
 
-    _createClass(EducationTimeline, [{
+    _createClass(TimelineElement, [{
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -40,33 +24,61 @@ var EducationTimeline = function (_React$Component) {
                 React.createElement(
                     'h4',
                     { className: 'h4-responsive mb-0 d-md-inline' },
-                    this.props.university
+                    this.props.title
                 ),
                 React.createElement(
                     'div',
                     { className: 'timeline-date text-muted float-md-right my-md-0 my-2' },
                     React.createElement('i', { className: 'far fa-clock mr-1' }),
-                    this.props.startDate + ' - ' + this.props.endDate
+                    this.props.startDate + ' \u2013 ' + this.props.endDate
                 ),
                 React.createElement(
                     'p',
                     { className: 'lead my-0' },
-                    this.props.institute
+                    this.props.connection.map(function (conn, i) {
+                        if (i === 0) {
+                            return React.createElement(
+                                React.Fragment,
+                                null,
+                                React.createElement(
+                                    'a',
+                                    { href: conn.href },
+                                    conn.name,
+                                    ' '
+                                )
+                            );
+                        } else {
+                            return React.createElement(
+                                React.Fragment,
+                                null,
+                                '| ',
+                                React.createElement(
+                                    'a',
+                                    { href: conn.href },
+                                    conn.name
+                                )
+                            );
+                        }
+                    })
                 ),
-                this.props.course.map(function (c) {
-                    return React.createElement(
-                        React.Fragment,
-                        null,
-                        React.createElement(
-                            'p',
-                            { className: 'text-muted my-0' },
-                            c
-                        )
-                    );
-                })
+                React.createElement(
+                    'div',
+                    { className: 'mt-2 mb-5' },
+                    this.props.description.map(function (desc, i) {
+                        return React.createElement(
+                            React.Fragment,
+                            null,
+                            React.createElement(
+                                'p',
+                                { className: 'my-0' },
+                                desc
+                            )
+                        );
+                    })
+                )
             );
         }
     }]);
 
-    return EducationTimeline;
+    return TimelineElement;
 }(React.Component);

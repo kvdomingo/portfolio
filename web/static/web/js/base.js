@@ -19,4 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 .addClass('py-3');
         }
     });
+
+    AOS.init();
 });
