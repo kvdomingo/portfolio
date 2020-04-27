@@ -18,7 +18,7 @@ class PostAdmin(AdminChangeLinksMixin, admin.ModelAdmin):
     list_filter = ('status', 'subject__name')
     list_editable = ('status',)
     search_fields = ['title', 'body']
-    prepropulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {'slug': ['title']}
     actions = (make_published, make_unpublished)
     change_links = ('subject',)
 

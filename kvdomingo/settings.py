@@ -37,8 +37,7 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'kvdwebdev.herokuapp.com',
-    'kvdomingo.herokuapp.com',
+    '.herokuapp.com',
     'kvdomingo.xyz',
 ]
 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'web.apps.WebConfig',
     'photography.apps.PhotographyConfig',
     'svip.apps.SvipConfig',
+    'dev.apps.DevConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

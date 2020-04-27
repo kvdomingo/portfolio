@@ -13,6 +13,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
             'photography:index',
             'photography:clients',
             'svip:index',
+            'dev:index',
         ]
 
     def location(self, item):

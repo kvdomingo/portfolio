@@ -1,0 +1,57 @@
+{% extends 'svip/base.html.j2' %}
+
+{% block head %}
+    {% set meta_desc = this_project.summary %}
+    <meta name="keywords" content="{{ this_project.keywords }}, applied physics, app physics, {{ this_project.title }}, computational physics, kvdomingo, Kenneth V. Domingo" />
+    <meta name="description" content="{{ meta_desc }}" />
+    <meta name="og:description" content="{{ meta_desc }}" />
+    <meta name="twitter:description" content="{{ meta_desc }}" />
+{% endblock %}
+
+
+{% block sidenav %}
+    {% for project in all_projects %}
+        <a href="{{ url('dev:index') }}" class="nav-link my-1 {{ 'active' if active_page_slug == project.slug }}" role="tab">
+            {{ project.title }}
+        </a>
+    {% endfor %}
+{% endblock %}
+
+
+{% block blog %}
+
+<link rel="stylesheet" href="{{ static('dev/css/' + this_project.slug + '.css') }}" />
+<script src="{{ static('dev/js/' + this_project.slug + '.js') }}"></script>
+
+<div class="container">
+    <h1>{{ this_project.title }}</h1>
+    <div class="mb-2">
+        <i class="fas fa-globe-asia mr-1 text-muted"></i>
+        <p class="d-inline">
+            <a style="color: mediumvioletred;" href="{{ this_project.organization_url }}" target="_blank">
+                {{ this_project.organization }}
+            </a>
+        </p>
+    </div>
+    <div>
+        <i class="far fa-clock mr-1 text-muted"></i>
+        <p class="text-muted d-inline">
+            {{ this_project.start_date }} &ndash; {{ this_project.end_date }}
+        </p>
+    </div>
+    <p class="my-5">
+        {{ this_project.body }}
+    </p>
+    <p class="my-5">
+        <div class="text-muted">
+            <h5>Keywords</h5>
+            {% for keyword in this_project.keywords.split(', ') %}
+                <span class="badge badge-light mx-1 my-1">{{ keyword }}</span>
+            {% endfor %}
+        </div>
+    </p>
+</div>
+
+<script src="{{ static('dev/js/project.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+ol.affil {
+    counter-reset: affil-counter;
+    list-style: none;
+}
+
+ol.affil li.list-affil {
+    counter-increment: affil-counter;
+}
+
+ol.affil li.list-affil::before {
+    content: counter(affil-counter);
+    font-size: 80%;
+    margin-right: 2em;
+    vertical-align: super;
+}
+
+ol.affil li.list-intern {
+    margin-top: 2em;
+}
+
+ol.affil li.list-intern::before {
+    content: '*';
+    font-size: 80%;
+    margin-right: 2em;
+    vertical-align: super;
+}
+
+.math-container {
+    display: block;
+    overflow-x: auto;
+}
+
+.reference li {
+    padding-left: 2em;
+    text-indent: -2em;
+}

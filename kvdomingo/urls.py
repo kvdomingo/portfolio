@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('web.urls')),
     path('', include('photography.urls')),
     path('', include('svip.urls')),
+    path('', include('dev.urls')),
 ]
