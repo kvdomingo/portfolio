@@ -21,4 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     AOS.init();
+    
+    document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+    });
 });
