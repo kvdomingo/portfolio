@@ -23,7 +23,7 @@
 }
 
 .console-bar {
-    background-color: #acacac;
+    background-color: rgb(224, 224, 224);
     border-radius: 10px 10px 0 0;
     height: 25px;
 }

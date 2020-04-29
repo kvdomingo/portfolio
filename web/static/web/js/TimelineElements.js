@@ -6,16 +6,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TimelineElement = function (_React$Component) {
-    _inherits(TimelineElement, _React$Component);
+var TimelineElements = function (_React$Component) {
+    _inherits(TimelineElements, _React$Component);
 
-    function TimelineElement(props) {
-        _classCallCheck(this, TimelineElement);
+    function TimelineElements(props) {
+        _classCallCheck(this, TimelineElements);
 
-        return _possibleConstructorReturn(this, (TimelineElement.__proto__ || Object.getPrototypeOf(TimelineElement)).call(this, props));
+        return _possibleConstructorReturn(this, (TimelineElements.__proto__ || Object.getPrototypeOf(TimelineElements)).call(this, props));
     }
 
-    _createClass(TimelineElement, [{
+    _createClass(TimelineElements, [{
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -30,7 +30,7 @@ var TimelineElement = function (_React$Component) {
                     'div',
                     { className: 'timeline-date text-muted float-md-right my-md-0 my-2' },
                     React.createElement('i', { className: 'far fa-clock mr-1' }),
-                    this.props.startDate + ' \u2013 ' + this.props.endDate
+                    this.props.startDate === '' ? '' + this.props.endDate : this.props.startDate + ' \u2013 ' + this.props.endDate
                 ),
                 React.createElement(
                     'p',
@@ -39,10 +39,10 @@ var TimelineElement = function (_React$Component) {
                         if (i === 0) {
                             return React.createElement(
                                 React.Fragment,
-                                null,
+                                { key: i },
                                 React.createElement(
                                     'a',
-                                    { href: conn.href },
+                                    { href: conn.href, target: '_blank' },
                                     conn.name,
                                     ' '
                                 )
@@ -50,11 +50,11 @@ var TimelineElement = function (_React$Component) {
                         } else {
                             return React.createElement(
                                 React.Fragment,
-                                null,
+                                { key: i },
                                 '| ',
                                 React.createElement(
                                     'a',
-                                    { href: conn.href },
+                                    { href: conn.href, target: '_blank' },
                                     conn.name
                                 )
                             );
@@ -67,18 +67,23 @@ var TimelineElement = function (_React$Component) {
                     this.props.description.map(function (desc, i) {
                         return React.createElement(
                             React.Fragment,
-                            null,
+                            { key: i },
                             React.createElement(
                                 'p',
                                 { className: 'my-0' },
                                 desc
                             )
                         );
-                    })
+                    }),
+                    this.props.related ? React.createElement(
+                        'a',
+                        { href: this.props.related, className: 'btn btn-sm btn-outline-black ml-0 mt-3' },
+                        'See in portfolio'
+                    ) : null
                 )
             );
         }
     }]);
 
-    return TimelineElement;
+    return TimelineElements;
 }(React.Component);
