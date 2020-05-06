@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Project
+from .serializers import *
+from rest_framework import generics
 
 
 def index(request):
@@ -21,3 +23,9 @@ def project(request, slug):
         'all_projects': projects,
     }
     return render(request, 'dev/project.html.j2', context)
+
+
+class ProjectApi(generics.ListAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    filterset_fields = ['slug']

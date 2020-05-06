@@ -5,7 +5,9 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse
 from . import functions
-from .models import Client
+from .models import *
+from .serializers import *
+from rest_framework import generics
 
 
 def index(request):
@@ -48,3 +50,10 @@ def client_gallery(request, client_slug):
         'images': images,
     }
     return render(request, 'photography/client-index.html.j2', context)
+
+
+
+class ClientApi(generics.ListAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    filterset_fields = ['slug']

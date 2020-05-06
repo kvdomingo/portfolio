@@ -19,9 +19,11 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('', include('web.urls')),
     path('', include('photography.urls')),
     path('', include('svip.urls')),
     path('', include('dev.urls')),
+    path('', include('frontend.urls')),
 ]

@@ -4,6 +4,37 @@
     <meta charset="utf-8" />
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+
+    {% if not settings.DEBUG and settings.ON_HEROKU %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162676656-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-162676656-2');
+        </script>
+
+        <meta name="author" content="Kenneth V. Domingo" />
+
+        <meta property="og:url" content="https://kvdomingo.xyz" />
+        <meta property="og:site_name" content="Kenneth V. Domingo" />
+        <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_PH" />
+        <meta property="og:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" />
+
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:creator" content="@rockentothemoon" />
+        <meta property="twitter:site" content="@rockentothemoon" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" />
+        <meta name="twitter:title" content="{{ active_page }} | Kenneth V. Domingo" />
+        <meta name="twitter:image:alt" content="{{ active_page }} | Kenneth V. Domingo" />
+
+        {% block head %}{% endblock %}
+    {% endif %}
+
+    <title>{{ active_page }} | Kenneth V. Domingo</title>
+
     <link rel="shortcut icon" href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     {# <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> #}
@@ -43,42 +74,12 @@
     <link rel="stylesheet" href="{{ static('web/css/base.css') }}" />
     <script src="{{ static('svip/js/base.js') }}"></script>
 
-    <title>{{ active_page }} | Kenneth V. Domingo</title>
-
     {% if settings.DEBUG %}
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     {% else %}
         <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
-    {% endif %}
-
-    {% if not settings.DEBUG and settings.ON_HEROKU %}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162676656-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-162676656-2');
-        </script>
-
-        <meta name="author" content="Kenneth V. Domingo" />
-
-        <meta property="og:url" content="https://kvdomingo.xyz" />
-        <meta property="og:site_name" content="Kenneth V. Domingo" />
-        <meta property="og:title" content="{{ active_page }} | Kenneth V. Domingo" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_PH" />
-        <meta property="og:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" />
-
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:creator" content="@rockentothemoon" />
-        <meta property="twitter:site" content="@rockentothemoon" />
-        <meta name="twitter:image" content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png" />
-        <meta name="twitter:title" content="{{ active_page }} | Kenneth V. Domingo" />
-        <meta name="twitter:image:alt" content="{{ active_page }} | Kenneth V. Domingo" />
-
-        {% block head %}{% endblock %}
     {% endif %}
 
 </head>

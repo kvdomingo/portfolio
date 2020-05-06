@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'photography.apps.PhotographyConfig',
     'svip.apps.SvipConfig',
     'dev.apps.DevConfig',
+    'frontend.apps.FrontendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
+    'django_filters',
+    'rest_framework',
     'tinymce',
 ]
 
@@ -109,6 +112,21 @@ DATABASES = {
     }
 }
 
+# Rest API
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+}
+
+if not DEBUG:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -153,6 +171,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'web/static/'),
     os.path.join(BASE_DIR, 'photography/static/'),
+    os.path.join(BASE_DIR, 'svip/static'),
+    os.path.join(BASE_DIR, 'dev/static'),
+    os.path.join(BASE_DIR, 'build/static'),
 ]
 
 cloudinary.config(

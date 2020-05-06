@@ -1,7 +1,9 @@
 import pytz
 from django.shortcuts import render
 from django.conf import settings
-from .models import BlogPost, Course
+from .models import *
+from .serializers import *
+from rest_framework import generics
 
 
 def index(request):
@@ -42,3 +44,15 @@ def post(request, subject_slug, post_slug):
         'subject': subject,
     }
     return render(request, 'svip/post.html.j2', context)
+
+
+class BlogPostApi(generics.ListAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+    filterset_fields = ['slug', 'subject__number']
+
+
+class CourseApi(generics.ListAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+    filterset_fields = ['number', 'slug']
