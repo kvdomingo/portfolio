@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import 'mdbreact';
 
 export default class App extends Component {
@@ -31,15 +30,18 @@ export default class App extends Component {
 
     render() {
         return (
-            <ul className='list-group'>
-                {this.state.data.map(course => {
-                    return (
-                        <li className='list-group-item' key={course.number}>
-                            {course.name} - {course.title}
-                        </li>
-                    );
-                })}
-            </ul>
+            <div>
+                <ul className='list-group'>
+                    {this.state.data.map(course => {
+                        return (
+                            <li className='list-group-item' key={course.number}>
+                                {course.name} - {course.title}
+                            </li>
+                        );
+                    })}
+                </ul>
+                <a className='btn btn-primary' href='#'>FUCK!</a>
+            </div>
         );
     }
 }
