@@ -52,13 +52,13 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./public/index.html",
+            template: "./frontend/public/index.html",
             filename: "index.html",
             inject: "body"
         })
     ],
     devServer: {
-        contentBase: "./src",
+        contentBase: "./frontend/src",
         compress: true
     }
 };

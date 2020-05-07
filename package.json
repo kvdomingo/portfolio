@@ -1,12 +1,12 @@
 {
-  "name": "frontend",
+  "name": "kvdomingo-xyz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./src/index.js --output ./static/frontend/main.js",
-    "build": "webpack --mode production ./src/index.js --output ./static/frontend/main.js",
-    "start": "webpack-dev-server --open --hot --mode development --port 3000 --entry ./src/index.js",
+    "dev": "webpack --mode development ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "start": "webpack-dev-server --open --hot --mode development --port 3000 --entry ./frontend/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run build"
   },
@@ -14,7 +14,7 @@
     "node": "12.16.1",
     "npm": "6.14.5"
   },
-  "author": "",
+  "author": "Kenneth V. Domingo",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.6",
