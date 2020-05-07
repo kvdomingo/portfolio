@@ -1,3 +1,53 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Rubik', sans-serif
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: 1rem
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 1.05rem
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 1.1rem
+    }
+}
+
+/* @media screen and (min-width: 768px) {
+    .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu {
+        margin-top: 0;
+    }
+
+    .dropdown-toggle {
+        margin-bottom: 2px;
+    }
+
+    .navbar .dropdown-toggle, .nav-tabs .dropdown-toggle {
+        margin-bottom: 0;
+    }
+} */
+
+.navbar-slick {
+    box-shadow: none;
+    transition: background 0.5s, padding 0.5s;
+}
+
+.navbar-slick-brand {
+    height: 30px;
+    transition: height 0.5s;
 }

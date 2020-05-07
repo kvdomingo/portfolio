@@ -7,4 +7,4 @@ import './components/index.css';
 import App from './components/App';
 
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<App />, document.getElementById('root'));
