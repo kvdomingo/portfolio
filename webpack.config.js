@@ -1,6 +1,7 @@
-const autoprefixer = require("autoprefixer");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
+const autoprefixer = require("autoprefixer"),
+    HtmlWebpackPlugin = require("html-webpack-plugin"),
+    BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin,
+    BrotliPlugin = require('brotli-webpack-plugin');
 
 
 module.exports = {
@@ -51,6 +52,13 @@ module.exports = {
         ]
     },
     plugins: [
+        new BundleAnalyzerPlugin(),
+        new BrotliPlugin({
+            asset: "[path].br[query]",
+            test: /\.(js|css|html|svg)$/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),
         new HtmlWebpackPlugin({
             template: "./frontend/public/index.html",
             filename: "index.html",

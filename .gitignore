@@ -238,3 +238,5 @@ dist
 
 # Post drafts
 content/
+
+frontend/static/frontend/
