@@ -171,9 +171,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'web/static/'),
     os.path.join(BASE_DIR, 'photography/static/'),
-    os.path.join(BASE_DIR, 'svip/static'),
-    os.path.join(BASE_DIR, 'dev/static'),
-    os.path.join(BASE_DIR, 'build/static'),
+    os.path.join(BASE_DIR, 'svip/static/'),
+    os.path.join(BASE_DIR, 'dev/static/'),
+    os.path.join(BASE_DIR, 'frontend/static/'),
 ]
 
 cloudinary.config(

@@ -233,10 +233,6 @@ dist
 # TernJS port file
 .tern-port
 
-# Linter
-.jshintrc
-.eslintrc
-
 # Large media
 *.psd
 
