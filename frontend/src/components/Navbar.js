@@ -13,37 +13,32 @@ import {
     MDBDropdownItem as DropdownItem,
 } from 'mdbreact';
 import { Image } from 'cloudinary-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './index.css'
-import PropTypes from 'prop-types';
 
 
 export default class NavBar extends React.Component {
-    static propTypes = {
-        activePage: PropTypes.string.isRequired,
-        activePageHandler: PropTypes.func.isRequired,
-    };
-
     constructor(props) {
         super(props);
         this.state = {
+            currentPath: window.location.pathname,
             navClass: 'px-5 py-3',
-            navFixed: (this.props.activePage === 'home')
+            navFixed: '', /* (pathName === `${this.props.urlPrefix}/`)
                 ? 'fixed-top navbar-dark'
-                : 'sticky-top navbar-light',
-            navBrand: (this.props.activePage === 'home')
+                : 'sticky-top navbar-light', */
+            navBrand: '', /* (pathName === `${this.props.urlPrefix}/`)
                 ? 'logo/logo-white'
-                : 'logo/logo-black',
+                : 'logo/logo-black', */
             navIsOpen: false,
             navDropdownOpen: false,
-            navBackground: 'rgba(0, 0, 0, 0.0)',
+            navBackground: '', // 'rgba(0, 0, 0, 0.0)',
         };
         this.styles = {
-            navbar: {
-                background: (this.props.activePage === 'home')
+            /* navbar: {
+                background: (window.location.pathname === `${this.props.urlPrefix}/`)
                 ? 'rgb(0, 0, 0)'
                 : 'rgba(255, 255, 255, 0.90)',
-            },
+            }, */
             navDropdown: {
                 backgroundColor: 'rgba(255, 255, 255, 0.90)',
             },
@@ -55,7 +50,28 @@ export default class NavBar extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.homeExp.test(this.state.currentPath)) {
+            this.setState({
+                navFixed: 'fixed-top navbar-dark',
+                navBrand: 'logo/logo-white',
+                navBackground: 'rgb(0, 0, 0)',
+            });
+        } else {
+            this.setState({
+                navFixed: 'sticky-top navbar-light',
+                navBrand: 'logo/logo-black',
+                navBackground: 'rgba(255, 255, 255, 0.90)',
+            });
+        }
         window.addEventListener('scroll', this.handleNavScroll);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.currentPath !== nextState.currentPath) {
+            this.setState({ currentPath: nextState.currentPath });
+            return true;
+        }
+        return false;
     }
 
     componentWillUnmount() {
@@ -63,7 +79,7 @@ export default class NavBar extends React.Component {
     }
 
     handleNavScroll() {
-        (window.scrollY < 30)
+        ((window.scrollY < 30) && (this.props.homeExp.test(this.state.currentPath)))
             ? this.setState({ navBackground: 'rgba(0, 0, 0, 0.0)' })
             : this.setState({ navBackground: 'rgba(0, 0, 0, 0.90)' });
     }
@@ -86,12 +102,11 @@ export default class NavBar extends React.Component {
                 expand='lg'
                 className={`${this.state.navFixed} navbar-slick ${this.state.navClass}`}
                 style={{
-                    ...this.styles.navbar,
-                    background: this.state.navBackground
+                    background: this.state.navBackground,
                 }}
                 >
                 <NavbarBrand>
-                    <Link to={`${this.props.urlPrefix}/`}>
+                    <Link to={`/${this.props.urlPrefix}`}>
                         <Image
                             publicId={this.state.navBrand}
                             cloudName='kdphotography-assets'
@@ -109,10 +124,10 @@ export default class NavBar extends React.Component {
                     >
                     <NavbarNav right>
                         <NavItem>
-                            <NavLink to={`${this.props.urlPrefix}/`}>Home</NavLink>
+                            <NavLink to={`/${this.props.urlPrefix}`}>Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to={`${this.props.urlPrefix}/cv`}>CV</NavLink>
+                            <NavLink to={`/${this.props.urlPrefix}cv`}>CV</NavLink>
                         </NavItem>
                         <NavItem>
                             <Dropdown
@@ -127,17 +142,17 @@ export default class NavBar extends React.Component {
                                 </DropdownToggle>
                                 <DropdownMenu right basic>
                                     <DropdownItem>
-                                        <Link to={`${this.props.urlPrefix}/photography`}>
+                                        <Link to={`/${this.props.urlPrefix}photography`}>
                                             Photography
                                         </Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link to={`${this.props.urlPrefix}/svip`}>
+                                        <Link to={`/${this.props.urlPrefix}svip`}>
                                             Coursework
                                         </Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link to={`${this.props.urlPrefix}/dev`}>
+                                        <Link to={`/${this.props.urlPrefix}dev`}>
                                             Development
                                         </Link>
                                     </DropdownItem>

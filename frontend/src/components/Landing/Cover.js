@@ -23,7 +23,7 @@ const styles = {
     },
 }
 
-export default class Home extends React.Component {
+export default class Cover extends React.Component {
     render() {
         return (
             <div>

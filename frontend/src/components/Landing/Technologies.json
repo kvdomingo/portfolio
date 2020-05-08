@@ -1,0 +1,94 @@
+{
+    "Backend/DBMS": [
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1920px-Python_logo_and_wordmark.svg.png",
+            "alt": "Python"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg",
+            "alt": "Django"
+        },
+        {
+            "src": "https://seeklogo.com/images/F/flask-logo-44C507ABB7-seeklogo.com.png",
+            "alt": "Flask"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/885px-Node.js_logo.svg.png",
+            "alt": "Node.js"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/810px-Postgresql_elephant.svg.png",
+            "alt": "PostgreSQL"
+        }
+    ],
+    "Frontend": [
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/768px-HTML5_logo_and_wordmark.svg.png",
+            "alt": "HTML5"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/544px-CSS3_logo_and_wordmark.svg.png",
+            "alt": "CSS3"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png",
+            "alt": "JavaScript"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/f/fd/JQuery-Logo.svg",
+            "alt": "jQuery"
+        },
+        {
+            "src": "https://cdn.worldvectorlogo.com/logos/react.svg",
+            "alt": "React.js/React Native"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png",
+            "alt": "Vue.js"
+        }
+    ],
+    "Data & Visualization": [
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png",
+            "alt": "Plotly"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/768px-Keras_logo.svg.png",
+            "alt": "Keras"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg",
+            "alt": "TensorFlow"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mapbox_logo_2017.svg/768px-Mapbox_logo_2017.svg.png",
+            "alt": "Mapbox"
+        }
+    ],
+    "CI/CD": [
+        {
+            "src": "https://git-scm.herokuapp.com/images/logos/downloads/Git-Logo-2Color.png",
+            "alt": "Git/GitHub"
+        },
+        {
+            "src": "https://png2.cleanpng.com/sh/f79fca818f9870b45f138b08765ce106/L0KzQYm3VsE2N5h2eZH0aYP2gLBuTfdqfJl6ep95b4fogsTvhfxtNaNqi9HAcnPoPbzwlL1kd551jeZucj3sc7F1k71wdpN0eeRtLUXlQoTohsk0OpJpeqUELkW0SIK3WMY2OWY3UaIBNUO5Q4KAVcYveJ9s/kisspng-github-powershell-resource-kit-computer-icons-onboard-5b23af932adb39.5181086515290653631756.png",
+            "alt": "Codecov"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_di_Heroku.png",
+            "alt": "Heroku"
+        },
+        {
+            "src": "https://d3r49iyjzglexf.cloudfront.net/circleci-logo-stacked-fb-657e221fda1646a7e652c09c9fbfb2b0feb5d710089bb4d8e8c759d37a832694.png",
+            "alt": "CircleCI"
+        },
+        {
+            "src": "https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png",
+            "alt": "Docker"
+        },
+        {
+            "src": "https://opencollective-production.s3-us-west-1.amazonaws.com/d83d7230-076f-11e8-ade1-411cb407edb2.png",
+            "alt": "Percy"
+        }
+    ]
+}
