@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MDBContainer as Container } from 'mdbreact';
-import './CV.css';
+import './CurrVitae.css';
 import TimelineSection from './TimelineSection';
 import cvData from './CvData.json';
 

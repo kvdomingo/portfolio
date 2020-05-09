@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 const Home = lazy(() => import('./Landing/Landing'));
-const Cv = lazy(() => import('./CV/Cv'));
+const CurrVitae = lazy(() => import('./CurrVitae/CurrVitae'));
 const Photography = lazy(() => import('./Photography/Photography'));
 const Err404 = lazy(() => import('./404'));
 
@@ -21,7 +21,7 @@ export default class Routes extends React.Component {
             <Suspense fallback=''>
                 <Switch>
                     <Route exact path={`/${base}`} component={Home} />
-                    <Route exact path={`/${base}/cv`} component={Cv} />
+                    <Route exact path={`/${base}/cv`} component={CurrVitae} />
                     <Route path={`/${base}/photography`} component={Photography} />
 
                     <Route component={Err404} />
