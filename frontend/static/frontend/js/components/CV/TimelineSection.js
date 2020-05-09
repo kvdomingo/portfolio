@@ -9,7 +9,7 @@ import TimelineElement from './TimelineElement';
 
 function TimelineSection(props) {
     return (
-        <div>
+        <div data-aos='fade-up'>
             <Typography tag='h2' variant='h2-responsive' className='py-4'>
                 <i className={`${props.icon} mr-3`} />
                 {props.sectionName}

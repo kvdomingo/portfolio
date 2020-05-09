@@ -25,13 +25,13 @@ function TimelineElement(props) {
                     if (i === 0) {
                         return (
                             <React.Fragment key={i}>
-                                <a href={conn.href} target='_blank' rel='noopener noreferrer'>{conn.name} </a>
+                                <a href={conn.href} target='_blank' rel='noopener noreferrer' style={{ color: 'mediumvioletred' }}>{conn.name} </a>
                             </React.Fragment>
                         );
                     } else {
                         return(
                             <React.Fragment key={i}>
-                                | <a href={conn.href} target='_blank' rel='noopener noreferrer'>{conn.name}</a>
+                                | <a href={conn.href} target='_blank' rel='noopener noreferrer' style={{ color: 'mediumvioletred' }}>{conn.name}</a>
                             </React.Fragment>
                         );
                     }

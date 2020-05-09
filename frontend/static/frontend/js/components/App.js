@@ -6,6 +6,8 @@ import Footer from './Footer';
 import Routes from './Routes';
 
 
+export const BaseContext = React.createContext('baseUrl');
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -20,13 +22,13 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <BaseContext.Provider value={this.state.base}>
                 <Router>
                     <Navbar { ...this.state } />
                     <Routes { ...this.state } />
                     <Footer { ...this.state } />
                 </Router>
-            </div>
+            </BaseContext.Provider>
         );
     }
 }

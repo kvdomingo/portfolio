@@ -14,7 +14,7 @@ export default class Photography extends React.Component {
         return (
             <Container className='py-5' data-aos='fade-up'>
                 <Row>
-                    <Col md='6' className='my-auto'>
+                    <Col md='7' className='my-auto'>
                         <Typography tag='h3' variant='h2-responsive' className='mb-3'>
                             Photography
                         </Typography>
@@ -23,7 +23,7 @@ export default class Photography extends React.Component {
                         </p>
                         <Link to={`${this.props.urlPrefix}/photography`} className='btn btn-outline-white'>See portfolio</Link>
                     </Col>
-                    <Col md='6' className='text-center'>
+                    <Col md='5' className='text-center'>
                         <Carousel />
                     </Col>
                 </Row>

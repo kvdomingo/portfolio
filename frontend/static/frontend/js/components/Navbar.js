@@ -55,6 +55,7 @@ class NavBar extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             window.scrollTo(0, 0);
+            this.setState({ navIsOpen: false });
         }
     }
 
@@ -63,7 +64,7 @@ class NavBar extends React.Component {
             this.setState({
                 navFixed: 'fixed-top navbar-dark',
                 navBrand: 'logo/logo-white',
-                navBackground: 'rgb(0, 0, 0)',
+                navBackground: 'rgba(0, 0, 0, 0.0)',
             });
         } else {
             this.setState({
@@ -79,7 +80,6 @@ class NavBar extends React.Component {
             if (`/${this.props.base}` === window.location.pathname) {
                 this.setState({ navBackground: 'rgba(0, 0, 0, 0.0)' });
             }
-
             this.setState({
                 navBrandHeight: '30px',
                 navPadY: 'py-3'
@@ -88,7 +88,6 @@ class NavBar extends React.Component {
             if (`/${this.props.base}` === window.location.pathname) {
                 this.setState({ navBackground: 'rgba(0, 0, 0, 0.90)' });
             }
-
             this.setState({
                 navBrandHeight: '20px',
                 navPadY: 'py-1'

@@ -41,6 +41,7 @@ export default class MainCarousel extends React.Component {
                                     width='auto'
                                     dpr='auto'
                                     crop='scale'
+                                    ar={0.67}
                                     />
                             </View>
                         </CarouselItem>
