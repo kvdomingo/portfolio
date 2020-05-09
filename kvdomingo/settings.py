@@ -176,6 +176,7 @@ WEBPACK_LOADER = {
 }
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 cloudinary.config(
     cloud_name=os.environ['CLOUDINARY_CLOUD_NAME'],
