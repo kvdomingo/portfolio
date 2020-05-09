@@ -6,13 +6,13 @@ const path = require("path"),
 module.exports = merge(common, {
     mode: "development",
     output: {
-        publicPath: "/"
+        // publicPath: "/"
     },
     devtool: "inline-source-map",
     devServer: {
         historyApiFallback: true,
         open: true,
-        contentBase: path.resolve(__dirname, "frontend/src"),
+        contentBase: path.resolve(__dirname, "frontend/static/frontend/js"),
         port: 3000,
         hot: true
     }

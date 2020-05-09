@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
+    'webpack_loader',
     'tinymce',
 ]
 
@@ -166,15 +167,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': False,
+        'BUNDLE_DIR_NAME': 'frontend/bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'web/static/'),
-    os.path.join(BASE_DIR, 'photography/static/'),
-    os.path.join(BASE_DIR, 'svip/static/'),
-    os.path.join(BASE_DIR, 'dev/static/'),
-    os.path.join(BASE_DIR, 'frontend/static/'),
-]
+STATIC_URL = '/static/'
 
 cloudinary.config(
     cloud_name=os.environ['CLOUDINARY_CLOUD_NAME'],

@@ -13,32 +13,24 @@ import {
     MDBDropdownItem as DropdownItem,
 } from 'mdbreact';
 import { Image } from 'cloudinary-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './index.css'
 
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            currentPath: window.location.pathname,
-            navClass: 'px-5 py-3',
-            navFixed: '', /* (pathName === `${this.props.urlPrefix}/`)
-                ? 'fixed-top navbar-dark'
-                : 'sticky-top navbar-light', */
-            navBrand: '', /* (pathName === `${this.props.urlPrefix}/`)
-                ? 'logo/logo-white'
-                : 'logo/logo-black', */
+            navPadY: 'py-3',
+            navFixed: 'fixed-top navbar-dark',
+            navBrand: 'logo/logo-white',
+            navBrandHeight: '30px',
             navIsOpen: false,
             navDropdownOpen: false,
-            navBackground: '', // 'rgba(0, 0, 0, 0.0)',
+            navBackground: 'rgba(0, 0, 0, 0.0)',
         };
         this.styles = {
-            /* navbar: {
-                background: (window.location.pathname === `${this.props.urlPrefix}/`)
-                ? 'rgb(0, 0, 0)'
-                : 'rgba(255, 255, 255, 0.90)',
-            }, */
             navDropdown: {
                 backgroundColor: 'rgba(255, 255, 255, 0.90)',
             },
@@ -47,10 +39,27 @@ export default class NavBar extends React.Component {
         this.toggleCollapse = this.toggleCollapse.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.handleNavScroll = this.handleNavScroll.bind(this);
+        this.changePageNavStyle = this.changePageNavStyle.bind(this);
     }
 
     componentDidMount() {
-        if (this.props.homeExp.test(this.state.currentPath)) {
+        window.addEventListener('scroll', this.handleNavScroll);
+        this.changePageNavStyle(window.location.pathname);
+        this.props.history.listen(() => this.changePageNavStyle(window.location.pathname))
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleNavScroll);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            window.scrollTo(0, 0);
+        }
+    }
+
+    changePageNavStyle(pathName) {
+        if (pathName === `/${this.props.base}`) {
             this.setState({
                 navFixed: 'fixed-top navbar-dark',
                 navBrand: 'logo/logo-white',
@@ -63,25 +72,28 @@ export default class NavBar extends React.Component {
                 navBackground: 'rgba(255, 255, 255, 0.90)',
             });
         }
-        window.addEventListener('scroll', this.handleNavScroll);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        if (this.state.currentPath !== nextState.currentPath) {
-            this.setState({ currentPath: nextState.currentPath });
-            return true;
-        }
-        return false;
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleNavScroll);
     }
 
     handleNavScroll() {
-        ((window.scrollY < 30) && (this.props.homeExp.test(this.state.currentPath)))
-            ? this.setState({ navBackground: 'rgba(0, 0, 0, 0.0)' })
-            : this.setState({ navBackground: 'rgba(0, 0, 0, 0.90)' });
+        if (window.scrollY < 30) {
+            if (`/${this.props.base}` === window.location.pathname) {
+                this.setState({ navBackground: 'rgba(0, 0, 0, 0.0)' });
+            }
+
+            this.setState({
+                navBrandHeight: '30px',
+                navPadY: 'py-3'
+            });
+        } else {
+            if (`/${this.props.base}` === window.location.pathname) {
+                this.setState({ navBackground: 'rgba(0, 0, 0, 0.90)' });
+            }
+
+            this.setState({
+                navBrandHeight: '20px',
+                navPadY: 'py-1'
+            });
+        }
     }
 
     toggleCollapse() {
@@ -100,19 +112,20 @@ export default class NavBar extends React.Component {
         return (
             <Navbar
                 expand='lg'
-                className={`${this.state.navFixed} navbar-slick ${this.state.navClass}`}
+                className={`${this.state.navFixed} navbar-slick px-5 ${this.state.navPadY}`}
                 style={{
                     background: this.state.navBackground,
                 }}
                 >
                 <NavbarBrand>
-                    <Link to={`/${this.props.urlPrefix}`}>
+                    <Link to={`/${this.props.base}`}>
                         <Image
                             publicId={this.state.navBrand}
                             cloudName='kdphotography-assets'
                             secure={true}
                             className='navbar-slick-brand'
                             alt='Kenneth V. Domingo logo'
+                            height={this.state.navBrandHeight}
                             />
                     </Link>
                 </NavbarBrand>
@@ -124,10 +137,10 @@ export default class NavBar extends React.Component {
                     >
                     <NavbarNav right>
                         <NavItem>
-                            <NavLink to={`/${this.props.urlPrefix}`}>Home</NavLink>
+                            <NavLink to={`/${this.props.base}`}>Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to={`/${this.props.urlPrefix}cv`}>CV</NavLink>
+                            <NavLink to={`/${this.props.base}/cv`}>CV</NavLink>
                         </NavItem>
                         <NavItem>
                             <Dropdown
@@ -142,17 +155,17 @@ export default class NavBar extends React.Component {
                                 </DropdownToggle>
                                 <DropdownMenu right basic>
                                     <DropdownItem>
-                                        <Link to={`/${this.props.urlPrefix}photography`}>
+                                        <Link to={`/${this.props.base}/photography`}>
                                             Photography
                                         </Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link to={`/${this.props.urlPrefix}svip`}>
+                                        <Link to={`/${this.props.base}/svip`}>
                                             Coursework
                                         </Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link to={`/${this.props.urlPrefix}dev`}>
+                                        <Link to={`/${this.props.base}/dev`}>
                                             Development
                                         </Link>
                                     </DropdownItem>
@@ -165,3 +178,5 @@ export default class NavBar extends React.Component {
         );
     }
 }
+
+export default withRouter(NavBar);

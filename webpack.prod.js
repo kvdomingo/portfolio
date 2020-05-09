@@ -1,6 +1,7 @@
 const merge = require("webpack-merge"),
     common = require("./webpack.common.js"),
     CompressionPlugin = require("compression-webpack-plugin"),
+    BundleTracker = require("webpack-bundle-tracker"),
     UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
     webpack = require("webpack");
 
@@ -8,9 +9,13 @@ const merge = require("webpack-merge"),
 module.exports = merge(common, {
     mode: "production",
     output: {
-        publicPath: "../../static/frontend/"
+        publicPath: "/static/"
     },
     plugins: [
+        new BundleTracker({
+            path: __dirname,
+            filename: "webpack-stats.json"
+        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.SplitChunksPlugin({
             chunks: "async",

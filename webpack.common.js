@@ -1,20 +1,24 @@
 const path = require("path"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
-    MiniCssExtractPlugin = require("mini-css-extract-plugin");
+    MiniCssExtractPlugin = require("mini-css-extract-plugin"),
+    CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 
 
 module.exports = {
-    entry: "./frontend/src/index.js",
+    context: __dirname,
+    entry: {
+        main: ["./frontend/static/frontend/js/index"]
+    },
     output: {
-        path: path.resolve(__dirname, "frontend/static/frontend"),
-        filename: "[name].bundle.js",
-        chunkFilename: "[name].chunk.js",
+        path: path.resolve(__dirname, "frontend/static/frontend/bundles/"),
+        filename: "main.js",
+        chunkFilename: "[id].main.js",
         crossOriginLoading: "anonymous"
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ["babel-loader"]
             },
@@ -54,17 +58,14 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: "[name].bundle.css",
-            chunkFilename: "[name].chunk.css"
+            filename: "main.css",
+            chunkFilename: "[id].main.css"
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "frontend/jinja2/frontend/index.html.j2"),
-            filename: "../../jinja2/frontend/index.html",
-            inject: "body"
-        }),
-        new HtmlWebpackPlugin({
-            template: "./frontend/jinja2/frontend/index.html.j2",
+            filename: "index.html"
         })
     ]
 };

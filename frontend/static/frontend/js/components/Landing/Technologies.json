@@ -1,15 +1,15 @@
 {
     "Backend/DBMS": [
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1920px-Python_logo_and_wordmark.svg.png",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
             "alt": "Python"
         },
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg",
+            "src": "https://seeklogo.com/images/D/django-logo-F46C1DD95E-seeklogo.com.png",
             "alt": "Django"
         },
         {
-            "src": "https://seeklogo.com/images/F/flask-logo-44C507ABB7-seeklogo.com.png",
+            "src": "https://www.clipartkey.com/mpngs/b/145-1450071_flask-clip-art.png",
             "alt": "Flask"
         },
         {
@@ -19,11 +19,15 @@
         {
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/810px-Postgresql_elephant.svg.png",
             "alt": "PostgreSQL"
+        },
+        {
+            "src": "https://png2.cleanpng.com/sh/5839958b964c3954fd53b83dace075f9/L0KzQYm3WMA0N5xxgpH0aYP2gLBuTf16e6JxRdV1dYP3dcO0hPF1aZNmi9c2bXHxcbjsjfVvfF54keV9ZX2w9QoaTnmjoF7qqwg25aYkPjYBrr3lw9QyBDKKLUXlRoW3hMhjPWVoTacDLkezRIe4UMgyOWY4S6QDM0e1Q4S7V8IveJ9s/kisspng-mysql-cluster-database-management-system-%E4%B8%93-%E9%A2%98-%E5%92%96-%E5%95%A1-%E4%B8%8E-%E4%BB%A3-%E7%A0%81-5b640d8b54c558.7046108115332837233472.png",
+            "alt": "MySQL"
         }
     ],
     "Frontend": [
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/768px-HTML5_logo_and_wordmark.svg.png",
+            "src": "https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
             "alt": "HTML5"
         },
         {
@@ -35,12 +39,24 @@
             "alt": "JavaScript"
         },
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/f/fd/JQuery-Logo.svg",
+            "src": "https://raw.githubusercontent.com/jsx-ir/logo/master/jsx.png",
+            "alt": "JSX"
+        },
+        {
+            "src": "https://openjsf.org/wp-content/uploads/sites/84/2019/10/jquery-logo-vertical_large_square.png",
             "alt": "jQuery"
         },
         {
             "src": "https://cdn.worldvectorlogo.com/logos/react.svg",
             "alt": "React.js/React Native"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/800px-Bootstrap_logo.svg.png",
+            "alt": "Bootstrap"
+        },
+        {
+            "src": "https://material-ui.com/static/logo_raw.svg",
+            "alt": "Material UI"
         },
         {
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png",
@@ -49,7 +65,15 @@
     ],
     "Data & Visualization": [
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png",
+            "src": "https://www.numfocus.org/wp-content/uploads/2016/07/pandas-logo-300.png",
+            "alt": "Pandas"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/0/01/Created_with_Matplotlib-logo.svg",
+            "alt": "Matplotlib"
+        },
+        {
+            "src": "https://airsouthasia.files.wordpress.com/2018/08/plotly-logo-01-square.png",
             "alt": "Plotly"
         },
         {
@@ -61,13 +85,13 @@
             "alt": "TensorFlow"
         },
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mapbox_logo_2017.svg/768px-Mapbox_logo_2017.svg.png",
+            "src": "https://seeklogo.com/images/M/mapbox-logo-D6FDDD219C-seeklogo.com.png",
             "alt": "Mapbox"
         }
     ],
     "CI/CD": [
         {
-            "src": "https://git-scm.herokuapp.com/images/logos/downloads/Git-Logo-2Color.png",
+            "src": "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
             "alt": "Git/GitHub"
         },
         {
@@ -75,19 +99,19 @@
             "alt": "Codecov"
         },
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_di_Heroku.png",
+            "src": "https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/04/1461122387heroku-logo.jpg",
             "alt": "Heroku"
         },
         {
-            "src": "https://d3r49iyjzglexf.cloudfront.net/circleci-logo-stacked-fb-657e221fda1646a7e652c09c9fbfb2b0feb5d710089bb4d8e8c759d37a832694.png",
+            "src": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
             "alt": "CircleCI"
         },
         {
-            "src": "https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png",
+            "src": "https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png",
             "alt": "Docker"
         },
         {
-            "src": "https://opencollective-production.s3-us-west-1.amazonaws.com/d83d7230-076f-11e8-ade1-411cb407edb2.png",
+            "src": "https://davidwalsh.name/demo/2019/04/percy-square.png",
             "alt": "Percy"
         }
     ]

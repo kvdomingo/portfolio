@@ -1,7 +1,3 @@
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: 'Rubik', sans-serif
 }
@@ -44,10 +40,9 @@ body {
 
 .navbar-slick {
     box-shadow: none;
-    transition: background 0.5s, padding 0.5s;
+    transition: background 300ms, padding 300ms;
 }
 
 .navbar-slick-brand {
-    height: 30px;
-    transition: height 0.5s;
+    transition: height 300ms;
 }

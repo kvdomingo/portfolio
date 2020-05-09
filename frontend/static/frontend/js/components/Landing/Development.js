@@ -16,7 +16,7 @@ export default class Development extends React.Component {
                     <Col className='my-auto'>
                         <Typography tag='h3' variant='h2-responsive' className='mb-3'>Full Stack Development</Typography>
                         <p className='mb-3'>
-                            It was in high school that I was first introduced to basic programming concepts in C, and basic web design with HTML &amp; CSS. Although I hardly used these for anything useful afterwards, they would eventually serve as catalysts for me to study more advanced web development and design concepts later on. In 2019, I took some free online classNamees offered by Harvard's CS50, which stimulated me to study more beyond what the classNamees offered. Eventually, I learned to handle most, if not the entire web development workflow. I primarily use Python for the backend and React.js for the frontend.
+                            In my spare time, I studied a lot of material on programming, especially in Python, primarily to aid in my course requirements and thesis research. I already had great interest in web development, and took Harvard's CS50 material during downtimes. This encouraged me to study more beyond what was offered in those courses. Now, I can handle full stack web applications, from local development with various tools, up to maintenance and deployment to Heroku.
                         </p>
                         <Link to={`${this.props.urlPrefix}/dev`} className='btn btn-outline-white'>See portfolio</Link>
                     </Col>

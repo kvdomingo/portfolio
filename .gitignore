@@ -239,4 +239,4 @@ dist
 # Post drafts
 content/
 
-frontend/static/frontend/
+frontend/static/frontend/bundles

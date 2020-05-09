@@ -19,7 +19,7 @@ export default class Photography extends React.Component {
                             Photography
                         </Typography>
                         <p className='mb-3'>
-                            I started out photography in the summer of 2017, equipped with only my phone and a vision. I got my first SLR camera in the same year, and since then, my passion has only grown. Today, I continue to draw inspiration and learnings from established photographers, both foreign and local, in order to hone my own craft. I specialize in portrait, live music, and events photography&mdash;though I don't mind venturing into other fields every once in a while.
+                            As the former Executive Officer for Promotions and Documentation of UP Iris&mdash;a university-wide student organization&mdash;I received and conducted training in the art of storytelling through photography. Today, I continue to draw inspiration and learnings from established photographers, both foreign and local, in order to hone my own craft. I mainly focus on portrait, studio, and events photography. However, I do like to be well-rounded, and I don't mind venturing into street, landscape, and product photography every once in a while.
                         </p>
                         <Link to={`${this.props.urlPrefix}/photography`} className='btn btn-outline-white'>See portfolio</Link>
                     </Col>

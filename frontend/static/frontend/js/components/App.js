@@ -10,18 +10,12 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            homeExp: /^\/(beta)?\/?$/,
-            urlPrefix: ''
+            base: 'beta',
         };
     }
 
     componentDidMount() {
-        if (window.location.pathname === 'beta') this.setState({ urlPrefix: 'beta' })
         AOS.init();
-    }
-
-    toggleCollapse() {
-        this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     }
 
     render() {

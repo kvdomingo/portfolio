@@ -2,12 +2,9 @@ import React from 'react';
 import {
     MDBCard as Card,
     MDBCardTitle as CardTitle,
-    MDBBtn as Button,
-    MDBCol as Col,
-    MDBRow as Row,
-    MDBTypography as Typography,
     MDBContainer as Container,
 } from 'mdbreact';
+import Typing, { Backspace, Delay, Cursor } from 'react-typing-animation';
 import { Link } from 'react-router-dom';
 
 
@@ -25,6 +22,7 @@ const styles = {
 
 export default class Cover extends React.Component {
     render() {
+        let carouselTyping = ['physicist', 'full stack developer', 'bioinformatician', 'photographer', 'musician'];
         return (
             <div>
                 <Card
@@ -36,11 +34,21 @@ export default class Cover extends React.Component {
                             <CardTitle tag='h2' className='h1 card-title display-4 my-4 py-2'>
                                 Hi, I'm Kenneth!
                             </CardTitle>
-                            <p className='lead my-3'>
-                                Physicist, programmer, and bioinformatician by day; photographer and musician by night.
-                            </p>
+                            <div className='h3-responsive my-3'>
+                                {'I am a '}
+                                <Typing speed={1} className='d-inline' loop={true}>
+                                    {carouselTyping.map((text, i) => (
+                                        <div className='d-inline' key={text}>
+                                            {text}.
+                                            <Delay ms={1500} />
+                                            <Backspace count={text.length + 5} speed={1} />
+                                        </div>
+                                    ))}
+                                    <Cursor />
+                                </Typing>
+                            </div>
                             <p className='my-3 py-3'>
-                                I am a graduating BS Applied Physics student from the University of the Philippines-Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory, with a research concentration on signal, video and image processing. Python is my programming language of choice for general applications. Additionally, my skillset includes web and app development, primarily using Python and React Native frameworks, respectively. Currently, I am also a photographer and the Executive Officer for Promotions and Documentation of UP Iris, a campus-wide photography organization.
+                                I am a graduating BS Applied Physics student from the University of the Philippines-Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory, with a research concentration on signal, video and image processing. My go-to tech stack for web applications consist of Python/Django for the backend, React.js for the frontend, and PostgreSQL for the DBMS. At night (figuratively speaking), I am a freelance photographer, specializing in portrait, street, and events photography.
                                 <br /><br />
                                 Inquiries? Collaborations?
                             </p>

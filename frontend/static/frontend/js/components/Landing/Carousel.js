@@ -25,7 +25,6 @@ export default class MainCarousel extends React.Component {
                 activeItem={1}
                 showControls={false}
                 showIndicators
-                slide
                 interval={3000}
                 >
                 <CarouselInner>
