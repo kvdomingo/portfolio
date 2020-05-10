@@ -62,7 +62,6 @@ class Photography extends Component {
                         <Nav tag='div' className='nav-pills flex-column pl-md-2 pl-0 text-md-left text-center' style={styles.navPills} orientation='vertical'>
                             <Link
                                 to={`${path}`}
-                                active={this.state.activePage === 'latest'}
                                 onClick={(e) => this.togglePills(e, 'latest')}
                                 className={`nav-link my-1 ${(this.state.activePage === 'latest')? 'active' : null}`}
                                 >
@@ -70,7 +69,6 @@ class Photography extends Component {
                             </Link>
                             <Link
                                 to={`${url}/portraits`}
-                                active={this.state.activePage === 'portraits'}
                                 onClick={(e) => this.togglePills(e, 'portraits')}
                                 className={`nav-link my-1 ${(this.state.activePage === 'portraits')? 'active' : null}`}
                                 >
@@ -78,7 +76,6 @@ class Photography extends Component {
                             </Link>
                             <Link
                                 to={`${url}/live`}
-                                active={this.state.activePage === 'live'}
                                 onClick={(e) => this.togglePills(e, 'live')}
                                 className={`nav-link my-1 ${(this.state.activePage === 'live')? 'active' : null}`}
                                 >
@@ -86,7 +83,6 @@ class Photography extends Component {
                             </Link>
                             <Link
                                 to={`${url}/clients`}
-                                active={this.state.activePage === 'clients'}
                                 onClick={(e) => this.togglePills(e, 'clients')}
                                 className={`nav-link my-1 ${(this.state.activePage === 'clients')? 'active' : null}`}
                                 >
@@ -94,7 +90,6 @@ class Photography extends Component {
                             </Link>
                             <Link
                                 to={`${url}/samoetikerffa`}
-                                active={this.state.activePage === 'samoetikerffa'}
                                 onClick={(e) => this.togglePills(e, 'samoetikerffa')}
                                 className={`nav-link my-1 ${(this.state.activePage === 'samoetikerffa')? 'active' : null}`}
                                 >
@@ -106,11 +101,6 @@ class Photography extends Component {
                         <Switch>
                             <Route exact path={`${path}/clients`}>
                                 <Clients />
-                            </Route>
-                            <Route path={`${path}/clients/:clientPage`}>
-                                <Lightbox>
-                                    <Gallery key={this.state.activePage} />
-                                </Lightbox>
                             </Route>
                             <Route path={`${path}/:photogPage`}>
                                 <Lightbox>

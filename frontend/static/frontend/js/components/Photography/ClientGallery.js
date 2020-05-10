@@ -7,7 +7,7 @@ import { SRLWrapper } from 'simple-react-lightbox';
 import './Gallery.css';
 
 
-class Gallery extends Component {
+class ClientGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,6 +16,7 @@ class Gallery extends Component {
         };
 
         this.handlePhotos = this.handlePhotos.bind(this);
+        console.log(`clientPage: ${this.props.match.params}`);
     }
 
     componentDidMount() {
@@ -23,11 +24,9 @@ class Gallery extends Component {
     }
 
     handlePhotos() {
-        let { photogPage } = this.props.match.params;
-        let slug = (photogPage)
-            ? photogPage
-            : 'latest';
-        fetch(`/api/photography/${slug}`)
+        let { clientPage } = this.props.match.params;
+        let slug = `clients/${clientPage}`;
+        fetch(`/api/photography/clients/${slug}`)
             .then((res) => res.json())
             .then((data) => {
                 this.setState({ images: data.images || [] });
@@ -94,4 +93,4 @@ class Gallery extends Component {
     }
 }
 
-export default withRouter(Gallery);
+export default withRouter(ClientGallery);

@@ -65,3 +65,11 @@ def api_gallery(request, slug):
         full=full,
         images=images,
     ))
+
+
+def api_client_gallery(request, slug):
+    images, full = zip(*functions.get_resources(f'{settings.ASSET_DIR}/clients/{slug}'))
+    return JsonResponse(dict(
+        full=full,
+        images=images,
+    ))

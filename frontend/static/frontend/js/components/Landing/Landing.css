@@ -95,6 +95,6 @@ img[alt="React.js/React Native"] {
 
 @keyframes spin {
     100% {
-        transform: rotate(360deg);
+        transform: rotate(180deg);
     }
 }

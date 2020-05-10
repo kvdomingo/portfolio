@@ -4,6 +4,11 @@
     "chunks": {
         "undefined": [
             {
+                "name": "3.main.css",
+                "publicPath": "../../static/frontend/bundles/3.main.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\3.main.css"
+            },
+            {
                 "name": "3.main.js",
                 "publicPath": "../../static/frontend/bundles/3.main.js",
                 "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\3.main.js"
@@ -11,9 +16,14 @@
         ],
         "null": [
             {
-                "name": "8.main.js",
-                "publicPath": "../../static/frontend/bundles/8.main.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\8.main.js"
+                "name": "9.main.css",
+                "publicPath": "../../static/frontend/bundles/9.main.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\9.main.css"
+            },
+            {
+                "name": "9.main.js",
+                "publicPath": "../../static/frontend/bundles/9.main.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\9.main.js"
             }
         ],
         "main": [
