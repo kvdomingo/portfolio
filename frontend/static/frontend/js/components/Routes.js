@@ -18,7 +18,13 @@ export default class Routes extends React.Component {
     render() {
         let base = this.props.base;
         return (
-            <Suspense fallback=''>
+            <Suspense fallback={
+                    <div className='text-center my-5 mt-5 py-5 pt-5'>
+                        <div className='spinner-grow spinner-grow-lg' />
+                        <p className='lead mt-3'>Loading...</p>
+                    </div>
+                }
+                >
                 <Switch>
                     <Route exact path={`/${base}`} component={Home} />
                     <Route exact path={`/${base}/cv`} component={CurrVitae} />

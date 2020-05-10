@@ -68,7 +68,7 @@ class NavBar extends React.Component {
             });
         } else {
             this.setState({
-                navFixed: 'sticky-top navbar-light',
+                navFixed: 'navbar-light',
                 navBrand: 'logo/logo-black',
                 navBackground: 'rgba(255, 255, 255, 0.90)',
             });

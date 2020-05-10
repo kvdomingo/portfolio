@@ -4,11 +4,12 @@ import {
     MDBRow as Row,
     MDBCol as Col,
     MDBNav as Nav,
-    MDBNavLink as NavLink,
 } from 'mdbreact';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Link, Switch, withRouter } from 'react-router-dom';
+import Lightbox from 'simple-react-lightbox';
 
 const Gallery = lazy(() => import('./Gallery'));
+const Clients = lazy(() => import('./Clients'));
 
 
 const styles = {
@@ -26,24 +27,26 @@ class Photography extends Component {
         };
 
         this.togglePills = this.togglePills.bind(this);
+        this.handleActivePill = this.handleActivePill.bind(this);
     }
 
     componentDidMount() {
-        let url = window.location.pathname;
-        let activePage = (url.split('/').slice(-1)[0] === 'photography')
-            ? url.split('/').slice(-1)[0]
-            : 'latest';
-        this.setState({ activePage });
+        this.handleActivePill();
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.activePage !== prevState.activePage) {
-            let url = window.location.pathname;
-            let activePage = (url.split('/').slice(-1)[0] === 'photography')
-                ? url.split('/').slice(-1)[0]
-                : 'latest';
-            this.setState({ activePage });
+            this.handleActivePill();
         }
+    }
+
+    handleActivePill() {
+        let url = window.location.pathname;
+        let activePage = (url.split('/').slice(-1)[0] === 'photography')
+            ? 'latest'
+            : url.split('/').slice(-1)[0];
+        if (url.split('/').slice(-2)[0] === 'clients') activePage = 'clients';
+        this.setState({ activePage });
     }
 
     togglePills(e, activePage) {
@@ -57,50 +60,68 @@ class Photography extends Component {
                 <Row>
                     <Col lg='2' className='pt-2 pb-4 px-lg-4'>
                         <Nav tag='div' className='nav-pills flex-column pl-md-2 pl-0 text-md-left text-center' style={styles.navPills} orientation='vertical'>
-                            <NavLink
+                            <Link
                                 to={`${path}`}
                                 active={this.state.activePage === 'latest'}
                                 onClick={(e) => this.togglePills(e, 'latest')}
-                                className='my-1'
+                                className={`nav-link my-1 ${(this.state.activePage === 'latest')? 'active' : null}`}
                                 >
                                 latest
-                            </NavLink>
-                            <NavLink
+                            </Link>
+                            <Link
                                 to={`${url}/portraits`}
                                 active={this.state.activePage === 'portraits'}
                                 onClick={(e) => this.togglePills(e, 'portraits')}
-                                className='my-1'
+                                className={`nav-link my-1 ${(this.state.activePage === 'portraits')? 'active' : null}`}
                                 >
                                 portraits
-                            </NavLink>
-                            <NavLink
+                            </Link>
+                            <Link
                                 to={`${url}/live`}
                                 active={this.state.activePage === 'live'}
                                 onClick={(e) => this.togglePills(e, 'live')}
-                                className='my-1'
+                                className={`nav-link my-1 ${(this.state.activePage === 'live')? 'active' : null}`}
                                 >
                                 live
-                            </NavLink>
-                            <NavLink
+                            </Link>
+                            <Link
                                 to={`${url}/clients`}
                                 active={this.state.activePage === 'clients'}
                                 onClick={(e) => this.togglePills(e, 'clients')}
-                                className='my-1'>
+                                className={`nav-link my-1 ${(this.state.activePage === 'clients')? 'active' : null}`}
+                                >
                                 clients
-                            </NavLink>
-                            <NavLink
+                            </Link>
+                            <Link
                                 to={`${url}/samoetikerffa`}
                                 active={this.state.activePage === 'samoetikerffa'}
                                 onClick={(e) => this.togglePills(e, 'samoetikerffa')}
-                                className='my-1'>
+                                className={`nav-link my-1 ${(this.state.activePage === 'samoetikerffa')? 'active' : null}`}
+                                >
                                 #samoetikerffa
-                            </NavLink>
+                            </Link>
                         </Nav>
                     </Col>
                     <Col lg='10' className='pr-lg-5'>
                         <Switch>
-                            <Route path={`${path}/:photogPage`} component={Gallery} />
-                            <Route exact path={path} component={Gallery} />
+                            <Route exact path={`${path}/clients`}>
+                                <Clients />
+                            </Route>
+                            <Route path={`${path}/clients/:clientPage`}>
+                                <Lightbox>
+                                    <Gallery key={this.state.activePage} />
+                                </Lightbox>
+                            </Route>
+                            <Route path={`${path}/:photogPage`}>
+                                <Lightbox>
+                                    <Gallery key={this.state.activePage} />
+                                </Lightbox>
+                            </Route>
+                            <Route exact path={path}>
+                                <Lightbox>
+                                    <Gallery key={this.state.activePage} />
+                                </Lightbox>
+                            </Route>
                         </Switch>
                     </Col>
                 </Row>

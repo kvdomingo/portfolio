@@ -1,1 +1,32 @@
-{"status":"done","publicPath":"/static/frontend/bundles/","chunks":{"main":[{"name":"main.css","publicPath":"/static/frontend/bundles/main.css","path":"D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.css"},{"name":"main.js","publicPath":"/static/frontend/bundles/main.js","path":"D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.js"}],"undefined":[{"name":"1.main.css","publicPath":"/static/frontend/bundles/1.main.css","path":"D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\1.main.css"},{"name":"1.main.js","publicPath":"/static/frontend/bundles/1.main.js","path":"D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\1.main.js"}],"null":[{"name":"6.main.js","publicPath":"/static/frontend/bundles/6.main.js","path":"D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\6.main.js"}]}}
+{
+    "status": "done",
+    "publicPath": "../../static/frontend/bundles/",
+    "chunks": {
+        "undefined": [
+            {
+                "name": "3.main.js",
+                "publicPath": "../../static/frontend/bundles/3.main.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\3.main.js"
+            }
+        ],
+        "null": [
+            {
+                "name": "8.main.js",
+                "publicPath": "../../static/frontend/bundles/8.main.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\8.main.js"
+            }
+        ],
+        "main": [
+            {
+                "name": "main.css",
+                "publicPath": "../../static/frontend/bundles/main.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.css"
+            },
+            {
+                "name": "main.js",
+                "publicPath": "../../static/frontend/bundles/main.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.js"
+            }
+        ]
+    }
+}

@@ -3,7 +3,7 @@ from cloudinary import CloudinaryImage
 from cloudinary.api import resources
 from django.shortcuts import render
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from . import functions
 from .models import *
 from .serializers import *
@@ -57,3 +57,11 @@ class ClientApi(generics.ListAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     filterset_fields = ['slug']
+
+
+def api_gallery(request, slug):
+    images, full = zip(*functions.get_resources(f'{settings.ASSET_DIR}/{slug}'))
+    return JsonResponse(dict(
+        full=full,
+        images=images,
+    ))

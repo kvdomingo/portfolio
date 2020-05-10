@@ -4,7 +4,8 @@ from . import views
 
 app_name = 'photography'
 urlpatterns = [
-    re_path('^api/photography/client', views.ClientApi.as_view()),
+    re_path(r'^api/photography/client', views.ClientApi.as_view()),
+    path('api/photography/<slug:slug>', views.api_gallery),
     path('photography', views.index, name='index'),
     path('photography/clients/', views.clients, name='clients'),
     path('photography/clients/<slug:client_slug>', views.client_gallery, name='client'),

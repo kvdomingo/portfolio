@@ -34,6 +34,7 @@ def get_resources(path, order='date'):
         images = sorted(images, key=lambda k: k['public_id'])
     images = [{
         'url': i['public_id'],
+        'publicId': i['public_id'],
         'width': i['width'],
         'height': i['height'],
     } for i in images]

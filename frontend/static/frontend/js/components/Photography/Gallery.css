@@ -5,15 +5,15 @@
 
 @media (min-width: 768px) {
     .grid-sizer, .grid-item {
-        width: 33.333%;
+        width: 25%;
     }
 
     .grid-item--width2 {
-        width: 66.666%;
+        width: 50%;
     }
 
     .grid-item--width3 {
-        width: 100%
+        width: 75%
     }
 }
 
