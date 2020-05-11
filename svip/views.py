@@ -47,12 +47,12 @@ def post(request, subject_slug, post_slug):
 
 
 class BlogPostApi(generics.ListAPIView):
-    queryset = BlogPost.objects.all()
+    queryset = BlogPost.objects.all().order_by('-created')
     serializer_class = BlogPostSerializer
-    filterset_fields = ['slug', 'subject__number']
+    filterset_fields = ['slug', 'subject__number', 'subject__slug']
 
 
 class CourseApi(generics.ListAPIView):
-    queryset = Course.objects.all()
+    queryset = Course.objects.all().order_by('-number')
     serializer_class = CourseSerializer
     filterset_fields = ['number', 'slug']

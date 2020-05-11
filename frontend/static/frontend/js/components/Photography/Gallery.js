@@ -16,6 +16,7 @@ class Gallery extends Component {
         };
 
         this.handlePhotos = this.handlePhotos.bind(this);
+        console.log(`Gallery was loaded at path ${this.props.match.path} and url ${this.props.match.url} with photogPage ${this.props.match.params.photogPage} and clientPage ${this.props.match.params.clientPage}`);
     }
 
     componentDidMount() {
@@ -65,7 +66,9 @@ class Gallery extends Component {
                 <div className='grid-sizer'></div>
                 <SRLWrapper style={{ display: contentVisible }}>
                     {this.state.images.map((im, i) => {
-                        if (im.width > 2*im.height) {
+                        if (im.width > 3*im.height) {
+                            gridItem = 'grid-item--width4';
+                        } else if (im.width > 2*im.height && im.width < 3*im.height) {
                             gridItem = 'grid-item--width3';
                         } else if (im.width > im.height && im.width < 2*im.height) {
                             gridItem = 'grid-item--width2';

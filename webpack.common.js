@@ -1,7 +1,8 @@
 const path = require("path"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
+    CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin,
+    webpack = require("webpack");
 
 
 module.exports = {
@@ -11,8 +12,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "frontend/static/frontend/bundles/"),
-        filename: "main.js",
-        chunkFilename: "[id].main.js",
+        filename: "main.[hash].js",
+        chunkFilename: "[id].main.[hash].js",
         crossOriginLoading: "anonymous"
     },
     module: {
@@ -59,9 +60,18 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new webpack.optimize.SplitChunksPlugin({
+            chunks: "async",
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                }
+            }
+        }),
         new MiniCssExtractPlugin({
-            filename: "main.css",
-            chunkFilename: "[id].main.css"
+            filename: "main.[hash].css",
+            chunkFilename: "[id].main.[hash].css"
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "frontend/jinja2/frontend/index.html.j2"),

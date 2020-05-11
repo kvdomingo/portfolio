@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 const Home = lazy(() => import('./Landing/Landing'));
 const CurrVitae = lazy(() => import('./CurrVitae/CurrVitae'));
 const Photography = lazy(() => import('./Photography/Photography'));
+const Svip = lazy(() => import('./Svip/Svip'));
+const SvipIndex = lazy(() => import('./Svip/SvipIndex'));
 const Err404 = lazy(() => import('./404'));
 
 
@@ -28,7 +30,10 @@ export default class Routes extends React.Component {
                 <Switch>
                     <Route exact path={`/${base}`} component={Home} />
                     <Route exact path={`/${base}/cv`} component={CurrVitae} />
-                    <Route path={`/${base}/photography`} component={Photography} />
+                    <Route exact path={`/${base}/photography`} component={Photography} />
+                    <Route exact path={`/${base}/svip`} component={Svip} />
+                    <Route path={`/${base}/svip/:courseSlug`} component={SvipIndex} />
+
 
                     <Route component={Err404} />
                 </Switch>

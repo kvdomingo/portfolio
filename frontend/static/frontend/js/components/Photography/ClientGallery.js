@@ -16,7 +16,6 @@ class ClientGallery extends Component {
         };
 
         this.handlePhotos = this.handlePhotos.bind(this);
-        console.log(`clientPage: ${this.props.match.params}`);
     }
 
     componentDidMount() {
@@ -25,8 +24,7 @@ class ClientGallery extends Component {
 
     handlePhotos() {
         let { clientPage } = this.props.match.params;
-        let slug = `clients/${clientPage}`;
-        fetch(`/api/photography/clients/${slug}`)
+        fetch(`/api/photography/clients/${clientPage}`)
             .then((res) => res.json())
             .then((data) => {
                 this.setState({ images: data.images || [] });
@@ -64,7 +62,9 @@ class ClientGallery extends Component {
                 <div className='grid-sizer'></div>
                 <SRLWrapper style={{ display: contentVisible }}>
                     {this.state.images.map((im, i) => {
-                        if (im.width > 2*im.height) {
+                        if (im.width > 3*im.height) {
+                            gridItem = 'grid-item--width4';
+                        } else if (im.width > 2*im.height && im.width < 3*im.height) {
                             gridItem = 'grid-item--width3';
                         } else if (im.width > im.height && im.width < 2*im.height) {
                             gridItem = 'grid-item--width2';

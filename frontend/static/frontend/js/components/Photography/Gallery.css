@@ -15,6 +15,10 @@
     .grid-item--width3 {
         width: 75%
     }
+
+    .grid-item--width4 {
+        width: 100%;
+    }
 }
 
 
@@ -28,6 +32,10 @@
     }
 
     .grid-item--width3 {
+        width: 100%;
+    }
+
+    .grid-item--width4 {
         width: 100%;
     }
 }

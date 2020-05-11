@@ -2,9 +2,10 @@ import React from 'react';
 import {
     MDBTypography as Typography,
     MDBIcon as Icon,
-    MDBBtn as Button,
 } from 'mdbreact';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { BaseContext } from '../App';
 
 
 function TimelineElement(props) {
@@ -42,7 +43,11 @@ function TimelineElement(props) {
                     <p className='my-0' key={i}>{desc}</p>
                 ))}
                 {(props.related)
-                    ? <Button tag='a' href={props.related} className='ml-0 mt-3' outline color='black' size='sm'>See in portfolio</Button>
+                    ? <BaseContext.Consumer>
+                        {base => (
+                            <Link to={`/${base}/${props.related}`} className='btn btn-outline-black btn-sm ml-0 mt-3'>See in portfolio</Link>
+                        )}
+                    </BaseContext.Consumer>
                     : null
                 }
             </div>

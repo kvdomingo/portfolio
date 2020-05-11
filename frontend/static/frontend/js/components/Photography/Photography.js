@@ -9,6 +9,7 @@ import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import Lightbox from 'simple-react-lightbox';
 
 const Gallery = lazy(() => import('./Gallery'));
+const ClientGallery = lazy(() => import('./ClientGallery'));
 const Clients = lazy(() => import('./Clients'));
 
 
@@ -99,6 +100,11 @@ class Photography extends Component {
                     </Col>
                     <Col lg='10' className='pr-lg-5'>
                         <Switch>
+                            <Route path={`${path}/clients-:clientPage`}>
+                                <Lightbox>
+                                    <ClientGallery key={this.state.activePage} />
+                                </Lightbox>
+                            </Route>
                             <Route exact path={`${path}/clients`}>
                                 <Clients />
                             </Route>

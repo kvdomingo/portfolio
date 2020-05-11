@@ -92,7 +92,7 @@
                     { "name": "Philippine Genome Center", "href": "https://pgc.up.edu.ph/" }
                 ],
                 "description": ["Underwent training in bioinformatics; developed a command-line tool and web application for designing primers for site-directed mutagenesis."],
-                "related": "/dev/primerdriver"
+                "related": "dev/primerdriver"
             },
             {
                 "key": "trin",
@@ -123,7 +123,7 @@
                     { "name": "University of the Philippines Reserve Officers' Training Corps", "href": "https://www.uprotc.org/" }
                 ],
                 "description": ["Official photographer of the UPD ROTC Corps of Cadets for the C.Y. 2018-2019."],
-                "related": "/photography/clients/uprotc"
+                "related": "photography/clients/uprotc"
             }
         ]
     },

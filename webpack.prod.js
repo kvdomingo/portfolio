@@ -18,15 +18,6 @@ module.exports = merge(common, {
             filename: "webpack-stats.json"
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.SplitChunksPlugin({
-            chunks: "async",
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                }
-            }
-        }),
         new UglifyJsPlugin({
             uglifyOptions: {
                 beautify: false,
