@@ -16,7 +16,6 @@ class Gallery extends Component {
         };
 
         this.handlePhotos = this.handlePhotos.bind(this);
-        console.log(`Gallery was loaded at path ${this.props.match.path} and url ${this.props.match.url} with photogPage ${this.props.match.params.photogPage} and clientPage ${this.props.match.params.clientPage}`);
     }
 
     componentDidMount() {

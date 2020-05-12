@@ -164,6 +164,26 @@ USE_L10N = True
 USE_TZ = True
 
 
+# TinyMCE config
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'silver',
+    'plugins': 'link image preview codesample contextmenu table code lists',
+    'toolbar': 'formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent table | link image | codesample | preview code',
+    'toolbar_mode': 'wrap',
+    'contextmenu': 'formats | link image',
+    'menubar': False,
+    'inline': False,
+    'indentation': '20pt',
+    'keep_styles': True,
+    'statusbar': True,
+    'width': 'auto',
+    'height': 500,
+    'valid_elements': '*[*]',
+    'custom_elements': 'Node',
+}
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 

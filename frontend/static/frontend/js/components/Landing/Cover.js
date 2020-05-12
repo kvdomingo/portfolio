@@ -47,7 +47,7 @@ export default class Cover extends React.Component {
                                             <Backspace count={text.length + 5} speed={1} />
                                         </div>
                                     ))}
-                                    <Cursor className='text-white white-color' />
+                                    <Cursor className='text-white white' />
                                 </Typing>
                             </div>
                             <p className='my-3 py-3'>

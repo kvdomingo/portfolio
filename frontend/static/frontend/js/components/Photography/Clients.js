@@ -42,7 +42,7 @@ class Clients extends Component {
                                 <div className='text-white text-center rgba-black-light p-5 h-100'>
                                     <div className='py-5'>
                                         <Link
-                                            to={`${url}-${cli.slug}`}
+                                            to={`${url}/${cli.slug}`}
                                             className='btn btn-outline-white btn-lg card-title my-5'
                                             >
                                             {cli.name}

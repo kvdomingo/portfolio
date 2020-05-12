@@ -1,4 +1,4 @@
-from tinymce import HTMLField
+from tinymce.models import HTMLField
 from datetime import datetime
 from django.db import models
 from django.utils import timezone
@@ -24,7 +24,7 @@ class BlogPost(models.Model):
     )
     title = models.CharField(max_length=256, unique=True)
     slug = models.SlugField(max_length=256, unique=True)
-    body = HTMLField('Body')
+    body = models.TextField(blank=True)
     keywords = models.TextField(max_length=256, blank=True)
     cover = models.URLField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)

@@ -12,6 +12,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "frontend/static/frontend/bundles/"),
+        publicPath: "/static/frontend/bundles/",
         filename: "main.[hash].js",
         chunkFilename: "[id].main.[hash].js",
         crossOriginLoading: "anonymous"
@@ -20,7 +21,10 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                exclude: [
+                    /node_modules/,
+                    /Content/,
+                ],
                 use: ["babel-loader"]
             },
             {

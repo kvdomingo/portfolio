@@ -12,6 +12,7 @@ def make_unpublished(modeladmin, request, queryset):
     queryset.update(status=0)
 make_unpublished.short_description = 'Unpublish selected articles'
 
+
 class PostAdmin(AdminChangeLinksMixin, admin.ModelAdmin):
     list_display = ('subject', 'title', 'slug', 'status', 'created', 'modified')
     list_display_links = ('title',)

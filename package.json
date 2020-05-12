@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --config webpack.dev-server.js",
     "watch": "webpack --config webpack.dev.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run build"
@@ -68,6 +67,7 @@
     "bootstrap-css-only": "^4.4.1",
     "cloudinary-core": "^2.8.2",
     "cloudinary-react": "^1.5.0",
+    "dateformat": "^3.0.3",
     "flickity": "^2.2.1",
     "flickity-fullscreen": "^1.1.1",
     "flickity-imagesloaded": "^2.0.0",
@@ -75,6 +75,7 @@
     "imagesloaded": "^4.1.4",
     "juxtaposejs": "^1.1.6",
     "masonry-layout": "^4.2.2",
+    "mathjax": "^3.0.5",
     "mdbreact": "^4.26.0",
     "npm": "^6.14.5",
     "react": "^16.13.1",
@@ -82,7 +83,9 @@
     "react-flickity-component": "^3.5.0",
     "react-fontawesome": "^1.7.1",
     "react-html-parser": "^2.0.2",
+    "react-jsx-parser": "^1.23.0",
     "react-masonry-component": "^6.2.1",
+    "react-mathjax": "^1.0.1",
     "react-router-dom": "^5.1.2",
     "react-typing-animation": "^1.6.2",
     "simple-react-lightbox": "^2.8.0-5"

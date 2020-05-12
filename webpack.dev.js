@@ -6,9 +6,6 @@ const merge = require("webpack-merge"),
 module.exports = merge(common, {
     context: __dirname,
     mode: "development",
-    output: {
-        publicPath: "../../static/frontend/bundles/"
-    },
     devtool: "inline-source-map",
     plugins: [
         new BundleTracker({

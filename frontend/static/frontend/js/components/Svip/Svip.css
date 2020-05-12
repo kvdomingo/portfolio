@@ -3,3 +3,23 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+ol.reference {
+    counter-reset: spp-counter;
+    list-style: none;
+}
+
+ol.reference li {
+    counter-increment: spp-counter;
+}
+
+ol.reference li::before {
+    content: '[' counter(spp-counter) ']';
+    margin-left: -2rem;
+    margin-right: 1rem;
+}
+
+.math-container {
+    display: block;
+    overflow-x: auto;
+}
