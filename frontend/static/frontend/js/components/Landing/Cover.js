@@ -56,7 +56,7 @@ export default class Cover extends React.Component {
                                 Inquiries? Collaborations?
                             </p>
                             <Link to={`${this.context}/cv`} className='btn btn-outline-white ml-0'>CV</Link>
-                            <a href='mailto:hello@kvdomingo.xyz' className='btn btn-outline-white'>Contact</a>
+                            <a href='mailto:hello@kvdomingo.xyz' className='btn btn-outline-white ml-0'>Contact</a>
                         </Container>
                     </div>
                 </Card>
