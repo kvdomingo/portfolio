@@ -4,36 +4,34 @@
     "chunks": {
         "undefined": [
             {
-                "name": "6.main.3314098a54ffdc1b17e9.css",
-                "publicPath": "/static/frontend/bundles/6.main.3314098a54ffdc1b17e9.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\6.main.3314098a54ffdc1b17e9.css"
+                "name": "6.main.f9a826b504f26d9e39a9.css",
+                "publicPath": "/static/frontend/bundles/6.main.f9a826b504f26d9e39a9.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\6.main.f9a826b504f26d9e39a9.css"
             },
             {
-                "name": "6.main.3314098a54ffdc1b17e9.js",
-                "publicPath": "/static/frontend/bundles/6.main.3314098a54ffdc1b17e9.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\6.main.3314098a54ffdc1b17e9.js"
+                "name": "6.main.f9a826b504f26d9e39a9.js",
+                "publicPath": "/static/frontend/bundles/6.main.f9a826b504f26d9e39a9.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\6.main.f9a826b504f26d9e39a9.js"
             }
         ],
         "null": [
             {
-                "name": "14.main.3314098a54ffdc1b17e9.js",
-                "publicPath": "/static/frontend/bundles/14.main.3314098a54ffdc1b17e9.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\14.main.3314098a54ffdc1b17e9.js"
+                "name": "14.main.f9a826b504f26d9e39a9.js",
+                "publicPath": "/static/frontend/bundles/14.main.f9a826b504f26d9e39a9.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\14.main.f9a826b504f26d9e39a9.js"
             }
         ],
         "main": [
             {
-                "name": "main.3314098a54ffdc1b17e9.css",
-                "publicPath": "/static/frontend/bundles/main.3314098a54ffdc1b17e9.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.3314098a54ffdc1b17e9.css"
+                "name": "main.f9a826b504f26d9e39a9.css",
+                "publicPath": "/static/frontend/bundles/main.f9a826b504f26d9e39a9.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.f9a826b504f26d9e39a9.css"
             },
             {
-                "name": "main.3314098a54ffdc1b17e9.js",
-                "publicPath": "/static/frontend/bundles/main.3314098a54ffdc1b17e9.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.3314098a54ffdc1b17e9.js"
+                "name": "main.f9a826b504f26d9e39a9.js",
+                "publicPath": "/static/frontend/bundles/main.f9a826b504f26d9e39a9.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.f9a826b504f26d9e39a9.js"
             }
         ]
-    },
-    "error": "ModuleNotFoundError",
-    "message": "Module not found: Error: Can't resolve 'react-mathjax' in 'D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\js\\components\\Svip'"
+    }
 }

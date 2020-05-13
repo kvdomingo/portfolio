@@ -1,8 +1,7 @@
 const path = require("path"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin,
-    webpack = require("webpack");
+    CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 
 
 module.exports = {
@@ -64,15 +63,6 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new webpack.optimize.SplitChunksPlugin({
-            chunks: "async",
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                }
-            }
-        }),
         new MiniCssExtractPlugin({
             filename: "main.[hash].css",
             chunkFilename: "[id].main.[hash].css"
