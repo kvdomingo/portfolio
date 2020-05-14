@@ -165,7 +165,7 @@ class NavBar extends React.Component {
                                     </DropdownItem>
                                     <DropdownItem>
                                         <Link to={`/${this.props.base}/dev`}>
-                                            Development
+                                            Web Development
                                         </Link>
                                     </DropdownItem>
                                 </DropdownMenu>

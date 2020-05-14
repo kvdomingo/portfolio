@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image } from 'cloudinary-react';
 import { withRouter } from 'react-router-dom';
+import TitleComponent from '../TitleComponent';
 import Masonry from 'masonry-layout/masonry';
 import imagesLoaded from 'imagesloaded/imagesloaded';
 import { SRLWrapper } from 'simple-react-lightbox';
@@ -59,39 +60,46 @@ class Gallery extends Component {
         let loaderVisible = (this.state.isLoaded)
             ? 'none'
             : 'block-inline';
+        let { photogPage } = this.props.match.params;
+        let title = (photogPage)
+            ? `${photogPage[0].toUpperCase()}${photogPage.slice(1)} | Photography`
+            : 'Photography';
         return (
-            <div className='grid text-center'>
-                <div className='text-center mt-5 my-5 spinner-grow spinner-grow-lg' style={{ display: loaderVisible }} />
-                <div className='grid-sizer'></div>
-                <SRLWrapper style={{ display: contentVisible }}>
-                    {this.state.images.map((im, i) => {
-                        if (im.width > 3*im.height) {
-                            gridItem = 'grid-item--width4';
-                        } else if (im.width > 2*im.height && im.width < 3*im.height) {
-                            gridItem = 'grid-item--width3';
-                        } else if (im.width > im.height && im.width < 2*im.height) {
-                            gridItem = 'grid-item--width2';
-                        } else {
-                            gridItem = 'grid-item';
-                        }
+            <React.Fragment>
+                <TitleComponent title={title} />
+                <div className='grid text-center'>
+                    <div className='text-center mt-5 my-5 spinner-grow spinner-grow-lg' style={{ display: loaderVisible }} />
+                    <div className='grid-sizer'></div>
+                    <SRLWrapper style={{ display: contentVisible }}>
+                        {this.state.images.map((im, i) => {
+                            if (im.width > 3*im.height) {
+                                gridItem = 'grid-item--width4';
+                            } else if (im.width > 2*im.height && im.width < 3*im.height) {
+                                gridItem = 'grid-item--width3';
+                            } else if (im.width > im.height && im.width < 2*im.height) {
+                                gridItem = 'grid-item--width2';
+                            } else {
+                                gridItem = 'grid-item';
+                            }
 
-                        return (
-                            <div key={i} className={`grid-item ${gridItem} px-md-2 px-lg-3 px-0 py-2 mx-0`}>
-                                <Image
-                                    publicId={im.publicId}
-                                    cloudName='kdphotography-assets'
-                                    responsive
-                                    responsiveUseBreakpoints
-                                    crop='scale'
-                                    dpr='auto'
-                                    width='auto'
-                                    className='cld-shadow img-fluid mb-2'
-                                    />
-                            </div>
-                        );
-                    })}
-                </SRLWrapper>
-            </div>
+                            return (
+                                <div key={i} className={`grid-item ${gridItem} px-md-2 px-lg-3 px-0 py-2 mx-0`}>
+                                    <Image
+                                        publicId={im.publicId}
+                                        cloudName='kdphotography-assets'
+                                        responsive
+                                        responsiveUseBreakpoints
+                                        crop='scale'
+                                        dpr='auto'
+                                        width='auto'
+                                        className='cld-shadow img-fluid mb-2'
+                                        />
+                                </div>
+                            );
+                        })}
+                    </SRLWrapper>
+                </div>
+            </React.Fragment>
         );
     }
 }

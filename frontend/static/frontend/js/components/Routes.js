@@ -7,6 +7,7 @@ const CurrVitae = lazy(() => import('./CurrVitae/CurrVitae'));
 const Photography = lazy(() => import('./Photography/Photography'));
 const Svip = lazy(() => import('./Svip/Svip'));
 const SvipSubject = lazy(() => import('./Svip/Subject'));
+const Dev = lazy(() => import('./Dev/Dev'));
 const Err404 = lazy(() => import('./404'));
 
 
@@ -29,6 +30,7 @@ export default class Routes extends React.Component {
                     <Route path={`/${base}/photography`} component={Photography} />
                     <Route exact path={`/${base}/svip`} component={Svip} />
                     <Route path={`/${base}/svip/:courseSlug`} component={SvipSubject} />
+                    <Route exact path={`/${base}/dev`} component={Dev} />
 
                     <Route component={Err404} />
                 </Switch>

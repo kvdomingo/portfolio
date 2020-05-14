@@ -6,6 +6,7 @@ import {
 import { Link, Switch, Route, withRouter } from 'react-router-dom';
 import { BaseContext } from '../App';
 import Loading from '../Loading';
+import TitleComponent from '../TitleComponent';
 import './Svip.css';
 
 const Gallery = lazy(() => import('./Gallery'));
@@ -66,29 +67,33 @@ export default withRouter(class Subject extends Component {
     render() {
         let { path } = this.props.match;
         let { courseSlug } = this.props.match.params;
-        return ((!this.state.coursesIsLoaded)
-            ? <Loading />
-            : <Container className='my-5'>
+        return (
+            <React.Fragment>
+                <TitleComponent title={`${this.state.subject.name} | Coursework`} />
+                {(!this.state.coursesIsLoaded)
+                    ? <Loading />
+                    : <Container className='my-5'>
 
-                <Route path={`${path}/:postSlug`}>
-                    <div className='mb-3'>
-                        <Link to={`/${this.context}/svip/${courseSlug}`}>
-                            <Icon fas icon='angle-left' className='mr-1' /> Back to {this.state.subject.name}
-                        </Link>
-                    </div>
-                    <Post posts={this.state.posts} />
-                </Route>
+                        <Route path={`${path}/:postSlug`}>
+                            <div className='mb-3'>
+                                <Link to={`/${this.context}/svip/${courseSlug}`}>
+                                    <Icon fas icon='angle-left' className='mr-1' /> Back to {this.state.subject.name}
+                                </Link>
+                            </div>
+                            <Post posts={this.state.posts} subject={this.state.subject} />
+                        </Route>
 
-                <Route exact path={path}>
-                    <div className='mb-3'>
-                        <Link to={`/${this.context}/svip`}>
-                            <Icon fas icon='angle-left' className='mr-1' /> Back to courses
-                        </Link>
-                    </div>
-                    <Gallery key={this.state.activePage} { ...this.state } />
-                </Route>
+                        <Route exact path={path}>
+                            <div className='mb-3'>
+                                <Link to={`/${this.context}/svip`}>
+                                    <Icon fas icon='angle-left' className='mr-1' /> Back to courses
+                                </Link>
+                            </div>
+                            <Gallery key={this.state.activePage} { ...this.state } />
+                        </Route>
 
-            </Container>
+                    </Container>}
+            </React.Fragment>
         );
     }
 })

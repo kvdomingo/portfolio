@@ -10,8 +10,10 @@ import {
 } from 'mdbreact';
 import { withRouter } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
+import TitleComponent from '../TitleComponent';
 import dateFormat from 'dateformat';
 import JsxParser from 'react-jsx-parser';
+import Highlight from 'react-highlight.js';
 import MathJax from 'react-mathjax';
 import IFrame from 'react-iframe';
 import Cite from './Cite';
@@ -19,6 +21,7 @@ import Figure from './Figure';
 import MultiFigure from './MultiFigure';
 import AreaFigure from './AreaFigure';
 import Loading from '../Loading';
+import PopulateTable from './PopulateTable';
 import './Svip.css';
 
 
@@ -46,6 +49,7 @@ export default withRouter(class Post extends Component {
             (!this.state.isLoaded)
                 ? <Loading />
                 : <div>
+                    <TitleComponent title={`${this.state.post.title} | ${this.props.subject.name}`} />
                     <Typography tag='h1'>{this.state.post.title}</Typography>
                     <Icon far icon='clock' className='mr-1 text-muted'></Icon>
                     <p className='text-muted d-inline'>{created}</p>
@@ -60,8 +64,16 @@ export default withRouter(class Post extends Component {
                                         'circle', 'square', 'trapezoid', 'triangle'
                                     ],
                                     mapNames: (prefix, shapes) => shapes.map((item, i) => `${prefix}_${item.toLowerCase()}`),
+                                    populateTable: (data) => Object.values(data)[0].map((el, i) => (
+                                        <PopulateTable
+                                            lab={data.lab[i]}
+                                            lch={data.lch[i]}
+                                            key={i}
+                                            patchId={i+1}
+                                            />
+                                    ))
                                 }}
-                                components={{ React, MathJax, Image, Figure, Cite, IFrame, MultiFigure, AreaFigure, Table, TableBody, TableHead, Container }}
+                                components={{ React, MathJax, Image, Figure, Cite, IFrame, MultiFigure, AreaFigure, Table, TableBody, TableHead, Container, Highlight }}
                                 jsx={this.state.post.body}
                                 />
                         </MathJax.Provider>

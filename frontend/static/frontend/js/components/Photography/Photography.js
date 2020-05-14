@@ -31,35 +31,37 @@ class Photography extends Component {
     render() {
         let { path } = this.props.match;
         return (
-            <Container fluid className='my-5'>
-                <Row>
-                    <Col lg='2' className='pt-2 pb-4 px-lg-4'>
-                        <PhotoSidenav { ...this.state } />
-                    </Col>
-                    <Col lg='10' className='pr-lg-5'>
-                        <Switch>
-                            <Route path={`${path}/clients/:clientPage`}>
-                                <Lightbox>
-                                    <ClientGallery key={this.state.activePage} />
-                                </Lightbox>
-                            </Route>
-                            <Route exact path={`${path}/clients`}>
-                                <Clients />
-                            </Route>
-                            <Route path={`${path}/:photogPage`}>
-                                <Lightbox>
-                                    <Gallery key={this.state.activePage} />
-                                </Lightbox>
-                            </Route>
-                            <Route exact path={path}>
-                                <Lightbox>
-                                    <Gallery key={this.state.activePage} />
-                                </Lightbox>
-                            </Route>
-                        </Switch>
-                    </Col>
-                </Row>
-            </Container>
+            <React.Fragment>
+                <Container fluid className='my-5'>
+                    <Row>
+                        <Col lg='2' className='pt-2 pb-4 px-lg-4'>
+                            <PhotoSidenav { ...this.state } />
+                        </Col>
+                        <Col lg='10' className='pr-lg-5'>
+                            <Switch>
+                                <Route path={`${path}/clients/:clientPage`}>
+                                    <Lightbox>
+                                        <ClientGallery key={this.state.activePage} />
+                                    </Lightbox>
+                                </Route>
+                                <Route exact path={`${path}/clients`}>
+                                    <Clients />
+                                </Route>
+                                <Route path={`${path}/:photogPage`}>
+                                    <Lightbox>
+                                        <Gallery key={this.state.activePage} />
+                                    </Lightbox>
+                                </Route>
+                                <Route exact path={path}>
+                                    <Lightbox>
+                                        <Gallery key={this.state.activePage} />
+                                    </Lightbox>
+                                </Route>
+                            </Switch>
+                        </Col>
+                    </Row>
+                </Container>
+            </React.Fragment>
         );
     }
 }

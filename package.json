@@ -83,6 +83,8 @@
     "react-dom": "^16.13.1",
     "react-flickity-component": "^3.5.0",
     "react-fontawesome": "^1.7.1",
+    "react-helmet": "^6.0.0",
+    "react-highlight.js": "^1.0.7",
     "react-html-parser": "^2.0.2",
     "react-iframe": "^1.8.0",
     "react-jsx-parser": "^1.23.0",
