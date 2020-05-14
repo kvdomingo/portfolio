@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django_admin_relation_links import AdminChangeLinksMixin
-from django.urls import reverse
 from .models import BlogPost, Course
 
 
@@ -24,7 +23,7 @@ class PostAdmin(AdminChangeLinksMixin, admin.ModelAdmin):
     change_links = ('subject',)
 
     def view_on_site(self, obj):
-        return reverse('svip:post', args=(obj.subject.slug, obj.slug))
+        return f'/svip/{obj.subject.slug}/{obj.slug}'
 
 
 class PostInline(admin.StackedInline):

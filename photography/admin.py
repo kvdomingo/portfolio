@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.urls import reverse
 from .models import Client
 
 
@@ -8,7 +7,7 @@ class ClientAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
     def view_on_site(self, obj):
-        return reverse('photography:client', args=(obj.slug,))
+        return f'/photography/clients/{obj.slug}'
 
 
 admin.site.register(Client, ClientAdmin)

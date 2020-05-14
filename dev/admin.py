@@ -9,9 +9,5 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['title', 'organization']
     prepopulated_fields = {'slug': ['title']}
 
-    def view_on_site(self, obj):
-        pass
-        # return reverse('svip:post', args=(obj.subject.slug, obj.slug))
-
 
 admin.site.register(Project, ProjectAdmin)
