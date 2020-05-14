@@ -21,8 +21,8 @@
             "alt": "PostgreSQL"
         },
         {
-            "src": "https://png2.cleanpng.com/sh/5839958b964c3954fd53b83dace075f9/L0KzQYm3WMA0N5xxgpH0aYP2gLBuTf16e6JxRdV1dYP3dcO0hPF1aZNmi9c2bXHxcbjsjfVvfF54keV9ZX2w9QoaTnmjoF7qqwg25aYkPjYBrr3lw9QyBDKKLUXlRoW3hMhjPWVoTacDLkezRIe4UMgyOWY4S6QDM0e1Q4S7V8IveJ9s/kisspng-mysql-cluster-database-management-system-%E4%B8%93-%E9%A2%98-%E5%92%96-%E5%95%A1-%E4%B8%8E-%E4%BB%A3-%E7%A0%81-5b640d8b54c558.7046108115332837233472.png",
-            "alt": "MySQL"
+            "src": "https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-big.png",
+            "alt": "Webpack"
         }
     ],
     "Frontend": [
@@ -57,10 +57,6 @@
         {
             "src": "https://material-ui.com/static/logo_raw.svg",
             "alt": "Material UI"
-        },
-        {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/768px-Vue.js_Logo_2.svg.png",
-            "alt": "Vue.js"
         }
     ],
     "Data & Visualization": [
@@ -92,10 +88,14 @@
     "CI/CD": [
         {
             "src": "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
-            "alt": "Git/GitHub"
+            "alt": "Git"
         },
         {
-            "src": "https://png2.cleanpng.com/sh/f79fca818f9870b45f138b08765ce106/L0KzQYm3VsE2N5h2eZH0aYP2gLBuTfdqfJl6ep95b4fogsTvhfxtNaNqi9HAcnPoPbzwlL1kd551jeZucj3sc7F1k71wdpN0eeRtLUXlQoTohsk0OpJpeqUELkW0SIK3WMY2OWY3UaIBNUO5Q4KAVcYveJ9s/kisspng-github-powershell-resource-kit-computer-icons-onboard-5b23af932adb39.5181086515290653631756.png",
+            "src": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "alt": "GitHub"
+        },
+        {
+            "src": "https://cdn.freebiesupply.com/logos/large/2x/codecov-logo-png-transparent.png",
             "alt": "Codecov"
         },
         {
@@ -109,10 +109,6 @@
         {
             "src": "https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png",
             "alt": "Docker"
-        },
-        {
-            "src": "https://davidwalsh.name/demo/2019/04/percy-square.png",
-            "alt": "Percy"
         }
     ]
 }

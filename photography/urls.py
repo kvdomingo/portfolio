@@ -7,8 +7,8 @@ urlpatterns = [
     re_path(r'^api/photography/client/?$', views.ClientApi.as_view()),
     path('api/photography/clients/<slug:slug>', views.api_client_gallery),
     path('api/photography/<slug:slug>', views.api_gallery),
-    path('photography', views.index, name='index'),
-    path('photography/clients/', views.clients, name='clients'),
-    path('photography/clients/<slug:client_slug>', views.client_gallery, name='client'),
-    path('photography/<slug:group>/', views.gallery, name='gallery'),
+    # path('photography', views.index, name='index'),
+    # path('photography/clients/', views.clients, name='clients'),
+    # path('photography/clients/<slug:client_slug>', views.client_gallery, name='client'),
+    # path('photography/<slug:group>/', views.gallery, name='gallery'),
 ]

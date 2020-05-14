@@ -6,7 +6,6 @@ import {
 } from 'mdbreact';
 import Typing, { Backspace, Delay, Cursor } from 'react-typing-animation';
 import { Link } from 'react-router-dom';
-import { BaseContext } from '../App';
 
 
 const styles = {
@@ -22,8 +21,6 @@ const styles = {
 }
 
 export default class Cover extends React.Component {
-    static contextType = BaseContext;
-
     render() {
         let carouselTyping = ['physicist', 'full stack developer', 'bioinformatician', 'photographer', 'musician'];
         return (
@@ -55,7 +52,7 @@ export default class Cover extends React.Component {
                                 <br /><br />
                                 Inquiries? Collaborations?
                             </p>
-                            <Link to={`${this.context}/cv`} className='btn btn-outline-white ml-0'>CV</Link>
+                            <Link to='/cv' className='btn btn-outline-white ml-0'>CV</Link>
                             <a href='mailto:hello@kvdomingo.xyz' className='btn btn-outline-white ml-0'>Contact</a>
                         </Container>
                     </div>

@@ -7,12 +7,9 @@ import {
 } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import Carousel from './Carousel';
-import { BaseContext } from '../App';
 
 
 export default class Photography extends React.Component {
-    static contextType = BaseContext;
-
     render() {
         return (
             <Container className='py-5' data-aos='fade-up'>
@@ -24,7 +21,7 @@ export default class Photography extends React.Component {
                         <p className='mb-3'>
                             As the former Executive Officer for Promotions and Documentation of UP Iris&mdash;a university-wide student organization&mdash;I received and conducted training in the art of storytelling through photography. Today, I continue to draw inspiration and learnings from established photographers, both foreign and local, in order to hone my own craft. I mainly focus on portrait, studio, and events photography. However, I do like to be well-rounded, and I don't mind venturing into street, landscape, and product photography every once in a while.
                         </p>
-                        <Link to={`${this.context}/photography`} className='btn btn-outline-white mb-3 mb-md-0'>See portfolio</Link>
+                        <Link to='/photography' className='btn btn-outline-white mb-3 mb-md-0'>See portfolio</Link>
                     </Col>
                     <Col md='5' className='text-center'>
                         <Carousel />

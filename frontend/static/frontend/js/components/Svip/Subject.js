@@ -4,7 +4,6 @@ import {
     MDBIcon as Icon,
 } from 'mdbreact';
 import { Link, Switch, Route, withRouter } from 'react-router-dom';
-import { BaseContext } from '../App';
 import Loading from '../Loading';
 import TitleComponent from '../TitleComponent';
 import './Svip.css';
@@ -14,8 +13,6 @@ const Post = lazy(() => import('./Post'));
 
 
 export default withRouter(class Subject extends Component {
-    static contextType = BaseContext;
-
     constructor(props) {
         super(props);
         this.state = {
@@ -76,7 +73,7 @@ export default withRouter(class Subject extends Component {
 
                         <Route path={`${path}/:postSlug`}>
                             <div className='mb-3'>
-                                <Link to={`/${this.context}/svip/${courseSlug}`}>
+                                <Link to={`/svip/${courseSlug}`}>
                                     <Icon fas icon='angle-left' className='mr-1' /> Back to {this.state.subject.name}
                                 </Link>
                             </div>
@@ -85,7 +82,7 @@ export default withRouter(class Subject extends Component {
 
                         <Route exact path={path}>
                             <div className='mb-3'>
-                                <Link to={`/${this.context}/svip`}>
+                                <Link to='/svip'>
                                     <Icon fas icon='angle-left' className='mr-1' /> Back to courses
                                 </Link>
                             </div>

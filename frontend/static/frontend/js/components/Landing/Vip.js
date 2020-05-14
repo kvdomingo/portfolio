@@ -7,12 +7,9 @@ import {
 } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import Juxtapose from './Juxtapose';
-import { BaseContext } from '../App';
 
 
 export default class Vip extends React.Component {
-    static contextType = BaseContext;
-
     render() {
         return (
             <Container className='py-5' data-aos='fade-up'>
@@ -25,7 +22,7 @@ export default class Vip extends React.Component {
                         <p className='mb-3'>
                             For my undergraduate thesis, I joined the Instrumentation Physics Laboratory&ndash;Video &amp; Image Processing subgroup. My research was initially on blood spatter analysis (BPA). Due to limited equipment, I was tasked to find a way to extract useful information from possibly incomplete measurements. This led me to the field of compressive sensing (CS), which became my main field of research. In this endeavor, I utilized various technologies such as established signal processing techniques, as well as more contemporary machine learning and artificial intelligence approaches.
                         </p>
-                        <Link to={`${this.context}/svip`} className='btn btn-outline-white mb-3 mb-md-0'>See portfolio</Link>
+                        <Link to='/svip' className='btn btn-outline-white mb-3 mb-md-0'>See portfolio</Link>
                     </Col>
                 </Row>
             </Container>

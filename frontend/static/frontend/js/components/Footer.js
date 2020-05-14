@@ -14,7 +14,7 @@ export default class PageFooter extends React.Component {
         return (
             <Footer className='bg-dark pt-5'>
                 <Container fluid className='text-center py-4'>
-                    <Link to={`/${this.props.base}`} className='d-block'>
+                    <Link to='/' className='d-block'>
                         <Image
                             publicId='logo/logo-white'
                             cloudName='kdphotography-assets'

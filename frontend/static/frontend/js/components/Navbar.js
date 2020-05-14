@@ -60,7 +60,7 @@ class NavBar extends React.Component {
     }
 
     changePageNavStyle(pathName) {
-        if (pathName === `/${this.props.base}`) {
+        if (pathName === '/') {
             this.setState({
                 navFixed: 'fixed-top navbar-dark',
                 navBrand: 'logo/logo-white',
@@ -77,7 +77,7 @@ class NavBar extends React.Component {
 
     handleNavScroll() {
         if (window.scrollY < 30) {
-            if (`/${this.props.base}` === window.location.pathname) {
+            if (window.location.pathname === '/') {
                 this.setState({ navBackground: 'rgba(0, 0, 0, 0.0)' });
             }
             this.setState({
@@ -85,7 +85,7 @@ class NavBar extends React.Component {
                 navPadY: 'py-3'
             });
         } else {
-            if (`/${this.props.base}` === window.location.pathname) {
+            if (window.location.pathname === '/') {
                 this.setState({ navBackground: 'rgba(0, 0, 0, 0.90)' });
             }
             this.setState({
@@ -117,7 +117,7 @@ class NavBar extends React.Component {
                 }}
                 >
                 <NavbarBrand>
-                    <Link to={`/${this.props.base}`}>
+                    <Link to='/'>
                         <Image
                             publicId={this.state.navBrand}
                             cloudName='kdphotography-assets'
@@ -136,10 +136,10 @@ class NavBar extends React.Component {
                     >
                     <NavbarNav right>
                         <NavItem>
-                            <NavLink to={`/${this.props.base}`}>Home</NavLink>
+                            <NavLink to='/'>Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to={`/${this.props.base}/cv`}>CV</NavLink>
+                            <NavLink to='/cv'>CV</NavLink>
                         </NavItem>
                         <NavItem>
                             <Dropdown
@@ -154,17 +154,17 @@ class NavBar extends React.Component {
                                 </DropdownToggle>
                                 <DropdownMenu right basic>
                                     <DropdownItem>
-                                        <Link to={`/${this.props.base}/photography`}>
+                                        <Link to='/photography'>
                                             Photography
                                         </Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link to={`/${this.props.base}/svip`}>
+                                        <Link to='/svip'>
                                             Coursework
                                         </Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link to={`/${this.props.base}/dev`}>
+                                        <Link to='/dev'>
                                             Web Development
                                         </Link>
                                     </DropdownItem>

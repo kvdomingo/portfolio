@@ -6,12 +6,9 @@ import {
     MDBContainer as Container,
 } from 'mdbreact';
 import { Link } from 'react-router-dom';
-import { BaseContext } from '../App';
 
 
 export default class Development extends React.Component {
-    static contextType = BaseContext;
-
     render() {
         return (
             <Container className='py-5' data-aos='fade-up'>
@@ -21,7 +18,7 @@ export default class Development extends React.Component {
                         <p className='mb-3'>
                             In my spare time, I studied a lot of material on programming, especially in Python, primarily to aid in my course requirements and thesis research. I already had great interest in web development, and took Harvard's CS50 material during downtimes. This encouraged me to study more beyond what was offered in those courses. Now, I can handle full stack web applications, from local development with various tools, up to maintenance and deployment to Heroku.
                         </p>
-                        <Link to={`${this.context}/dev`} className='btn btn-outline-white mb-3 mb-md-0'>See portfolio</Link>
+                        <Link to='/dev' className='btn btn-outline-white mb-3 mb-md-0'>See portfolio</Link>
                     </Col>
                     <Col className='my-auto'>
                         <div className="console">

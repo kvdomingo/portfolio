@@ -28,12 +28,8 @@ sitemaps = {
 
 app_name = 'web'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('cv', views.cv, name='cv'),
+    # path('', views.index, name='index'),
+    # path('cv', views.cv, name='cv'),
+    path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
-
-if not (settings.DEBUG and settings.ON_HEROKU):
-    urlpatterns += [
-        path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
-        path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    ]
