@@ -4,36 +4,34 @@
     "chunks": {
         "undefined": [
             {
-                "name": "7.main.87e1154cca1be3da8763.css",
-                "publicPath": "/static/frontend/bundles/7.main.87e1154cca1be3da8763.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.87e1154cca1be3da8763.css"
+                "name": "7.main.e7dd97d0bcaf79e7d933.css",
+                "publicPath": "/static/frontend/bundles/7.main.e7dd97d0bcaf79e7d933.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.e7dd97d0bcaf79e7d933.css"
             },
             {
-                "name": "7.main.87e1154cca1be3da8763.js",
-                "publicPath": "/static/frontend/bundles/7.main.87e1154cca1be3da8763.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.87e1154cca1be3da8763.js"
+                "name": "7.main.e7dd97d0bcaf79e7d933.js",
+                "publicPath": "/static/frontend/bundles/7.main.e7dd97d0bcaf79e7d933.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.e7dd97d0bcaf79e7d933.js"
             }
         ],
         "null": [
             {
-                "name": "17.main.87e1154cca1be3da8763.js",
-                "publicPath": "/static/frontend/bundles/17.main.87e1154cca1be3da8763.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\17.main.87e1154cca1be3da8763.js"
+                "name": "16.main.e7dd97d0bcaf79e7d933.js",
+                "publicPath": "/static/frontend/bundles/16.main.e7dd97d0bcaf79e7d933.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\16.main.e7dd97d0bcaf79e7d933.js"
             }
         ],
         "main": [
             {
-                "name": "main.87e1154cca1be3da8763.css",
-                "publicPath": "/static/frontend/bundles/main.87e1154cca1be3da8763.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.87e1154cca1be3da8763.css"
+                "name": "main.e7dd97d0bcaf79e7d933.css",
+                "publicPath": "/static/frontend/bundles/main.e7dd97d0bcaf79e7d933.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.e7dd97d0bcaf79e7d933.css"
             },
             {
-                "name": "main.87e1154cca1be3da8763.js",
-                "publicPath": "/static/frontend/bundles/main.87e1154cca1be3da8763.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.87e1154cca1be3da8763.js"
+                "name": "main.e7dd97d0bcaf79e7d933.js",
+                "publicPath": "/static/frontend/bundles/main.e7dd97d0bcaf79e7d933.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.e7dd97d0bcaf79e7d933.js"
             }
         ]
-    },
-    "error": "ModuleBuildError",
-    "message": "Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\js\\components\\Dev\\Dev.js: Unexpected token, expected \",\" (48:59)\n\n  46 |                                         <Icon far icon='clock' className='mr-1 text-muted' />\n  47 |                                         <p className=\"text-muted d-inline\">\n> 48 |                                             {{ this_project.start_date }} &ndash; {{ this_project.end_date }}\n     |                                                            ^\n  49 |                                         </p>\n  50 |                                         {project.summary}\n  51 |                                     </CardBody>\n    at Object._raise (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:742:17)\n    at Object.raiseWithData (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Object.raise (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:729:17)\n    at Object.unexpected (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:8779:16)\n    at Object.expect (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:8765:28)\n    at Object.parseObj (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:10387:14)\n    at Object.parseExprAtom (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:10017:28)\n    at Object.parseExprAtom (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4626:20)\n    at Object.parseExprSubscripts (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9624:23)\n    at Object.parseMaybeUnary (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9604:21)\n    at Object.parseExprOps (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9474:23)\n    at Object.parseMaybeConditional (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9447:23)\n    at Object.parseMaybeAssign (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9402:21)\n    at Object.parseExpression (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9354:23)\n    at Object.jsxParseExpressionContainer (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4477:30)\n    at Object.jsxParseElementAt (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4571:36)\n    at Object.jsxParseElementAt (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4556:32)\n    at Object.jsxParseElementAt (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4556:32)\n    at Object.jsxParseElementAt (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4556:32)\n    at Object.jsxParseElement (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4614:17)\n    at Object.parseExprAtom (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4621:19)\n    at Object.parseExprSubscripts (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9624:23)\n    at Object.parseMaybeUnary (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9604:21)\n    at Object.parseExprOps (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9474:23)\n    at Object.parseMaybeConditional (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9447:23)\n    at Object.parseMaybeAssign (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9402:21)\n    at Object.parseParenAndDistinguishExpression (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:10215:28)\n    at Object.parseExprAtom (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9969:21)\n    at Object.parseExprAtom (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:4626:20)\n    at Object.parseExprSubscripts (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\@babel\\parser\\lib\\index.js:9624:23)"
+    }
 }

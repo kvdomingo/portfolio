@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from . import views
-from svip.models import BlogPost
+from svip.models import BlogPost, Course
 from photography.models import Client
 from .sitemap import StaticViewSitemap
 
@@ -14,6 +14,12 @@ sitemaps = {
     'photography': GenericSitemap(
         {
             'queryset': Client.objects.all(),
+        },
+        priority=0.5,
+    ),
+    'courses': GenericSitemap(
+        {
+            'queryset': Course.objects.all(),
         },
         priority=0.5,
     ),

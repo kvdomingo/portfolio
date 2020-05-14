@@ -5,6 +5,6 @@ from . import views
 app_name = 'dev'
 urlpatterns = [
     re_path('^api/dev/project', views.ProjectApi.as_view()),
-    path('dev', views.index, name='index'),
-    path('dev/<slug:slug>', views.project, name='project'),
+    # path('dev', views.index, name='index'),
+    # path('dev/<slug:slug>', views.project, name='project'),
 ]

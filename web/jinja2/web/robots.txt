@@ -1,6 +1,7 @@
 User-Agent: *
-Allow: /svip/ap186/
+Allow: /svip/
 Allow: /photography/
 Disallow: /admin/
 Disallow: /api/
 Noindex: /admin/
+Noindex: /api/

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import AOS from 'aos';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Routes from './Routes';
+import Loading from './Loading';
 
 
 export default class App extends React.Component {
@@ -15,7 +16,9 @@ export default class App extends React.Component {
         return (
             <Router>
                 <Navbar />
-                <Routes />
+                <Suspense fallback={<Loading />} >
+                    {Routes}
+                </Suspense>
                 <Footer />
             </Router>
         );

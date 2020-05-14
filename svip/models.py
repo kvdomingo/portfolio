@@ -33,7 +33,7 @@ class BlogPost(models.Model):
         ordering = ['-created']
 
     def get_absolute_url(self):
-        return f'/svip/{self.subject.slug}/{self.slug}/'
+        return f'/svip/{self.subject.slug}/{self.slug}'
 
     def __str__(self):
         return f'{self.subject}: {self.title}'
@@ -46,6 +46,9 @@ class Course(models.Model):
     title = models.CharField(max_length=256)
     description = models.TextField()
     cover = models.URLField(blank=True)
+
+    def get_absolute_url(self):
+        return f'/svip/{self.slug}'
 
     def __str__(self):
         return f'{self.name}'
