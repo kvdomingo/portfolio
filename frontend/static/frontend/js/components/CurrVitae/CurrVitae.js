@@ -11,7 +11,11 @@ export default class Cv extends Component {
         let sections = Object.keys(cvData);
         return (
             <React.Fragment>
-                <TitleComponent title='CV' />
+                <TitleComponent
+                    title='CV'
+                    description='Curriculum Vitae (CV) of Kenneth V. Domingo including educational attainment, work experience, and projects'
+                    keywords='Kenneth V. Domingo, Kenneth Domingo Photography, curriculum vitae, Python, photography, physics, applied physics, kvdomingo'
+                    />
                 <Container className='px-md-5 pb-4'>
                     {sections.map((sec, i) => (
                         <TimelineSection { ...cvData[sec] } />

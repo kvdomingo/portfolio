@@ -59,7 +59,11 @@ class ClientGallery extends Component {
             : 'block-inline';
         return (
             <React.Fragment>
-                <TitleComponent title='Clients | Photography' />
+                <TitleComponent
+                    title='Clients | Photography'
+                    description='Clients section of the photography portfolio of Kenneth V. Domingo'
+                    keywords='photography, latest, live, clients, portraits, portfolio, kvdomingo, Kenneth V. Domingo'
+                    />
                 <div className='grid text-center'>
                     <div className='text-center mt-5 my-5 spinner-grow spinner-grow-lg' style={{ display: loaderVisible }} />
                     <div className='grid-sizer'></div>

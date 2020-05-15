@@ -66,7 +66,11 @@ export default withRouter(class Subject extends Component {
         let { courseSlug } = this.props.match.params;
         return (
             <React.Fragment>
-                <TitleComponent title={`${this.state.subject.name} | Coursework`} />
+                <TitleComponent
+                    title={`${this.state.subject.name} | Coursework`}
+                    description={`Portfolio & coursework on ${this.state.subject.name} (${this.state.subject.title}): ${this.state.subject.description}`}
+                    keywords={`${this.state.subject.description}, applied physics, app physics, ${this.state.subject.name}, computational physics, kvdomingo, Kenneth V. Domingo`}
+                    />
                 {(!this.state.coursesIsLoaded)
                     ? <Loading />
                     : <Container className='my-5'>

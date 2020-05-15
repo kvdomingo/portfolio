@@ -2,27 +2,24 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 
-const TitleComponent = ({ title }) => {
-    const defaultTitle = '';
+function TitleComponent(props) {
+    const title = (props.title)
+        ? `${props.title} | Kenneth V. Domingo`
+        : `Kenneth V. Domingo`;
     return (
         <Helmet>
-            <title>{(title)? title : defaultTitle} | Kenneth V. Domingo</title>
+            <title>{title}</title>
+            <meta name='keywords' content={props.keywords} />
+            <meta name='description' content={props.description} />
+            <meta name="og:description" content={props.description} />
+            <meta name="twitter:description" content={props.description} />
         </Helmet>
     );
 }
 
-const withTitle = ({ component: Component, title }) => {
-    return class Title extends Component {
-        render() {
-            return (
-                <React.Fragment>
-                    <TitleComponent title={title} />
-                    <Component { ...this.props } />
-                </React.Fragment>
-            );
-        }
-    }
-}
+TitleComponent.defaultProps = {
+    description: 'Portfolio of Kenneth V. Domingo',
+    keywords: '',
+};
 
 export default TitleComponent;
-export { withTitle };

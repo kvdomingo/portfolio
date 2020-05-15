@@ -49,7 +49,11 @@ export default withRouter(class Post extends Component {
             (!this.state.isLoaded)
                 ? <Loading />
                 : <div>
-                    <TitleComponent title={`${this.state.post.title} | ${this.props.subject.name}`} />
+                    <TitleComponent
+                        title={`${this.state.post.title} | ${this.props.subject.name}`}
+                        description={`${this.props.subject.name} - ${this.state.post.title}`}
+                        keywords={`${this.state.post.keywords}, applied physics, app physics, ${this.props.subject.name}, computational physics, kvdomingo, Kenneth V. Domingo`}
+                        />
                     <Typography tag='h1'>{this.state.post.title}</Typography>
                     <Icon far icon='clock' className='mr-1 text-muted'></Icon>
                     <p className='text-muted d-inline'>{created}</p>

@@ -29,7 +29,11 @@ class Clients extends Component {
         let { url } = this.props.match;
         return (
             <React.Fragment>
-                <TitleComponent title='Clients | Photography' />
+                <TitleComponent
+                    title='Clients | Photography'
+                    description='Clients section of the photography portfolio of Kenneth V. Domingo'
+                    keywords='clients, photography, portfolio, kvdomingo, Kenneth V. Domingo'
+                    />
                 <div>
                     <Row className='row-cols-1 row-cols-lg-2 row-cols-xl-3'>
                         {this.state.clients.map((cli, i) => (

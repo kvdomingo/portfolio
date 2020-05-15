@@ -29,7 +29,11 @@ export default class Dev extends Component {
     render() {
         return (
             <React.Fragment>
-                <TitleComponent title='Web Development' />
+                <TitleComponent
+                    title='Web Development'
+                    description='Portfolio of Kenneth V. Domingo with relevant work on web development and software development'
+                    keywords='web development, app development, software development, full stack development, blog, dev diaries, kvdomingo, Kenneth V. Domingo'
+                    />
                 {(!this.state.isLoaded)
                     ? <Loading />
                     : <Container fluid className='my-5'>
