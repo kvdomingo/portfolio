@@ -4,33 +4,33 @@
     "chunks": {
         "undefined": [
             {
-                "name": "7.main.02405e18870fd3303733.css",
-                "publicPath": "/static/frontend/bundles/7.main.02405e18870fd3303733.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.02405e18870fd3303733.css"
+                "name": "7.main.0be2bce9e12785f1801e.css",
+                "publicPath": "/static/frontend/bundles/7.main.0be2bce9e12785f1801e.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.0be2bce9e12785f1801e.css"
             },
             {
-                "name": "7.main.02405e18870fd3303733.js",
-                "publicPath": "/static/frontend/bundles/7.main.02405e18870fd3303733.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.02405e18870fd3303733.js"
+                "name": "7.main.0be2bce9e12785f1801e.js",
+                "publicPath": "/static/frontend/bundles/7.main.0be2bce9e12785f1801e.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.0be2bce9e12785f1801e.js"
             }
         ],
         "null": [
             {
-                "name": "16.main.02405e18870fd3303733.js",
-                "publicPath": "/static/frontend/bundles/16.main.02405e18870fd3303733.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\16.main.02405e18870fd3303733.js"
+                "name": "16.main.0be2bce9e12785f1801e.js",
+                "publicPath": "/static/frontend/bundles/16.main.0be2bce9e12785f1801e.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\16.main.0be2bce9e12785f1801e.js"
             }
         ],
         "main": [
             {
-                "name": "main.02405e18870fd3303733.css",
-                "publicPath": "/static/frontend/bundles/main.02405e18870fd3303733.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.02405e18870fd3303733.css"
+                "name": "main.0be2bce9e12785f1801e.css",
+                "publicPath": "/static/frontend/bundles/main.0be2bce9e12785f1801e.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.0be2bce9e12785f1801e.css"
             },
             {
-                "name": "main.02405e18870fd3303733.js",
-                "publicPath": "/static/frontend/bundles/main.02405e18870fd3303733.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.02405e18870fd3303733.js"
+                "name": "main.0be2bce9e12785f1801e.js",
+                "publicPath": "/static/frontend/bundles/main.0be2bce9e12785f1801e.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.0be2bce9e12785f1801e.js"
             }
         ]
     }

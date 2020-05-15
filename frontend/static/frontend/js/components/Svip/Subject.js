@@ -81,7 +81,7 @@ export default withRouter(class Subject extends Component {
                                     <Icon fas icon='angle-left' className='mr-1' /> Back to {this.state.subject.name}
                                 </Link>
                             </div>
-                            <Post posts={this.state.posts} subject={this.state.subject} />
+                            <Post subject={this.state.subject} />
                         </Route>
 
                         <Route exact path={path}>

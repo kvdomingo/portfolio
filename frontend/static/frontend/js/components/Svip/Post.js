@@ -38,8 +38,12 @@ export default withRouter(class Post extends Component {
 
     componentDidMount() {
         let { postSlug } = this.props.match.params;
-        let post = this.props.posts.find(post => (postSlug === post.slug));
-        this.setState({ post, isLoaded: true });
+        fetch(`/api/svip/blogpost?slug=${postSlug}`)
+            .then(res => res.json())
+            .then(post => {
+                post = post[0];
+                this.setState({ post, isLoaded: true })
+            });
     }
 
     render() {
