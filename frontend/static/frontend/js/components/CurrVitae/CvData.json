@@ -20,25 +20,6 @@
             }
         ]
     },
-    "trainingInfo": {
-        "sectionName": "Training",
-        "icon": "fas fa-certificate",
-        "elements": [
-            {
-                "key": "cs50",
-                "title": "Harvard University",
-                "startDate": "Dec 2019",
-                "endDate": "Apr 2020",
-                "connection": [
-                    { "name": "Division of Continuing Education", "href": "https://www.dce.harvard.edu/" }
-                ],
-                "description": [
-                    "CS50W: Web Programming with Python and JavaScript",
-                    "CS50M: Mobile App Development with React Native"
-                ]
-            }
-        ]
-    },
     "workInfo": {
         "sectionName": "Work Experience",
         "icon": "fas fa-briefcase",
@@ -164,6 +145,51 @@
             }
         ]
     },
+    "certificationInfo": {
+        "sectionName": "Certifications",
+        "icon": "fas fa-certificate",
+        "elements": [
+            {
+                "key": "python",
+                "title": "Python",
+                "startDate": "",
+                "endDate": "May 2020",
+                "connection": [{
+                    "name": "TestDome",
+                    "href": "https://www.testdome.com/cert/63b03b19fe834e9dab02e00b28a834c7"
+                }],
+                "description": [
+                    "<a href=\"https://www.testdome.com/cert/63b03b19fe834e9dab02e00b28a834c7\" class=\"testdome-certificate-stamp gold\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"testdome-certificate-name\">Kenneth V. Domingo</span><span class=\"testdome-certificate-test-name\">Python </span><span class=\"testdome-certificate-card-logo\">TestDome<br />Certificate</span></a><script>var stylesheet = \"https://www.testdome.com/content/source/stylesheets/embed.css\", link = document.createElement(\"link\"); link.href = stylesheet, link.type = \"text/css\", link.rel = \"stylesheet\", link.media = \"screen,print\", document.getElementsByTagName(\"head\")[0].appendChild(link);</script>"
+                ]
+            },
+            {
+                "key": "pythonsql",
+                "title": "Python and SQL",
+                "startDate": "",
+                "endDate": "May 2020",
+                "connection": [{
+                    "name": "TestDome",
+                    "href": "https://www.testdome.com/cert/ec62a09e57f142b28ecdd9eea156c995"
+                }],
+                "description": [
+                    "<a href=\"https://www.testdome.com/cert/ec62a09e57f142b28ecdd9eea156c995\" class=\"testdome-certificate-stamp gold\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"testdome-certificate-name\">Kenneth V. Domingo</span><span class=\"testdome-certificate-test-name\">Python and SQL </span><span class=\"testdome-certificate-card-logo\">TestDome<br />Certificate</span></a><script>var stylesheet = \"https://www.testdome.com/content/source/stylesheets/embed.css\", link = document.createElement(\"link\"); link.href = stylesheet, link.type = \"text/css\", link.rel = \"stylesheet\", link.media = \"screen,print\", document.getElementsByTagName(\"head\")[0].appendChild(link);</script>"
+                ]
+            },
+            {
+                "key": "js",
+                "title": "JavaScript",
+                "startDate": "",
+                "endDate": "May 2020",
+                "connection": [{
+                    "name": "TestDome",
+                    "href": "https://www.testdome.com/cert/09c927193e784f5a9a8cd5d0f995f432"
+                }],
+                "description": [
+                    "<a href=\"https://www.testdome.com/cert/09c927193e784f5a9a8cd5d0f995f432\" class=\"testdome-certificate-stamp gold\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"testdome-certificate-name\">Kenneth V. Domingo</span><span class=\"testdome-certificate-test-name\">JavaScript </span><span class=\"testdome-certificate-card-logo\">TestDome<br />Certificate</span></a><script>var stylesheet = \"https://www.testdome.com/content/source/stylesheets/embed.css\", link = document.createElement(\"link\"); link.href = stylesheet, link.type = \"text/css\", link.rel = \"stylesheet\", link.media = \"screen,print\", document.getElementsByTagName(\"head\")[0].appendChild(link);</script>"
+                ]
+            }
+        ]
+    },
     "publicationInfo": {
         "sectionName": "Publications",
         "icon": "fas fa-newspaper",
@@ -179,7 +205,7 @@
                     "href": "https://paperview.spp-online.org/proceedings/article/view/SPP-2019-PB-38"
                 }],
                 "description": [
-                    "The field of compressed sensing (CS) has recently been gaining traction as a viable workaround to the Nyquist-Shannon sampling theorem (NSST). This allows highly accurate signal recovery from incomplete frequency information. In this paper, we investigate the ability of compressive sampling to recover the higher harmonics of a recorded guitar signal. Sampling is done in the temporal domain, and the reconstruction is performed in the frequency domain. It is shown that even when taking a small number of random samples corresponding to some underlying sub-Nyquist rate, the base frequency, including up to fifth-order harmonics, can be recovered. The performance of three algorithms, namely least absolute shrinkage and selection operator (LASSO), orthogonal matching pursuit (OMP), and smoothed L0 norm (SL0) algorithm in terms of computation time and reconstruction error (cosine similarity) were investigated."
+                    "<b>Abstract:</b><br />The field of compressed sensing (CS) has recently been gaining traction as a viable workaround to the Nyquist-Shannon sampling theorem (NSST). This allows highly accurate signal recovery from incomplete frequency information. In this paper, we investigate the ability of compressive sampling to recover the higher harmonics of a recorded guitar signal. Sampling is done in the temporal domain, and the reconstruction is performed in the frequency domain. It is shown that even when taking a small number of random samples corresponding to some underlying sub-Nyquist rate, the base frequency, including up to fifth-order harmonics, can be recovered. The performance of three algorithms, namely least absolute shrinkage and selection operator (LASSO), orthogonal matching pursuit (OMP), and smoothed L0 norm (SL0) algorithm in terms of computation time and reconstruction error (cosine similarity) were investigated."
                 ]
             }
         ]

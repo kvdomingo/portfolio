@@ -18,7 +18,7 @@ export default class Cv extends Component {
                     />
                 <Container className='px-md-5 pb-4'>
                     {sections.map((sec, i) => (
-                        <TimelineSection { ...cvData[sec] } />
+                        <TimelineSection key={i} { ...cvData[sec] } />
                     ))}
                 </Container>
             </React.Fragment>

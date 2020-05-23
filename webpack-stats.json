@@ -4,34 +4,31 @@
     "chunks": {
         "undefined": [
             {
-                "name": "7.main.0be2bce9e12785f1801e.css",
-                "publicPath": "/static/frontend/bundles/7.main.0be2bce9e12785f1801e.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.0be2bce9e12785f1801e.css"
-            },
-            {
-                "name": "7.main.0be2bce9e12785f1801e.js",
-                "publicPath": "/static/frontend/bundles/7.main.0be2bce9e12785f1801e.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\7.main.0be2bce9e12785f1801e.js"
+                "name": "10.main.e041a250d53d0b4ff299.js",
+                "publicPath": "/static/frontend/bundles/10.main.e041a250d53d0b4ff299.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\10.main.e041a250d53d0b4ff299.js"
             }
         ],
         "null": [
             {
-                "name": "16.main.0be2bce9e12785f1801e.js",
-                "publicPath": "/static/frontend/bundles/16.main.0be2bce9e12785f1801e.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\16.main.0be2bce9e12785f1801e.js"
+                "name": "18.main.e041a250d53d0b4ff299.js",
+                "publicPath": "/static/frontend/bundles/18.main.e041a250d53d0b4ff299.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\18.main.e041a250d53d0b4ff299.js"
             }
         ],
         "main": [
             {
-                "name": "main.0be2bce9e12785f1801e.css",
-                "publicPath": "/static/frontend/bundles/main.0be2bce9e12785f1801e.css",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.0be2bce9e12785f1801e.css"
+                "name": "main.e041a250d53d0b4ff299.css",
+                "publicPath": "/static/frontend/bundles/main.e041a250d53d0b4ff299.css",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.e041a250d53d0b4ff299.css"
             },
             {
-                "name": "main.0be2bce9e12785f1801e.js",
-                "publicPath": "/static/frontend/bundles/main.0be2bce9e12785f1801e.js",
-                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.0be2bce9e12785f1801e.js"
+                "name": "main.e041a250d53d0b4ff299.js",
+                "publicPath": "/static/frontend/bundles/main.e041a250d53d0b4ff299.js",
+                "path": "D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\frontend\\static\\frontend\\bundles\\main.e041a250d53d0b4ff299.js"
             }
         ]
-    }
+    },
+    "error": "ModuleParseError",
+    "message": "Module parse failed: Unexpected token } in JSON at position 9462 while parsing near '...\",\r\n                }],\r\n               ...'\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\nSyntaxError: Unexpected token } in JSON at position 9462 while parsing near '...\",\r\n                }],\r\n               ...'\n    at JSON.parse (<anonymous>)\n    at parseJson (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\json-parse-better-errors\\index.js:7:17)\n    at JsonParser.parse (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\webpack\\lib\\JsonParser.js:16:16)\n    at D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\webpack\\lib\\NormalModule.js:482:32\n    at D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\webpack\\lib\\NormalModule.js:358:12\n    at D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\loader-runner\\lib\\LoaderRunner.js:373:3\n    at iterateNormalLoaders (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\loader-runner\\lib\\LoaderRunner.js:214:10)\n    at Array.<anonymous> (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\loader-runner\\lib\\LoaderRunner.js:205:4)\n    at Storage.finished (D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:55:16)\n    at D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:91:9\n    at D:\\Kenneth\\Documents\\kvdomingo-xyz\\kvdomingo-xyz\\node_modules\\graceful-fs\\graceful-fs.js:123:16\n    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:63:3)"
 }
