@@ -187,6 +187,32 @@
                 "description": [
                     "<a href=\"https://www.testdome.com/cert/09c927193e784f5a9a8cd5d0f995f432\" class=\"testdome-certificate-stamp gold\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"testdome-certificate-name\">Kenneth V. Domingo</span><span class=\"testdome-certificate-test-name\">JavaScript </span><span class=\"testdome-certificate-card-logo\">TestDome<br />Certificate</span></a><script>var stylesheet = \"https://www.testdome.com/content/source/stylesheets/embed.css\", link = document.createElement(\"link\"); link.href = stylesheet, link.type = \"text/css\", link.rel = \"stylesheet\", link.media = \"screen,print\", document.getElementsByTagName(\"head\")[0].appendChild(link);</script>"
                 ]
+            },
+            {
+                "key": "jquery",
+                "title": "jQuery",
+                "startDate": "",
+                "endDate": "May 2020",
+                "connection": [{
+                    "name": "TestDome",
+                    "href": "https://www.testdome.com/cert/c211ac8b2d854053a88a2831b6b4448a"
+                }],
+                "description": [
+                    "<a href=\"https://www.testdome.com/cert/c211ac8b2d854053a88a2831b6b4448a\" class=\"testdome-certificate-stamp gold\"><span class=\"testdome-certificate-name\">Kenneth V. Domingo</span><span class=\"testdome-certificate-test-name\">JavaScript with jQuery </span><span class=\"testdome-certificate-card-logo\">TestDome<br />Certificate</span></a><script>var stylesheet = \"https://www.testdome.com/content/source/stylesheets/embed.css\", link = document.createElement(\"link\"); link.href = stylesheet, link.type = \"text/css\", link.rel = \"stylesheet\", link.media = \"screen,print\", document.getElementsByTagName(\"head\")[0].appendChild(link);</script>"
+                ]
+            },
+            {
+                "key": "netadmin",
+                "title": "Network Administration",
+                "startDate": "",
+                "endDate": "May 2020",
+                "connection": [{
+                    "name": "TestDome",
+                    "href": "https://www.testdome.com/cert/88af17c1b7b94aefa4fc6dfd58cfa466"
+                }],
+                "description": [
+                    "<a href=\"https://www.testdome.com/cert/88af17c1b7b94aefa4fc6dfd58cfa466\" class=\"testdome-certificate-stamp gold\"><span class=\"testdome-certificate-name\">Kenneth V. Domingo</span><span class=\"testdome-certificate-test-name\">Network Administration </span><span class=\"testdome-certificate-card-logo\">TestDome<br />Certificate</span></a><script>var stylesheet = \"https://www.testdome.com/content/source/stylesheets/embed.css\", link = document.createElement(\"link\"); link.href = stylesheet, link.type = \"text/css\", link.rel = \"stylesheet\", link.media = \"screen,print\", document.getElementsByTagName(\"head\")[0].appendChild(link);</script>"
+                ]
             }
         ]
     },
