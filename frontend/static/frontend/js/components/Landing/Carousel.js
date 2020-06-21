@@ -5,7 +5,6 @@ import {
     MDBCarouselItem as CarouselItem,
     MDBView as View,
 } from 'mdbreact';
-import './Landing.css';
 import { Image } from 'cloudinary-react';
 import carouselData from './CarouselData.json';
 

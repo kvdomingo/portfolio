@@ -6,7 +6,6 @@ import {
 } from 'mdbreact';
 import { Image } from 'cloudinary-react';
 import { Link } from 'react-router-dom';
-import './index.css'
 
 
 export default class PageFooter extends React.Component {

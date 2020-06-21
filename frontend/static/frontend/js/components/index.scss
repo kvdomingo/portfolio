@@ -1,22 +1,25 @@
+@mixin autoprefix($key, $value, $prefixes: ms webkit moz o) {
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$key}: $value;
+    }
+    $key: $value;
+}
+
 body {
-    font-family: 'Rubik', sans-serif
+    font-family: 'Rubik', sans-serif !important;
 }
 
-@media (min-width: 576px) {
-    html {
-        font-size: 1rem
+html {
+    @media (min-width: 576px) {
+        font-size: 1em;
     }
-}
 
-@media (min-width: 768px) {
-    html {
-        font-size: 1.05rem
+    @media (min-width: 768px) {
+        font-size: 1.05em
     }
-}
 
-@media (min-width: 992px) {
-    html {
-        font-size: 1.1rem
+    @media (min-width: 992px) {
+        font-size: 1.1em
     }
 }
 

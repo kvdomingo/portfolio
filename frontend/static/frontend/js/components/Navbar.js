@@ -14,7 +14,6 @@ import {
 } from 'mdbreact';
 import { Image } from 'cloudinary-react';
 import { Link, withRouter } from 'react-router-dom';
-import './index.css'
 
 
 class NavBar extends React.Component {
@@ -114,6 +113,7 @@ class NavBar extends React.Component {
                 className={`${this.state.navFixed} navbar-slick px-5 ${this.state.navPadY}`}
                 style={{
                     background: this.state.navBackground,
+                    boxShadow: 'none',
                 }}
                 >
                 <NavbarBrand>

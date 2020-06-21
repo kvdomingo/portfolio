@@ -26,10 +26,10 @@ export default class Cover extends React.Component {
         return (
             <div>
                 <Card
-                    className='card-image'
+                    className='card-image cover-photo'
                     style={styles.coverPhoto}
                     >
-                    <div className='text-white rgba-black-strong h-100 py-5 px-5'>
+                    <div className='text-white rgba-black-strong h-100 py-5 px-1 px-md-5'>
                         <Container className='py-5' data-aos='fade-up'>
                             <CardTitle tag='h2' className='h1 card-title display-4 my-4 py-2'>
                                 Hi, I'm Kenneth!

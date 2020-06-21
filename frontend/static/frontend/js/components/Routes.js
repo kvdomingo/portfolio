@@ -1,7 +1,6 @@
 import React, { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import './index.css';
 
 const Home = lazy(() => import('./Landing/Landing')),
     CurrVitae = lazy(() => import('./CurrVitae/CurrVitae')),
