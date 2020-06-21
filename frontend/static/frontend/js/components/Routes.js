@@ -1,24 +1,56 @@
 import React, { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+import './index.css';
 
-const Home = lazy(() => import('./Landing/Landing'));
-const CurrVitae = lazy(() => import('./CurrVitae/CurrVitae'));
-const Photography = lazy(() => import('./Photography/Photography'));
-const Svip = lazy(() => import('./Svip/Svip'));
-const SvipSubject = lazy(() => import('./Svip/Subject'));
-const Dev = lazy(() => import('./Dev/Dev'));
-const Err404 = lazy(() => import('./404'));
+const Home = lazy(() => import('./Landing/Landing')),
+    CurrVitae = lazy(() => import('./CurrVitae/CurrVitae')),
+    Photography = lazy(() => import('./Photography/Photography')),
+    Svip = lazy(() => import('./Svip/Svip')),
+    SvipSubject = lazy(() => import('./Svip/Subject')),
+    Dev = lazy(() => import('./Dev/Dev')),
+    Err404 = lazy(() => import('./404'));
 
+
+const transitionTimeout = 300,
+    transitionName = 'page',
+    routes = [
+        { path: '/cv', name: 'CV', Component: CurrVitae },
+        { path: '/photography', name: 'Photography', Component: Photography },
+        { path: '/dev', name: 'Dev', Component: Dev },
+        { path: '/svip/:courseSlug', name: 'SVIP-Course', Component: SvipSubject },
+        { path: '/svip', name: 'SVIP', Component: Svip },
+        { path: '/', name: 'Home', Component: Home },
+    ];
 
 export default (
-    <Switch> 
-        <Route exact path='/' component={Home} />
-        <Route exact path='/cv' component={CurrVitae} />
-        <Route path='/photography' component={Photography} />
-        <Route exact path='/svip' component={Svip} />
-        <Route path='/svip/:courseSlug' component={SvipSubject} />
-        <Route exact path='/dev' component={Dev} />
+    <Switch>
+        {routes.map(({ path, Component }, i) => (
+            <Route key={path} path={path}>
+                {({ match }) => (
+                    <CSSTransition
+                        in={match != null}
+                        timeout={transitionTimeout}
+                        classNames={transitionName}
+                        unmountOnExit
+                        >
+                        <Component />
+                    </CSSTransition>
+                )}
+            </Route>
+        ))}
 
-        <Route component={Err404} />
+        <Route key='404' status={404}>
+            {({ match }) => (
+                <CSSTransition
+                    in={match != null}
+                    timeout={transitionTimeout}
+                    classNames={transitionName}
+                    unmountOnExit
+                    >
+                    <Err404 />
+                </CSSTransition>
+            )}
+        </Route>
     </Switch>
 );

@@ -16,7 +16,7 @@ export default class App extends React.Component {
         return (
             <Router>
                 <Navbar />
-                <Suspense fallback={<Loading />} >
+                <Suspense fallback={<Loading />}>
                     {Routes}
                 </Suspense>
                 <Footer />
