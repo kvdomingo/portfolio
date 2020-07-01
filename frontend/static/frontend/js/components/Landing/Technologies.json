@@ -91,16 +91,16 @@
             "alt": "Git"
         },
         {
-            "src": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-            "alt": "GitHub"
-        },
-        {
             "src": "https://cdn.freebiesupply.com/logos/large/2x/codecov-logo-png-transparent.png",
             "alt": "Codecov"
         },
         {
             "src": "https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/04/1461122387heroku-logo.jpg",
             "alt": "Heroku"
+        },
+        {
+            "src": "https://pbs.twimg.com/profile_images/1252525888710873088/CBm5_MB7_400x400.jpg",
+            "alt": "Vercel (formerly Zeit Now)"
         },
         {
             "src": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
