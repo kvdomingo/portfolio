@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import pytz
 import cloudinary
+import dj_database_url
 from jinja2 import DebugUndefined, Undefined
 from dotenv import load_dotenv
 
@@ -108,10 +109,11 @@ WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
     }
 }
+
+DATABASES['default'] = dj_database_url.config()
 
 # Rest API
 

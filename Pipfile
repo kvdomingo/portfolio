@@ -18,6 +18,7 @@ django-tinymce = "*"
 gunicorn = "*"
 jinja2 = "*"
 python-dotenv = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"

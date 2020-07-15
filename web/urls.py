@@ -36,6 +36,12 @@ app_name = 'web'
 urlpatterns = [
     # path('', views.index, name='index'),
     # path('cv', views.cv, name='cv'),
+    path('api/cv/education', views.EducationApi.as_view()),
+    path('api/cv/work', views.WorkApi.as_view()),
+    path('api/cv/project', views.ProjectApi.as_view()),
+    path('api/cv/certification', views.CertificationApi.as_view()),
+    path('api/cv/publication', views.PublicationApi.as_view()),
+    path('api/cv/reference', views.ReferenceApi.as_view()),
     path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

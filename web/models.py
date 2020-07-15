@@ -95,5 +95,8 @@ class Reference(models.Model):
     institution = models.CharField(max_length=64)
     position = models.CharField(max_length=64)
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return f"{self.name} ({self.email})"

@@ -18,12 +18,12 @@ from django.urls import include, path, re_path
 
 
 urlpatterns = [
-    re_path(r'^admin/?', admin.site.urls),
-    re_path(r'^api-auth/?', include('rest_framework.urls')),
-    re_path(r'^tinymce/?', include('tinymce.urls')),
+    path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('tinymce/', include('tinymce.urls')),
+    path('api/photography/', include('photography.urls')),
+    path('api/svip/', include('svip.urls')),
+    path('api/dev/', include('dev.urls')),
     path('', include('web.urls')),
-    path('', include('photography.urls')),
-    path('', include('svip.urls')),
-    path('', include('dev.urls')),
-    path('', include('frontend.urls')),
+    re_path(r'^.*/?', include('frontend.urls')),
 ]

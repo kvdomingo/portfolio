@@ -2,6 +2,7 @@ import React from 'react';
 import {
     MDBTypography as Typography,
     MDBContainer as Container,
+    MDBIcon as Icon,
 } from 'mdbreact';
 import PropTypes from 'prop-types';
 import TimelineElement from './TimelineElement';
@@ -11,15 +12,11 @@ function TimelineSection(props) {
     return (
         <div data-aos='fade-up'>
             <Typography tag='h2' variant='h2-responsive' className='py-4'>
-                <i className={`${props.icon} mr-3`} />
+                <Icon fas icon={props.icon} className='mr-3' />
                 {props.sectionName}
             </Typography>
             <Container className='px-md-5'>
-                <ul className='timeline'>
-                    {props.elements.map((el, i) => (
-                        <TimelineElement { ...el } key={i} />
-                    ))}
-                </ul>
+                {props.children}
             </Container>
         </div>
     );
@@ -28,7 +25,6 @@ function TimelineSection(props) {
 TimelineSection.propTypes = {
     sectionName: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
-    elements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default TimelineSection;
