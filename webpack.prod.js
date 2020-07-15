@@ -1,5 +1,7 @@
-const merge = require("webpack-merge"),
+const path = require("path"),
+	merge = require("webpack-merge"),
     common = require("./webpack.common.js"),
+	MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     CompressionPlugin = require("compression-webpack-plugin"),
     BundleTracker = require("webpack-bundle-tracker"),
     webpack = require("webpack");
@@ -8,7 +10,18 @@ const merge = require("webpack-merge"),
 module.exports = merge(common, {
     context: __dirname,
     mode: "production",
+	output: {
+        path: path.resolve(__dirname, "frontend/static/frontend/bundles/"),
+        publicPath: "/static/frontend/bundles/",
+        filename: "main.js",
+        chunkFilename: "[id].main.js",
+        crossOriginLoading: "anonymous"
+    },
     plugins: [
+		new MiniCssExtractPlugin({
+            filename: "main.css",
+            chunkFilename: "[id].main.css"
+        }),
         new BundleTracker({
             path: __dirname,
             filename: "webpack-stats.json"
