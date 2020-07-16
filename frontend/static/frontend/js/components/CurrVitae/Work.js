@@ -6,11 +6,13 @@ import {
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
 import TimelineSection from "./TimelineSection";
+import Loading from '../Loading';
 
 
 export default class Work extends React.Component {
     state = {
         data: [],
+        loading: true,
     }
 
     componentDidMount() {
@@ -23,14 +25,15 @@ export default class Work extends React.Component {
                         ? dateFormat(new Date(dat.end_date), 'mmm yyyy')
                         : 'present';
                 });
-                this.setState({ data });
+                this.setState({ data, loading: false });
             });
     }
 
     render() {
         let { data } = this.state;
 
-        return (
+        if (this.state.loading) return <Loading />;
+        else return (
             <TimelineSection sectionName='Work Experience' icon='briefcase'>
                 <ul className='timeline'>
                     {data.map((dat, i) => (

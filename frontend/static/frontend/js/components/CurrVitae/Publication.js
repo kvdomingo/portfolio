@@ -6,11 +6,13 @@ import {
 import HtmlParser from 'react-html-parser';
 import dateFormat from 'dateformat';
 import TimelineSection from "./TimelineSection";
+import Loading from '../Loading';
 
 
 export default class Publication extends React.Component {
     state = {
         data: [],
+        loading: true,
     }
 
     componentDidMount() {
@@ -20,14 +22,15 @@ export default class Publication extends React.Component {
                 data.forEach((dat, i) => {
                     dat.publication_date = dateFormat(new Date(dat.publication_date), 'mmm yyyy');
                 });
-                this.setState({ data });
+                this.setState({ data, loading: false });
             });
     }
 
     render() {
         let { data } = this.state;
 
-        return (
+        if (this.state.loading) return <Loading />;
+        else return (
             <TimelineSection sectionName='Publications' icon='newspaper'>
                 <ul className='timeline'>
                     {data.map((dat, i) => (

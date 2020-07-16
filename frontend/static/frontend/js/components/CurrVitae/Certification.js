@@ -6,12 +6,14 @@ import {
 import HtmlParser from 'react-html-parser';
 import dateFormat from 'dateformat';
 import TimelineSection from "./TimelineSection";
+import Loading from '../Loading';
 
 
 export default class Certification extends React.Component {
     state = {
         data: [],
         script: [],
+        loading: true,
     }
 
     componentDidMount() {
@@ -26,7 +28,8 @@ export default class Certification extends React.Component {
                         dat.description = dat.description.replace(script[0], "");
                     }
                 });
-                this.setState({ data, script });
+                this.setState({ data, script, loading: false });
+                // eslint-disable-next-line
                 this.state.script.map((script, i) => (script) ? window.eval(script[1]) : null);
             });
     }
@@ -34,7 +37,8 @@ export default class Certification extends React.Component {
     render() {
         let { data } = this.state;
 
-        return (
+        if (this.state.loading) return <Loading />;
+        else return (
             <TimelineSection sectionName='Certification' icon='certificate'>
                 <ul className='timeline'>
                     {data.map((dat, i) => (

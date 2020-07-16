@@ -5,11 +5,13 @@ import {
 } from "mdbreact";
 import dateFormat from 'dateformat';
 import TimelineSection from "./TimelineSection";
+import Loading from '../Loading';
 
 
 export default class Education extends React.Component {
     state = {
         data: [],
+        loading: true,
     }
 
     componentDidMount() {
@@ -20,14 +22,15 @@ export default class Education extends React.Component {
                     dat.start_date = dateFormat(new Date(dat.start_date), 'mmm yyyy');
                     dat.end_date = dateFormat(new Date(dat.end_date), 'mmm yyyy');
                 });
-                this.setState({ data });
+                this.setState({ data, loading: false });
             });
     }
 
     render() {
         let { data } = this.state;
 
-        return (
+        if (this.state.loading) return <Loading />;
+        else return (
             <TimelineSection sectionName='Education' icon='graduation-cap'>
                 <ul className='timeline'>
                     {data.map((dat, i) => (
