@@ -8,6 +8,7 @@ import Project from './Project';
 import Certification from './Certification';
 import Publication from './Publication';
 import Reference from './Reference';
+import Nasa from "./Nasa";
 
 
 export default class CurriculumVitae extends Component {
@@ -28,6 +29,8 @@ export default class CurriculumVitae extends Component {
                     <Publication />
                     <Reference />
                 </Container>
+
+                <Nasa />
             </React.Fragment>
         );
     }
