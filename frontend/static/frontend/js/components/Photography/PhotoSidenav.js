@@ -1,16 +1,6 @@
-import React, { Component, lazy } from 'react';
-import {
-    MDBContainer as Container,
-    MDBRow as Row,
-    MDBCol as Col,
-    MDBNav as Nav,
-} from 'mdbreact';
-import { Route, Link, Switch, withRouter } from 'react-router-dom';
-import Lightbox from 'simple-react-lightbox';
-
-const Gallery = lazy(() => import('./Gallery'));
-const ClientGallery = lazy(() => import('./ClientGallery'));
-const Clients = lazy(() => import('./Clients'));
+import React, { Component } from 'react';
+import { MDBNav as Nav } from 'mdbreact';
+import { Link, withRouter } from 'react-router-dom';
 
 
 const styles = {
@@ -32,7 +22,7 @@ export default withRouter(class Photography extends Component {
         this.handleActivePill();
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.url !== prevProps.match.url) {
             this.handleActivePill();
         }
@@ -48,7 +38,7 @@ export default withRouter(class Photography extends Component {
     }
 
     render() {
-        let { path, url } = this.props.match;
+        let { url } = this.props.match;
         let { activePage } = this.props;
         return (
             <Nav tag='div' className='nav-pills flex-column pl-md-2 pl-0 text-md-left text-center' style={styles.navPills} orientation='vertical'>

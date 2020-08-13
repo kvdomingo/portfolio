@@ -32,7 +32,7 @@ class Clients extends Component {
                 <TitleComponent
                     title='Clients | Photography'
                     description='Clients section of the photography portfolio of Kenneth V. Domingo'
-                    keywords='clients, photography, portfolio, kvdomingo, Kenneth V. Domingo'
+                    keywords='clients, photography, portfolio, kvdomingo, KVD Studio, Kenneth V. Domingo'
                     />
                 <div>
                     <Row className='row-cols-1 row-cols-lg-2 row-cols-xl-3'>

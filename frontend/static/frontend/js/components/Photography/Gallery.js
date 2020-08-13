@@ -69,11 +69,11 @@ class Gallery extends Component {
                 <TitleComponent
                     title={title}
                     description={`${title} section of the photography portfolio of Kenneth V. Domingo`}
-                    keywords='photography, latest, live, clients, portraits, portfolio, kvdomingo, Kenneth V. Domingo'
+                    keywords='photography, latest, live, clients, portraits, portfolio, kvdomingo, KVD Studio, Kenneth V. Domingo'
                     />
                 <div className='grid text-center'>
                     <div className='text-center mt-5 my-5 spinner-grow spinner-grow-lg' style={{ display: loaderVisible }} />
-                    <div className='grid-sizer'></div>
+                    <div className='grid-sizer' />
                     <SRLWrapper style={{ display: contentVisible }}>
                         {this.state.images.map((im, i) => {
                             if (im.width > 3*im.height) {

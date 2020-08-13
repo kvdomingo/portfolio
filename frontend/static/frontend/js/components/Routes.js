@@ -3,17 +3,19 @@ import { Route, Switch } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 const Home = lazy(() => import('./Landing/Landing')),
-    CurrVitae = lazy(() => import('./CurrVitae/CurrVitae')),
-    Photography = lazy(() => import('./Photography/Photography')),
-    Svip = lazy(() => import('./Svip/Svip')),
-    SvipSubject = lazy(() => import('./Svip/Subject')),
-    Dev = lazy(() => import('./Dev/Dev')),
-    Err404 = lazy(() => import('./404'));
+      About = lazy(() => import('./About/About')),
+      CurrVitae = lazy(() => import('./CurrVitae/CurrVitae')),
+      Photography = lazy(() => import('./Photography/Photography')),
+      Svip = lazy(() => import('./Svip/Svip')),
+      SvipSubject = lazy(() => import('./Svip/Subject')),
+      Dev = lazy(() => import('./Dev/Dev')),
+      Err404 = lazy(() => import('./404'));
 
 
 const transitionTimeout = 300,
     transitionName = 'page',
     routes = [
+        { path: '/about', name: 'About', Component: About },
         { path: '/cv', name: 'CV', Component: CurrVitae },
         { path: '/photography', name: 'Photography', Component: Photography },
         { path: '/dev', name: 'Dev', Component: Dev },
@@ -25,7 +27,7 @@ const transitionTimeout = 300,
 export default (
     <Switch>
         {routes.map(({ path, Component }, i) => (
-            <Route key={path} path={path}>
+            <Route key={i} path={path}>
                 {({ match }) => (
                     <CSSTransition
                         in={match != null}

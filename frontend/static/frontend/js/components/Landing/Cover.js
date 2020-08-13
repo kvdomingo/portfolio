@@ -1,11 +1,9 @@
 import React from 'react';
 import {
     MDBCard as Card,
-    MDBCardTitle as CardTitle,
     MDBContainer as Container,
 } from 'mdbreact';
-import Typing, { Backspace, Delay, Cursor } from 'react-typing-animation';
-import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
 
 
 const styles = {
@@ -22,7 +20,6 @@ const styles = {
 
 export default class Cover extends React.Component {
     render() {
-        let carouselTyping = ['physicist', 'full stack developer', 'bioinformatician', 'photographer', 'musician'];
         return (
             <div>
                 <Card
@@ -30,30 +27,20 @@ export default class Cover extends React.Component {
                     style={styles.coverPhoto}
                     >
                     <div className='text-white rgba-black-strong h-100 py-5 px-1 px-md-5'>
-                        <Container className='py-5' data-aos='fade-up'>
-                            <CardTitle tag='h2' className='h1 card-title display-4 my-4 py-2'>
-                                Hi, I'm Kenneth!
-                            </CardTitle>
-                            <div className='h3-responsive my-3'>
-                                {'I am a '}
-                                <Typing speed={1} className='d-inline' loop={true}>
-                                    {carouselTyping.map((text, i) => (
-                                        <div className='d-inline' key={text}>
-                                            {text}.
-                                            <Delay ms={1500} />
-                                            <Backspace count={text.length + 5} speed={1} />
-                                        </div>
-                                    ))}
-                                    <Cursor className='text-white white white-color bg-white' />
-                                </Typing>
-                            </div>
-                            <p className='my-3 py-3'>
-                                I am a graduating BS Applied Physics student from the University of the Philippines-Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory, with a research concentration on signal, video and image processing. My go-to tech stack for web applications consist of Python/Django for the backend, React.js for the frontend, and PostgreSQL for the DBMS. At night (figuratively speaking), I am a freelance photographer, specializing in portrait, street, and events photography.
-                                <br /><br />
-                                Inquiries? Collaborations?
-                            </p>
-                            <Link to='/cv' className='btn btn-outline-white ml-0'>CV</Link>
-                            <a href='mailto:hello@kvdomingo.xyz' className='btn btn-outline-white ml-0'>Contact</a>
+                        <Container className='p-5 d-flex h-100 align-items-center justify-content-center' data-aos='fade-up'>
+                            <Image
+                                cloudName={'kdphotography-assets'}
+                                publicId={'logo/logo-white'}
+                                responsive
+                                responsiveUseBreakpoints
+                                secure
+                                width={'auto'}
+                                dpr={'auto'}
+                                className={'p-3 p-md-5'}
+                                style={{
+                                    border: '3px solid white',
+                                }}
+                            />
                         </Container>
                     </div>
                 </Card>

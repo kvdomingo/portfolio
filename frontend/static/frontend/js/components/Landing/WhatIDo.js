@@ -14,7 +14,7 @@ export default class WhatIDo extends React.Component {
             <Container fluid className='py-5 bg-dark text-white'>
                 <Container fluid className='py-5'>
                     <div data-aos='fade-up'>
-                        <Typography tag='h1' variant='h1-responsive' className='text-center'>
+                        <Typography tag='h1' variant='h1-responsive' className='text-center section-header'>
                             What I Do
                         </Typography>
                         <hr className='grey darken-1 mt-4 mb-5' />

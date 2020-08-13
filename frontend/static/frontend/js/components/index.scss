@@ -5,8 +5,13 @@
     $key: $value;
 }
 
+@font-face {
+    font-family: 'GeoNMS';
+    src: local('GeosansLight-NMS'), url("../fonts/geonms-font.ttf") format('truetype');
+}
+
 body {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Rubik', 'GeoNMS', sans-serif !important;
 }
 
 html {
@@ -47,7 +52,7 @@ html {
 }
 
 .navbar-slick-brand {
-    transition: height 300ms;
+    transition: height 300ms, opacity 300ms;
 }
 
 .page {

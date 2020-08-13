@@ -18,8 +18,8 @@ export default class PageFooter extends React.Component {
                             publicId='logo/logo-white'
                             cloudName='kdphotography-assets'
                             secure={true}
-                            alt='Kenneth V. Domingo logo'
-                            height={30}
+                            alt='KVD Studio logo'
+                            height={70}
                             />
                     </Link>
                     <a

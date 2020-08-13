@@ -16,29 +16,38 @@ import { Image } from 'cloudinary-react';
 import { Link, withRouter } from 'react-router-dom';
 
 
+const bigLogoHeight = "70px",
+      smallLogoHeight = "50px",
+      dropdownItems = [
+          { name: "Photography", path: "/photography" },
+          { name: "Coursework", path: "/svip" },
+          { name: "Web Development", path: "/dev" },
+      ],
+      navbarItems = [
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+          { name: "CV", path: "/cv" },
+      ];
+
 class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            navPadY: 'py-3',
-            navFixed: 'fixed-top navbar-dark',
+            background: 'rgba(0, 0, 0, 0.0)',
+            dropdownOpen: false,
+            fixed: 'fixed-top navbar-dark',
+            isOpen: false,
             navBrand: 'logo/logo-white',
-            navBrandHeight: '30px',
-            navIsOpen: false,
-            navDropdownOpen: false,
-            navBackground: 'rgba(0, 0, 0, 0.0)',
+            navBrandHeight: bigLogoHeight,
+            navBrandOpacity: 1,
+            padY: 'py-3',
         };
         this.styles = {
             navDropdown: {
                 backgroundColor: 'rgba(255, 255, 255, 0.90)',
             },
         };
-
-        this.toggleCollapse = this.toggleCollapse.bind(this);
-        this.toggleDropdown = this.toggleDropdown.bind(this);
-        this.handleNavScroll = this.handleNavScroll.bind(this);
-        this.changePageNavStyle = this.changePageNavStyle.bind(this);
     }
 
     componentDidMount() {
@@ -51,68 +60,78 @@ class NavBar extends React.Component {
         window.removeEventListener('scroll', this.handleNavScroll);
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             window.scrollTo(0, 0);
             this.setState({ navIsOpen: false });
         }
     }
 
-    changePageNavStyle(pathName) {
+    changePageNavStyle = pathName => {
         if (pathName === '/') {
             this.setState({
-                navFixed: 'fixed-top navbar-dark',
+                background: 'rgba(0, 0, 0, 0.0)',
+                fixed: 'fixed-top navbar-dark',
                 navBrand: 'logo/logo-white',
-                navBackground: 'rgba(0, 0, 0, 0.0)',
+                navBrandOpacity: 0,
             });
         } else {
             this.setState({
-                navFixed: 'navbar-light',
+                background: 'rgba(255, 255, 255, 0.90)',
+                fixed: 'navbar-light',
                 navBrand: 'logo/logo-black',
-                navBackground: 'rgba(255, 255, 255, 0.90)',
+                navBrandOpacity: 1,
             });
         }
     }
 
-    handleNavScroll() {
+    handleNavScroll = () => {
         if (window.scrollY < 30) {
             if (window.location.pathname === '/') {
-                this.setState({ navBackground: 'rgba(0, 0, 0, 0.0)' });
+                this.setState({
+                    background: 'rgba(0, 0, 0, 0.0)',
+                    navBrandOpacity: 0,
+                });
             }
             this.setState({
-                navBrandHeight: '30px',
-                navPadY: 'py-3'
+                navBrandHeight: bigLogoHeight,
+                padY: 'py-3'
             });
         } else {
             if (window.location.pathname === '/') {
-                this.setState({ navBackground: 'rgba(0, 0, 0, 0.90)' });
+                this.setState({
+                    background: 'rgba(0, 0, 0, 0.90)',
+                    navBrandOpacity: 1,
+                });
             }
             this.setState({
-                navBrandHeight: '20px',
-                navPadY: 'py-1'
+                navBrandHeight: smallLogoHeight,
+                padY: 'py-1'
             });
         }
     }
 
-    toggleCollapse() {
+    toggleCollapse = () => {
         this.setState((prevState) => (
-            { navIsOpen: !prevState.navIsOpen }
+            { isOpen: !prevState.isOpen }
         ));
     }
 
-    toggleDropdown() {
-        this.setState((prevState) => (
-            { navDropdownOpen: !prevState.navDropdownOpen }
-        ));
+    openDropdown = () => {
+        this.setState({ dropdownOpen: true });
+    }
+
+    closeDropdown = () => {
+        this.setState({ dropdownOpen: false });
     }
 
     render() {
         return (
             <Navbar
                 expand='lg'
-                className={`${this.state.navFixed} navbar-slick px-5 ${this.state.navPadY}`}
+                className={`navbar-slick px-5 ${this.state.fixed} ${this.state.padY}`}
                 style={{
-                    background: this.state.navBackground,
+                    background: this.state.background,
                     boxShadow: 'none',
                 }}
                 >
@@ -122,52 +141,41 @@ class NavBar extends React.Component {
                             publicId={this.state.navBrand}
                             cloudName='kdphotography-assets'
                             secure={true}
-                            className='navbar-slick-brand'
                             alt='Kenneth V. Domingo logo'
                             height={this.state.navBrandHeight}
-                            />
+                            className={`navbar-slick-brand`}
+                            style={{ opacity: this.state.navBrandOpacity }}
+                        />
                     </Link>
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggleCollapse} />
                 <Collapse
                     id='navbar'
-                    isOpen={this.state.navIsOpen}
+                    isOpen={this.state.isOpen}
                     navbar
                     >
                     <NavbarNav right>
-                        <NavItem>
-                            <NavLink to='/'>Home</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink to='/cv'>CV</NavLink>
-                        </NavItem>
+                        {navbarItems.map(({ name, path }) => (
+                            <NavItem>
+                                <NavLink to={path} className='section-header'>{name}</NavLink>
+                            </NavItem>
+                        ))}
                         <NavItem>
                             <Dropdown
-                                isOpen={this.state.navDropdownOpen}
-                                toggle={() => ''}
-                                onMouseOver={this.toggleDropdown}
-                                onMouseEnter={this.toggleDropdown}
-                                onMouseLeave={this.toggleDropdown}
-                                >
-                                <DropdownToggle nav caret>
-                                    <span className='mr-2'>Portfolio</span>
+                                isOpen={this.state.dropdownOpen}
+                                toggle={() => ""}
+                                onMouseEnter={this.openDropdown}
+                                onMouseLeave={this.closeDropdown}
+                            >
+                                <DropdownToggle nav>
+                                    <span className='mr-2 section-header'>Portfolio</span>
                                 </DropdownToggle>
                                 <DropdownMenu right basic>
-                                    <DropdownItem>
-                                        <Link to='/photography'>
-                                            Photography
-                                        </Link>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <Link to='/svip'>
-                                            Coursework
-                                        </Link>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <Link to='/dev'>
-                                            Web Development
-                                        </Link>
-                                    </DropdownItem>
+                                    {dropdownItems.map(({ name, path}) => (
+                                        <DropdownItem>
+                                            <Link to={path}>{name}</Link>
+                                        </DropdownItem>
+                                    ))}
                                 </DropdownMenu>
                             </Dropdown>
                         </NavItem>

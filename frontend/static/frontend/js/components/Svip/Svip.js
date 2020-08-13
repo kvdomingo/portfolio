@@ -37,7 +37,7 @@ export default withRouter(class Svip extends Component {
                     title='Coursework'
                     description='Portfolio of Kenneth V. Domingo with relevant coursework such as signal, video, and image processing'
                     keywords='signal processing, image processing, video processing, computational physics, applied physics, app physics, coursework, kvdomingo, Kenneth V. Domingo'
-                    />
+                />
                 {(!this.state.isLoaded)
                     ? <Loading />
                     : <Container fluid className='my-5'>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 
 
 function TitleComponent(props) {
@@ -16,6 +17,12 @@ function TitleComponent(props) {
         </Helmet>
     );
 }
+
+TitleComponent.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    keywords: PropTypes.string,
+};
 
 TitleComponent.defaultProps = {
     description: 'Portfolio of Kenneth V. Domingo',

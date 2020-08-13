@@ -1,5 +1,5 @@
 {
-    "Backend/DBMS": [
+    "Backend": [
         {
             "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
             "alt": "Python"
@@ -55,11 +55,11 @@
             "alt": "Bootstrap"
         },
         {
-            "src": "https://material-ui.com/static/logo_raw.svg",
-            "alt": "Material UI"
+            "src": "https://mdbootstrap.com/img/logo/mdb-transparent-big.png",
+            "alt": "Material Design Bootstrap"
         }
     ],
-    "Data & Visualization": [
+    "Data & Vis": [
         {
             "src": "https://www.numfocus.org/wp-content/uploads/2016/07/pandas-logo-300.png",
             "alt": "Pandas"
@@ -67,10 +67,6 @@
         {
             "src": "https://upload.wikimedia.org/wikipedia/commons/0/01/Created_with_Matplotlib-logo.svg",
             "alt": "Matplotlib"
-        },
-        {
-            "src": "https://airsouthasia.files.wordpress.com/2018/08/plotly-logo-01-square.png",
-            "alt": "Plotly"
         },
         {
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/768px-Keras_logo.svg.png",
@@ -83,12 +79,20 @@
         {
             "src": "https://seeklogo.com/images/M/mapbox-logo-D6FDDD219C-seeklogo.com.png",
             "alt": "Mapbox"
+        },
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
+            "alt": "OpenCV"
         }
     ],
-    "CI/CD": [
+    "CI/CD & Platforms": [
         {
             "src": "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
             "alt": "Git"
+        },
+        {
+            "src": "https://image.flaticon.com/icons/png/512/37/37318.png",
+            "alt": "GitHub"
         },
         {
             "src": "https://cdn.freebiesupply.com/logos/large/2x/codecov-logo-png-transparent.png",
@@ -99,12 +103,20 @@
             "alt": "Heroku"
         },
         {
-            "src": "https://pbs.twimg.com/profile_images/1252525888710873088/CBm5_MB7_400x400.jpg",
+            "src": "https://res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_400,w_400,f_auto,b_white,q_auto:eco/dtokjerhk1dxyludtlwc",
             "alt": "Vercel (formerly Zeit Now)"
         },
         {
             "src": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
             "alt": "CircleCI"
+        },
+        {
+            "src": "https://travis-ci.org/images/logos/TravisCI-Mascot-1.png",
+            "alt": "Travis CI"
+        },
+        {
+            "src": "https://res-4.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_400,w_400,f_auto,b_white,q_auto:eco/rwgv0yumrzt6uuce9jtm",
+            "alt": "Percy"
         },
         {
             "src": "https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png",

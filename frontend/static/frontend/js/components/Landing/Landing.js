@@ -11,9 +11,10 @@ export default class Home extends React.Component {
             <div>
                 <TitleComponent
                     title='Home'
-                    description='CV and Portfolio of Kenneth V. Domingo including photography, relevant coursework, and web and app development'
-                    keywords='Kenneth V. Domingo, Kenneth Domingo Photography, Python, photography, physics, applied physics, kvdomingo'
-                    />
+                    description='CV and Portfolio of Kenneth V. Domingo and KVD Studio including photography, relevant coursework, and web and app development'
+                    keywords='KVD Studio, Kenneth V. Domingo, Kenneth Domingo Photography, Python, photography, physics, applied physics, kvdomingo'
+                />
+
                 <Cover />
                 <WhatIDo />
                 <HowIDoIt />
