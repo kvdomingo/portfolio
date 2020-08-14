@@ -17,7 +17,6 @@ import dj_database_url
 from jinja2 import DebugUndefined, Undefined
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -58,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django_filters',
+    'django_seo_js',
     'rest_framework',
     'webpack_loader',
     'tinymce',
@@ -71,6 +71,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_seo_js.middleware.EscapedFragmentMiddleware',
+    'django_seo_js.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'kvdomingo.urls'
@@ -103,17 +105,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-    }
-}
-
-DATABASES['default'] = dj_database_url.config()
+DATABASES = {'default': dj_database_url.config()}
 
 # Rest API
 
@@ -149,7 +144,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -164,7 +158,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # TinyMCE config
 
@@ -185,6 +178,9 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_elements': 'Node',
 }
 
+# Prerender.io config
+
+SEO_JS_PRERENDER_TOKEN = os.environ['SEO_JS_PRERENDER_TOKEN']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -206,9 +202,9 @@ cloudinary.config(
     api_secret=os.environ['CLOUDINARY_API_SECRET']
 )
 
-
 ON_HEROKU = bool(int(os.environ['ON_HEROKU']))
 
 if ON_HEROKU:
     import django_heroku
+
     django_heroku.settings(locals())

@@ -19,6 +19,7 @@ gunicorn = "*"
 jinja2 = "*"
 python-dotenv = "*"
 dj-database-url = "*"
+django-seo-js = "*"
 
 [requires]
 python_version = "3.7"
