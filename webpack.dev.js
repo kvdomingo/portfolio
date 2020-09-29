@@ -1,8 +1,10 @@
-const path = require("path"),
+const
+    path = require("path"),
 	merge = require("webpack-merge"),
     common = require("./webpack.common.js"),
 	MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    BundleTracker = require("webpack-bundle-tracker");
+    BundleTracker = require("webpack-bundle-tracker"),
+    webpack = require("webpack");
 
 
 module.exports = merge(common, {
@@ -16,7 +18,13 @@ module.exports = merge(common, {
         crossOriginLoading: "anonymous"
     },
     devtool: "inline-source-map",
+    devServer: {
+        compress: true,
+        hot: true,
+        writeToDisk: true
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
 		new MiniCssExtractPlugin({
             filename: "main.[hash].css",
             chunkFilename: "[id].main.[hash].css"

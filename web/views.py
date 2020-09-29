@@ -3,6 +3,11 @@ from .serializers import *
 from rest_framework import generics
 
 
+class TechnologyApi(generics.ListAPIView):
+    queryset = Technology.objects.all()
+    serializer_class = TechnologySerializer
+
+
 class EducationApi(generics.ListAPIView):
     queryset = Education.objects.all().order_by('-end_date', '-start_date')
     serializer_class = EducationSerializer

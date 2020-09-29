@@ -1,5 +1,4 @@
 from django.urls import path
-from django.conf import settings
 from django.views.generic.base import TemplateView
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
@@ -36,6 +35,7 @@ app_name = 'web'
 urlpatterns = [
     # path('', views.index, name='index'),
     # path('cv', views.cv, name='cv'),
+    path('api/home/technology', views.TechnologyApi.as_view()),
     path('api/cv/education', views.EducationApi.as_view()),
     path('api/cv/work', views.WorkApi.as_view()),
     path('api/cv/project', views.ProjectApi.as_view()),

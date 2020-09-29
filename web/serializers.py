@@ -2,6 +2,17 @@ from rest_framework import serializers
 from .models import *
 
 
+class TechnologySerializer(serializers.ModelSerializer):
+    category = serializers.SerializerMethodField()
+
+    def get_category(self, obj):
+        return dict(obj.CATEGORY_CHOICES)[obj.category]
+
+    class Meta:
+        model = Technology
+        fields = '__all__'
+
+
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education

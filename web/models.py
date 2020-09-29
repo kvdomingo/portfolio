@@ -1,6 +1,26 @@
 from django.db import models
 
 
+class Technology(models.Model):
+    CATEGORY_CHOICES = [
+        ('BE', 'Backend'),
+        ('FE', 'Frontend'),
+        ('DV', 'Data & Vis'),
+        ('CI', 'CI/CD & Platforms'),
+    ]
+
+    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
+    alt = models.CharField(max_length=255)
+    url = models.URLField(max_length=254)
+
+    class Meta:
+        ordering = ['category']
+        verbose_name_plural = 'technologies'
+
+    def __str__(self):
+        return f"[{self.category}] {self.alt}"
+
+
 class Education(models.Model):
     university = models.CharField(max_length=64)
     department = models.CharField(max_length=64)
