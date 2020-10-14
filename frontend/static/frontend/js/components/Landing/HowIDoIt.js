@@ -13,7 +13,7 @@ export default class WhatIDo extends React.Component {
     fetch("/api/home/technology")
       .then(async res => await res.json())
       .then(technologies => {
-        let headers = ["Backend", "Frontend", "CI/CD & Platforms", "Data & Vis"];
+        let headers = ["Backend", "Frontend", "Database", "CI/CD & Platforms", "Data & Vis"];
         this.setState({
           headers,
           technologies,

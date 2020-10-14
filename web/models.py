@@ -6,6 +6,7 @@ class Technology(OrderedModel):
     CATEGORY_CHOICES = [
         ('BE', 'Backend'),
         ('FE', 'Frontend'),
+        ('DB', 'Database'),
         ('DV', 'Data & Vis'),
         ('CI', 'CI/CD & Platforms'),
     ]
