@@ -1,8 +1,14 @@
 from django.contrib import admin
+from ordered_model.admin import OrderedModelAdmin
 from .models import *
 
 
-admin.site.register(Technology)
+class TechnologyAdmin(OrderedModelAdmin):
+    list_display_links = ['alt']
+    list_display = ['category', 'order', 'alt', 'move_up_down_links']
+
+
+admin.site.register(Technology, TechnologyAdmin)
 admin.site.register(Education)
 admin.site.register(Work)
 admin.site.register(Project)

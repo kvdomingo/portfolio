@@ -4,7 +4,7 @@
   "description": "",
   "main": "./frontend/static/frontend/js/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --config webpack.dev.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -34,10 +34,11 @@
     "arrowParens": "avoid",
     "bracketSpacing": true,
     "jsxSingleQuote": false,
+    "printWidth": 120,
     "quoteProps": "consistent",
     "semi": true,
     "singleQuote": false,
-    "tabWidth": 4,
+    "tabWidth": 2,
     "trailingComma": "all"
   },
   "author": "Kenneth V. Domingo <kvdomingo@up.edu.ph>",
@@ -109,8 +110,12 @@
     "mathjax": "^3.0.5",
     "mdbreact": "^4.26.0",
     "npm": "^6.14.7",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "plotly.js": "^1.54.7",
+    "pnp-webpack-plugin": "^1.6.4",
+    "postcss-safe-parser": "^5.0.2",
     "react": "^16.13.1",
+    "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
     "react-flickity-component": "^3.5.0",
     "react-fontawesome": "^1.7.1",
@@ -125,7 +130,9 @@
     "react-router-dom": "^5.1.2",
     "react-transition-group": "^4.4.1",
     "react-typing-animation": "^1.6.2",
-    "simple-react-lightbox": "^2.8.0-5"
+    "simple-react-lightbox": "^2.8.0-5",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack-manifest-plugin": "^2.2.0"
   },
   "browserslist": {
     "production": [

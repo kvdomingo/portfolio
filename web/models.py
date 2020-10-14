@@ -1,7 +1,8 @@
 from django.db import models
+from ordered_model.models import OrderedModel
 
 
-class Technology(models.Model):
+class Technology(OrderedModel):
     CATEGORY_CHOICES = [
         ('BE', 'Backend'),
         ('FE', 'Frontend'),
@@ -13,8 +14,10 @@ class Technology(models.Model):
     alt = models.CharField(max_length=255)
     url = models.URLField(max_length=254)
 
+    order_with_respect_to = 'category'
+
     class Meta:
-        ordering = ['category']
+        ordering = ['category', 'order']
         verbose_name_plural = 'technologies'
 
     def __str__(self):

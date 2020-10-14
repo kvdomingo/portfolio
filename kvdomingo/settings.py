@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'django_seo_js',
+    'ordered_model',
     'rest_framework',
     'webpack_loader',
     'tinymce',
