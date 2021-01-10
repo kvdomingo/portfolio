@@ -16,30 +16,36 @@ import cloudinary
 import dj_database_url
 from jinja2 import DebugUndefined, Undefined
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-ASSET_DIR = os.environ['CLOUDINARY_ASSETS_LOCATION']
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+ASSET_DIR = os.environ.get('CLOUDINARY_ASSETS_LOCATION')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ['DEBUG']))
-DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = bool(int(os.environ.get('DEBUG')))
+
+DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
     '.herokuapp.com',
     'kvdomingo.xyz',
 ]
+
+if DEBUG:
+    ALLOWED_HOSTS.extend([
+        'localhost',
+        '127.0.0.1',
+    ])
 
 # Application definition
 
@@ -48,7 +54,6 @@ INSTALLED_APPS = [
     'photography.apps.PhotographyConfig',
     'svip.apps.SvipConfig',
     'dev.apps.DevConfig',
-    'frontend.apps.FrontendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,15 +61,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
+    'corsheaders',
     'django_filters',
-    'django_seo_js',
     'ordered_model',
     'rest_framework',
-    'webpack_loader',
     'tinymce',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,16 +77,23 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_seo_js.middleware.EscapedFragmentMiddleware',
-    'django_seo_js.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'kvdomingo.urls'
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    'https://kvdomingo.xyz',
+    'https://kvdomingo.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': [f'{PROJECT_DIR}/jinjatemplates/'],
+        'DIRS': [BASE_DIR / 'jinjatemplates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'environment': 'kvdomingo.jinja2.environment',
@@ -179,33 +191,20 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_elements': 'Node',
 }
 
-# Prerender.io config
-
-SEO_JS_PRERENDER_TOKEN = os.environ['SEO_JS_PRERENDER_TOKEN']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': False,
-        'BUNDLE_DIR_NAME': 'frontend/bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
-
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 cloudinary.config(
-    cloud_name=os.environ['CLOUDINARY_CLOUD_NAME'],
-    api_key=os.environ['CLOUDINARY_API_KEY'],
-    api_secret=os.environ['CLOUDINARY_API_SECRET']
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
 )
 
-ON_HEROKU = bool(int(os.environ['ON_HEROKU']))
+PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
-if ON_HEROKU:
+if PYTHON_ENV != 'development':
     import django_heroku
-
     django_heroku.settings(locals())

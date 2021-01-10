@@ -25,5 +25,5 @@ urlpatterns = [
     path('api/svip/', include('svip.urls')),
     path('api/dev/', include('dev.urls')),
     path('', include('web.urls')),
-    re_path(r'^.*/?', include('frontend.urls')),
+    # re_path(r'^.*/?', include('frontend.urls')),
 ]
