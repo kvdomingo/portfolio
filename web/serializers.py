@@ -8,6 +8,12 @@ class HomepageContentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AboutContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutContent
+        fields = '__all__'
+
+
 class TechnologySerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
 

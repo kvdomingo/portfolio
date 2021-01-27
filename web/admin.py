@@ -13,6 +13,7 @@ class TechnologyAdmin(OrderedModelAdmin):
 
 
 admin.site.register(HomepageContent, HomepageContentAdmin)
+admin.site.register(AboutContent)
 admin.site.register(Technology, TechnologyAdmin)
 admin.site.register(Education)
 admin.site.register(Work)

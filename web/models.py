@@ -14,6 +14,11 @@ class HomepageContent(OrderedModel):
         return self.section_header
 
 
+class AboutContent(models.Model):
+    picture = models.CharField(max_length=256)
+    bio = models.TextField(blank=True)
+
+
 class Technology(OrderedModel):
     CATEGORY_CHOICES = [
         ('BE', 'Backend'),

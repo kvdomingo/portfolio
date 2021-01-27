@@ -8,6 +8,11 @@ class HomepageContentApi(generics.ListAPIView):
     serializer_class = HomepageContentSerializer
 
 
+class AboutContentApi(generics.ListAPIView):
+    queryset = AboutContent.objects.all()
+    serializer_class = AboutContentSerializer
+
+
 class TechnologyApi(generics.ListAPIView):
     queryset = Technology.objects.all()
     serializer_class = TechnologySerializer

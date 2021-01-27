@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'web'
 urlpatterns = [
+    path('home/about', views.AboutContentApi.as_view()),
     path('home/content', views.HomepageContentApi.as_view()),
     path('home/technology', views.TechnologyApi.as_view()),
     path('cv/education', views.EducationApi.as_view()),
