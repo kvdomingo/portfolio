@@ -3,6 +3,11 @@ from .serializers import *
 from rest_framework import generics
 
 
+class HomepageContentApi(generics.ListAPIView):
+    queryset = HomepageContent.objects.all()
+    serializer_class = HomepageContentSerializer
+
+
 class TechnologyApi(generics.ListAPIView):
     queryset = Technology.objects.all()
     serializer_class = TechnologySerializer

@@ -2,6 +2,18 @@ from django.db import models
 from ordered_model.models import OrderedModel
 
 
+class HomepageContent(OrderedModel):
+    section_header = models.CharField(max_length=32)
+    section_body = models.TextField(blank=True)
+    link_to_portfolio = models.CharField(max_length=256, blank=True)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.section_header
+
+
 class Technology(OrderedModel):
     CATEGORY_CHOICES = [
         ('BE', 'Backend'),

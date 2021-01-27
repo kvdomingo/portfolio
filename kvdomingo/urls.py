@@ -14,7 +14,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
+from django.views.generic.base import TemplateView
+from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
+from svip.models import BlogPost, Course
+from photography.models import Client
+from web.sitemap import StaticViewSitemap
+
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'photography': GenericSitemap(
+        {
+            'queryset': Client.objects.all(),
+        },
+        priority=0.5,
+    ),
+    'courses': GenericSitemap(
+        {
+            'queryset': Course.objects.all(),
+        },
+        priority=0.5,
+    ),
+    'blog': GenericSitemap(
+        {
+            'queryset': BlogPost.objects.all(),
+            'date_field': 'created',
+        },
+        priority=0.6,
+    ),
+}
 
 
 urlpatterns = [
@@ -24,6 +54,7 @@ urlpatterns = [
     path('api/photography/', include('photography.urls')),
     path('api/svip/', include('svip.urls')),
     path('api/dev/', include('dev.urls')),
-    path('', include('web.urls')),
-    # re_path(r'^.*/?', include('frontend.urls')),
+    path('api/', include('web.urls')),
+    path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

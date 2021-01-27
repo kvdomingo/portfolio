@@ -2,6 +2,12 @@ from rest_framework import serializers
 from .models import *
 
 
+class HomepageContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomepageContent
+        fields = '__all__'
+
+
 class TechnologySerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
 

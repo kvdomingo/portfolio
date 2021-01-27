@@ -3,11 +3,16 @@ from ordered_model.admin import OrderedModelAdmin
 from .models import *
 
 
+class HomepageContentAdmin(OrderedModelAdmin):
+    list_display = ['section_header', 'move_up_down_links']
+
+
 class TechnologyAdmin(OrderedModelAdmin):
     list_display_links = ['alt']
     list_display = ['category', 'order', 'alt', 'move_up_down_links']
 
 
+admin.site.register(HomepageContent, HomepageContentAdmin)
 admin.site.register(Technology, TechnologyAdmin)
 admin.site.register(Education)
 admin.site.register(Work)
