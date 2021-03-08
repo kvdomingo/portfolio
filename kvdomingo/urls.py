@@ -49,12 +49,12 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+	path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('api-auth/', include('rest_framework.urls')),
     path('tinymce/', include('tinymce.urls')),
-    path('api/photography/', include('photography.urls')),
-    path('api/svip/', include('svip.urls')),
-    path('api/dev/', include('dev.urls')),
-    path('api/', include('web.urls')),
-    path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('photography/', include('photography.urls')),
+    path('svip/', include('svip.urls')),
+    path('dev/', include('dev.urls')),
+    path('', include('web.urls')),
 ]

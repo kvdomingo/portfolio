@@ -37,8 +37,8 @@ DEBUG = bool(int(os.environ.get('DEBUG')))
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 ALLOWED_HOSTS = [
-    '.herokuapp.com',
-    'kvdomingo.xyz',
+    'api.kvdomingo.xyz',
+	'kvdomingo.herokuapp.com',
 ]
 
 if DEBUG:
