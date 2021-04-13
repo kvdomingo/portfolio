@@ -38,7 +38,7 @@ DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 ALLOWED_HOSTS = [
     'api.kvdomingo.xyz',
-	'kvdomingo.herokuapp.com',
+    'api.kvdomingo.dev',
 ]
 
 if DEBUG:
@@ -81,14 +81,18 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kvdomingo.urls'
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 CORS_ORIGIN_WHITELIST = [
     'https://kvdomingo.xyz',
-    'https://kvdomingo.vercel.app',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
+    'https://kvdomingo.dev',
 ]
+
+if DEBUG:
+    CORS_ORIGIN_WHITELIST.extend([
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+    ])
 
 TEMPLATES = [
     {
@@ -191,7 +195,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_elements': 'Node',
 }
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -207,4 +210,5 @@ PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
 if PYTHON_ENV != 'development':
     import django_heroku
+
     django_heroku.settings(locals())
