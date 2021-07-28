@@ -222,6 +222,4 @@ cloudinary.config(
 
 PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
-if PYTHON_ENV != 'development':
-    import django_heroku
-    django_heroku.settings(locals())
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
