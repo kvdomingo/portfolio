@@ -36,16 +36,18 @@ DEBUG = bool(int(os.environ.get('DEBUG')))
 
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
-ALLOWED_HOSTS = [
-    'api.kvdomingo.xyz',
-    'api.kvdomingo.dev',
-]
+ALLOWED_HOSTS = ['*']
 
-if DEBUG:
-    ALLOWED_HOSTS.extend([
-        'localhost',
-        '127.0.0.1',
-    ])
+# ALLOWED_HOSTS = [
+#     'api.kvdomingo.xyz',
+#     'api.kvdomingo.dev',
+# ]
+
+# if DEBUG:
+#     ALLOWED_HOSTS.extend([
+#         'localhost',
+#         '127.0.0.1',
+#     ])
 
 # Application definition
 
@@ -81,18 +83,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kvdomingo.urls'
 
-CORS_ORIGIN_ALLOW_ALL = DEBUG
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = [
-    'https://kvdomingo.xyz',
-    'https://kvdomingo.dev',
-]
-
-if DEBUG:
-    CORS_ORIGIN_WHITELIST.extend([
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
-    ])
+# CORS_ALLOWED_ORIGIN_REGEXES = [r'^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$']
+#
+# if DEBUG:
+#     CORS_ALLOWED_ORIGIN_REGEXES.extend([
+#         r'^http:\/\/localhost:300\d$',
+#         r'^http:\/\/127\.0\.0\.1:300\d$',
+#     ])
 
 TEMPLATES = [
     {
@@ -210,5 +209,4 @@ PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
 if PYTHON_ENV != 'development':
     import django_heroku
-
     django_heroku.settings(locals())

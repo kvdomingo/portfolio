@@ -1,2 +1,1 @@
-release: python manage.py migrate
-web: gunicorn kvdomingo.wsgi --log-file -
+web: python manage.py collectstatic --noinput && python manage.py migrate && gunicorn kvdomingo.wsgi -b 0.0.0.0:8080 --log-file -
