@@ -14,6 +14,7 @@ import os
 import pytz
 import cloudinary
 import dj_database_url
+import urllib
 from jinja2 import DebugUndefined, Undefined
 from dotenv import load_dotenv
 from pathlib import Path
@@ -35,6 +36,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = bool(int(os.environ.get('DEBUG')))
 
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
+
+PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
 ALLOWED_HOSTS = ['*']
 
@@ -124,7 +127,14 @@ WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config()}
+if PYTHON_ENV == 'development':
+    DATABASE_CONFIG = dj_database_url.config()
+else:
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)
+    DATABASE_CONFIG['HOST'] = urllib.parse.unquote(DATABASE_CONFIG['HOST'])
+
+DATABASES = {'default': DATABASE_CONFIG}
 
 # Rest API
 
