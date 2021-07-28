@@ -220,3 +220,4 @@ PYTHON_ENV = os.environ.get('PYTHON_ENV')
 if PYTHON_ENV != 'development':
     import django_heroku
     django_heroku.settings(locals())
+
