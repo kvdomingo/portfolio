@@ -39,18 +39,16 @@ DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'api.kvdomingo.xyz',
+    'api.kvdomingo.dev',
+]
 
-# ALLOWED_HOSTS = [
-#     'api.kvdomingo.xyz',
-#     'api.kvdomingo.dev',
-# ]
-
-# if DEBUG:
-#     ALLOWED_HOSTS.extend([
-#         'localhost',
-#         '127.0.0.1',
-#     ])
+if DEBUG:
+    ALLOWED_HOSTS.extend([
+        'localhost',
+        '127.0.0.1',
+    ])
 
 # Application definition
 
@@ -87,15 +85,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kvdomingo.urls'
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
-# CORS_ALLOWED_ORIGIN_REGEXES = [r'^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$']
-#
-# if DEBUG:
-#     CORS_ALLOWED_ORIGIN_REGEXES.extend([
-#         r'^http:\/\/localhost:300\d$',
-#         r'^http:\/\/127\.0\.0\.1:300\d$',
-#     ])
+CORS_ALLOWED_ORIGIN_REGEXES = [r'^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$']
+
+if DEBUG:
+    CORS_ALLOWED_ORIGIN_REGEXES.extend([
+        r'^http:\/\/localhost:300\d$',
+        r'^http:\/\/127\.0\.0\.1:300\d$',
+    ])
 
 TEMPLATES = [
     {
