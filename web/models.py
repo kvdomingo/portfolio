@@ -47,6 +47,7 @@ class Education(models.Model):
     department = models.CharField(max_length=64)
     department_url = models.URLField(max_length=254)
     degree = models.CharField(max_length=64)
+    thesis = models.CharField(max_length=255, blank=True)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
 
@@ -103,6 +104,7 @@ class Project(models.Model):
 class Certification(models.Model):
     name = models.CharField(max_length=64)
     date_granted = models.DateField()
+    date_expired = models.DateField(blank=True, null=True)
     institution = models.CharField(max_length=64)
     institution_url = models.URLField(max_length=254)
     description = models.TextField()
