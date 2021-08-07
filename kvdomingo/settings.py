@@ -14,6 +14,7 @@ import os
 import pytz
 import cloudinary
 import dj_database_url
+import urllib
 from jinja2 import DebugUndefined, Undefined
 from dotenv import load_dotenv
 from pathlib import Path
@@ -35,6 +36,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = bool(int(os.environ.get('DEBUG')))
 
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
+
+PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
 ALLOWED_HOSTS = [
     'api.kvdomingo.xyz',
@@ -71,6 +74,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,17 +85,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kvdomingo.urls'
 
-CORS_ORIGIN_ALLOW_ALL = DEBUG
+CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = [
-    'https://kvdomingo.xyz',
-    'https://kvdomingo.dev',
-]
+CORS_ALLOWED_ORIGIN_REGEXES = [r'^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$']
 
 if DEBUG:
-    CORS_ORIGIN_WHITELIST.extend([
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
+    CORS_ALLOWED_ORIGIN_REGEXES.extend([
+        r'^http:\/\/localhost:300\d$',
+        r'^http:\/\/127\.0\.0\.1:300\d$',
     ])
 
 TEMPLATES = [
@@ -125,7 +126,14 @@ WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config()}
+if PYTHON_ENV == 'development':
+    DATABASE_CONFIG = dj_database_url.config()
+else:
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)
+    DATABASE_CONFIG['HOST'] = urllib.parse.unquote(DATABASE_CONFIG['HOST'])
+
+DATABASES = {'default': DATABASE_CONFIG}
 
 # Rest API
 
@@ -200,6 +208,10 @@ TINYMCE_DEFAULT_CONFIG = {
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / 'static'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 cloudinary.config(
     cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
     api_key=os.environ.get('CLOUDINARY_API_KEY'),
@@ -208,7 +220,4 @@ cloudinary.config(
 
 PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
-if PYTHON_ENV != 'development':
-    import django_heroku
-
-    django_heroku.settings(locals())
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
