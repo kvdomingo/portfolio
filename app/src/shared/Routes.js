@@ -34,21 +34,10 @@ const transitionTimeout = 300,
 export default (
   <Switch>
     {routes.map(({ path, Component }, i) => (
-      <Route key={i} path={path} exact={path === "/"}>
-        {({ match }) => (
-          <CSSTransition in={match != null} timeout={transitionTimeout} classNames={transitionName} unmountOnExit>
-            <Component />
-          </CSSTransition>
-        )}
-      </Route>
+      <Route key={i} path={path} exact={path === "/"} component={Component} />
     ))}
-
     <Route key="404" status={404}>
-      {({ match }) => (
-        <CSSTransition in={match != null} timeout={transitionTimeout} classNames={transitionName} unmountOnExit>
-          <Err404 />
-        </CSSTransition>
-      )}
+      <Err404 />
     </Route>
   </Switch>
 );

@@ -13,7 +13,7 @@ import {
   MDBDropdownItem as DropdownItem,
 } from "mdbreact";
 import { Image } from "cloudinary-react";
-import { Link, useLocation, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import GAUtil from "../utils/GAUtil";
 
@@ -37,10 +37,6 @@ class NavBar extends Component {
     match: PropTypes.object.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     background: "rgba(0, 0, 0, 0.0)",
     dropdownOpen: false,
@@ -54,7 +50,24 @@ class NavBar extends Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleNavScroll);
+    this.updateNavStyles();
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNavScroll);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    let prevLocation = prevProps.location;
+    let { location } = this.props;
+    if (prevLocation.pathname !== location.pathname) {
+      window.scrollTo(0, 0);
+      this.setState({ isOpen: false });
+      this.updateNavStyles();
+    }
+  }
+
+  updateNavStyles = () => {
     if (this.props.location.pathname === "/") {
       this.setState({
         background: "rgba(0, 0, 0, 0.0)",
@@ -70,35 +83,7 @@ class NavBar extends Component {
         navBrandOpacity: 1,
       });
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNavScroll);
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    let prevLocation = prevProps.location;
-    let { location } = this.props;
-    if (prevLocation.pathname !== location.pathname) {
-      window.scrollTo(0, 0);
-      this.setState({ isOpen: false });
-      if (location.pathname === "/") {
-        this.setState({
-          background: "rgba(0, 0, 0, 0.0)",
-          fixed: "fixed-top navbar-dark",
-          navBrand: "logo/logo-white",
-          navBrandOpacity: 0,
-        });
-      } else {
-        this.setState({
-          background: "rgba(255, 255, 255, 0.90)",
-          fixed: "navbar-light",
-          navBrand: "logo/logo-black",
-          navBrandOpacity: 1,
-        });
-      }
-    }
-  }
+  };
 
   handleNavScroll = () => {
     if (window.scrollY < 30) {

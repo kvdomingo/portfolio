@@ -134,6 +134,8 @@ WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 
 if PYTHON_ENV == 'development':
     DATABASE_CONFIG = dj_database_url.config()
+    if os.environ.get('STANDALONE'):
+        DATABASE_CONFIG['HOST'] = 'localhost'
 else:
     DATABASE_URL = os.environ.get('DATABASE_URL')
     DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)

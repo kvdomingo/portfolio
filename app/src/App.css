@@ -1,3 +1,7 @@
+a {
+  color: mediumvioletred;
+}
+
 .navbar-slick {
   box-shadow: none;
   transition: background 300ms, padding 300ms;

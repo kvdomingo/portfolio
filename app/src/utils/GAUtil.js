@@ -12,10 +12,6 @@ class GAUtil extends Component {
     match: PropTypes.object.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     if (NODE_ENV === "production") {
       ReactGA.initialize("UA-162676656-2");

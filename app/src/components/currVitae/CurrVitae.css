@@ -34,10 +34,6 @@ ul.timeline > li:before {
   z-index: 400;
 }
 
-a {
-  color: mediumvioletred;
-}
-
 .timeline-date {
   font-variant: small-caps;
 }
