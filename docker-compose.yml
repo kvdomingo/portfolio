@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      target: prod
+    image: kvdomingo/kvdomingo-xyz:latest
+    env_file: .env
+    environment:
+      STANDALONE: ''
+    ports:
+      - ${PORT}:${PORT}

@@ -16,6 +16,7 @@ import cloudinary
 import dj_database_url
 import urllib
 from jinja2 import DebugUndefined, Undefined
+from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -30,24 +31,25 @@ ASSET_DIR = os.environ.get('CLOUDINARY_ASSETS_LOCATION')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ.get('DEBUG')))
+DEBUG = bool(int(os.environ.get('DEBUG', '0')))
 
-DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
-PYTHON_ENV = os.environ.get('PYTHON_ENV')
+PYTHON_ENV = os.environ.get('PYTHON_ENV', 'production')
 
 ALLOWED_HOSTS = [
-    'api.kvdomingo.xyz',
-    'api.kvdomingo.dev',
+    'kvdomingo.xyz',
+    'kvdomingo.dev',
 ]
 
 if DEBUG:
     ALLOWED_HOSTS.extend([
         'localhost',
         '127.0.0.1',
+        '0.0.0.0',
     ])
 
 # Application definition
@@ -91,14 +93,18 @@ CORS_ALLOWED_ORIGIN_REGEXES = [r'^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$']
 
 if DEBUG:
     CORS_ALLOWED_ORIGIN_REGEXES.extend([
-        r'^http:\/\/localhost:300\d$',
-        r'^http:\/\/127\.0\.0\.1:300\d$',
+        r'^http:\/\/localhost:\d{4,}$',
+        r'^http:\/\/127\.0\.0\.1:\d{4,}$',
+        r'^http:\/\/0\.0\.0\.0:\d{4,}$',
     ])
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': [BASE_DIR / 'jinjatemplates'],
+        'DIRS': [
+            BASE_DIR / 'jinjatemplates',
+            BASE_DIR / 'app',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'environment': 'kvdomingo.jinja2.environment',
@@ -128,6 +134,8 @@ WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 
 if PYTHON_ENV == 'development':
     DATABASE_CONFIG = dj_database_url.config()
+    if os.environ.get('STANDALONE'):
+        DATABASE_CONFIG['HOST'] = 'localhost'
 else:
     DATABASE_URL = os.environ.get('DATABASE_URL')
     DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)
@@ -210,6 +218,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'static'
 
+STATICFILES_DIRS = [BASE_DIR / 'app' / 'static']
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 cloudinary.config(
@@ -217,7 +227,5 @@ cloudinary.config(
     api_key=os.environ.get('CLOUDINARY_API_KEY'),
     api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
 )
-
-PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
