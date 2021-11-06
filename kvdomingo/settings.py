@@ -41,8 +41,8 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 PYTHON_ENV = os.environ.get('PYTHON_ENV', 'production')
 
 ALLOWED_HOSTS = [
-    'api.kvdomingo.xyz',
-    'api.kvdomingo.dev',
+    'kvdomingo.xyz',
+    'kvdomingo.dev',
 ]
 
 if DEBUG:
