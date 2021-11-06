@@ -7,5 +7,7 @@ services:
       target: prod
     image: kvdomingo/kvdomingo-xyz:latest
     env_file: .env
+    environment:
+      STANDALONE: ''
     ports:
       - ${PORT}:${PORT}
