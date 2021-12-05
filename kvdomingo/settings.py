@@ -34,7 +34,7 @@ ASSET_DIR = os.environ.get('CLOUDINARY_ASSETS_LOCATION')
 SECRET_KEY = os.environ.get('SECRET_KEY', default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ.get('DEBUG', '0')))
+DEBUG = os.environ.get('DEBUG', False)
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
+    'revproxy',
     'corsheaders',
     'django_filters',
     'ordered_model',
@@ -74,8 +75,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,10 +133,14 @@ WSGI_APPLICATION = 'kvdomingo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+try:
+    import psycopg2
+except ImportError:
+    from psycopg2cffi import compat
+    compat.register()
+
 if PYTHON_ENV == 'development':
     DATABASE_CONFIG = dj_database_url.config()
-    if os.environ.get('STANDALONE'):
-        DATABASE_CONFIG['HOST'] = 'localhost'
 else:
     DATABASE_URL = os.environ.get('DATABASE_URL')
     DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)

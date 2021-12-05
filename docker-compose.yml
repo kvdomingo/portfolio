@@ -1,13 +1,24 @@
 version: "3.8"
 
 services:
-  app:
+  apiserver:
     build:
       context: .
-      target: prod
-    image: kvdomingo/kvdomingo-xyz:latest
+      target: dev
+    image: kvdomingo/kvdomingo-xyz-api:latest
     env_file: .env
-    environment:
-      STANDALONE: ''
     ports:
       - ${PORT}:${PORT}
+    volumes:
+      - .:/backend
+
+  frontend:
+    build:
+      context: ./app
+      target: dev
+    image: kvdomingo/kvdomingo-xyz-web:latest
+    env_file: ./app/.env
+    ports:
+      - 3000
+    volumes:
+      - ./app:/web/app
