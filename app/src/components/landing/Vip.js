@@ -13,10 +13,10 @@ function Vip({ content }) {
         </Col>
         <Col className="text-md-right my-auto">
           <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header">
-            {content.section_header}
+            {content.sectionHeader}
           </Typography>
-          <p className="mb-3">{content.section_body}</p>
-          <Link to={content.link_to_portfolio} className="mx-0 btn btn-outline-white mb-3 mb-md-0">
+          <p className="mb-3">{content.sectionBody}</p>
+          <Link to={content.linkToPortfolio} className="mx-0 btn btn-outline-white mb-3 mb-md-0">
             See portfolio
           </Link>
         </Col>
@@ -27,9 +27,9 @@ function Vip({ content }) {
 
 Vip.propTypes = {
   content: PropTypes.shape({
-    section_header: PropTypes.string.isRequired,
-    section_body: PropTypes.string.isRequired,
-    link_to_portfolio: PropTypes.string.isRequired,
+    sectionHeader: PropTypes.string.isRequired,
+    sectionBody: PropTypes.string.isRequired,
+    linkToPortfolio: PropTypes.string.isRequired,
   }).isRequired,
 };
 

@@ -13,13 +13,13 @@ class GAUtil extends Component {
   };
 
   componentDidMount() {
-    if (NODE_ENV === "production") {
+    if (NODE_ENV !== "development") {
       ReactGA.initialize("UA-162676656-2");
     }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (NODE_ENV === "production") {
+    if (NODE_ENV !== "development") {
       let prevLocation = prevProps.location;
       let { location } = this.props;
       if (prevLocation.pathname !== location.pathname) {

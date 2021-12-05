@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
 
 const Home = lazy(() => import("../components/landing/Landing")),
   About = lazy(() => import("../components/about/About")),
@@ -18,18 +17,16 @@ const RedirectComponent = () => {
   window.location.assign(url);
 };
 
-const transitionTimeout = 300,
-  transitionName = "page",
-  routes = [
-    { path: "/admin", name: "Admin", Component: RedirectComponent },
-    { path: "/about", name: "About", Component: About },
-    { path: "/cv", name: "CV", Component: CurrVitae },
-    { path: "/photography", name: "Photography", Component: Photography },
-    { path: "/dev", name: "Dev", Component: Dev },
-    { path: "/svip/:courseSlug", name: "SVIP-Course", Component: SvipSubject },
-    { path: "/svip", name: "SVIP", Component: Svip },
-    { path: "/", name: "Home", Component: Home },
-  ];
+const routes = [
+  { path: "/admin", name: "Admin", Component: RedirectComponent },
+  { path: "/about", name: "About", Component: About },
+  { path: "/cv", name: "CV", Component: CurrVitae },
+  { path: "/photography", name: "Photography", Component: Photography },
+  { path: "/dev", name: "Dev", Component: Dev },
+  { path: "/svip/:courseSlug", name: "SVIP-Course", Component: SvipSubject },
+  { path: "/svip", name: "SVIP", Component: Svip },
+  { path: "/", name: "Home", Component: Home },
+];
 
 export default (
   <Switch>

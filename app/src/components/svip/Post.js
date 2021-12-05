@@ -89,7 +89,7 @@ class Post extends Component {
               bindings={{
                 algo_data: ["spot", "Sobel", "Prewitt", "Laplacian", "Canny"],
                 shape_data: ["circle", "square", "trapezoid", "triangle"],
-                mapNames: (prefix, shapes) => shapes.map((item, i) => `${prefix}_${item.toLowerCase()}`),
+                mapNames: (prefix, shapes) => shapes.map(item => `${prefix}_${item.toLowerCase()}`),
                 populateTable: data =>
                   Object.values(data)[0].map((el, i) => (
                     <PopulateTable lab={data.lab[i]} lch={data.lch[i]} key={i} patchId={i + 1} />

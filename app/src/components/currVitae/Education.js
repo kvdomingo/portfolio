@@ -21,8 +21,8 @@ function Education() {
         .then(res => {
           let { data } = res;
           data.forEach(dat => {
-            dat.start_date = dateFormat(new Date(dat.start_date), "mmm yyyy");
-            dat.end_date = dateFormat(new Date(dat.end_date), "mmm yyyy");
+            dat.startDate = dateFormat(new Date(dat.startDate), "mmm yyyy");
+            dat.endDate = dateFormat(new Date(dat.endDate), "mmm yyyy");
           });
           generalDispatch({
             type: "updateCVEducation",
@@ -46,11 +46,11 @@ function Education() {
             </Type>
             <div className="timeline-date text-muted float-md-right my-md-0 my-2">
               <Icon far icon="clock" className="mr-1" />
-              {dat.start_date} – {dat.end_date}
+              {dat.startDate} – {dat.endDate}
             </div>
             <p className="lead py-0">
               <a
-                href={dat.department_url}
+                href={dat.departmentUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "mediumvioletred" }}

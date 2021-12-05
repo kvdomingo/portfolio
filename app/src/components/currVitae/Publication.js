@@ -22,7 +22,7 @@ function Publication() {
         .then(res => {
           let { data } = res;
           data.forEach(dat => {
-            dat.publication_date = dateFormat(new Date(dat.publication_date), "mmm yyyy");
+            dat.publicationDate = dateFormat(new Date(dat.publicationDate), "mmm yyyy");
           });
           generalDispatch({
             type: "updateCVPublications",
@@ -46,11 +46,11 @@ function Publication() {
             </Type>
             <div className="timeline-date text-muted float-md-right my-md-0 my-2">
               <Icon far icon="clock" className="mr-1" />
-              {dat.publication_date}
+              {dat.publicationDate}
             </div>
             <p className="lead py-0">
               <a href={dat.url} target="_blank" rel="noopener noreferrer" style={{ color: "mediumvioletred" }}>
-                {dat.journal}, {dat.volume} {dat.journal_code}
+                {dat.journal}, {dat.volume} {dat.journalCode}
               </a>
             </p>
             <div className="mt-2 mb-5">

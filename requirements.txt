@@ -12,6 +12,7 @@ django-revproxy
 django-seo-js
 django-tinymce
 djangorestframework
+djangorestframework-camel-case
 gunicorn
 idna
 Jinja2

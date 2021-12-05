@@ -46,7 +46,7 @@ class Clients extends Component {
                 <Card
                   className="card-image h-100"
                   style={{
-                    backgroundImage: `url("${cli.cover_image}")`,
+                    backgroundImage: `url("${cli.coverImage}")`,
                     backgroundSize: "cover",
                     backgroundPosition: "50% 50%",
                   }}

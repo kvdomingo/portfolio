@@ -35,11 +35,11 @@ function Dev() {
             <Card
               key={i}
               className="card-image card-cover mb-4"
-              style={{ backgroundImage: `url("${project.cover_photo}")` }}
+              style={{ backgroundImage: `url("${project.coverPhoto}")` }}
             >
               <div className="text-white text-md-center text-left align-items-center h-100 rgba-black-strong py-5 pt-5 px-4">
                 <a
-                  href={project.project_url}
+                  href={project.projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline-white"
@@ -48,12 +48,12 @@ function Dev() {
                   {project.title}
                 </a>
                 <CardBody>
-                  {project.organization ? (
+                  {project.organization && (
                     <div>
                       <Icon fas icon="globe-asia" className="mr-2" />
                       <p className="d-inline">
                         <a
-                          href={project.organization_url}
+                          href={project.organizationUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{ color: "mediumvioletred" }}
@@ -63,11 +63,11 @@ function Dev() {
                       </p>
                       <br />
                     </div>
-                  ) : null}
+                  )}
                   <Icon far icon="clock" className="mr-2" />
                   <p className="d-inline">
-                    {dateFormat(project.start_date, "mmm yyyy")} &ndash;{" "}
-                    {project.end_date ? dateFormat(project.end_date, "mmm yyyy") : "present"}{" "}
+                    {dateFormat(project.startDate, "mmm yyyy")} &ndash;{" "}
+                    {project.endDate ? dateFormat(project.endDate, "mmm yyyy") : "present"}{" "}
                   </p>
                   <br />
                   <p className="mt-3">{project.summary}</p>

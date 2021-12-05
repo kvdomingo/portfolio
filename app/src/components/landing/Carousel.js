@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   MDBCarousel as Carousel,
   MDBCarouselInner as CarouselInner,
@@ -9,8 +8,6 @@ import { Image } from "cloudinary-react";
 import carouselData from "./CarouselData.json";
 
 function MainCarousel() {
-  const [flkty, setFlkty] = useState("");
-
   return (
     <Carousel length={carouselData.data.length} activeItem={1} showControls={false} showIndicators interval={3000}>
       <CarouselInner>

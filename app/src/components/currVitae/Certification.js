@@ -26,8 +26,8 @@ function Certification() {
           let { data } = res;
           let script = [];
           data.forEach(dat => {
-            dat.date_granted = dateFormat(new Date(dat.date_granted), "dd mmm yyyy");
-            if (dat.date_expired) dat.date_expired = dateFormat(new Date(dat.date_expired), "dd mmm yyyy");
+            dat.dateGranted = dateFormat(new Date(dat.dateGranted), "dd mmm yyyy");
+            if (dat.dateExpired) dat.dateExpired = dateFormat(new Date(dat.dateExpired), "dd mmm yyyy");
             script.push(/<script>(.+)<\/script>/gi.exec(dat.description));
             if (script) {
               dat.description = dat.description.replace(script[0], "");
@@ -64,12 +64,12 @@ function Certification() {
             </Type>
             <div className="timeline-date text-muted float-md-right my-md-0 my-2">
               <Icon far icon="clock" className="mr-1" />
-              {dat.date_granted}
-              {dat.date_expired && ` - ${dat.date_expired}`}
+              {dat.dateGranted}
+              {dat.dateExpired && ` - ${dat.dateExpired}`}
             </div>
             <p className="lead py-0">
               <a
-                href={dat.institution_url}
+                href={dat.institutionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "mediumvioletred" }}
