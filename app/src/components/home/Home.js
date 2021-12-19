@@ -2,7 +2,7 @@ import Cover from "./Cover";
 import WhatIDo from "./WhatIDo";
 import HowIDoIt from "./HowIDoIt";
 import TitleComponent from "../../shared/TitleComponent";
-import "./Landing.css";
+import "./Home.css";
 
 function Home() {
   return (

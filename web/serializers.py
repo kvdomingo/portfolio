@@ -18,7 +18,7 @@ class TechnologySerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
 
     def get_category(self, obj):
-        return dict(obj.CATEGORY_CHOICES)[obj.category]
+        return dict(obj.Category.choices)[obj.category]
 
     class Meta:
         model = Technology

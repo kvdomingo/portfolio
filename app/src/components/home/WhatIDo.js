@@ -35,7 +35,7 @@ function WhatIDo() {
     <Container fluid className="py-5 bg-dark text-white">
       <Container fluid className="py-5">
         <div data-aos="fade-up">
-          <Typography tag="h1" variant="h1-responsive" className="text-center section-header">
+          <Typography tag="h1" variant="h1-responsive" className="text-center section-header white-text">
             What I Do
           </Typography>
           <hr className="grey darken-1 mt-4 mb-5" />

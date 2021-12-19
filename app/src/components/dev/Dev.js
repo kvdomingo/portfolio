@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { MDBContainer as Container, MDBCard as Card, MDBCardBody as CardBody, MDBIcon as Icon } from "mdbreact";
+import {
+  MDBContainer as Container,
+  MDBCard as Card,
+  MDBCardBody as CardBody,
+  MDBIcon as Icon,
+  MDBCol as Col,
+  MDBRow as Row,
+} from "mdbreact";
 import dateFormat from "dateformat";
 import TitleComponent from "../../shared/TitleComponent";
 import Loading from "../../shared/Loading";
@@ -31,50 +38,53 @@ function Dev() {
         <Loading />
       ) : (
         <Container fluid className="my-5">
-          {projects.map((project, i) => (
-            <Card
-              key={i}
-              className="card-image card-cover mb-4"
-              style={{ backgroundImage: `url("${project.coverPhoto}")` }}
-            >
-              <div className="text-white text-md-center text-left align-items-center h-100 rgba-black-strong py-5 pt-5 px-4">
-                <a
-                  href={project.projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline-white"
+          <Row className="row-cols-1 row-cols-md-2">
+            {projects.map(project => (
+              <Col key={project.id} className="mb-4">
+                <Card
+                  className="card-image card-cover h-100"
+                  style={{ backgroundImage: `url("${project.coverPhoto}")` }}
                 >
-                  <Icon fas icon="external-link-alt" className="mr-2" />
-                  {project.title}
-                </a>
-                <CardBody>
-                  {project.organization && (
-                    <div>
-                      <Icon fas icon="globe-asia" className="mr-2" />
+                  <div className="text-white text-md-center text-left align-items-center h-100 rgba-black-strong py-5 pt-5 px-4">
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline-white"
+                    >
+                      <Icon fas icon="external-link-alt" className="mr-2" />
+                      {project.title}
+                    </a>
+                    <CardBody>
+                      {project.organization && (
+                        <div>
+                          <Icon fas icon="globe-asia" className="mr-2" />
+                          <p className="d-inline">
+                            <a
+                              href={project.organizationUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ color: "mediumvioletred" }}
+                            >
+                              {project.organization}
+                            </a>
+                          </p>
+                          <br />
+                        </div>
+                      )}
+                      <Icon far icon="clock" className="mr-2" />
                       <p className="d-inline">
-                        <a
-                          href={project.organizationUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: "mediumvioletred" }}
-                        >
-                          {project.organization}
-                        </a>
+                        {dateFormat(project.startDate, "mmm yyyy")} &ndash;{" "}
+                        {project.endDate ? dateFormat(project.endDate, "mmm yyyy") : "present"}{" "}
                       </p>
                       <br />
-                    </div>
-                  )}
-                  <Icon far icon="clock" className="mr-2" />
-                  <p className="d-inline">
-                    {dateFormat(project.startDate, "mmm yyyy")} &ndash;{" "}
-                    {project.endDate ? dateFormat(project.endDate, "mmm yyyy") : "present"}{" "}
-                  </p>
-                  <br />
-                  <p className="mt-3">{project.summary}</p>
-                </CardBody>
-              </div>
-            </Card>
-          ))}
+                      <p className="mt-3">{project.summary}</p>
+                    </CardBody>
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
         </Container>
       )}
     </>

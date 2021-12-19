@@ -10,15 +10,13 @@ services:
     ports:
       - ${PORT}:${PORT}
     volumes:
-      - .:/backend
+      - .:/kvd
 
   frontend:
     build:
-      context: ./app
-      target: dev
+      context: .
+      target: web
     image: kvdomingo/kvdomingo-xyz-web:latest
     env_file: ./app/.env
-    ports:
-      - 3000
     volumes:
-      - ./app:/web/app
+      - .:/kvd

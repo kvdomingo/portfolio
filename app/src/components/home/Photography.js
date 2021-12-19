@@ -8,7 +8,7 @@ function Photography({ content }) {
     <Container className="py-5" data-aos="fade-up">
       <Row>
         <Col md="7" className="my-auto">
-          <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header">
+          <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header white-text">
             {content.sectionHeader}
           </Typography>
           <p className="mb-3">{content.sectionBody}</p>

@@ -4,7 +4,7 @@ import Loading from "../../shared/Loading";
 import api from "../../utils/Endpoints";
 import { useGeneralContext } from "../../contexts/GeneralContext";
 
-const headers = ["Backend", "Frontend", "Database", "CI/CD & Platforms", "Data & Vis"];
+const headers = ["Backend", "Frontend", "Database", "CI/CD & Cloud", "Data & Vis"];
 
 function WhatIDo() {
   const [technologies, setTechnologies] = useState([]);

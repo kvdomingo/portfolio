@@ -1,10 +1,7 @@
-@font-face {
-  font-family: "GeoNMS";
-  src: url("https://storage.googleapis.com/kvdomingo-xyz-306716-assets/geonms-font.ttf") format("truetype");
-}
-
+html,
 body {
-  font-family: "Rubik", "GeoNMS", sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: -apple-system, BlinkMacSystemFont, "Rubik", Roboto, "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 @media (min-width: 576px) {

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from ordered_model.models import OrderedModel
 
 
@@ -20,15 +21,14 @@ class AboutContent(models.Model):
 
 
 class Technology(OrderedModel):
-    CATEGORY_CHOICES = [
-        ('BE', 'Backend'),
-        ('FE', 'Frontend'),
-        ('DB', 'Database'),
-        ('DV', 'Data & Vis'),
-        ('CI', 'CI/CD & Platforms'),
-    ]
+    class Category(models.TextChoices):
+        BACKEND = 'BE', _('Backend')
+        FRONTEND = 'FE', _('Frontend')
+        DATABASE = 'DB', _('Database')
+        DATAVIS = 'DV', _('Data & Vis')
+        CICD = 'CI', _('CI/CD & Cloud')
 
-    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=2, choices=Category.choices)
     alt = models.CharField(max_length=255)
     url = models.URLField(max_length=254)
 

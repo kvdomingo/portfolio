@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { MDBCol as Col, MDBRow as Row, MDBContainer as Container } from "mdbreact";
 import { Image } from "cloudinary-react";
 import TitleComponent from "../../shared/TitleComponent";
@@ -59,9 +60,9 @@ export default function About() {
           <Col md="8" className="pl-3 pl-md-5">
             <JsxParser jsx={data.bio} />
             <div>
-              <a href="/cv" className="ml-0 btn btn-outline-black">
+              <Link to="/cv" className="ml-0 btn btn-outline-black">
                 CV
-              </a>
+              </Link>
               <a href="mailto:hello@kvdomingo.xyz" className="ml-0 btn btn-outline-black">
                 Contact
               </a>

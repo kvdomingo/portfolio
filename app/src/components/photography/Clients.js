@@ -41,20 +41,20 @@ class Clients extends Component {
         />
         <div>
           <Row className="row-cols-1 row-cols-lg-2 row-cols-xl-3">
-            {clients.map((cli, i) => (
+            {clients.map((client, i) => (
               <Col className="mb-4" key={i}>
                 <Card
                   className="card-image h-100"
                   style={{
-                    backgroundImage: `url("${cli.coverImage}")`,
+                    backgroundImage: `url("${client.coverImage}")`,
                     backgroundSize: "cover",
                     backgroundPosition: "50% 50%",
                   }}
                 >
                   <div className="text-white text-center rgba-black-light p-5 h-100">
                     <div className="py-5">
-                      <Link to={`${match.url}/${cli.slug}`} className="btn btn-outline-white btn-lg card-title my-5">
-                        {cli.name}
+                      <Link to={`${match.url}/${client.slug}`} className="btn btn-outline-white btn-lg card-title my-5">
+                        {client.name}
                       </Link>
                     </div>
                   </div>

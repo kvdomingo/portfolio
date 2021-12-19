@@ -12,7 +12,7 @@ function Vip({ content }) {
           <Juxtapose />
         </Col>
         <Col className="text-md-right my-auto">
-          <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header">
+          <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header white-text">
             {content.sectionHeader}
           </Typography>
           <p className="mb-3">{content.sectionBody}</p>

@@ -7,7 +7,7 @@ function Development({ content }) {
     <Container className="py-5" data-aos="fade-up">
       <Row className="row-cols-1 row-cols-md-2">
         <Col className="my-auto">
-          <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header">
+          <Typography tag="h3" variant="h2-responsive" className="mb-3 section-header white-text">
             {content.sectionHeader}
           </Typography>
           <p className="mb-3">{content.sectionBody}</p>

@@ -1,4 +1,4 @@
-import { MDBCard as Card, MDBContainer as Container } from "mdbreact";
+import { MDBCard as Card, MDBContainer as Container, MDBTypography as Typography } from "mdbreact";
 import { Image } from "cloudinary-react";
 
 const styles = {

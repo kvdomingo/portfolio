@@ -3,7 +3,7 @@ certifi
 chardet
 cloudinary
 dj-database-url
-Django
+Django<4
 django-admin-relation-links
 django-cors-headers
 django-filter

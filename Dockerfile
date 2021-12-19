@@ -1,4 +1,15 @@
+FROM node:16-alpine as web
+
+WORKDIR /kvd
+
+EXPOSE 3000
+
+ENTRYPOINT [ "sh", "devserver.sh" ]
+
 FROM pypy:3.8-7-buster as base
+
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
 RUN python -m pip install -U --no-cache-dir pip setuptools
 
@@ -11,15 +22,15 @@ RUN sed -i "s/'_headers'/'headers'/" /opt/pypy/lib/pypy3.8/site-packages/revprox
 
 FROM base as dev
 
-WORKDIR /backend
+WORKDIR /kvd
 
 EXPOSE $PORT
 
-ENTRYPOINT uvicorn kvdomingo.asgi:application --workers 4 --host 0.0.0.0 --port $PORT --reload
+ENTRYPOINT uvicorn kvdomingo.asgi:application --host 0.0.0.0 --port $PORT --reload --reload-exclude node_modules/
 
 FROM node:16-alpine as web-build
 
-WORKDIR /web/app
+WORKDIR /frontend
 
 COPY ./app/ ./
 
@@ -37,8 +48,8 @@ COPY ./photography/ ./photography/
 COPY ./svip/ ./svip/
 COPY ./web/ ./web/
 COPY ./*.py ./
-COPY ./*.sh ./
-COPY --from=web-build /web/app/build ./app/
+COPY runserver.sh .
+COPY --from=web-build /frontend/build ./app/
 
 EXPOSE $PORT
 

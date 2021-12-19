@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 
-const Home = lazy(() => import("../components/landing/Landing")),
+const Home = lazy(() => import("../components/home/Home")),
   About = lazy(() => import("../components/about/About")),
   CurrVitae = lazy(() => import("../components/currVitae/CurrVitae")),
   Photography = lazy(() => import("../components/photography/Photography")),

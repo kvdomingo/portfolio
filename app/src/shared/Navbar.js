@@ -181,7 +181,7 @@ class NavBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu right basic>
                   {dropdownItems.map(({ name, path }, i) => (
-                    <DropdownItem key={i} className="navbar-slick-items">
+                    <DropdownItem key={i} className="navbar-slick-items text-right">
                       <Link to={path}>{name}</Link>
                     </DropdownItem>
                   ))}
