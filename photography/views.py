@@ -52,24 +52,27 @@ from rest_framework import generics
 #     return render(request, 'photography/client-index.html.j2', context)
 
 
-
 class ClientApi(generics.ListAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-    filterset_fields = ['slug']
+    filterset_fields = ["slug"]
 
 
 def api_gallery(request, slug):
-    images, full = zip(*functions.get_resources(f'{settings.ASSET_DIR}/{slug}'))
-    return JsonResponse(dict(
-        full=full,
-        images=images,
-    ))
+    images, full = zip(*functions.get_resources(f"{settings.ASSET_DIR}/{slug}"))
+    return JsonResponse(
+        dict(
+            full=full,
+            images=images,
+        )
+    )
 
 
 def api_client_gallery(request, slug):
-    images, full = zip(*functions.get_resources(f'{settings.ASSET_DIR}/clients/{slug}'))
-    return JsonResponse(dict(
-        full=full,
-        images=images,
-    ))
+    images, full = zip(*functions.get_resources(f"{settings.ASSET_DIR}/clients/{slug}"))
+    return JsonResponse(
+        dict(
+            full=full,
+            images=images,
+        )
+    )

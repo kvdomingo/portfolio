@@ -9,10 +9,10 @@ class Client(models.Model):
     keywords = models.TextField(max_length=256, blank=True)
 
     class Meta:
-        ordering = ['-shoot_date']
+        ordering = ["-shoot_date"]
 
     def get_absolute_url(self):
-        return f'/photography/clients/{self.slug}/'
+        return f"/photography/clients/{self.slug}/"
 
     def __str__(self):
-        return f'{self.name}'
+        return f"{self.name}"

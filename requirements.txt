@@ -1,4 +1,5 @@
 asgiref
+black
 certifi
 chardet
 cloudinary

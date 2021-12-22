@@ -47,12 +47,12 @@ from rest_framework import generics
 
 
 class BlogPostApi(generics.ListAPIView):
-    queryset = BlogPost.objects.all().order_by('-created')
+    queryset = BlogPost.objects.all().order_by("-created")
     serializer_class = BlogPostSerializer
-    filterset_fields = ['slug', 'subject__number', 'subject__slug']
+    filterset_fields = ["slug", "subject__number", "subject__slug"]
 
 
 class CourseApi(generics.ListAPIView):
-    queryset = Course.objects.all().order_by('-number')
+    queryset = Course.objects.all().order_by("-number")
     serializer_class = CourseSerializer
-    filterset_fields = ['number', 'slug']
+    filterset_fields = ["number", "slug"]

@@ -6,21 +6,40 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0004_auto_20200713_0201'),
+        ("web", "0004_auto_20200713_0201"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Technologies',
+            name="Technologies",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('category', models.CharField(choices=[('BE', 'Backend'), ('FE', 'Frontend'), ('DV', 'Data & Vis'), ('CI', 'CI/CD & Platforms')], max_length=2)),
-                ('alt', models.CharField(max_length=255)),
-                ('url', models.URLField(max_length=254)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("BE", "Backend"),
+                            ("FE", "Frontend"),
+                            ("DV", "Data & Vis"),
+                            ("CI", "CI/CD & Platforms"),
+                        ],
+                        max_length=2,
+                    ),
+                ),
+                ("alt", models.CharField(max_length=255)),
+                ("url", models.URLField(max_length=254)),
             ],
         ),
         migrations.AlterModelOptions(
-            name='reference',
-            options={'ordering': ['id']},
+            name="reference",
+            options={"ordering": ["id"]},
         ),
     ]

@@ -7,13 +7,13 @@ import svip.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('svip', '0005_auto_20200410_1726'),
+        ("svip", "0005_auto_20200410_1726"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpost',
-            name='created',
+            model_name="blogpost",
+            name="created",
             field=models.DateTimeField(default=svip.models.set_aware_time),
         ),
     ]

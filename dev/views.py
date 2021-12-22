@@ -28,4 +28,4 @@ from rest_framework import generics
 class ProjectApi(generics.ListAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    filterset_fields = ['slug']
+    filterset_fields = ["slug"]

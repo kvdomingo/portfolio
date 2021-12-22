@@ -6,23 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0011_auto_20210127_1845'),
+        ("web", "0011_auto_20210127_1845"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='homepagecontent',
-            options={'ordering': ['order']},
+            name="homepagecontent",
+            options={"ordering": ["order"]},
         ),
         migrations.AddField(
-            model_name='homepagecontent',
-            name='link_to_portfolio',
+            model_name="homepagecontent",
+            name="link_to_portfolio",
             field=models.URLField(blank=True, max_length=256),
         ),
         migrations.AddField(
-            model_name='homepagecontent',
-            name='order',
-            field=models.PositiveIntegerField(db_index=True, default=1, editable=False, verbose_name='order'),
+            model_name="homepagecontent",
+            name="order",
+            field=models.PositiveIntegerField(
+                db_index=True, default=1, editable=False, verbose_name="order"
+            ),
             preserve_default=False,
         ),
     ]

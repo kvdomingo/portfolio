@@ -6,13 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('svip', '0003_blogpost_status'),
+        ("svip", "0003_blogpost_status"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpost',
-            name='subject',
-            field=models.IntegerField(choices=[(0, None), (186, 'Applied Physics 186'), (187, 'Applied Physics 187')], default=0),
+            model_name="blogpost",
+            name="subject",
+            field=models.IntegerField(
+                choices=[
+                    (0, None),
+                    (186, "Applied Physics 186"),
+                    (187, "Applied Physics 187"),
+                ],
+                default=0,
+            ),
         ),
     ]

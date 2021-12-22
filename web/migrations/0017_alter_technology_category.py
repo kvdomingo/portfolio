@@ -6,13 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0016_certification_date_expired'),
+        ("web", "0016_certification_date_expired"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='technology',
-            name='category',
-            field=models.CharField(choices=[('BE', 'Backend'), ('FE', 'Frontend'), ('DB', 'Database'), ('DV', 'Data & Vis'), ('CI', 'CI/CD & Cloud')], max_length=2),
+            model_name="technology",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("BE", "Backend"),
+                    ("FE", "Frontend"),
+                    ("DB", "Database"),
+                    ("DV", "Data & Vis"),
+                    ("CI", "CI/CD & Cloud"),
+                ],
+                max_length=2,
+            ),
         ),
     ]

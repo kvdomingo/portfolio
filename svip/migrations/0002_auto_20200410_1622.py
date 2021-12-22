@@ -6,28 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('svip', '0001_initial'),
+        ("svip", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='blogpost',
-            options={'ordering': ['-created']},
+            name="blogpost",
+            options={"ordering": ["-created"]},
         ),
         migrations.AddField(
-            model_name='blogpost',
-            name='slug',
+            model_name="blogpost",
+            name="slug",
             field=models.SlugField(default=None, max_length=256, unique=True),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='blogpost',
-            name='cover',
+            model_name="blogpost",
+            name="cover",
             field=models.URLField(blank=True),
         ),
         migrations.AlterField(
-            model_name='blogpost',
-            name='title',
+            model_name="blogpost",
+            name="title",
             field=models.CharField(max_length=256, unique=True),
         ),
     ]

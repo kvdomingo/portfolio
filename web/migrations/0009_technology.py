@@ -6,21 +6,45 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0008_delete_technology'),
+        ("web", "0008_delete_technology"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Technology',
+            name="Technology",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.PositiveIntegerField(db_index=True, editable=False, verbose_name='order')),
-                ('category', models.CharField(choices=[('BE', 'Backend'), ('FE', 'Frontend'), ('DV', 'Data & Vis'), ('CI', 'CI/CD & Platforms')], max_length=2)),
-                ('alt', models.CharField(max_length=255)),
-                ('url', models.URLField(max_length=254)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "order",
+                    models.PositiveIntegerField(
+                        db_index=True, editable=False, verbose_name="order"
+                    ),
+                ),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("BE", "Backend"),
+                            ("FE", "Frontend"),
+                            ("DV", "Data & Vis"),
+                            ("CI", "CI/CD & Platforms"),
+                        ],
+                        max_length=2,
+                    ),
+                ),
+                ("alt", models.CharField(max_length=255)),
+                ("url", models.URLField(max_length=254)),
             ],
             options={
-                'verbose_name_plural': 'technologies',
+                "verbose_name_plural": "technologies",
             },
         ),
     ]

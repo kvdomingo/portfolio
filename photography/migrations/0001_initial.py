@@ -7,19 +7,26 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Client',
+            name="Client",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=256)),
-                ('slug', models.SlugField(max_length=256)),
-                ('shoot_date', models.DateTimeField(blank=True)),
-                ('cover_image', models.URLField(max_length=256)),
-                ('keywords', models.TextField(blank=True, max_length=256)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=256)),
+                ("slug", models.SlugField(max_length=256)),
+                ("shoot_date", models.DateTimeField(blank=True)),
+                ("cover_image", models.URLField(max_length=256)),
+                ("keywords", models.TextField(blank=True, max_length=256)),
             ],
         ),
     ]

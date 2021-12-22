@@ -6,38 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0002_auto_20200713_0148'),
+        ("web", "0002_auto_20200713_0148"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='certification',
-            options={'ordering': ['-date_granted']},
+            name="certification",
+            options={"ordering": ["-date_granted"]},
         ),
         migrations.AlterModelOptions(
-            name='education',
-            options={'ordering': ['-end_date', '-start_date']},
+            name="education",
+            options={"ordering": ["-end_date", "-start_date"]},
         ),
         migrations.AlterModelOptions(
-            name='project',
-            options={'ordering': ['-end_date', '-start_date']},
+            name="project",
+            options={"ordering": ["-end_date", "-start_date"]},
         ),
         migrations.AlterModelOptions(
-            name='publication',
-            options={'ordering': ['-publication_date']},
+            name="publication",
+            options={"ordering": ["-publication_date"]},
         ),
         migrations.AlterModelOptions(
-            name='work',
-            options={'ordering': ['-end_date', '-start_date']},
+            name="work",
+            options={"ordering": ["-end_date", "-start_date"]},
         ),
         migrations.AddField(
-            model_name='work',
-            name='related_project',
+            model_name="work",
+            name="related_project",
             field=models.SlugField(blank=True, max_length=254),
         ),
         migrations.AlterField(
-            model_name='education',
-            name='end_date',
+            model_name="education",
+            name="end_date",
             field=models.DateField(blank=True, null=True),
         ),
     ]

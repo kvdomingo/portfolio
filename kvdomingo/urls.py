@@ -11,41 +11,51 @@ from web.sitemap import StaticViewSitemap
 from . import views
 
 sitemaps = {
-    'static': StaticViewSitemap,
-    'photography': GenericSitemap(
+    "static": StaticViewSitemap,
+    "photography": GenericSitemap(
         {
-            'queryset': Client.objects.all(),
+            "queryset": Client.objects.all(),
         },
         priority=0.5,
     ),
-    'courses': GenericSitemap(
+    "courses": GenericSitemap(
         {
-            'queryset': Course.objects.all(),
+            "queryset": Course.objects.all(),
         },
         priority=0.5,
     ),
-    'blog': GenericSitemap(
+    "blog": GenericSitemap(
         {
-            'queryset': BlogPost.objects.all(),
-            'date_field': 'created',
+            "queryset": BlogPost.objects.all(),
+            "date_field": "created",
         },
         priority=0.6,
     ),
 }
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('robots.txt', TemplateView.as_view(template_name='web/robots.txt', content_type='text/plain')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('api/auth/', include('rest_framework.urls')),
-    path('tinymce/', include('tinymce.urls')),
-    path('api/photography/', include('photography.urls')),
-    path('api/svip/', include('svip.urls')),
-    path('api/dev/', include('dev.urls')),
-    path('api/', include('web.urls')),
+    path("admin/", admin.site.urls),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="web/robots.txt", content_type="text/plain"),
+    ),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+    path("api/auth/", include("rest_framework.urls")),
+    path("tinymce/", include("tinymce.urls")),
+    path("api/photography/", include("photography.urls")),
+    path("api/svip/", include("svip.urls")),
+    path("api/dev/", include("dev.urls")),
+    path("api/", include("web.urls")),
 ]
 
-if settings.PYTHON_ENV == 'development':
-    urlpatterns.append(re_path(r'^(?P<path>.*)$', ProxyView.as_view(upstream='http://frontend:3000')))
+if settings.PYTHON_ENV == "development":
+    urlpatterns.append(
+        re_path(r"^(?P<path>.*)$", ProxyView.as_view(upstream="http://frontend:3000"))
+    )
 else:
-    urlpatterns.append(re_path(r'^.*/?$', views.index))
+    urlpatterns.append(re_path(r"^.*/?$", views.index))

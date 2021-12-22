@@ -7,18 +7,18 @@ import tinymce.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dev', '0001_initial'),
+        ("dev", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='project',
-            name='body',
-            field=tinymce.models.HTMLField(blank=True, verbose_name='Body'),
+            model_name="project",
+            name="body",
+            field=tinymce.models.HTMLField(blank=True, verbose_name="Body"),
         ),
         migrations.AddField(
-            model_name='project',
-            name='summary',
+            model_name="project",
+            name="summary",
             field=models.TextField(blank=True),
         ),
     ]

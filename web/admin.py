@@ -4,12 +4,12 @@ from .models import *
 
 
 class HomepageContentAdmin(OrderedModelAdmin):
-    list_display = ['section_header', 'move_up_down_links']
+    list_display = ["section_header", "move_up_down_links"]
 
 
 class TechnologyAdmin(OrderedModelAdmin):
-    list_display_links = ['alt']
-    list_display = ['category', 'order', 'alt', 'move_up_down_links']
+    list_display_links = ["alt"]
+    list_display = ["category", "order", "alt", "move_up_down_links"]
 
 
 admin.site.register(HomepageContent, HomepageContentAdmin)
@@ -22,6 +22,6 @@ admin.site.register(Certification)
 admin.site.register(Publication)
 admin.site.register(Reference)
 
-admin.site.index_title = 'Admin'
-admin.site.site_title = 'Kenneth V. Domingo'
-admin.site.site_header = 'kvdomingo.xyz administration'
+admin.site.index_title = "Admin"
+admin.site.site_title = "Kenneth V. Domingo"
+admin.site.site_header = "kvdomingo.xyz administration"

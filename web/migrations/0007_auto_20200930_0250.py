@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0006_auto_20200930_0249'),
+        ("web", "0006_auto_20200930_0249"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Technologies',
-            new_name='Technology',
+            old_name="Technologies",
+            new_name="Technology",
         ),
         migrations.AlterModelOptions(
-            name='technology',
-            options={'ordering': ['category'], 'verbose_name_plural': 'technologies'},
+            name="technology",
+            options={"ordering": ["category"], "verbose_name_plural": "technologies"},
         ),
     ]

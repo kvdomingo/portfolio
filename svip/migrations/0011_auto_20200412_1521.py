@@ -7,19 +7,30 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('svip', '0010_course_slug'),
+        ("svip", "0010_course_slug"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpost',
-            name='course',
-            field=models.ForeignKey(default=186, on_delete=django.db.models.deletion.CASCADE, to='svip.Course', to_field='number'),
+            model_name="blogpost",
+            name="course",
+            field=models.ForeignKey(
+                default=186,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="svip.Course",
+                to_field="number",
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='blogpost',
-            name='subject',
-            field=models.IntegerField(choices=[(0, None), (186, 'Applied Physics 186'), (187, 'Applied Physics 187')]),
+            model_name="blogpost",
+            name="subject",
+            field=models.IntegerField(
+                choices=[
+                    (0, None),
+                    (186, "Applied Physics 186"),
+                    (187, "Applied Physics 187"),
+                ]
+            ),
         ),
     ]

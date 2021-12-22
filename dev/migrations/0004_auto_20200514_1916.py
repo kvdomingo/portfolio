@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dev', '0003_project_organization_url'),
+        ("dev", "0003_project_organization_url"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='project',
-            name='body',
+            model_name="project",
+            name="body",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='end_date',
+            model_name="project",
+            name="end_date",
             field=models.DateField(blank=True, null=True),
         ),
     ]

@@ -9,7 +9,7 @@ class HomepageContent(OrderedModel):
     link_to_portfolio = models.CharField(max_length=256, blank=True)
 
     class Meta:
-        ordering = ['order']
+        ordering = ["order"]
 
     def __str__(self):
         return self.section_header
@@ -22,21 +22,21 @@ class AboutContent(models.Model):
 
 class Technology(OrderedModel):
     class Category(models.TextChoices):
-        BACKEND = 'BE', _('Backend')
-        FRONTEND = 'FE', _('Frontend')
-        DATABASE = 'DB', _('Database')
-        DATAVIS = 'DV', _('Data & Vis')
-        CICD = 'CI', _('CI/CD & Cloud')
+        BACKEND = "BE", _("Backend")
+        FRONTEND = "FE", _("Frontend")
+        DATABASE = "DB", _("Database")
+        DATAVIS = "DV", _("Data & Vis")
+        CICD = "CI", _("CI/CD & Cloud")
 
     category = models.CharField(max_length=2, choices=Category.choices)
     alt = models.CharField(max_length=255)
     url = models.URLField(max_length=254)
 
-    order_with_respect_to = 'category'
+    order_with_respect_to = "category"
 
     class Meta:
-        ordering = ['category', 'order']
-        verbose_name_plural = 'technologies'
+        ordering = ["category", "order"]
+        verbose_name_plural = "technologies"
 
     def __str__(self):
         return f"[{self.category}] {self.alt}"
@@ -52,13 +52,13 @@ class Education(models.Model):
     end_date = models.DateField(blank=True, null=True)
 
     class Meta:
-        ordering = ['-end_date', '-start_date']
+        ordering = ["-end_date", "-start_date"]
 
     def __str__(self):
         if self.end_date:
             end_year = self.end_date.year
         else:
-            end_year = 'present'
+            end_year = "present"
         return f"{self.university} ({self.start_date.year} - {end_year})"
 
 
@@ -72,14 +72,16 @@ class Work(models.Model):
     related_project = models.CharField(max_length=254, blank=True)
 
     class Meta:
-        ordering = ['-end_date', '-start_date']
+        ordering = ["-end_date", "-start_date"]
 
     def __str__(self):
         if self.end_date:
             end_year = self.end_date.year
         else:
-            end_year = 'present'
-        return f"{self.position}, {self.institution} ({self.start_date.year} - {end_year})"
+            end_year = "present"
+        return (
+            f"{self.position}, {self.institution} ({self.start_date.year} - {end_year})"
+        )
 
 
 class Project(models.Model):
@@ -91,13 +93,13 @@ class Project(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ['-end_date', '-start_date']
+        ordering = ["-end_date", "-start_date"]
 
     def __str__(self):
         if self.end_date:
             end_year = self.end_date.year
         else:
-            end_year = 'present'
+            end_year = "present"
         return f"{self.name} ({self.start_date.year} - {end_year})"
 
 
@@ -110,7 +112,7 @@ class Certification(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ['-date_granted']
+        ordering = ["-date_granted"]
 
     def __str__(self):
         return f"{self.name} ({self.institution})"
@@ -126,7 +128,7 @@ class Publication(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ['-publication_date']
+        ordering = ["-publication_date"]
 
     def __str__(self):
         return f"{self.title} ({self.publication_date.year})"
@@ -139,7 +141,7 @@ class Reference(models.Model):
     position = models.CharField(max_length=64)
 
     class Meta:
-        ordering = ['id']
+        ordering = ["id"]
 
     def __str__(self):
         return f"{self.name} ({self.email})"

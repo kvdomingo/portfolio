@@ -6,17 +6,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0009_technology'),
+        ("web", "0009_technology"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='technology',
-            options={'ordering': ['category', 'order'], 'verbose_name_plural': 'technologies'},
+            name="technology",
+            options={
+                "ordering": ["category", "order"],
+                "verbose_name_plural": "technologies",
+            },
         ),
         migrations.AlterField(
-            model_name='technology',
-            name='category',
-            field=models.CharField(choices=[('BE', 'Backend'), ('FE', 'Frontend'), ('DB', 'Database Management'), ('DV', 'Data & Vis'), ('CI', 'CI/CD & Platforms')], max_length=2),
+            model_name="technology",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("BE", "Backend"),
+                    ("FE", "Frontend"),
+                    ("DB", "Database Management"),
+                    ("DV", "Data & Vis"),
+                    ("CI", "CI/CD & Platforms"),
+                ],
+                max_length=2,
+            ),
         ),
     ]

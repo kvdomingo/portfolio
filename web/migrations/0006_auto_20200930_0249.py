@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('web', '0005_auto_20200930_0248'),
+        ("web", "0005_auto_20200930_0248"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='technologies',
-            options={'ordering': ['category']},
+            name="technologies",
+            options={"ordering": ["category"]},
         ),
     ]
