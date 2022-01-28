@@ -14,9 +14,9 @@ services:
 
   frontend:
     build:
-      context: .
-      target: web
+      context: ./app
+      target: dev
     image: kvdomingo/kvdomingo-xyz-web:latest
     env_file: ./app/.env
     volumes:
-      - .:/kvd
+      - ./app:/web

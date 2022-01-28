@@ -1,11 +1,3 @@
-FROM node:16-alpine as web
-
-WORKDIR /kvd
-
-EXPOSE 3000
-
-ENTRYPOINT [ "sh", "devserver.sh" ]
-
 FROM pypy:3.8-7-buster as base
 
 ENV PYTHONUNBUFFERED 1
@@ -26,15 +18,22 @@ WORKDIR /kvd
 
 EXPOSE $PORT
 
-ENTRYPOINT uvicorn kvdomingo.asgi:application --host 0.0.0.0 --port $PORT --reload --reload-exclude node_modules/
+ENTRYPOINT gunicorn kvdomingo.wsgi -b 0.0.0.0:$PORT \
+    --workers 2 \
+    --threads 4 \
+    --log-file - \
+    --access-logfile - \
+     --access-logformat "%(t)s %(r)s %(s)s %(M)sms" \
+    --capture-output \
+    --reload
 
-FROM node:16-alpine as web-build
+FROM node:16-alpine as build
 
-WORKDIR /frontend
+WORKDIR /web
 
 COPY ./app/ ./
 
-RUN yarn install
+RUN yarn install --prod
 
 RUN yarn build
 
@@ -48,9 +47,10 @@ COPY ./photography/ ./photography/
 COPY ./svip/ ./svip/
 COPY ./web/ ./web/
 COPY ./*.py ./
-COPY runserver.sh .
-COPY --from=web-build /frontend/build ./app/
+COPY --from=build /web/build ./app/
 
 EXPOSE $PORT
 
-ENTRYPOINT [ "sh", "runserver.sh" ]
+ENTRYPOINT python manage.py collectstatic --noinput && \
+    python manage.py migrate && \
+    gunicorn kvdomingo.wsgi --workers 1 --threads 2 -b 0.0.0.0:$PORT --log-file -

@@ -26,5 +26,4 @@ six
 sqlparse
 typing-extensions
 urllib3
-uvicorn[standard]
 whitenoise

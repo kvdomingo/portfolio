@@ -241,4 +241,5 @@ content/
 
 frontend/static/frontend/bundles
 webpack-stats.json
-.idea
+.idea/
+.vscode/

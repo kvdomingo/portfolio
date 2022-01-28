@@ -1,34 +1,25 @@
-import { Component } from "react";
-import { withRouter } from "react-router-dom";
 import ReactGA from "react-ga";
-import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-const { NODE_ENV } = process.env;
+const PROD = process.env.NODE_ENV === "production";
 
-class GAUtil extends Component {
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-  };
+function GAUtil() {
+  const location = useLocation();
 
-  componentDidMount() {
-    if (NODE_ENV !== "development") {
-      ReactGA.initialize("UA-162676656-2");
+  useEffect(() => {
+    if (PROD) {
+      ReactGA.initialize("G-TDY6KJHNDB");
     }
-  }
+  }, []);
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (NODE_ENV !== "development") {
-      let prevLocation = prevProps.location;
-      let { location } = this.props;
-      if (prevLocation.pathname !== location.pathname) {
-        ReactGA.pageview(`${location.pathname}${location.search}`);
-      }
+  useEffect(() => {
+    if (PROD) {
+      ReactGA.pageview(`${location.pathname}${location.search}`);
     }
-  }
+  }, [location.pathname, location.search]);
 
-  render = () => null;
+  return null;
 }
 
-export default withRouter(GAUtil);
+export default GAUtil;
