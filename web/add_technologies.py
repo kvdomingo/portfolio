@@ -1,14 +1,11 @@
-import os, sys
-
-sys.path.append(".")
-sys.path.append("..")
-
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 import django
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kvdomingo.settings")
 django.setup()
 
 import json
@@ -18,10 +15,8 @@ from web.models import Technology
 
 def main():
     with open(
-        os.path.join(
-            settings.BASE_DIR,
-            "frontend/static/frontend/js/components/Landing/Technologies.json",
-        ),
+        settings.BASE_DIR
+        / "frontend/static/frontend/js/components/Landing/Technologies.json",
         "r",
     ) as f:
         data = json.load(f)

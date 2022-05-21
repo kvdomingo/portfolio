@@ -1,14 +1,12 @@
 version: "3.8"
 
 services:
-  apiserver:
+  backend:
     build:
       context: .
       target: dev
     image: kvdomingo/kvdomingo-xyz-api:latest
     env_file: .env
-    ports:
-      - ${PORT}:${PORT}
     volumes:
       - .:/kvd
 
@@ -20,3 +18,12 @@ services:
     env_file: ./app/.env
     volumes:
       - ./app:/web
+
+  proxy:
+    image: bitnami/nginx:1.21.6
+    environment:
+      - NGINX_HTTP_PORT_NUMBER=8000
+    ports:
+      - 8000:8000
+    volumes:
+      - ./proxy/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/kvdomingo.conf:ro

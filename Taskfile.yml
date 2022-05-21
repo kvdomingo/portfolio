@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  default:
+    desc: Build and start Docker containers
+    cmds:
+      - docker compose up -d --build --remove-orphans
+
+  sqlproxy:
+    desc: Start the gcloud SQL proxy
+    cmds:
+      - cloud_sql_proxy -instances=my-projects-306716:asia-east1:schedule-bot=tcp:0.0.0.0:3306
+
+  logs:
+    desc: Attach to Docker logs
+    cmds:
+      - docker compose logs --follow {{.CLI_ARGS}}
+
+  shutdown:
+    desc: Stop containers
+    cmds:
+      - docker compose stop
+
+  restart:
+    desc: Restart containers
+    cmds:
+      - docker compose restart {{.CLI_ARGS}}
+
+  clean:
+    desc: Remove containers
+    cmds:
+      - docker compose down -v --remove-orphans

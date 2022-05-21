@@ -4,31 +4,23 @@ from django.urls import include, path, re_path
 from django.views.generic.base import TemplateView
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
-from revproxy.views import ProxyView
+from django.shortcuts import render
 from svip.models import BlogPost, Course
 from photography.models import Client
 from web.sitemap import StaticViewSitemap
-from . import views
 
 sitemaps = {
     "static": StaticViewSitemap,
     "photography": GenericSitemap(
-        {
-            "queryset": Client.objects.all(),
-        },
+        {"queryset": Client.objects.all()},
         priority=0.5,
     ),
     "courses": GenericSitemap(
-        {
-            "queryset": Course.objects.all(),
-        },
+        {"queryset": Course.objects.all()},
         priority=0.5,
     ),
     "blog": GenericSitemap(
-        {
-            "queryset": BlogPost.objects.all(),
-            "date_field": "created",
-        },
+        {"queryset": BlogPost.objects.all(), "date_field": "created"},
         priority=0.6,
     ),
 }
@@ -53,9 +45,5 @@ urlpatterns = [
     path("api/", include("web.urls")),
 ]
 
-if settings.PYTHON_ENV == "development":
-    urlpatterns.append(
-        re_path(r"^(?P<path>.*)$", ProxyView.as_view(upstream="http://frontend:3000"))
-    )
-else:
-    urlpatterns.append(re_path(r"^.*/?$", views.index))
+if settings.PYTHON_ENV == "production":
+    urlpatterns.append(re_path(r"^.*/?$", lambda r: render(r, "index.html")))
