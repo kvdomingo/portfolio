@@ -1,6 +1,6 @@
-import { Component } from "react";
+import { useEffect } from "react";
+import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import { MDBNav as Nav } from "mdbreact";
-import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const styles = {
@@ -18,56 +18,44 @@ const pillsData = [
   { path: "/samoetikerffa", name: "samoetikerffa", label: "#samoetikerffa" },
 ];
 
-class PhotoSidenav extends Component {
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    activePage: PropTypes.string.isRequired,
-    togglePills: PropTypes.func.isRequired,
-  };
+function PhotoSidenav({ activePage, togglePills }) {
+  const location = useLocation();
+  const { url } = useRouteMatch();
 
-  componentDidMount() {
-    this.updateActivePill();
-  }
+  useEffect(() => {
+    updateActivePill();
+  }, [url]);
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    const { match } = this.props;
-    console.log(this.props.activePage);
-    if (prevProps.match.url !== match.url) {
-      this.updateActivePill();
-    }
-  }
-
-  updateActivePill = () => {
-    const url = this.props.location.pathname;
+  function updateActivePill() {
+    const url = location.pathname;
     let page = url.split("/").slice(-1)[0] === "photography" ? "latest" : url.split("/").slice(-1)[0];
     if (url.split("/").slice(-2)[0] === "clients") page = "clients";
-    this.props.togglePills(null, page);
-  };
-
-  render() {
-    const { activePage, match, togglePills } = this.props;
-    const { url } = match;
-    return (
-      <Nav
-        tag="div"
-        className="nav-pills flex-column pl-md-2 pl-0 text-md-left text-center"
-        style={styles.navPills}
-        orientation="vertical"
-      >
-        {pillsData.map(data => (
-          <Link
-            to={`${url}${data.path}`}
-            onClick={e => togglePills(e, data.name)}
-            className={`nav-link my-1 ${activePage === data.name && "active"}`}
-          >
-            {data.label}
-          </Link>
-        ))}
-      </Nav>
-    );
+    togglePills(null, page);
   }
+
+  return (
+    <Nav
+      tag="div"
+      className="nav-pills flex-column pl-md-2 pl-0 text-md-right text-center"
+      style={styles.navPills}
+      orientation="vertical"
+    >
+      {pillsData.map(data => (
+        <Link
+          to={`${url}${data.path}`}
+          onClick={e => togglePills(e, data.name)}
+          className={`nav-link my-1 ${activePage === data.name && "active"}`}
+        >
+          {data.label}
+        </Link>
+      ))}
+    </Nav>
+  );
 }
 
-export default withRouter(PhotoSidenav);
+PhotoSidenav.propTypes = {
+  activePage: PropTypes.string.isRequired,
+  togglePills: PropTypes.func.isRequired,
+};
+
+export default PhotoSidenav;

@@ -1,4 +1,5 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   MDBNavbar as Navbar,
   MDBNavbarBrand as NavbarBrand,
@@ -13,186 +14,136 @@ import {
   MDBDropdownItem as DropdownItem,
 } from "mdbreact";
 import { Image } from "cloudinary-react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import GAUtil from "../utils/GAUtil";
+import useGA from "../utils/useGA";
 
-const bigLogoHeight = "70px",
-  smallLogoHeight = "50px",
-  dropdownItems = [
-    { name: "Photography", path: "/photography" },
-    { name: "Coursework", path: "/svip" },
-    { name: "Web Development", path: "/dev" },
-  ],
-  navbarItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "CV", path: "/cv" },
-  ];
+const bigLogoHeight = "70px";
 
-class NavBar extends Component {
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-  };
+const smallLogoHeight = "50px";
 
-  state = {
-    background: "rgba(0, 0, 0, 0.0)",
-    dropdownOpen: false,
-    fixed: "fixed-top navbar-dark",
-    isOpen: false,
-    navBrand: "logo/logo-white",
-    navBrandHeight: bigLogoHeight,
-    navBrandOpacity: 1,
-    padY: "py-3",
-  };
+const dropdownItems = [
+  { name: "Photography", path: "/photography" },
+  { name: "Coursework", path: "/svip" },
+  { name: "Web Development", path: "/dev" },
+];
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleNavScroll);
-    this.updateNavStyles();
-  }
+const navbarItems = [
+  { name: "Home", path: "/" },
+  { name: "About/CV", path: "/about" },
+];
 
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNavScroll);
-  }
+function NavBar() {
+  useGA();
+  const location = useLocation();
+  const [background, setBackground] = useState("rgba(0, 0, 0, 0.0)");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [fixed, setFixed] = useState("fixed-top navbar-dark");
+  const [isOpen, setIsOpen] = useState(false);
+  const [navBrand, setNavBrand] = useState("logo/logo-white");
+  const [navBrandHeight, setNavBrandHeight] = useState(bigLogoHeight);
+  const [navBrandOpacity, setNavBrandOpacity] = useState(1);
+  const [padY, setPadY] = useState("py-3");
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    let prevLocation = prevProps.location;
-    let { location } = this.props;
-    if (prevLocation.pathname !== location.pathname) {
-      window.scrollTo(0, 0);
-      this.setState({ isOpen: false });
-      this.updateNavStyles();
-    }
-  }
+  useEffect(() => {
+    window.addEventListener("scroll", handleNavScroll);
+    updateNavStyles();
+    return () => window.removeEventListener("scroll", handleNavScroll);
+  }, []);
 
-  updateNavStyles = () => {
-    if (this.props.location.pathname === "/") {
-      this.setState({
-        background: "rgba(0, 0, 0, 0.0)",
-        fixed: "fixed-top navbar-dark",
-        navBrand: "logo/logo-white",
-        navBrandOpacity: 0,
-      });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setIsOpen(false);
+    updateNavStyles();
+  }, [location.pathname]);
+
+  function updateNavStyles() {
+    if (location.pathname === "/") {
+      setBackground("rgba(0, 0, 0, 0.0)");
+      setFixed("fixed-top navbar-dark");
+      setNavBrand("logo/logo-white");
+      setNavBrandOpacity(0);
     } else {
-      this.setState({
-        background: "rgba(255, 255, 255, 0.90)",
-        fixed: "navbar-light",
-        navBrand: "logo/logo-black",
-        navBrandOpacity: 1,
-      });
+      setBackground("rgba(255, 255, 255, 0.90)");
+      setFixed("navbar-light");
+      setNavBrand("logo/logo-black");
+      setNavBrandOpacity(1);
     }
-  };
+  }
 
-  handleNavScroll = () => {
+  function handleNavScroll() {
     if (window.scrollY < 30) {
-      if (this.props.location.pathname === "/") {
-        this.setState({
-          background: "rgba(0, 0, 0, 0.0)",
-          navBrandOpacity: 0,
-        });
+      if (location.pathname === "/") {
+        setBackground("rgba(0, 0, 0, 0.0)");
+        setNavBrandOpacity(0);
       } else {
-        this.setState({
-          navBrandOpacity: 1,
-        });
+        setNavBrandOpacity(1);
       }
-      this.setState({
-        navBrandHeight: bigLogoHeight,
-        padY: "py-3",
-      });
+      setNavBrandHeight(bigLogoHeight);
+      setPadY("py-3");
     } else {
-      if (this.props.location.pathname === "/") {
-        this.setState({
-          background: "rgba(0, 0, 0, 0.90)",
-          navBrandOpacity: 1,
-        });
+      if (location.pathname === "/") {
+        setBackground("rgba(0, 0, 0, 0.90)");
+        setNavBrandOpacity(1);
       }
-      this.setState({
-        navBrandHeight: smallLogoHeight,
-        padY: "py-1",
-      });
+      setNavBrandHeight(smallLogoHeight);
+      setPadY("py-1");
     }
-  };
-
-  toggleCollapse = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
-  };
-
-  openDropdown = () => {
-    this.setState({
-      dropdownOpen: true,
-    });
-  };
-
-  closeDropdown = () => {
-    this.setState({
-      dropdownOpen: false,
-    });
-  };
-
-  render() {
-    const { fixed, padY, navBrand, navBrandHeight, navBrandOpacity, dropdownOpen, background, isOpen } = this.state;
-    const { toggleCollapse, openDropdown, closeDropdown } = this;
-    return (
-      <Navbar
-        expand="lg"
-        className={`navbar-slick px-5 ${fixed} ${padY}`}
-        style={{
-          background: background,
-          boxShadow: "none",
-        }}
-      >
-        <GAUtil />
-        <NavbarBrand>
-          <Link to="/">
-            <Image
-              publicId={navBrand}
-              cloudName="kdphotography-assets"
-              secure={true}
-              alt="Kenneth V. Domingo logo"
-              height={navBrandHeight}
-              className={`navbar-slick-brand`}
-              style={{ opacity: navBrandOpacity }}
-            />
-          </Link>
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleCollapse} />
-        <Collapse id="navbar" isOpen={isOpen} navbar>
-          <NavbarNav right>
-            {navbarItems.map(({ name, path }, i) => (
-              <NavItem key={i}>
-                <NavLink to={path} className="navbar-slick-items">
-                  {name}
-                </NavLink>
-              </NavItem>
-            ))}
-            <NavItem>
-              <Dropdown
-                isOpen={dropdownOpen}
-                toggle={() => {}}
-                onMouseEnter={openDropdown}
-                onMouseLeave={closeDropdown}
-              >
-                <DropdownToggle nav>
-                  <span className="mr-2 navbar-slick-items">Portfolio</span>
-                </DropdownToggle>
-                <DropdownMenu right basic>
-                  {dropdownItems.map(({ name, path }, i) => (
-                    <DropdownItem key={i} className="navbar-slick-items text-right">
-                      <Link to={path}>{name}</Link>
-                    </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
-            </NavItem>
-          </NavbarNav>
-        </Collapse>
-      </Navbar>
-    );
   }
+
+  return (
+    <Navbar
+      expand="lg"
+      className={`navbar-slick px-5 ${fixed} ${padY}`}
+      style={{
+        background: background,
+        boxShadow: "none",
+      }}
+    >
+      <NavbarBrand>
+        <Link to="/">
+          <Image
+            publicId={navBrand}
+            cloudName="kdphotography-assets"
+            secure={true}
+            alt="Kenneth V. Domingo logo"
+            height={navBrandHeight}
+            className={`navbar-slick-brand`}
+            style={{ opacity: navBrandOpacity }}
+          />
+        </Link>
+      </NavbarBrand>
+      <NavbarToggler onClick={() => setIsOpen(open => !open)} />
+      <Collapse id="navbar" isOpen={isOpen} navbar>
+        <NavbarNav right>
+          {navbarItems.map(({ name, path }, i) => (
+            <NavItem key={i}>
+              <NavLink to={path} className="navbar-slick-items">
+                {name}
+              </NavLink>
+            </NavItem>
+          ))}
+          <NavItem>
+            <Dropdown
+              isOpen={dropdownOpen}
+              toggle={() => {}}
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <DropdownToggle nav>
+                <span className="mr-2 navbar-slick-items">Portfolio</span>
+              </DropdownToggle>
+              <DropdownMenu right basic>
+                {dropdownItems.map(({ name, path }, i) => (
+                  <DropdownItem key={i} className="navbar-slick-items text-right">
+                    <Link to={path}>{name}</Link>
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+          </NavItem>
+        </NavbarNav>
+      </Collapse>
+    </Navbar>
+  );
 }
 
-export default withRouter(NavBar);
+export default NavBar;

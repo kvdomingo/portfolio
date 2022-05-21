@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { MDBCol as Col, MDBRow as Row, MDBContainer as Container } from "mdbreact";
 import { Image } from "cloudinary-react";
 import TitleComponent from "../../shared/TitleComponent";
 import Loading from "../../shared/Loading";
+import CurrVitae from "./CurrVitae";
 import api from "../../utils/Endpoints";
 import JsxParser from "react-jsx-parser";
 import { useGeneralContext } from "../../contexts/GeneralContext";
@@ -38,16 +38,16 @@ export default function About() {
     <>
       <TitleComponent
         title="About"
-        description="About Kenneth V. Domingo and KVD Studio"
-        keywords="signal processing, image processing, video processing, computational physics, applied physics, app physics, coursework, kvdomingo, Kenneth V. Domingo"
+        description="About Kenneth V. Domingo and KVD Studio, with curriculum vitae (CV) including educational attainment, work experience, and projects"
+        keywords="curriculum vitae, cv, signal processing, image processing, video processing, computational physics, applied physics, app physics, coursework, kvdomingo, Kenneth V. Domingo"
       />
 
-      <Container className={"mb-5"}>
+      <Container fluid className="mb-5 px-5">
         <Row>
-          <Col md="4" className="mb-4 mb-md-0">
+          <Col md="3" className="mb-4 mb-md-0">
             <Image
               cloudName={"kdphotography-assets"}
-              className="img-fluid image-shadow"
+              className="img-fluid image-shadow mb-5"
               publicId={data.picture}
               secure
               responsive
@@ -56,17 +56,13 @@ export default function About() {
               dpr={"auto"}
               crop={"scale"}
             />
-          </Col>
-          <Col md="8" className="pl-3 pl-md-5">
             <JsxParser jsx={data.bio} />
-            <div>
-              <Link to="/cv" className="ml-0 btn btn-outline-black">
-                CV
-              </Link>
-              <a href="mailto:hello@kvdomingo.xyz" className="ml-0 btn btn-outline-black">
-                Contact
-              </a>
-            </div>
+            <a href="mailto:hello@kvdomingo.xyz" className="ml-0 btn btn-outline-black">
+              Contact
+            </a>
+          </Col>
+          <Col md="9">
+            <CurrVitae />
           </Col>
         </Row>
       </Container>

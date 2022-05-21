@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 
 function TitleComponent(props) {
-  const title = props.title ? `${props.title} | Kenneth V. Domingo` : `Kenneth V. Domingo`;
+  const title = props.title ? `${props.title} | KVD Studio` : `KVD Studio`;
   return (
     <Helmet>
       <title>{title}</title>

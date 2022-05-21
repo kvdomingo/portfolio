@@ -42,7 +42,7 @@ function WhatIDo() {
           {headers.map((head, i) => (
             <div key={i} data-aos="fade-up" className="mb-5">
               <Row>
-                <Col md="3">
+                <Col md="3" className="d-flex align-items-center justify-content-end">
                   <Typography tag="h4" variant="h2-responsive" className="my-4 text-md-right section-header">
                     {head}
                   </Typography>

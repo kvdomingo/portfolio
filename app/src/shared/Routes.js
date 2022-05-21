@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 
 const Home = lazy(() => import("../components/home/Home")),
   About = lazy(() => import("../components/about/About")),
-  CurrVitae = lazy(() => import("../components/currVitae/CurrVitae")),
   Photography = lazy(() => import("../components/photography/Photography")),
   Svip = lazy(() => import("../components/svip/Svip")),
   SvipSubject = lazy(() => import("../components/svip/Subject")),
@@ -20,7 +19,6 @@ const RedirectComponent = () => {
 const routes = [
   { path: "/admin", name: "Admin", Component: RedirectComponent },
   { path: "/about", name: "About", Component: About },
-  { path: "/cv", name: "CV", Component: CurrVitae },
   { path: "/photography", name: "Photography", Component: Photography },
   { path: "/dev", name: "Dev", Component: Dev },
   { path: "/svip/:courseSlug", name: "SVIP-Course", Component: SvipSubject },

@@ -37,50 +37,51 @@ function Dev() {
       {!isLoaded ? (
         <Loading />
       ) : (
-        <Container fluid className="my-5">
-          <Row className="row-cols-1 row-cols-md-2">
+        <Container fluid className="my-5 px-5">
+          <Row className="row-cols-1 row-cols-md-3">
             {projects.map(project => (
               <Col key={project.id} className="mb-4">
                 <Card
                   className="card-image card-cover h-100"
-                  style={{ backgroundImage: `url("${project.coverPhoto}")` }}
+                  style={{
+                    backgroundImage: `url("${project.coverPhoto}")`,
+                    aspectRatio: "1",
+                  }}
                 >
-                  <div className="text-white text-md-center text-left align-items-center h-100 rgba-black-strong py-5 pt-5 px-4">
+                  <CardBody className="d-flex flex-column text-white text-center justify-content-center align-items-center h-100 rgba-black-strong">
                     <a
                       href={project.projectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-outline-white"
+                      style={{ textTransform: "none" }}
                     >
                       <Icon fas icon="external-link-alt" className="mr-2" />
                       {project.title}
                     </a>
-                    <CardBody>
-                      {project.organization && (
-                        <div>
-                          <Icon fas icon="globe-asia" className="mr-2" />
-                          <p className="d-inline">
-                            <a
-                              href={project.organizationUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: "mediumvioletred" }}
-                            >
-                              {project.organization}
-                            </a>
-                          </p>
-                          <br />
-                        </div>
-                      )}
+                    {project.organization && (
+                      <div>
+                        <Icon fas icon="globe-asia" className="mr-2" />
+                        <a
+                          href={project.organizationUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: "mediumvioletred" }}
+                        >
+                          {project.organization}
+                        </a>
+                      </div>
+                    )}
+                    <div>
                       <Icon far icon="clock" className="mr-2" />
                       <p className="d-inline">
                         {dateFormat(project.startDate, "mmm yyyy")} &ndash;{" "}
                         {project.endDate ? dateFormat(project.endDate, "mmm yyyy") : "present"}{" "}
                       </p>
-                      <br />
-                      <p className="mt-3">{project.summary}</p>
-                    </CardBody>
-                  </div>
+                    </div>
+                    <br />
+                    <p className="mt-3">{project.summary}</p>
+                  </CardBody>
                 </Card>
               </Col>
             ))}
