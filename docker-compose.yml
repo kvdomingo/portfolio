@@ -1,5 +1,9 @@
 version: "3.8"
 
+networks:
+  dev:
+    external: true
+
 services:
   backend:
     build:
@@ -23,7 +27,15 @@ services:
     image: bitnami/nginx:1.21.6
     environment:
       - NGINX_HTTP_PORT_NUMBER=8000
-    ports:
-      - 8000:8000
     volumes:
       - ./proxy/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/kvdomingo.conf:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kvdomingo-xyz.rule=Host(`kvdomingo.localhost`)"
+      - "traefik.http.routers.kvdomingo-xyz.entrypoints=web"
+      - "traefik.docker.network=dev"
+      - "traefik.http.services.kvdomingo-xyz.loadbalancer.server.port=8000"
+    restart: unless-stopped
+    networks:
+      - default
+      - dev
