@@ -14,8 +14,6 @@ function useGA() {
   useEffect(() => {
     if (PROD) ReactGA.send("pageview");
   }, [location.pathname]);
-
-  return null;
 }
 
 export default useGA;

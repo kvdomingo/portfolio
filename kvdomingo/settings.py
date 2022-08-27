@@ -1,12 +1,13 @@
 import os
-import pytz
+import urllib
+from pathlib import Path
+
 import cloudinary
 import dj_database_url
-import urllib
-from jinja2 import DebugUndefined, Undefined
+import pytz
 from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
-from pathlib import Path
+from jinja2 import DebugUndefined, Undefined
 
 load_dotenv()
 
@@ -15,24 +16,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+PYTHON_ENV = os.environ.get("PYTHON_ENV", "production")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", False)
+DEBUG = PYTHON_ENV != "production"
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-PYTHON_ENV = os.environ.get("PYTHON_ENV", "production")
-
-if PYTHON_ENV == "development":
-    ALLOWED_HOSTS = ["*"]
-else:
+if PYTHON_ENV == "production":
     ALLOWED_HOSTS = [
         "kvdomingo.xyz",
         "kvdomingo.dev",
     ]
+else:
+    ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -73,6 +73,13 @@ CORS_ORIGIN_ALLOW_ALL = PYTHON_ENV == "development"
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$",
+]
+
+CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://kvdomingo.xyz",
+    "https://kvdomingo.dev",
 ]
 
 TEMPLATES = [

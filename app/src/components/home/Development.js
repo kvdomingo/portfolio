@@ -25,6 +25,7 @@ function Development({ content }) {
               src="https://storage.googleapis.com/kvdomingo-xyz-306716-assets/gcp-pca_badge.png"
               alt="Google Cloud Certified Professional Cloud Architect"
               className="img-fluid"
+              width="50%"
             />
           </a>
         </Col>
