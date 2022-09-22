@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { MDBCol as Col, MDBRow as Row, MDBContainer as Container } from "mdbreact";
+import { useEffect, useState } from "react";
 import { Image } from "cloudinary-react";
-import TitleComponent from "../../shared/TitleComponent";
-import Loading from "../../shared/Loading";
-import CurrVitae from "./CurrVitae";
-import api from "../../utils/Endpoints";
+import { MDBCol as Col, MDBContainer as Container, MDBRow as Row } from "mdbreact";
 import JsxParser from "react-jsx-parser";
+import api from "../../api";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import Loading from "../../shared/Loading";
+import TitleComponent from "../../shared/TitleComponent";
 import "./About.css";
+import CurrVitae from "./CurrVitae";
 
 export default function About() {
   const [loading, setLoading] = useState(true);

@@ -1,9 +1,10 @@
 from django.urls import path
-from . import views
 
+from .views import BlogPostView, CourseView
 
 app_name = "svip"
+
 urlpatterns = [
-    path("blogpost", views.BlogPostApi.as_view()),
-    path("course", views.CourseApi.as_view()),
+    path("blogpost", BlogPostView.as_view()),
+    path("course", CourseView.as_view()),
 ]

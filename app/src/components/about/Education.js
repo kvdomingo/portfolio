@@ -1,42 +1,13 @@
-import { useEffect, useState } from "react";
-import { MDBTypography as Type, MDBIcon as Icon } from "mdbreact";
+import { MDBIcon as Icon, MDBTypography as Type } from "mdbreact";
 import dateFormat from "dateformat";
-import TimelineSection from "./TimelineSection";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import TimelineSection from "./TimelineSection";
 
 function Education() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { generalState, generalDispatch } = useGeneralContext();
+  const { generalState } = useGeneralContext();
+  const data = generalState.cv.education ?? [];
 
-  useEffect(() => {
-    if (generalState.cv.education.loaded) {
-      setData(generalState.cv.education.data);
-      setLoading(false);
-    } else {
-      api.cv
-        .education()
-        .then(res => {
-          let { data } = res;
-          data.forEach(dat => {
-            dat.startDate = dateFormat(new Date(dat.startDate), "mmm yyyy");
-            dat.endDate = dateFormat(new Date(dat.endDate), "mmm yyyy");
-          });
-          generalDispatch({
-            type: "updateCVEducation",
-            payload: { data, loaded: true },
-          });
-        })
-        .catch(err => console.error(err.message))
-        .finally(() => setLoading(false));
-    }
-  }, [generalState.cv.education]);
-
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <TimelineSection sectionName="Education" icon="graduation-cap">
       <ul className="timeline">
         {data.map((dat, i) => (
@@ -46,7 +17,7 @@ function Education() {
             </Type>
             <div className="timeline-date text-muted float-md-right my-md-0 my-2">
               <Icon far icon="clock" className="mr-1" />
-              {dat.startDate} – {dat.endDate}
+              {dateFormat(new Date(dat.startDate), "mmm yyyy")} – {dateFormat(new Date(dat.endDate), "mmm yyyy")}
             </div>
             <p className="lead py-0">
               <a

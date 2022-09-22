@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useRouteMatch, withRouter } from "react-router-dom";
 import { Image } from "cloudinary-react";
-import TitleComponent from "../../shared/TitleComponent";
-import Masonry from "masonry-layout/masonry";
-import imagesLoaded from "imagesloaded/imagesloaded";
+import { useRouteMatch, withRouter } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
+import imagesLoaded from "imagesloaded/imagesloaded";
+import Masonry from "masonry-layout/masonry";
+import api from "../../api";
+import TitleComponent from "../../shared/TitleComponent";
 import "./Gallery.css";
-import api from "../../utils/Endpoints";
 
 function Gallery() {
   const { photogPage } = useRouteMatch().params;
@@ -58,7 +58,7 @@ function Gallery() {
         <div className="grid-sizer" />
         <SRLWrapper style={{ display: isLoaded ? "block-inline" : "none" }}>
           {images.map((im, i) => (
-            <div className={"grid-item p-2"}>
+            <div className={"grid-item p-2"} key={i}>
               <Image
                 publicId={im.publicId}
                 cloudName="kdphotography-assets"

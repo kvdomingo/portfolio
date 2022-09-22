@@ -1,9 +1,9 @@
-import { MDBRow as Row, MDBCol as Col, MDBCard as Card, MDBCardText as CardText } from "mdbreact";
-import { Link, useRouteMatch } from "react-router-dom";
-import TitleComponent from "../../shared/TitleComponent";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
 import { useEffect, useState } from "react";
+import { MDBCard as Card, MDBCardText as CardText, MDBCol as Col, MDBRow as Row } from "mdbreact";
+import { Link, useRouteMatch } from "react-router-dom";
+import api from "../../api";
+import Loading from "../../shared/Loading";
+import TitleComponent from "../../shared/TitleComponent";
 
 function Clients() {
   const match = useRouteMatch();

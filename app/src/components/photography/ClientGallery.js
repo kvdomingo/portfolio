@@ -1,13 +1,13 @@
 import { Component } from "react";
-import { withRouter } from "react-router-dom";
 import { Image } from "cloudinary-react";
-import PropTypes from "prop-types";
-import Masonry from "masonry-layout/masonry";
-import imagesLoaded from "imagesloaded/imagesloaded";
+import { withRouter } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
+import imagesLoaded from "imagesloaded/imagesloaded";
+import Masonry from "masonry-layout/masonry";
+import PropTypes from "prop-types";
+import api from "../../api";
 import TitleComponent from "../../shared/TitleComponent";
 import "./Gallery.css";
-import api from "../../utils/Endpoints";
 
 class ClientGallery extends Component {
   static propTypes = {

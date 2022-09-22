@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import {
-  MDBContainer as Container,
   MDBCard as Card,
   MDBCardBody as CardBody,
-  MDBIcon as Icon,
   MDBCol as Col,
+  MDBContainer as Container,
+  MDBIcon as Icon,
   MDBRow as Row,
 } from "mdbreact";
 import dateFormat from "dateformat";
-import TitleComponent from "../../shared/TitleComponent";
+import api from "../../api";
 import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
+import TitleComponent from "../../shared/TitleComponent";
 import "./Dev.css";
 
 function Dev() {

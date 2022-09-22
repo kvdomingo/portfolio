@@ -1,45 +1,13 @@
-import { useEffect, useState } from "react";
-import { MDBTypography as Type, MDBIcon as Icon } from "mdbreact";
+import { MDBIcon as Icon, MDBTypography as Type } from "mdbreact";
 import dateFormat from "dateformat";
-import TimelineSection from "./TimelineSection";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import TimelineSection from "./TimelineSection";
 
 function Project() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { generalState, generalDispatch } = useGeneralContext();
+  const { generalState } = useGeneralContext();
+  const data = generalState.cv.project ?? [];
 
-  useEffect(() => {
-    if (generalState.cv.projects.loaded) {
-      setData(generalState.cv.projects.data);
-      setLoading(false);
-    } else {
-      api.cv
-        .projects()
-        .then(res => {
-          let { data } = res;
-          data.forEach(dat => {
-            dat.startDate = dateFormat(new Date(dat.startDate), "mmm yyyy");
-            dat.endDate = dat.endDate ? dateFormat(new Date(dat.endDate), "mmm yyyy") : "present";
-          });
-          generalDispatch({
-            type: "updateCVProjects",
-            payload: {
-              data,
-              loaded: true,
-            },
-          });
-        })
-        .catch(err => console.error(err.message))
-        .finally(() => setLoading(false));
-    }
-  }, [generalState.cv.projects]);
-
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <TimelineSection sectionName="Projects" icon="project-diagram">
       <ul className="timeline">
         {data.map((dat, i) => (
@@ -49,7 +17,8 @@ function Project() {
             </Type>
             <div className="timeline-date text-muted float-md-right my-md-0 my-2">
               <Icon far icon="clock" className="mr-1" />
-              {dat.startDate} – {dat.endDate}
+              {dateFormat(new Date(dat.startDate), "mmm yyyy")} –{" "}
+              {dat.endDate ? dateFormat(new Date(dat.endDate), "mmm yyyy") : "present"}
             </div>
             <p className="lead py-0">
               <a href={dat.linkUrl} target="_blank" rel="noopener noreferrer" style={{ color: "mediumvioletred" }}>

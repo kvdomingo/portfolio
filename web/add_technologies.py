@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,16 +10,14 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kvdomingo.settings")
 django.setup()
 
 import json
+
 from django.conf import settings
+
 from web.models import Technology
 
 
 def main():
-    with open(
-        settings.BASE_DIR
-        / "frontend/static/frontend/js/components/Landing/Technologies.json",
-        "r",
-    ) as f:
+    with open(settings.BASE_DIR / "frontend/static/frontend/js/components/Landing/Technologies.json", "r") as f:
         data = json.load(f)
 
     CATEGORY_CHOICES = [

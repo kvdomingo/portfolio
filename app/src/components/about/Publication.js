@@ -1,42 +1,14 @@
-import { useEffect, useState } from "react";
-import { MDBTypography as Type, MDBIcon as Icon } from "mdbreact";
+import { MDBIcon as Icon, MDBTypography as Type } from "mdbreact";
 import HtmlParser from "react-html-parser";
 import dateFormat from "dateformat";
-import TimelineSection from "./TimelineSection";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import TimelineSection from "./TimelineSection";
 
 function Publication() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { generalState, generalDispatch } = useGeneralContext();
+  const { generalState } = useGeneralContext();
+  const data = generalState.cv.publication ?? [];
 
-  useEffect(() => {
-    if (generalState.cv.publications.loaded) {
-      setData(generalState.cv.publications.data);
-      setLoading(false);
-    } else {
-      api.cv
-        .publications()
-        .then(res => {
-          let { data } = res;
-          data.forEach(dat => {
-            dat.publicationDate = dateFormat(new Date(dat.publicationDate), "mmm yyyy");
-          });
-          generalDispatch({
-            type: "updateCVPublications",
-            payload: { data, loaded: true },
-          });
-        })
-        .catch(err => console.error(err.message))
-        .finally(() => setLoading(false));
-    }
-  }, [generalState.cv.publications]);
-
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <TimelineSection sectionName="Publications" icon="newspaper">
       <ul className="timeline">
         {data.map((dat, i) => (
@@ -46,7 +18,7 @@ function Publication() {
             </Type>
             <div className="timeline-date text-muted float-md-right my-md-0 my-2">
               <Icon far icon="clock" className="mr-1" />
-              {dat.publicationDate}
+              {dateFormat(new Date(dat.publicationDate), "mmm yyyy")}
             </div>
             <p className="lead py-0">
               <a href={dat.url} target="_blank" rel="noopener noreferrer" style={{ color: "mediumvioletred" }}>

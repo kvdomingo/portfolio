@@ -1,37 +1,12 @@
-import { useEffect, useState } from "react";
 import { MDBTypography as Type } from "mdbreact";
-import TimelineSection from "./TimelineSection";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import TimelineSection from "./TimelineSection";
 
 function Reference() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { generalState, generalDispatch } = useGeneralContext();
+  const { generalState } = useGeneralContext();
+  const data = generalState.cv.reference ?? [];
 
-  useEffect(() => {
-    if (generalState.cv.references.loaded) {
-      setData(generalState.cv.references.data);
-      setLoading(false);
-    } else {
-      api.cv
-        .references()
-        .then(res => {
-          let { data } = res;
-          generalDispatch({
-            type: "updateCVReferences",
-            payload: { data, loaded: true },
-          });
-        })
-        .catch(err => console.error(err.message))
-        .finally(() => setLoading(false));
-    }
-  }, [generalState.cv.references]);
-
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <TimelineSection sectionName="References" icon="user-friends">
       <ul className="timeline">
         {data.map((dat, i) => (

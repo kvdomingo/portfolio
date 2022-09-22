@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { MDBTypography as Typography, MDBContainer as Container, MDBRow as Row, MDBCol as Col } from "mdbreact";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
+import { MDBCol as Col, MDBContainer as Container, MDBRow as Row, MDBTypography as Typography } from "mdbreact";
+import api from "../../api";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import Loading from "../../shared/Loading";
 
 const headers = ["Backend", "Frontend", "Database", "CI/CD & Cloud", "Data & Vis"];
 

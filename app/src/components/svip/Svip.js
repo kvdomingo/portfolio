@@ -1,12 +1,12 @@
 import { Component } from "react";
-import { MDBContainer as Container, MDBRow as Row, MDBCol as Col, MDBCard as Card } from "mdbreact";
+import { MDBCard as Card, MDBCol as Col, MDBContainer as Container, MDBCardText, MDBRow as Row } from "mdbreact";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import api from "../../api";
+import { CourseworkConsumer } from "../../contexts/CourseworkContext";
 import Loading from "../../shared/Loading";
 import TitleComponent from "../../shared/TitleComponent";
 import "./Svip.css";
-import api from "../../utils/Endpoints";
-import { CourseworkConsumer } from "../../contexts/CourseworkContext";
 
 class Svip extends Component {
   static propTypes = {
@@ -67,12 +67,15 @@ class Svip extends Component {
         {!isLoaded ? (
           <Loading />
         ) : (
-          <Container fluid className="my-5" style={{ height: "50vh" }}>
+          <Container fluid className="px-5 my-5">
             <Row className="row-cols-1 row-cols-lg-2 row-cols-xl-3">
               {courses.map((course, i) => (
                 <Col className="mb-4" key={i}>
-                  <Card className="card-image card-cover h-100" style={{ backgroundImage: `url("${course.cover}")` }}>
-                    <div className="text-white text-md-center text-left align-items-center h-100 rgba-black-strong py-5 px-4">
+                  <Card
+                    className="card-image card-cover h-100"
+                    style={{ backgroundImage: `url("${course.cover}")`, aspectRatio: "1" }}
+                  >
+                    <MDBCardText className="text-white text-center align-items-center d-flex flex-column justify-content-center h-100 rgba-black-strong px-4">
                       <Link
                         to={`${location.pathname}/${course.slug}`}
                         className="card-title btn btn-outline-white my-3"
@@ -80,7 +83,7 @@ class Svip extends Component {
                         {course.name}: {course.title}
                       </Link>
                       <p className="card-text">{course.description}</p>
-                    </div>
+                    </MDBCardText>
                   </Card>
                 </Col>
               ))}

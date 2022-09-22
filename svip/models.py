@@ -1,8 +1,7 @@
-from tinymce.models import HTMLField
 from datetime import datetime
-from django.db import models
-from django.utils import timezone
+
 from django.conf import settings
+from django.db import models
 
 
 def set_aware_time():

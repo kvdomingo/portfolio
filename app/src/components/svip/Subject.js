@@ -1,18 +1,18 @@
 import { Component } from "react";
 import {
-  MDBContainer as Container,
-  MDBIcon as Icon,
   MDBBreadcrumb as Breadcrumb,
   MDBBreadcrumbItem as BreadcrumbItem,
+  MDBContainer as Container,
+  MDBIcon as Icon,
 } from "mdbreact";
 import { Link, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import api from "../../api";
 import Loading from "../../shared/Loading";
 import TitleComponent from "../../shared/TitleComponent";
-import "./Svip.css";
-import api from "../../utils/Endpoints";
 import Gallery from "./Gallery";
 import Post from "./Post";
+import "./Svip.css";
 
 class Subject extends Component {
   static propTypes = {

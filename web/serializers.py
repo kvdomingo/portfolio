@@ -1,5 +1,16 @@
 from rest_framework import serializers
-from .models import *
+
+from .models import (
+    AboutContent,
+    Certification,
+    Education,
+    HomepageContent,
+    Project,
+    Publication,
+    Reference,
+    Technology,
+    Work,
+)
 
 
 class HomepageContentSerializer(serializers.ModelSerializer):

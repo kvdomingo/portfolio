@@ -1,10 +1,11 @@
 from django.urls import path
-from . import views
 
+from .views import ClientView, api_client_gallery, api_gallery
 
 app_name = "photography"
+
 urlpatterns = [
-    path("clients/<slug:slug>", views.api_client_gallery),
-    path("client", views.ClientApi.as_view()),
-    path("<slug:slug>", views.api_gallery),
+    path("clients/<slug:slug>", api_client_gallery),
+    path("client", ClientView.as_view()),
+    path("<slug:slug>", api_gallery),
 ]

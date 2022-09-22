@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 let GeneralContext = createContext();
 
@@ -18,31 +18,12 @@ let initialState = {
     loaded: false,
   },
   cv: {
-    education: {
-      data: [],
-      loaded: false,
-    },
-    work: {
-      data: [],
-      loaded: false,
-    },
-    certifications: {
-      data: [],
-      scripts: [],
-      loaded: false,
-    },
-    projects: {
-      data: [],
-      loaded: false,
-    },
-    publications: {
-      data: [],
-      loaded: false,
-    },
-    references: {
-      data: [],
-      loaded: false,
-    },
+    education: [],
+    work: [],
+    certification: [],
+    project: [],
+    publication: [],
+    reference: [],
   },
 };
 
@@ -72,58 +53,10 @@ let reducer = (state, action) => {
         about: action.payload,
       };
     }
-    case "updateCVEducation": {
+    case "updateCV": {
       return {
         ...state,
-        cv: {
-          ...state.cv,
-          education: action.payload,
-        },
-      };
-    }
-    case "updateCVWork": {
-      return {
-        ...state,
-        cv: {
-          ...state.cv,
-          work: action.payload,
-        },
-      };
-    }
-    case "updateCVCertifications": {
-      return {
-        ...state,
-        cv: {
-          ...state.cv,
-          certifications: action.payload,
-        },
-      };
-    }
-    case "updateCVProjects": {
-      return {
-        ...state,
-        cv: {
-          ...state.cv,
-          projects: action.payload,
-        },
-      };
-    }
-    case "updateCVPublications": {
-      return {
-        ...state,
-        cv: {
-          ...state.cv,
-          publications: action.payload,
-        },
-      };
-    }
-    case "updateCVReferences": {
-      return {
-        ...state,
-        cv: {
-          ...state.cv,
-          references: action.payload,
-        },
+        cv: action.payload,
       };
     }
     default: {

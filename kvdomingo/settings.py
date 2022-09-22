@@ -1,6 +1,6 @@
 import os
-import urllib
 from pathlib import Path
+from urllib.parse import unquote
 
 import cloudinary
 import dj_database_url
@@ -121,9 +121,20 @@ if PYTHON_ENV == "development":
 else:
     DATABASE_URL = os.environ.get("DATABASE_URL")
     DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)
-    DATABASE_CONFIG["HOST"] = urllib.parse.unquote(DATABASE_CONFIG["HOST"])
+    DATABASE_CONFIG["HOST"] = unquote(DATABASE_CONFIG["HOST"])
 
 DATABASES = {"default": DATABASE_CONFIG}
+
+
+# Cache
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "TIMEOUT": 60 * 60,  # 1 hour
+    }
+}
+
 
 # Rest API
 
@@ -138,7 +149,7 @@ REST_FRAMEWORK = {
         "djangorestframework_camel_case.parser.CamelCaseJSONParser",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly",
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
@@ -146,9 +157,13 @@ REST_FRAMEWORK = {
 }
 
 if not DEBUG:
-    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
-        "rest_framework.renderers.JSONRenderer",
-    ]
+    REST_FRAMEWORK.update(
+        {
+            "DEFAULT_RENDERER_CLASSES": [
+                "rest_framework.renderers.JSONRenderer",
+            ]
+        }
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -209,7 +224,9 @@ STATIC_URL = "/static/"
 
 STATIC_ROOT = BASE_DIR / "static"
 
-STATICFILES_DIRS = [BASE_DIR / "app" / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "app" / "static",
+]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

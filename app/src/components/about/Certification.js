@@ -1,60 +1,29 @@
-import { useEffect, useState } from "react";
-import { MDBTypography as Type, MDBIcon as Icon } from "mdbreact";
+import { MDBIcon as Icon, MDBTypography as Type } from "mdbreact";
 import HtmlParser from "react-html-parser";
 import dateFormat from "dateformat";
-import TimelineSection from "./TimelineSection";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
 import { useGeneralContext } from "../../contexts/GeneralContext";
+import TimelineSection from "./TimelineSection";
 
 function Certification() {
-  const [data, setData] = useState([]);
-  const [script, setScript] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { generalState, generalDispatch } = useGeneralContext();
-
-  useEffect(() => {
-    if (generalState.cv.certifications.loaded) {
-      setData(generalState.cv.certifications.data);
-      setScript(generalState.cv.certifications.scripts);
-      loadScripts(generalState.cv.certifications.scripts);
-      setLoading(false);
-    } else {
-      api.cv
-        .certifications()
-        .then(res => {
-          let { data } = res;
-          let script = [];
-          data.forEach(dat => {
-            dat.dateGranted = dateFormat(new Date(dat.dateGranted), "dd mmm yyyy");
-            if (dat.dateExpired) dat.dateExpired = dateFormat(new Date(dat.dateExpired), "dd mmm yyyy");
-            script.push(/<script>(.+)<\/script>/gi.exec(dat.description));
-            if (script) {
-              dat.description = dat.description.replace(script[0], "");
-            }
-          });
-          generalDispatch({
-            type: "updateCVCertifications",
-            payload: {
-              data: data,
-              scripts: script,
-              loaded: true,
-            },
-          });
-        })
-        .catch(err => console.error(err.message))
-        .finally(() => setLoading(false));
+  const { generalState } = useGeneralContext();
+  const data = generalState.cv.certification ?? [];
+  const scripts = [];
+  data.forEach(dat => {
+    dat.dateGranted = dateFormat(new Date(dat.dateGranted), "dd mmm yyyy");
+    if (dat.dateExpired) dat.dateExpired = dateFormat(new Date(dat.dateExpired), "dd mmm yyyy");
+    scripts.push(/<script>(.+)<\/script>/gi.exec(dat.description));
+    if (scripts) {
+      dat.description = dat.description.replace(scripts[0], "");
     }
-  }, [generalState.cv.certifications]);
+  });
+  loadScripts(scripts);
 
   function loadScripts(scripts) {
     // eslint-disable-next-line
     scripts.map(script => script && window.eval(script[1]));
   }
 
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <TimelineSection sectionName="Certifications" icon="certificate">
       <ul className="timeline">
         {data.map((dat, i) => (

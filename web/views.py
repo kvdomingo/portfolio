@@ -1,52 +1,68 @@
 from django.db.models import F
+from rest_framework.decorators import api_view
+from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
+
 from .serializers import *
-from rest_framework import generics
 
 
-class HomepageContentApi(generics.ListAPIView):
+@api_view()
+def cv_view(_):
+    data = dict(
+        education=EducationSerializer(Education.objects.all(), many=True).data,
+        work=WorkSerializer(
+            Work.objects.order_by(F("end_date").desc(nulls_first=True), "-start_date").all(), many=True
+        ).data,
+        certification=CertificationSerializer(Certification.objects.all(), many=True).data,
+        project=ProjectSerializer(
+            Project.objects.order_by(F("end_date").desc(nulls_first=True), "-start_date").all(), many=True
+        ).data,
+        publication=PublicationSerializer(Publication.objects.all(), many=True).data,
+        reference=ReferenceSerializer(Reference.objects.all(), many=True).data,
+    )
+    return Response(data)
+
+
+class HomepageContentView(ListAPIView):
     queryset = HomepageContent.objects.all()
     serializer_class = HomepageContentSerializer
 
 
-class AboutContentApi(generics.ListAPIView):
+class AboutContentView(ListAPIView):
     queryset = AboutContent.objects.all()
     serializer_class = AboutContentSerializer
 
 
-class TechnologyApi(generics.ListAPIView):
+class TechnologyView(ListAPIView):
     queryset = Technology.objects.all()
     serializer_class = TechnologySerializer
 
 
-class EducationApi(generics.ListAPIView):
-    queryset = Education.objects.all().order_by("-end_date", "-start_date")
+class EducationView(ListAPIView):
+    queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
 
-class WorkApi(generics.ListAPIView):
-    queryset = Work.objects.all().order_by(
-        F("end_date").desc(nulls_first=True), "-start_date"
-    )
+class WorkView(ListAPIView):
+    queryset = Work.objects.order_by(F("end_date").desc(nulls_first=True), "-start_date").all()
     serializer_class = WorkSerializer
 
 
-class ProjectApi(generics.ListAPIView):
-    queryset = Project.objects.all().order_by(
-        F("end_date").desc(nulls_first=True), "-start_date"
-    )
+class ProjectView(ListAPIView):
+    queryset = Project.objects.order_by(F("end_date").desc(nulls_first=True), "-start_date").all()
     serializer_class = ProjectSerializer
 
 
-class CertificationApi(generics.ListAPIView):
-    queryset = Certification.objects.all().order_by("-date_granted")
+class CertificationView(ListAPIView):
+    queryset = Certification.objects.all()
     serializer_class = CertificationSerializer
 
 
-class PublicationApi(generics.ListAPIView):
-    queryset = Publication.objects.all().order_by("-publication_date")
+class PublicationView(ListAPIView):
+    queryset = Publication.objects.all()
     serializer_class = PublicationSerializer
 
 
-class ReferenceApi(generics.ListAPIView):
-    queryset = Reference.objects.all().order_by("id")
+class ReferenceView(ListAPIView):
+    queryset = Reference.objects.all()
     serializer_class = ReferenceSerializer

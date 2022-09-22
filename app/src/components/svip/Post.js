@@ -1,30 +1,30 @@
-import React, { createRef, Component } from "react";
+import React, { Component, createRef } from "react";
+import { Image } from "cloudinary-react";
 import {
-  MDBTypography as Typography,
-  MDBIcon as Icon,
   MDBBadge as Badge,
+  MDBContainer as Container,
+  MDBIcon as Icon,
   MDBTable as Table,
   MDBTableBody as TableBody,
   MDBTableHead as TableHead,
-  MDBContainer as Container,
+  MDBTypography as Typography,
 } from "mdbreact";
-import { withRouter } from "react-router-dom";
-import { Image } from "cloudinary-react";
-import TitleComponent from "../../shared/TitleComponent";
-import dateFormat from "dateformat";
-import JsxParser from "react-jsx-parser";
 import Highlight from "react-highlight.js";
-import MathJax from "react-mathjax";
 import IFrame from "react-iframe";
+import JsxParser from "react-jsx-parser";
+import MathJax from "react-mathjax";
+import { withRouter } from "react-router-dom";
+import dateFormat from "dateformat";
+import PropTypes from "prop-types";
+import api from "../../api";
+import Loading from "../../shared/Loading";
+import TitleComponent from "../../shared/TitleComponent";
+import AreaFigure from "./AreaFigure";
 import Cite from "./Cite";
 import Figure from "./Figure";
 import MultiFigure from "./MultiFigure";
-import AreaFigure from "./AreaFigure";
-import Loading from "../../shared/Loading";
 import PopulateTable from "./PopulateTable";
 import "./Svip.css";
-import api from "../../utils/Endpoints";
-import PropTypes from "prop-types";
 
 class Post extends Component {
   static propTypes = {

@@ -79,9 +79,7 @@ class Work(models.Model):
             end_year = self.end_date.year
         else:
             end_year = "present"
-        return (
-            f"{self.position}, {self.institution} ({self.start_date.year} - {end_year})"
-        )
+        return f"{self.position}, {self.institution} ({self.start_date.year} - {end_year})"
 
 
 class Project(models.Model):

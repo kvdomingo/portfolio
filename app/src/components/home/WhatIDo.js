@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { MDBContainer as Container, MDBTypography as Typography } from "mdbreact";
+import api from "../../api";
+import { useGeneralContext } from "../../contexts/GeneralContext";
+import Loading from "../../shared/Loading";
+import Dev from "./Development";
 import Photography from "./Photography";
 import Vip from "./Vip";
-import Dev from "./Development";
-import Loading from "../../shared/Loading";
-import api from "../../utils/Endpoints";
-import { useGeneralContext } from "../../contexts/GeneralContext";
 
 function WhatIDo() {
   const [loading, setLoading] = useState(true);

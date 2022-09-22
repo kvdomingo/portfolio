@@ -10,9 +10,6 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
     "axios": "^0.27.2",
     "cloudinary-core": "^2.12.0",
@@ -48,14 +45,18 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
-    "prettier": "^2.4.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "prettier": "^2.7.1",
     "prop-types": "^15.7.2",
     "react-router-sitemap": "^1.2.0"
   },
   "resolutions": {
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-error-overlay": "6.0.9"
   },
   "eslintConfig": {
     "extends": [
@@ -78,6 +79,15 @@
   "prettier": {
     "arrowParens": "avoid",
     "bracketSpacing": true,
+    "importOrder": [
+      "^react$",
+      "react-dom",
+      "react(.*)",
+      "<THIRD_PARTY_MODULES>",
+      "^[./]"
+    ],
+    "importOrderSeparation": false,
+    "importOrderSortSpecifiers": true,
     "jsxSingleQuote": false,
     "printWidth": 120,
     "quoteProps": "consistent",

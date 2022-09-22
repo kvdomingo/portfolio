@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Image } from "cloudinary-react";
 import {
+  MDBCollapse as Collapse,
+  MDBDropdown as Dropdown,
+  MDBDropdownItem as DropdownItem,
+  MDBDropdownMenu as DropdownMenu,
+  MDBDropdownToggle as DropdownToggle,
+  MDBNavItem as NavItem,
+  MDBNavLink as NavLink,
   MDBNavbar as Navbar,
   MDBNavbarBrand as NavbarBrand,
   MDBNavbarNav as NavbarNav,
-  MDBNavLink as NavLink,
-  MDBNavItem as NavItem,
   MDBNavbarToggler as NavbarToggler,
-  MDBCollapse as Collapse,
-  MDBDropdown as Dropdown,
-  MDBDropdownToggle as DropdownToggle,
-  MDBDropdownMenu as DropdownMenu,
-  MDBDropdownItem as DropdownItem,
 } from "mdbreact";
-import { Image } from "cloudinary-react";
-import useGA from "../utils/useGA";
+import { Link, useLocation } from "react-router-dom";
+import useGA from "../hooks/useGA";
 
 const bigLogoHeight = "70px";
 

@@ -1,8 +1,8 @@
-from tinymce.models import HTMLField
 from django.db import models
+from ordered_model.models import OrderedModel
 
 
-class Project(models.Model):
+class Project(OrderedModel):
     title = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
     organization = models.CharField(max_length=256, blank=True)
@@ -14,6 +14,9 @@ class Project(models.Model):
     project_url = models.URLField()
     keywords = models.TextField(max_length=256, blank=True)
     cover_photo = models.URLField()
+
+    class Meta:
+        ordering = ["order"]
 
     def __str__(self):
         return self.title
