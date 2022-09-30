@@ -87,7 +87,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.jinja2.Jinja2",
         "DIRS": [
             BASE_DIR / "jinjatemplates",
-            BASE_DIR / "app",
+            BASE_DIR / "webapp",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -226,7 +226,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "app" / "static",
+    BASE_DIR / "webapp" / "static",
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

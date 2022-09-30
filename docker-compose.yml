@@ -16,12 +16,18 @@ services:
 
   frontend:
     build:
-      context: ./app
+      context: ./webapp
       target: dev
     image: kvdomingo/kvdomingo-xyz-web:latest
-    env_file: ./app/.env
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - HOST=0.0.0.0
+      - PORT=3000
+      - TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling
+      - WDS_SOCKET_PORT=0
     volumes:
-      - ./app:/web
+      - ./webapp:/web
 
   proxy:
     image: bitnami/nginx:latest
