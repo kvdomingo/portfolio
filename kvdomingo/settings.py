@@ -160,6 +160,7 @@ if not DEBUG:
     REST_FRAMEWORK.update(
         {
             "DEFAULT_RENDERER_CLASSES": [
+                "djangorestframework_camel_case.render.CamelCaseJSONRenderer",
                 "rest_framework.renderers.JSONRenderer",
             ]
         }
