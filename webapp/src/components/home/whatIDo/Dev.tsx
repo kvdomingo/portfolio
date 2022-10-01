@@ -1,12 +1,19 @@
 import { Button, Grid, Typography } from "@mui/material";
-import { HomeContent } from "../../types/home";
+import { selectHomeContent } from "../../../store/generalSlice";
+import { useSelector } from "../../../store/hooks";
+import { HomeContent } from "../../../types/home";
+import Loading from "../../shared/Loading";
 
 interface DevProps {
   content: HomeContent;
 }
 
 function Dev({ content }: DevProps) {
-  return (
+  const { loaded } = useSelector(selectHomeContent);
+
+  return !loaded ? (
+    <Loading color="white" />
+  ) : (
     <Grid container data-aos="fade-up" spacing={2} my={4}>
       <Grid item md textAlign="left">
         <Typography variant="h4" component="h3" color="white" className="section-header">

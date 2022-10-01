@@ -3,6 +3,7 @@ import { Box, Container, Divider, Grid, Typography } from "@mui/material";
 import api from "../../api";
 import { selectHomeTechnologies, updateHomeTechnologies } from "../../store/generalSlice";
 import { useDispatch, useSelector } from "../../store/hooks";
+import Loading from "../shared/Loading";
 
 const headers = [
   { label: "Backend", key: "BE" },
@@ -38,26 +39,30 @@ function HowIDoIt() {
         How I do it
       </Typography>
       <Divider variant="middle" sx={{ backgroundColor: "#757575", my: 4 }} />
-      {headers.map(head => (
-        <Box key={head.key} data-aos="fade-up" my={4}>
-          <Grid container alignItems="center" spacing={1}>
-            <Grid item md={3} textAlign="right" pr={1}>
-              <Typography variant="h4" className="section-header">
-                {head.label}
-              </Typography>
+      {!technologies.loaded ? (
+        <Loading />
+      ) : (
+        headers.map(head => (
+          <Box key={head.key} data-aos="fade-up" my={4}>
+            <Grid container alignItems="center" spacing={1}>
+              <Grid item md={3} textAlign="right" pr={1}>
+                <Typography variant="h5" className="section-header">
+                  {head.label}
+                </Typography>
+              </Grid>
+              <Grid item md sx={{ borderLeft: "1px solid #CCC" }} container alignItems="center">
+                {technologies.data
+                  .filter(tech => tech.category === head.label)
+                  .map(tech => (
+                    <Grid key={tech.id} item md={2} px={2}>
+                      <img src={tech.url} alt={tech.alt} width="100%" height="auto" />
+                    </Grid>
+                  ))}
+              </Grid>
             </Grid>
-            <Grid item md sx={{ borderLeft: "1px solid #CCC" }} container alignItems="center">
-              {technologies.data
-                .filter(tech => tech.category === head.label)
-                .map(tech => (
-                  <Grid key={tech.id} item md={2} px={2}>
-                    <img src={tech.url} alt={tech.alt} width="100%" height="auto" />
-                  </Grid>
-                ))}
-            </Grid>
-          </Grid>
-        </Box>
-      ))}
+          </Box>
+        ))
+      )}
     </Container>
   );
 }

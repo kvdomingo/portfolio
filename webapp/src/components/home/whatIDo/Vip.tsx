@@ -1,11 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Button, Grid, Typography } from "@mui/material";
 import "juxtaposejs/build/css/juxtapose.css";
 import "juxtaposejs/build/js/juxtapose.js";
-import cld from "../../api/cloudinary";
-import { HomeContent } from "../../types/home";
+import cld from "../../../api/cloudinary";
+import { selectHomeContent } from "../../../store/generalSlice";
+import { useSelector } from "../../../store/hooks";
+import { HomeContent } from "../../../types/home";
+import Loading from "../../shared/Loading";
 
 interface VipProps {
   content: HomeContent;
@@ -14,25 +17,26 @@ interface VipProps {
 function Vip({ content }: VipProps) {
   const navigate = useNavigate();
   const slider = useRef(null!);
+  const sliderElement = useRef(null!);
+  const { loaded } = useSelector(selectHomeContent);
+  const imgBefore = cld.image("svip/186/7-ImageSegment/cancer").resize(Resize.scale().width("auto"));
+  const imgAfter = cld.image("svip/186/7-ImageSegment/cancer_otsu").resize(Resize.scale().width("auto"));
 
-  useEffect(() => {
-    if (!slider.current) {
-      const imgBefore = cld.image("svip/186/7-ImageSegment/cancer").resize(Resize.scale().width("auto"));
-      const imgAfter = cld.image("svip/186/7-ImageSegment/cancer_otsu").resize(Resize.scale().width("auto"));
+  if (!slider.current && !!sliderElement.current) {
+    // @ts-ignore
+    slider.current = new juxtapose.JXSlider("#juxtapose", [{ src: imgBefore.toURL() }, { src: imgAfter.toURL() }], {
+      animate: true,
+      startPosition: "50%",
+      makeResponsive: true,
+    });
+  }
 
-      // @ts-ignore
-      slider.current = new juxtapose.JXSlider("#juxtapose", [{ src: imgBefore.toURL() }, { src: imgAfter.toURL() }], {
-        animate: true,
-        startPosition: "50%",
-        makeResponsive: true,
-      });
-    }
-  }, []);
-
-  return (
+  return !loaded ? (
+    <Loading color="white" />
+  ) : (
     <Grid container data-aos="fade-up" spacing={2} my={4}>
       <Grid item md>
-        <div id="juxtapose" />
+        <div id="juxtapose" ref={sliderElement} />
       </Grid>
       <Grid item md container alignItems="center" textAlign="right" justifyContent="flex-end">
         <Typography component="h3" variant="h4" mb={4} color="white" className="section-header">

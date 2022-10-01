@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Button, Grid, Typography } from "@mui/material";
-import { HomeContent } from "../../types/home";
+import { selectHomeContent } from "../../../store/generalSlice";
+import { useSelector } from "../../../store/hooks";
+import { HomeContent } from "../../../types/home";
+import Loading from "../../shared/Loading";
 import Carousel from "./Carousel";
 
 interface PhotographyProps {
@@ -9,8 +12,11 @@ interface PhotographyProps {
 
 function Photography({ content }: PhotographyProps) {
   const navigate = useNavigate();
+  const { loaded } = useSelector(selectHomeContent);
 
-  return (
+  return !loaded ? (
+    <Loading color="white" />
+  ) : (
     <Grid container data-aos="fade-up" spacing={2} my={4}>
       <Grid item md={7} container alignItems="center" alignContent="center" textAlign="left">
         <Typography variant="h4" component="h3" color="white" mb={4} className="section-header">

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Box, Container, Divider, Typography } from "@mui/material";
-import api from "../../api";
-import { selectHomeContent, updateHomeContent } from "../../store/generalSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
+import api from "../../../api";
+import { selectHomeContent, updateHomeContent } from "../../../store/generalSlice";
+import { useDispatch, useSelector } from "../../../store/hooks";
 import Dev from "./Dev";
 import Photography from "./Photography";
 import Vip from "./Vip";

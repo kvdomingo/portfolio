@@ -3,7 +3,7 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Box, MobileStepper } from "@mui/material";
-import cld from "../../api/cloudinary";
+import cld from "../../../api/cloudinary";
 import carouselData from "./carouselData.json";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);

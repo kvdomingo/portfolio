@@ -1,7 +1,7 @@
 import Title from "../shared/Title";
 import Cover from "./Cover";
 import HowIDoIt from "./HowIDoIt";
-import WhatIDo from "./WhatIDo";
+import WhatIDo from "./whatIDo";
 
 function Home() {
   return (
