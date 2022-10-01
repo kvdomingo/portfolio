@@ -9,6 +9,9 @@ const theme = createTheme({
     secondary: {
       main: "#1976d2",
     },
+    text: {
+      primary: "rgba(0, 0, 0, 0.87)",
+    },
   },
   typography: {
     fontFamily: ['"Rubik"', "sans-serif"].join(", "),

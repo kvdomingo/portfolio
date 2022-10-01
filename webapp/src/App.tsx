@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AOS from "aos";
 import "./App.css";
-import Home from "./components/home";
+import FullPageLoading from "./components/shared/FullPageLoading";
 import Navbar from "./components/shared/Navbar";
+
+const Home = lazy(() => import("./components/home"));
+const About = lazy(() => import("./components/about"));
 
 function App() {
   useEffect(() => {
@@ -13,9 +16,12 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <Suspense fallback={<FullPageLoading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

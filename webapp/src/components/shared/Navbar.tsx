@@ -43,6 +43,10 @@ function Navbar() {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
     function updateNavStyles() {
       if (location.pathname === "/") {
         setNavStyles(style => ({
@@ -55,7 +59,7 @@ function Navbar() {
       } else {
         setNavStyles(style => ({
           ...style,
-          background: "rgba(0, 0, 0, 0.9)",
+          background: "rgba(255, 255, 255, 0.9)",
         }));
         setNavPosition("relative");
         setLogo(DARK_LOGO);
@@ -74,6 +78,7 @@ function Navbar() {
           Object.assign(style, { background: "rgba(0, 0, 0, 0.0)" });
           setLogoOpacity(0);
         } else {
+          Object.assign(style, { background: "rgba(255, 255, 255, 0.0)" });
           setLogoOpacity(1);
         }
         setLogoHeight(BIG_LOGO_HEIGHT);
@@ -81,6 +86,8 @@ function Navbar() {
         if (location.pathname === "/") {
           Object.assign(style, { background: "rgba(0, 0, 0, 0.9)" });
           setLogoOpacity(1);
+        } else {
+          Object.assign(style, { background: "rgba(255, 255, 255, 0.9)" });
         }
         setLogoHeight(SMALL_LOGO_HEIGHT);
       }
@@ -144,7 +151,7 @@ function Navbar() {
         open={!!anchorEl}
         anchorEl={anchorEl}
         onClose={() => setAnchorEl(null)}
-        elevation={0}
+        elevation={6}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
@@ -158,7 +165,7 @@ function Navbar() {
           <Box
             key={port.path}
             component={Link}
-            to="/photography"
+            to={port.path}
             sx={{ color: "text.primary", textDecoration: "none" }}
             className="section-header"
           >
