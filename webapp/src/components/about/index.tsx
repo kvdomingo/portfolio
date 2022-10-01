@@ -8,6 +8,7 @@ import { selectAboutContent, updateAboutContent } from "../../store/generalSlice
 import { useDispatch, useSelector } from "../../store/hooks";
 import JsxRenderer from "../shared/JsxRenderer";
 import Loading from "../shared/Loading";
+import Title from "../shared/Title";
 import CurrVitae from "./CurrVitae";
 
 function About() {
@@ -36,42 +37,61 @@ function About() {
   }, [dispatch, aboutContent, image]);
 
   return (
-    <Container maxWidth="xl">
-      <Grid container spacing={10}>
-        <Grid item md={4} data-aos="fade-up">
-          {!aboutContent.loaded || !image ? (
-            <Loading />
-          ) : (
-            <>
-              <Box
-                component="img"
-                src={image.toURL()}
-                width="100%"
-                height="auto"
-                sx={{
-                  boxShadow: "5px 5px 69px -27px rgba(0, 0, 0, 0.75)",
-                  mb: 4,
-                }}
-              />
-              <JsxRenderer jsx={aboutContent.data[0].bio} />
-            </>
-          )}
-          <a href="mailto:hello@kvdomingo.xyz">
-            <Button
-              variant="outlined"
-              color="inherit"
-              size="large"
-              sx={{ color: "text.primary", borderColor: "text.primary" }}
-            >
-              Contact
-            </Button>
-          </a>
+    <>
+      <Title
+        title="About"
+        description="About Kenneth V. Domingo and KVD Studio, with curriculum vitae (CV) including educational attainment, work experience, and projects"
+        keywords={[
+          "curriculum vitae",
+          "cv",
+          "signal processing",
+          "image processing",
+          "video processing",
+          "computational physics",
+          "applied physics",
+          "app physics",
+          "coursework",
+          "kvdomingo",
+          "Kenneth V. Domingo",
+        ]}
+      />
+      <Container maxWidth="xl">
+        <Grid container spacing={10}>
+          <Grid item md={4} data-aos="fade-up">
+            {!aboutContent.loaded || !image ? (
+              <Loading />
+            ) : (
+              <>
+                <Box
+                  component="img"
+                  src={image.toURL()}
+                  width="100%"
+                  height="auto"
+                  sx={{
+                    boxShadow: "5px 5px 69px -27px rgba(0, 0, 0, 0.75)",
+                    mb: 4,
+                  }}
+                />
+                <JsxRenderer jsx={aboutContent.data[0].bio} />
+              </>
+            )}
+            <a href="mailto:hello@kvdomingo.xyz">
+              <Button
+                variant="outlined"
+                color="inherit"
+                size="large"
+                sx={{ color: "text.primary", borderColor: "text.primary" }}
+              >
+                Contact
+              </Button>
+            </a>
+          </Grid>
+          <Grid item md>
+            <CurrVitae />
+          </Grid>
         </Grid>
-        <Grid item md>
-          <CurrVitae />
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </>
   );
 }
 

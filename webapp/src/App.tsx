@@ -7,6 +7,8 @@ import Navbar from "./components/shared/Navbar";
 
 const Home = lazy(() => import("./components/home"));
 const About = lazy(() => import("./components/about"));
+const Photography = lazy(() => import("./components/photography"));
+const Gallery = lazy(() => import("./components/photography/Gallery"));
 
 function App() {
   useEffect(() => {
@@ -20,6 +22,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/photography" element={<Photography />}>
+            <Route path=":gallerySlug" element={<Gallery />} />
+            <Route path="" element={<Gallery />} />
+          </Route>
         </Routes>
       </Suspense>
     </Router>
