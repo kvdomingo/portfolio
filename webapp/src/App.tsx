@@ -5,11 +5,14 @@ import "./App.css";
 import FullPageLoading from "./components/shared/FullPageLoading";
 import Navbar from "./components/shared/Navbar";
 
-const Home = lazy(() => import("./components/home"));
 const About = lazy(() => import("./components/about"));
-const Photography = lazy(() => import("./components/photography"));
-const Gallery = lazy(() => import("./components/photography/Gallery"));
+const Course = lazy(() => import("./components/coursework/Course"));
+const Coursework = lazy(() => import("./components/coursework"));
 const Dev = lazy(() => import("./components/dev"));
+const Gallery = lazy(() => import("./components/photography/Gallery"));
+const Home = lazy(() => import("./components/home"));
+const Photography = lazy(() => import("./components/photography"));
+const Post = lazy(() => import("./components/coursework/Post"));
 
 function App() {
   useEffect(() => {
@@ -30,6 +33,13 @@ function App() {
             <Route path="" element={<Gallery />} />
           </Route>
           <Route path="/dev" element={<Dev />} />
+          <Route path="/svip">
+            <Route path=":courseSlug">
+              <Route path=":postSlug" element={<Post />} />
+              <Route path="" element={<Course />} />
+            </Route>
+            <Route path="" element={<Coursework />} />
+          </Route>
         </Routes>
       </Suspense>
     </Router>

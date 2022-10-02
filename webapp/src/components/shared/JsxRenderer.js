@@ -1,13 +1,15 @@
 import JsxParser from "react-jsx-parser";
 import PropTypes from "prop-types";
 
-function BioRenderer({ jsx, ...props }) {
+function JsxRenderer({ jsx, ...props }) {
   return <JsxParser jsx={jsx} {...props} />;
 }
 
-BioRenderer.propTypes = {
+JsxRenderer.propTypes = {
   jsx: PropTypes.string.isRequired,
+  bindings: PropTypes.object,
+  components: PropTypes.object,
   props: PropTypes.object,
 };
 
-export default BioRenderer;
+export default JsxRenderer;

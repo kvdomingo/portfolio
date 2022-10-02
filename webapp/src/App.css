@@ -2,3 +2,8 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
 }
+
+a {
+  color: #9c27b0;
+  text-decoration: none;
+}

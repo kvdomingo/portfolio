@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Box, Button, CardMediaProps } from "@mui/material";
+import { Box, Button, CardMediaProps, Typography } from "@mui/material";
 
 interface ButtonCardProps extends CardMediaProps<"img"> {
   slug: string;
+  summary?: string;
 }
 
 function ButtonCard(props: ButtonCardProps) {
@@ -21,17 +22,25 @@ function ButtonCard(props: ButtonCardProps) {
         component="div"
         sx={{
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          textAlign: "center",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          backgroundColor: "rgba(0, 0, 0, 0.67)",
+          color: "white",
         }}
       >
-        <Link to={`clients/${props.slug}`}>
+        <Link to={props.slug}>
           <Button variant="outlined" color="inherit" sx={{ color: "white", mx: 8 }}>
             {props.alt}
           </Button>
         </Link>
+        {!!props.summary && (
+          <Typography variant="body1" sx={{ m: 4 }}>
+            {props.summary}
+          </Typography>
+        )}
       </Box>
     </Box>
   );

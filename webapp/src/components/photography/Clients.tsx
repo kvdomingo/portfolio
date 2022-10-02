@@ -1,9 +1,9 @@
 import { Card, CardMedia, Grid } from "@mui/material";
 import { useSelector } from "../../store/hooks";
 import { selectClients } from "../../store/photographySlice";
+import ButtonCard from "../shared/ButtonCard";
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
-import ButtonCard from "./ButtonCard";
 
 function Clients() {
   const clients = useSelector(selectClients);
@@ -26,7 +26,7 @@ function Clients() {
                   component={ButtonCard}
                   alt={client.name}
                   image={client.coverImage}
-                  slug={client.slug}
+                  slug={`clients/${client.slug}`}
                   sx={{
                     aspectRatio: "1",
                     backgroundSize: "cover",
