@@ -5,6 +5,7 @@ import {
   Card,
   CardActionArea,
   CardMedia,
+  Chip,
   Container,
   Grid,
   List,
@@ -77,7 +78,7 @@ function Dev() {
                             aspectRatio: "1",
                             backgroundSize: "cover",
                             backgroundPosition: "50% 50%",
-                            maxHeight: 200,
+                            height: 300,
                           }}
                         />
                       </a>
@@ -130,6 +131,12 @@ function Dev() {
                       <Typography variant="body1" sx={{ my: 4 }}>
                         {proj.summary}
                       </Typography>
+                      <Box>
+                        <Typography variant="subtitle2">Technologies: </Typography>
+                        {proj.technologies.split(", ").map(tech => (
+                          <Chip size="small" key={tech} label={tech} sx={{ m: 0.5 }} />
+                        ))}
+                      </Box>
                     </>
                   }
                 />

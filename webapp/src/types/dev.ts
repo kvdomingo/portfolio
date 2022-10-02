@@ -11,5 +11,6 @@ export interface DevProjectMetadata {
   body: string;
   projectUrl: string;
   keywords: string;
+  technologies: string;
   coverPhoto: string;
 }

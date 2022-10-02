@@ -12,7 +12,8 @@ class Project(OrderedModel):
     summary = models.TextField(blank=True)
     body = models.TextField(blank=True)
     project_url = models.URLField()
-    keywords = models.TextField(max_length=256, blank=True)
+    keywords = models.TextField(blank=True)
+    technologies = models.TextField(blank=True)
     cover_photo = models.URLField()
 
     class Meta:
