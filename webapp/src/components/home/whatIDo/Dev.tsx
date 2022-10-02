@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button, Grid, Typography } from "@mui/material";
 import { selectHomeContent } from "../../../store/generalSlice";
 import { useSelector } from "../../../store/hooks";
@@ -22,9 +23,11 @@ function Dev({ content }: DevProps) {
         <Typography variant="body1" color="white">
           {content.sectionBody}
         </Typography>
-        <Button variant="outlined" color="inherit" sx={{ mt: 4, color: "white" }}>
-          See in portfolio
-        </Button>
+        <Link to={content.linkToPortfolio}>
+          <Button variant="outlined" color="inherit" sx={{ mt: 4, color: "white" }}>
+            See in portfolio
+          </Button>
+        </Link>
       </Grid>
       <Grid item md>
         <a

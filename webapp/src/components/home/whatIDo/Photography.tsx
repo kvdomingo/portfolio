@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Grid, Typography } from "@mui/material";
 import { selectHomeContent } from "../../../store/generalSlice";
 import { useSelector } from "../../../store/hooks";
@@ -11,7 +11,6 @@ interface PhotographyProps {
 }
 
 function Photography({ content }: PhotographyProps) {
-  const navigate = useNavigate();
   const { loaded } = useSelector(selectHomeContent);
 
   return !loaded ? (
@@ -25,14 +24,11 @@ function Photography({ content }: PhotographyProps) {
         <Typography variant="body1" color="white">
           {content.sectionBody}
         </Typography>
-        <Button
-          variant="outlined"
-          color="inherit"
-          sx={{ color: "white", mt: 4 }}
-          onClick={() => navigate(content.linkToPortfolio)}
-        >
-          See in portfolio
-        </Button>
+        <Link to={content.linkToPortfolio}>
+          <Button variant="outlined" color="inherit" sx={{ color: "white", mt: 4 }}>
+            See in portfolio
+          </Button>
+        </Link>
       </Grid>
       <Grid item md textAlign="center">
         <Carousel />

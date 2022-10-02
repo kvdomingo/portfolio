@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Button, Grid, Typography } from "@mui/material";
 import "juxtaposejs/build/css/juxtapose.css";
@@ -15,7 +15,6 @@ interface VipProps {
 }
 
 function Vip({ content }: VipProps) {
-  const navigate = useNavigate();
   const slider = useRef(null!);
   const sliderElement = useRef(null!);
   const { loaded } = useSelector(selectHomeContent);
@@ -45,14 +44,11 @@ function Vip({ content }: VipProps) {
         <Typography variant="body1" color="white">
           {content.sectionBody}
         </Typography>
-        <Button
-          variant="outlined"
-          color="inherit"
-          sx={{ color: "white", mt: 4 }}
-          onClick={() => navigate(content.linkToPortfolio)}
-        >
-          See in portfolio
-        </Button>
+        <Link to={content.linkToPortfolio}>
+          <Button variant="outlined" color="inherit" sx={{ color: "white", mt: 4 }}>
+            See in portfolio
+          </Button>
+        </Link>
       </Grid>
     </Grid>
   );
