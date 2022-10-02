@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ImageMetadata } from "../types/photography";
+import { ClientMetadata, ImageMetadata } from "../types/photography";
 import { RootState } from "./store";
 
 interface DataLoadedState<T> {
@@ -9,10 +9,15 @@ interface DataLoadedState<T> {
 
 interface GeneralState {
   latest: DataLoadedState<ImageMetadata[]>;
+  clients: DataLoadedState<ClientMetadata[]>;
 }
 
 const initialState: GeneralState = {
   latest: {
+    data: [],
+    loaded: false,
+  },
+  clients: {
     data: [],
     loaded: false,
   },
@@ -25,11 +30,16 @@ export const photographySlice = createSlice({
     updateLatest: (state, action: PayloadAction<DataLoadedState<ImageMetadata[]>>) => {
       state.latest = action.payload;
     },
+    updateClients: (state, action: PayloadAction<DataLoadedState<ClientMetadata[]>>) => {
+      state.clients = action.payload;
+    },
   },
 });
 
-export const { updateLatest } = photographySlice.actions;
+export const { updateLatest, updateClients } = photographySlice.actions;
 
 export const selectLatest = (state: RootState) => state.photography.latest;
+
+export const selectClients = (state: RootState) => state.photography.clients;
 
 export default photographySlice.reducer;

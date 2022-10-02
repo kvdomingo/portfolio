@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { ChevronLeft, ChevronRight, Close } from "@mui/icons-material";
 import { Box, Fade, Grid, IconButton, Modal } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
 import cld from "../../api/cloudinary";
 import { ImageMetadata } from "../../types/photography";
 
@@ -19,7 +20,28 @@ function Lightbox({ open, handleClose, initialIndex, imageList }: LightboxProps)
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
 
-  return currentIndex != null ? (
+  function handleKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    switch (e.key) {
+      case "ArrowLeft": {
+        if (currentIndex !== 0) setCurrentIndex(i => i! - 1);
+        return;
+      }
+      case "ArrowRight": {
+        if (currentIndex !== imageList.length - 1) setCurrentIndex(i => i! + 1);
+        return;
+      }
+      case "Home": {
+        setCurrentIndex(0);
+        return;
+      }
+      case "End": {
+        setCurrentIndex(imageList.length - 1);
+        return;
+      }
+    }
+  }
+
+  return (
     <Modal
       open={open}
       onClose={handleClose}
@@ -31,34 +53,63 @@ function Lightbox({ open, handleClose, initialIndex, imageList }: LightboxProps)
         },
       }}
       closeAfterTransition
+      onKeyDown={handleKeyDown}
     >
       <Fade in={open}>
-        <Grid container sx={{ height: "100%" }}>
-          <Grid item xs={1} container alignItems="center">
-            <IconButton onClick={() => setCurrentIndex(i => (i === 0 ? i : i! - 1))}>
+        <Grid container justifyContent="center" alignItems="center" sx={{ height: "100%" }}>
+          <AnimatePresence initial={false} custom={currentIndex}>
+            {currentIndex != null && (
+              <Box
+                key={imageList[currentIndex].publicId}
+                component={motion.img}
+                src={cld.image(imageList[currentIndex].publicId).resize(Resize.scale().width("auto")).toURL()}
+                alt={imageList[currentIndex].publicId}
+                custom={currentIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  opacity: { duration: 0.1 },
+                }}
+                sx={{
+                  height: "95vh",
+                  width: "auto",
+                  position: "absolute",
+                }}
+              />
+            )}
+          </AnimatePresence>
+          {currentIndex !== 0 && (
+            <IconButton
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "0.5em",
+              }}
+              onClick={() => (currentIndex === 0 ? null : setCurrentIndex(i => i! - 1))}
+            >
               <ChevronLeft sx={{ fontSize: "2em", color: "white" }} />
             </IconButton>
-          </Grid>
-          <Grid item xs container alignItems="center" justifyContent="center">
-            <Box
-              component="img"
-              src={cld.image(imageList[currentIndex].publicId).resize(Resize.scale().width("auto")).toURL()}
-              alt={imageList[currentIndex].publicId}
-              sx={{ height: "95vh", width: "auto" }}
-            />
-          </Grid>
-          <Grid item xs={1} container alignItems="center" justifyContent="flex-end">
-            <IconButton onClick={() => setCurrentIndex(i => (i === imageList.length - 1 ? i : i! + 1))}>
+          )}
+          {currentIndex !== imageList.length - 1 && (
+            <IconButton
+              sx={{
+                position: "absolute",
+                top: "50%",
+                right: "0.5em",
+              }}
+              onClick={() => (currentIndex === imageList.length - 1 ? null : setCurrentIndex(i => i! + 1))}
+            >
               <ChevronRight sx={{ fontSize: "2em", color: "white" }} />
             </IconButton>
-          </Grid>
+          )}
           <IconButton sx={{ position: "absolute", top: "1em", right: "0.5em" }} onClick={handleClose}>
             <Close sx={{ fontSize: "1.5em", color: "white" }} />
           </IconButton>
         </Grid>
       </Fade>
     </Modal>
-  ) : null;
+  );
 }
 
 export default Lightbox;

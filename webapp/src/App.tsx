@@ -23,7 +23,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/photography" element={<Photography />}>
-            <Route path=":gallerySlug" element={<Gallery />} />
+            <Route path=":gallerySlug" element={<Gallery />}>
+              <Route path=":clientSlug" element={<Gallery />} />
+            </Route>
             <Route path="" element={<Gallery />} />
           </Route>
         </Routes>

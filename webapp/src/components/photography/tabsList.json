@@ -1,0 +1,7 @@
+[
+  { "path": "", "label": "latest" },
+  { "path": "portraits", "label": "portraits" },
+  { "path": "live", "label": "live" },
+  { "path": "clients", "label": "clients" },
+  { "path": "samoetikerffa", "label": "#samoetikerffa" }
+]
