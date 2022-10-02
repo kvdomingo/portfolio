@@ -1,4 +1,5 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
+import devReducer from "./devSlice";
 import generalReducer from "./generalSlice";
 import photographyReducer from "./photographySlice";
 
@@ -6,6 +7,7 @@ export const store = configureStore({
   reducer: {
     general: generalReducer,
     photography: photographyReducer,
+    dev: devReducer,
   },
 });
 

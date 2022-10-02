@@ -9,6 +9,7 @@ const Home = lazy(() => import("./components/home"));
 const About = lazy(() => import("./components/about"));
 const Photography = lazy(() => import("./components/photography"));
 const Gallery = lazy(() => import("./components/photography/Gallery"));
+const Dev = lazy(() => import("./components/dev"));
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
             </Route>
             <Route path="" element={<Gallery />} />
           </Route>
+          <Route path="/dev" element={<Dev />} />
         </Routes>
       </Suspense>
     </Router>
