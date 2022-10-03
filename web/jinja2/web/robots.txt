@@ -1,7 +1,0 @@
-User-Agent: *
-Allow: /svip/
-Allow: /photography/
-Disallow: /admin/
-Disallow: /api/
-Noindex: /admin/
-Noindex: /api/

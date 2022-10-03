@@ -7,6 +7,13 @@ const cld = new Cloudinary({
   url: {
     secure: true,
   },
+  tag: {
+    clientHints: true,
+    responsive: {
+      isResponsive: true,
+    },
+    contentDelimiter: "/",
+  },
 });
 
 export default cld;

@@ -23,4 +23,4 @@ class Project(OrderedModel):
         return self.title
 
     def get_absolute_url(self):
-        return f"/dev/{self.slug}/"
+        return "/dev"
