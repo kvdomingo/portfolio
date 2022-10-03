@@ -25,7 +25,10 @@ DEBUG = PYTHON_ENV != "production"
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "kvdomingo.xyz",
+    "kvdomingo.dev",
+]
 
 # Application definition
 

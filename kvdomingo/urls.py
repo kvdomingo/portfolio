@@ -56,4 +56,4 @@ urlpatterns = [
 ]
 
 if settings.PYTHON_ENV == "production":
-    urlpatterns.append(re_path(r"^.*/?$", lambda r: render(r, "webapp/index.html")))
+    urlpatterns.append(re_path(r"^.*/?$", lambda r: render(r, "index.html")))
