@@ -3,12 +3,12 @@ from django.contrib import sitemaps
 
 class StaticViewSitemap(sitemaps.Sitemap):
     priority = 0.5
-    changefreq = "daily"
+    changefreq = "weekly"
 
     def items(self):
         return [
             "",
-            "/cv",
+            "/about",
             "/photography",
             "/photography/clients",
             "/svip",

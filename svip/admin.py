@@ -4,14 +4,14 @@ from django_admin_relation_links import AdminChangeLinksMixin
 from .models import BlogPost, Course
 
 
-def make_published(modeladmin, request, queryset):
+def make_published(_, __, queryset):
     queryset.update(status=1)
 
 
 make_published.short_description = "Publish selected articles"
 
 
-def make_unpublished(modeladmin, request, queryset):
+def make_unpublished(_, __, queryset):
     queryset.update(status=0)
 
 

@@ -4,7 +4,7 @@ from ordered_model.models import OrderedModel
 
 class Project(OrderedModel):
     title = models.CharField(max_length=256)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, db_index=True)
     organization = models.CharField(max_length=256, blank=True)
     organization_url = models.URLField(blank=True)
     start_date = models.DateField()

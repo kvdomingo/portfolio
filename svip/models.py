@@ -24,7 +24,7 @@ class BlogPost(models.Model):
         related_name="posts",
     )
     title = models.CharField(max_length=256, unique=True)
-    slug = models.SlugField(max_length=256, unique=True)
+    slug = models.SlugField(max_length=256, unique=True, db_index=True)
     body = models.TextField(blank=True)
     keywords = models.TextField(max_length=256, blank=True)
     cover = models.URLField(blank=True)
@@ -42,11 +42,14 @@ class BlogPost(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=256)
-    number = models.IntegerField(unique=True)
-    slug = models.SlugField(max_length=256, unique=True)
+    number = models.IntegerField(unique=True, db_index=True)
+    slug = models.SlugField(max_length=256, unique=True, db_index=True)
     title = models.CharField(max_length=256)
     description = models.TextField()
     cover = models.URLField(blank=True)
+
+    class Meta:
+        ordering = ["-number"]
 
     def get_absolute_url(self):
         return f"/svip/{self.slug}"

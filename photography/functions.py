@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from cloudinary import CloudinaryImage
 from cloudinary.api import resources
-from datetime import datetime
 
 
 def build_url(query):
