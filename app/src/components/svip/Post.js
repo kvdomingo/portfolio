@@ -26,6 +26,19 @@ import MultiFigure from "./MultiFigure";
 import PopulateTable from "./PopulateTable";
 import "./Svip.css";
 
+window.MathJax = {
+  tex: {
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ],
+    macros: {
+      vec: ["{\\bf\\rm #1}", 1],
+    },
+    tags: "ams",
+  },
+};
+
 class Post extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired,

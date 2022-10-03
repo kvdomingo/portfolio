@@ -96,10 +96,8 @@
     "tabWidth": 2,
     "trailingComma": "all"
   },
-  "prettierIgnore": [
-    "content/"
-  ],
   "eslintIgnore": [
-    "content/"
+    "content/",
+    "*.min.js"
   ]
 }

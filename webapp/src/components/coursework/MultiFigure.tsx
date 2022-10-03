@@ -15,7 +15,7 @@ interface MultiFigureProps {
 function MultiFigure({ id, columns, data, subject, folder, caption }: MultiFigureProps) {
   return (
     <Container maxWidth={false} sx={{ my: 6 }} id={id}>
-      <Grid container my={6} alignItems="center">
+      <Grid container my={6} alignItems="center" spacing={1}>
         {data.map((image, i) => (
           <Grid key={i} item xs={12} md={Math.floor(12 / columns)}>
             <img
@@ -23,6 +23,11 @@ function MultiFigure({ id, columns, data, subject, folder, caption }: MultiFigur
               width="100%"
               height="auto"
             />
+            {!!image.caption && (
+              <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
+                {image.caption}
+              </Typography>
+            )}
           </Grid>
         ))}
       </Grid>

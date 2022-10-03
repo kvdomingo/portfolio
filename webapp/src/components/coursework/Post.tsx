@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Highlight from "react-highlight.js";
 import IFrame from "react-iframe";
 import MathJax from "react-mathjax";
@@ -34,6 +34,8 @@ import Figure from "./Figure";
 import MultiFigure from "./MultiFigure";
 import PopulateTable from "./PopulateTable";
 
+const READ_FROM_JSX = process.env.NODE_ENV === "development";
+
 function Post() {
   const dispatch = useDispatch();
   const { courseSlug, postSlug } = useParams();
@@ -41,16 +43,27 @@ function Post() {
   const subject = courses.data.find(c => c.slug === courseSlug);
   const [data, setData] = useState<CourseworkPostMetadata>(null!);
   const [loading, setLoading] = useState(false);
+  const BodyJsx = useRef<any | (() => null)>(() => null);
 
   useEffect(() => {
     if (postSlug) {
       api.svip
         .blogPost("slug", postSlug)
-        .then(res => setData(res.data[0]))
+        .then(res => {
+          setData(res.data[0]);
+          if (READ_FROM_JSX) {
+            import(`./content/${courseSlug}/${postSlug}`)
+              .then(res => (BodyJsx.current = res.default))
+              .catch(err => {
+                console.error(err);
+                BodyJsx.current = () => null;
+              });
+          }
+        })
         .catch(err => console.error(err.message))
         .finally(() => setLoading(false));
     }
-  }, [postSlug]);
+  }, [courseSlug, postSlug]);
 
   useEffect(() => {
     if (!courses.loaded) {
@@ -107,42 +120,49 @@ function Post() {
           }}
         >
           <AccessTime sx={{ mr: 1 }} />
-          {dateFormat(data.created, "HH:MM, d mmm yyyy")} (last edit {dateFormat(data.modified, "HH:MM, d mmm yyyy")})
+          {dateFormat(data.created, "HH:MM, d mmm yyyy")}
         </Typography>
         <Box component="div" sx={{ my: 6 }}>
           <MathJax.Provider>
-            <JsxRenderer
-              jsx={data.body}
-              components={{
-                MathJax,
-                Figure,
-                Cite,
-                PopulateTable,
-                IFrame,
-                MultiFigure,
-                AreaFigure,
-                Table,
-                TableHead,
-                TableBody,
-                TableCell,
-                TableRow,
-                TableContainer,
-                Highlight,
-                Container,
-                Paper,
-                Image,
-                Grid,
-              }}
-              bindings={{
-                algo_data: ["spot", "Sobel", "Prewitt", "Laplacian", "Canny"],
-                shape_data: ["circle", "square", "trapezoid", "triangle"],
-                mapNames: (prefix: string, shapes: string[]) => shapes.map(item => `${prefix}_${item.toLowerCase()}`),
-                populateTable: (data: any) =>
-                  (Object.values(data)[0] as any[]).map((el, i) => (
-                    <PopulateTable lab={data.lab[i]} lch={data.lch[i]} key={i} patchId={i + 1} />
-                  )),
-              }}
-            />
+            {READ_FROM_JSX ? (
+              <BodyJsx.current />
+            ) : (
+              <JsxRenderer
+                jsx={data.body}
+                components={{
+                  AreaFigure,
+                  Box,
+                  Cite,
+                  Container,
+                  Figure,
+                  Grid,
+                  Highlight,
+                  IFrame,
+                  Image,
+                  Link,
+                  MathJax,
+                  MultiFigure,
+                  Paper,
+                  PopulateTable,
+                  Table,
+                  TableBody,
+                  TableCell,
+                  TableContainer,
+                  TableHead,
+                  TableRow,
+                  Typography,
+                }}
+                bindings={{
+                  algo_data: ["spot", "Sobel", "Prewitt", "Laplacian", "Canny"],
+                  shape_data: ["circle", "square", "trapezoid", "triangle"],
+                  mapNames: (prefix: string, shapes: string[]) => shapes.map(item => `${prefix}_${item.toLowerCase()}`),
+                  populateTable: (data: any) =>
+                    (Object.values(data)[0] as any[]).map((el, i) => (
+                      <PopulateTable lab={data.lab[i]} lch={data.lch[i]} key={i} patchId={i + 1} />
+                    )),
+                }}
+              />
+            )}
           </MathJax.Provider>
         </Box>
         <Box component="div" sx={{ my: 6 }}>

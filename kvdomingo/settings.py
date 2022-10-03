@@ -201,10 +201,21 @@ USE_TZ = True
 
 # TinyMCE config
 
+TINYMCE_JS_URL = "https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/tinymce.min.js"
+
+TINYMCE_COMPRESSOR = False
+
 TINYMCE_DEFAULT_CONFIG = {
+    "cleanup_on_startup": False,
     "theme": "silver",
-    "plugins": "link image preview codesample contextmenu table code lists",
-    "toolbar": "formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent table | link image | codesample | preview code",
+    "selector": "textarea",
+    "plugins": """
+        link image preview codesample table code lists
+    """,
+    "toolbar": """
+        formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | 
+        outdent indent table | link image | codesample | preview code  
+    """,
     "toolbar_mode": "wrap",
     "contextmenu": "formats | link image",
     "menubar": False,
@@ -215,7 +226,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "width": "auto",
     "height": 500,
     "valid_elements": "*[*]",
-    "custom_elements": "Node",
 }
 
 # Static files (CSS, JavaScript, Images)

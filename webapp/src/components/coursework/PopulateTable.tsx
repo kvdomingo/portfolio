@@ -1,3 +1,5 @@
+import { TableCell, TableRow } from "@mui/material";
+
 interface PopulateTableProps {
   patchId: number;
   lab: string;
@@ -8,11 +10,13 @@ function PopulateTable({ patchId, lab, lch }: PopulateTableProps) {
   const tabEl = [patchId, lab, lch];
 
   return (
-    <tr>
+    <TableRow>
       {tabEl.map((el, i) => (
-        <td key={i}>{el}</td>
+        <TableCell align="center" key={i}>
+          {el}
+        </TableCell>
       ))}
-    </tr>
+    </TableRow>
   );
 }
 
