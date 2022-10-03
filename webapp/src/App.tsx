@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AOS from "aos";
 import "./App.css";
 import FullPageLoading from "./components/shared/FullPageLoading";
+import GAUtil from "./components/shared/GAUtil";
 import Navbar from "./components/shared/Navbar";
 
 const About = lazy(() => import("./components/about"));
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <Router>
+      <GAUtil />
       <Navbar />
       <Suspense fallback={<FullPageLoading />}>
         <Routes>
