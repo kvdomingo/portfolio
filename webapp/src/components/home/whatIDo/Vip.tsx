@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Button, Grid, Typography } from "@mui/material";
 import "juxtaposejs/build/css/juxtapose.css";
-import "juxtaposejs/build/js/juxtapose.js";
+import "juxtaposejs/build/js/juxtapose.min.js";
 import cld from "../../../api/cloudinary";
 import { selectHomeContent } from "../../../store/generalSlice";
 import { useSelector } from "../../../store/hooks";
