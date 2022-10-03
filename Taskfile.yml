@@ -30,6 +30,11 @@ tasks:
     cmds:
       - docker compose -p $NAME stop
 
+  exec:
+    desc: Run a command in the specified container
+    cmds:
+      - docker compose -p $NAME exec -- {{.CLI_ARGS}}
+
   restart:
     desc: Restart containers
     cmds:

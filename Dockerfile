@@ -30,7 +30,7 @@ FROM node:16-alpine as build
 
 WORKDIR /web
 
-COPY ./app/ ./
+COPY ./webapp/ ./
 
 RUN yarn install && yarn build
 
@@ -53,7 +53,7 @@ COPY ./svip/ ./svip/
 COPY ./web/ ./web/
 COPY ./*.py ./
 COPY ./*.sh ./
-COPY --from=build /web/build ./app/
+COPY --from=build /web/build ./webapp/
 
 RUN chmod +x docker-entrypoint.sh
 

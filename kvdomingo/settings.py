@@ -7,7 +7,6 @@ import dj_database_url
 import pytz
 from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
-from jinja2 import DebugUndefined, Undefined
 
 load_dotenv()
 
@@ -26,13 +25,7 @@ DEBUG = PYTHON_ENV != "production"
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-if PYTHON_ENV == "production":
-    ALLOWED_HOSTS = [
-        "kvdomingo.xyz",
-        "kvdomingo.dev",
-    ]
-else:
-    ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -84,21 +77,10 @@ CSRF_TRUSTED_ORIGINS = [
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [
-            BASE_DIR / "jinjatemplates",
-            BASE_DIR / "app",
-        ],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "environment": "kvdomingo.jinja2.environment",
-            "autoescape": False,
-            "undefined": DebugUndefined if DEBUG else Undefined,
-        },
-    },
-    {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "webapp",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -201,10 +183,21 @@ USE_TZ = True
 
 # TinyMCE config
 
+TINYMCE_JS_URL = "https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/tinymce.min.js"
+
+TINYMCE_COMPRESSOR = False
+
 TINYMCE_DEFAULT_CONFIG = {
+    "cleanup_on_startup": False,
     "theme": "silver",
-    "plugins": "link image preview codesample contextmenu table code lists",
-    "toolbar": "formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent table | link image | codesample | preview code",
+    "selector": "textarea",
+    "plugins": """
+        link image preview codesample table code lists
+    """,
+    "toolbar": """
+        formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | 
+        outdent indent table | link image | codesample | preview code  
+    """,
     "toolbar_mode": "wrap",
     "contextmenu": "formats | link image",
     "menubar": False,
@@ -215,7 +208,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "width": "auto",
     "height": 500,
     "valid_elements": "*[*]",
-    "custom_elements": "Node",
 }
 
 # Static files (CSS, JavaScript, Images)
@@ -226,7 +218,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "app" / "static",
+    BASE_DIR / "webapp" / "static",
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
