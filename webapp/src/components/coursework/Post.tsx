@@ -52,12 +52,16 @@ function Post() {
         .then(res => {
           setData(res.data[0]);
           if (READ_FROM_JSX) {
-            import(`./content/${courseSlug}/${postSlug}`)
-              .then(res => (BodyJsx.current = res.default))
-              .catch(err => {
-                console.error(err);
-                BodyJsx.current = () => null;
-              });
+            try {
+              import(`./content/${courseSlug}/${postSlug}`)
+                .then(res => (BodyJsx.current = res.default))
+                .catch(err => {
+                  console.error(err);
+                  BodyJsx.current = () => null;
+                });
+            } catch (e) {
+              BodyJsx.current = () => null;
+            }
           }
         })
         .catch(err => console.error(err.message))
