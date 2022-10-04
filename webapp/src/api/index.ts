@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { ImageMetadata } from "../types/photography";
 
 const baseURL = "/api";
 
@@ -48,13 +49,13 @@ const api = {
     },
   },
   photography: {
-    clients(slug: string) {
+    clients(slug: string): Promise<AxiosResponse<ImageMetadata[]>> {
       return axi.get(`photography/clients/${slug}`);
     },
     client() {
       return axi.get("photography/client");
     },
-    gallery(slug: string) {
+    gallery(slug: string): Promise<AxiosResponse<ImageMetadata[]>> {
       return axi.get(`photography/${slug}`);
     },
   },
