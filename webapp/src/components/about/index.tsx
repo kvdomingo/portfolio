@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CloudinaryImage } from "@cloudinary/url-gen";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import api from "../../api";
 import cld from "../../api/cloudinary";
 import { selectAboutContent, updateAboutContent } from "../../store/generalSlice";
@@ -72,7 +72,7 @@ function About() {
                     mb: 4,
                   }}
                 />
-                <JsxRenderer jsx={aboutContent.data[0].bio} />
+                <JsxRenderer jsx={aboutContent.data[0].bio} components={{ Typography }} />
               </>
             )}
             <a href="mailto:hello@kvdomingo.xyz">
