@@ -33,7 +33,7 @@ function Project() {
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent>
+            <TimelineContent sx={{ pb: 4 }}>
               <Grid container>
                 <Grid item md>
                   <Typography variant="h5">{proj.name}</Typography>

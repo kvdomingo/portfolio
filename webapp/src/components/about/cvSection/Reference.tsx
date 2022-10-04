@@ -32,7 +32,7 @@ function Reference() {
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent>
+            <TimelineContent sx={{ pb: 2 }}>
               <Typography variant="h5">{ref.name}</Typography>
               <Typography variant="subtitle1">
                 <Box
