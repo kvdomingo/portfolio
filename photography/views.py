@@ -16,11 +16,11 @@ class ClientView(ListAPIView):
 
 @api_view()
 def api_gallery(request, slug: str):
-    images, full = zip(*get_resources(f"{settings.ASSET_DIR}/{slug}"))
-    return Response(dict(full=full, images=images))
+    images = get_resources(f"{settings.ASSET_DIR}/{slug}")
+    return Response(images)
 
 
 @api_view()
 def api_client_gallery(request, slug: str):
-    images, full = zip(*get_resources(f"{settings.ASSET_DIR}/clients/{slug}"))
-    return Response(dict(full=full, images=images))
+    images = get_resources(f"{settings.ASSET_DIR}/clients/{slug}")
+    return Response(images)

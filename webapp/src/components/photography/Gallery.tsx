@@ -33,7 +33,7 @@ function Gallery() {
       .then(res =>
         dispatch(
           updateLatest({
-            data: res.data.images,
+            data: res.data,
             loaded: true,
           }),
         ),
