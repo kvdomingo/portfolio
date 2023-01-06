@@ -2,6 +2,6 @@
 
 python manage.py collectstatic --noinput
 python manage.py migrate
-python manage.py createsuperuser --noinput
+python manage.py createsuperuser --noinput || true
 
-gunicorn kvdomingo.wsgi -b 0.0.0.0:$PORT -c ./gunicorn.conf.py
+exec gunicorn --bind 0.0.0.0:$PORT --config gunicorn.conf.py

@@ -17,15 +17,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 PYTHON_ENV = os.environ.get("PYTHON_ENV", "production")
 
+IN_PRODUCTION = PYTHON_ENV == "production"
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = PYTHON_ENV != "production"
+DEBUG = not IN_PRODUCTION
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-if PYTHON_ENV == "production":
+if IN_PRODUCTION:
     ALLOWED_HOSTS = [
         "kvdomingo.xyz",
         "kvdomingo.dev",
@@ -68,7 +70,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "kvdomingo.urls"
 
-CORS_ORIGIN_ALLOW_ALL = PYTHON_ENV == "development"
+CORS_ORIGIN_ALLOW_ALL = not IN_PRODUCTION
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$",
@@ -104,12 +106,12 @@ WSGI_APPLICATION = "kvdomingo.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if PYTHON_ENV == "development":
-    DATABASE_CONFIG = dj_database_url.config()
-else:
+if IN_PRODUCTION:
     DATABASE_URL = os.environ.get("DATABASE_URL")
     DATABASE_CONFIG = dj_database_url.parse(DATABASE_URL)
     DATABASE_CONFIG["HOST"] = unquote(DATABASE_CONFIG["HOST"])
+else:
+    DATABASE_CONFIG = dj_database_url.config()
 
 DATABASES = {"default": DATABASE_CONFIG}
 

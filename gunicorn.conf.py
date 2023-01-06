@@ -1,6 +1,7 @@
-worker_class = "gthread"
-workers = 1
-threads = 2
+wsgi_app = "kvdomingo.wsgi"
+
+worker_class = "gevent"
+workers = 2
 timeout = 30
 graceful_timeout = 5
 keepalive = 65

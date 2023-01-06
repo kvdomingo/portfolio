@@ -12,7 +12,7 @@ tasks:
   default:
     desc: Build and start Docker containers
     cmds:
-      - docker compose -p $NAME up -d --build
+      - docker compose -p {{.NAME}} up -d --build
       - task logs
 
   sqlproxy:
@@ -23,24 +23,24 @@ tasks:
   logs:
     desc: Attach to Docker logs
     cmds:
-      - docker compose -p $NAME logs --follow {{.CLI_ARGS}}
+      - docker compose -p {{.NAME}} logs --follow {{.CLI_ARGS}}
 
   shutdown:
     desc: Stop containers
     cmds:
-      - docker compose -p $NAME stop
+      - docker compose -p {{.NAME}} stop
 
   exec:
     desc: Run a command in the specified container
     cmds:
-      - docker compose -p $NAME exec -- {{.CLI_ARGS}}
+      - docker compose -p {{.NAME}} exec -- {{.CLI_ARGS}}
 
   restart:
     desc: Restart containers
     cmds:
-      - docker compose -p $NAME restart {{.CLI_ARGS}}
+      - docker compose -p {{.NAME}} restart {{.CLI_ARGS}}
 
   clean:
     desc: Remove containers
     cmds:
-      - docker compose -p $NAME down -v --remove-orphans
+      - docker compose -p {{.NAME}} down -v --remove-orphans

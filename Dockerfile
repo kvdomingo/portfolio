@@ -1,5 +1,6 @@
 FROM python:3.10-bullseye as base
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONFAULTHANDLER 1
@@ -7,7 +8,7 @@ ENV PYTHONHASHSEED random
 ENV PIP_NO_CACHE_DIR off
 ENV PIP_DISABLE_PIP_VERSION_CHECK on
 ENV PIP_DEFAULT_TIMEOUT 100
-ENV POETRY_VERSION 1.1.13
+ENV POETRY_VERSION 1.3.1
 ENV VERSION $VERSION
 ARG PORT
 
@@ -15,16 +16,16 @@ FROM base as dev
 
 RUN pip install "poetry==$POETRY_VERSION"
 
-WORKDIR /kvd
+WORKDIR /tmp
 
-COPY poetry.lock pyproject.toml gunicorn.conf.py ./
+COPY poetry.lock pyproject.toml ./
 
 RUN poetry config virtualenvs.create false && \
     poetry install --no-interaction --no-ansi
 
-ENV VERSION $VERSION
+WORKDIR /kvd
 
-ENTRYPOINT [ "gunicorn", "kvdomingo.wsgi", "-b", "0.0.0.0:5000", "-c", "./gunicorn.conf.py", "--reload" ]
+ENTRYPOINT [ "gunicorn", "--bind", "0.0.0.0:5000", "--config", "gunicorn.conf.py", "--reload" ]
 
 FROM node:16-alpine as build
 
@@ -54,8 +55,6 @@ COPY ./web/ ./web/
 COPY ./*.py ./
 COPY ./*.sh ./
 COPY --from=build /web/build ./webapp/
-
-RUN chmod +x docker-entrypoint.sh
 
 EXPOSE $PORT
 
