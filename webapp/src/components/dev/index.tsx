@@ -61,6 +61,60 @@ function Dev() {
       />
       <Container>
         <List>
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <ListItem alignItems="center" data-aos="fade-up">
+                <ListItemAvatar sx={{ px: 4 }}>
+                  <Card elevation={0}>
+                    <CardActionArea>
+                      <a href="https://github.com/kvdomingo" target="_blank" rel="noopener noreferrer">
+                        <CardMedia
+                          component="img"
+                          image="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
+                          alt="GitHub | kvdomingo"
+                          sx={{
+                            aspectRatio: "1",
+                            backgroundSize: "cover",
+                            backgroundPosition: "50% 50%",
+                            height: 100,
+                          }}
+                        />
+                      </a>
+                    </CardActionArea>
+                  </Card>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Typography variant="h6">My GitHub repositories</Typography>
+                </ListItemText>
+              </ListItem>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ListItem alignItems="center" data-aos="fade-up">
+                <ListItemAvatar sx={{ px: 4 }}>
+                  <Card elevation={0}>
+                    <CardActionArea>
+                      <a href="https://pypi.org/user/kvdomingo/" target="_blank" rel="noopener noreferrer">
+                        <CardMedia
+                          component="img"
+                          image="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png"
+                          alt="PyPI | kvdomingo"
+                          sx={{
+                            aspectRatio: "1",
+                            backgroundSize: "cover",
+                            backgroundPosition: "50% 50%",
+                            height: 100,
+                          }}
+                        />
+                      </a>
+                    </CardActionArea>
+                  </Card>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Typography variant="h6">My PyPI packages</Typography>
+                </ListItemText>
+              </ListItem>
+            </Grid>
+          </Grid>
           {!projects.loaded ? (
             <Loading />
           ) : (
