@@ -242,3 +242,4 @@ content/
 .idea/
 .vscode/
 *.iml
+credentials.json

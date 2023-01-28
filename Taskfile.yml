@@ -2,8 +2,6 @@ version: '3'
 
 env:
   NAME: kvdomingo-dev
-  VERSION:
-      sh: git show --format="%aI %h" --no-patch
 
 dotenv:
   - .env
@@ -15,10 +13,12 @@ tasks:
       - docker compose -p {{.NAME}} up -d --build
       - task logs
 
-  sqlproxy:
-    desc: Start the gcloud SQL proxy
+  setup:
+    desc: Run initial setup
+    dir: api/
     cmds:
-      - cloud_sql_proxy -instances=my-projects-306716:asia-east1:schedule-bot=tcp:0.0.0.0:3306
+      - poetry install
+      - poetry run python -m scripts.make_env
 
   logs:
     desc: Attach to Docker logs
@@ -34,6 +34,11 @@ tasks:
     desc: Run a command in the specified container
     cmds:
       - docker compose -p {{.NAME}} exec -- {{.CLI_ARGS}}
+
+  reload-proxy:
+    desc: Reload proxy config
+    cmds:
+      - docker compose -p {{.NAME}} exec -- proxy nginx -s reload
 
   restart:
     desc: Restart containers

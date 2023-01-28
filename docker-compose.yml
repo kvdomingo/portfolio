@@ -5,20 +5,15 @@ networks:
     external: true
 
 services:
-  backend:
-    build:
-      context: .
-      target: dev
-    image: kvdomingo/kvdomingo-xyz-api:latest
-    env_file: .env
+  api:
+    build: api/
+    image: kvdomingo/portfolio-api:latest
+    env_file: api/.env
     volumes:
-      - .:/kvd
+      - ./api:/backend
 
-  frontend:
-    build:
-      context: ./webapp
-      target: dev
-    image: kvdomingo/kvdomingo-xyz-web:latest
+  ui:
+    image: node:16-alpine
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
@@ -26,22 +21,38 @@ services:
       - PORT=3000
       - TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling
       - WDS_SOCKET_PORT=0
+    working_dir: /web
+    entrypoint:
+      - /bin/sh
+      - "-c"
+      - "yarn install && exec yarn start"
     volumes:
-      - ./webapp:/web
+      - ./app:/web
 
   proxy:
     image: bitnami/nginx:latest
     environment:
-      - NGINX_HTTP_PORT_NUMBER=${HTTP_PORT}
+      - NGINX_HTTP_PORT_NUMBER=8000
     volumes:
-      - ./proxy/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/kvdomingo.conf:ro
+      - ./proxy:/opt/bitnami/nginx/conf/server_blocks:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.kvdomingo-xyz.rule=Host(`kvdomingo.localhost`)"
       - "traefik.http.routers.kvdomingo-xyz.entrypoints=http"
       - "traefik.docker.network=gateway"
-      - "traefik.http.services.kvdomingo-xyz.loadbalancer.server.port=${HTTP_PORT}"
+      - "traefik.http.services.kvdomingo-xyz.loadbalancer.server.port=8000"
     restart: unless-stopped
     networks:
       - default
       - gateway
+      
+
+  db:
+    image: asia.gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0
+    volumes:
+      - ./credentials.json:/config
+    command:
+      - my-projects-306716:asia-east1:schedule-bot
+      - "--credentials-file=/config"
+      - "--address=0.0.0.0"
+      - "--port=3306"
