@@ -1,3 +1,4 @@
+import json
 import re
 from pathlib import Path
 
@@ -24,6 +25,7 @@ def make_env():
         DJANGO_SUPERUSER_PASSWORD=get_secret_string("SUPERUSER_PASSWORD"),
         DJANGO_SUPERUSER_EMAIL=get_secret_string("SUPERUSER_EMAIL"),
     )
+    credentials = get_secret_string("CLOUDSQL_PROXY_CREDENTIALS")
 
     envrc = []
     for line in env.split("\n"):
@@ -32,10 +34,12 @@ def make_env():
         else:
             envrc.append(line)
 
-    with open(BASE_DIR / ".env", "w+") as f_env, open(BASE_DIR / ".envrc", "w+") as f_envrc:
+    with open(BASE_DIR / ".env", "w+") as f_env, open(BASE_DIR / ".envrc", "w+") as f_envrc, open(
+        BASE_DIR / "credentials.json", "w+"
+    ) as f_creds:
         f_env.write(env)
         f_envrc.writelines(envrc)
-
+        json.dump(credentials, f_creds)
     logger.info("env ok")
 
 

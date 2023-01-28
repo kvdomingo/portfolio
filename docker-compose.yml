@@ -45,3 +45,14 @@ services:
     networks:
       - default
       - gateway
+      
+
+  db:
+    image: asia.gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0
+    volumes:
+      - ./credentials.json:/config
+    command:
+      - my-projects-306716:asia-east1:schedule-bot
+      - "--credentials-file=/config"
+      - "--address=0.0.0.0"
+      - "--port=3306"

@@ -28,10 +28,7 @@ DEBUG = not IN_PRODUCTION
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 if IN_PRODUCTION:
-    ALLOWED_HOSTS = [
-        "kvdomingo.xyz",
-        "kvdomingo.dev",
-    ]
+    ALLOWED_HOSTS = ["kvdomingo.xyz", "kvdomingo.dev"]
 else:
     ALLOWED_HOSTS = ["*"]
 
@@ -78,17 +75,12 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 
 CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://kvdomingo.xyz",
-    "https://kvdomingo.dev",
-]
+CSRF_TRUSTED_ORIGINS = ["https://kvdomingo.xyz", "https://kvdomingo.dev"]
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            BASE_DIR / "webapp",
-        ],
+        "DIRS": [BASE_DIR / "html"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -225,9 +217,7 @@ STATIC_URL = "/static/"
 
 STATIC_ROOT = BASE_DIR / "static"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "webapp" / "static",
-]
+STATICFILES_DIRS = [BASE_DIR / "html" / "static"]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

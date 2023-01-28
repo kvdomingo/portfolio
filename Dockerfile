@@ -24,9 +24,9 @@ RUN pip install "poetry==$POETRY_VERSION"
 
 WORKDIR /tmp
 
-COPY poetry.lock pyproject.toml ./
+COPY ./api/poetry.lock ./api/pyproject.toml ./
 
-RUN poetry export --without-hashes -f requirements.txt | pip install -r -
+RUN poetry export --without-hashes -f requirements.txt | pip install -r /dev/stdin
 
 WORKDIR /backend
 
