@@ -1,5 +1,12 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from ordered_model.models import OrderedModel
+
+
+class ProjectStatus(models.TextChoices):
+    IN_PROGRESS = "WIP", _("In Progress")
+    LIVE = "LIV", _("Live")
+    ARCHIVED = "OFF", _("Archived")
 
 
 class Project(OrderedModel):
@@ -15,6 +22,7 @@ class Project(OrderedModel):
     keywords = models.TextField(blank=True)
     technologies = models.TextField(blank=True)
     cover_photo = models.URLField()
+    status = models.CharField(max_length=3, choices=ProjectStatus.choices)
 
     class Meta:
         ordering = ["order"]

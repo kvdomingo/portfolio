@@ -1,3 +1,11 @@
+export type devProjectStatus = "WIP" | "LIV" | "OFF";
+
+export enum DevProjectStatusEnum {
+  WIP = "In Progress",
+  LIV = "Live",
+  OFF = "Archived",
+}
+
 export interface DevProjectMetadata {
   id: number;
   order: number;
@@ -13,4 +21,5 @@ export interface DevProjectMetadata {
   keywords: string;
   technologies: string;
   coverPhoto: string;
+  status: devProjectStatus;
 }
