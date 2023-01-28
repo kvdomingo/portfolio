@@ -1,11 +1,3 @@
-FROM node:16-alpine as build
-
-WORKDIR /web
-
-COPY ./app/ ./
-
-RUN yarn install && yarn build
-
 FROM python:3.10-bullseye
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -17,20 +9,15 @@ ENV PIP_NO_CACHE_DIR off
 ENV PIP_DISABLE_PIP_VERSION_CHECK on
 ENV PIP_DEFAULT_TIMEOUT 100
 ENV POETRY_VERSION 1.3.2
-ENV VERSION $VERSION
-ARG PORT
 
-RUN pip install "poetry==$POETRY_VERSION"
+RUN pip install "poetry==$POETRY_VERSION" && poetry config virtualenvs.create false
 
 WORKDIR /tmp
 
 COPY poetry.lock pyproject.toml ./
 
-RUN poetry export --without-hashes -f requirements.txt | pip install -r -
+RUN poetry install --no-interaction --no-ansi
 
 WORKDIR /backend
 
-COPY ./api/ ./
-COPY --from=build /web/build ./html/
-
-ENTRYPOINT [ "./docker-entrypoint.sh" ]
+ENTRYPOINT [ "gunicorn", "--bind", "0.0.0.0:5000", "--config", "gunicorn.conf.py", "--reload" ]
