@@ -1,33 +1,24 @@
-version: "3.8"
-
-networks:
-  gateway:
-    external: true
-
 services:
   api:
     build: api/
     image: kvdomingo/portfolio-api:latest
+    user: "1000:1000"
     env_file: api/.env
     volumes:
       - ./api:/backend
 
   ui:
-    image: node:16-alpine
+    image: node:18-alpine
+    user: "1000:1000"
     environment:
       - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-      - HOST=0.0.0.0
-      - PORT=3000
-      - TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling
-      - WDS_SOCKET_PORT=0
     working_dir: /web
     entrypoint:
       - /bin/sh
       - "-c"
-      - "yarn install && exec yarn start"
+      - "yarn install && exec yarn dev --host 0.0.0.0 --port 3000"
     volumes:
-      - ./app:/web
+      - ./ui:/web
 
   proxy:
     image: bitnami/nginx:latest
@@ -56,3 +47,7 @@ services:
       - "--credentials-file=/config"
       - "--address=0.0.0.0"
       - "--port=3306"
+
+networks:
+  gateway:
+    external: true
