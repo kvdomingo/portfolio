@@ -53,7 +53,7 @@ function Post() {
           setData(res.data[0]);
           if (READ_FROM_JSX) {
             try {
-              import(`./content/${courseSlug}/${postSlug}`)
+              import(`./content/${courseSlug}/${postSlug}` /* @vite-ignore */)
                 .then(res => (BodyJsx.current = res.default))
                 .catch(err => {
                   console.error(err);
@@ -170,7 +170,7 @@ function Post() {
                   mapNames: (prefix: string, shapes: string[]) =>
                     shapes.map(item => `${prefix}_${item.toLowerCase()}`),
                   populateTable: (data: any) =>
-                    (Object.values(data)[0] as any[]).map((el, i) => (
+                    (Object.values(data)[0] as any[]).map((_, i) => (
                       <PopulateTable
                         lab={data.lab[i]}
                         lch={data.lch[i]}

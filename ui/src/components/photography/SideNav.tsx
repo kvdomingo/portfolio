@@ -53,7 +53,7 @@ function SideNav() {
         orientation="vertical"
         variant="standard"
         value={activeIndex}
-        onChange={(e, newValue) =>
+        onChange={(_, newValue) =>
           navigate(`/photography/${tabsList[newValue].path}`)
         }
         sx={{
