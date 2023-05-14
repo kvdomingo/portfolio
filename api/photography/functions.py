@@ -17,7 +17,9 @@ def build_url(public_id: str) -> str:
 
 
 def get_resources(path: str, order="date") -> list[dict[str, Any]]:
-    images = resources(prefix=path, type="upload", max_results=500, secure=True)["resources"]
+    images = resources(prefix=path, type="upload", max_results=500, secure=True)[
+        "resources"
+    ]
     if order == "date":
         images = sorted(
             images,
