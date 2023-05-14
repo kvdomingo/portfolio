@@ -5,7 +5,13 @@ from .models import Project
 
 
 class ProjectAdmin(OrderedModelAdmin):
-    list_display = ("title", "slug", "organization", "project_url", "move_up_down_links")
+    list_display = (
+        "title",
+        "slug",
+        "organization",
+        "project_url",
+        "move_up_down_links",
+    )
     list_display_links = ("title",)
     list_filter = ("title", "organization")
     search_fields = ["title", "organization"]

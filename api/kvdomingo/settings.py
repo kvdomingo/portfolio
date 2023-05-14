@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -28,7 +29,7 @@ DEBUG = not IN_PRODUCTION
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 if IN_PRODUCTION:
-    ALLOWED_HOSTS = ["kvdomingo.xyz", "kvdomingo.dev"]
+    ALLOWED_HOSTS = ["kvdomingo.xyz"]
 else:
     ALLOWED_HOSTS = ["*"]
 
@@ -113,7 +114,7 @@ DATABASES = {"default": DATABASE_CONFIG}
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "TIMEOUT": 60 * 60,  # 1 hour
+        "TIMEOUT": timedelta(hours=1).seconds,
     }
 }
 
@@ -195,8 +196,8 @@ TINYMCE_DEFAULT_CONFIG = {
         link image preview codesample table code lists
     """,
     "toolbar": """
-        formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | 
-        outdent indent table | link image | codesample | preview code  
+        formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist |
+        outdent indent table | link image | codesample | preview code
     """,
     "toolbar_mode": "wrap",
     "contextmenu": "formats | link image",
@@ -213,11 +214,14 @@ TINYMCE_DEFAULT_CONFIG = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/assets/"
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "html"
 
-STATICFILES_DIRS = [BASE_DIR / "html" / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "html" / "static",
+    BASE_DIR / "html" / "assets",
+]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

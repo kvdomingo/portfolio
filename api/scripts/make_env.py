@@ -34,9 +34,9 @@ def make_env():
         else:
             envrc.append(line)
 
-    with open(BASE_DIR / ".env", "w+") as f_env, open(BASE_DIR / ".envrc", "w+") as f_envrc, open(
-        BASE_DIR / "credentials.json", "w+"
-    ) as f_creds:
+    with open(BASE_DIR / ".env", "w+") as f_env, open(
+        BASE_DIR / ".envrc", "w+"
+    ) as f_envrc, open(BASE_DIR / "credentials.json", "w+") as f_creds:
         f_env.write(env)
         f_envrc.writelines(envrc)
         json.dump(credentials, f_creds)

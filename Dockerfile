@@ -2,7 +2,7 @@ FROM node:16-alpine as build
 
 WORKDIR /web
 
-COPY ./app/ ./
+COPY ./ui/ ./
 
 RUN yarn install && yarn build
 
@@ -31,6 +31,6 @@ RUN poetry export --without-hashes -f requirements.txt | pip install -r /dev/std
 WORKDIR /backend
 
 COPY ./api/ ./
-COPY --from=build /web/build ./html/
+COPY --from=build /web/dist/ ./html/
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
