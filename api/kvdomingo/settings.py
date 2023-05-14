@@ -214,9 +214,9 @@ TINYMCE_DEFAULT_CONFIG = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/assets/"
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "html"
 
 STATICFILES_DIRS = [
     BASE_DIR / "html" / "static",
