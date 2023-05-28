@@ -29,7 +29,7 @@ DEBUG = not IN_PRODUCTION
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 if IN_PRODUCTION:
-    ALLOWED_HOSTS = ["kvdomingo.xyz"]
+    ALLOWED_HOSTS = [".kvdomingo.xyz", ".kvd.studio"]
 else:
     ALLOWED_HOSTS = ["*"]
 
@@ -71,12 +71,17 @@ ROOT_URLCONF = "kvdomingo.urls"
 CORS_ORIGIN_ALLOW_ALL = not IN_PRODUCTION
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https:\/\/(?:www.)?kvdomingo\.(xyz|dev)$",
+    r"^https:\/\/kvd\.studio$",
+    r"^https:\/\/kvdomingo\.(xyz|dev)$",
 ]
 
 CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = ["https://kvdomingo.xyz", "https://kvdomingo.dev"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://kvdomingo.xyz",
+    "https://kvdomingo.dev",
+    "https://kvd.studio",
+]
 
 TEMPLATES = [
     {

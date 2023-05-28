@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: /admin/
 
-Sitemap: https://kvdomingo.xyz/sitemap.xml
+Sitemap: https://kvd.studio/sitemap.xml
