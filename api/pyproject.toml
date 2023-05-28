@@ -2,7 +2,7 @@
 name = "kvdomingo-xyz"
 version = "1.0.0"
 description = ""
-authors = ["Kenneth V. Domingo <hello@kvdomingo.xyz>"]
+authors = ["Kenneth V. Domingo <hello@kvd.studio>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"

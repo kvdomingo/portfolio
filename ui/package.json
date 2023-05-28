@@ -1,6 +1,7 @@
 {
-  "name": "ui",
+  "name": "portfolio-ui",
   "private": true,
+  "author": "Kenneth V. Domingo <hello@kvd.studio>",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

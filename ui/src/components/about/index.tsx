@@ -85,7 +85,7 @@ function About() {
                 />
               </>
             )}
-            <a href="mailto:hello@kvdomingo.xyz">
+            <a href="mailto:hello@kvd.studio">
               <Button
                 variant="outlined"
                 color="inherit"
