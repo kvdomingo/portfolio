@@ -1,6 +1,8 @@
 import { Suspense, lazy, useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
 import AOS from "aos";
+
 import "./App.css";
 import FullPageLoading from "./components/shared/FullPageLoading";
 import GAUtil from "./components/shared/GAUtil";
