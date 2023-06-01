@@ -1,5 +1,5 @@
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Box } from "@mui/material";
+
 import cld from "../../api/cloudinary";
 
 interface ImageProps {
@@ -7,17 +7,18 @@ interface ImageProps {
   publicId: string;
   height?: number | string;
   width?: number | string;
+  alt?: string;
 }
 
-function Image({ id, height, width, publicId }: ImageProps) {
+function Image({ alt = "", id, height, width, publicId }: ImageProps) {
   return (
-    <Box
+    <img
       id={id}
-      component="img"
       src={cld.image(publicId).resize(Resize.scale().width("auto")).toURL()}
+      alt={alt}
       height={height ?? "auto"}
       width={width ?? "auto"}
-      sx={{ mx: "auto" }}
+      className="mx-auto"
     />
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Box, Container, Divider, Typography } from "@mui/material";
+
 import api from "../../../api";
 import {
   selectHomeContent,
@@ -31,17 +31,15 @@ function WhatIDo() {
   }, [dispatch, homeContent.loaded]);
 
   return (
-    <Box sx={{ backgroundColor: "#212121" }}>
-      <Container sx={{ textAlign: "center", py: 6 }}>
-        <Typography variant="h2" color="white" className="section-header">
-          What I Do
-        </Typography>
-        <Divider variant="middle" sx={{ backgroundColor: "#757575", my: 4 }} />
+    <div className="bg-slate-900">
+      <div className="container py-12 text-center">
+        <h2 className="section-header text-6xl text-white">What I Do</h2>
+        <hr className="my-8" />
         <Photography content={homeContent.data?.[0] ?? []} />
         <Vip content={homeContent.data?.[1] ?? []} />
         <Dev content={homeContent.data?.[2] ?? []} />
-      </Container>
-    </Box>
+      </div>
+    </div>
   );
 }
 

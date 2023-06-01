@@ -6,6 +6,7 @@ body {
 }
 
 code {
+  color: indigo;
   font-family: "Inconsolata", source-code-pro, Menlo, Monaco, Consolas,
     "Courier New", monospace;
 }
@@ -16,12 +17,8 @@ code {
 }
 
 a {
-  color: #9c27b0;
+  color: indigo;
   text-decoration: none;
-}
-
-code {
-  color: #9c27b0;
 }
 
 ol.reference {

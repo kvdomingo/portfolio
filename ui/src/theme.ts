@@ -2,7 +2,7 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 
 const theme = createTheme({
   palette: {
-    mode: "light",
+    mode: "dark",
     primary: {
       main: "#9c27b0",
     },
@@ -11,7 +11,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['"Rubik"', "sans-serif"].join(", "),
+    fontFamily: ['"Rubik"', '"Inter"', "sans-serif"].join(", "),
   },
   components: {
     MuiButtonGroup: {

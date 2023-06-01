@@ -1,8 +1,10 @@
 import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Box, MobileStepper } from "@mui/material";
+
 import cld from "../../../api/cloudinary";
 import carouselData from "./carouselData.json";
 
@@ -20,6 +22,7 @@ function Carousel() {
       <Box
         component={AutoPlaySwipeableViews}
         axis="x"
+        className="rounded-2xl"
         index={activeStep}
         onChangeIndex={step => setActiveStep(step)}
         enableMouseEvents

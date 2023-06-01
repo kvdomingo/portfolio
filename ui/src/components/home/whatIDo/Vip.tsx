@@ -1,12 +1,14 @@
 import BeforeAfterSlider from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 import { Link } from "react-router-dom";
+
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Button, Grid, Typography } from "@mui/material";
+
 import cld from "../../../api/cloudinary";
 import { selectHomeContent } from "../../../store/generalSlice";
 import { useSelector } from "../../../store/hooks";
-import theme from "../../../themes";
+import theme from "../../../theme.ts";
 import { HomeContent } from "../../../types/home";
 import Loading from "../../shared/Loading";
 

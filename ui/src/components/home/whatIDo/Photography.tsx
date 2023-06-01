@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Grid, Typography } from "@mui/material";
+
 import { selectHomeContent } from "../../../store/generalSlice";
 import { useSelector } from "../../../store/hooks";
 import { HomeContent } from "../../../types/home";
@@ -16,41 +16,22 @@ function Photography({ content }: PhotographyProps) {
   return !loaded ? (
     <Loading color="white" />
   ) : (
-    <Grid container data-aos="fade-up" spacing={2} my={4}>
-      <Grid
-        item
-        md={7}
-        container
-        alignItems="center"
-        alignContent="center"
-        textAlign="left"
-      >
-        <Typography
-          variant="h4"
-          component="h3"
-          color="white"
-          mb={4}
-          className="section-header"
-        >
+    <div data-aos="fade-up" className="my-8 grid grid-cols-5 gap-36">
+      <div className="col-span-3 my-auto text-left">
+        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
           {content.sectionHeader}
-        </Typography>
-        <Typography variant="body1" color="white">
-          {content.sectionBody}
-        </Typography>
+        </h3>
+        <p>{content.sectionBody}</p>
         <Link to={content.linkToPortfolio}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            sx={{ color: "white", mt: 4 }}
-          >
+          <button className="mt-8 rounded-2xl border border-solid border-white px-10 py-3 uppercase transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-brightness-150">
             See in portfolio
-          </Button>
+          </button>
         </Link>
-      </Grid>
-      <Grid item md textAlign="center">
+      </div>
+      <div className="col-span-2 text-center">
         <Carousel />
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 }
 

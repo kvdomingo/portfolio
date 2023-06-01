@@ -20,7 +20,7 @@ import "aos/dist/aos.css";
 import App from "./App.tsx";
 import "./index.css";
 import { store } from "./store/store";
-import theme from "./themes";
+import theme from "./theme.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
