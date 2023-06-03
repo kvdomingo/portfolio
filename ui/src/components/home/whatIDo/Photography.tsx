@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import ButtonLink from "@/components/shared/ButtonLink.tsx";
+import Loading from "@/components/shared/Loading";
+import { selectHomeContent } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+import { HomeContent } from "@/types/home.ts";
 
-import { selectHomeContent } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
-import { HomeContent } from "../../../types/home";
-import Loading from "../../shared/Loading";
 import Carousel from "./Carousel";
 
 interface PhotographyProps {
@@ -22,11 +22,7 @@ function Photography({ content }: PhotographyProps) {
           {content.sectionHeader}
         </h3>
         <p>{content.sectionBody}</p>
-        <Link to={content.linkToPortfolio}>
-          <button className="mt-8 rounded-2xl border border-solid border-white px-10 py-3 uppercase transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-brightness-150">
-            See in portfolio
-          </button>
-        </Link>
+        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
       </div>
       <div className="col-span-2 text-center">
         <Carousel />

@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 
-import api from "../../../api";
-import {
-  selectHomeContent,
-  updateHomeContent,
-} from "../../../store/generalSlice";
-import { useDispatch, useSelector } from "../../../store/hooks";
+import api from "@/api";
+import { selectHomeContent, updateHomeContent } from "@/store/generalSlice.ts";
+import { useDispatch, useSelector } from "@/store/hooks.ts";
+
 import Dev from "./Dev";
 import Photography from "./Photography";
 import Vip from "./Vip";

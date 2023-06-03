@@ -6,7 +6,7 @@ body {
 }
 
 code {
-  color: indigo;
+  color: #818cf8;
   font-family: "Inconsolata", source-code-pro, Menlo, Monaco, Consolas,
     "Courier New", monospace;
 }
@@ -16,8 +16,8 @@ code {
   text-transform: uppercase;
 }
 
-a {
-  color: indigo;
+a[href] {
+  color: #818cf8;
   text-decoration: none;
 }
 

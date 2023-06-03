@@ -8,10 +8,12 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import dateFormat from "dateformat";
-import { selectCV } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
+
+import { selectCV } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+
 import TimelineSection from "../TimelineSection";
 
 function Education() {
@@ -33,40 +35,31 @@ function Education() {
         {data.data.education.map(ed => (
           <TimelineItem>
             <TimelineSeparator>
-              <TimelineDot color="primary" variant="outlined" />
+              <TimelineDot
+                color="primary"
+                variant="outlined"
+                className="text-indigo-400"
+              />
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Grid container>
-                <Grid item md>
-                  <Typography variant="h5">{ed.university}</Typography>
-                </Grid>
-                <Grid
-                  item
-                  md
-                  container
-                  justifyContent={{
-                    xs: "flex-start",
-                    md: "flex-end",
-                  }}
-                  sx={{ color: "text.secondary", fontVariant: "small-caps" }}
-                >
-                  <AccessTime sx={{ mr: 1 }} />
+              <Grid className="grid grid-cols-2">
+                <div>
+                  <h5 className="text-2xl">{ed.university}</h5>
+                </div>
+                <div className="flex justify-start text-gray-300 small-caps md:justify-end">
+                  <AccessTime className="mr-2" />
                   {dateFormat(new Date(ed.startDate), "mmm yyyy")} –{" "}
                   {dateFormat(new Date(ed.endDate), "mmm yyyy")}
-                </Grid>
+                </div>
               </Grid>
-              <Typography variant="subtitle1">
-                <Box
-                  component="a"
-                  href={ed.departmentUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ color: "primary.main", textDecoration: "none" }}
-                >
-                  {ed.department}
-                </Box>
-              </Typography>
+              <a
+                href={ed.departmentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ed.department}
+              </a>
               <Typography variant="body1" sx={{ my: 2 }}>
                 {ed.degree}
               </Typography>

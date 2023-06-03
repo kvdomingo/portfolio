@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import { Box, Container, Divider, Grid, Typography } from "@mui/material";
-import api from "../../api";
+
+import Loading from "@/components/shared/Loading";
 import {
   selectHomeTechnologies,
   updateHomeTechnologies,
-} from "../../store/generalSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
-import Loading from "../shared/Loading";
+} from "@/store/generalSlice.ts";
+import { useDispatch, useSelector } from "@/store/hooks.ts";
+
+import api from "../../api";
 
 const headers = [
   { label: "Backend", key: "BE" },
@@ -37,47 +38,36 @@ function HowIDoIt() {
   }, [dispatch, technologies.loaded]);
 
   return (
-    <Container sx={{ py: 6, textAlign: "center" }}>
-      <Typography variant="h2" className="section-header">
-        How I do it
-      </Typography>
-      <Divider variant="middle" sx={{ backgroundColor: "#757575", my: 4 }} />
+    <div className="container py-12 text-center">
+      <h2 className="section-header text-6xl text-white">How I do it</h2>
+      <hr className="my-8" />
       {!technologies.loaded ? (
         <Loading />
       ) : (
         headers.map(head => (
-          <Box key={head.key} data-aos="fade-up" my={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item md={3} textAlign="right" pr={1}>
-                <Typography variant="h5" className="section-header">
-                  {head.label}
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                md
-                sx={{ borderLeft: "1px solid #CCC" }}
-                container
-                alignItems="center"
-              >
+          <div key={head.key} data-aos="fade-up" className="my-8">
+            <div className="grid grid-cols-4 gap-12">
+              <div className="flex place-content-end place-items-center border-r border-solid border-white pr-2 text-right">
+                <h5 className="section-header text-2xl">{head.label}</h5>
+              </div>
+              <div className="col-span-3 my-auto grid grid-cols-6 gap-12">
                 {technologies.data
                   .filter(tech => tech.category === head.label)
                   .map(tech => (
-                    <Grid key={tech.id} item md={2} px={2}>
+                    <div key={tech.id} className="my-auto">
                       <img
                         src={tech.url}
                         alt={tech.alt}
-                        width="100%"
-                        height="auto"
+                        className="h-auto w-full"
                       />
-                    </Grid>
+                    </div>
                   ))}
-              </Grid>
-            </Grid>
-          </Box>
+              </div>
+            </div>
+          </div>
         ))
       )}
-    </Container>
+    </div>
   );
 }
 

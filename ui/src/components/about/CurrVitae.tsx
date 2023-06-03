@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import api from "../../api";
-import { selectCV, updateCV } from "../../store/generalSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
+
+import api from "@/api";
+import { selectCV, updateCV } from "@/store/generalSlice.ts";
+import { useDispatch, useSelector } from "@/store/hooks.ts";
+
 import Loading from "../shared/Loading";
 import Certification from "./cvSection/Certification";
 import Education from "./cvSection/Education";

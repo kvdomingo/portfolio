@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Box, Button, Menu, MenuItem, useScrollTrigger } from "@mui/material";
 
-import cld from "../../api/cloudinary";
-import { cn } from "../../utils";
+import cld from "@/api/cloudinary";
+import { cn } from "@/utils";
 
 // const DARK_LOGO = cld.image("logo/logo-black").resize(Resize.scale()).toURL();
 

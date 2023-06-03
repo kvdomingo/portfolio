@@ -3,7 +3,7 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Box, MobileStepper } from "@mui/material";
+import { MobileStepper } from "@mui/material";
 
 import cld from "../../../api/cloudinary";
 import carouselData from "./carouselData.json";
@@ -18,34 +18,26 @@ function Carousel() {
   }));
 
   return (
-    <Box>
-      <Box
-        component={AutoPlaySwipeableViews}
+    <div>
+      <AutoPlaySwipeableViews
         axis="x"
-        className="rounded-2xl"
+        className="m-0 rounded-2xl p-0"
         index={activeStep}
         onChangeIndex={step => setActiveStep(step)}
         enableMouseEvents
-        sx={{ m: 0, p: 0 }}
       >
         {images.map((c, i) => (
           <div key={c.publicId}>
             {Math.abs(activeStep - i) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  overflow: "hidden",
-                }}
+              <img
                 src={c.url}
                 alt={c.publicId}
+                className="block h-auto w-full overflow-hidden"
               />
             ) : null}
           </div>
         ))}
-      </Box>
+      </AutoPlaySwipeableViews>
       <MobileStepper
         variant="dots"
         backButton={null}
@@ -53,13 +45,11 @@ function Carousel() {
         steps={images.length}
         position="static"
         activeStep={activeStep}
+        className="flex place-content-center bg-transparent"
         sx={{
-          "backgroundColor": "transparent",
-          "display": "flex",
-          "justifyContent": "center",
           "& .MuiMobileStepper-dot": {
             "backgroundColor": "rgba(255, 255, 255, 0.5)",
-            "zIndex": 999,
+            "zIndex": 10,
             "mt": -6,
             "&.MuiMobileStepper-dotActive": {
               backgroundColor: "primary.main",
@@ -67,7 +57,7 @@ function Carousel() {
           },
         }}
       />
-    </Box>
+    </div>
   );
 }
 

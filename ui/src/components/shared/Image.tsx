@@ -1,6 +1,6 @@
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 
-import cld from "../../api/cloudinary";
+import cld from "@/api/cloudinary";
 
 interface ImageProps {
   id?: string;

@@ -6,7 +6,11 @@ interface TitleProps {
   description: string;
 }
 
-function Title({ title, keywords, description }: TitleProps) {
+function Title({
+  title = "Portfolio of KVD Studio",
+  keywords = [],
+  description,
+}: TitleProps) {
   return (
     <Helmet>
       <title>{!!title ? `${title} | ` : ""}KVD Studio</title>
@@ -17,10 +21,5 @@ function Title({ title, keywords, description }: TitleProps) {
     </Helmet>
   );
 }
-
-Title.defaultProps = {
-  description: "Portfolio of KVD Studio",
-  keywords: [],
-};
 
 export default Title;

@@ -7,6 +7,7 @@ module.exports = {
     "^react(.*)",
     "^react-dom(.*)",
     "<THIRD_PARTY_MODULES>",
+    "^@/(.*)",
     "^[./]",
   ],
   importOrderSeparation: true,

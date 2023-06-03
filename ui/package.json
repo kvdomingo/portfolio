@@ -41,7 +41,8 @@
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
-    "react-swipeable-views": "^0.14.0"
+    "react-swipeable-views": "^0.14.0",
+    "tailwindcss-opentype": "^1.1.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
