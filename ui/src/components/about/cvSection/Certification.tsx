@@ -1,4 +1,3 @@
-import HTMLReactParser from "html-react-parser";
 import { AccessTime, WorkspacePremium } from "@mui/icons-material";
 import {
   Timeline,
@@ -9,11 +8,13 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
-import { Box, Grid, Typography } from "@mui/material";
 import dateFormat from "dateformat";
+import HTMLReactParser from "html-react-parser";
 import { cloneDeep } from "lodash-es";
-import { selectCV } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
+
+import { selectCV } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+
 import TimelineSection from "../TimelineSection";
 
 function Certification() {
@@ -32,7 +33,7 @@ function Certification() {
   return (
     <TimelineSection
       name="Certifications"
-      icon={<WorkspacePremium fontSize="inherit" sx={{ mr: "1em" }} />}
+      icon={<WorkspacePremium fontSize="inherit" className="mr-[1em]" />}
     >
       <Timeline
         sx={{
@@ -48,39 +49,26 @@ function Certification() {
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{ pb: 4 }}>
-              <Grid container>
-                <Grid item md>
-                  <Typography variant="h5">{cert.name}</Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={4}
-                  container
-                  justifyContent={{
-                    xs: "flex-start",
-                    md: "flex-end",
-                  }}
-                  sx={{ color: "text.secondary", fontVariant: "small-caps" }}
-                >
-                  <AccessTime sx={{ mr: 1 }} />
+            <TimelineContent className="pb-8">
+              <div className="grid grid-cols-2">
+                <div>
+                  <h5 className="text-2xl">{cert.name}</h5>
+                </div>
+                <div className="flex justify-start text-gray-300 small-caps md:justify-end">
+                  <AccessTime className="mr-2" />
                   {dateFormat(new Date(cert.dateGranted), "mmm yyyy")} –{" "}
                   {cert.dateExpired &&
                     dateFormat(new Date(cert.dateExpired), "mmm yyyy")}
-                </Grid>
-              </Grid>
-              <Typography variant="subtitle1">
-                <Box
-                  component="a"
-                  href={cert.institutionUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ color: "primary.main", textDecoration: "none" }}
-                >
-                  {cert.institution}
-                </Box>
-              </Typography>
-              <Box>{HTMLReactParser(cert.description)}</Box>
+                </div>
+              </div>
+              <a
+                href={cert.institutionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {cert.institution}
+              </a>
+              <div>{HTMLReactParser(cert.description)}</div>
             </TimelineContent>
           </TimelineItem>
         ))}

@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "@/store/hooks.ts";
 
 import Loading from "../shared/Loading";
 import Certification from "./cvSection/Certification";
+import CodingStats from "./cvSection/CodingStats.tsx";
 import Education from "./cvSection/Education";
-import Languages from "./cvSection/Languages";
 import Project from "./cvSection/Project";
 import Publication from "./cvSection/Publication";
 import Reference from "./cvSection/Reference";
@@ -43,7 +43,7 @@ function CurrVitae() {
       <Project />
       <Publication />
       <Reference />
-      <Languages />
+      <CodingStats />
     </>
   );
 }

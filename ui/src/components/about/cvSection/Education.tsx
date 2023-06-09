@@ -8,7 +8,6 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
-import { Grid, Typography } from "@mui/material";
 import dateFormat from "dateformat";
 
 import { selectCV } from "@/store/generalSlice.ts";
@@ -43,7 +42,7 @@ function Education() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Grid className="grid grid-cols-2">
+              <div className="grid grid-cols-2">
                 <div>
                   <h5 className="text-2xl">{ed.university}</h5>
                 </div>
@@ -52,7 +51,7 @@ function Education() {
                   {dateFormat(new Date(ed.startDate), "mmm yyyy")} –{" "}
                   {dateFormat(new Date(ed.endDate), "mmm yyyy")}
                 </div>
-              </Grid>
+              </div>
               <a
                 href={ed.departmentUrl}
                 target="_blank"
@@ -60,12 +59,10 @@ function Education() {
               >
                 {ed.department}
               </a>
-              <Typography variant="body1" sx={{ my: 2 }}>
-                {ed.degree}
-              </Typography>
-              <Typography variant="body2">
+              <p className="my-4">{ed.degree}</p>
+              <p className="text-sm">
                 Thesis: <i>{ed.thesis}</i>
-              </Typography>
+              </p>
             </TimelineContent>
           </TimelineItem>
         ))}

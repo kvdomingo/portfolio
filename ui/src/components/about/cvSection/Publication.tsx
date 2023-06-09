@@ -1,4 +1,3 @@
-import HTMLReactParser from "html-react-parser";
 import { AccessTime, Newspaper } from "@mui/icons-material";
 import {
   Timeline,
@@ -9,19 +8,21 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
-import { Box, Grid, Typography } from "@mui/material";
 import dateFormat from "dateformat";
-import { selectCV } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
+import HTMLReactParser from "html-react-parser";
+
+import { selectCV } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+
 import TimelineSection from "../TimelineSection";
 
 function Project() {
-  const data = useSelector(selectCV);
+  const { data } = useSelector(selectCV);
 
   return (
     <TimelineSection
       name="Publications"
-      icon={<Newspaper fontSize="inherit" sx={{ mr: "1em" }} />}
+      icon={<Newspaper fontSize="inherit" className="mr-[1em]" />}
     >
       <Timeline
         sx={{
@@ -31,45 +32,34 @@ function Project() {
           },
         }}
       >
-        {data.data.publication.map(pub => (
+        {data.publication.map(publication => (
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{ pb: 4 }}>
-              <Grid container>
-                <Grid item md>
-                  <Typography variant="h5">{pub.title}</Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={4}
-                  container
-                  justifyContent={{
-                    xs: "flex-start",
-                    md: "flex-end",
-                  }}
-                  sx={{ color: "text.secondary", fontVariant: "small-caps" }}
-                >
-                  <AccessTime sx={{ mr: 1 }} />
-                  {dateFormat(new Date(pub.publicationDate), "mmm yyyy")}
-                </Grid>
-              </Grid>
-              <Typography variant="subtitle1">
-                <Box
-                  component="a"
-                  href={pub.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ color: "primary.main", textDecoration: "none" }}
-                >
-                  {pub.journal} {pub.volume} {pub.journalCode}
-                </Box>
-              </Typography>
-              <Typography variant="body1">
-                {HTMLReactParser(pub.description)}
-              </Typography>
+            <TimelineContent className="pb-8">
+              <div className="grid grid-cols-2">
+                <div>
+                  <h5 className="text-2xl">{publication.title}</h5>
+                </div>
+                <div className="flex justify-start text-gray-300 small-caps md:justify-end">
+                  <AccessTime className="mr-2" />
+                  {dateFormat(
+                    new Date(publication.publicationDate),
+                    "mmm yyyy",
+                  )}
+                </div>
+              </div>
+              <a
+                href={publication.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {publication.journal} {publication.volume}{" "}
+                {publication.journalCode}
+              </a>
+              <p>{HTMLReactParser(publication.description)}</p>
             </TimelineContent>
           </TimelineItem>
         ))}

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { AccessTime, BusinessCenter } from "@mui/icons-material";
 import {
   Timeline,
@@ -9,14 +8,16 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
-import { Box, Button, Grid, Typography } from "@mui/material";
 import dateFormat from "dateformat";
-import { selectCV } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
+
+import ButtonLink from "@/components/shared/ButtonLink.tsx";
+import { selectCV } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+
 import TimelineSection from "../TimelineSection";
 
 function Work() {
-  const data = useSelector(selectCV);
+  const { data } = useSelector(selectCV);
 
   return (
     <TimelineSection
@@ -31,60 +32,39 @@ function Work() {
           },
         }}
       >
-        {data.data.work.map(w => (
+        {data.work.map(work => (
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{ pb: 4 }}>
-              <Grid container>
-                <Grid item md>
-                  <Typography variant="h5">{w.position}</Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={4}
-                  container
-                  justifyContent={{
-                    xs: "flex-start",
-                    md: "flex-end",
-                  }}
-                  sx={{ color: "text.secondary", fontVariant: "small-caps" }}
-                >
-                  <AccessTime sx={{ mr: 1 }} />
-                  {dateFormat(new Date(w.startDate), "mmm yyyy")} –{" "}
-                  {w.endDate
-                    ? dateFormat(new Date(w.endDate), "mmm yyyy")
+            <TimelineContent className="pb-8">
+              <div className="grid grid-cols-2">
+                <div>
+                  <h5 className="text-2xl">{work.position}</h5>
+                </div>
+                <div className="flex justify-start text-gray-300 small-caps md:justify-end">
+                  <AccessTime className="mr-2" />
+                  {dateFormat(new Date(work.startDate), "mmm yyyy")} –{" "}
+                  {work.endDate
+                    ? dateFormat(new Date(work.endDate), "mmm yyyy")
                     : "present"}
-                </Grid>
-              </Grid>
-              <Typography variant="subtitle1">
-                <Box
-                  component="a"
-                  href={w.institutionUrl}
+                </div>
+              </div>
+              <p>
+                <a
+                  href={work.institutionUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  sx={{ color: "primary.main", textDecoration: "none" }}
                 >
-                  {w.institution}
-                </Box>
-              </Typography>
-              <Typography variant="body1">{w.description}</Typography>
-              {w.relatedProject && (
-                <Link to={w.relatedProject}>
-                  <Button
-                    color="inherit"
-                    variant="outlined"
-                    sx={{
-                      color: "text.primary",
-                      borderColor: "text.primary",
-                      my: 2,
-                    }}
-                  >
-                    See in portfolio
-                  </Button>
-                </Link>
+                  {work.institution}
+                </a>
+              </p>
+              <p>{work.description}</p>
+              {work.relatedProject && (
+                <ButtonLink to={work.relatedProject}>
+                  See in portfolio
+                </ButtonLink>
               )}
             </TimelineContent>
           </TimelineItem>

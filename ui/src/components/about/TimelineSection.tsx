@@ -1,9 +1,9 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 
 interface TimelineSectionProps {
   name: string;
-  icon: ReactElement;
-  children: ReactElement;
+  icon: ReactNode;
+  children: ReactNode;
 }
 
 function TimelineSection({ name, icon, children }: TimelineSectionProps) {

@@ -2,11 +2,11 @@ import { Code } from "@mui/icons-material";
 
 import TimelineSection from "../TimelineSection";
 
-function Languages() {
+function CodingStats() {
   return (
     <TimelineSection
       name="Coding Stats"
-      icon={<Code fontSize="inherit" sx={{ mr: "1em" }} />}
+      icon={<Code fontSize="inherit" className="mr-[1em]" />}
     >
       <div className="text-center">
         <figure className="my-6">
@@ -20,4 +20,4 @@ function Languages() {
   );
 }
 
-export default Languages;
+export default CodingStats;

@@ -8,18 +8,19 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
-import { Box, Typography } from "@mui/material";
-import { selectCV } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
+
+import { selectCV } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+
 import TimelineSection from "../TimelineSection";
 
 function Reference() {
-  const data = useSelector(selectCV);
+  const { data } = useSelector(selectCV);
 
   return (
     <TimelineSection
       name="References"
-      icon={<Group fontSize="inherit" sx={{ mr: "1em" }} />}
+      icon={<Group fontSize="inherit" className="mr-[1em]" />}
     >
       <Timeline
         sx={{
@@ -29,28 +30,24 @@ function Reference() {
           },
         }}
       >
-        {data.data.reference.map(ref => (
+        {data.reference.map(reference => (
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{ pb: 2 }}>
-              <Typography variant="h5">{ref.name}</Typography>
-              <Typography variant="subtitle1">
-                <Box
-                  component="a"
-                  href={`mailto:${ref.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ color: "primary.main", textDecoration: "none" }}
-                >
-                  {ref.email}
-                </Box>
-              </Typography>
-              <Typography variant="subtitle1">
-                {ref.position}, {ref.institution}
-              </Typography>
+            <TimelineContent className="pb-4">
+              <h5 className="text-2xl">{reference.name}</h5>
+              <a
+                href={`mailto:${reference.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {reference.email}
+              </a>
+              <p>
+                {reference.position}, {reference.institution}
+              </p>
             </TimelineContent>
           </TimelineItem>
         ))}
