@@ -116,19 +116,19 @@ function Navbar() {
           className: "rounded-2xl bg-purple-900",
         }}
       >
-        {PORTFOLIO_LINKS.map(port => (
+        {PORTFOLIO_LINKS.map(link => (
           <Box
-            key={port.path}
+            key={link.path}
             component={Link}
-            to={port.path}
+            to={link.path}
             className="section-header text-white"
           >
             <MenuItem
               onClick={() => setAnchorEl(null)}
               disableRipple
-              className="flex place-content-end"
+              className="flex place-content-end text-white"
             >
-              {port.label}
+              {link.label}
             </MenuItem>
           </Box>
         ))}

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import {
   Card,
   CardActionArea,
@@ -10,10 +11,12 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+
+import { selectProjects, updateProjects } from "@/store/devSlice.ts";
+import { useDispatch, useSelector } from "@/store/hooks.ts";
+import { devProjectStatus } from "@/types/dev.ts";
+
 import api from "../../api";
-import { selectProjects, updateProjects } from "../../store/devSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
-import { devProjectStatus } from "../../types/dev";
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
 import ProjectGroup from "./ProjectGroup";
@@ -69,14 +72,9 @@ function Dev() {
                     >
                       <CardMedia
                         component="img"
-                        image="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
+                        image="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto/v1685807890/dev/logos/github-mark-white.png"
                         alt="GitHub | kvdomingo"
-                        sx={{
-                          aspectRatio: "1",
-                          backgroundSize: "cover",
-                          backgroundPosition: "50% 50%",
-                          height: 100,
-                        }}
+                        className="aspect-square h-[100px] bg-cover bg-center"
                       />
                     </a>
                   </CardActionArea>
@@ -101,12 +99,7 @@ function Dev() {
                         component="img"
                         image="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png"
                         alt="PyPI | kvdomingo"
-                        sx={{
-                          aspectRatio: "1",
-                          backgroundSize: "cover",
-                          backgroundPosition: "50% 50%",
-                          height: 100,
-                        }}
+                        className="aspect-square h-[100px] bg-cover bg-center"
                       />
                     </a>
                   </CardActionArea>
