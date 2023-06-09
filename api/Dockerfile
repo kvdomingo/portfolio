@@ -1,4 +1,4 @@
-FROM python:3.10-bullseye
+FROM python:3.10-bullseye AS base
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
@@ -10,6 +10,8 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK on
 ENV PIP_DEFAULT_TIMEOUT 100
 ENV POETRY_VERSION 1.3.2
 
+FROM base AS deps
+
 RUN pip install "poetry==$POETRY_VERSION" && poetry config virtualenvs.create false
 
 WORKDIR /tmp
@@ -17,6 +19,8 @@ WORKDIR /tmp
 COPY poetry.lock pyproject.toml ./
 
 RUN poetry install --no-interaction --no-ansi
+
+FROM deps AS dev
 
 WORKDIR /backend
 
