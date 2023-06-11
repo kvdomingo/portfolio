@@ -1,8 +1,10 @@
 import { Resize } from "@cloudinary/url-gen/actions/resize";
+import { block } from "million/react";
 
 import cld from "@/api/cloudinary";
+import { MillionProps } from "@/types";
 
-interface ImageProps {
+interface ImageProps extends MillionProps {
   id?: string;
   publicId: string;
   height?: number | string;
@@ -10,7 +12,7 @@ interface ImageProps {
   alt?: string;
 }
 
-function Image({ alt = "", id, height, width, publicId }: ImageProps) {
+const Image = block<ImageProps>(({ alt = "", id, height, width, publicId }) => {
   return (
     <img
       id={id}
@@ -21,6 +23,6 @@ function Image({ alt = "", id, height, width, publicId }: ImageProps) {
       className="mx-auto"
     />
   );
-}
+});
 
 export default Image;

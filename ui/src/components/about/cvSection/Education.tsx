@@ -9,14 +9,15 @@ import {
   timelineItemClasses,
 } from "@mui/lab";
 import dateFormat from "dateformat";
+import { block } from "million/react";
 
 import { selectCV } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
 import TimelineSection from "../TimelineSection";
 
-function Education() {
-  const data = useSelector(selectCV);
+const Education = block(() => {
+  const { data } = useSelector(selectCV);
 
   return (
     <TimelineSection
@@ -31,7 +32,7 @@ function Education() {
           },
         }}
       >
-        {data.data.education.map(ed => (
+        {data.education.map(ed => (
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot
@@ -69,6 +70,6 @@ function Education() {
       </Timeline>
     </TimelineSection>
   );
-}
+});
 
 export default Education;

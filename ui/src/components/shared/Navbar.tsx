@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Box, Button, Menu, MenuItem, useScrollTrigger } from "@mui/material";
+import { block } from "million/react";
 
 import cld from "@/api/cloudinary";
 import { cn } from "@/utils";
@@ -24,7 +25,7 @@ const PORTFOLIO_LINKS = [
   { path: "/svip", label: "Coursework" },
 ];
 
-function Navbar() {
+const Navbar = block(() => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const headerRef = useRef<HTMLElement>(null!);
@@ -135,6 +136,6 @@ function Navbar() {
       </Menu>
     </>
   );
-}
+});
 
 export default Navbar;

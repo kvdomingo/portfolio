@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { block } from "million/react";
+
 import api from "@/api";
 import { selectCV, updateCV } from "@/store/generalSlice.ts";
 import { useDispatch, useSelector } from "@/store/hooks.ts";
@@ -13,7 +15,7 @@ import Publication from "./cvSection/Publication";
 import Reference from "./cvSection/Reference";
 import Work from "./cvSection/Work";
 
-function CurrVitae() {
+const CurriculumVitae = block(() => {
   const dispatch = useDispatch();
   const cv = useSelector(selectCV);
 
@@ -46,6 +48,6 @@ function CurrVitae() {
       <CodingStats />
     </>
   );
-}
+});
 
-export default CurrVitae;
+export default CurriculumVitae;

@@ -8,13 +8,14 @@ import {
   TimelineSeparator,
   timelineItemClasses,
 } from "@mui/lab";
+import { block } from "million/react";
 
 import { selectCV } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
 import TimelineSection from "../TimelineSection";
 
-function Reference() {
+const Reference = block(() => {
   const { data } = useSelector(selectCV);
 
   return (
@@ -54,6 +55,6 @@ function Reference() {
       </Timeline>
     </TimelineSection>
   );
-}
+});
 
 export default Reference;

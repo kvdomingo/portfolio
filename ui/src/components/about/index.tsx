@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CloudinaryImage } from "@cloudinary/url-gen";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Typography } from "@mui/material";
+import { block } from "million/react";
 
 import api from "@/api";
 import cld from "@/api/cloudinary";
@@ -16,9 +17,9 @@ import { useDispatch, useSelector } from "@/store/hooks.ts";
 import JsxRenderer from "../shared/JsxRenderer";
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
-import CurrVitae from "./CurrVitae";
+import CurriculumVitae from "./CurriculumVitae.tsx";
 
-function About() {
+const About = block(() => {
   const dispatch = useDispatch();
   const aboutContent = useSelector(selectAboutContent);
   const [image, setImage] = useState<CloudinaryImage>(null!);
@@ -88,12 +89,12 @@ function About() {
             <ButtonLink email="mailto:hello@kvd.studio">Contact</ButtonLink>
           </div>
           <div className="col-span-2">
-            <CurrVitae />
+            <CurriculumVitae />
           </div>
         </div>
       </div>
     </>
   );
-}
+});
 
 export default About;

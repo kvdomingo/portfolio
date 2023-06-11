@@ -11,17 +11,18 @@ import {
 import dateFormat from "dateformat";
 import HTMLReactParser from "html-react-parser";
 import { cloneDeep } from "lodash-es";
+import { block } from "million/react";
 
 import { selectCV } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
 import TimelineSection from "../TimelineSection";
 
-function Certification() {
-  const data = cloneDeep(useSelector(selectCV));
+const Certification = block(() => {
+  const { data } = cloneDeep(useSelector(selectCV));
   const scripts: any[] = [];
 
-  data.data.certification.forEach(cert => {
+  data.certification.forEach(cert => {
     scripts.push(/<script>(.+)<\/script>/gi.exec(cert.description));
     if (scripts) {
       cert.description = cert.description.replace(scripts[0], "");
@@ -43,7 +44,7 @@ function Certification() {
           },
         }}
       >
-        {data.data.certification.map(cert => (
+        {data.certification.map(cert => (
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot color="primary" variant="outlined" />
@@ -75,6 +76,6 @@ function Certification() {
       </Timeline>
     </TimelineSection>
   );
-}
+});
 
 export default Certification;

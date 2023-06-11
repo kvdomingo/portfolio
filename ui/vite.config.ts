@@ -10,5 +10,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [million.vite(), react()],
+  plugins: [million.vite({ optimize: true }), react()],
 });

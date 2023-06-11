@@ -1,9 +1,11 @@
+import { block } from "million/react";
+
 import Title from "../shared/Title";
 import Cover from "./Cover";
 import HowIDoIt from "./HowIDoIt";
 import WhatIDo from "./whatIDo";
 
-function Home() {
+const Home = block(() => {
   return (
     <>
       <Title
@@ -25,6 +27,6 @@ function Home() {
       <HowIDoIt />
     </>
   );
-}
+});
 
 export default Home;

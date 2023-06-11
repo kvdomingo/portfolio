@@ -1,8 +1,9 @@
 import { Code } from "@mui/icons-material";
+import { block } from "million/react";
 
 import TimelineSection from "../TimelineSection";
 
-function CodingStats() {
+const CodingStats = block(() => {
   return (
     <TimelineSection
       name="Coding Stats"
@@ -18,6 +19,6 @@ function CodingStats() {
       </div>
     </TimelineSection>
   );
-}
+});
 
 export default CodingStats;

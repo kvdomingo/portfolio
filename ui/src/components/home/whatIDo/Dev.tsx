@@ -1,14 +1,17 @@
+import { block } from "million/react";
+
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
 import Loading from "@/components/shared/Loading";
 import { selectHomeContent } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
+import { MillionProps } from "@/types";
 import { HomeContent } from "@/types/home.ts";
 
-interface DevProps {
+interface DevProps extends MillionProps {
   content: HomeContent;
 }
 
-function Dev({ content }: DevProps) {
+const Dev = block<DevProps>(({ content }) => {
   const { loaded } = useSelector(selectHomeContent);
 
   return !loaded ? (
@@ -38,6 +41,6 @@ function Dev({ content }: DevProps) {
       </div>
     </div>
   );
-}
+});
 
 export default Dev;

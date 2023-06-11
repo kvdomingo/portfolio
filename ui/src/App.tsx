@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import AOS from "aos";
+import { block } from "million/react";
 
 import "./App.css";
 import FullPageLoading from "./components/shared/FullPageLoading";
@@ -17,7 +18,7 @@ const Home = lazy(() => import("./components/home"));
 const Photography = lazy(() => import("./components/photography"));
 const Post = lazy(() => import("./components/coursework/Post"));
 
-function App() {
+const App = block(() => {
   useEffect(() => {
     AOS.init({ duration: 300 });
   }, []);
@@ -48,6 +49,6 @@ function App() {
       </Suspense>
     </Router>
   );
-}
+});
 
 export default App;

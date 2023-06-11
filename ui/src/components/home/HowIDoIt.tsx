@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { For, block } from "million/react";
+
 import api from "@/api";
 import Loading from "@/components/shared/Loading";
 import {
@@ -16,7 +18,7 @@ const headers = [
   { label: "Data & Vis", key: "DV" },
 ];
 
-function HowIDoIt() {
+const HowIDoIt = block(() => {
   const dispatch = useDispatch();
   const technologies = useSelector(selectHomeTechnologies);
 
@@ -43,35 +45,39 @@ function HowIDoIt() {
       {!technologies.loaded ? (
         <Loading />
       ) : (
-        headers.map(head => {
-          const headerTechnologies = technologies.data.filter(
-            tech => tech.category === head.label,
-          );
+        <For each={headers}>
+          {header => {
+            const headerTechnologies = technologies.data.filter(
+              tech => tech.category === header.label,
+            );
 
-          return (
-            <div key={head.key} data-aos="fade-up" className="my-8">
-              <div className="grid grid-cols-4 gap-12">
-                <div className="flex place-content-end place-items-center border-r border-solid border-white pr-6 text-right">
-                  <h5 className="section-header text-2xl">{head.label}</h5>
-                </div>
-                <div className="col-span-3 my-auto grid grid-cols-6 gap-12">
-                  {headerTechnologies.map(tech => (
-                    <div key={tech.id} className="my-auto">
-                      <img
-                        src={tech.url}
-                        alt={tech.alt}
-                        className="h-auto w-full"
-                      />
-                    </div>
-                  ))}
+            return (
+              <div key={header.key} data-aos="fade-up" className="my-8">
+                <div className="grid grid-cols-4 gap-12">
+                  <div className="flex place-content-end place-items-center border-r border-solid border-white pr-6 text-right">
+                    <h5 className="section-header text-2xl">{header.label}</h5>
+                  </div>
+                  <div className="col-span-3 my-auto grid grid-cols-6 gap-12">
+                    <For each={headerTechnologies}>
+                      {technology => (
+                        <div key={technology.id} className="my-auto">
+                          <img
+                            src={technology.url}
+                            alt={technology.alt}
+                            className="h-auto w-full"
+                          />
+                        </div>
+                      )}
+                    </For>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
+            );
+          }}
+        </For>
       )}
     </div>
   );
-}
+});
 
 export default HowIDoIt;
