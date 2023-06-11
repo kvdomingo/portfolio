@@ -1,14 +1,8 @@
-import { useEffect } from "react";
-
 import { For, block } from "million/react";
 
-import api from "@/api";
 import Loading from "@/components/shared/Loading";
-import {
-  selectHomeTechnologies,
-  updateHomeTechnologies,
-} from "@/store/generalSlice.ts";
-import { useDispatch, useSelector } from "@/store/hooks.ts";
+import { selectHomeTechnologies } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
 
 const headers = [
   { label: "Backend", key: "BE" },
@@ -19,24 +13,7 @@ const headers = [
 ];
 
 const HowIDoIt = block(() => {
-  const dispatch = useDispatch();
   const technologies = useSelector(selectHomeTechnologies);
-
-  useEffect(() => {
-    if (!technologies.loaded) {
-      api.home
-        .technologies()
-        .then(res =>
-          dispatch(
-            updateHomeTechnologies({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, technologies.loaded]);
 
   return (
     <div className="container py-12 text-center">

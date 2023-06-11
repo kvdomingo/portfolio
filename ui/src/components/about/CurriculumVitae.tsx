@@ -1,10 +1,7 @@
-import { useEffect } from "react";
-
 import { block } from "million/react";
 
-import api from "@/api";
-import { selectCV, updateCV } from "@/store/generalSlice.ts";
-import { useDispatch, useSelector } from "@/store/hooks.ts";
+import { selectCV } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
 
 import Loading from "../shared/Loading";
 import Certification from "./cvSection/Certification";
@@ -16,24 +13,7 @@ import Reference from "./cvSection/Reference";
 import Work from "./cvSection/Work";
 
 const CurriculumVitae = block(() => {
-  const dispatch = useDispatch();
   const cv = useSelector(selectCV);
-
-  useEffect(() => {
-    if (!cv.loaded) {
-      api.cv
-        .all()
-        .then(res =>
-          dispatch(
-            updateCV({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, cv.loaded]);
 
   return !cv.loaded ? (
     <Loading />

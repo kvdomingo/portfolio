@@ -1,35 +1,19 @@
-import { useEffect } from "react";
 import { Card, CardMedia, Container, Grid } from "@mui/material";
-import api from "../../api";
-import { selectCourses, updateCourses } from "../../store/courseworkSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
-import { CourseMetadata } from "../../types/coursework";
+
+import BasePage from "@/components/shared/BasePage.tsx";
+import { selectCourses } from "@/store/courseworkSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+import { CourseMetadata } from "@/types/coursework.ts";
+
 import ButtonCard from "../shared/ButtonCard";
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
 
 function Coursework() {
-  const dispatch = useDispatch();
   const courses = useSelector(selectCourses);
 
-  useEffect(() => {
-    if (!courses.loaded) {
-      api.svip
-        .courses()
-        .then(res =>
-          dispatch(
-            updateCourses({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, courses.loaded]);
-
   return (
-    <>
+    <BasePage>
       <Title
         title="Coursework"
         description="Portfolio of Kenneth V. Domingo with relevant coursework such as signal, video, and image processing"
@@ -73,7 +57,7 @@ function Coursework() {
           )}
         </Grid>
       </Container>
-    </>
+    </BasePage>
   );
 }
 

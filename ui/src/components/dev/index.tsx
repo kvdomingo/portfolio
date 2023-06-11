@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import {
   Card,
   CardActionArea,
@@ -13,37 +11,20 @@ import {
 } from "@mui/material";
 import { For, block } from "million/react";
 
-import { selectProjects, updateProjects } from "@/store/devSlice.ts";
-import { useDispatch, useSelector } from "@/store/hooks.ts";
+import BasePage from "@/components/shared/BasePage.tsx";
+import { selectProjects } from "@/store/devSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
 import { devProjectStatus } from "@/types/dev.ts";
 
-import api from "../../api";
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
 import ProjectGroup from "./ProjectGroup";
 
 const SoftwareDevelopment = block(() => {
-  const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
 
-  useEffect(() => {
-    if (!projects.loaded) {
-      api.dev
-        .projects()
-        .then(res =>
-          dispatch(
-            updateProjects({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, projects.loaded]);
-
   return (
-    <>
+    <BasePage>
       <Title
         title="Software"
         description="Portfolio of Kenneth V. Domingo with relevant work on software development"
@@ -126,7 +107,7 @@ const SoftwareDevelopment = block(() => {
           <Loading />
         )}
       </Container>
-    </>
+    </BasePage>
   );
 });
 

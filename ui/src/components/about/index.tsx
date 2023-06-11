@@ -5,14 +5,11 @@ import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Typography } from "@mui/material";
 import { block } from "million/react";
 
-import api from "@/api";
 import cld from "@/api/cloudinary";
+import BasePage from "@/components/shared/BasePage.tsx";
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
-import {
-  selectAboutContent,
-  updateAboutContent,
-} from "@/store/generalSlice.ts";
-import { useDispatch, useSelector } from "@/store/hooks.ts";
+import { selectAboutContent } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
 
 import JsxRenderer from "../shared/JsxRenderer";
 import Loading from "../shared/Loading";
@@ -20,7 +17,6 @@ import Title from "../shared/Title";
 import CurriculumVitae from "./CurriculumVitae.tsx";
 
 const About = block(() => {
-  const dispatch = useDispatch();
   const aboutContent = useSelector(selectAboutContent);
   const [image, setImage] = useState<CloudinaryImage>(null!);
 
@@ -33,23 +29,11 @@ const About = block(() => {
             .resize(Resize.scale().width("auto")),
         );
       }
-    } else {
-      api.home
-        .about()
-        .then(res =>
-          dispatch(
-            updateAboutContent({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
     }
-  }, [dispatch, aboutContent, image]);
+  }, [aboutContent.loaded, image]);
 
   return (
-    <>
+    <BasePage>
       <Title
         title="About"
         description="About Kenneth V. Domingo and KVD Studio, with curriculum vitae (CV) including educational attainment, work experience, and projects"
@@ -93,7 +77,7 @@ const About = block(() => {
           </div>
         </div>
       </div>
-    </>
+    </BasePage>
   );
 });
 

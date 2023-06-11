@@ -1,5 +1,7 @@
 import { block } from "million/react";
 
+import BasePage from "@/components/shared/BasePage.tsx";
+
 import Title from "../shared/Title";
 import Cover from "./Cover";
 import HowIDoIt from "./HowIDoIt";
@@ -7,7 +9,7 @@ import WhatIDo from "./whatIDo";
 
 const Home = block(() => {
   return (
-    <>
+    <BasePage>
       <Title
         title="Home"
         description="CV and Portfolio of Kenneth V. Domingo and KVD Studio including photography, relevant coursework, and web and app development"
@@ -25,7 +27,7 @@ const Home = block(() => {
       <Cover />
       <WhatIDo />
       <HowIDoIt />
-    </>
+    </BasePage>
   );
 });
 

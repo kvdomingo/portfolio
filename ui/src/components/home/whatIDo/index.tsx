@@ -1,34 +1,14 @@
-import { useEffect } from "react";
-
 import { block } from "million/react";
 
-import api from "@/api";
-import { selectHomeContent, updateHomeContent } from "@/store/generalSlice.ts";
-import { useDispatch, useSelector } from "@/store/hooks.ts";
+import { selectHomeContent } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
 
 import Dev from "./Dev";
 import Photography from "./Photography";
 import Vip from "./Vip";
 
 const WhatIDo = block(() => {
-  const dispatch = useDispatch();
   const homeContent = useSelector(selectHomeContent);
-
-  useEffect(() => {
-    if (!homeContent.loaded) {
-      api.home
-        .content()
-        .then(res =>
-          dispatch(
-            updateHomeContent({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, homeContent.loaded]);
 
   return (
     <div className="bg-slate-900">

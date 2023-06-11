@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { Resize } from "@cloudinary/url-gen/actions/resize";
@@ -33,10 +33,6 @@ const Navbar = block(() => {
     target: window ? window : undefined,
   });
   const isHomepage = location.pathname === "/";
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   return (
     <>
