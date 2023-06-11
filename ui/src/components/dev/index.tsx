@@ -11,6 +11,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { For, block } from "million/react";
 
 import { selectProjects, updateProjects } from "@/store/devSlice.ts";
 import { useDispatch, useSelector } from "@/store/hooks.ts";
@@ -21,7 +22,7 @@ import Loading from "../shared/Loading";
 import Title from "../shared/Title";
 import ProjectGroup from "./ProjectGroup";
 
-function Dev() {
+const SoftwareDevelopment = block(() => {
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
 
@@ -112,18 +113,21 @@ function Dev() {
           </Grid>
         </Grid>
         {projects.loaded ? (
-          (["LIV", "WIP", "OFF"] as devProjectStatus[]).map(status => (
-            <ProjectGroup
-              status={status}
-              projects={projects.data.filter(proj => proj.status === status)}
-            />
-          ))
+          <For each={["LIV", "WIP", "OFF"] as devProjectStatus[]}>
+            {status => (
+              <ProjectGroup
+                key={status}
+                status={status}
+                projects={projects.data.filter(proj => proj.status === status)}
+              />
+            )}
+          </For>
         ) : (
           <Loading />
         )}
       </Container>
     </>
   );
-}
+});
 
-export default Dev;
+export default SoftwareDevelopment;

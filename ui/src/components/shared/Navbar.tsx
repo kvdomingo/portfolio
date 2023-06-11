@@ -8,8 +8,6 @@ import { block } from "million/react";
 import cld from "@/api/cloudinary";
 import { cn } from "@/utils";
 
-// const DARK_LOGO = cld.image("logo/logo-black").resize(Resize.scale()).toURL();
-
 const LIGHT_LOGO = cld.image("logo/logo-white").resize(Resize.scale()).toURL();
 
 const SCROLL_THRESHOLD = 30;
@@ -50,7 +48,8 @@ const Navbar = block(() => {
       >
         <nav
           className={cn(
-            "mb-10 bg-gradient-to-r from-indigo-950 to-purple-900 px-12 transition-all duration-300 ease-in-out",
+            "mb-10 bg-gradient-to-r from-indigo-950 to-purple-900 px-12",
+            "transition-all duration-300 ease-in-out",
             {
               "m-8 rounded-[50px] py-2": !isPastScrollThreshold && isHomepage,
             },
