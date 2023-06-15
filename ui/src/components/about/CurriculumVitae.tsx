@@ -1,9 +1,5 @@
 import { block } from "million/react";
 
-import { selectCV } from "@/store/generalSlice.ts";
-import { useSelector } from "@/store/hooks.ts";
-
-import Loading from "../shared/Loading";
 import Certification from "./cvSection/Certification";
 import CodingStats from "./cvSection/CodingStats.tsx";
 import Education from "./cvSection/Education";
@@ -13,11 +9,7 @@ import Reference from "./cvSection/Reference";
 import Work from "./cvSection/Work";
 
 const CurriculumVitae = block(() => {
-  const cv = useSelector(selectCV);
-
-  return !cv.loaded ? (
-    <Loading />
-  ) : (
+  return (
     <>
       <Education />
       <Work />

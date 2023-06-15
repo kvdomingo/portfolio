@@ -14,7 +14,7 @@ const Chip = block<ChipProps>(({ className, children }) => {
   return (
     <div
       className={cn(
-        "my-1 mr-2 inline-block rounded-3xl bg-gray-500/50 px-4 py-1",
+        "my-1 mr-2 inline-block rounded-3xl bg-indigo-900 px-4 py-1",
         className,
       )}
     >

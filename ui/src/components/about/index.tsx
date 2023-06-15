@@ -1,33 +1,16 @@
-import { useState } from "react";
-
-import { CloudinaryImage } from "@cloudinary/url-gen";
-import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Typography } from "@mui/material";
 import { block } from "million/react";
 
-import cld from "@/api/cloudinary";
 import BasePage from "@/components/shared/BasePage.tsx";
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
+import Image from "@/components/shared/Image.tsx";
 import { selectAboutContent } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
-import JsxRenderer from "../shared/JsxRenderer";
 import Title from "../shared/Title";
 import CurriculumVitae from "./CurriculumVitae.tsx";
 
 const About = block(() => {
   const aboutContent = useSelector(selectAboutContent);
-  const [image, setImage] = useState<CloudinaryImage | null>(null);
-
-  if (aboutContent.loaded) {
-    if (!image) {
-      setImage(
-        cld
-          .image(aboutContent.data[0].picture)
-          .resize(Resize.scale().width("auto")),
-      );
-    }
-  }
 
   return (
     <BasePage>
@@ -47,22 +30,22 @@ const About = block(() => {
           "Kenneth V. Domingo",
         ]}
       />
-      <div className="container grid gap-16 md:grid-cols-3">
+      <div className="grid gap-8 p-4 md:grid-cols-4 md:p-0">
         <div data-aos="fade-up">
-          <img
-            src={image?.toURL()}
-            alt=""
-            width="100%"
-            height="auto"
-            className="mb-8 h-auto w-full rounded-2xl"
-          />
-          <JsxRenderer
-            jsx={aboutContent.data[0].bio}
-            components={{ Typography }}
-          />
-          <ButtonLink email="mailto:hello@kvd.studio">Contact</ButtonLink>
+          {aboutContent.loaded && (
+            <Image
+              publicId={aboutContent.data[0].picture}
+              className="rounded-3xl md:sticky md:-top-8 md:-z-10 md:-ml-8"
+            />
+          )}
         </div>
-        <div className="md:col-span-2">
+        <div className="md:col-span-3 md:pr-24">
+          <p className="whitespace-pre-line text-lg">
+            {aboutContent.data[0].bio}
+          </p>
+          <ButtonLink className="mb-16" email="mailto:hello@kvd.studio">
+            Contact
+          </ButtonLink>
           <CurriculumVitae />
         </div>
       </div>

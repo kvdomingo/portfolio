@@ -14,7 +14,7 @@ const ProjectItem = block<ProjectItemProps>(({ project }) => {
   return (
     <div
       key={project.id}
-      className="my-4 grid grid-cols-4 place-content-start gap-8"
+      className="mb-8 grid grid-cols-4 place-content-start gap-8 border-t-2 border-solid border-white pt-8"
       data-aos="fade-up"
     >
       <div>
@@ -58,9 +58,6 @@ const ProjectItem = block<ProjectItemProps>(({ project }) => {
         )}
         <p className="my-8">{project.summary}</p>
         <div>
-          <p className="text-sm">
-            <b>Technologies: </b>
-          </p>
           <For each={project.technologies.split(", ")}>
             {tech => <Chip key={tech}>{tech}</Chip>}
           </For>

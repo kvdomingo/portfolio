@@ -1,14 +1,5 @@
-import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  Container,
-  Grid,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { GitHub, ViewQuilt } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 import { For, block } from "million/react";
 
 import BasePage from "@/components/shared/BasePage.tsx";
@@ -40,65 +31,32 @@ const SoftwareDevelopment = block(() => {
           "Kenneth V. Domingo",
         ]}
       />
-      <Container>
-        <Grid container>
-          <Grid item xs={12} md={6}>
-            <ListItem alignItems="center" data-aos="fade-up">
-              <ListItemAvatar sx={{ px: 4 }}>
-                <Card elevation={0}>
-                  <CardActionArea>
-                    <a
-                      href="https://github.com/kvdomingo"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <CardMedia
-                        component="img"
-                        image="https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_auto/v1685807890/dev/logos/github-mark-white.png"
-                        alt="GitHub | kvdomingo"
-                        className="aspect-square h-[100px] bg-cover bg-center"
-                      />
-                    </a>
-                  </CardActionArea>
-                </Card>
-              </ListItemAvatar>
-              <ListItemText>
-                <Typography variant="h6">My GitHub repositories</Typography>
-              </ListItemText>
-            </ListItem>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <ListItem alignItems="center" data-aos="fade-up">
-              <ListItemAvatar sx={{ px: 4 }}>
-                <Card elevation={0}>
-                  <CardActionArea>
-                    <a
-                      href="https://pypi.org/user/kvdomingo/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <CardMedia
-                        component="img"
-                        image="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png"
-                        alt="PyPI | kvdomingo"
-                        className="aspect-square h-[100px] bg-cover bg-center"
-                      />
-                    </a>
-                  </CardActionArea>
-                </Card>
-              </ListItemAvatar>
-              <ListItemText>
-                <Typography variant="h6">My PyPI packages</Typography>
-              </ListItemText>
-            </ListItem>
-          </Grid>
-        </Grid>
+      <div className="container pb-8">
+        <div className="mb-8 text-right">
+          <a
+            href="https://github.com/kvdomingo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconButton>
+              <GitHub fontSize="large" />
+            </IconButton>
+          </a>
+          <a
+            href="https://pypi.org/user/kvdomingo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconButton>
+              <ViewQuilt fontSize="large" />
+            </IconButton>
+          </a>
+        </div>
         {projects.loaded ? (
           <For each={["LIV", "WIP", "OFF"] as devProjectStatus[]}>
             {status => (
               <ProjectGroup
                 key={status}
-                status={status}
                 projects={projects.data.filter(proj => proj.status === status)}
               />
             )}
@@ -106,7 +64,7 @@ const SoftwareDevelopment = block(() => {
         ) : (
           <Loading />
         )}
-      </Container>
+      </div>
     </BasePage>
   );
 });

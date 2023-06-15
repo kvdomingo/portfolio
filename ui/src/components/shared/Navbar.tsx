@@ -1,14 +1,13 @@
 import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Box, Button, Menu, MenuItem, useScrollTrigger } from "@mui/material";
 import { block } from "million/react";
 
-import cld from "@/api/cloudinary";
+import Image from "@/components/shared/Image.tsx";
 import { cn } from "@/utils";
 
-const LIGHT_LOGO = cld.image("logo/logo-white").resize(Resize.scale()).toURL();
+const LIGHT_LOGO = "logo/logo-white";
 
 const SCROLL_THRESHOLD = 30;
 
@@ -44,7 +43,7 @@ const Navbar = block(() => {
       >
         <nav
           className={cn(
-            "mb-10 bg-gradient-to-r from-indigo-950 to-purple-900 px-12",
+            "mb-10 bg-gradient-to-r from-indigo-950 to-slate-900 px-12",
             "transition-all duration-300 ease-in-out",
             {
               "m-8 rounded-[50px] py-2": !isPastScrollThreshold && isHomepage,
@@ -54,8 +53,8 @@ const Navbar = block(() => {
           <div className="flex">
             <div className="flex flex-auto items-center">
               <Link to="/">
-                <img
-                  src={LIGHT_LOGO}
+                <Image
+                  publicId={LIGHT_LOGO}
                   alt="logo"
                   className={cn(
                     "h-[50px] opacity-0 transition-all duration-300 ease-in-out",
@@ -109,7 +108,7 @@ const Navbar = block(() => {
           horizontal: "right",
         }}
         PaperProps={{
-          className: "rounded-2xl bg-purple-900",
+          className: "rounded-2xl bg-indigo-900",
         }}
       >
         {PORTFOLIO_LINKS.map(link => (

@@ -16,7 +16,7 @@ const HowIDoIt = block(() => {
   const technologies = useSelector(selectHomeTechnologies);
 
   return (
-    <div className="bg-neutral-950">
+    <div className="bg-[#040405]">
       <div className="container py-12 text-center">
         <h2 className="section-header text-6xl text-white">How I do it</h2>
         <hr className="my-8" />

@@ -1,8 +1,17 @@
-import { Resize } from "@cloudinary/url-gen/actions/resize";
+import { memo } from "react";
+
+import {
+  AdvancedImage,
+  lazyload,
+  placeholder,
+  responsive,
+} from "@cloudinary/react";
+import { scale } from "@cloudinary/url-gen/actions/resize";
 import { block } from "million/react";
 
 import cld from "@/api/cloudinary";
 import { MillionProps } from "@/types";
+import { cn } from "@/utils";
 
 interface ImageProps extends MillionProps {
   id?: string;
@@ -10,19 +19,28 @@ interface ImageProps extends MillionProps {
   height?: number | string;
   width?: number | string;
   alt?: string;
+  className: string;
 }
 
-const Image = block<ImageProps>(({ alt = "", id, height, width, publicId }) => {
-  return (
-    <img
-      id={id}
-      src={cld.image(publicId).resize(Resize.scale().width("auto")).toURL()}
-      alt={alt}
-      height={height ?? "auto"}
-      width={width ?? "auto"}
-      className="mx-auto"
-    />
-  );
-});
+const Image = block<ImageProps>(
+  ({ alt = "", id, height, width, publicId, className, ...rest }) => {
+    const cldImg = cld.image(publicId).resize(scale());
 
-export default Image;
+    return (
+      <AdvancedImage
+        {...rest}
+        id={id}
+        cldImg={cldImg}
+        alt={alt}
+        className={cn("h-auto w-full", className)}
+        plugins={[
+          lazyload(),
+          responsive(),
+          placeholder({ mode: "predominant-color" }),
+        ]}
+      />
+    );
+  },
+);
+
+export default memo(Image);
