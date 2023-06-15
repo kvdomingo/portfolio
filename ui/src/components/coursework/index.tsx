@@ -1,4 +1,4 @@
-import { Card, CardMedia, Container, Grid } from "@mui/material";
+import { Card, CardMedia, Grid } from "@mui/material";
 
 import BasePage from "@/components/shared/BasePage.tsx";
 import { selectCourses } from "@/store/courseworkSlice.ts";
@@ -29,7 +29,7 @@ function Coursework() {
           "Kenneth V. Domingo",
         ]}
       />
-      <Container maxWidth="xl">
+      <div className="container">
         <Grid container spacing={2}>
           {!courses.loaded ? (
             <Loading />
@@ -56,7 +56,7 @@ function Coursework() {
             ))
           )}
         </Grid>
-      </Container>
+      </div>
     </BasePage>
   );
 }

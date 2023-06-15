@@ -22,7 +22,7 @@ const ButtonLink = block<ButtonLinkProps>(
       <button
         {...props}
         className={cn(
-          "mt-8 rounded-2xl border border-solid border-white px-8 py-2 uppercase text-white transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-brightness-150",
+          "mt-8 rounded-2xl border-2 border-solid border-white px-8 py-2 uppercase text-white transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-brightness-150",
           className,
         )}
       />
