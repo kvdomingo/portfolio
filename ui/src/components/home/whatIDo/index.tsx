@@ -11,14 +11,12 @@ const WhatIDo = block(() => {
   const homeContent = useSelector(selectHomeContent);
 
   return (
-    <div className="bg-slate-900">
-      <div className="container py-12 text-center">
-        <h2 className="section-header text-6xl text-white">What I Do</h2>
-        <hr className="my-8" />
-        <Photography content={homeContent.data?.[0] ?? []} />
-        <Vip content={homeContent.data?.[1] ?? []} />
-        <Dev content={homeContent.data?.[2] ?? []} />
-      </div>
+    <div className="container py-12 text-center">
+      <h2 className="section-header text-6xl text-white">What I Do</h2>
+      <hr className="my-8" />
+      <Photography content={homeContent.data?.[0] ?? []} />
+      <Vip content={homeContent.data?.[1] ?? []} />
+      <Dev content={homeContent.data?.[2] ?? []} />
     </div>
   );
 });

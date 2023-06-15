@@ -4,13 +4,13 @@ env:
   NAME: kvdomingo-dev
 
 dotenv:
-  - .env
+  - api/.env
 
 tasks:
   default:
     desc: Build and start Docker containers
     cmds:
-      - docker compose -p {{.NAME}} up -d --build
+      - docker compose -p {{.NAME}} up -d --build --remove-orphans
 
   setup:
     desc: Run initial setup
@@ -47,4 +47,4 @@ tasks:
   clean:
     desc: Remove containers
     cmds:
-      - docker compose -p {{.NAME}} down -v --remove-orphans
+      - docker compose -p {{.NAME}} down --remove-orphans {{.CLI_ARGS}}

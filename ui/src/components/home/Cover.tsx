@@ -22,7 +22,7 @@ const Cover = block(() => {
           <AdvancedImage
             cldImg={cld.image("logo/logo-white")}
             plugins={[responsive(), placeholder()]}
-            className="w-full max-w-[66.67vw] border-[3px] border-solid border-white p-6 md:max-w-[25vw] md:p-12"
+            className="w-full max-w-[25vw] border-[3px] border-solid border-white p-6"
           />
         </span>
       </div>

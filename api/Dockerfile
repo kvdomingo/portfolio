@@ -24,4 +24,4 @@ FROM deps AS dev
 
 WORKDIR /backend
 
-ENTRYPOINT [ "gunicorn", "--bind", "0.0.0.0:5000", "--config", "gunicorn.conf.py", "--reload" ]
+ENTRYPOINT [ "gunicorn", "--bind", "unix:/tmp/gunicorn/gunicorn.sock", "--config", "gunicorn.conf.py", "--reload" ]
