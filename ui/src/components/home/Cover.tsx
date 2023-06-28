@@ -21,7 +21,7 @@ function Cover() {
           <AdvancedImage
             cldImg={cld.image("logo/logo-white")}
             plugins={[responsive(), placeholder()]}
-            className="w-full max-w-[25vw] border-[3px] border-solid border-white p-6"
+            className="w-[75vw] border-[3px] border-solid border-white p-6 md:w-[25vw]"
           />
         </span>
       </div>
