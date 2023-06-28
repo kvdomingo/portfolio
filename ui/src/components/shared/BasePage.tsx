@@ -2,17 +2,15 @@ import { ReactNode } from "react";
 import { useNavigation } from "react-router-dom";
 
 import { LinearProgress } from "@mui/material";
-import { block } from "million/react";
 
 import GAUtil from "@/components/shared/GAUtil.tsx";
 import Navbar from "@/components/shared/Navbar.tsx";
-import { MillionProps } from "@/types";
 
-interface BasePageProps extends MillionProps {
+interface BasePageProps {
   children?: ReactNode;
 }
 
-const BasePage = block<BasePageProps>(({ children }) => {
+function BasePage({ children }: BasePageProps) {
   const navigation = useNavigation();
 
   return (
@@ -27,6 +25,6 @@ const BasePage = block<BasePageProps>(({ children }) => {
       {children}
     </div>
   );
-});
+}
 
 export default BasePage;

@@ -30,7 +30,6 @@
     "html-react-parser": "^3.0.4",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.233.0",
-    "million": "^2.4.6-beta.2",
     "react": "^18.2.0",
     "react-before-after-slider-component": "^1.1.5",
     "react-dom": "^18.2.0",

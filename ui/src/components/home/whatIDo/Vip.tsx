@@ -2,7 +2,6 @@ import BeforeAfterSlider from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { block } from "million/react";
 
 import cld from "@/api/cloudinary";
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
@@ -10,14 +9,13 @@ import Loading from "@/components/shared/Loading";
 import { selectHomeContent } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 import theme from "@/theme.ts";
-import { MillionProps } from "@/types";
 import { HomeContent } from "@/types/home.ts";
 
-interface VipProps extends MillionProps {
+interface VipProps {
   content: HomeContent;
 }
 
-const Vip = block<VipProps>(({ content }) => {
+function Vip({ content }: VipProps) {
   const { loaded } = useSelector(selectHomeContent);
   const imgBefore = cld
     .image("svip/186/7-ImageSegment/cancer")
@@ -49,6 +47,6 @@ const Vip = block<VipProps>(({ content }) => {
       </div>
     </div>
   );
-});
+}
 
 export default Vip;

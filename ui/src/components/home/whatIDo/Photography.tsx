@@ -1,19 +1,16 @@
-import { block } from "million/react";
-
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
 import Loading from "@/components/shared/Loading";
 import { selectHomeContent } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
-import { MillionProps } from "@/types";
 import { HomeContent } from "@/types/home.ts";
 
 import Carousel from "./Carousel";
 
-interface PhotographyProps extends MillionProps {
+interface PhotographyProps {
   content: HomeContent;
 }
 
-const Photography = block<PhotographyProps>(({ content }) => {
+function Photography({ content }: PhotographyProps) {
   const { loaded } = useSelector(selectHomeContent);
 
   return !loaded ? (
@@ -32,6 +29,6 @@ const Photography = block<PhotographyProps>(({ content }) => {
       </div>
     </div>
   );
-});
+}
 
 export default Photography;

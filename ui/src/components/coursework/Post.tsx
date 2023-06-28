@@ -20,7 +20,6 @@ import {
   Typography,
 } from "@mui/material";
 import dateFormat from "dateformat";
-import { For } from "million/react";
 
 import BasePage from "@/components/shared/BasePage.tsx";
 import Chip from "@/components/shared/Chip.tsx";
@@ -141,9 +140,9 @@ function Post() {
         </div>
         <div className="my-12">
           <Typography variant="h5">Keywords</Typography>
-          <For each={data.keywords.split(", ")}>
-            {keyword => <Chip key={keyword}>{keyword}</Chip>}
-          </For>
+          {data.keywords.split(", ").map(keyword => (
+            <Chip key={keyword}>{keyword}</Chip>
+          ))}
         </div>
       </div>
     </BasePage>

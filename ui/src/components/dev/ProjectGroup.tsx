@@ -1,21 +1,18 @@
-import { For, block } from "million/react";
-
 import ProjectItem from "@/components/dev/ProjectItem.tsx";
-import { MillionProps } from "@/types";
 import { DevProjectMetadata } from "@/types/dev.ts";
 
-interface ProjectGroupProps extends MillionProps {
+interface ProjectGroupProps {
   projects: DevProjectMetadata[];
 }
 
-const ProjectGroup = block<ProjectGroupProps>(({ projects }) => {
+function ProjectGroup({ projects }: ProjectGroupProps) {
   return projects.length === 0 ? null : (
     <div className="grid">
-      <For each={projects}>
-        {project => <ProjectItem key={project.id} project={project} />}
-      </For>
+      {projects.map(project => (
+        <ProjectItem key={project.id} project={project} />
+      ))}
     </div>
   );
-});
+}
 
 export default ProjectGroup;

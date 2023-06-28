@@ -1,10 +1,9 @@
 import { AdvancedImage, placeholder, responsive } from "@cloudinary/react";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { block } from "million/react";
 
 import cld from "../../api/cloudinary";
 
-const Cover = block(() => {
+function Cover() {
   const backgroundImage = cld
     .image(
       "kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1",
@@ -28,6 +27,6 @@ const Cover = block(() => {
       </div>
     </div>
   );
-});
+}
 
 export default Cover;

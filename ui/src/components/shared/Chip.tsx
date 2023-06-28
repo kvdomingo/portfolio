@@ -1,16 +1,13 @@
 import { ReactNode } from "react";
 
-import { block } from "million/react";
-
-import { MillionProps } from "@/types";
 import { cn } from "@/utils";
 
-interface ChipProps extends MillionProps {
+interface ChipProps {
   children?: ReactNode;
   className?: string;
 }
 
-const Chip = block<ChipProps>(({ className, children }) => {
+function Chip({ className, children }: ChipProps) {
   return (
     <div
       className={cn(
@@ -21,6 +18,6 @@ const Chip = block<ChipProps>(({ className, children }) => {
       {children}
     </div>
   );
-});
+}
 
 export default Chip;

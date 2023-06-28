@@ -1,20 +1,12 @@
 import { ReactNode } from "react";
 
-import { block } from "million/react";
-
-import { MillionProps } from "@/types";
-
-interface TimelineSectionProps extends MillionProps {
+interface TimelineSectionProps {
   name: string;
   icon: ReactNode;
   children: ReactNode;
 }
 
-const TimelineSection = block<TimelineSectionProps>(function ({
-  name,
-  icon,
-  children,
-}) {
+function TimelineSection({ name, icon, children }: TimelineSectionProps) {
   return (
     <div data-aos="fade-up" className="mb-12">
       <h3 className="flex place-items-center text-4xl">
@@ -24,6 +16,6 @@ const TimelineSection = block<TimelineSectionProps>(function ({
       <div className="container">{children}</div>
     </div>
   );
-});
+}
 
 export default TimelineSection;

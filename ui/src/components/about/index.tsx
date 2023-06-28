@@ -1,5 +1,3 @@
-import { block } from "million/react";
-
 import BasePage from "@/components/shared/BasePage.tsx";
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
 import Image from "@/components/shared/Image.tsx";
@@ -9,7 +7,7 @@ import { useSelector } from "@/store/hooks.ts";
 import Title from "../shared/Title";
 import CurriculumVitae from "./CurriculumVitae.tsx";
 
-const About = block(() => {
+function About() {
   const aboutContent = useSelector(selectAboutContent);
 
   return (
@@ -51,6 +49,6 @@ const About = block(() => {
       </div>
     </BasePage>
   );
-});
+}
 
 export default About;

@@ -1,16 +1,14 @@
 import { AccessTime, Public } from "@mui/icons-material";
 import dateFormat from "dateformat";
-import { For, block } from "million/react";
 
 import Chip from "@/components/shared/Chip.tsx";
-import { MillionProps } from "@/types";
 import { DevProjectMetadata } from "@/types/dev.ts";
 
-interface ProjectItemProps extends MillionProps {
+interface ProjectItemProps {
   project: DevProjectMetadata;
 }
 
-const ProjectItem = block<ProjectItemProps>(({ project }) => {
+function ProjectItem({ project }: ProjectItemProps) {
   return (
     <div
       key={project.id}
@@ -58,13 +56,13 @@ const ProjectItem = block<ProjectItemProps>(({ project }) => {
         )}
         <p className="my-8">{project.summary}</p>
         <div>
-          <For each={project.technologies.split(", ")}>
-            {tech => <Chip key={tech}>{tech}</Chip>}
-          </For>
+          {project.technologies.split(", ").map(tech => (
+            <Chip key={tech}>{tech}</Chip>
+          ))}
         </div>
       </div>
     </div>
   );
-});
+}
 
 export default ProjectItem;

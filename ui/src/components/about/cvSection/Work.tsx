@@ -9,7 +9,6 @@ import {
   timelineItemClasses,
 } from "@mui/lab";
 import dateFormat from "dateformat";
-import { block } from "million/react";
 
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
 import { selectCV } from "@/store/generalSlice.ts";
@@ -17,7 +16,7 @@ import { useSelector } from "@/store/hooks.ts";
 
 import TimelineSection from "../TimelineSection";
 
-const Work = block(() => {
+function Work() {
   const { data } = useSelector(selectCV);
 
   return (
@@ -34,7 +33,7 @@ const Work = block(() => {
         }}
       >
         {data.work.map(work => (
-          <TimelineItem>
+          <TimelineItem key={work.id}>
             <TimelineSeparator>
               <TimelineDot color="primary" variant="outlined" />
               <TimelineConnector />
@@ -73,6 +72,6 @@ const Work = block(() => {
       </Timeline>
     </TimelineSection>
   );
-});
+}
 
 export default Work;

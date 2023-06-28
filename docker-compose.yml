@@ -48,7 +48,7 @@ services:
     volumes:
       - ./credentials.json:/config
     command:
-      - my-projects-306716:asia-east1:schedule-bot
+      - "my-projects-306716:asia-east1:schedule-bot"
       - "--credentials-file=/config"
       - "--address=0.0.0.0"
       - "--port=3306"

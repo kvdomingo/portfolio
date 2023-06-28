@@ -9,14 +9,13 @@ import {
   timelineItemClasses,
 } from "@mui/lab";
 import dateFormat from "dateformat";
-import { block } from "million/react";
 
 import { selectCV } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
 import TimelineSection from "../TimelineSection";
 
-const Education = block(() => {
+function Education() {
   const { data } = useSelector(selectCV);
 
   return (
@@ -32,8 +31,8 @@ const Education = block(() => {
           },
         }}
       >
-        {data.education.map(ed => (
-          <TimelineItem>
+        {data.education.map(edu => (
+          <TimelineItem key={edu.id}>
             <TimelineSeparator>
               <TimelineDot
                 color="primary"
@@ -45,24 +44,24 @@ const Education = block(() => {
             <TimelineContent>
               <div className="grid grid-cols-2">
                 <div>
-                  <h5 className="text-2xl">{ed.university}</h5>
+                  <h5 className="text-2xl">{edu.university}</h5>
                 </div>
                 <div className="flex justify-start text-gray-300 small-caps md:justify-end">
                   <AccessTime className="mr-2" />
-                  {dateFormat(new Date(ed.startDate), "mmm yyyy")} –{" "}
-                  {dateFormat(new Date(ed.endDate), "mmm yyyy")}
+                  {dateFormat(new Date(edu.startDate), "mmm yyyy")} –{" "}
+                  {dateFormat(new Date(edu.endDate), "mmm yyyy")}
                 </div>
               </div>
               <a
-                href={ed.departmentUrl}
+                href={edu.departmentUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {ed.department}
+                {edu.department}
               </a>
-              <p className="my-4">{ed.degree}</p>
+              <p className="my-4">{edu.degree}</p>
               <p className="text-sm">
-                Thesis: <i>{ed.thesis}</i>
+                Thesis: <i>{edu.thesis}</i>
               </p>
             </TimelineContent>
           </TimelineItem>
@@ -70,6 +69,6 @@ const Education = block(() => {
       </Timeline>
     </TimelineSection>
   );
-});
+}
 
 export default Education;

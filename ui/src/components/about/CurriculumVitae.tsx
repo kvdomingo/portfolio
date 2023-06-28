@@ -1,5 +1,3 @@
-import { block } from "million/react";
-
 import Certification from "./cvSection/Certification";
 import CodingStats from "./cvSection/CodingStats.tsx";
 import Education from "./cvSection/Education";
@@ -8,7 +6,7 @@ import Publication from "./cvSection/Publication";
 import Reference from "./cvSection/Reference";
 import Work from "./cvSection/Work";
 
-const CurriculumVitae = block(() => {
+function CurriculumVitae() {
   return (
     <>
       <Education />
@@ -20,6 +18,6 @@ const CurriculumVitae = block(() => {
       <CodingStats />
     </>
   );
-});
+}
 
 export default CurriculumVitae;

@@ -4,14 +4,13 @@ import { autoPlay } from "react-swipeable-views-utils";
 
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { MobileStepper } from "@mui/material";
-import { block } from "million/react";
 
 import cld from "../../../api/cloudinary";
 import carouselData from "./carouselData.json";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const Carousel = block(() => {
+function Carousel() {
   const [activeStep, setActiveStep] = useState(0);
   const images = carouselData.map(c => ({
     publicId: c,
@@ -60,6 +59,6 @@ const Carousel = block(() => {
       />
     </div>
   );
-});
+}
 
 export default Carousel;

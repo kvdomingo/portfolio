@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { Box, Button, Menu, MenuItem, useScrollTrigger } from "@mui/material";
-import { block } from "million/react";
 
 import Image from "@/components/shared/Image.tsx";
 import { cn } from "@/utils";
@@ -22,7 +21,7 @@ const PORTFOLIO_LINKS = [
   { path: "/svip", label: "Coursework" },
 ];
 
-const Navbar = block(() => {
+function Navbar() {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const headerRef = useRef<HTMLElement>(null!);
@@ -130,6 +129,6 @@ const Navbar = block(() => {
       </Menu>
     </>
   );
-});
+}
 
 export default Navbar;

@@ -1,5 +1,4 @@
 import react from "@vitejs/plugin-react";
-import million from "million/compiler";
 import * as path from "path";
 import { defineConfig } from "vite";
 
@@ -10,5 +9,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [million.vite({ optimize: true }), react()],
+  plugins: [react()],
 });

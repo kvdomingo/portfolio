@@ -1,24 +1,20 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, useCallback } from "react";
 import { Link } from "react-router-dom";
 
-import { block } from "million/react";
-
-import { MillionProps } from "@/types";
 import { cn } from "@/utils";
 
 interface ButtonLinkProps
   extends DetailedHTMLProps<
-      ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >,
-    MillionProps {
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   to?: string;
   email?: string;
 }
 
-const ButtonLink = block<ButtonLinkProps>(
-  ({ to, className = "", email, ...props }) => {
-    const ChildComponent = () => (
+function ButtonLink({ to, className = "", email, ...props }: ButtonLinkProps) {
+  const ChildComponent = useCallback(
+    () => (
       <button
         {...props}
         className={cn(
@@ -26,18 +22,19 @@ const ButtonLink = block<ButtonLinkProps>(
           className,
         )}
       />
-    );
+    ),
+    [props, className],
+  );
 
-    return !!email ? (
-      <a href={`mailto:${email}`}>
-        <ChildComponent />
-      </a>
-    ) : (
-      <Link to={to ?? "/"}>
-        <ChildComponent />
-      </Link>
-    );
-  },
-);
+  return email ? (
+    <a href={`mailto:${email}`}>
+      <ChildComponent />
+    </a>
+  ) : (
+    <Link to={to ?? "/"}>
+      <ChildComponent />
+    </Link>
+  );
+}
 
 export default ButtonLink;

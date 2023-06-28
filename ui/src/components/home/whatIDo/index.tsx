@@ -1,5 +1,3 @@
-import { block } from "million/react";
-
 import { selectHomeContent } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
@@ -7,7 +5,7 @@ import Dev from "./Dev";
 import Photography from "./Photography";
 import Vip from "./Vip";
 
-const WhatIDo = block(() => {
+function WhatIDo() {
   const homeContent = useSelector(selectHomeContent);
 
   return (
@@ -19,6 +17,6 @@ const WhatIDo = block(() => {
       <Dev content={homeContent.data?.[2] ?? []} />
     </div>
   );
-});
+}
 
 export default WhatIDo;

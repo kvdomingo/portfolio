@@ -1,15 +1,13 @@
 import { CardMediaProps } from "@mui/material";
-import { block } from "million/react";
 
 import ButtonLink from "@/components/shared/ButtonLink.tsx";
-import { MillionProps } from "@/types";
 
-interface ButtonCardProps extends CardMediaProps<"img">, MillionProps {
+interface ButtonCardProps extends CardMediaProps<"img"> {
   slug: string;
   summary?: string;
 }
 
-const ButtonCard = block<ButtonCardProps>(props => {
+function ButtonCard(props: ButtonCardProps) {
   return (
     <div
       role={props.role}
@@ -24,6 +22,6 @@ const ButtonCard = block<ButtonCardProps>(props => {
       </div>
     </div>
   );
-});
+}
 
 export default ButtonCard;

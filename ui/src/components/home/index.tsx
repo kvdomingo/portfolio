@@ -1,5 +1,3 @@
-import { block } from "million/react";
-
 import BasePage from "@/components/shared/BasePage.tsx";
 
 import Title from "../shared/Title";
@@ -7,7 +5,7 @@ import Cover from "./Cover";
 import HowIDoIt from "./HowIDoIt";
 import WhatIDo from "./whatIDo";
 
-const Home = block(() => {
+function Home() {
   return (
     <BasePage>
       <Title
@@ -29,6 +27,6 @@ const Home = block(() => {
       <HowIDoIt />
     </BasePage>
   );
-});
+}
 
 export default Home;

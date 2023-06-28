@@ -10,14 +10,13 @@ import {
 } from "@mui/lab";
 import dateFormat from "dateformat";
 import HTMLReactParser from "html-react-parser";
-import { block } from "million/react";
 
 import { selectCV } from "@/store/generalSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
 
 import TimelineSection from "../TimelineSection";
 
-const Project = block(() => {
+function Project() {
   const { data } = useSelector(selectCV);
 
   return (
@@ -67,6 +66,6 @@ const Project = block(() => {
       </Timeline>
     </TimelineSection>
   );
-});
+}
 
 export default Project;

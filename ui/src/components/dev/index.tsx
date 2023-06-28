@@ -1,6 +1,5 @@
 import { GitHub, ViewQuilt } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { For, block } from "million/react";
 
 import BasePage from "@/components/shared/BasePage.tsx";
 import { selectProjects } from "@/store/devSlice.ts";
@@ -11,7 +10,7 @@ import Loading from "../shared/Loading";
 import Title from "../shared/Title";
 import ProjectGroup from "./ProjectGroup";
 
-const SoftwareDevelopment = block(() => {
+function SoftwareDevelopment() {
   const projects = useSelector(selectProjects);
 
   return (
@@ -53,20 +52,18 @@ const SoftwareDevelopment = block(() => {
           </a>
         </div>
         {projects.loaded ? (
-          <For each={["LIV", "WIP", "OFF"] as devProjectStatus[]}>
-            {status => (
-              <ProjectGroup
-                key={status}
-                projects={projects.data.filter(proj => proj.status === status)}
-              />
-            )}
-          </For>
+          (["LIV", "WIP", "OFF"] as devProjectStatus[]).map(status => (
+            <ProjectGroup
+              key={status}
+              projects={projects.data.filter(proj => proj.status === status)}
+            />
+          ))
         ) : (
           <Loading />
         )}
       </div>
     </BasePage>
   );
-});
+}
 
 export default SoftwareDevelopment;
