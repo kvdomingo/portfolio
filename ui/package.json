@@ -38,11 +38,15 @@
     "react-highlight.js": "^1.0.7",
     "react-iframe": "^1.8.4",
     "react-jsx-parser": "^1.29.0",
+    "react-markdown": "^8.0.7",
     "react-mathjax": "^1.0.1",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
     "react-swipeable-views": "^0.14.0",
+    "rehype-mathjax": "^4.0.2",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "^5.1.1",
     "tailwindcss-opentype": "^1.1.0"
   },
   "devDependencies": {
