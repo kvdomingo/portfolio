@@ -13,7 +13,7 @@ function Title({
 }: TitleProps) {
   return (
     <Helmet>
-      <title>{!!title ? `${title} | ` : ""}KVD Studio</title>
+      <title>{title ? `${title} | ` : ""}KVD Studio</title>
       <meta name="keywords" content={keywords.join(", ")} />
       <meta name="description" content={description} />
       <meta name="og:description" content={description} />

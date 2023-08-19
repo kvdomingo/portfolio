@@ -1,4 +1,8 @@
-export type devProjectStatus = "WIP" | "LIV" | "OFF";
+export enum DevProjectStatus {
+  WORK_IN_PROGRESS = "WIP",
+  LIVE = "LIV",
+  ARCHIVED = "OFF",
+}
 
 export enum DevProjectStatusEnum {
   WIP = "In Progress",
@@ -21,5 +25,5 @@ export interface DevProjectMetadata {
   keywords: string;
   technologies: string;
   coverPhoto: string;
-  status: devProjectStatus;
+  status: DevProjectStatus;
 }

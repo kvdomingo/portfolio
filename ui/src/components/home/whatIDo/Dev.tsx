@@ -15,13 +15,6 @@ function Dev({ content }: DevProps) {
     <Loading color="white" />
   ) : (
     <div data-aos="fade-up" className="my-24 grid grid-cols-5 gap-36">
-      <div className="col-span-3 my-auto text-left">
-        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
-          {content.sectionHeader}
-        </h3>
-        <p>{content.sectionBody}</p>
-        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
-      </div>
       <div className="col-span-2 mx-auto my-auto">
         <a
           href="https://www.credential.net/0300e26a-fcdc-40db-a4a0-689fad65ac9b"
@@ -35,6 +28,13 @@ function Dev({ content }: DevProps) {
             className="mx-auto"
           />
         </a>
+      </div>
+      <div className="col-span-3 my-auto text-right">
+        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
+          {content.sectionHeader}
+        </h3>
+        <p>{content.sectionBody}</p>
+        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
       </div>
     </div>
   );
