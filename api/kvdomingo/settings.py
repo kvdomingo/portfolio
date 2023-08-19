@@ -70,18 +70,14 @@ ROOT_URLCONF = "kvdomingo.urls"
 
 CORS_ORIGIN_ALLOW_ALL = not IN_PRODUCTION
 
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https:\/\/kvd\.studio$",
-    r"^https:\/\/kvdomingo\.(xyz|dev)$",
+CORS_ALLOWED_ORIGINS = [
+    "https://kvd.studio",
+    "https://kvdstudio-portfolio-staging.vercel.app",
 ]
 
 CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://kvdomingo.xyz",
-    "https://kvdomingo.dev",
-    "https://kvd.studio",
-]
+CSRF_TRUSTED_ORIGINS = ["https://kvd.studio"]
 
 TEMPLATES = [
     {
