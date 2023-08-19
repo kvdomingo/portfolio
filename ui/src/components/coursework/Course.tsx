@@ -5,7 +5,6 @@ import {
   Breadcrumbs,
   Card,
   CardMedia,
-  Container,
   Grid,
   Typography,
 } from "@mui/material";
@@ -42,7 +41,7 @@ function Course() {
           "Kenneth V. Domingo",
         ]}
       />
-      <Container>
+      <div className="container">
         <Breadcrumbs sx={{ mb: 4 }}>
           <Box
             component={Link}
@@ -78,7 +77,7 @@ function Course() {
             ))
           )}
         </Grid>
-      </Container>
+      </div>
     </BasePage>
   );
 }

@@ -2,7 +2,7 @@ import { AccessTime, Public } from "@mui/icons-material";
 import dateFormat from "dateformat";
 
 import Chip from "@/components/shared/Chip.tsx";
-import { DevProjectMetadata } from "@/types/dev.ts";
+import { DevProjectMetadata, DevProjectStatus } from "@/types/dev.ts";
 
 interface ProjectItemProps {
   project: DevProjectMetadata;
@@ -12,11 +12,19 @@ function ProjectItem({ project }: ProjectItemProps) {
   return (
     <div
       key={project.id}
-      className="mb-8 grid grid-cols-4 place-content-start gap-8 border-t-2 border-solid border-white pt-8"
+      className="mb-8 grid grid-cols-4 place-content-start gap-8 border-t border-solid border-slate-600 pt-8"
       data-aos="fade-up"
     >
       <div>
-        <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={
+            project.status === DevProjectStatus.ARCHIVED
+              ? undefined
+              : project.projectUrl
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             src={project.coverPhoto}
             alt={project.title}
@@ -33,7 +41,7 @@ function ProjectItem({ project }: ProjectItemProps) {
             <AccessTime className="mr-2" />
             <p className="small-caps">
               {dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
-              {!!project.endDate
+              {project.endDate
                 ? dateFormat(new Date(project.endDate), "mmm yyyy")
                 : "present"}
             </p>

@@ -14,7 +14,7 @@ function BasePage({ children }: BasePageProps) {
   const navigation = useNavigation();
 
   return (
-    <div className="bg-slate-900">
+    <div className="my-0 min-h-screen pb-14 pt-0">
       <GAUtil />
       {navigation.state === "loading" && (
         <div className="fixed top-0 z-20 w-full">

@@ -47,4 +47,8 @@ function Image({
   );
 }
 
-export default memo(Image);
+const MemoizedImage = memo(Image);
+
+MemoizedImage.displayName = "Image";
+
+export default MemoizedImage;

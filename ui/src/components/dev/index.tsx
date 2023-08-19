@@ -4,7 +4,7 @@ import { IconButton } from "@mui/material";
 import BasePage from "@/components/shared/BasePage.tsx";
 import { selectProjects } from "@/store/devSlice.ts";
 import { useSelector } from "@/store/hooks.ts";
-import { devProjectStatus } from "@/types/dev.ts";
+import { DevProjectStatus } from "@/types/dev.ts";
 
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
@@ -52,9 +52,10 @@ function SoftwareDevelopment() {
           </a>
         </div>
         {projects.loaded ? (
-          (["LIV", "WIP", "OFF"] as devProjectStatus[]).map(status => (
+          (["LIV", "WIP", "OFF"] as DevProjectStatus[]).map(status => (
             <ProjectGroup
               key={status}
+              status={status}
               projects={projects.data.filter(proj => proj.status === status)}
             />
           ))

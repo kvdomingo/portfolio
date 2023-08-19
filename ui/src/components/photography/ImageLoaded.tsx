@@ -1,9 +1,12 @@
 import { useState } from "react";
+
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Box, Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import { motion } from "framer-motion";
-import cld from "../../api/cloudinary";
-import { ImageMetadata } from "../../types/photography";
+
+import cld from "@/api/cloudinary";
+import { ImageMetadata } from "@/types/photography";
+import { cn } from "@/utils";
 
 interface ImageLoadedProps {
   image: ImageMetadata;
@@ -23,24 +26,21 @@ function ImageLoaded({ image, setSelected }: ImageLoadedProps) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <motion.div>
+    <motion.div layout>
       {!loaded && (
-        <Box
-          component={motion.div}
+        <motion.div
           animate="center"
           exit="initial"
           variants={variants}
-          sx={{
-            width: "100%",
-            height: "auto",
-            aspectRatio: `${image.width / image.height}`,
-          }}
+          className={cn(
+            "h-auto w-full",
+            `aspect-[${image.width / image.height}]`,
+          )}
         >
           <Skeleton height="100%" variant="rounded" />
-        </Box>
+        </motion.div>
       )}
-      <Box
-        component={motion.img}
+      <motion.img
         initial="initial"
         animate="center"
         exit="initial"
@@ -56,14 +56,13 @@ function ImageLoaded({ image, setSelected }: ImageLoadedProps) {
         width="100%"
         height="auto"
         layout
-        sx={{
-          aspectRatio: `${image.width / image.height}`,
-          borderRadius: "5px",
-          boxShadow:
-            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-          cursor: "pointer",
-          visibility: loaded ? "visible" : "hidden",
-        }}
+        className={cn(
+          "cursor-pointer rounded drop-shadow-lg",
+          `aspect-[${image.width / image.height}]`,
+          {
+            hidden: !loaded,
+          },
+        )}
         onClick={setSelected}
       />
     </motion.div>
