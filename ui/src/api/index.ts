@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from "axios";
+
 import { ImageMetadata } from "../types/photography";
 
-const baseURL = "/api";
+const baseURL =
+  import.meta.env.MODE === "staging" ? "https://kvd.studio/api" : "/api";
 
 const axi = axios.create({ baseURL });
 
