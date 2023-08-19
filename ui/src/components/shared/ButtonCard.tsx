@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
-import { Box, Button, CardMediaProps, Typography } from "@mui/material";
+import { CardMediaProps } from "@mui/material";
+
+import ButtonLink from "@/components/shared/ButtonLink.tsx";
 
 interface ButtonCardProps extends CardMediaProps<"img"> {
   slug: string;
@@ -8,45 +9,18 @@ interface ButtonCardProps extends CardMediaProps<"img"> {
 
 function ButtonCard(props: ButtonCardProps) {
   return (
-    <Box
-      component="div"
+    <div
       role={props.role}
-      sx={{
-        ...props.style,
-        aspectRatio: "1",
-        backgroundSize: "cover",
-        backgroundPosition: "50% 50%",
-      }}
+      style={props.style}
+      className="aspect-square bg-cover bg-center"
     >
-      <Box
-        component="div"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.67)",
-          color: "white",
-        }}
-      >
-        <Link to={props.slug}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            sx={{ color: "white", mx: 8 }}
-          >
-            {props.alt}
-          </Button>
-        </Link>
-        {!!props.summary && (
-          <Typography variant="body1" sx={{ m: 4 }}>
-            {props.summary}
-          </Typography>
-        )}
-      </Box>
-    </Box>
+      <div className="flex h-full flex-col place-content-center place-items-center bg-black/60 text-center text-white">
+        <ButtonLink to={props.slug} className="mx-8">
+          {props.alt}
+        </ButtonLink>
+        {!!props.summary && <p className="m-8">{props.summary}</p>}
+      </div>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+
 import {
   Box,
   Breadcrumbs,
@@ -9,63 +9,26 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import api from "../../api";
-import {
-  selectCourses,
-  selectPosts,
-  updateCourses,
-  updatePosts,
-} from "../../store/courseworkSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
-import { CourseworkPostMetadata } from "../../types/coursework";
+
+import BasePage from "@/components/shared/BasePage.tsx";
+import { selectCourses, selectPosts } from "@/store/courseworkSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+import { CourseworkPostMetadata } from "@/types/coursework.ts";
+
 import ButtonCard from "../shared/ButtonCard";
 import Loading from "../shared/Loading";
 import Title from "../shared/Title";
 
 function Course() {
-  const dispatch = useDispatch();
   const { courseSlug } = useParams();
   const courses = useSelector(selectCourses);
   const posts = useSelector(selectPosts);
   const currentCourse = courses.data.find(c => c.slug === courseSlug);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!courses.loaded) {
-      api.svip
-        .courses()
-        .then(res =>
-          dispatch(
-            updateCourses({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, courses.loaded]);
-
-  useEffect(() => {
-    setLoading(true);
-    api.svip
-      .blogPost("subject__slug", courseSlug!)
-      .then(res =>
-        dispatch(
-          updatePosts({
-            data: res.data,
-            loaded: true,
-          }),
-        ),
-      )
-      .catch(err => console.error(err.message))
-      .finally(() => setLoading(false));
-  }, [dispatch, courseSlug]);
 
   return currentCourse == null ? (
     <Loading />
   ) : (
-    <>
+    <BasePage>
       <Title
         title={currentCourse.name}
         description={`Portfolio & coursework on ${currentCourse.name} (${currentCourse.title}): ${currentCourse.description}`}
@@ -98,7 +61,7 @@ function Course() {
           {currentCourse.description}
         </Typography>
         <Grid container spacing={2}>
-          {loading ? (
+          {!(courses.loaded || posts.loaded) ? (
             <Loading />
           ) : (
             posts.data.map((post: CourseworkPostMetadata) => (
@@ -116,7 +79,7 @@ function Course() {
           )}
         </Grid>
       </Container>
-    </>
+    </BasePage>
   );
 }
 

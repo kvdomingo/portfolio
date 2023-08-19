@@ -1,15 +1,28 @@
+html {
+  background-color: #0f172a;
+}
+
+body {
+  margin: 0;
+  font-family: "Rubik", "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  color: #818cf8;
+  font-family: "Inconsolata", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+
 .section-header {
   letter-spacing: 0.25em;
   text-transform: uppercase;
 }
 
-a {
-  color: #9c27b0;
+a[href] {
+  color: #818cf8;
   text-decoration: none;
-}
-
-code {
-  color: #9c27b0;
 }
 
 ol.reference {

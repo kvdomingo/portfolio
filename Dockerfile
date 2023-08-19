@@ -1,4 +1,4 @@
-FROM node:16-alpine as build
+FROM node:16-alpine AS build
 
 WORKDIR /web
 
@@ -6,7 +6,7 @@ COPY ./ui/ ./
 
 RUN yarn install && yarn build
 
-FROM python:3.10-bullseye
+FROM python:3.10-bullseye AS deps
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
@@ -27,6 +27,8 @@ WORKDIR /tmp
 COPY ./api/poetry.lock ./api/pyproject.toml ./
 
 RUN poetry export --without-hashes -f requirements.txt | pip install -r /dev/stdin
+
+FROM deps AS prod
 
 WORKDIR /backend
 

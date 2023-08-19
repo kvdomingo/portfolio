@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Highlight from "react-highlight.js";
 import IFrame from "react-iframe";
 import MathJax from "react-mathjax";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
+
 import { AccessTime } from "@mui/icons-material";
 import {
   Box,
   Breadcrumbs,
-  Chip,
   Container,
   Grid,
   Paper,
@@ -20,10 +20,13 @@ import {
   Typography,
 } from "@mui/material";
 import dateFormat from "dateformat";
-import api from "../../api";
-import { selectCourses, updateCourses } from "../../store/courseworkSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
-import { CourseworkPostMetadata } from "../../types/coursework";
+
+import BasePage from "@/components/shared/BasePage.tsx";
+import Chip from "@/components/shared/Chip.tsx";
+import { selectCourses } from "@/store/courseworkSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+import { CourseworkPostMetadata } from "@/types/coursework.ts";
+
 import Image from "../shared/Image";
 import JsxRenderer from "../shared/JsxRenderer";
 import Loading from "../shared/Loading";
@@ -37,58 +40,31 @@ import PopulateTable from "./PopulateTable";
 const READ_FROM_JSX = process.env.NODE_ENV === "development";
 
 function Post() {
-  const dispatch = useDispatch();
   const { courseSlug, postSlug } = useParams();
+  const data = useLoaderData() as CourseworkPostMetadata | null;
   const courses = useSelector(selectCourses);
   const subject = courses.data.find(c => c.slug === courseSlug);
-  const [data, setData] = useState<CourseworkPostMetadata>(null!);
-  const [loading, setLoading] = useState(false);
   const BodyJsx = useRef<any | (() => null)>(() => null);
 
-  useEffect(() => {
-    if (postSlug) {
-      api.svip
-        .blogPost("slug", postSlug)
-        .then(res => {
-          setData(res.data[0]);
-          if (READ_FROM_JSX) {
-            try {
-              import(`./content/${courseSlug}/${postSlug}` /* @vite-ignore */)
-                .then(res => (BodyJsx.current = res.default))
-                .catch(err => {
-                  console.error(err);
-                  BodyJsx.current = () => null;
-                });
-            } catch (e) {
-              BodyJsx.current = () => null;
-            }
-          }
-        })
-        .catch(err => console.error(err.message))
-        .finally(() => setLoading(false));
+  if (data != null) {
+    if (READ_FROM_JSX) {
+      try {
+        import(`./content/${courseSlug}/${postSlug}` /* @vite-ignore */)
+          .then(res => (BodyJsx.current = res.default))
+          .catch(err => {
+            console.error(err);
+            BodyJsx.current = () => null;
+          });
+      } catch (e) {
+        BodyJsx.current = () => null;
+      }
     }
-  }, [courseSlug, postSlug]);
+  }
 
-  useEffect(() => {
-    if (!courses.loaded) {
-      api.svip
-        .courses()
-        .then(res =>
-          dispatch(
-            updateCourses({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, courses.loaded]);
-
-  return loading || !data || !subject ? (
+  return data == null || !subject ? (
     <Loading />
   ) : (
-    <>
+    <BasePage>
       <Title
         title={data.title}
         description={`${subject.name} - ${data.title}`}
@@ -102,39 +78,18 @@ function Post() {
           "Kenneth V. Domingo",
         ]}
       />
-      <Container>
-        <Breadcrumbs sx={{ mb: 4 }}>
-          <Box
-            component={Link}
-            to="/svip"
-            sx={{ color: "primary.main", textDecoration: "none" }}
-          >
-            Courses
-          </Box>
-          <Box
-            component={Link}
-            to=".."
-            sx={{ color: "primary.main", textDecoration: "none" }}
-          >
-            {subject.name}
-          </Box>
-          <Typography sx={{ color: "text.secondary" }}>{data.title}</Typography>
+      <div className="container">
+        <Breadcrumbs className="mb-8">
+          <Link to="/svip">Courses</Link>
+          <Link to="..">{subject.name}</Link>
+          <text className="text-gray-400">{data.title}</text>
         </Breadcrumbs>
-        <Typography variant="h3" sx={{ mb: 1 }}>
-          {data.title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          color="text.secondary"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <AccessTime sx={{ mr: 1 }} />
+        <h3 className="mb-2 text-4xl">{data.title}</h3>
+        <p className="flex items-center text-gray-400">
+          <AccessTime className="mr-2" />
           {dateFormat(data.created, "HH:MM, d mmm yyyy")}
-        </Typography>
-        <Box component="div" sx={{ my: 6 }}>
+        </p>
+        <div className="my-12">
           <MathJax.Provider>
             {READ_FROM_JSX ? (
               <BodyJsx.current />
@@ -182,15 +137,15 @@ function Post() {
               />
             )}
           </MathJax.Provider>
-        </Box>
-        <Box component="div" sx={{ my: 6 }}>
+        </div>
+        <div className="my-12">
           <Typography variant="h5">Keywords</Typography>
-          {data.keywords.split(", ").map(kw => (
-            <Chip label={kw} key={kw} sx={{ m: 0.5 }} />
+          {data.keywords.split(", ").map(keyword => (
+            <Chip key={keyword}>{keyword}</Chip>
           ))}
-        </Box>
-      </Container>
-    </>
+        </div>
+      </div>
+    </BasePage>
   );
 }
 

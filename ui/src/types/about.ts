@@ -6,6 +6,7 @@ export interface AboutContent {
 
 export interface CVContent {
   education: {
+    id: number;
     university: string;
     department: string;
     departmentUrl: string;
@@ -15,6 +16,7 @@ export interface CVContent {
     endDate: string;
   }[];
   work: {
+    id: number;
     position: string;
     startDate: string;
     endDate: string;
@@ -24,6 +26,7 @@ export interface CVContent {
     relatedProject: string;
   }[];
   project: {
+    id: number;
     name: string;
     startDate: string;
     endDate: string;
@@ -32,6 +35,7 @@ export interface CVContent {
     description: string;
   }[];
   certification: {
+    id: number;
     name: string;
     dateGranted: string;
     dateExpired: string;
@@ -40,6 +44,7 @@ export interface CVContent {
     description: string;
   }[];
   publication: {
+    id: number;
     title: string;
     publicationDate: string;
     journal: string;
@@ -49,6 +54,7 @@ export interface CVContent {
     description: string;
   }[];
   reference: {
+    id: number;
     name: string;
     email: string;
     institution: string;

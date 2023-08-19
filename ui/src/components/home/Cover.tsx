@@ -1,6 +1,6 @@
 import { AdvancedImage, placeholder, responsive } from "@cloudinary/react";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Box } from "@mui/material";
+
 import cld from "../../api/cloudinary";
 
 function Cover() {
@@ -12,45 +12,20 @@ function Cover() {
     .toURL();
 
   return (
-    <Box
-      sx={{
-        backgroundAttachment: "fixed",
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundPosition: "50% 50%",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        height: "100vh",
-      }}
+    <div
+      className="h-screen bg-cover bg-fixed bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-          width: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-        }}
-      >
-        <Box
-          component={AdvancedImage}
-          data-aos="fade-up"
-          cldImg={cld.image("logo/logo-white")}
-          plugins={[responsive(), placeholder()]}
-          sx={{
-            maxWidth: {
-              xs: "66.67vw",
-              md: "25vw",
-            },
-            border: "3px solid white",
-            p: {
-              xs: 3,
-              md: 6,
-            },
-          }}
-        />
-      </Box>
-    </Box>
+      <div className="flex h-full w-full place-content-center place-items-center bg-black/70">
+        <span data-aos="fade-up">
+          <AdvancedImage
+            cldImg={cld.image("logo/logo-white")}
+            plugins={[responsive(), placeholder()]}
+            className="w-[75vw] border-[3px] border-solid border-white p-6 md:w-[25vw]"
+          />
+        </span>
+      </div>
+    </div>
   );
 }
 
