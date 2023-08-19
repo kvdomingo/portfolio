@@ -1,5 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { Grid } from "@mui/material";
+
+import BasePage from "@/components/shared/BasePage.tsx";
+
 import Clients from "./Clients";
 import SideNav from "./SideNav";
 
@@ -7,14 +9,16 @@ function Photography() {
   const location = useLocation();
 
   return (
-    <Grid container>
-      <Grid item xs={12} lg={2}>
-        <SideNav />
-      </Grid>
-      <Grid item xs={12} lg px={4}>
-        {location.pathname.endsWith("clients") ? <Clients /> : <Outlet />}
-      </Grid>
-    </Grid>
+    <BasePage>
+      <div className="lg:flex lg:gap-8">
+        <div className="mb-8 lg:flex-none lg:pl-16">
+          <SideNav />
+        </div>
+        <div className="lg:flex-auto">
+          {location.pathname.endsWith("clients") ? <Clients /> : <Outlet />}
+        </div>
+      </div>
+    </BasePage>
   );
 }
 

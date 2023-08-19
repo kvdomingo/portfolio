@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
-import { Button, Grid, Typography } from "@mui/material";
-import { selectHomeContent } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
-import { HomeContent } from "../../../types/home";
-import Loading from "../../shared/Loading";
+import ButtonLink from "@/components/shared/ButtonLink.tsx";
+import Loading from "@/components/shared/Loading";
+import { selectHomeContent } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+import { HomeContent } from "@/types/home.ts";
 
 interface DevProps {
   content: HomeContent;
@@ -15,30 +14,15 @@ function Dev({ content }: DevProps) {
   return !loaded ? (
     <Loading color="white" />
   ) : (
-    <Grid container data-aos="fade-up" spacing={2} my={4}>
-      <Grid item md textAlign="left">
-        <Typography
-          variant="h4"
-          component="h3"
-          color="white"
-          className="section-header"
-        >
+    <div data-aos="fade-up" className="my-24 grid grid-cols-5 gap-36">
+      <div className="col-span-3 my-auto text-left">
+        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
           {content.sectionHeader}
-        </Typography>
-        <Typography variant="body1" color="white">
-          {content.sectionBody}
-        </Typography>
-        <Link to={content.linkToPortfolio}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            sx={{ mt: 4, color: "white" }}
-          >
-            See in portfolio
-          </Button>
-        </Link>
-      </Grid>
-      <Grid item md>
+        </h3>
+        <p>{content.sectionBody}</p>
+        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
+      </div>
+      <div className="col-span-2 mx-auto my-auto">
         <a
           href="https://www.credential.net/0300e26a-fcdc-40db-a4a0-689fad65ac9b"
           rel="noopener noreferrer"
@@ -47,11 +31,12 @@ function Dev({ content }: DevProps) {
           <img
             src="https://storage.googleapis.com/kvdomingo-xyz-306716-assets/gcp-pca_badge.png"
             alt="Google Cloud Certified Professional Cloud Architect"
-            width="50%"
+            width="66.67%"
+            className="mx-auto"
           />
         </a>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 }
 

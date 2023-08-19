@@ -1,19 +1,15 @@
-import { CircularProgress, Container } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 interface LoadingProps {
-  color: string;
+  color?: string;
 }
 
-function Loading({ color }: LoadingProps) {
+function Loading({ color = "inherit" }: LoadingProps) {
   return (
-    <Container sx={{ textAlign: "center" }}>
+    <div className="container text-center">
       <CircularProgress sx={{ my: 8, color }} />
-    </Container>
+    </div>
   );
 }
-
-Loading.defaultProps = {
-  color: "inherit",
-};
 
 export default Loading;

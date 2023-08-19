@@ -1,15 +1,10 @@
-import { CircularProgress, Grid } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 function FullPageLoading() {
   return (
-    <Grid
-      container
-      sx={{ height: "100vh" }}
-      alignItems="center"
-      justifyContent="center"
-    >
+    <div className="flex h-screen place-content-center place-items-center">
       <CircularProgress disableShrink color="primary" size="10em" />
-    </Grid>
+    </div>
   );
 }
 

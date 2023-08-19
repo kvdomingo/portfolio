@@ -2,14 +2,15 @@ services:
   api:
     build: api/
     image: kvdomingo/portfolio-api:latest
-    user: "1000:1000"
     env_file: api/.env
     volumes:
       - ./api:/backend
+      - tmp:/tmp/gunicorn
+    depends_on:
+      - db
 
   ui:
     image: node:18-alpine
-    user: "1000:1000"
     environment:
       - NODE_ENV=development
     working_dir: /web
@@ -26,28 +27,78 @@ services:
       - NGINX_HTTP_PORT_NUMBER=8000
     volumes:
       - ./proxy:/opt/bitnami/nginx/conf/server_blocks:ro
+      - tmp:/tmp/gunicorn
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.kvdomingo-xyz.rule=Host(`kvdomingo.localhost`)"
-      - "traefik.http.routers.kvdomingo-xyz.entrypoints=http"
+      - "traefik.http.routers.kvdstudio.rule=Host(`kvdstudio.localhost`)"
+      - "traefik.http.routers.kvdstudio.entrypoints=http"
+      - "traefik.http.routers.kvdstudio.middlewares=secured@file"
       - "traefik.docker.network=gateway"
-      - "traefik.http.services.kvdomingo-xyz.loadbalancer.server.port=8000"
+      - "traefik.http.services.kvdstudio.loadbalancer.server.port=8000"
     restart: unless-stopped
     networks:
       - default
       - gateway
-      
+    depends_on:
+      - api
+      - ui
 
   db:
     image: asia.gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0
     volumes:
       - ./credentials.json:/config
     command:
-      - my-projects-306716:asia-east1:schedule-bot
+      - "my-projects-306716:asia-east1:schedule-bot"
       - "--credentials-file=/config"
       - "--address=0.0.0.0"
       - "--port=3306"
 
+  blog:
+    build: ./blog
+    image: kvdomingo/portfolio-blog:latest
+    env_file: ./blog/.env
+    environment:
+      DATABASE_HOST: db
+    volumes:
+      - ./blog/config:/opt/app/config
+      - ./blog/src:/opt/app/src
+      - ./blog/package.json:/opt/package.json
+      - ./blog/yarn.lock:/opt/yarn.lock
+      - ./blog/.env:/opt/app/.env
+      - ./blog/public/uploads:/opt/app/public/uploads
+    depends_on:
+      - db
+    networks:
+      - default
+      - gateway
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kvdstudio-blog.rule=Host(`strapi.kvdstudio.localhost`)"
+      - "traefik.http.routers.kvdstudio-blog.entrypoints=http"
+      - "traefik.http.routers.kvdstudio-blog.middlewares=secured@file"
+      - "traefik.docker.network=gateway"
+      - "traefik.http.services.kvdstudio-blog.loadbalancer.server.port=1337"
+
+  adminer:
+    image: adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+    networks:
+      - default
+      - gateway
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kvdstudio-adminer.rule=Host(`adminer.kvdstudio.localhost`)"
+      - "traefik.http.routers.kvdstudio-adminer.entrypoints=http"
+      - "traefik.http.routers.kvdstudio-adminer.middlewares=secured@file"
+      - "traefik.docker.network=gateway"
+      - "traefik.http.services.kvdstudio-adminer.loadbalancer.server.port=8080"
+
 networks:
   gateway:
     external: true
+
+volumes:
+  tmp: {}

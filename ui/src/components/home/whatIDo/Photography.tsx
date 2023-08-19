@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { Button, Grid, Typography } from "@mui/material";
-import { selectHomeContent } from "../../../store/generalSlice";
-import { useSelector } from "../../../store/hooks";
-import { HomeContent } from "../../../types/home";
-import Loading from "../../shared/Loading";
+import ButtonLink from "@/components/shared/ButtonLink.tsx";
+import Loading from "@/components/shared/Loading";
+import { selectHomeContent } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+import { HomeContent } from "@/types/home.ts";
+
 import Carousel from "./Carousel";
 
 interface PhotographyProps {
@@ -16,41 +16,18 @@ function Photography({ content }: PhotographyProps) {
   return !loaded ? (
     <Loading color="white" />
   ) : (
-    <Grid container data-aos="fade-up" spacing={2} my={4}>
-      <Grid
-        item
-        md={7}
-        container
-        alignItems="center"
-        alignContent="center"
-        textAlign="left"
-      >
-        <Typography
-          variant="h4"
-          component="h3"
-          color="white"
-          mb={4}
-          className="section-header"
-        >
+    <div data-aos="fade-up" className="my-8 grid grid-cols-5 gap-36">
+      <div className="col-span-3 my-auto text-left">
+        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
           {content.sectionHeader}
-        </Typography>
-        <Typography variant="body1" color="white">
-          {content.sectionBody}
-        </Typography>
-        <Link to={content.linkToPortfolio}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            sx={{ color: "white", mt: 4 }}
-          >
-            See in portfolio
-          </Button>
-        </Link>
-      </Grid>
-      <Grid item md textAlign="center">
+        </h3>
+        <p>{content.sectionBody}</p>
+        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
+      </div>
+      <div className="col-span-2 text-center">
         <Carousel />
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 }
 

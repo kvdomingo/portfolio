@@ -1,107 +1,53 @@
-import { useEffect, useState } from "react";
-import { CloudinaryImage } from "@cloudinary/url-gen";
-import { Resize } from "@cloudinary/url-gen/actions/resize";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import api from "../../api";
-import cld from "../../api/cloudinary";
-import {
-  selectAboutContent,
-  updateAboutContent,
-} from "../../store/generalSlice";
-import { useDispatch, useSelector } from "../../store/hooks";
-import JsxRenderer from "../shared/JsxRenderer";
-import Loading from "../shared/Loading";
+import BasePage from "@/components/shared/BasePage.tsx";
+import ButtonLink from "@/components/shared/ButtonLink.tsx";
+import Image from "@/components/shared/Image.tsx";
+import { selectAboutContent } from "@/store/generalSlice.ts";
+import { useSelector } from "@/store/hooks.ts";
+
 import Title from "../shared/Title";
-import CurrVitae from "./CurrVitae";
+import CurriculumVitae from "./CurriculumVitae.tsx";
 
 function About() {
-  const dispatch = useDispatch();
   const aboutContent = useSelector(selectAboutContent);
-  const [image, setImage] = useState<CloudinaryImage>(null!);
-
-  useEffect(() => {
-    if (aboutContent.loaded) {
-      if (!image) {
-        setImage(
-          cld
-            .image(aboutContent.data[0].picture)
-            .resize(Resize.scale().width("auto")),
-        );
-      }
-    } else {
-      api.home
-        .about()
-        .then(res =>
-          dispatch(
-            updateAboutContent({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, aboutContent, image]);
 
   return (
-    <>
+    <BasePage>
       <Title
         title="About"
         description="About Kenneth V. Domingo and KVD Studio, with curriculum vitae (CV) including educational attainment, work experience, and projects"
         keywords={[
           "curriculum vitae",
-          "cv",
+          "software engineering",
+          "cloud engineering",
           "signal processing",
           "image processing",
           "video processing",
           "computational physics",
           "applied physics",
-          "app physics",
           "coursework",
-          "kvdomingo",
           "Kenneth V. Domingo",
         ]}
       />
-      <Container maxWidth="xl">
-        <Grid container spacing={10}>
-          <Grid item md={4} data-aos="fade-up">
-            {!aboutContent.loaded || !image ? (
-              <Loading />
-            ) : (
-              <>
-                <Box
-                  component="img"
-                  src={image.toURL()}
-                  width="100%"
-                  height="auto"
-                  sx={{
-                    boxShadow: "5px 5px 69px -27px rgba(0, 0, 0, 0.75)",
-                    mb: 4,
-                  }}
-                />
-                <JsxRenderer
-                  jsx={aboutContent.data[0].bio}
-                  components={{ Typography }}
-                />
-              </>
-            )}
-            <a href="mailto:hello@kvdomingo.xyz">
-              <Button
-                variant="outlined"
-                color="inherit"
-                size="large"
-                sx={{ color: "text.primary", borderColor: "text.primary" }}
-              >
-                Contact
-              </Button>
-            </a>
-          </Grid>
-          <Grid item md>
-            <CurrVitae />
-          </Grid>
-        </Grid>
-      </Container>
-    </>
+      <div className="grid gap-8 p-4 md:grid-cols-4 md:p-0">
+        <div data-aos="fade-up">
+          {aboutContent.loaded && (
+            <Image
+              publicId={aboutContent.data[0].picture}
+              className="rounded-3xl md:sticky md:-top-8 md:-z-10 md:-ml-8"
+            />
+          )}
+        </div>
+        <div className="md:col-span-3 md:pr-24">
+          <p className="whitespace-pre-line text-lg">
+            {aboutContent.data[0].bio}
+          </p>
+          <ButtonLink className="mb-16" email="mailto:hello@kvd.studio">
+            Contact
+          </ButtonLink>
+          <CurriculumVitae />
+        </div>
+      </div>
+    </BasePage>
   );
 }
 

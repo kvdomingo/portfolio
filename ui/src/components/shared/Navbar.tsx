@@ -1,35 +1,21 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Resize } from "@cloudinary/url-gen/actions/resize";
-import {
-  AppBar,
-  AppBarProps,
-  Box,
-  Button,
-  Grid,
-  Menu,
-  MenuItem,
-  Toolbar,
-  useScrollTrigger,
-} from "@mui/material";
-import cld from "../../api/cloudinary";
 
-const DARK_LOGO = cld.image("logo/logo-black").resize(Resize.scale()).toURL();
+import { Box, Button, Menu, MenuItem, useScrollTrigger } from "@mui/material";
 
-const LIGHT_LOGO = cld.image("logo/logo-white").resize(Resize.scale()).toURL();
+import Image from "@/components/shared/Image.tsx";
+import { cn } from "@/utils";
 
-const BIG_LOGO_HEIGHT = 70;
-
-const SMALL_LOGO_HEIGHT = 50;
+const LIGHT_LOGO = "logo/logo-white";
 
 const SCROLL_THRESHOLD = 30;
 
-const navLinks = [
+const NAV_LINKS = [
   { path: "/", label: "Home" },
   { path: "/about", label: "About/CV" },
 ];
 
-const portfolioLinks = [
+const PORTFOLIO_LINKS = [
   { path: "/dev", label: "Software" },
   { path: "/photography", label: "Photography" },
   { path: "/svip", label: "Coursework" },
@@ -38,119 +24,55 @@ const portfolioLinks = [
 function Navbar() {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [navStyles, setNavStyles] = useState({
-    background: "rgba(0, 0, 0, 0.0)",
-    height: BIG_LOGO_HEIGHT,
-  });
-  const [navPosition, setNavPosition] = useState<AppBarProps["position"]>(
-    "fixed",
-  );
-  const [logo, setLogo] = useState(LIGHT_LOGO);
-  const [logoOpacity, setLogoOpacity] = useState(1);
-  const [logoHeight, setLogoHeight] = useState(BIG_LOGO_HEIGHT);
-  const trigger = useScrollTrigger({
+  const headerRef = useRef<HTMLElement>(null!);
+  const isPastScrollThreshold = useScrollTrigger({
     disableHysteresis: true,
     threshold: SCROLL_THRESHOLD,
     target: window ? window : undefined,
   });
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    function updateNavStyles() {
-      if (location.pathname === "/") {
-        setNavStyles(style => ({
-          ...style,
-          background: "rgba(0, 0, 0, 0.0)",
-        }));
-        setNavPosition("fixed");
-        setLogo(LIGHT_LOGO);
-        setLogoOpacity(0);
-      } else {
-        setNavStyles(style => ({
-          ...style,
-          background: "rgba(255, 255, 255, 0.9)",
-        }));
-        setNavPosition("relative");
-        setLogo(DARK_LOGO);
-        setLogoOpacity(1);
-      }
-    }
-
-    updateNavStyles();
-  }, [location.pathname]);
-
-  useEffect(() => {
-    function handleScroll() {
-      const style = { ...navStyles };
-      if (window.scrollY < SCROLL_THRESHOLD) {
-        if (location.pathname === "/") {
-          Object.assign(style, { background: "rgba(0, 0, 0, 0.0)" });
-          setLogoOpacity(0);
-        } else {
-          Object.assign(style, { background: "rgba(255, 255, 255, 0.0)" });
-          setLogoOpacity(1);
-        }
-        setLogoHeight(BIG_LOGO_HEIGHT);
-      } else {
-        if (location.pathname === "/") {
-          Object.assign(style, { background: "rgba(0, 0, 0, 0.9)" });
-          setLogoOpacity(1);
-        } else {
-          Object.assign(style, { background: "rgba(255, 255, 255, 0.9)" });
-        }
-        setLogoHeight(SMALL_LOGO_HEIGHT);
-      }
-      setNavStyles(style);
-    }
-
-    handleScroll();
-  }, [trigger, location.pathname]);
+  const isHomepage = location.pathname === "/";
 
   return (
     <>
-      <AppBar
-        position={navPosition}
-        sx={{
-          ...navStyles,
-          boxShadow: "none",
-          height: `calc(${logoHeight}px + 1em)`,
-          transition: "height 100ms ease-in-out",
-        }}
+      <header
+        className={cn("z-10 w-full", {
+          fixed: isHomepage,
+        })}
+        ref={headerRef}
       >
-        <Toolbar sx={{ height: "100%" }}>
-          <Grid container>
-            <Grid item xs container alignItems="center">
+        <nav
+          className={cn(
+            "mb-10 bg-gradient-to-r from-indigo-950 to-slate-900 px-12",
+            "transition-all duration-300 ease-in-out",
+            {
+              "m-8 rounded-[50px] py-2": !isPastScrollThreshold && isHomepage,
+            },
+          )}
+        >
+          <div className="flex">
+            <div className="flex flex-auto items-center">
               <Link to="/">
-                <Box
-                  component="img"
-                  src={logo}
-                  height={logoHeight}
-                  sx={{
-                    opacity: logoOpacity,
-                    transition: "all 100ms ease-in-out",
-                  }}
+                <Image
+                  publicId={LIGHT_LOGO}
+                  alt="logo"
+                  className={cn(
+                    "h-[50px] opacity-0 transition-all duration-300 ease-in-out",
+                    {
+                      "opacity-1 my-2 h-[70px]": isHomepage
+                        ? isPastScrollThreshold
+                        : true,
+                    },
+                  )}
                 />
               </Link>
-            </Grid>
-            <Grid
-              item
-              xs
-              container
-              alignItems="center"
-              justifyContent="flex-end"
-            >
-              {navLinks.map(nav => (
+            </div>
+            <div className="flex flex-auto items-center justify-end">
+              {NAV_LINKS.map(nav => (
                 <Link to={nav.path} key={nav.path}>
                   <Button
+                    disableRipple
                     variant="text"
-                    sx={{
-                      color:
-                        location.pathname === "/" ? "white" : "text.primary",
-                    }}
-                    className="section-header"
+                    className="section-header text-white"
                     size="large"
                   >
                     {nav.label}
@@ -158,20 +80,18 @@ function Navbar() {
                 </Link>
               ))}
               <Button
+                disableRipple
                 variant="text"
-                sx={{
-                  color: location.pathname === "/" ? "white" : "text.primary",
-                }}
-                className="section-header"
+                className="section-header text-white"
                 onClick={e => setAnchorEl(e.currentTarget)}
                 size="large"
               >
                 Portfolio
               </Button>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+            </div>
+          </div>
+        </nav>
+      </header>
 
       <Menu
         open={!!anchorEl}
@@ -186,21 +106,23 @@ function Navbar() {
           vertical: "top",
           horizontal: "right",
         }}
+        PaperProps={{
+          className: "rounded-2xl bg-indigo-900",
+        }}
       >
-        {portfolioLinks.map(port => (
+        {PORTFOLIO_LINKS.map(link => (
           <Box
-            key={port.path}
+            key={link.path}
             component={Link}
-            to={port.path}
-            sx={{ color: "text.primary", textDecoration: "none" }}
-            className="section-header"
+            to={link.path}
+            className="section-header text-white"
           >
             <MenuItem
               onClick={() => setAnchorEl(null)}
               disableRipple
-              sx={{ display: "flex", justifyContent: "right" }}
+              className="flex place-content-end text-white"
             >
-              {port.label}
+              {link.label}
             </MenuItem>
           </Box>
         ))}

@@ -1,36 +1,16 @@
-import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import { Tab, Tabs } from "@mui/material";
-import api from "../../api";
-import { useDispatch, useSelector } from "../../store/hooks";
-import { selectClients, updateClients } from "../../store/photographySlice";
+
 import Title from "../shared/Title";
 import tabsList from "./tabsList.json";
 
 function SideNav() {
-  const dispatch = useDispatch();
   const path = useParams()?.gallerySlug ?? "";
   const navigate = useNavigate();
-  const clients = useSelector(selectClients);
   const activeIndex = tabsList.findIndex(t => t.path === path);
   const activeTab = tabsList[activeIndex];
   const title = activeTab.label[0].toUpperCase() + activeTab.label.slice(1);
-
-  useEffect(() => {
-    if (!clients.loaded) {
-      api.photography
-        .client()
-        .then(res =>
-          dispatch(
-            updateClients({
-              data: res.data,
-              loaded: true,
-            }),
-          ),
-        )
-        .catch(err => console.error(err.message));
-    }
-  }, [dispatch, clients.loaded]);
 
   return (
     <>
