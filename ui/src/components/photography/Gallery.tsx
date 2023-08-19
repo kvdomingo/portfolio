@@ -5,7 +5,6 @@ import { ChevronLeft } from "@mui/icons-material";
 import { Masonry } from "@mui/lab";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import dateFormat from "dateformat";
-import { motion } from "framer-motion";
 
 import { useSelector } from "@/store/hooks.ts";
 import { selectClients, selectLatest } from "@/store/photographySlice.ts";
@@ -48,29 +47,27 @@ function Gallery() {
           </Typography>
         </Breadcrumbs>
       )}
-      <motion.div layout>
-        <Masonry
-          columns={{
-            xs: 1,
-            sm: 2,
-            md: 3,
-            lg: 4,
-          }}
-          spacing={2}
-        >
-          {data.data.map(image => (
-            <ImageLoaded
-              key={image.publicId}
-              image={image}
-              setSelected={() =>
-                setSelected(
-                  data.data.findIndex(d => d.publicId === image.publicId),
-                )
-              }
-            />
-          ))}
-        </Masonry>
-      </motion.div>
+      <Masonry
+        columns={{
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+        }}
+        spacing={2}
+      >
+        {data.data.map(image => (
+          <ImageLoaded
+            key={image.publicId}
+            image={image}
+            setSelected={() =>
+              setSelected(
+                data.data.findIndex(d => d.publicId === image.publicId),
+              )
+            }
+          />
+        ))}
+      </Masonry>
       <Lightbox
         open={selected != null}
         handleClose={() => setSelected(null)}

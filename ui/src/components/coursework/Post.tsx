@@ -37,7 +37,7 @@ import Figure from "./Figure";
 import MultiFigure from "./MultiFigure";
 import PopulateTable from "./PopulateTable";
 
-const READ_FROM_JSX = process.env.NODE_ENV === "development";
+const READ_FROM_JSX = import.meta.env.DEV;
 
 function Post() {
   const { courseSlug, postSlug } = useParams();

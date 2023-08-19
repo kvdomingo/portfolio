@@ -28,22 +28,23 @@ function Vip({ content }: VipProps) {
     <Loading color="white" />
   ) : (
     <div data-aos="fade-up" className="my-8 grid grid-cols-5 gap-36">
+      <div className="col-span-2 my-auto text-left">
+        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
+          {content.sectionHeader}
+        </h3>
+        <p>{content.sectionBody}</p>
+        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
+      </div>
       <div className="col-span-3 my-auto">
         <BeforeAfterSlider
           className="rounded-2xl"
           firstImage={{ imageUrl: imgAfter.toURL(), alt: "cancer otsu" }}
           secondImage={{ imageUrl: imgBefore.toURL(), alt: "cancer" }}
           delimiterIconStyles={{
-            border: `3px solid ${theme.palette.primary.main}`,
+            border: `3px solid ${theme.palette.info.main}`,
           }}
+          currentPercentPosition={33}
         />
-      </div>
-      <div className="col-span-2 my-auto text-right">
-        <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
-          {content.sectionHeader}
-        </h3>
-        <p>{content.sectionBody}</p>
-        <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
       </div>
     </div>
   );

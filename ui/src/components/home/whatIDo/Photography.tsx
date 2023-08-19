@@ -17,14 +17,14 @@ function Photography({ content }: PhotographyProps) {
     <Loading color="white" />
   ) : (
     <div data-aos="fade-up" className="my-8 grid grid-cols-5 gap-36">
-      <div className="col-span-3 my-auto text-left">
+      <div className="col-span-2 my-auto text-left">
         <h3 className="mb-8 text-3xl uppercase tracking-[0.5rem]">
           {content.sectionHeader}
         </h3>
         <p>{content.sectionBody}</p>
         <ButtonLink to={content.linkToPortfolio}>See in portfolio</ButtonLink>
       </div>
-      <div className="col-span-2 text-center">
+      <div className="col-span-3 text-center">
         <Carousel />
       </div>
     </div>
