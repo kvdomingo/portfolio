@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { ChevronLeft } from "@mui/icons-material";
-import { Box, Breadcrumbs, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
 import dateFormat from "dateformat";
 
 import { useSelector } from "@/store/hooks.ts";
@@ -20,7 +20,14 @@ function Gallery() {
   const clientData = clients.data.find(c => c.slug === clientSlug);
   const [selected, setSelected] = useState<number | null>(null);
 
-  const gridArray = useMemo(() => Array(4).fill(null), []);
+  const sm = useMediaQuery("(min-width: 768px)");
+  const md = useMediaQuery("(min-width: 1024px)");
+  const lg = useMediaQuery("(min-width: 1280px)");
+
+  const gridArray = useMemo(
+    () => Array(lg ? 4 : md ? 3 : sm ? 2 : 1).fill(null),
+    [sm, md, lg],
+  );
 
   return !(loaded || clients.loaded) ? (
     <Loading />
@@ -48,7 +55,7 @@ function Gallery() {
           </Typography>
         </Breadcrumbs>
       )}
-      <div className="grid grid-cols-4 gap-4 px-4">
+      <div className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {gridArray.map((_, columnIndex) => {
           const division = Math.ceil(data.length / 4);
           const divisionLength = columnIndex * division;
