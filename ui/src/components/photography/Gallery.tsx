@@ -61,17 +61,14 @@ function Gallery() {
           const divisionLength = columnIndex * division;
 
           return (
-            <div
-              // layout
-              className="flex flex-col gap-4"
-              key={columnIndex}
-            >
+            <div className="flex flex-col gap-4" key={columnIndex}>
               {data
                 .slice(divisionLength, divisionLength + division)
                 .map(image => (
                   <div
                     key={image.publicId}
                     data-aos="fade-up"
+                    className="group cursor-pointer"
                     onClick={() =>
                       setSelected(
                         data.findIndex(d => d.publicId === image.publicId),
@@ -79,6 +76,7 @@ function Gallery() {
                     }
                   >
                     <ImageLoaded key={image.publicId} image={image} />
+                    <div className="absolute left-0 top-0 h-full w-full rounded bg-white opacity-0 transition-opacity group-hover:opacity-10 group-active:opacity-5" />
                   </div>
                 ))}
             </div>
