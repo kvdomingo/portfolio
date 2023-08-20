@@ -44,3 +44,33 @@ ol.reference li::before {
 .math-container {
   overflow-x: auto;
 }
+
+.gallery {
+  width: 100%;
+}
+
+.gallery-sizer,
+.gallery-item {
+  width: 100%;
+}
+
+@media screen and (min-width: theme("screens.sm")) {
+  .gallery-sizer,
+  .gallery-item {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: theme("screens.md")) {
+  .gallery-sizer,
+  .gallery-item {
+    width: 33.333%;
+  }
+}
+
+@media screen and (min-width: theme("screens.lg")) {
+  .gallery-sizer,
+  .gallery-item {
+    width: 25%;
+  }
+}

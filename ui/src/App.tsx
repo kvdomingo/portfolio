@@ -14,7 +14,7 @@ export default function App() {
   const router = createRouter(dispatch);
 
   useEffect(() => {
-    AOS.init({ duration: 300 });
+    AOS.init({ duration: 300, easing: "ease-in-out-sine" });
   }, []);
 
   return (
