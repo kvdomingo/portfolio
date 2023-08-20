@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { ChevronLeft } from "@mui/icons-material";
-import { Masonry } from "@mui/lab";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import dateFormat from "dateformat";
 
@@ -16,12 +15,14 @@ import Lightbox from "./Lightbox";
 function Gallery() {
   const params = useParams();
   const clientSlug = params.clientSlug;
-  const data = useSelector(selectLatest);
+  const { data, loaded } = useSelector(selectLatest);
   const clients = useSelector(selectClients);
   const clientData = clients.data.find(c => c.slug === clientSlug);
   const [selected, setSelected] = useState<number | null>(null);
 
-  return !(data.loaded || clients.loaded) ? (
+  const gridArray = useMemo(() => Array(4).fill(null), []);
+
+  return !(loaded || clients.loaded) ? (
     <Loading />
   ) : (
     <>
@@ -47,31 +48,40 @@ function Gallery() {
           </Typography>
         </Breadcrumbs>
       )}
-      <Masonry
-        columns={{
-          xs: 1,
-          sm: 2,
-          md: 3,
-          lg: 4,
-        }}
-        spacing={2}
-      >
-        {data.data.map(image => (
-          <ImageLoaded
-            key={image.publicId}
-            image={image}
-            setSelected={() =>
-              setSelected(
-                data.data.findIndex(d => d.publicId === image.publicId),
-              )
-            }
-          />
-        ))}
-      </Masonry>
+      <div className="grid grid-cols-4 gap-4 px-4">
+        {gridArray.map((_, columnIndex) => {
+          const division = Math.ceil(data.length / 4);
+          const divisionLength = columnIndex * division;
+
+          return (
+            <div
+              // layout
+              className="flex flex-col gap-4"
+              key={columnIndex}
+            >
+              {data
+                .slice(divisionLength, divisionLength + division)
+                .map(image => (
+                  <div
+                    key={image.publicId}
+                    data-aos="fade-up"
+                    onClick={() =>
+                      setSelected(
+                        data.findIndex(d => d.publicId === image.publicId),
+                      )
+                    }
+                  >
+                    <ImageLoaded key={image.publicId} image={image} />
+                  </div>
+                ))}
+            </div>
+          );
+        })}
+      </div>
       <Lightbox
         open={selected != null}
         handleClose={() => setSelected(null)}
-        imageList={data.data}
+        imageList={data}
         initialIndex={selected}
       />
     </>
