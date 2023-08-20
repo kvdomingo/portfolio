@@ -1,9 +1,11 @@
-import { useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 import { ChevronLeft } from "@mui/icons-material";
-import { Box, Breadcrumbs, Typography, useMediaQuery } from "@mui/material";
+import { Box, Breadcrumbs, Typography } from "@mui/material";
 import dateFormat from "dateformat";
+import ImagesLoaded from "imagesloaded";
+import Masonry from "masonry-layout";
 
 import { useSelector } from "@/store/hooks.ts";
 import { selectClients, selectLatest } from "@/store/photographySlice.ts";
@@ -13,21 +15,39 @@ import ImageLoaded from "./ImageLoaded";
 import Lightbox from "./Lightbox";
 
 function Gallery() {
+  const location = useLocation();
   const params = useParams();
   const clientSlug = params.clientSlug;
   const { data, loaded } = useSelector(selectLatest);
   const clients = useSelector(selectClients);
   const clientData = clients.data.find(c => c.slug === clientSlug);
   const [selected, setSelected] = useState<number | null>(null);
+  const galleryRef = useRef<HTMLDivElement>(null!);
 
-  const sm = useMediaQuery("(min-width: 768px)");
-  const md = useMediaQuery("(min-width: 1024px)");
-  const lg = useMediaQuery("(min-width: 1280px)");
+  useEffect(() => {
+    const masonry = new Masonry(galleryRef.current, {
+      itemSelector: ".gallery-item",
+      percentPosition: true,
+      columnWidth: ".gallery-sizer",
+      horizontalOrder: true,
+    });
 
-  const gridArray = useMemo(
-    () => Array(lg ? 4 : md ? 3 : sm ? 2 : 1).fill(null),
-    [sm, md, lg],
-  );
+    const imagesLoaded = ImagesLoaded(galleryRef.current);
+
+    function onAlways() {
+      masonry.layout && masonry.layout();
+    }
+
+    imagesLoaded.on("progress", onAlways);
+    imagesLoaded.on("done", onAlways);
+    imagesLoaded.on("always", onAlways);
+
+    return () => {
+      imagesLoaded.off("progress", onAlways);
+      imagesLoaded.off("done", onAlways);
+      imagesLoaded.off("always", onAlways);
+    };
+  }, [location.pathname]);
 
   return !(loaded || clients.loaded) ? (
     <Loading />
@@ -55,33 +75,22 @@ function Gallery() {
           </Typography>
         </Breadcrumbs>
       )}
-      <div className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {gridArray.map((_, columnIndex) => {
-          const division = Math.ceil(data.length / 4);
-          const divisionLength = columnIndex * division;
-
-          return (
-            <div className="flex flex-col gap-4" key={columnIndex}>
-              {data
-                .slice(divisionLength, divisionLength + division)
-                .map(image => (
-                  <div
-                    key={image.publicId}
-                    data-aos="fade-up"
-                    className="group cursor-pointer"
-                    onClick={() =>
-                      setSelected(
-                        data.findIndex(d => d.publicId === image.publicId),
-                      )
-                    }
-                  >
-                    <ImageLoaded key={image.publicId} image={image} />
-                    <div className="absolute left-0 top-0 h-full w-full rounded bg-white opacity-0 transition-opacity group-hover:opacity-10 group-active:opacity-5" />
-                  </div>
-                ))}
+      <div className="px-4">
+        <div className="gallery" ref={galleryRef}>
+          <div className="gallery-sizer" />
+          {data.map(image => (
+            <div
+              key={image.publicId}
+              className="gallery-item p-2"
+              data-aos="fade-up"
+              onClick={() =>
+                setSelected(data.findIndex(d => d.publicId === image.publicId))
+              }
+            >
+              <ImageLoaded key={image.publicId} image={image} />
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
       <Lightbox
         open={selected != null}
