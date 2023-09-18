@@ -1,8 +1,9 @@
 services:
   api:
     build: api/
-    image: kvdomingo/portfolio-api:latest
+    image: kvdomingo/portfolio-api
     env_file: api/.env
+    init: true
     volumes:
       - ./api:/backend
       - tmp:/tmp/gunicorn
@@ -10,14 +11,15 @@ services:
       - db
 
   ui:
-    image: node:18-alpine
+    image: oven/bun:1.0
     environment:
       - NODE_ENV=development
     working_dir: /web
-    entrypoint:
+    init: true
+    command:
       - /bin/sh
       - "-c"
-      - "yarn install && exec yarn dev --host 0.0.0.0 --port 3000"
+      - "bun install && exec bun run dev"
     volumes:
       - ./ui:/web
 
@@ -101,4 +103,4 @@ networks:
     external: true
 
 volumes:
-  tmp: {}
+  tmp: { }

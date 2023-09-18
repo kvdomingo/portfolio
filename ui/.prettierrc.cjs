@@ -1,3 +1,4 @@
+/** @type {import("prettier").Options} */
 module.exports = {
   arrowParens: "avoid",
   bracketSpacing: true,
@@ -19,7 +20,7 @@ module.exports = {
   tabWidth: 2,
   trailingComma: "all",
   plugins: [
-    require("@trivago/prettier-plugin-sort-imports"),
-    require("prettier-plugin-tailwindcss"),
+    import("@trivago/prettier-plugin-sort-imports"),
+    import("prettier-plugin-tailwindcss"),
   ],
 };
