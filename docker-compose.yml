@@ -19,9 +19,9 @@ services:
     command:
       - /bin/sh
       - "-c"
-      - "bun install && exec bun run dev"
+      - "bun install && bun run dev"
     volumes:
-      - ./ui:/web
+      - ./ui-next:/web
 
   proxy:
     image: bitnami/nginx:latest

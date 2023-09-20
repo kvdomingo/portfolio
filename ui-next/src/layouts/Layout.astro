@@ -1,0 +1,139 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@/styles/base.css";
+import Navbar from "../components/common/Navbar.astro";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "KVD Studio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/favicon.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="apple-touch-icon" href="/logo-black.png" />
+
+    <meta name="p:domain_verify" content="8e4753adcb7e777965ab4bcea65b7c85" />
+
+    <meta name="author" content="Kenneth V. Domingo" />
+
+    <meta property="og:url" content="https://kvd.studio" />
+    <meta property="og:site_name" content="KVD Studio" />
+    <meta property="og:title" content="KVD Studio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_PH" />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
+    />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:creator" content="@rockentothemoon" />
+    <meta property="twitter:site" content="@rockentothemoon" />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
+    />
+    <meta name="twitter:title" content="KVD Studio" />
+    <meta name="twitter:image:alt" content="KVD Studio" />
+
+    <meta
+      name="google-site-verification"
+      content="O8dXlE8aWPqHSuA4FwbY6-L1AjW7ch4613PIr_5_fII"
+    />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+
+  <body>
+    <Navbar />
+    <slot />
+
+    <style is:global>
+      body {
+        margin: 0;
+        font-family: "Rubik", "Inter", sans-serif;
+        background: linear-gradient(
+          to bottom,
+          theme("colors.indigo.950"),
+          theme("colors.slate.900")
+        );
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      code {
+        color: theme("colors.indigo.400");
+        font-family: "Inconsolata", source-code-pro, Menlo, Monaco, Consolas,
+          "Courier New", monospace;
+      }
+
+      .section-header {
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+
+      a[href] {
+        color: theme("colors.indigo.400");
+        text-decoration: none;
+      }
+
+      ol.reference {
+        counter-reset: spp-counter;
+        list-style: none;
+      }
+
+      ol.reference li {
+        counter-increment: spp-counter;
+      }
+
+      ol.reference li::before {
+        content: "[" counter(spp-counter) "]";
+        margin-left: -2rem;
+        margin-right: 1rem;
+      }
+
+      .math-container {
+        overflow-x: auto;
+      }
+
+      .gallery {
+        width: 100%;
+      }
+
+      .gallery-sizer,
+      .gallery-item {
+        width: 100%;
+      }
+
+      @media screen and (min-width: theme("screens.sm")) {
+        .gallery-sizer,
+        .gallery-item {
+          width: 50%;
+        }
+      }
+
+      @media screen and (min-width: theme("screens.md")) {
+        .gallery-sizer,
+        .gallery-item {
+          width: 33.333%;
+        }
+      }
+
+      @media screen and (min-width: theme("screens.lg")) {
+        .gallery-sizer,
+        .gallery-item {
+          width: 25%;
+        }
+      }
+    </style>
+  </body>
+</html>
