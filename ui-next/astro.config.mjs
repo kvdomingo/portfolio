@@ -20,4 +20,5 @@ export default defineConfig({
       },
     },
   },
+  site: "https://kvd.studio",
 });
