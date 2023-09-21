@@ -1,18 +1,20 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "@/styles/base.css";
-import Navbar from "../components/common/Navbar.astro";
+import Navbar from "@/components/common/Navbar.astro";
+import info from "@/info.json";
 
 interface Props {
   title?: string;
 }
 
-const { title = "KVD Studio" } = Astro.props;
+const { title = info.title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <link
       rel="icon"
       href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/favicon.png"
@@ -26,8 +28,8 @@ const { title = "KVD Studio" } = Astro.props;
     <meta name="author" content="Kenneth V. Domingo" />
 
     <meta property="og:url" content="https://kvd.studio" />
-    <meta property="og:site_name" content="KVD Studio" />
-    <meta property="og:title" content="KVD Studio" />
+    <meta property="og:site_name" content={info.title} />
+    <meta property="og:title" content={info.title} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_PH" />
     <meta
@@ -42,8 +44,8 @@ const { title = "KVD Studio" } = Astro.props;
       name="twitter:image"
       content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
     />
-    <meta name="twitter:title" content="KVD Studio" />
-    <meta name="twitter:image:alt" content="KVD Studio" />
+    <meta name="twitter:title" content={info.title} />
+    <meta name="twitter:image:alt" content={info.title} />
 
     <meta
       name="google-site-verification"
@@ -55,7 +57,10 @@ const { title = "KVD Studio" } = Astro.props;
 
   <body>
     <Navbar />
-    <slot />
+
+    <div>
+      <slot />
+    </div>
 
     <style is:global>
       body {
@@ -66,6 +71,7 @@ const { title = "KVD Studio" } = Astro.props;
           theme("colors.indigo.950"),
           theme("colors.slate.900")
         );
+        color: white;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }

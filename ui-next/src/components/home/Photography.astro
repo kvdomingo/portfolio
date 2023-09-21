@@ -1,0 +1,19 @@
+---
+import info from "@/info.json";
+import ButtonLink from "@/components/common/ButtonLink.astro";
+import Carousel from "./Carousel.svelte";
+
+const text = info.home.photography.text.normalize();
+---
+
+<div class="my-8 grid grid-cols-5 gap-36">
+  <div class="col-span-2 my-auto text-left">
+    <h3 class="mb-8 text-3xl uppercase tracking-[0.5rem]">Photography</h3>
+    <p>{text}</p>
+    <ButtonLink href="/photography">See in portfolio</ButtonLink>
+  </div>
+
+  <div class="col-span-3 text-center">
+    <Carousel client:only="svelte" />
+  </div>
+</div>

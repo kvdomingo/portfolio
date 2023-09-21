@@ -13,18 +13,9 @@ const NAV_LINKS = [
 ];
 ---
 
-<script>
-  const isHomepage = window.location.pathname === "/";
-
-  if (isHomepage) {
-    const nav = document.querySelector("header");
-    nav.classList.add("fixed");
-  }
-</script>
-
-<header class="w-full">
+<header class="fixed w-full">
   <nav
-    class="mb-10 bg-gradient-to-r from-indigo-950/25 to-slate-900/25 px-12 backdrop-blur-md transition-all duration-300 ease-in-out"
+    class="bg-gradient-to-r from-indigo-950/25 to-slate-900/25 px-12 backdrop-blur-md transition-all duration-300 ease-in-out"
   >
     <div class="flex">
       <div class="flex flex-auto items-center">
