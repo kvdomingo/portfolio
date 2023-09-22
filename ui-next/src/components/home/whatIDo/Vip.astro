@@ -1,0 +1,19 @@
+---
+import info from "../../../info.json";
+import ButtonLink from "../../common/ButtonLink.astro";
+import BeforeAfter from "./BeforeAfter.svelte";
+---
+
+<div class="my-8 grid grid-cols-5 gap-36">
+  <div class="col-span-2 my-auto text-left">
+    <h3 class="mb-8 text-3xl uppercase tracking-[0.5rem]">
+      Video & Image Processing
+    </h3>
+    <p>{info.home.vip.text}</p>
+    <ButtonLink href="/svip">See in portfolio</ButtonLink>
+  </div>
+
+  <div class="col-span-3 my-auto">
+    <BeforeAfter client:only="svelte" />
+  </div>
+</div>

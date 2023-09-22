@@ -6,7 +6,7 @@
   import "flickity-imagesloaded";
   import { Resize } from "@cloudinary/url-gen/actions";
   import info from "@/info.json";
-  import cld from "@/utils/cloudinary";
+  import cld from "@/utils/cloudinary.ts";
 
   const { carousel } = info.home.photography;
 

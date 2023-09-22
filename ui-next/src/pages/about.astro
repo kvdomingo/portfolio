@@ -1,5 +1,28 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import cld from "@/utils/cloudinary";
+import info from "@/info.json";
+import { Resize } from "@cloudinary/url-gen/actions";
+import ButtonLink from "../components/common/ButtonLink.astro";
+
+const image = cld
+  .image(info.about.photo)
+  .resize(Resize.scale().width("auto"))
+  .toURL();
 ---
 
-<Layout>About/CV</Layout>
+<Layout title="About | KVD Studio">
+  <div class="grid gap-8 p-4 md:grid-cols-4 md:p-0">
+    <img
+      src={image}
+      class="rounded-3xl md:sticky md:-top-8 md:-z-10 md:-ml-8"
+      alt="profile"
+    />
+    <div class="md:col-span-3 md:pr-24">
+      <p class="whitespace-pre-line text-lg">{info.about.text}</p>
+      <ButtonLink class="mb-16" href={`mailto:${info.email}`}>
+        Contact
+      </ButtonLink>
+    </div>
+  </div>
+</Layout>

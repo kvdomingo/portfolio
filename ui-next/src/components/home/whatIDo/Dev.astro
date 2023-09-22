@@ -1,0 +1,28 @@
+---
+import ButtonLink from "../../common/ButtonLink.astro";
+import info from "../../../info.json";
+---
+
+<div class="my-24 grid grid-cols-5 gap-36">
+  <div class="col-span-2 mx-auto my-auto">
+    <a
+      href="https://www.credential.net/0300e26a-fcdc-40db-a4a0-689fad65ac9b"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        src="https://storage.googleapis.com/kvdomingo-xyz-306716-assets/gcp-pca_badge.png"
+        alt="Google Cloud Certified Professional Cloud Architect"
+        width="66.67%"
+        class="mx-auto"
+      />
+    </a>
+  </div>
+  <div class="col-span-3 my-auto text-right">
+    <h3 class="mb-8 text-3xl uppercase tracking-[0.5rem]">
+      Software Engineering
+    </h3>
+    <p>{info.home.dev.text}</p>
+    <ButtonLink href="/dev">See in portfolio</ButtonLink>
+  </div>
+</div>

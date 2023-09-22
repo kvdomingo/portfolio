@@ -17,6 +17,7 @@
     "flickity": "^3.0.0",
     "flickity-fullscreen": "^2.0.0",
     "flickity-imagesloaded": "^2.0.0",
+    "juxtaposejs": "^1.1.6",
     "nanostores": "^0.9.3"
   },
   "devDependencies": {

@@ -1,0 +1,31 @@
+---
+const headerTechnologies: Record<string, string[]> = {
+  "Backend": ["Django", "FastAPI", "Flask"],
+  "Frontend": ["TypeScript", "React", "Next.js", "T3", "Astro", "Svelte"],
+  "Database": ["PostgreSQL", "Redis", "Firestore"],
+  "CI/CD & Cloud": ["GitHub", "GCP", "AWS", "Azure", "Docker", "Kubernetes"],
+  "Data & Viz": ["Pandas", "matplotlib", "Keras", "Tensorflow"],
+};
+---
+
+<div class="container py-12 text-center">
+  <h2 class="section-header text-6xl text-white">How I do it</h2>
+  <hr class="my-8" />
+
+  {
+    Object.entries(headerTechnologies).map(([header, technologies]) => (
+      <div class="my-8">
+        <div class="grid grid-cols-4 gap-12">
+          <div class="flex place-content-end place-items-center border-r border-solid border-white pr-6 text-right">
+            <h5 class="section-header text-2xl">{header}</h5>
+          </div>
+          <div class="col-span-3 my-auto grid grid-cols-6 gap-12">
+            {technologies.map(tech => (
+              <div class="my-auto">{tech}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>

@@ -2,7 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import { Resize } from "@cloudinary/url-gen/actions";
 import cld from "@/utils/cloudinary";
-import WhatIDo from "../components/home/WhatIDo.astro";
+import WhatIDo from "../components/home/whatIDo/WhatIDo.astro";
+import HowIDoIt from "../components/home/HowIDoIt.astro";
 
 const backgroundImage = cld
   .image(
@@ -36,5 +37,6 @@ const logo = cld
     </div>
 
     <WhatIDo />
+    <HowIDoIt />
   </main>
 </Layout>
