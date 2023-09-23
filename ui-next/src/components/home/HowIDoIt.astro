@@ -9,11 +9,11 @@ import info from "@/info.json";
   {
     Object.entries(info.home.technologies).map(([header, technologies]) => (
       <div class="my-8">
-        <div class="grid grid-cols-4 gap-12">
-          <div class="flex place-content-end place-items-center border-r border-solid border-white pr-6 text-right">
+        <div class="grid gap-12 md:grid-cols-4">
+          <div class="flex place-content-center place-items-center border-b border-solid border-white pb-6 pr-0 text-center md:place-content-end md:border-b-0 md:border-r md:pb-0 md:pr-6 md:text-right">
             <h5 class="section-header text-2xl">{header}</h5>
           </div>
-          <div class="col-span-3 my-auto grid grid-cols-6 gap-12">
+          <div class="col-span-3 my-auto grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-12">
             {technologies.map(tech => (
               <img src={tech.logo} alt={tech.name} class="my-auto" />
             ))}

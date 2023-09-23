@@ -81,6 +81,10 @@
           "logo": "https://www.svgrepo.com/show/448233/kubernetes.svg"
         },
         {
+          "name": "GitHub",
+          "logo": "https://www.svgrepo.com/show/450156/github.svg"
+        },
+        {
           "name": "Google Cloud Platform",
           "logo": "https://snapshooter.io/assets/img/marketing/providers/gcp/gcp.png"
         },

@@ -39,12 +39,13 @@
           <img
             src={LIGHT_LOGO}
             alt="logo"
-            class="opacity-1 my-2 h-[70px] transition-all duration-300 ease-in-out"
+            class="opacity-1 my-2 h-[70px] w-auto transition-all duration-300 ease-in-out"
           />
         </a>
       </div>
+
       <ul
-        class="menu menu-horizontal section-header flex flex-auto items-center justify-end gap-6"
+        class="md:menu md:menu-horizontal section-header hidden flex-auto items-center justify-end gap-6 md:visible md:flex"
       >
         {#each NAV_LINKS as nav}
           <li>
