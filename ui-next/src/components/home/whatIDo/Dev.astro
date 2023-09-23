@@ -1,6 +1,5 @@
 ---
-import ButtonLink from "../../common/ButtonLink.astro";
-import info from "../../../info.json";
+import info from "@/info.json";
 ---
 
 <div class="my-24 grid grid-cols-5 gap-36">
@@ -18,11 +17,9 @@ import info from "../../../info.json";
       />
     </a>
   </div>
-  <div class="col-span-3 my-auto text-right">
-    <h3 class="mb-8 text-3xl uppercase tracking-[0.5rem]">
-      Software Engineering
-    </h3>
+  <div class="col-span-3 my-auto flex flex-col items-end gap-8 text-right">
+    <h3 class="text-3xl uppercase tracking-[0.5rem]">Software Engineering</h3>
     <p>{info.home.dev.text}</p>
-    <ButtonLink href="/dev">See in portfolio</ButtonLink>
+    <a href="/dev" class="btn btn-outline btn-accent">See in portfolio</a>
   </div>
 </div>

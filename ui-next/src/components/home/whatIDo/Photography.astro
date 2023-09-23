@@ -1,19 +1,20 @@
 ---
-import info from "../../../info.json";
-import ButtonLink from "../../common/ButtonLink.astro";
-import Carousel from "./Carousel.svelte";
+import info from "@/info.json";
+import Carousel from "./react/Carousel";
 
 const text = info.home.photography.text.normalize();
 ---
 
 <div class="my-8 grid grid-cols-5 gap-36">
-  <div class="col-span-2 my-auto text-left">
-    <h3 class="mb-8 text-3xl uppercase tracking-[0.5rem]">Photography</h3>
+  <div class="col-span-2 my-auto flex flex-col items-start gap-8 text-left">
+    <h3 class="text-3xl uppercase tracking-[0.5rem]">Photography</h3>
     <p>{text}</p>
-    <ButtonLink href="/photography">See in portfolio</ButtonLink>
+    <a href="/photography" class="btn btn-outline btn-accent"
+      >See in portfolio</a
+    >
   </div>
 
   <div class="col-span-3 text-center">
-    <Carousel client:only="svelte" />
+    <Carousel client:only="react" />
   </div>
 </div>

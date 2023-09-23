@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_cv_section_cv_sections",
+  "info": {
+    "displayName": "CV Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "subtitleLink": {
+      "type": "string"
+    },
+    "body": {
+      "type": "text"
+    },
+    "caption": {
+      "type": "string"
+    },
+    "captionLink": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date"
+    }
+  }
+}

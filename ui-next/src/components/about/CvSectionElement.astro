@@ -1,0 +1,61 @@
+---
+import dateFormat from "dateformat";
+
+interface Props {
+  data: Record<string, string>;
+}
+
+const { data } = Astro.props;
+---
+
+<li class="ml-[1.5rem] mt-[1.5rem]">
+  <div
+    class="border-primary absolute -ml-[2rem] h-[1rem] w-[1rem] rounded-[50%] border-2 border-solid bg-indigo-900"
+  >
+  </div>
+  <div class="flex flex-col gap-4">
+    <div class="-mt-[0.5rem]">
+      <div class="grid grid-cols-2">
+        <h5 class="text-2xl">{data.title}</h5>
+        <div class="flex justify-end text-gray-300 small-caps">
+          {dateFormat(new Date(data.startDate), "mmm yyyy")} –{" "}
+          {
+            data.endDate
+              ? dateFormat(new Date(data.endDate), "mmm yyyy")
+              : "present"
+          }
+        </div>
+      </div>
+      {
+        data.subtitleLink ? (
+          <a href={data.subtitleLink}>{data.subtitle}</a>
+        ) : (
+          <p>{data.subtitle}</p>
+        )
+      }
+    </div>
+
+    <slot>
+      <p>{data.body}</p>
+      {
+        data.bodyLink ? (
+          <div>
+            <a href={data.bodyLink} class="btn btn-accent btn-outline btn-sm">
+              See in portfolio
+            </a>
+          </div>
+        ) : null
+      }
+    </slot>
+
+    {
+      data.captionLink ? (
+        <a href={data.captionLink} class="text-sm">
+          {data.caption}
+        </a>
+      ) : (
+        <p class="text-sm">{data.caption}</p>
+      )
+    }
+  </div>
+</li>

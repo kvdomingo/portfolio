@@ -8,6 +8,7 @@ module.exports = {
     "^@astro(.*)",
     "^svelte(.*)",
     "^@svelte(.*)",
+    "^react(.*)",
     "<THIRD_PARTY_MODULES>",
     "^@/(.*)",
     "^[./]",

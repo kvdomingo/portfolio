@@ -1,11 +1,5 @@
 ---
-const headerTechnologies: Record<string, string[]> = {
-  "Backend": ["Django", "FastAPI", "Flask"],
-  "Frontend": ["TypeScript", "React", "Next.js", "T3", "Astro", "Svelte"],
-  "Database": ["PostgreSQL", "Redis", "Firestore"],
-  "CI/CD & Cloud": ["GitHub", "GCP", "AWS", "Azure", "Docker", "Kubernetes"],
-  "Data & Viz": ["Pandas", "matplotlib", "Keras", "Tensorflow"],
-};
+import info from "@/info.json";
 ---
 
 <div class="container py-12 text-center">
@@ -13,7 +7,7 @@ const headerTechnologies: Record<string, string[]> = {
   <hr class="my-8" />
 
   {
-    Object.entries(headerTechnologies).map(([header, technologies]) => (
+    Object.entries(info.home.technologies).map(([header, technologies]) => (
       <div class="my-8">
         <div class="grid grid-cols-4 gap-12">
           <div class="flex place-content-end place-items-center border-r border-solid border-white pr-6 text-right">
@@ -21,7 +15,7 @@ const headerTechnologies: Record<string, string[]> = {
           </div>
           <div class="col-span-3 my-auto grid grid-cols-6 gap-12">
             {technologies.map(tech => (
-              <div class="my-auto">{tech}</div>
+              <img src={tech.logo} alt={tech.name} class="my-auto" />
             ))}
           </div>
         </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Resize } from "@cloudinary/url-gen/actions";
-  import cld from "@/utils/cloudinary";
+  import cld from "@/utils/cloudinary.ts";
   import { onMount } from "svelte";
 
   const LIGHT_LOGO = cld
@@ -23,13 +23,13 @@
   });
 </script>
 
-<header class="w-full">
+<header class="z-10 w-full">
   <nav
     class="bg-gradient-to-r from-indigo-950/25 to-slate-900/25 px-12 backdrop-blur-md transition-all duration-300 ease-in-out"
   >
     <div class="flex">
       <div class="flex flex-auto items-center">
-        <a href="/">
+        <a href="/public">
           <img
             src={LIGHT_LOGO}
             alt="logo"
