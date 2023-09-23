@@ -13,6 +13,12 @@
     { path: "/about", label: "About/CV" },
   ];
 
+  const PORTFOLIO_LINKS = [
+    { path: "/photography", label: "Photography" },
+    { path: "/dev", label: "Software" },
+    { path: "/svip", label: "Video/Image Processing" },
+  ];
+
   let isHome = true;
 
   $: isHome = window.location.pathname === "/";
@@ -29,7 +35,7 @@
   >
     <div class="flex">
       <div class="flex flex-auto items-center">
-        <a href="/public">
+        <a href="/">
           <img
             src={LIGHT_LOGO}
             alt="logo"
@@ -37,14 +43,31 @@
           />
         </a>
       </div>
-      <div class="flex flex-auto items-center justify-end gap-6">
+      <ul
+        class="menu menu-horizontal section-header flex flex-auto items-center justify-end gap-6"
+      >
         {#each NAV_LINKS as nav}
-          <a href={nav.path}>
-            <button class="section-header text-white">{nav.label}</button>
-          </a>
+          <li>
+            <a href={nav.path}>
+              {nav.label}
+            </a>
+          </li>
         {/each}
-        <button class="section-header text-white"> Portfolio</button>
-      </div>
+        <li>
+          <details>
+            <summary>Portfolio</summary>
+            <ul>
+              {#each PORTFOLIO_LINKS as port}
+                <li>
+                  <a href={port.path}>
+                    {port.label}
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          </details>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
