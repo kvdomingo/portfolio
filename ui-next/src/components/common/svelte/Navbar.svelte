@@ -45,12 +45,14 @@
       </div>
 
       <ul
-        class="md:menu md:menu-horizontal section-header hidden flex-auto items-center justify-end gap-6 md:visible md:flex"
+        class="section-header hidden flex-auto items-center justify-end gap-6 md:menu md:menu-horizontal md:visible md:flex"
       >
         {#each NAV_LINKS as nav}
           <li>
             <a href={nav.path}>
-              {nav.label}
+              <span class="text-white">
+                {nav.label}
+              </span>
             </a>
           </li>
         {/each}
@@ -61,7 +63,9 @@
               {#each PORTFOLIO_LINKS as port}
                 <li>
                   <a href={port.path}>
-                    {port.label}
+                    <span class="text-white">
+                      {port.label}
+                    </span>
                   </a>
                 </li>
               {/each}

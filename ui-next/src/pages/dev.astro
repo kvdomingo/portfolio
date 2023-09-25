@@ -1,0 +1,47 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ProjectGroup from "@/components/dev/ProjectGroup.astro";
+import info from "@/info.json";
+
+const { projects } = info.dev;
+---
+
+<Layout title="Dev | KVD Studio">
+  <div class="container pb-8">
+    <div class="mb-8 flex justify-end gap-2">
+      <a
+        href="https://github.com/kvdomingo"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-circle btn-ghost btn-sm"
+      >
+        <img
+          src="https://www.svgrepo.com/show/450156/github.svg"
+          alt="GitHub"
+          class="w-[2rem]"
+        />
+      </a>
+      <a
+        href="https://pypi.org/user/kvdomingo/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-circle btn-ghost btn-sm"
+      >
+        <img
+          src="https://www.svgrepo.com/show/342140/pypi.svg"
+          alt="PyPi"
+          class="w-[2rem]"
+        />
+      </a>
+    </div>
+
+    {
+      ["live", "in progress", "archived"].map(status => (
+        <ProjectGroup
+          status={status}
+          projects={projects.filter(proj => status === proj.status)}
+        />
+      ))
+    }
+  </div>
+</Layout>

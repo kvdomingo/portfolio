@@ -1,0 +1,18 @@
+---
+import ProjectItem from "./ProjectItem.astro";
+import info from "@/info.json";
+
+interface Props {
+  projects: typeof info.dev.projects;
+  status: "live" | "in progress" | "archived";
+}
+
+const { projects, status } = Astro.props;
+---
+
+<div class="mb-12">
+  <h2 class="mb-4 text-5xl capitalize">{status}</h2>
+  <div class="flex flex-col">
+    {projects.map(project => <ProjectItem project={project} />)}
+  </div>
+</div>

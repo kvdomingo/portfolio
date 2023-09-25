@@ -37,6 +37,10 @@
         {
           "name": "Flask",
           "logo": "https://www.svgrepo.com/show/508915/flask.svg"
+        },
+        {
+          "name": "Go",
+          "logo": "https://www.svgrepo.com/show/452214/go.svg"
         }
       ],
       "frontend": [
@@ -267,5 +271,161 @@
         }
       ]
     }
+  },
+  "dev": {
+    "projects": [
+      {
+        "title": "Chaebot",
+        "url": "https://chaebot.kvd.studio",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2020-06-29",
+        "endDate": "",
+        "summary": "A Discord bot that crossposts Twitter and VLIVE media to K-pop-oriented Discord guilds",
+        "technologies": [
+          "python",
+          "discord.py",
+          "django",
+          "javascript",
+          "react",
+          "twitter api",
+          "pyvlive",
+          "material ui",
+          "postgresql"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_1000/v1/dev/kvisualbot.png",
+        "status": "live"
+      },
+      {
+        "title": "Supply Chain Performance Indicator",
+        "url": "https://supplychainindicator.com",
+        "organization": "Cobena Business Analytics and Strategy, Inc.",
+        "organizationUrl": "https://cobenagroup.com",
+        "startDate": "2021-01-20",
+        "endDate": "2021-06-16",
+        "summary": "A supply chain performance indicator survey tool developed for UK-based market research firm Ideas & Action",
+        "technologies": [
+          "python",
+          "django",
+          "javascript",
+          "react",
+          "pandas",
+          "reportlab",
+          "xlsxwriter",
+          "d3",
+          "mdbreact",
+          "material design bootstrap",
+          "postgresql",
+          "redis"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/v1663855801/dev/sc-tool.png",
+        "status": "archived"
+      },
+      {
+        "title": "PrimerDriver",
+        "url": "https://primerdriver.kvd.studio",
+        "organization": "Philippine Genome Center",
+        "organizationUrl": "https://pgc.up.edu.ph",
+        "startDate": "2020-01-20",
+        "endDate": "2020-02-28",
+        "summary": "CLI and web application for automation of the design of mutagenic PCR primers for site-directed mutagenesis",
+        "technologies": [
+          "python",
+          "flask",
+          "javascript",
+          "typescript",
+          "react",
+          "biopython",
+          "click",
+          "sphinx",
+          "material ui"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_1000/v1/dev/primerdriver.png",
+        "status": "live"
+      },
+      {
+        "title": "LSFM",
+        "url": "https://lsfm.kvd.studio",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2022-04-04",
+        "endDate": "2022-04-08",
+        "summary": "A clone of the LE SSERAFIM Digital Souvenir system",
+        "technologies": [
+          "typescript",
+          "react",
+          "material ui",
+          "tailwindcss",
+          "webassembly",
+          "ffmpeg"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/v1649849667/dev/lsfm.png",
+        "status": "live"
+      },
+      {
+        "title": "graPHics",
+        "url": "https://gpu.kvdstudio.app",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2022-03-27",
+        "endDate": "2022-04-01",
+        "summary": "A web app to collect and monitor GPU pricing data from popular e-commerce websites in the Philippines",
+        "technologies": [
+          "python",
+          "flask",
+          "javascript",
+          "react",
+          "material ui",
+          "postgresql"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/v1648392707/dev/gpupricetracker.png",
+        "status": "archived"
+      },
+      {
+        "title": "NCOVenience",
+        "url": "",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2020-03-03",
+        "endDate": "2020-06-23",
+        "summary": "COVID-19 PH Cases Tracker Map",
+        "technologies": [
+          "python",
+          "flask",
+          "beautifulsoup",
+          "geojson",
+          "numpy",
+          "pandas",
+          "typescript",
+          "react",
+          "material design",
+          "bootstrap",
+          "mdbreact",
+          "chart.js",
+          "mapbox"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_1000/v1/dev/ncovenience.png",
+        "status": "archived"
+      },
+      {
+        "title": "KenGPT",
+        "url": "https://gpt.kvd.studio",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2023-02-10",
+        "endDate": "2023-02-12",
+        "summary": "Yet Another ChatGPT Clone",
+        "technologies": [
+          "typescript",
+          "react",
+          "next.js",
+          "gpt",
+          "openai",
+          "tailwindcss"
+        ],
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_crop,g_auto,h_1930,w_1930/v1676377558/dev/kengpt.png",
+        "status": "live"
+      }
+    ]
   }
 }
