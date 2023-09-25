@@ -1,0 +1,59 @@
+---
+import { v2 as cloudinary } from "cloudinary";
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+import { options } from "@/server/utils/cloudinary";
+
+const res = await cloudinary.api.resources({
+  ...options,
+  prefix: "kdphotography/portfolio/static/portfolio/media-private/latest",
+});
+
+const data = res.resources.map(({ public_id, height, width }) => ({
+  publicId: public_id,
+  height,
+  width,
+}));
+---
+
+<script>
+  import Masonry = require("masonry-layout");
+  import ImagesLoaded = require("imagesloaded");
+
+  const masonry = new Masonry(".gallery", {
+    itemSelector: ".gallery-item",
+    percentPosition: true,
+    columnWidth: ".gallery-sizer",
+    horizontalOrder: true,
+  });
+
+  const imagesLoaded = ImagesLoaded(".gallery");
+
+  function onAlways() {
+    masonry.layout && masonry.layout();
+  }
+
+  imagesLoaded.on("progress", onAlways);
+  imagesLoaded.on("done", onAlways);
+  imagesLoaded.on("always", onAlways);
+</script>
+
+<Layout title="Photography | KVD Studio">
+  <PhotographyLayout>
+    <div class="px-4">
+      <div class="gallery">
+        <div class="gallery-sizer"></div>
+        {
+          data.map(image => (
+            <div class="gallery-item p-2" data-aos="fade-up" onclick="">
+              <img
+                src={image.publicId}
+                class="w-full cursor-pointer rounded drop-shadow-lg"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </PhotographyLayout>
+</Layout>

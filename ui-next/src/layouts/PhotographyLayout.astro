@@ -1,0 +1,12 @@
+---
+import Sidenav from "@/components/common/Sidenav.astro";
+---
+
+<div class="lg:flex lg:gap-8">
+  <div class="mb-8 lg:flex-none lg:pl-16">
+    <Sidenav />
+  </div>
+  <div class="lg:flex-auto">
+    <slot />
+  </div>
+</div>

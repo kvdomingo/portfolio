@@ -1,18 +1,23 @@
 import { defineConfig } from "astro/config";
+import node from "@astrojs/node";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
-import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     tailwind(),
     sitemap(),
-    svelte({ include: ["**/svelte/*"] }),
-    react({ include: ["**/react/*"] }),
+    svelte({
+      include: ["**/svelte/*"],
+    }),
+    react({
+      include: ["**/react/*"],
+    }),
   ],
-  output: "static",
+  output: "hybrid",
   server: {
     host: "0.0.0.0",
     port: 3000,
@@ -25,4 +30,7 @@ export default defineConfig({
     },
   },
   site: "https://kvd.studio",
+  adapter: node({
+    mode: "standalone",
+  }),
 });

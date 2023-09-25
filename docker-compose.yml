@@ -14,6 +14,7 @@ services:
     image: oven/bun:1.0
     environment:
       - NODE_ENV=development
+    env_file: ui-next/.env
     working_dir: /web
     init: true
     command:

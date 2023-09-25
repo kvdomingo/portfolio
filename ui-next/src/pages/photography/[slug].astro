@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "live" } },
+    { params: { slug: "portraits" } },
+    { params: { slug: "clients" } },
+    { params: { slug: "samoetikerffa" } },
+  ];
+}
+
+const { slug = "" } = Astro.params;
+
+const title = slug[0].toUpperCase() + slug.slice(1);
+---
+
+<Layout title={`${title} | KVD Studio`}>
+  <PhotographyLayout>
+    <div class="gallery">
+      <div class="gallery-sizer"></div>
+    </div>
+  </PhotographyLayout>
+</Layout>
