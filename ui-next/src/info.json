@@ -427,5 +427,39 @@
         "status": "live"
       }
     ]
+  },
+  "photography": {
+    "clients": [
+      {
+        "name": "UP Corps of Sponsors",
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/04_upcos.jpg",
+        "slug": "up-cos"
+      },
+      {
+        "name": "UP Reserve Officers' Training Corps",
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/03_uprotc.jpg",
+        "slug": "uprotc"
+      },
+      {
+        "name": "UP Concert Chorus",
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients/upcc/RITMO1-1.jpg",
+        "slug": "upcc"
+      },
+      {
+        "name": "UP Phi Delta Alpha Sorority",
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/05_uppda.jpg",
+        "slug": "up-pda"
+      },
+      {
+        "name": "UP Sigma Alpha Nu Sorority",
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/02_upsan2019.jpg",
+        "slug": "up-san"
+      },
+      {
+        "name": "UP Club for the Environment and Tourism",
+        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/01_ecotour.jpg",
+        "slug": "up-ecotour"
+      }
+    ]
   }
 }

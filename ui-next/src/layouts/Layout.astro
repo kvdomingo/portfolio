@@ -25,6 +25,10 @@ const { title = info.title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      http-equiv="delegate-ch"
+      content="sec-ch-width https://res.cloudinary.com; sec-ch-dpr https://res.cloudinary.com; sec-ch-viewport-width https://res.cloudinary.com;"
+    />
     <link
       rel="icon"
       href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/favicon.png"
@@ -65,7 +69,7 @@ const { title = info.title } = Astro.props;
     <ViewTransitions />
   </head>
 
-  <body>
+  <body class="min-h-screen">
     <Navbar client:only="svelte" />
 
     <div>

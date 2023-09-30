@@ -33,7 +33,7 @@
   <nav
     class="bg-gradient-to-r from-indigo-950/25 to-slate-900/25 px-12 backdrop-blur-md transition-all duration-300 ease-in-out"
   >
-    <div class="flex">
+    <div class="flex items-center">
       <div class="flex flex-auto items-center">
         <a href="/">
           <img
