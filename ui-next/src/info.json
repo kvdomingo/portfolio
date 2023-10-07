@@ -293,7 +293,7 @@
           "material ui",
           "postgresql"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_1000/v1/dev/kvisualbot.png",
+        "cover": "v1/dev/kvisualbot.png",
         "status": "live"
       },
       {
@@ -318,7 +318,7 @@
           "postgresql",
           "redis"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/v1663855801/dev/sc-tool.png",
+        "cover": "dev/sc-tool.png",
         "status": "archived"
       },
       {
@@ -340,7 +340,7 @@
           "sphinx",
           "material ui"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_1000/v1/dev/primerdriver.png",
+        "cover": "v1/dev/primerdriver.png",
         "status": "live"
       },
       {
@@ -359,7 +359,7 @@
           "webassembly",
           "ffmpeg"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/v1649849667/dev/lsfm.png",
+        "cover": "dev/lsfm.png",
         "status": "live"
       },
       {
@@ -378,7 +378,7 @@
           "material ui",
           "postgresql"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/v1648392707/dev/gpupricetracker.png",
+        "cover": "dev/gpupricetracker.png",
         "status": "archived"
       },
       {
@@ -404,7 +404,7 @@
           "chart.js",
           "mapbox"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_1000/v1/dev/ncovenience.png",
+        "cover": "dev/ncovenience.png",
         "status": "archived"
       },
       {
@@ -423,7 +423,7 @@
           "openai",
           "tailwindcss"
         ],
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_crop,g_auto,h_1930,w_1930/v1676377558/dev/kengpt.png",
+        "cover": "dev/kengpt.png",
         "status": "live"
       }
     ]
@@ -432,33 +432,77 @@
     "clients": [
       {
         "name": "UP Corps of Sponsors",
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/04_upcos.jpg",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/04_upcos.jpg",
         "slug": "up-cos"
       },
       {
         "name": "UP Reserve Officers' Training Corps",
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/03_uprotc.jpg",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/03_uprotc.jpg",
         "slug": "uprotc"
       },
       {
         "name": "UP Concert Chorus",
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients/upcc/RITMO1-1.jpg",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients/upcc/RITMO1-1.jpg",
         "slug": "upcc"
       },
       {
         "name": "UP Phi Delta Alpha Sorority",
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/05_uppda.jpg",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/05_uppda.jpg",
         "slug": "up-pda"
       },
       {
         "name": "UP Sigma Alpha Nu Sorority",
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/02_upsan2019.jpg",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/02_upsan2019.jpg",
         "slug": "up-san"
       },
       {
         "name": "UP Club for the Environment and Tourism",
-        "cover": "https://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_400/v1/kdphotography/portfolio/static/portfolio/media-private/clients-landing/01_ecotour.jpg",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/01_ecotour.jpg",
         "slug": "up-ecotour"
+      }
+    ]
+  },
+  "svip": {
+    "courses": [
+      {
+        "name": "App Physics 187",
+        "slug": "ap187",
+        "title": "Photonics and Applied Optics",
+        "cover": "svip/187/13-PhotoStereo/intensity_maps.png",
+        "description": "Design of Data Acquisition Systems (DAQ), Signal Processing-based instrumentation systems, current topics and techniques for engineering and design of optical instruments, non-destructive testing/measurement using optical methods, interferometry",
+        "posts": []
+      },
+      {
+        "name": "App Physics 186",
+        "slug": "ap186",
+        "title": "Instrumentation Physics II",
+        "cover": "svip/186/17-NeuralNetworks/func-fit.png",
+        "description": "Imaging systems, image processing, multidimensional detection techniques, pattern recognition",
+        "posts": [
+          {
+            "title": "Activity 4: Measuring Area from Images",
+            "slug": "measuring-area",
+            "cover": "svip/186/4-MeasuringArea/csamphi_map.png"
+          },
+          {
+            "title": "Activity 3: Image Types and Formats",
+            "slug": "image-types",
+            "cover": "svip/186/3-ImageTypes/DSC_8805.png"
+          },
+          {
+            "title": "Activity 2: Practical Image Processing II",
+            "slug": "practical-2",
+            "cover": "svip/186/2-Practical2/final_overlay.png"
+          }
+        ]
+      },
+      {
+        "name": "App Physics 156",
+        "slug": "ap156",
+        "title": "Computer Methods in Physics II",
+        "cover": "svip/156/Proj-MultipoleExpansion/117.png",
+        "description": "Advanced computer programming methods, numerical modeling and simulations, discrete models, stochastic methods, current approaches in numerical modeling",
+        "posts": []
       }
     ]
   }

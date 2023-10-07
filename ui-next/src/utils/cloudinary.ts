@@ -1,4 +1,5 @@
 import { Cloudinary } from "@cloudinary/url-gen";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
 
 const cld = new Cloudinary({
   cloud: {
@@ -17,3 +18,7 @@ const cld = new Cloudinary({
 });
 
 export default cld;
+
+export function buildCldUrl(publicId: string) {
+  return cld.image(publicId).resize(Resize.scale().width("auto")).toURL();
+}

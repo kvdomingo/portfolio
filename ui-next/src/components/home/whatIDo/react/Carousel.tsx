@@ -2,11 +2,10 @@ import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 
-import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { MobileStepper } from "@mui/material";
 
-import cld from "@/utils/cloudinary";
 import info from "@/info.json";
+import { buildCldUrl } from "@/utils/cloudinary";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -16,7 +15,7 @@ export default function Carousel() {
   const [activeStep, setActiveStep] = useState(0);
   const images = carousel.map(c => ({
     publicId: c,
-    url: cld.image(c).resize(Resize.scale().width("auto")).toURL(),
+    url: buildCldUrl(c),
   }));
 
   return (

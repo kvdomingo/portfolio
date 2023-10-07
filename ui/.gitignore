@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 gcs-cors.json
+content/

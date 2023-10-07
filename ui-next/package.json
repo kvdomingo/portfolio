@@ -26,9 +26,12 @@
     "nanostores": "^0.9.3",
     "qs": "^6.11.2",
     "react-before-after-slider-component": "^1.1.8",
-    "react-swipeable-views": "^0.14.0"
+    "react-swipeable-views": "^0.14.0",
+    "rehype-mathjax": "^5.0.0",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
+    "@astrojs/mdx": "^1.1.1",
     "@astrojs/node": "^6.0.1",
     "@astrojs/react": "^3.0.2",
     "@astrojs/sitemap": "^3.0.0",

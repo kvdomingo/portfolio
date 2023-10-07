@@ -1,6 +1,7 @@
 ---
 import dateFormat from "dateformat";
 import info from "@/info.json";
+import { buildCldUrl } from "@/utils/cloudinary";
 
 interface Props {
   project: (typeof info.dev.projects)[0];
@@ -19,7 +20,7 @@ const { project } = Astro.props;
       rel="noopener noreferrer"
     >
       <img
-        src={project.cover}
+        src={buildCldUrl(project.cover)}
         alt={project.title}
         class="aspect-square h-[300px] w-auto object-cover"
       />

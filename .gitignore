@@ -236,9 +236,6 @@ dist
 # Large media
 *.psd
 
-# Post drafts
-content/
-
 .idea/
 .vscode/
 *.iml

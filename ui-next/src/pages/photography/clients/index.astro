@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
 import info from "@/info.json";
+import { buildCldUrl } from "@/utils/cloudinary";
 
 const { clients } = info.photography;
 ---
@@ -13,7 +14,7 @@ const { clients } = info.photography;
         clients.map(client => (
           <div class="card image-full aspect-square w-full shadow-lg">
             <figure>
-              <img src={client.cover} alt={client.name} />
+              <img src={buildCldUrl(client.cover)} alt={client.name} />
             </figure>
             <a href={`clients/${client.slug}`} class="card-body">
               <h2 class="card-title">{client.name}</h2>

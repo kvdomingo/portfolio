@@ -4,6 +4,9 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
+import mdx from "@astrojs/mdx";
+import remarkMath from "remark-math";
+import rehypeMathJax from "rehype-mathjax";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +18,13 @@ export default defineConfig({
     }),
     react({
       include: ["**/react/*"],
+    }),
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: { theme: "material-theme-ocean" },
+      gfm: true,
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeMathJax],
     }),
   ],
   output: "hybrid",
