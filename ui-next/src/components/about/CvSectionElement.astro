@@ -10,15 +10,15 @@ const { data } = Astro.props;
 
 <li class="ml-[1.5rem] mt-[1.5rem]">
   <div
-    class="border-primary absolute -ml-[2rem] h-[1rem] w-[1rem] rounded-[50%] border-2 border-solid bg-indigo-900"
+    class="absolute -ml-[2rem] h-[1rem] w-[1rem] rounded-[50%] border-2 border-solid border-primary bg-indigo-900"
   >
   </div>
   <div class="flex flex-col gap-4">
     <div class="-mt-[0.5rem]">
       <div class="grid md:grid-cols-2">
-        <h5 class="text-2xl">{data.title}</h5>
+        <h5 class="text-lg">{data.title}</h5>
         <div class="flex justify-start text-gray-300 small-caps md:justify-end">
-          {dateFormat(new Date(data.startDate), "mmm yyyy")} –{" "}
+          🕑{dateFormat(new Date(data.startDate), "mmm yyyy")} –{" "}
           {
             data.endDate
               ? dateFormat(new Date(data.endDate), "mmm yyyy")

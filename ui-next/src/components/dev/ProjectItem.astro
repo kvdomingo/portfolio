@@ -30,11 +30,11 @@ const { project } = Astro.props;
   <div class="col-span-3">
     <div class="grid grid-cols-2">
       <div>
-        <h4 class="text-3xl">{project.title}</h4>
+        <h4 class="text-xl">{project.title}</h4>
       </div>
       <div class="flex place-content-end place-items-center text-gray-400">
         <p class="small-caps">
-          {dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
+          🕑{dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
           {
             project.endDate
               ? dateFormat(new Date(project.endDate), "mmm yyyy")
@@ -48,6 +48,7 @@ const { project } = Astro.props;
       project.organization && (
         <div class="my-4 flex place-items-center">
           <p>
+            🌏
             <a
               href={project.organizationUrl}
               target="_blank"
