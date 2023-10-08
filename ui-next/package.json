@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^5.0.2",
     "@cloudinary/url-gen": "^1.11.2",
     "@fontsource/figtree": "^5.0.12",
     "@fontsource/rubik": "^5.0.12",
@@ -37,6 +36,7 @@
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/svelte": "^4.0.2",
     "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vercel": "^5.0.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.10",

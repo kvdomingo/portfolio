@@ -49,5 +49,12 @@ export default defineConfig({
     },
   },
   site: "https://kvd.studio",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
+  }),
 });
