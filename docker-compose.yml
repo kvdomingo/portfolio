@@ -14,7 +14,7 @@ services:
     image: node:18-alpine
     environment:
       - NODE_ENV=development
-    env_file: ui-next/.env
+    env_file: ui/.env
     working_dir: /web
     init: true
     command:
@@ -22,7 +22,7 @@ services:
       - "-c"
       - "yarn install && yarn dev"
     volumes:
-      - ./ui-next:/web
+      - ./ui:/web
 
   proxy:
     image: bitnami/nginx:latest

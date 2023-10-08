@@ -4,7 +4,7 @@ WORKDIR /web
 
 COPY ./ui/ ./
 
-RUN bun install && bun run build
+RUN yarn install && yarn build
 
 FROM python:3.10 AS deps
 

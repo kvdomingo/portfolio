@@ -4,9 +4,11 @@ module.exports = {
   bracketSpacing: true,
   endOfLine: "lf",
   importOrder: [
-    "^next(.*)",
+    "^astro(.*)",
+    "^@astro(.*)",
+    "^svelte(.*)",
+    "^@svelte(.*)",
     "^react(.*)",
-    "^react-dom(.*)",
     "<THIRD_PARTY_MODULES>",
     "^@/(.*)",
     "^[./]",
@@ -20,7 +22,23 @@ module.exports = {
   tabWidth: 2,
   trailingComma: "all",
   plugins: [
+    import("prettier-plugin-astro"),
+    import("prettier-plugin-svelte"),
     import("@trivago/prettier-plugin-sort-imports"),
     import("prettier-plugin-tailwindcss"),
+  ],
+  overrides: [
+    {
+      files: "*.astro",
+      options: {
+        parser: "astro",
+      },
+    },
+    {
+      files: "*.svelte",
+      options: {
+        parser: "svelte",
+      },
+    },
   ],
 };
