@@ -14,7 +14,10 @@ const { courseSlug = "" } = Astro.params;
 
 const course = info.svip.courses.find(course => course.slug === courseSlug);
 
-const entries = await getCollection("svip");
+const entries = await getCollection(
+  "svip",
+  entry => entry.data.courseSlug === courseSlug,
+);
 ---
 
 <Layout title={`${course.title} | KVD Studio`}>
