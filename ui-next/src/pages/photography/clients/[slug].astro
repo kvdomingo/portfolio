@@ -28,7 +28,7 @@ const params = qs.stringify({
 
 const url = `${BASE_URL}?${params}`;
 
-const res = await Bun.fetch(url, {
+const res = await fetch(url, {
   headers: {
     "Authorization": AUTHORIZATION,
     "Content-Type": "application/json",
