@@ -36,7 +36,7 @@ export default defineConfig({
       rehypePlugins: [mathjaxConfig],
     }),
   ],
-  output: "hybrid",
+  output: "server",
   server: {
     host: "0.0.0.0",
     port: 3000,
@@ -48,7 +48,7 @@ export default defineConfig({
       },
     },
   },
-  site: "https://kvd.studio",
+  site: "https://kvdstudio-portfolio-staging.vercel.app",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
