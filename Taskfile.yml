@@ -1,7 +1,7 @@
 version: '3'
 
-env:
-  NAME: kvdomingo-dev
+vars:
+  PROJECT_NAME: kvdomingo-dev
 
 dotenv:
   - api/.env
@@ -10,7 +10,7 @@ tasks:
   default:
     desc: Build and start Docker containers
     cmds:
-      - docker compose --project-name {{.NAME}} up --detach --build --remove-orphans
+      - docker compose --project-name {{.PROJECT_NAME}} up --detach --build --remove-orphans
 
   setup:
     desc: Run initial setup
@@ -22,29 +22,29 @@ tasks:
   logs:
     desc: Attach to Docker logs
     cmds:
-      - docker compose --project-name {{.NAME}} logs --follow {{.CLI_ARGS}}
+      - docker compose --project-name {{.PROJECT_NAME}} logs --follow {{.CLI_ARGS}}
 
   stop:
     desc: Stop containers
     cmds:
-      - docker compose --project-name {{.NAME}} stop
+      - docker compose --project-name {{.PROJECT_NAME}} stop
 
   exec:
     desc: Run a command in the specified container
     cmds:
-      - docker compose --project-name {{.NAME}} exec -- {{.CLI_ARGS}}
+      - docker compose --project-name {{.PROJECT_NAME}} exec -- {{.CLI_ARGS}}
 
   reload-proxy:
     desc: Reload proxy config
     cmds:
-      - docker compose --project-name {{.NAME}} exec -- proxy nginx -s reload
+      - docker compose --project-name {{.PROJECT_NAME}} exec proxy nginx -s reload
 
   restart:
     desc: Restart containers
     cmds:
-      - docker compose --project-name {{.NAME}} restart {{.CLI_ARGS}}
+      - docker compose --project-name {{.PROJECT_NAME}} restart {{.CLI_ARGS}}
 
   clean:
     desc: Remove containers
     cmds:
-      - docker compose --project-name {{.NAME}} down --remove-orphans {{.CLI_ARGS}}
+      - docker compose --project-name {{.PROJECT_NAME}} down --remove-orphans {{.CLI_ARGS}}
