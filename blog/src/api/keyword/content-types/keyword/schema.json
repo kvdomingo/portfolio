@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "keywords",
+  "info": {
+    "singularName": "keyword",
+    "pluralName": "keywords",
+    "displayName": "Keyword"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "keyword": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

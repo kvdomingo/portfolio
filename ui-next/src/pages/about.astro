@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import cld from "@/utils/cloudinary";
+import info from "@/info.json";
+import { Resize } from "@cloudinary/url-gen/actions";
+import CvSection from "@/components/about/CvSection.astro";
+
+const image = cld
+  .image(info.about.photo)
+  .resize(Resize.scale().width("auto"))
+  .toURL();
+---
+
+<Layout title="About | KVD Studio">
+  <div class="grid gap-8 p-4 md:grid-cols-4 md:p-0">
+    <img
+      src={image}
+      class="w-auto rounded-3xl md:sticky md:-top-8 md:-ml-8"
+      alt="Mind Museum, 2019. Shot by Qeren Bartido."
+    />
+    <div class="flex flex-col gap-16 md:col-span-3 md:pr-24">
+      <div>
+        <p class="whitespace-pre-line">{info.about.text}</p>
+        <a href={`mailto:${info.email}`} class="btn btn-accent btn-outline my-6"
+          >Contact</a
+        >
+      </div>
+
+      <div>
+        <CvSection title="Education" data={info.cv.education.data} />
+        <CvSection title="Work" data={info.cv.workExperience.data} />
+        <CvSection title="Certifications" data={info.cv.certification.data} />
+        <CvSection title="Publications" data={info.cv.publication.data} />
+        <CvSection title="Coding Stats" data={[]}>
+          <div class="flex flex-col gap-6">
+            <div class="text-center">
+              <figure>
+                <embed
+                  src="https://wakatime.com/share/@kvdomingo/c19861c3-3b97-49c3-8152-56dbc3b074b2.svg"
+                />
+              </figure>
+            </div>
+            <figure class="md:w-3/4">
+              <embed
+                src="https://wakatime.com/share/@kvdomingo/1e4dbd96-9c14-40e8-b252-0191c6306845.svg"
+              />
+            </figure>
+          </div>
+        </CvSection>
+      </div>
+    </div>
+  </div>
+</Layout>

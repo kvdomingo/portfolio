@@ -1,0 +1,42 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Resize } from "@cloudinary/url-gen/actions";
+import cld from "@/utils/cloudinary";
+import WhatIDo from "@/components/home/whatIDo/WhatIDo.astro";
+import HowIDoIt from "@/components/home/HowIDoIt.astro";
+
+const backgroundImage = cld
+  .image(
+    "kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1",
+  )
+  .resize(Resize.scale().width("auto"))
+  .toURL();
+
+const logo = cld
+  .image("logo/logo-white")
+  .resize(Resize.scale().width("auto"))
+  .toURL();
+---
+
+<Layout title="KVD Studio">
+  <main>
+    <div
+      class="h-screen bg-cover bg-fixed bg-center bg-no-repeat"
+      style={`background-image: url('${backgroundImage}')`}
+      id="cover"
+    >
+      <div
+        class="flex h-full w-full place-content-center place-items-center bg-black/70"
+      >
+        <img
+          src={logo}
+          alt="KVD Studio"
+          class="w-[75vw] border-[3px] border-solid border-white p-6 md:w-[25vw]"
+        />
+      </div>
+    </div>
+
+    <WhatIDo />
+    <HowIDoIt />
+  </main>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import info from "@/info.json";
+import Layout from "@/layouts/Layout.astro";
+import ClientDate from "@/components/common/svelte/ClientDate.svelte";
+
+export async function getStaticPaths() {
+  const svipEntries = await getCollection("svip");
+  return svipEntries.map(entry => ({
+    params: { postSlug: entry.slug, courseSlug: entry.data.courseSlug },
+  }));
+}
+
+const { postSlug, courseSlug } = Astro.params;
+const course = info.svip.courses.find(course => course.slug === courseSlug);
+
+const entry = await getEntry("svip", postSlug);
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} | SVIP | KVD Studio`}>
+  <div class="container flex flex-col gap-8 py-8">
+    <div class="breadcrumbs">
+      <ul>
+        <li><a href="/svip">Courses</a></li>
+        <li><a href={`/svip/${course.slug}`}>{course.name}</a></li>
+        <li>{entry.data.title}</li>
+      </ul>
+    </div>
+
+    <h3>{entry.data.title}</h3>
+    <p class="text-neutral-400">
+      <ClientDate date={entry.data.created} client:load />
+    </p>
+
+    <Content />
+
+    <h4>Keywords</h4>
+    <div class="flex gap-2">
+      {
+        entry.data.keywords.map(keyword => (
+          <div class="badge badge-neutral badge-lg">{keyword}</div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

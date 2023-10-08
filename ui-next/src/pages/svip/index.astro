@@ -1,0 +1,29 @@
+---
+import info from "@/info.json";
+import Layout from "@/layouts/Layout.astro";
+import { buildCldUrl } from "@/utils/cloudinary";
+
+const { courses } = info.svip;
+---
+
+<Layout title="Video & Image Processing | KVD Studio">
+  <div class="container grid grid-cols-3 gap-4">
+    {
+      courses.map(course => (
+        <div class="card image-full bg-base-300 shadow-xl">
+          <figure>
+            <img
+              src={buildCldUrl(course.cover)}
+              alt={course.title}
+              class="aspect-square"
+            />
+          </figure>
+          <a href={`/svip/${course.slug}`} class="card-body">
+            <h2 class="card-title">{course.name}</h2>
+            <p>{course.description}</p>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

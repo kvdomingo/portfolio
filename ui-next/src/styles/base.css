@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h6 {
+  font-size: theme("fontSize.md");
+}
+
+h5 {
+  font-size: theme("fontSize.lg");
+}
+
+h4 {
+  font-size: theme("fontSize.xl");
+}
+
+h3 {
+  font-size: theme("fontSize.2xl");
+}
+
+h2 {
+  font-size: theme("fontSize.3xl");
+}
+
+h1 {
+  font-size: theme("fontSize.4xl");
+}
+
+small {
+  font-size: theme("fontSize.sm");
+}
+
+ol.reference {
+  counter-reset: spp-counter;
+  list-style: none;
+}
+
+ol.reference li {
+  counter-increment: spp-counter;
+  display: flex;
+}
+
+ol.reference li::before {
+  content: "[" counter(spp-counter) "]";
+  margin-left: -2rem;
+  margin-right: 1rem;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: theme("colors.indigo.400") !important;
+  stroke: theme("colors.indigo.400") !important;
+}
+
+.figcaption p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: theme("gap.1");
+}
+
+.figure {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: theme("gap.4");
+  width: 100%;
+
+  @media screen and (min-width: theme("screens.md")) {
+    width: 50%;
+  }
+}

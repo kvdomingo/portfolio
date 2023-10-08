@@ -1,0 +1,65 @@
+---
+import qs from "qs";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+import info from "@/info.json";
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+import Gallery from "@/components/photography/svelte/Gallery.svelte";
+import cld from "@/utils/cloudinary";
+import {
+  AUTHORIZATION,
+  BASE_URL,
+  DEFAULT_OPTIONS,
+} from "@/server/utils/cloudinary";
+
+export function getStaticPaths() {
+  return info.photography.clients.map(({ slug }) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+
+const title =
+  info.photography.clients.find(client => client.slug === slug)?.name ?? "";
+
+const params = qs.stringify({
+  ...DEFAULT_OPTIONS,
+  prefix: `kdphotography/portfolio/static/portfolio/media-private/clients/${slug}`,
+});
+
+const url = `${BASE_URL}?${params}`;
+
+const res = await Bun.fetch(url, {
+  headers: {
+    "Authorization": AUTHORIZATION,
+    "Content-Type": "application/json",
+  },
+});
+
+const body = await res.json();
+
+const { resources = [] } = body;
+
+const images = resources
+  .map(resource => ({
+    ...resource,
+    secure_url: cld
+      .image(resource.public_id)
+      .resize(Resize.scale().width("auto"))
+      .toURL(),
+  }))
+  .sort((a, b) => b.created_at.localeCompare(a.createdAt));
+---
+
+<Layout title={`${title} | Clients | KVD Studio`}>
+  <PhotographyLayout>
+    <div class="breadcrumbs px-6">
+      <ul>
+        <li>
+          <a href="/photography/clients"> Clients</a>
+        </li>
+        <li>{title}</li>
+      </ul>
+    </div>
+    <Gallery images={images} client:only="svelte" />
+  </PhotographyLayout>
+</Layout>

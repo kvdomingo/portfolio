@@ -1,0 +1,25 @@
+---
+import info from "@/info.json";
+---
+
+<div class="container py-12 text-center">
+  <h2 class="section-header text-3xl text-white">How I do it</h2>
+  <hr class="my-8" />
+
+  {
+    Object.entries(info.home.technologies).map(([header, technologies]) => (
+      <div class="my-8">
+        <div class="grid gap-12 md:grid-cols-4">
+          <div class="flex place-content-center place-items-center border-b border-solid border-white pb-6 pr-0 text-center md:place-content-end md:border-b-0 md:border-r md:pb-0 md:pr-6 md:text-right">
+            <h5 class="section-header text-lg">{header}</h5>
+          </div>
+          <div class="col-span-3 my-auto grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-12">
+            {technologies.map(tech => (
+              <img src={tech.logo} alt={tech.name} class="my-auto" />
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>

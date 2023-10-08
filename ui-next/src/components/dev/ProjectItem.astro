@@ -1,0 +1,72 @@
+---
+import dateFormat from "dateformat";
+import info from "@/info.json";
+import { buildCldUrl } from "@/utils/cloudinary";
+
+interface Props {
+  project: (typeof info.dev.projects)[0];
+}
+
+const { project } = Astro.props;
+---
+
+<div
+  class="mb-8 grid grid-cols-4 place-content-start gap-8 border-t border-solid border-slate-600 pt-8"
+>
+  <div>
+    <a
+      href={project.status === "archived" ? undefined : project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src={buildCldUrl(project.cover)}
+        alt={project.title}
+        class="aspect-square h-[300px] w-auto object-cover"
+      />
+    </a>
+  </div>
+
+  <div class="col-span-3">
+    <div class="grid grid-cols-2">
+      <div>
+        <h4 class="text-xl">{project.title}</h4>
+      </div>
+      <div class="flex place-content-end place-items-center text-gray-400">
+        <p class="small-caps">
+          🕑{dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
+          {
+            project.endDate
+              ? dateFormat(new Date(project.endDate), "mmm yyyy")
+              : "present"
+          }
+        </p>
+      </div>
+    </div>
+
+    {
+      project.organization && (
+        <div class="my-4 flex place-items-center">
+          <p>
+            🌏
+            <a
+              href={project.organizationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.organization}
+            </a>
+          </p>
+        </div>
+      )
+    }
+    <p class="my-8">{project.summary}</p>
+    <div>
+      {
+        project.technologies.map(tech => (
+          <div class="badge badge-neutral mb-2 mr-2 p-4">{tech}</div>
+        ))
+      }
+    </div>
+  </div>
+</div>

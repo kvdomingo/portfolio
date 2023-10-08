@@ -1,0 +1,509 @@
+{
+  "title": "KVD Studio",
+  "email": "hello@kvd.studio",
+  "home": {
+    "photography": {
+      "text": "As the former Executive Officer for Promotions and Documentation of UP Iris—a university-wide student organization\u2014I received and conducted training in the art of storytelling through photography. Today, I continue to draw inspiration and learnings from established photographers, both foreign and local, in order to hone my own craft. I mainly focus on concert and portrait photography. However, I do like to be well-rounded, and I don't mind venturing into street, landscape, and product photography every once in a while.",
+      "carousel": [
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200213_124.jpg",
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200213_120.jpg",
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200212_20.jpg",
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200212_54.jpg",
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200212_41.jpg",
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200212_16.jpg",
+        "kdphotography/portfolio/static/portfolio/media-private/live/20200212_15.jpg"
+      ]
+    },
+    "dev": {
+      "text": "I am a full-time software engineer and a Google Cloud Certified Professional Cloud Architect. Python and TypeScript are my primary development languages, and my go-to stack is Django + React.js (although this website is written in Astro + Svelte). Some of my work involves architecting and developing cloud solutions, web applications, data pipelines, APIs, command-line interfaces, and chat bots, among others."
+    },
+    "vip": {
+      "text": "For my undergraduate thesis, I joined the Instrumentation Physics Laboratory-Video & Image Processing subgroup. My research was initially on blood spatter analysis (BPA). Due to limited equipment, I was tasked to find a way to extract useful information from possibly incomplete measurements. This led me to the field of compressive sensing (CS), which became my main field of research. In this endeavor, I utilized various technologies such as established signal processing techniques, as well as more contemporary machine learning and artificial intelligence approaches."
+    },
+    "technologies": {
+      "backend": [
+        {
+          "name": "Python",
+          "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+        },
+        {
+          "name": "Django",
+          "logo": "https://seeklogo.com/images/D/django-logo-F46C1DD95E-seeklogo.com.png"
+        },
+        {
+          "name": "FastAPI",
+          "logo": "https://cdn.worldvectorlogo.com/logos/fastapi-1.svg"
+        },
+        {
+          "name": "Flask",
+          "logo": "https://www.svgrepo.com/show/508915/flask.svg"
+        },
+        {
+          "name": "Go",
+          "logo": "https://www.svgrepo.com/show/452214/go.svg"
+        }
+      ],
+      "frontend": [
+        {
+          "name": "TypeScript",
+          "logo": "https://iconape.com/wp-content/png_logo_vector/typescript.png"
+        },
+        {
+          "name": "React",
+          "logo": "https://iconape.com/wp-content/files/zk/93042/svg/react.svg"
+        },
+        {
+          "name": "Svelte",
+          "logo": "https://www.svgrepo.com/show/354416/svelte-icon.svg"
+        },
+        {
+          "name": "Astro",
+          "logo": "https://www.svgrepo.com/show/373446/astro.svg"
+        },
+        {
+          "name": "TailwindCSS",
+          "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+        }
+      ],
+      "full-stack": [
+        {
+          "name": "Next.js",
+          "logo": "https://www.svgrepo.com/show/354113/nextjs-icon.svg"
+        },
+        {
+          "name": "T3",
+          "logo": "https://create.t3.gg/images/t3-dark.svg"
+        }
+      ],
+      "cloud": [
+        {
+          "name": "Docker",
+          "logo": "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png.webp"
+        },
+        {
+          "name": "Kubernetes",
+          "logo": "https://www.svgrepo.com/show/448233/kubernetes.svg"
+        },
+        {
+          "name": "GitHub",
+          "logo": "https://www.svgrepo.com/show/450156/github.svg"
+        },
+        {
+          "name": "Google Cloud Platform",
+          "logo": "https://snapshooter.io/assets/img/marketing/providers/gcp/gcp.png"
+        },
+        {
+          "name": "Amazon Web Services",
+          "logo": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+        },
+        {
+          "name": "Microsoft Azure Cloud",
+          "logo": "https://www.svgrepo.com/show/331302/azure-v2.svg"
+        }
+      ]
+    }
+  },
+  "about": {
+    "photo": "kdphotography/portfolio/static/portfolio/media-private/about/bio",
+    "text": "Hi, I'm Kenneth! I am a software engineer at Thinking Machines Data Science, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. In my spare time, I like to dabble a bit in various fields like music composition & production, photography, artificial intelligence, and electronics, to name a few. I am also an alumni and former Executive Officer for Promotions and Documentation of UP Iris, a university-wide photography organization.\n\nFeel free to contact me for inquiries, collaborations, and other concerns!"
+  },
+  "cv": {
+    "education": {
+      "icon": "",
+      "data": [
+        {
+          "title": "University of the Philippines",
+          "subtitle": "National Institute of Physics",
+          "subtitleLink": "https://nip.upd.edu.ph",
+          "body": "B.S. Applied Physics (Major in Instrumentation)",
+          "bodyLink": "",
+          "caption": "Thesis: Compressive sensing: Applications from 1-D to N-D",
+          "captionLink": "",
+          "startDate": "2015-08-03",
+          "endDate": "2020-07-26"
+        }
+      ]
+    },
+    "workExperience": {
+      "icon": "",
+      "data": [
+        {
+          "title": "Software Engineer",
+          "subtitle": "Thinking Machines Data Science",
+          "subtitleLink": "https://thinkingmachin.es",
+          "body": "",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2023-01-09",
+          "endDate": ""
+        },
+        {
+          "title": "Photographer",
+          "subtitle": "KVD Studio",
+          "subtitleLink": "/photography",
+          "body": "",
+          "bodyLink": "/photography",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2017-11-01",
+          "endDate": ""
+        },
+        {
+          "title": "Software Engineer",
+          "subtitle": "Demand Science (Cobena Business Analytics & Strategy)",
+          "subtitleLink": "https://demandscience.com",
+          "body": "Developed web applications for both internal and client-facing projects. Frontend duties involved designing and developing the user interface for web applications, and writing automated unit tests with Jest and end-to-end tests using Selenium. Backend duties involved developing APIs and authorization/authentication systems, and implementing asynchronous worker pools for background tasks. Set up, maintained, and automated the involved cloud infrastructure and DevOps pipelines.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2020-11-04",
+          "endDate": "2022-11-04"
+        },
+        {
+          "title": "Software Developer Intern",
+          "subtitle": "Cobena Business Analytics & Strategy",
+          "subtitleLink": "https://cobenagroup.com",
+          "body": "",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2020-10-05",
+          "endDate": "2020-11-03"
+        },
+        {
+          "title": "Backend Developer",
+          "subtitle": "DetectPH",
+          "subtitleLink": "https://detectph.com/",
+          "body": "Volunteer developer for a COVID-19 contact tracing app in the Philippines.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2020-03-22",
+          "endDate": "2020-05-19"
+        },
+        {
+          "title": "Bioinformatics Intern",
+          "subtitle": "Philippine Genome Center",
+          "subtitleLink": "https://pgc.up.edu.ph",
+          "body": "Underwent training in bioinformatics; developed a command-line tool and web application for designing primers for site-directed mutagenesis.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2020-01-20",
+          "endDate": "2020-02-28"
+        },
+        {
+          "title": "Intern",
+          "subtitle": "The Rest is Noise PH",
+          "subtitleLink": "https://therestisnoiseph.com/",
+          "body": "Provided analytics to determine key points to target in order to maximize marketing; involved in project planning and on-site production for All of The Noise 2019 held at Century City Mall, City of Makati.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2019-06-15",
+          "endDate": "2019-11-23"
+        },
+        {
+          "title": "Corps Non-Commissioned Officer for Documentation",
+          "subtitle": "University of the Philippines Reserve Officers' Training Corps",
+          "subtitleLink": "https://www.uprotc.org/",
+          "body": "Official photographer of the UPD ROTC Corps of Cadets for the C.Y. 2018-2019.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2018-08-11",
+          "endDate": "2019-05-04"
+        },
+        {
+          "title": "Student Assistant",
+          "subtitle": "Philippine Coral Reef and Mangrove Remote Sensing Project",
+          "subtitleLink": "",
+          "body": "Performed ground-truth validation of images involving corals classified by a deep neural network.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2018-12-07",
+          "endDate": "2019-01-07"
+        }
+      ]
+    },
+    "certification": {
+      "icon": "",
+      "data": [
+        {
+          "title": "Professional Cloud Architect",
+          "subtitle": "Google Cloud",
+          "subtitleLink": "https://www.credential.net/0300e26a-fcdc-40db-a4a0-689fad65ac9b#gs.755e2e",
+          "body": "",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2021-07-22",
+          "endDate": "2023-07-22"
+        }
+      ]
+    },
+    "publication": {
+      "icon": "",
+      "data": [
+        {
+          "title": "Compressively sampled speech: How good is the recovery?",
+          "subtitle": "Proceedings of the Samahang Pisika ng Pilipinas 38 SPP-2020-4C-04",
+          "subtitleLink": "https://paperview.spp-online.org/proceedings/article/view/SPP-2020-4C-04",
+          "body": "Modern signal acquisition technologies are made possible by the Nyquist-Shannon sampling theorem (NST). However, this paradigm is extremely wasteful as the signal is compressed before storing it by systematically discarding imperceptible information. Compressive sensing (CS) aims to directly sense the relevant information. Current literature focus either on formulating more computationally-efficient algorithms, or methods which improve the reconstruction quality. In this paper, we quantify the reconstruction quality of compressively sampled speech with a perceptually intuitive metric―the Perceptual Evaluation of Speech Quality (PESQ)―and with the standard average segmental SNR (SNRseg). The quality of recovery of compressively sampled speech evaluated using PESQ is dependent on the compression ratio, and independent of the number of subbands used to represent the signal in the spectrogram domain.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2020-09-11",
+          "endDate": "2020-09-11"
+        },
+        {
+          "title": "Frequency domain reconstruction of stochastically sampled signals based on compressive sensing",
+          "subtitle": "Proceedings of the Samahang Pisika ng Pilipinas 37 SPP-2019-PB-38",
+          "subtitleLink": "https://paperview.spp-online.org/proceedings/article/view/SPP-2019-PB-38",
+          "body": "The field of compressed sensing (CS) has recently been gaining traction as a viable workaround to the Nyquist-Shannon sampling theorem (NSST). This allows highly accurate signal recovery from incomplete frequency information. In this paper, we investigate the ability of compressive sampling to recover the higher harmonics of a recorded guitar signal. Sampling is done in the temporal domain, and the reconstruction is performed in the frequency domain. It is shown that even when taking a small number of random samples corresponding to some underlying sub-Nyquist rate, the base frequency, including up to fifth-order harmonics, can be recovered. The performance of three algorithms, namely least absolute shrinkage and selection operator (LASSO), orthogonal matching pursuit (OMP), and smoothed L0 norm (SL0) algorithm in terms of computation time and reconstruction error (cosine similarity) were investigated.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2019-05-31",
+          "endDate": "2019-05-31"
+        }
+      ]
+    }
+  },
+  "dev": {
+    "projects": [
+      {
+        "title": "Chaebot",
+        "url": "https://chaebot.kvd.studio",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2020-06-29",
+        "endDate": "",
+        "summary": "A Discord bot that crossposts Twitter and VLIVE media to K-pop-oriented Discord guilds",
+        "technologies": [
+          "python",
+          "discord.py",
+          "django",
+          "javascript",
+          "react",
+          "twitter api",
+          "pyvlive",
+          "material ui",
+          "postgresql"
+        ],
+        "cover": "v1/dev/kvisualbot.png",
+        "status": "live"
+      },
+      {
+        "title": "Supply Chain Performance Indicator",
+        "url": "https://supplychainindicator.com",
+        "organization": "Cobena Business Analytics and Strategy, Inc.",
+        "organizationUrl": "https://cobenagroup.com",
+        "startDate": "2021-01-20",
+        "endDate": "2021-06-16",
+        "summary": "A supply chain performance indicator survey tool developed for UK-based market research firm Ideas & Action",
+        "technologies": [
+          "python",
+          "django",
+          "javascript",
+          "react",
+          "pandas",
+          "reportlab",
+          "xlsxwriter",
+          "d3",
+          "mdbreact",
+          "material design bootstrap",
+          "postgresql",
+          "redis"
+        ],
+        "cover": "dev/sc-tool.png",
+        "status": "archived"
+      },
+      {
+        "title": "PrimerDriver",
+        "url": "https://primerdriver.kvd.studio",
+        "organization": "Philippine Genome Center",
+        "organizationUrl": "https://pgc.up.edu.ph",
+        "startDate": "2020-01-20",
+        "endDate": "2020-02-28",
+        "summary": "CLI and web application for automation of the design of mutagenic PCR primers for site-directed mutagenesis",
+        "technologies": [
+          "python",
+          "flask",
+          "javascript",
+          "typescript",
+          "react",
+          "biopython",
+          "click",
+          "sphinx",
+          "material ui"
+        ],
+        "cover": "v1/dev/primerdriver.png",
+        "status": "live"
+      },
+      {
+        "title": "LSFM",
+        "url": "https://lsfm.kvd.studio",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2022-04-04",
+        "endDate": "2022-04-08",
+        "summary": "A clone of the LE SSERAFIM Digital Souvenir system",
+        "technologies": [
+          "typescript",
+          "react",
+          "material ui",
+          "tailwindcss",
+          "webassembly",
+          "ffmpeg"
+        ],
+        "cover": "dev/lsfm.png",
+        "status": "live"
+      },
+      {
+        "title": "graPHics",
+        "url": "https://gpu.kvdstudio.app",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2022-03-27",
+        "endDate": "2022-04-01",
+        "summary": "A web app to collect and monitor GPU pricing data from popular e-commerce websites in the Philippines",
+        "technologies": [
+          "python",
+          "flask",
+          "javascript",
+          "react",
+          "material ui",
+          "postgresql"
+        ],
+        "cover": "dev/gpupricetracker.png",
+        "status": "archived"
+      },
+      {
+        "title": "NCOVenience",
+        "url": "",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2020-03-03",
+        "endDate": "2020-06-23",
+        "summary": "COVID-19 PH Cases Tracker Map",
+        "technologies": [
+          "python",
+          "flask",
+          "beautifulsoup",
+          "geojson",
+          "numpy",
+          "pandas",
+          "typescript",
+          "react",
+          "material design",
+          "bootstrap",
+          "mdbreact",
+          "chart.js",
+          "mapbox"
+        ],
+        "cover": "dev/ncovenience.png",
+        "status": "archived"
+      },
+      {
+        "title": "KenGPT",
+        "url": "https://gpt.kvd.studio",
+        "organization": "",
+        "organizationUrl": "",
+        "startDate": "2023-02-10",
+        "endDate": "2023-02-12",
+        "summary": "Yet Another ChatGPT Clone",
+        "technologies": [
+          "typescript",
+          "react",
+          "next.js",
+          "gpt",
+          "openai",
+          "tailwindcss"
+        ],
+        "cover": "dev/kengpt.png",
+        "status": "live"
+      }
+    ]
+  },
+  "photography": {
+    "clients": [
+      {
+        "name": "UP Corps of Sponsors",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/04_upcos.jpg",
+        "slug": "up-cos"
+      },
+      {
+        "name": "UP Reserve Officers' Training Corps",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/03_uprotc.jpg",
+        "slug": "uprotc"
+      },
+      {
+        "name": "UP Concert Chorus",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients/upcc/RITMO1-1.jpg",
+        "slug": "upcc"
+      },
+      {
+        "name": "UP Phi Delta Alpha Sorority",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/05_uppda.jpg",
+        "slug": "up-pda"
+      },
+      {
+        "name": "UP Sigma Alpha Nu Sorority",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/02_upsan2019.jpg",
+        "slug": "up-san"
+      },
+      {
+        "name": "UP Club for the Environment and Tourism",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/01_ecotour.jpg",
+        "slug": "up-ecotour"
+      }
+    ]
+  },
+  "svip": {
+    "courses": [
+      {
+        "name": "App Physics 187",
+        "slug": "ap187",
+        "title": "Photonics and Applied Optics",
+        "cover": "svip/187/13-PhotoStereo/intensity_maps.png",
+        "description": "Design of Data Acquisition Systems (DAQ), Signal Processing-based instrumentation systems, current topics and techniques for engineering and design of optical instruments, non-destructive testing/measurement using optical methods, interferometry",
+        "posts": []
+      },
+      {
+        "name": "App Physics 186",
+        "slug": "ap186",
+        "title": "Instrumentation Physics II",
+        "cover": "svip/186/17-NeuralNetworks/func-fit.png",
+        "description": "Imaging systems, image processing, multidimensional detection techniques, pattern recognition",
+        "posts": [
+          {
+            "title": "Activity 4: Measuring Area from Images",
+            "slug": "measuring-area",
+            "cover": "svip/186/4-MeasuringArea/csamphi_map.png"
+          },
+          {
+            "title": "Activity 3: Image Types and Formats",
+            "slug": "image-types",
+            "cover": "svip/186/3-ImageTypes/DSC_8805.png"
+          },
+          {
+            "title": "Activity 2: Practical Image Processing II",
+            "slug": "practical-2",
+            "cover": "svip/186/2-Practical2/final_overlay.png"
+          }
+        ]
+      },
+      {
+        "name": "App Physics 156",
+        "slug": "ap156",
+        "title": "Computer Methods in Physics II",
+        "cover": "svip/156/Proj-MultipoleExpansion/117.png",
+        "description": "Advanced computer programming methods, numerical modeling and simulations, discrete models, stochastic methods, current approaches in numerical modeling",
+        "posts": []
+      }
+    ]
+  }
+}

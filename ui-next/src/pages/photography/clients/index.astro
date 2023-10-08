@@ -1,0 +1,27 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+import info from "@/info.json";
+import { buildCldUrl } from "@/utils/cloudinary";
+
+const { clients } = info.photography;
+---
+
+<Layout title="Clients | KVD Studio">
+  <PhotographyLayout>
+    <div class="grid grid-cols-1 gap-4 px-6 lg:grid-cols-3 xl:grid-cols-4">
+      {
+        clients.map(client => (
+          <div class="card image-full aspect-square w-full shadow-lg">
+            <figure>
+              <img src={buildCldUrl(client.cover)} alt={client.name} />
+            </figure>
+            <a href={`clients/${client.slug}`} class="card-body">
+              <h2 class="card-title">{client.name}</h2>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </PhotographyLayout>
+</Layout>

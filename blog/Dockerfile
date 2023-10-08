@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
@@ -22,8 +22,8 @@ RUN chown -R node:node /opt/app
 
 USER node
 
-RUN ["yarn", "build"]
+RUN [ "yarn", "build" ]
 
 EXPOSE 1337
 
-CMD ["yarn", "develop"]
+CMD [ "yarn", "develop" ]

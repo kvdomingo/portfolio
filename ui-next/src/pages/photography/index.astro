@@ -1,0 +1,47 @@
+---
+import qs from "qs";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+import Gallery from "@/components/photography/svelte/Gallery.svelte";
+import {
+  AUTHORIZATION,
+  DEFAULT_OPTIONS,
+  BASE_URL,
+} from "@/server/utils/cloudinary";
+import cld from "@/utils/cloudinary";
+
+const params = qs.stringify({
+  ...DEFAULT_OPTIONS,
+  prefix: "kdphotography/portfolio/static/portfolio/media-private/latest",
+});
+
+const url = `${BASE_URL}?${params}`;
+
+const res = await Bun.fetch(url, {
+  headers: {
+    "Authorization": AUTHORIZATION,
+    "Content-Type": "application/json",
+  },
+});
+
+const body = await res.json();
+
+const { resources = [] } = body;
+
+const images = resources
+  .map(resource => ({
+    ...resource,
+    secure_url: cld
+      .image(resource.public_id)
+      .resize(Resize.scale().width("auto"))
+      .toURL(),
+  }))
+  .sort((a, b) => b.created_at.localeCompare(a.createdAt));
+---
+
+<Layout title="Photography | KVD Studio">
+  <PhotographyLayout>
+    <Gallery images={images} client:only="svelte" />
+  </PhotographyLayout>
+</Layout>
