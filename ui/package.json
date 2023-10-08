@@ -82,7 +82,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-opentype": "^1.1.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "^4.4.11"
   },
   "eslintIgnore": [
     "content/"
