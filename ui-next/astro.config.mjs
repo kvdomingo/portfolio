@@ -1,10 +1,10 @@
 import { defineConfig } from "astro/config";
-import node from "@astrojs/node";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
+import vercel from "@astrojs/vercel/serverless";
 import remarkMath from "remark-math";
 import rehypeMathJax from "rehype-mathjax";
 
@@ -28,7 +28,9 @@ export default defineConfig({
     }),
     mdx({
       syntaxHighlight: "shiki",
-      shikiConfig: { theme: "material-theme-ocean" },
+      shikiConfig: {
+        theme: "material-theme-ocean",
+      },
       gfm: true,
       remarkPlugins: [remarkMath],
       rehypePlugins: [mathjaxConfig],
@@ -47,7 +49,5 @@ export default defineConfig({
     },
   },
   site: "https://kvd.studio",
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: vercel(),
 });
