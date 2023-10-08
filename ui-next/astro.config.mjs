@@ -8,6 +8,13 @@ import mdx from "@astrojs/mdx";
 import remarkMath from "remark-math";
 import rehypeMathJax from "rehype-mathjax";
 
+const mathjaxConfig = () =>
+  rehypeMathJax({
+    tex: {
+      tags: "ams",
+    },
+  });
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -24,7 +31,7 @@ export default defineConfig({
       shikiConfig: { theme: "material-theme-ocean" },
       gfm: true,
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeMathJax],
+      rehypePlugins: [mathjaxConfig],
     }),
   ],
   output: "hybrid",

@@ -1,9 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import info from "@/info.json";
 import { buildCldUrl } from "@/utils/cloudinary";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return info.svip.courses.map(course => ({
     params: { courseSlug: course.slug },
   }));
@@ -12,6 +13,8 @@ export function getStaticPaths() {
 const { courseSlug = "" } = Astro.params;
 
 const course = info.svip.courses.find(course => course.slug === courseSlug);
+
+const entries = await getCollection("svip");
 ---
 
 <Layout title={`${course.title} | KVD Studio`}>
@@ -25,17 +28,20 @@ const course = info.svip.courses.find(course => course.slug === courseSlug);
 
     <div class="grid grid-cols-3 gap-4">
       {
-        course.posts.map(post => (
+        entries.map(entry => (
           <div class="card image-full aspect-square bg-base-300 shadow-xl">
             <figure>
               <img
-                src={buildCldUrl(post.cover)}
-                alt={post.title}
+                src={buildCldUrl(entry.data.cover)}
+                alt={entry.data.title}
                 class="aspect-square"
               />
             </figure>
-            <a href={`/svip/${course.slug}/${post.slug}`} class="card-body">
-              <h2 class="card-title">{post.title}</h2>
+            <a
+              href={`/svip/${entry.data.courseSlug}/${entry.slug}`}
+              class="card-body"
+            >
+              <h2 class="card-title">{entry.data.title}</h2>
             </a>
           </div>
         ))

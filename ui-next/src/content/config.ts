@@ -7,6 +7,7 @@ const svipCollection = defineCollection({
     keywords: z.array(z.string()),
     cover: z.string(),
     courseSlug: z.string(),
+    created: z.string().datetime(),
   }),
 });
 

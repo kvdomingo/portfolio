@@ -1,21 +1,94 @@
 ---
 title: "Activity 2: Practical Image Processing II"
-keywords: []
-cover: ""
+keywords:
+  - image processing
+  - practical
+  - pixel calibration
+  - plot overlay
+  - pixel coordinate
+cover: "svip/186/2-Practical2/final_overlay.png"
 courseSlug: "ap186"
+created: "2019-08-14T05:19:26.0000Z"
 ---
-import Image from "@/components/common/Image.astro";
+
+import { buildCldUrl } from "@/utils/cloudinary";
 
 Today's activity involved the basics on digitally extracting values from hand-drawn plots. The image I used is
 shown in Fig. [1](#fig:radial-profile). For the pixel coordinate extraction, I used Photoshop, and
 for everything else, Python's `matplotlib` module.
 
+<figure class="figure" id="fig:radial-profile">
+  <img
+    src={buildCldUrl("svip/186/2-Practical2/graph-image")}
+    alt="Radial profiles of the electron excitation emission"
+    class="w-full"
+  />
+  <figcaption class="figcaption">
+    Figure 1: Radial profiles of the electron excitation emission $N_{vp}$ and
+    the laser-induced fluorescence $N_{vl}$ for lithium resonance line (670.8
+    nm) [[1]](#kadota1984).
+  </figcaption>
+</figure>
 
-<Image
-  publicId="svip/186/2-Practical2/graph-image"
-  alt="yes"
-  class="w-[50%] mx-auto"
-/>
+In order to determine the pixel-to-centimeter conversion factor, I first tabulated the pixel coordinates of the x and
+y-axis units. I noticed that the ticks were not equidistant, and that the x and y axes were not of the same scale, so I
+performed linear regression by plotting the pixel vs cm values separately for both axes. The calibration curves can then
+be obtained from Fig. [2](#fig:calibration). The conversion factors obtained were:
 
+<span class="mx-auto" id="eq:calib">
+$
+\begin{align}
+  x_{\mathrm{cm}} & = (0.02)x_{\mathrm{px}} - 6.62 \\
+  y_{\mathrm{cm}} & = (-0.04)y_{\mathrm{px}} + 14.50
+  \end{align}
+  $
+</span>
 
-Figure 1: Radial profiles of the electron excitation emission $N_{vp}$ and the laser-induced fluorescence $N_{vl}$ for lithium resonance line (670.8 nm) [[1](#kadota1984)].
+Using these conversion factors, it's simply a matter of plugging in pixel values into ([1](#eq:calib)) or
+([2](eq:calib)) in order to extract the real cm units. In Fig. [1](#fig:radial-profile), we can see three elements:
+a bell curve, a sigmoid-like curve, and an apparently straight line (it actually curves ever so slightly upward). To
+extract the values of the bell curve, I simply took the pixel location of the center of the round markers. For the
+sigmoid, I sampled at points on the line immediately adjacent to the hollow markers. For the dashed line, I sampled at
+each x-axis unit.
+
+<figure class="figure" id="fig:calibration">
+  <img
+    src={buildCldUrl("svip/186/2-Practical2/calibration_curves")}
+    alt="Calibration curves for the x and y axes"
+    class="w-full"
+  />
+  <figcaption class="text-center">
+    Figure 2: Calibration curves for the x and y axes.
+  </figcaption>
+</figure>
+
+After performing the necessary conversions, I could then plot my extracted curves while overlaying original image all in
+one go. Because `matplotlib`'s `imshow` function displays images in terms of pixels, I had to specify its `extent` and
+`aspect` parameters. To do this, I have to determine the length and width of the image as a whole, i.e., I have to
+extend the axes of the original plot so that it encompasses the image as a whole. This task is already trivial since I
+have already calculated conversion factors earlier. The end product is shown in Fig. [3](#fig:fit).
+
+<figure class="figure" id="fig:fit">
+  <img
+    src={buildCldUrl("svip/186/2-Practical2/final_overlay")}
+    alt="Original image overlayed with the extracted curves"
+    class="w-full"
+  />
+  <figcaption class="text-center">
+    Figure 3: Original image overlayed with the extracted curves.
+  </figcaption>
+</figure>
+
+Even though it was suggested to use Paint, GIMP, and/or a spreadsheet software, I opted to use Photoshop and matplotlib
+since I have been accustomed to using them and I believe I can work faster and more efficiently by using them.
+Personally, I find using Excel cumbersome and *makalat tignan* for data processing, and I am especially not fond of the
+appearance of its plots.
+
+#### References
+<ol class="reference">
+  <li id="kadota1984">
+    K. Kadota, H. Matsuoka, H. J. Ramos, S. Miyake, K. Tsuchida, J. Fujita, T. Usui, and T. Oda, Neutral beam probe
+    spectroscopy for edge plasma diagnostics, [*J. Nucl. Mater.*](http://dx.doi.org/10.1016/0022-3115(84)90494-X)
+    **128-129**, 960 (1984).
+  </li>
+</ol>
