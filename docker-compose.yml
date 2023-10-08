@@ -22,7 +22,7 @@ services:
       - "-c"
       - "bun install && bun run dev"
     volumes:
-      - ./ui-next:/web
+      - ./ui:/web
 
   proxy:
     image: bitnami/nginx:latest
