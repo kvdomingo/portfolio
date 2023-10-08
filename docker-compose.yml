@@ -11,7 +11,7 @@ services:
       - db
 
   ui:
-    image: oven/bun:1.0
+    image: node:18-alpine
     environment:
       - NODE_ENV=development
     env_file: ui-next/.env
@@ -20,7 +20,7 @@ services:
     command:
       - /bin/sh
       - "-c"
-      - "bun install && bun run dev"
+      - "yarn install && yarn dev"
     volumes:
       - ./ui-next:/web
 
