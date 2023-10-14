@@ -1,0 +1,176 @@
+---
+title: "Activity 5: Enhancement by Histogram Manipulation"
+keywords:
+  - histogram manipulation
+  - contrast stretching
+  - histogram equalization
+  - crushed blacks
+cover: "svip/186/5-EnhanceHistogram/crushed.png"
+courseSlug: "ap186"
+created: "2019-08-26T08:55:49.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+
+data: [
+{ url: "original", caption: "Original", key: "fig-original" },
+{ url: "contrast_stretch", caption: "Contrast-stretched (CS)", key: "fig-constretch" },
+{ url: "hist_equal", caption: "Histogram-equalized (HE)", key: "fig-histeq" },
+{ url: "adapt_eq", caption: "Nonlinear response (NL)", key: "fig-nonlinear" },
+{ url: "orig_hist", caption: "original histogram", key: "fig-orig-hist" },
+{ url: "cs_hist", caption: "CS histogram", key: "fig-constretch-hist" },
+{ url: "histeq_hist", caption: "HE histogram", key: "fig-histeq-hist" },
+{ url: "adapteq_hist", caption: "NL histogram", key: "fig-nonlinear-hist" },
+{ url: "orig_cdf", caption: "original CDF", key: "fig-orig-cdf" },
+{ url: "cs_cdf", caption: "CS CDF", key: "fig-constretch-cdf" },
+{ url: "uniform_cdf", caption: "HE CDF", key: "fig-histeq-cdf" },
+{ url: "sigmoid_cdf", caption: "NL CDF", key: "fig-nonlinear-cdf" },
+]
+
+crushedData: [
+{ url: "crush_cdf", caption: "desired CDF", key: "fig-sigmoid" },
+{ url: "crushed", caption: "resultant image", key: "fig-sigmoid-hist" },
+{ url: "crush_hist", caption: "histogram", key: "fig-sigmoid-cdf" },
+]
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity, I chose a low-light portrait that I shot at the Light Bridge at the Mind Museum (Fig.
+[1](#fig-original)) last April. I imported it as `uint8` for ease in the histogram
+manipulation later on (something to do with indexing). Its histogram is shown in Fig.
+[1e](#fig-orig-hist). Notice that the histogram values range only from 0 to 226. The "spike" at the
+end most likely corresponds to the clipped highlights evident in the light stripes that can be seen in the
+original, unprocessed image. This spike is also reflected in its CDF, shown in Fig.
+[1i](#fig-orig-cdf).
+
+The first order of business is contrast stretching, which is essentially
+stretching the histogram so that it encompasses the entire data space
+available for the data type, in this case, 0 to 255. We first convert the
+image to `float32` by dividing it by 255 in order to constrain the
+pixel values between 0 and 1. Since the global maximum of the original image
+is 226, no pixel will have an exact value of 1. We want to stretch the data so
+that its maximum is exactly 1, so we transform the pixel intensities [[1](#Soriano2019)]
+according to
+
+<span id="eq-transform" class="mx-auto">
+  $
+  \begin{equation}
+  I^\prime (x, y) = \frac{I(x, y) - I_{\mathrm{min}}}{I_{\mathrm{max}} - I_{\mathrm{min}}}
+  \end{equation}
+  $
+</span>
+
+We then cast the image back into `uint8` by multiplying by 255 and
+rounding off. The result of this process is shown in Fig.
+[1b](#fig-constretch). At face value, there is no discernible change
+since the global maximum of the original image is fairly close to 255. However,
+in the eyes of a photographer, there are substantial contrast & detail enhancements,
+particularly in the regions with rapid light falloff, such as on the shirt. If
+you zoom in quite a bit, the side of the face which is better lit has more pronounced
+details. The light stripes also appear less clipped, and are now a tad brighter.
+Looking into its histogram (Fig.[1f](#fig-constretch-hist)), we see that the brighter range of
+pixels are now more even, and now encompass the full range of values up to
+255, and the "stretching" is evident by the lack of some pixels in the lower
+range. The CDF (Fig. [1j](#fig-constretch-cdf)) also reflects
+a smoother increase in the upper range of values.
+
+Next, we perform histogram equalization. Generating the desired CDF (Fig.
+[1k](#fig-histeq-cdf)) is trivial: we just use G(z) = z in the range [0,
+255] for both x and y axes since we intend to retain its data type. By
+importing the image as an unsigned integer type, it makes the job of
+backprojection much easier as we only need to take the pixel values of the
+original image and use that as an index to find the corresponding pixel value
+in the desired CDF. The resulting image is shown in Fig. [1c](#fig-histeq). We
+can see from its histogram in Fig. [1g](#fig-histeq-hist) that the pixel
+values are now uniformly spread out throughout the data range. Since the bulk
+of the pixel values were originally in the lower range, the image now looks
+more properly exposed, albeit less in contrast.
+
+Finally, we try to simulate a nonlinear response by generating a sigmoid CDF
+(Fig. [1l](#fig-nonlinear-cdf)) of the form
+
+<span id="eq-sigmoid" class="mx-auto">
+  $
+  \begin{equation}
+  G(z) = \frac{1}{1 + e ^ { - z}}
+  \end{equation}
+  $
+</span>
+
+and scaling it to `uint8` then rounding off. The resultant image can
+be seen in Fig. [1d](#fig-nonlinear), and its histogram in Fig.
+[1h](#fig-nonlinear-hist). Once again, the image appears more properly
+exposed, but now is high in contrast. We can also see in the histogram that the
+middle values are stretched more than the outer values.
+
+<figure id="fig-enhance" class="container grid grid-cols-4 gap-4">
+  {frontmatter.data.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/186/5-EnhanceHistogram/${d.url}`)}
+        alt={d.caption}
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-4 text-center">
+    Figure 1: Grayscale-converted image and its histogram manipulations, their
+    respective histograms, and their respective CDFs.
+  </figcaption>
+</figure>
+
+Upon further reading, this is actually the method used for a technique called
+adaptive equalization [[2](#Walt2014)].
+The CDF is a nonlinear response, usually of a sigmoid-like shape which is shifted
+along the x-axis and/or varied in slope, depending on where most of the original
+pixel values are clustered, and I generally use this to correct the exposure of
+images without blowing out the highlights or crushing the shadows. I also recognized
+the S-curve of the CDF and its effect on the image, and I realized that the CDF
+is actually what is called the tone curve in photo editing programs such as Lightroom
+and Photoshop. To test this, I tried to perform a technique called _crushing the blacks/whites_,
+which is used to simulate a faded film look, wherein the tone curve is shaped
+like a sigmoid, but the endpoints are clipped, i.e., the global minimum should
+be greater than 0 and the global maximum should be less than 255 sort of like the
+opposite of contrast stretching. To do this, I generated a sigmoid CDF (Fig.
+[2a](#fig-sigmoid-cdf)) with a bias and scaled it to a value less
+than 255, so that its minimum and maximum y values are 42 and 197,
+respectively. Using the same process as before, lo-and-behold, I got the
+expected result in Fig.[2b](#fig-sigmoid), and it definitely looks like it was taken with
+the classic Kodak Tri-X film. Its histogram in Fig.[2c](#fig-sigmoid)
+also shows the squeezing of the pixel values and con rms that the technique
+acts like _contrast compressing_.
+
+<figure id="fig-crushed" class="container grid grid-cols-3 items-end gap-4">
+  {frontmatter.crushedData.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/186/5-EnhanceHistogram/${d.url}`)}
+        alt={d.caption}
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-3 text-center">
+    Figure 2: "Crushed blacks/whites" post-processing technique using histogram
+    manipulation.
+  </figcaption>
+</figure>
+
+#### References
+
+<ol class="reference">
+  <li id="Soriano2019">
+    M. N. Soriano, *Enhancement by histogram manipulation* (2019).
+  </li>
+  <li id="Walt2014">
+    S. van der Walt, J. L. Schonberger, J. Nunez-Iglesias, F. Boulogne, J. D.
+    Warner, N. Yager, E. Gouillart, T. Yu, and the scikit-image contributors,
+    [Histogram
+    equalization](https://scikit-image.org/docs/dev/auto_examples/color_exposure/plot_equalize.html)
+    (2014).
+  </li>
+</ol>
