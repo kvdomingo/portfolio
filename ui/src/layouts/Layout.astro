@@ -16,9 +16,10 @@ import "@fontsource/rubik/700.css";
 
 interface Props {
   title?: string;
+  spotlight?: boolean;
 }
 
-const { title = info.title } = Astro.props;
+const { title = info.title, spotlight = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -70,8 +71,14 @@ const { title = info.title } = Astro.props;
     <ViewTransitions />
   </head>
 
-  <body class="min-h-screen">
-    <Navbar client:only="svelte" />
+  <body
+    class:list={[
+      "min-h-screen",
+      { "bg-gradient-to-b from-indigo-950 to-slate-900": !spotlight },
+      { "bg-black": spotlight },
+    ]}
+  >
+    {!spotlight && <Navbar client:only="svelte" />}
 
     <div>
       <slot />
@@ -81,11 +88,6 @@ const { title = info.title } = Astro.props;
       body {
         margin: 0;
         font-family: "Figtree", "Rubik", "Inter", sans-serif;
-        background: linear-gradient(
-          to bottom,
-          theme("colors.indigo.950"),
-          theme("colors.slate.900")
-        );
         color: white;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

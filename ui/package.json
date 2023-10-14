@@ -1,5 +1,5 @@
 {
-  "name": "ui-next",
+  "name": "portfolio-ui",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -17,12 +17,6 @@
     "@tanstack/svelte-query": "^4.35.3",
     "cloudinary": "^1.41.0",
     "dateformat": "^5.0.3",
-    "flickity": "^3.0.0",
-    "flickity-fullscreen": "^2.0.0",
-    "flickity-imagesloaded": "^2.0.0",
-    "imagesloaded": "^5.0.0",
-    "juxtaposejs": "^1.1.6",
-    "masonry-layout": "^4.2.2",
     "nanostores": "^0.9.3",
     "qs": "^6.11.2",
     "react-before-after-slider-component": "^1.1.8",
@@ -42,7 +36,6 @@
     "@mui/material": "^5.14.10",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/dateformat": "^5.0.0",
-    "@types/flickity": "^2.2.9",
     "@types/qs": "^6.9.8",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.7",

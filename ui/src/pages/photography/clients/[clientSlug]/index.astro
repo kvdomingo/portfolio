@@ -1,31 +1,30 @@
 ---
 import qs from "qs";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
+import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
-import Gallery from "@/components/photography/svelte/Gallery.svelte";
+import Gallery from "@/components/photography/Gallery.astro";
+import cld from "@/utils/cloudinary";
 import {
   AUTHORIZATION,
   BASE_URL,
   DEFAULT_OPTIONS,
 } from "@/server/utils/cloudinary";
-import cld from "@/utils/cloudinary";
 
 export function getStaticPaths() {
-  return [
-    { params: { slug: "live" } },
-    { params: { slug: "portraits" } },
-    { params: { slug: "samoetikerffa" } },
-  ];
+  return info.photography.clients.map(({ slug }) => ({ params: { slug } }));
 }
 
-const { slug = "" } = Astro.params;
+const { clientSlug } = Astro.params;
 
-const title = slug[0].toUpperCase() + slug.slice(1);
+const title =
+  info.photography.clients.find(client => client.slug === clientSlug)?.name ??
+  "";
 
 const params = qs.stringify({
   ...DEFAULT_OPTIONS,
-  prefix: `kdphotography/portfolio/static/portfolio/media-private/${title}`,
+  prefix: `kdphotography/portfolio/static/portfolio/media-private/clients/${clientSlug}`,
 });
 
 const url = `${BASE_URL}?${params}`;
@@ -52,8 +51,16 @@ const images = resources
   .sort((a, b) => b.created_at.localeCompare(a.createdAt));
 ---
 
-<Layout title={`${title} | KVD Studio`}>
+<Layout title={`${title} | Clients | KVD Studio`}>
   <PhotographyLayout>
-    <Gallery images={images} client:only="svelte" />
+    <div class="breadcrumbs px-6">
+      <ul>
+        <li>
+          <a href="/photography/clients"> Clients</a>
+        </li>
+        <li>{title}</li>
+      </ul>
+    </div>
+    <Gallery images={images} />
   </PhotographyLayout>
 </Layout>

@@ -1,0 +1,31 @@
+---
+interface Props {
+  images: Array<Record<string, any>>;
+}
+
+const { slug, clientSlug } = Astro.params;
+const { images } = Astro.props;
+---
+
+<div class="sm:colums-2 columns-1 gap-4 px-4 md:columns-3 lg:columns-4">
+  {
+    images.map(image => (
+      <a
+        href={`/photography/${
+          clientSlug ? `clients/${clientSlug}` : slug
+        }/spotlight/${image.public_id}`}
+      >
+        <img
+          loading="lazy"
+          src={image.secure_url}
+          alt={image.public_id}
+          class:list={[
+            "m-0 mb-4 inline-block w-full rounded drop-shadow-lg",
+            `aspect-[${(image.width / image.height).toFixed(2)}]`,
+          ]}
+          transition:name={image.public_id}
+        />
+      </a>
+    ))
+  }
+</div>

@@ -31,48 +31,46 @@
 
 <header class="z-10 w-full">
   <nav
-    class="bg-gradient-to-r from-indigo-950/25 to-slate-900/25 px-12 backdrop-blur-md transition-all duration-300 ease-in-out"
+    class="navbar bg-gradient-to-r from-indigo-950/25 to-slate-900/25 px-12 backdrop-blur-md transition-all duration-300 ease-in-out"
   >
-    <div class="flex items-center">
-      <div class="flex flex-auto items-center">
-        <a href="/">
-          <img
-            src={LIGHT_LOGO}
-            alt="logo"
-            class="opacity-1 my-2 h-[70px] w-auto transition-all duration-300 ease-in-out"
-          />
-        </a>
-      </div>
-
-      <ul
-        class="section-header hidden flex-auto items-center justify-end gap-6 md:menu md:menu-horizontal md:visible md:flex"
-      >
-        {#each NAV_LINKS as nav}
-          <li>
-            <a href={nav.path}>
-              <span class="text-white">
-                {nav.label}
-              </span>
-            </a>
-          </li>
-        {/each}
-        <li>
-          <details>
-            <summary>Portfolio</summary>
-            <ul>
-              {#each PORTFOLIO_LINKS as port}
-                <li>
-                  <a href={port.path}>
-                    <span class="text-white">
-                      {port.label}
-                    </span>
-                  </a>
-                </li>
-              {/each}
-            </ul>
-          </details>
-        </li>
-      </ul>
+    <div class="flex flex-auto items-center">
+      <a href="/">
+        <img
+          src={LIGHT_LOGO}
+          alt="logo"
+          class="opacity-1 my-2 h-[70px] w-auto transition-all duration-300 ease-in-out"
+        />
+      </a>
     </div>
+
+    <ul
+      class="section-header hidden flex-auto items-center justify-end gap-6 md:menu md:menu-horizontal md:visible md:flex"
+    >
+      {#each NAV_LINKS as nav}
+        <li>
+          <a href={nav.path}>
+            <span class="text-white">
+              {nav.label}
+            </span>
+          </a>
+        </li>
+      {/each}
+      <li>
+        <details>
+          <summary>Portfolio</summary>
+          <ul>
+            {#each PORTFOLIO_LINKS as port}
+              <li>
+                <a href={port.path}>
+                  <span class="text-white">
+                    {port.label}
+                  </span>
+                </a>
+              </li>
+            {/each}
+          </ul>
+        </details>
+      </li>
+    </ul>
   </nav>
 </header>

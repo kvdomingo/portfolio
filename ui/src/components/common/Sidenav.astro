@@ -1,6 +1,6 @@
 ---
 const TABS = [
-  { path: "", label: "latest" },
+  { path: "/latest", label: "latest" },
   { path: "/live", label: "live" },
   { path: "/portraits", label: "portraits" },
   { path: "/clients", label: "clients" },
@@ -15,7 +15,13 @@ const { pathname } = Astro.url;
     TABS.map(tab => (
       <li>
         <a
-          class:list={[{ active: pathname === `/photography${tab.path}` }]}
+          class:list={[
+            {
+              active: tab.path.includes("/clients")
+                ? pathname.includes("/clients") && tab.path.includes("/clients")
+                : pathname === `/photography${tab.path}`,
+            },
+          ]}
           href={`/photography${tab.path}`}
         >
           {tab.label}
