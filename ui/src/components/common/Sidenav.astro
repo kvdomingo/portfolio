@@ -1,0 +1,32 @@
+---
+const TABS = [
+  { path: "/latest", label: "latest" },
+  { path: "/live", label: "live" },
+  { path: "/portraits", label: "portraits" },
+  { path: "/clients", label: "clients" },
+  { path: "/samoetikerffa", label: "#samoetikerffa" },
+];
+
+const { pathname } = Astro.url;
+---
+
+<ul class="menu menu-lg items-end">
+  {
+    TABS.map(tab => (
+      <li>
+        <a
+          class:list={[
+            {
+              active: tab.path.includes("/clients")
+                ? pathname.includes("/clients") && tab.path.includes("/clients")
+                : pathname === `/photography${tab.path}`,
+            },
+          ]}
+          href={`/photography${tab.path}`}
+        >
+          {tab.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -11,16 +11,16 @@ services:
       - db
 
   ui:
-    image: oven/bun:1.0
+    image: node:18-alpine
     environment:
       - NODE_ENV=development
-    env_file: ui-next/.env
+    env_file: ui/.env
     working_dir: /web
     init: true
     command:
       - /bin/sh
       - "-c"
-      - "bun install && bun run dev"
+      - "yarn install && yarn dev"
     volumes:
       - ./ui:/web
 
@@ -55,49 +55,6 @@ services:
       - "--credentials-file=/config"
       - "--address=0.0.0.0"
       - "--port=3306"
-
-  blog:
-    build: ./blog
-    image: kvdomingo/portfolio-blog:latest
-    env_file: ./blog/.env
-    environment:
-      DATABASE_HOST: db
-    volumes:
-      - ./blog/config:/opt/app/config
-      - ./blog/src:/opt/app/src
-      - ./blog/package.json:/opt/package.json
-      - ./blog/yarn.lock:/opt/yarn.lock
-      - ./blog/.env:/opt/app/.env
-      - ./blog/public/uploads:/opt/app/public/uploads
-    depends_on:
-      - db
-    networks:
-      - default
-      - gateway
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.kvdstudio-blog.rule=Host(`strapi.kvdstudio.localhost`)"
-      - "traefik.http.routers.kvdstudio-blog.entrypoints=http"
-      - "traefik.http.routers.kvdstudio-blog.middlewares=secured@file"
-      - "traefik.docker.network=gateway"
-      - "traefik.http.services.kvdstudio-blog.loadbalancer.server.port=1337"
-
-  adminer:
-    image: adminer
-    environment:
-      - ADMINER_DEFAULT_SERVER=db
-    networks:
-      - default
-      - gateway
-    depends_on:
-      - db
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.kvdstudio-adminer.rule=Host(`adminer.kvdstudio.localhost`)"
-      - "traefik.http.routers.kvdstudio-adminer.entrypoints=http"
-      - "traefik.http.routers.kvdstudio-adminer.middlewares=secured@file"
-      - "traefik.docker.network=gateway"
-      - "traefik.http.services.kvdstudio-adminer.loadbalancer.server.port=8080"
 
 networks:
   gateway:

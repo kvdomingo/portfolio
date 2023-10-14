@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { buildCldUrl } from "@/utils/cloudinary";
+
+const { slug, publicId } = Astro.params;
+---
+
+<Layout title="Photography | KVD Studio" spotlight={true}>
+  <div class="flex h-screen items-center justify-center">
+    <div class="absolute right-0 top-0 z-10 p-4">
+      <a href={`/photography/${slug}`}>
+        <button class="btn btn-circle btn-ghost text-md text-white">✕</button>
+      </a>
+    </div>
+
+    <img
+      src={buildCldUrl(publicId)}
+      alt={publicId}
+      class="max-h-screen object-contain"
+      transition:name={publicId}
+    />
+  </div>
+</Layout>

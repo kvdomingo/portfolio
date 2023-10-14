@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import info from "@/info.json";
+import { buildCldUrl } from "@/utils/cloudinary";
+
+export async function getStaticPaths() {
+  return info.svip.courses.map(course => ({
+    params: { courseSlug: course.slug },
+  }));
+}
+
+const { courseSlug = "" } = Astro.params;
+
+const course = info.svip.courses.find(course => course.slug === courseSlug);
+
+const entries = await getCollection(
+  "svip",
+  entry => entry.data.courseSlug === courseSlug,
+);
+---
+
+<Layout title={`${course.title} | KVD Studio`}>
+  <div class="container flex flex-col gap-4">
+    <div class="breadcrumbs">
+      <ul>
+        <li><a href="/svip">Courses</a></li>
+        <li>{course.name}</li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4">
+      {
+        entries.map(entry => (
+          <div class="card image-full aspect-square bg-base-300 shadow-xl">
+            <figure>
+              <img
+                src={buildCldUrl(entry.data.cover)}
+                alt={entry.data.title}
+                class="aspect-square"
+              />
+            </figure>
+            <a
+              href={`/svip/${entry.data.courseSlug}/${entry.slug}`}
+              class="card-body"
+            >
+              <h2 class="card-title">{entry.data.title}</h2>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
