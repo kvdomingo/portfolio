@@ -8,7 +8,7 @@ keywords:
   - awbaaet
 cover: "svip/186/6-EnhanceColor/contrast_stretch.jpg"
 courseSlug: "ap186"
-created: "2019-08-26T03:00:37.0000Z"
+created: "2019-08-26T13:00:37.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 
@@ -54,9 +54,9 @@ and stretch the remaining bins to fill the full range, according to
 <span id="eq-constretch" className="mx-auto">
   $
   \begin{equation}
-  I_C^\prime = \frac{I_C - C_{low}}{C_{high} - C_{low}} \times C_{max} + C_{min}
-  \end{equation}
-  $
+    I_C^\prime = \frac{I_C - C_{low}}{C_{high} - C_{low}} \times C_{max} + C_{min}
+    \end{equation}
+    $
 </span>
 
 where `C` refers to the channel being manipulated.
@@ -74,9 +74,9 @@ values are manipulated according to [[2](#Soriano2019)]
 <span id="eq-grayworld" className="math-container">
   $
   \begin{equation}
-  I_C^\prime = I_C \times \frac{\langle I \rangle}{\langle C \rangle}
-  \end{equation}
-  $
+    I_C^\prime = I_C \times \frac{\langle I \rangle}{\langle C \rangle}
+    \end{equation}
+    $
 </span>
 
 where `<I>` is the overall
@@ -143,9 +143,9 @@ and the modified contrast-stretching is
 <span id="eq-constretch-mod" className="math-container">
     $
     \begin{equation}
-  I_C^\prime = \frac{I_C - C_{low}}{C_{high} - C_{low}} \times I_{max} + I_{min}
-  \end{equation}
-  $
+    I_C^\prime = \frac{I_C - C_{low}}{C_{high} - C_{low}} \times I_{max} + I_{min}
+    \end{equation}
+    $
   </span>
 
 where `C_{low}` and `C_{high}` are the lower and upper
@@ -157,9 +157,9 @@ The weight is then calculated as
 <span id="eq-weight" className="math-container">
     $
     \begin{equation}
-  w = \frac{| \langle C_b \rangle - \langle C_r \rangle | + | \sigma_{\mathrm{max}} - \sigma_{\mathrm{min}} |}{n}
-  \end{equation}
-  $
+    w = \frac{| \langle C_b \rangle - \langle C_r \rangle | + | \sigma_{\mathrm{max}} - \sigma_{\mathrm{min}} |}{n}
+    \end{equation}
+    $
   </span>
 
 where `\langle C_b \rangle , \langle C_r \rangle`
@@ -173,9 +173,9 @@ The final image is obtained by
 <span id="eq-weight" className="math-container">
     $
     \begin{equation}
-  I^\prime = w \cdot I_{\mathrm{CS}} + (1 - w) \cdot I_{\mathrm{GW}}
-  \end{equation}
-  $
+    I^\prime = w \cdot I_{\mathrm{CS}} + (1 - w) \cdot I_{\mathrm{GW}}
+    \end{equation}
+    $
   </span>
 
 where `CS` and `GW` are the images enhanced

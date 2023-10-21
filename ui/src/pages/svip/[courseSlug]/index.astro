@@ -18,6 +18,7 @@ const entries = await getCollection(
   "svip",
   entry => entry.data.courseSlug === courseSlug,
 );
+entries.sort((a, b) => b.data.created.localeCompare(a.data.created));
 ---
 
 <Layout title={`${course.title} | KVD Studio`}>
