@@ -17,6 +17,7 @@ const mathjaxConfig = () =>
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: true,
   integrations: [
     tailwind(),
     sitemap(),
@@ -48,9 +49,9 @@ export default defineConfig({
       },
     },
   },
-  site: "https://kvdstudio-portfolio-staging.vercel.app",
+  site: "https://kvd.studio",
   adapter: vercel({
-    webAnalytics: {
+    speedInsights: {
       enabled: true,
     },
   }),
