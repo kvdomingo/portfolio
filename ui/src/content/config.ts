@@ -1,6 +1,6 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
 
-const svipCollection = defineCollection({
+const svip = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -11,6 +11,4 @@ const svipCollection = defineCollection({
   }),
 });
 
-export const collections = {
-  svip: svipCollection,
-};
+export const collections = { svip };

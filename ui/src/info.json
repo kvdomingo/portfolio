@@ -15,7 +15,7 @@
       ]
     },
     "dev": {
-      "text": "I am a full-time software engineer and a Google Cloud Certified Professional Cloud Architect. Python and TypeScript are my primary development languages, and my go-to stack is Django + React.js (although this website is written in Astro + Svelte). Some of my work involves architecting and developing cloud solutions, web applications, data pipelines, APIs, command-line interfaces, and chat bots, among others."
+      "text": "I am a full-time software engineer and certified as a Microsoft Azure AI Engineer and Google Professional Cloud Architect. Python and TypeScript are my primary development languages, and my go-to stack is Django + React. Outside of work, I like to explore other technologies (this website is written in Astro + Svelte!). Some of my work involves architecting and developing cloud solutions, web applications, data platforms, APIs, command-line interfaces, and chat bots, among others."
     },
     "vip": {
       "text": "For my undergraduate thesis, I joined the Instrumentation Physics Laboratory-Video & Image Processing subgroup. My research was initially on blood spatter analysis (BPA). Due to limited equipment, I was tasked to find a way to extract useful information from possibly incomplete measurements. This led me to the field of compressive sensing (CS), which became my main field of research. In this endeavor, I utilized various technologies such as established signal processing techniques, as well as more contemporary machine learning and artificial intelligence approaches."
@@ -41,6 +41,10 @@
         {
           "name": "Go",
           "logo": "https://www.svgrepo.com/show/452214/go.svg"
+        },
+        {
+          "name": "GoFiber",
+          "logo": "https://gofiber.io/assets/images/logo.svg"
         }
       ],
       "frontend": [
@@ -63,19 +67,13 @@
         {
           "name": "TailwindCSS",
           "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
-        }
-      ],
-      "full-stack": [
+        },
         {
           "name": "Next.js",
           "logo": "https://www.svgrepo.com/show/354113/nextjs-icon.svg"
-        },
-        {
-          "name": "T3",
-          "logo": "https://create.t3.gg/images/t3-dark.svg"
         }
       ],
-      "cloud": [
+      "infra": [
         {
           "name": "Docker",
           "logo": "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png.webp"
@@ -84,6 +82,16 @@
           "name": "Kubernetes",
           "logo": "https://www.svgrepo.com/show/448233/kubernetes.svg"
         },
+        {
+          "name": "Terraform",
+          "logo": "https://static-00.iconduck.com/assets.00/terraform-icon-1803x2048-hodrzd3t.png"
+        },
+        {
+          "name": "Ansible",
+          "logo": "https://static-00.iconduck.com/assets.00/ansible-icon-2048x2048-mc4z634w.png"
+        }
+      ],
+      "cloud": [
         {
           "name": "GitHub",
           "logo": "https://www.svgrepo.com/show/450156/github.svg"
