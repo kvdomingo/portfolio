@@ -23,6 +23,7 @@
   "javascript": {
     "formatter": {
       "arrowParentheses": "asNeeded"
-    }
+    },
+    "globals": ["Astro"]
   }
 }

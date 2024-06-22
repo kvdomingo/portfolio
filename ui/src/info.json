@@ -113,7 +113,7 @@
   },
   "about": {
     "photo": "kdphotography/portfolio/static/portfolio/media-private/about/bio",
-    "text": "Hi, I'm Kenneth! I am a software engineer at Thinking Machines Data Science, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. In my spare time, I like to dabble a bit in various fields like music composition & production, photography, artificial intelligence, and electronics, to name a few. I am also an alumni and former Executive Officer for Promotions and Documentation of UP Iris, a university-wide photography organization.\n\nFeel free to contact me for inquiries, collaborations, and other concerns!"
+    "text": "Hi, I'm Kenneth! I am a software engineer at Thinking Machines Data Science, a Microsoft-certified Azure AI Engineer, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. In my spare time, I like to dabble a bit in various fields like music composition & production, photography, and electronics, to name a few. I am also an alumni and former Executive Officer for Promotions and Documentation of UP Iris, a university-wide photography organization.\n\nFeel free to contact me for inquiries, collaborations, and other concerns!"
   },
   "cv": {
     "education": {
@@ -248,7 +248,7 @@
           "caption": "",
           "captionLink": "",
           "startDate": "2024-05-30",
-          "endDate": "2025-05-31"
+          "endDate": null
         },
         {
           "title": "Professional Cloud Architect",
@@ -259,7 +259,7 @@
           "caption": "",
           "captionLink": "",
           "startDate": "2021-07-22",
-          "endDate": "2023-07-22"
+          "endDate": null
         }
       ]
     },

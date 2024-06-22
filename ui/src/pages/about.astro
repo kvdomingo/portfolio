@@ -1,14 +1,11 @@
 ---
+import CvSection from "@/components/about/CvSection.astro";
+import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import cld from "@/utils/cloudinary";
-import info from "@/info.json";
 import { Resize } from "@cloudinary/url-gen/actions";
-import CvSection from "@/components/about/CvSection.astro";
 
-const image = cld
-  .image(info.about.photo)
-  .resize(Resize.scale().width("auto"))
-  .toURL();
+const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).toURL();
 ---
 
 <Layout title="About | KVD Studio">
@@ -27,9 +24,9 @@ const image = cld
       </div>
 
       <div>
-        <CvSection title="Education" data={info.cv.education.data} />
-        <CvSection title="Work" data={info.cv.workExperience.data} />
+        <CvSection title="Work Experience" data={info.cv.workExperience.data} />
         <CvSection title="Certifications" data={info.cv.certification.data} />
+        <CvSection title="Education" data={info.cv.education.data} />
         <CvSection title="Publications" data={info.cv.publication.data} />
         <CvSection title="Coding Stats" data={[]}>
           <div class="flex flex-col gap-6">

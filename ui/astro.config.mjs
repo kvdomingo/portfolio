@@ -9,53 +9,55 @@ import rehypeMathJax from "rehype-mathjax";
 import remarkMath from "remark-math";
 
 const mathjaxConfig = () =>
-	rehypeMathJax({
-		tex: {
-			tags: "ams",
-		},
-	});
+  rehypeMathJax({
+    tex: {
+      tags: "ams",
+    },
+  });
 
 // https://astro.build/config
 export default defineConfig({
-	prefetch: true,
-	integrations: [
-		tailwind(),
-		sitemap(),
-		svelte({
-			include: ["**/svelte/*"],
-		}),
-		react({
-			include: ["**/react/*"],
-		}),
-		mdx({
-			syntaxHighlight: "shiki",
-			shikiConfig: {
-				theme: "material-theme-ocean",
-			},
-			gfm: true,
-			remarkPlugins: [remarkMath],
-			rehypePlugins: [mathjaxConfig],
-		}),
-	],
-	output: "server",
-	server: {
-		host: "0.0.0.0",
-		port: 3000,
-	},
-	vite: {
-		resolve: {
-			alias: {
-				"@": "src",
-			},
-		},
-	},
-	site: "https://kvd.studio",
-	adapter: vercel({
-		webAnalytics: {
-			enabled: true,
-		},
-		speedInsights: {
-			enabled: true,
-		},
-	}),
+  prefetch: true,
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap(),
+    svelte({
+      include: ["**/svelte/*"],
+    }),
+    react({
+      include: ["**/react/*"],
+    }),
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: {
+        theme: "material-theme-ocean",
+      },
+      gfm: true,
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [mathjaxConfig],
+    }),
+  ],
+  output: "server",
+  server: {
+    host: "0.0.0.0",
+    port: 3000,
+  },
+  vite: {
+    resolve: {
+      alias: {
+        "@": "src",
+      },
+    },
+  },
+  site: "https://kvd.studio",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
+  }),
 });

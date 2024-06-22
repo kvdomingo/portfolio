@@ -18,11 +18,13 @@ const { data } = Astro.props;
       <div class="grid md:grid-cols-2">
         <h5 class="text-lg">{data.title}</h5>
         <div class="flex justify-start text-gray-300 small-caps md:justify-end">
-          🕑{dateFormat(new Date(data.startDate), "mmm yyyy")} –{" "}
+          🕑{dateFormat(new Date(data.startDate), "mmm yyyy")}
           {
-            data.endDate
-              ? dateFormat(new Date(data.endDate), "mmm yyyy")
-              : "present"
+            data.endDate === ""
+              ? " – present"
+              : data.endDate == null
+                ? ""
+                : ` – ${dateFormat(new Date(data.endDate), "mmm yyyy")}`
           }
         </div>
       </div>
