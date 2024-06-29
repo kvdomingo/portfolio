@@ -1,20 +1,37 @@
 ---
 import info from "@/info.json";
-import Carousel from "./react/Carousel";
+import { buildCldUrl } from "@/utils/cloudinary";
 
 const text = info.home.photography.text.normalize();
+
+const { carousel } = info.home.photography;
+const images = carousel.map(c => ({
+  publicId: c,
+  url: buildCldUrl(c),
+}));
 ---
 
-<div class="grid gap-8 md:grid-cols-5 md:gap-36">
-  <div class="col-span-2 my-auto flex flex-col items-start gap-8 text-left">
-    <h3 class="text-xl uppercase tracking-[0.5rem]">Photography</h3>
-    <p>{text}</p>
-    <a href="/photography" class="btn btn-outline btn-accent"
-      >See in portfolio</a
-    >
+<section class="flex flex-col gap-12">
+  <div>
+    <h2 class="text-xl uppercase tracking-[0.5rem]">Photography</h2>
+    <div class="container">
+      <p>{text}</p>
+    </div>
   </div>
 
-  <div class="col-span-3 text-center">
-    <Carousel client:only="react" />
+  <div
+    class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    {images.map(im => (
+      <div class="h-full flex items-center">
+        <img src={im.url} alt={im.publicId} />
+      </div>
+    ))}
   </div>
-</div>
+
+  <div>
+    <a href="/photography" class="btn btn-outline btn-accent btn-wide">
+        See in portfolio
+    </a>
+  </div>
+</section>

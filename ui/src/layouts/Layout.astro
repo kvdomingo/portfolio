@@ -1,18 +1,13 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "@/styles/base.css";
-import Navbar from "@/components/common/svelte/Navbar.svelte";
+import Navbar from "@/components/common/Navbar.astro";
 import info from "@/info.json";
-import "@fontsource/figtree/300.css";
-import "@fontsource/figtree/400.css";
-import "@fontsource/figtree/500.css";
-import "@fontsource/figtree/600.css";
-import "@fontsource/figtree/700.css";
-import "@fontsource/rubik/300.css";
-import "@fontsource/rubik/400.css";
-import "@fontsource/rubik/500.css";
-import "@fontsource/rubik/600.css";
-import "@fontsource/rubik/700.css";
+import "@fontsource-variable/figtree";
+import "@fontsource-variable/rubik";
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource/space-mono/400.css";
+import "@fontsource/space-mono/700.css";
 import Posthog from "@/analytics/posthog.astro";
 
 interface Props {
@@ -72,33 +67,31 @@ const { title = info.title, spotlight = false } = Astro.props;
     <ViewTransitions handleForms />
   </head>
 
-  <body
-    class:list={[
-      "min-h-screen",
-      { "bg-gradient-to-b from-indigo-950 to-slate-900": !spotlight },
-      { "bg-black": spotlight },
-    ]}
-  >
-    {!spotlight && <Navbar client:only="svelte" />}
+  <body class="min-h-screen dark bg-gradient-to-b from-ctp-base to-ctp-crust">
+    {!spotlight && <Navbar />}
 
-    <div>
+    <main>
       <slot />
-    </div>
+    </main>
 
     <Posthog />
 
     <style is:global>
       body {
         margin: 0;
-        font-family: "Figtree", "Rubik", "Inter", sans-serif;
-        color: white;
+        font-family: "Figtree Variable", "Rubik Variable", sans-serif;
+        color: theme("colors.ctp-text.DEFAULT");
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
 
+      h1, h2, h3, h4, h5, h6 {
+        color: theme("colors.ctp-text.DEFAULT");
+      }
+
       code {
-        color: theme("colors.indigo.400");
-        font-family: "Inconsolata", source-code-pro, Menlo, Monaco, Consolas,
+        color: theme("colors.ctp-mauve.DEFAULT");
+        font-family: "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas,
           "Courier New", monospace;
       }
 
@@ -108,7 +101,7 @@ const { title = info.title, spotlight = false } = Astro.props;
       }
 
       a[href] {
-        color: theme("colors.indigo.400");
+        color: theme("colors.ctp-mauve.DEFAULT");
         text-decoration: none;
       }
 
