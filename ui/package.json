@@ -31,7 +31,8 @@
     "react-before-after-slider-component": "^1.1.8",
     "react-swipeable-views": "^0.14.0",
     "rehype-mathjax": "^6.0.0",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "simple-icons-astro": "^13.2.0"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.5",

@@ -1,21 +1,31 @@
 ---
-import info from "@/info.json";
+import { Github } from "simple-icons-astro";
 import TechStack from "../react/TechStack";
 ---
 
 <section class="flex flex-col gap-12">
   <div>
     <h2 class="text-xl uppercase tracking-[0.5rem]">Software Development</h2>
-    <div class="container">
-      <p>{info.home.dev.text}</p>
-    </div>
   </div>
 
   <TechStack client:only="react" />
 
-  <div>
-    <a href="/dev" class="btn btn-outline btn-accent btn-wide">
-      See in portfolio
-    </a>
+  <div class="flex gap-4 justify-center">
+    <div>
+      <a href="/dev" class="btn btn-outline btn-accent btn-wide">
+        See in portfolio
+      </a>
+    </div>
+    <div>
+      <a
+        href="https://github.com/kvdomingo"
+        class="btn btn-outline btn-accent btn-wide"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Github />
+        GitHub
+      </a>
+    </div>
   </div>
 </section>

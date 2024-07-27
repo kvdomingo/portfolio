@@ -1,37 +1,52 @@
 ---
 import info from "@/info.json";
-import { buildCldUrl } from "@/utils/cloudinary";
+import cld from "@/utils/cloudinary";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+import { Instagram } from "simple-icons-astro";
 
 const text = info.home.photography.text.normalize();
 
 const { carousel } = info.home.photography;
 const images = carousel.map(c => ({
-  publicId: c,
-  url: buildCldUrl(c),
+  ...c,
+  url: cld
+    .image(c.publicId)
+    .resize(Resize.fill().aspectRatio(1).width("auto").gravity("auto:subject"))
+    .toURL(),
 }));
 ---
 
 <section class="flex flex-col gap-12">
   <div>
     <h2 class="text-xl uppercase tracking-[0.5rem]">Photography</h2>
-    <div class="container">
-      <p>{text}</p>
-    </div>
   </div>
 
   <div
     class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
   >
     {images.map(im => (
-      <div class="h-full flex items-center">
-        <img src={im.url} alt={im.publicId} />
+      <div class="h-full flex items-center flex-col">
+        <img src={im.url} alt={im.caption} />
       </div>
     ))}
   </div>
 
-  <div>
-    <a href="/photography" class="btn btn-outline btn-accent btn-wide">
+  <div class="flex justify-center gap-4">
+    <div>
+      <a href="/photography" class="btn btn-outline btn-accent btn-wide">
         See in portfolio
-    </a>
+      </a>
+    </div>
+    <div>
+      <a
+        href="https://instagram.com/arockentothemoon"
+        class="btn btn-outline btn-accent btn-wide"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Instagram />
+        Instagram
+      </a>
+    </div>
   </div>
 </section>
