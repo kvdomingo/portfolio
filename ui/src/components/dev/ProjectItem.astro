@@ -1,7 +1,7 @@
 ---
-import dateFormat from "dateformat";
-import info from "@/info.json";
+import type info from "@/info.json";
 import { buildCldUrl } from "@/utils/cloudinary";
+import dateFormat from "dateformat";
 
 interface Props {
   project: (typeof info.dev.projects)[0];
@@ -11,7 +11,7 @@ const { project } = Astro.props;
 ---
 
 <div
-  class="mb-8 grid grid-cols-4 place-content-start gap-8 border-t border-solid border-slate-600 pt-8"
+  class="mb-8 grid grid-cols-1 md:grid-cols-4 place-content-start gap-8 border-t border-solid border-slate-600 pt-8"
 >
   <div>
     <a
@@ -28,11 +28,11 @@ const { project } = Astro.props;
   </div>
 
   <div class="col-span-3">
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-2">
       <div>
         <h4 class="text-xl">{project.title}</h4>
       </div>
-      <div class="flex place-content-end place-items-center text-gray-400">
+      <div class="flex md:place-content-end place-items-center text-gray-400">
         <p class="small-caps">
           🕑{dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
           {
@@ -64,7 +64,7 @@ const { project } = Astro.props;
     <div>
       {
         project.technologies.map(tech => (
-          <div class="badge badge-neutral mb-2 mr-2 p-4">{tech}</div>
+          <div class="badge badge-neutral badge-xs md:badge-md mb-2 mr-2 p-4">{tech}</div>
         ))
       }
     </div>
