@@ -26,7 +26,7 @@ const images = carousel.map(c => ({
   >
     {images.map(im => (
       <div class="h-full flex items-center flex-col">
-        <img src={im.url} alt={im.caption} />
+        <img src={im.url} alt={im.caption} client:load loading="lazy" />
       </div>
     ))}
   </div>

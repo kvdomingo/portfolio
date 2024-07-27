@@ -4,11 +4,35 @@ import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import cld from "@/utils/cloudinary";
 import { Resize } from "@cloudinary/url-gen/actions";
+import { Mail } from "lucide-astro";
+
+const backgroundImage = cld
+  .image("kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1")
+  .resize(Resize.scale().width("auto"))
+  .toURL();
+
+const logo = cld.image("logo/logo-white").resize(Resize.scale().width("auto")).toURL();
 
 const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).toURL();
 ---
 
 <Layout title="About | KVD Studio">
+  <div
+    class="h-[75vh] bg-cover bg-fixed bg-center bg-no-repeat mb-14"
+    style={`background-image: url('${backgroundImage}')`}
+    id="cover"
+  >
+    <div
+      class="flex h-full w-full place-content-center place-items-center bg-black/70"
+    >
+      <img
+        src={logo}
+        alt="KVD Studio"
+        class="w-[75vw] border-[3px] border-solid border-white p-6 md:w-[25vw]"
+      />
+    </div>
+  </div>
+
   <div class="grid gap-8 p-4 md:grid-cols-4 md:p-0">
     <img
       src={image}
@@ -18,9 +42,10 @@ const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).t
     <div class="flex flex-col gap-16 md:col-span-3 md:pr-24">
       <div>
         <p class="whitespace-pre-line">{info.about.text}</p>
-        <a href={`mailto:${info.email}`} class="btn btn-outline btn-accent my-6"
-          >Contact</a
-        >
+        <a href={`mailto:${info.email}`} class="btn btn-outline btn-wide btn-accent my-6">
+          <Mail /> 
+          Contact
+        </a>
       </div>
 
       <div>
