@@ -1,0 +1,46 @@
+---
+import cld from "@/utils/cloudinary.ts";
+import { Resize } from "@cloudinary/url-gen/actions";
+
+const LIGHT_LOGO = cld
+  .image("logo/logo-white")
+  .resize(Resize.scale().width("auto"))
+  .toURL();
+
+const NAV_LINKS = [
+  { path: "/photography", label: "Photography" },
+  { path: "/dev", label: "Software" },
+  { path: "/svip", label: "Signal Processing" },
+  { path: "/about", label: "CV" },
+];
+---
+
+<header class="z-10 w-full">
+  <nav
+    class="navbar px-12"
+  >
+    <div class="flex flex-auto items-center">
+      <a href="/">
+        <img
+          src={LIGHT_LOGO}
+          alt="logo"
+          class="opacity-1 my-2 h-14 w-auto transition-all duration-300 ease-in-out"
+        />
+      </a>
+    </div>
+
+    <ul
+      class="section-header hidden flex-auto items-center justify-end gap-6 md:menu md:menu-horizontal md:visible md:flex"
+    >
+      {NAV_LINKS.map(nav => (
+        <li>
+          <a href={nav.path}>
+            <span class="text-white">
+              {nav.label}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

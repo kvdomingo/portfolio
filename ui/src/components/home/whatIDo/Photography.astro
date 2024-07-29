@@ -1,20 +1,52 @@
 ---
 import info from "@/info.json";
-import Carousel from "./react/Carousel";
+import cld from "@/utils/cloudinary";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+import { Instagram } from "simple-icons-astro";
 
 const text = info.home.photography.text.normalize();
+
+const { carousel } = info.home.photography;
+const images = carousel.map(c => ({
+  ...c,
+  url: cld
+    .image(c.publicId)
+    .resize(Resize.fill().aspectRatio(1).width("auto").gravity("auto:subject"))
+    .toURL(),
+}));
 ---
 
-<div class="grid gap-8 md:grid-cols-5 md:gap-36">
-  <div class="col-span-2 my-auto flex flex-col items-start gap-8 text-left">
-    <h3 class="text-xl uppercase tracking-[0.5rem]">Photography</h3>
-    <p>{text}</p>
-    <a href="/photography" class="btn btn-outline btn-accent"
-      >See in portfolio</a
-    >
+<section class="flex flex-col gap-12">
+  <div>
+    <h2 class="text-xl uppercase tracking-[0.5rem]">Photography</h2>
   </div>
 
-  <div class="col-span-3 text-center">
-    <Carousel client:only="react" />
+  <div
+    class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    {images.map(im => (
+      <div class="h-full flex items-center flex-col">
+        <img src={im.url} alt={im.caption} client:load loading="lazy" />
+      </div>
+    ))}
   </div>
-</div>
+
+  <div class="flex justify-center gap-4 flex-col md:flex-row">
+    <div>
+      <a href="/photography" class="btn btn-outline btn-accent btn-wide">
+        See in portfolio
+      </a>
+    </div>
+    <div>
+      <a
+        href="https://instagram.com/arockentothemoon"
+        class="btn btn-outline btn-accent btn-wide"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Instagram />
+        Instagram
+      </a>
+    </div>
+  </div>
+</section>

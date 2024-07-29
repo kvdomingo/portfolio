@@ -1,37 +1,30 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import ProjectGroup from "@/components/dev/ProjectGroup.astro";
 import info from "@/info.json";
+import Layout from "@/layouts/Layout.astro";
+import { Github, Pypi } from "simple-icons-astro";
 
 const { projects } = info.dev;
 ---
 
 <Layout title="Dev | KVD Studio">
   <div class="container pb-8">
-    <div class="mb-8 flex justify-end gap-2">
+    <div class="mb-8 flex justify-start md:justify-end gap-2">
       <a
         href="https://github.com/kvdomingo"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-circle btn-ghost btn-sm"
+        class="btn btn-circle btn-ghost btn-sm w-16 h-16"
       >
-        <img
-          src="https://www.svgrepo.com/show/450156/github.svg"
-          alt="GitHub"
-          class="w-[2rem]"
-        />
+        <Github size="48"/>
       </a>
       <a
         href="https://pypi.org/user/kvdomingo/"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-circle btn-ghost btn-sm"
+        class="btn btn-circle btn-ghost btn-sm w-16 h-16"
       >
-        <img
-          src="https://www.svgrepo.com/show/342140/pypi.svg"
-          alt="PyPi"
-          class="w-[2rem]"
-        />
+        <Pypi size="48" />
       </a>
     </div>
 

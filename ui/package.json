@@ -12,14 +12,20 @@
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.16.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.0.6",
+    "@fontsource-variable/figtree": "^5.0.21",
+    "@fontsource-variable/rubik": "^5.0.22",
     "@fontsource/figtree": "^5.0.18",
     "@fontsource/rubik": "^5.0.18",
+    "@fontsource/space-mono": "^5.0.20",
     "@radix-ui/react-tooltip": "^1.1.1",
     "@tanstack/query-core": "^4.36.1",
     "@tanstack/svelte-query": "^4.36.1",
+    "caniuse-lite": "^1.0.30001643",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^1.41.3",
     "dateformat": "^5.0.3",
+    "lucide-astro": "^0.416.0",
     "lucide-react": "^0.396.0",
     "nanostores": "^0.9.5",
     "posthog-js": "^1.101.0",
@@ -27,7 +33,8 @@
     "react-before-after-slider-component": "^1.1.8",
     "react-swipeable-views": "^0.14.0",
     "rehype-mathjax": "^6.0.0",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "simple-icons-astro": "^13.2.0"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.5",
@@ -37,6 +44,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.0.0",
     "@biomejs/biome": "^1.8.2",
+    "@catppuccin/tailwindcss": "^0.1.6",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.5",

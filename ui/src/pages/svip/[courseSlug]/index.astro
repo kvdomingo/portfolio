@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
 import info from "@/info.json";
+import Layout from "@/layouts/Layout.astro";
 import { buildCldUrl } from "@/utils/cloudinary";
 
 export async function getStaticPaths() {
@@ -30,7 +30,7 @@ entries.sort((a, b) => b.data.created.localeCompare(a.data.created));
       </ul>
     </div>
 
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {
         entries.map(entry => (
           <div class="card image-full aspect-square bg-base-300 shadow-xl">
