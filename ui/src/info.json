@@ -166,7 +166,7 @@
   },
   "about": {
     "photo": "kdphotography/portfolio/static/portfolio/media-private/about/bio",
-    "text": "Hi, I'm Kenneth! I am a software engineer at Thinking Machines Data Science, a Microsoft-certified Azure AI Engineer, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. In my spare time, I like to dabble a bit in various fields like music composition & production, photography, and electronics, to name a few. I am also an alumni and former Executive Officer for Promotions and Documentation of UP Iris, a university-wide photography organization.\n\nFeel free to contact me for inquiries, collaborations, and other concerns!"
+    "text": "Hi, I'm Kenneth! I am a software engineer at a data science consultancy, a Microsoft-certified Azure AI Engineer, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. In my spare time, I like to dabble a bit in various fields like music composition & production, photography, and electronics, to name a few. I am also an alumni and former Executive Officer for Promotions and Documentation of UP Iris, a university-wide photography organization.\n\nFeel free to contact me for inquiries, collaborations, and other concerns!"
   },
   "cv": {
     "education": {
@@ -209,6 +209,17 @@
           "captionLink": "",
           "startDate": "2017-11-01",
           "endDate": ""
+        },
+        {
+          "title": "Software Developer",
+          "subtitle": "Stevnbooks",
+          "subtitleLink": "",
+          "body": "",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2022-11-01",
+          "endDate": "2023-01-01"
         },
         {
           "title": "Software Engineer",
