@@ -81,11 +81,11 @@
         },
         {
           "name": "Django",
-          "logo": "https://seeklogo.com/images/D/django-logo-F46C1DD95E-seeklogo.com.png"
+          "logo": "https://www.svgrepo.com/show/353657/django-icon.svg"
         },
         {
           "name": "FastAPI",
-          "logo": "https://cdn.worldvectorlogo.com/logos/fastapi-1.svg"
+          "logo": "https://www.svgrepo.com/show/330413/fastapi.svg"
         },
         {
           "name": "Flask",
@@ -103,7 +103,7 @@
       "frontend": [
         {
           "name": "TypeScript",
-          "logo": "https://iconape.com/wp-content/png_logo_vector/typescript.png"
+          "logo": "https://www.svgrepo.com/show/354478/typescript-icon.svg"
         },
         {
           "name": "React",
@@ -119,7 +119,7 @@
         },
         {
           "name": "TailwindCSS",
-          "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+          "logo": "https://www.svgrepo.com/show/374118/tailwind.svg"
         },
         {
           "name": "Next.js",
@@ -151,22 +151,30 @@
         },
         {
           "name": "Google Cloud Platform",
-          "logo": "https://snapshooter.io/assets/img/marketing/providers/gcp/gcp.png"
+          "logo": "https://www.svgrepo.com/show/353805/google-cloud.svg"
         },
         {
           "name": "Amazon Web Services",
           "logo": "https://www.svgrepo.com/show/448266/aws.svg"
         },
         {
-          "name": "Microsoft Azure Cloud",
+          "name": "Microsoft Azure",
           "logo": "https://www.svgrepo.com/show/331302/azure-v2.svg"
+        },
+        {
+          "name": "Vercel",
+          "logo": "https://www.svgrepo.com/show/378475/vercel-fill.svg"
+        },
+        {
+          "name": "Firebase",
+          "logo": "https://www.svgrepo.com/show/373595/firebase.svg"
         }
       ]
     }
   },
   "about": {
     "photo": "kdphotography/portfolio/static/portfolio/media-private/about/bio",
-    "text": "Hi, I'm Kenneth! I am a software engineer at a data science consultancy, a Microsoft-certified Azure AI Engineer, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines Diliman. For my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. In my spare time, I like to dabble a bit in various fields like music composition & production, photography, and electronics, to name a few. I am also an alumni and former Executive Officer for Promotions and Documentation of UP Iris, a university-wide photography organization.\n\nFeel free to contact me for inquiries, collaborations, and other concerns!"
+    "text": "Hi, I'm Kenneth! I currently work at a data science consultancy, with my daily tasks revolving around software, DevOps, and data engineering. I am also a Microsoft-certified Azure AI Engineer, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines, and for my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. Outside of work, a like to dabble in a bit of everything like photography, music, gaming, mechanical keyboards, to name a few. \n\nFeel free to contact me for inquiries, collaborations, hiring, and other concerns!"
   },
   "cv": {
     "education": {
@@ -192,7 +200,11 @@
           "title": "Software Engineer",
           "subtitle": "Thinking Machines Data Science",
           "subtitleLink": "https://thinkingmachin.es",
-          "body": "",
+          "body": [
+            "Technical lead for the development of a DataOps platform for an international humanitarian aid organization: led a team of 5 data, analytics, and software engineers to architect and develop a fully open-source master data management platform deployed on Azure Kubernetes Service.",
+            "Developed GenAI applications for enterprise clients in the financial sector, leveraging Azure OpenAI LLMs: developed responsive chat interfaces and designed backend processes for security and compliance requirements.",
+            "Developed process tooling for an international carbon registry: involved in backend development in Django deployed to a Google Cloud environment, and optimized database model design to maintain performant queries."
+          ],
           "bodyLink": "",
           "caption": "",
           "captionLink": "",
@@ -214,7 +226,7 @@
           "title": "Software Developer",
           "subtitle": "Stevnbooks",
           "subtitleLink": "",
-          "body": "",
+          "body": "Developed the API and infrastructure for an inventory management and profit calculator system deployed on DigitalOcean: integrated with PayMongo API to process customer payments and AWS Cognito as a B2C identity provider.",
           "bodyLink": "",
           "caption": "",
           "captionLink": "",
@@ -225,7 +237,12 @@
           "title": "Software Engineer",
           "subtitle": "Demand Science (Cobena Business Analytics & Strategy)",
           "subtitleLink": "https://demandscience.com",
-          "body": "Developed web applications for both internal and client-facing projects. Frontend duties involved designing and developing the user interface for web applications, and writing automated unit tests with Jest and end-to-end tests using Selenium. Backend duties involved developing APIs and authorization/authentication systems, and implementing asynchronous worker pools for background tasks. Set up, maintained, and automated the involved cloud infrastructure and DevOps pipelines.",
+          "body": [
+            "Developed multiple user interfaces for an internal data lakehouse platform: led the design and development of in-house UI components of the platform. Spearheaded the company-wide adoption of modern frontend tooling using Figma and TypeScript.",
+            "Developed a user-facing tool for a foreign market research firm: involved in the design and development of the backend architecture using Django & Redis deployed to an AWS environment.",
+            "Developed an in-house B2B geospatial analytics platform: led weekly code reviews to maintain quality standards and optimize the team's delivery.",
+            "Developed internal tooling for an FMCG client: initiated the migration from manual testing to automated API testing using Python scripts, reducing testing time from 2 days to 30 minutes."
+          ],
           "bodyLink": "",
           "caption": "",
           "captionLink": "",
@@ -247,7 +264,9 @@
           "title": "Backend Developer",
           "subtitle": "DetectPH",
           "subtitleLink": "https://detectph.com/",
-          "body": "Volunteer developer for a COVID-19 contact tracing app in the Philippines.",
+          "body": [
+            "Developed the API for a COVID-19 contact-tracing mobile application, written with Express and MongoDB."
+          ],
           "bodyLink": "",
           "caption": "",
           "captionLink": "",
@@ -264,17 +283,6 @@
           "captionLink": "",
           "startDate": "2020-01-20",
           "endDate": "2020-02-28"
-        },
-        {
-          "title": "Intern",
-          "subtitle": "The Rest is Noise PH",
-          "subtitleLink": "https://therestisnoiseph.com/",
-          "body": "Provided analytics to determine key points to target in order to maximize marketing; involved in project planning and on-site production for All of The Noise 2019 held at Century City Mall, City of Makati.",
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2019-06-15",
-          "endDate": "2019-11-23"
         },
         {
           "title": "Corps Non-Commissioned Officer for Documentation",
@@ -364,7 +372,7 @@
         "organizationUrl": "",
         "startDate": "2020-06-29",
         "endDate": "",
-        "summary": "A Discord bot that crossposts Twitter and VLIVE media to K-pop-oriented Discord guilds",
+        "summary": "A Discord bot that keeps track of upcoming K-pop releases, and crossposts Twitter and VLIVE media to K-pop-oriented Discord guilds",
         "technologies": [
           "python",
           "discord.py",
@@ -424,7 +432,7 @@
           "material ui"
         ],
         "cover": "v1/dev/primerdriver.png",
-        "status": "live"
+        "status": "archived"
       },
       {
         "title": "LSFM",

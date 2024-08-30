@@ -30,10 +30,12 @@ const { projects } = info.dev;
 
     {
       ["live", "in progress", "archived"].map(status => (
-        <ProjectGroup
-          status={status}
-          projects={projects.filter(proj => status === proj.status)}
-        />
+        projects.filter(proj => status === proj.status).length > 0 && (
+          <ProjectGroup
+            status={status}
+            projects={projects.filter(proj => status === proj.status)}
+          />
+        )
       ))
     }
   </div>
