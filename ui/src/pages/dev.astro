@@ -1,10 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import ProjectGroup from "@/components/dev/ProjectGroup.astro";
-import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import { Github, Pypi } from "simple-icons-astro";
 
-const { projects } = info.dev;
+const projects = await getCollection("dev");
 ---
 
 <Layout title="Dev | KVD Studio">
@@ -29,11 +29,11 @@ const { projects } = info.dev;
     </div>
 
     {
-      ["live", "in progress", "archived"].map(status => (
-        projects.filter(proj => status === proj.status).length > 0 && (
+      (["live", "in progress", "archived"] as const).map(status => (
+        projects.filter(proj => status === proj.data.status).length > 0 && (
           <ProjectGroup
             status={status}
-            projects={projects.filter(proj => status === proj.status)}
+            projects={projects.filter(proj => status === proj.data.status)}
           />
         )
       ))

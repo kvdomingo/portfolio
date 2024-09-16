@@ -1,9 +1,9 @@
 ---
-import type info from "@/info.json";
+import type { CollectionEntry } from "astro:content";
 import ProjectItem from "./ProjectItem.astro";
 
 interface Props {
-  projects: typeof info.dev.projects;
+  projects: CollectionEntry<"dev">[];
   status: "live" | "in progress" | "archived";
 }
 

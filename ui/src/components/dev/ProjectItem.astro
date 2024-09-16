@@ -1,13 +1,15 @@
 ---
-import type info from "@/info.json";
+import type { CollectionEntry } from "astro:content";
 import { buildCldUrl } from "@/utils/cloudinary";
 import dateFormat from "dateformat";
 
 interface Props {
-  project: (typeof info.dev.projects)[0];
+  project: CollectionEntry<"dev">;
 }
 
-const { project } = Astro.props;
+const {
+  project: { data: project },
+} = Astro.props;
 ---
 
 <div
