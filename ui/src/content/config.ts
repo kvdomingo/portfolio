@@ -27,4 +27,18 @@ const dev = defineCollection({
   }),
 });
 
-export const collections = { dev, svip };
+const workExperience = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    subtitleLink: z.string().url().nullable(),
+    body: z.string(),
+    caption: z.string(),
+    captionLink: z.string().url().nullable(),
+    startDate: z.date(),
+    endDate: z.date().nullable(),
+  }),
+});
+
+export const collections = { dev, svip, workExperience };
