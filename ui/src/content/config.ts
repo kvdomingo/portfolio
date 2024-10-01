@@ -32,9 +32,9 @@ const workExperience = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
-    subtitleLink: z.string().url().nullable(),
-    body: z.string(),
-    caption: z.string(),
+    subtitleLink: z.string().nullable(),
+    bodyLink: z.string().nullable(),
+    caption: z.string().nullable(),
     captionLink: z.string().url().nullable(),
     startDate: z.date(),
     endDate: z.date().nullable(),

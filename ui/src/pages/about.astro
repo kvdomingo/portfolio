@@ -1,10 +1,12 @@
 ---
+import { getCollection } from "astro:content";
 import CvSection from "@/components/about/CvSection.astro";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import cld from "@/utils/cloudinary";
 import { Resize } from "@cloudinary/url-gen/actions";
 import { Mail } from "lucide-astro";
+import CvSectionMdx from "../components/about/CvSectionMdx.astro";
 
 const backgroundImage = cld
   .image("kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1")
@@ -14,6 +16,14 @@ const backgroundImage = cld
 const logo = cld.image("logo/logo-white").resize(Resize.scale().width("auto")).toURL();
 
 const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).toURL();
+
+const workExperience = (await getCollection("workExperience")).sort(
+  (a, b) =>
+    (b.data.endDate ?? new Date(9999, 11, 31))
+      .toISOString()
+      .localeCompare((a.data.endDate ?? new Date(9999, 11, 31)).toISOString()) ||
+    b.data.startDate.toISOString().localeCompare(a.data.startDate.toISOString()),
+);
 ---
 
 <Layout title="About | KVD Studio">
@@ -49,7 +59,7 @@ const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).t
       </div>
 
       <div>
-        <CvSection title="Work Experience" data={info.cv.workExperience.data} />
+        <CvSectionMdx title="Work Experience" data={workExperience} />
         <CvSection title="Certifications" data={info.cv.certification.data} />
         <CvSection title="Education" data={info.cv.education.data} />
         <CvSection title="Publications" data={info.cv.publication.data} />

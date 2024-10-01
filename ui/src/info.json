@@ -212,9 +212,10 @@
           "subtitle": "Thinking Machines Data Science",
           "subtitleLink": "https://thinkingmachin.es",
           "body": [
-            "Technical lead for the development of a DataOps platform for an international humanitarian aid organization: led a team of 5 data, analytics, and software engineers to architect and develop a fully open-source master data management platform deployed on Azure Kubernetes Service.",
+            "Technical lead for the development of the UNICEF Giga DataOps Platform: led a team of 5 data, analytics, and software engineers to architect and develop a fully open-source master data management platform deployed on Azure Kubernetes Service.",
             "Developed GenAI applications for enterprise clients in the financial sector, leveraging Azure OpenAI LLMs: developed responsive chat interfaces and designed backend processes for security and compliance requirements.",
-            "Developed process tooling for an international carbon registry: involved in backend development in Django deployed to a Google Cloud environment, and optimized database model design to maintain performant queries."
+            "Developed process tooling for an international carbon registry: involved in backend development in Django deployed to a Google Cloud environment, and optimized database model design to maintain performant queries.",
+            "Developed an internal geospatial analytics platform for a local telecommunications company: involved in migrating user interface components to a modern tech stack and increasing test coverage."
           ],
           "bodyLink": "",
           "caption": "",
@@ -240,7 +241,7 @@
           "body": [
             "Developed multiple user interfaces for an internal data lakehouse platform: led the design and development of in-house UI components of the platform. Spearheaded the company-wide adoption of modern frontend tooling using Figma and TypeScript.",
             "Developed a user-facing tool for a foreign market research firm: involved in the design and development of the backend architecture using Django & Redis deployed to an AWS environment.",
-            "Developed an in-house B2B geospatial analytics platform: led weekly code reviews to maintain quality standards and optimize the team's delivery.",
+            "Involved in the development of Gateway, an in-house B2B geospatial analytics platform: led weekly code reviews to maintain quality standards and optimize the team's delivery.",
             "Developed internal tooling for an FMCG client: initiated the migration from manual testing to automated API testing using Python scripts, reducing testing time from 2 days to 30 minutes."
           ],
           "bodyLink": "",
@@ -312,7 +313,7 @@
       "icon": "",
       "data": [
         {
-          "title": "Azure AI Engineer",
+          "title": "Azure AI Engineer Associate",
           "subtitle": "Microsoft",
           "subtitleLink": "https://learn.microsoft.com/api/credentials/share/en-us/KennethDomingo-4666/970CBB2EEB4ACD4A?sharingId=791A05E133CA70AF",
           "body": "",
