@@ -197,6 +197,17 @@
       "icon": "",
       "data": [
         {
+          "title": "Photographer",
+          "subtitle": "KVD Studio",
+          "subtitleLink": "/photography",
+          "body": "",
+          "bodyLink": "/photography",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2017-11-01",
+          "endDate": ""
+        },
+        {
           "title": "Software Engineer",
           "subtitle": "Thinking Machines Data Science",
           "subtitleLink": "https://thinkingmachin.es",
@@ -210,17 +221,6 @@
           "captionLink": "",
           "startDate": "2023-01-09",
           "endDate": "2024-10-07"
-        },
-        {
-          "title": "Photographer",
-          "subtitle": "KVD Studio",
-          "subtitleLink": "/photography",
-          "body": "",
-          "bodyLink": "/photography",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2017-11-01",
-          "endDate": ""
         },
         {
           "title": "Software Developer",
