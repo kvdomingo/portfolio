@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { differenceInYears, formatDuration } from "date-fns";
 import dateFormat from "dateformat";
 
 interface Props {
@@ -9,6 +10,23 @@ interface Props {
 const { data } = Astro.props;
 
 const { Content } = await data.render();
+
+const formattedStartDate = dateFormat(data.data.startDate, "mmm yyyy");
+
+const formattedEndDate =
+  data.data.endDate == null
+    ? "present"
+    : `${dateFormat(data.data.endDate, "mmm yyyy")}`;
+
+const diff = differenceInYears(data.data.endDate ?? new Date(), data.data.startDate);
+
+const duration = formatDuration(
+  {
+    years: diff,
+    months: Math.max(1, diff % 12),
+  },
+  { format: ["years", "months"] },
+);
 ---
 
 <li class="ml-[1.5rem] mt-[1.5rem]">
@@ -27,12 +45,7 @@ const { Content } = await data.render();
         )
       }
       <div class="text-gray-400 small-caps">
-        {dateFormat(new Date(data.data.startDate), "mmm yyyy")}
-        {
-          data.data.endDate == null
-            ? " – present"
-            : ` – ${dateFormat(new Date(data.data.endDate), "mmm yyyy")}`
-        }
+        {formattedStartDate} – {formattedEndDate} • {duration}
       </div>
     </div>
 

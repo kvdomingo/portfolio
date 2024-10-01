@@ -5,6 +5,7 @@ import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import cld from "@/utils/cloudinary";
 import { Resize } from "@cloudinary/url-gen/actions";
+import { compareDesc } from "date-fns";
 import { Mail } from "lucide-astro";
 import CvSectionMdx from "../components/about/CvSectionMdx.astro";
 
@@ -19,10 +20,10 @@ const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).t
 
 const workExperience = (await getCollection("workExperience")).sort(
   (a, b) =>
-    (b.data.endDate ?? new Date(9999, 11, 31))
-      .toISOString()
-      .localeCompare((a.data.endDate ?? new Date(9999, 11, 31)).toISOString()) ||
-    b.data.startDate.toISOString().localeCompare(a.data.startDate.toISOString()),
+    compareDesc(
+      a.data.endDate ?? new Date(9999, 11, 31),
+      b.data.endDate ?? new Date(9999, 11, 31),
+    ) || compareDesc(a.data.startDate, b.data.startDate),
 );
 ---
 
