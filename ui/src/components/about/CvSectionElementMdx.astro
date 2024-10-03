@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { differenceInYears, formatDuration } from "date-fns";
+import { differenceInMonths, differenceInYears, formatDuration } from "date-fns";
 import dateFormat from "dateformat";
 
 interface Props {
@@ -18,12 +18,20 @@ const formattedEndDate =
     ? "present"
     : `${dateFormat(data.data.endDate, "mmm yyyy")}`;
 
-const diff = differenceInYears(data.data.endDate ?? new Date(), data.data.startDate);
+const diffYears = differenceInYears(
+  data.data.endDate ?? new Date(),
+  data.data.startDate,
+);
+
+const diffMonths = differenceInMonths(
+  data.data.endDate ?? new Date(),
+  data.data.startDate,
+);
 
 const duration = formatDuration(
   {
-    years: diff,
-    months: Math.max(1, diff % 12),
+    years: diffYears,
+    months: Math.max(1, diffMonths % 12),
   },
   { format: ["years", "months"] },
 );
