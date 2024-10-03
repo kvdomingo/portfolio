@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { postSlug, courseSlug } = Astro.params;
 const course = info.svip.courses.find(course => course.slug === courseSlug);
 
-const entry = await getEntry("svip", postSlug);
+const entry = await getEntry("svip", `${courseSlug}/${postSlug}`);
 const { Content } = await entry.render();
 ---
 
