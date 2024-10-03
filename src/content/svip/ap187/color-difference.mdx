@@ -1,0 +1,155 @@
+---
+title: "Activity 8: Color Difference"
+keywords:
+  - image processing
+  - computer vision
+  - color difference
+cover: "svip/187/8-ColorDifference/macbeth.png"
+courseSlug: "ap187"
+created: "2019-10-14T11:10:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+
+tableData: [
+  { "patch": "1", "labDE": "3.14", "lchDE": "3.10" },
+  { "patch": "2", "labDE": "4.43", "lchDE": "4.16" },
+  { "patch": "3", "labDE": "2.96", "lchDE": "2.67" },
+  { "patch": "4", "labDE": "2.40", "lchDE": "2.23" },
+  { "patch": "5", "labDE": "2.77", "lchDE": "2.65" },
+  { "patch": "6", "labDE": "3.11", "lchDE": "2.92" },
+  { "patch": "7", "labDE": "6.10", "lchDE": "6.04" },
+  { "patch": "8", "labDE": "3.76", "lchDE": "2.51" },
+  { "patch": "9", "labDE": "5.10", "lchDE": "5.04" },
+  { "patch": "10", "labDE": "1.80", "lchDE": "1.74" },
+  { "patch": "11", "labDE": "4.22", "lchDE": "3.60" },
+  { "patch": "12", "labDE": "6.12", "lchDE": "5.82" },
+  { "patch": "13", "labDE": "4.38", "lchDE": "2.49" },
+  { "patch": "14", "labDE": "2.58", "lchDE": "2.56" },
+  { "patch": "15", "labDE": "5.76", "lchDE": "5.73" },
+  { "patch": "16", "labDE": "6.29", "lchDE": "5.39" },
+  { "patch": "17", "labDE": "3.79", "lchDE": "3.54" },
+  { "patch": "18", "labDE": "4.12", "lchDE": "4.08" },
+  { "patch": "19", "labDE": "4.18", "lchDE": "4.14" },
+  { "patch": "20", "labDE": "3.62", "lchDE": "4.43" },
+  { "patch": "21", "labDE": "3.07", "lchDE": "3.92" },
+  { "patch": "22", "labDE": "2.54", "lchDE": "3.51" },
+  { "patch": "23", "labDE": "1.94", "lchDE": "1.98" },
+  { "patch": "24", "labDE": "1.37", "lchDE": "1.38" },
+]
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity, the values for CIE 1964 standard observer, standard illuminant D65, illuminant D55, and their
+respective white point tristimulus values were obtained from [[2](#CIE64)]. The reflectances of the Macbeth patches were
+obtained from [[1](#Soriano2019)]. Interpolation was performed for all the data to ensure that they are all aligned and
+of the same length. The tristimulus values for each patch under an illuminant were obtained by
+
+<span id="eq-tristimulus" class="mx-auto">
+$
+\begin{equation}
+  T = \int M(\lambda) R(\lambda) \bar{t}(\lambda) \frac{\rm{d}}{\rm{d}\lambda}
+  \end{equation}
+$
+</span>
+
+where $M$ is the spectral power distribution of the illuminant, $R$ is the reflectance of a patch, $\bar{t}$ is a
+standard observer, and $T$ is a tristimulus value. From here, conversion to $La^\star b^\star$ was performed using
+
+<span id="eq-xyz2lab" class="mx-auto">
+$
+\begin{equation}
+  \begin{aligned}
+    L &= 116 f\left(\frac{Y}{Y_n}\right) - 16 \\
+    a^\star &= 500\left[f\left(\frac{X}{X_n}\right) - f\left(\frac{Y}{Y_n}\right)\right]  \\
+    b^\star &= 200\left[f\left(\frac{Y}{Y_n}\right) - f\left(\frac{Z}{Z_n}\right)\right]
+  \end{aligned}
+\end{equation}
+$
+</span>
+
+where
+
+<span id="eq-xyz2lab-where" class="mx-auto">
+$
+\begin{align*}
+  f(t) &=
+	\begin{cases}
+    \sqrt[3]{t} & t > \delta^3 \\
+    \frac{t}{3\delta^2} + \frac{4}{29} & \textrm{otherwise}
+  \end{cases} \\
+	\delta &= \frac{6}{29}
+\end{align*}
+$
+</span>
+
+where $X_n, Y_n, Z_n$ are the white point tristimulus values. Conversion to $LC^\star h$ was performed using
+
+<span id="eq-lab2lch" class="mx-auto">
+$
+\begin{equation}
+  \begin{aligned}
+    C^\star &= \sqrt{a^{\star 2} + b^{\star 2}} \\
+    h &= \arctan{\frac{b^\star}{a^\star}}
+  \end{aligned}
+\end{equation}
+$
+</span>
+
+The color differences in $La^\star b^\star$ and $LC^\star h$ are respectively calculated by
+
+<span id="eq-delta-e" class="mx-auto">
+$
+\begin{align}
+  \Delta E(a^\star, b^\star) &= \sqrt{(\Delta L)^2 + (\Delta a^\star)^2 + (\Delta b^\star)^2} \\
+	\Delta E(C^\star, h) &= \sqrt{(\Delta L)^2 + (\Delta C^\star)^2 + (\Delta h)^2}
+\end{align}
+$
+</span>
+
+The results of applying ([4](#eq-delta-e))-([5](#eq-delta-e)) on each Macbeth patch is shown in Table&nbsp;[1](#tab-color-diff).
+Figure&nbsp;[1](#fig-macbeth) shows the reference Macbeth chart.
+
+<table class="table" id="tab-color-diff">
+  <caption>
+    Table 1: Color difference values for the Macbeth patches under D65 and D55 illumination.
+  </caption>
+  <thead align="center">
+  <tr>
+    <th>Patch</th>
+    <th>$La^\star b^\star \Delta E$</th>
+    <th>$LC^\star h \Delta E$</th>
+  </tr>
+  </thead>
+  <tbody align="center">
+  {frontmatter.tableData.map(d => (
+    <tr>
+      <td>{d.patch}</td>
+      <td>{d.labDE}</td>
+      <td>{d.lchDE}</td>
+    </tr>
+  ))}
+  </tbody>
+</table>
+
+<figure id="fig-macbeth" class="container">
+  <img
+    src={buildCldUrl("svip/187/8-ColorDifference/macbeth")}
+    alt="Reference Macbeth color chart"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: Reference Macbeth color chart.
+  </figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _Uniform color spaces, color difference, color appearance phenomena_ (2019).</li>
+  <li id="CIE64">
+    Public.Resource.Org,
+    [_CIE 15B tables_](https://law.resource.org/pub/cfr/ibr/cie.15.2004.tables.xls)
+    (2004).
+  </li>
+</ol>
