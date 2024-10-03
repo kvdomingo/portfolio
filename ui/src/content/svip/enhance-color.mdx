@@ -59,8 +59,8 @@ and stretch the remaining bins to fill the full range, according to
     $
 </span>
 
-where `C` refers to the channel being manipulated.
-The _high_ and _low_ values refer to the `p`th percentile of histogram values that are set as the upper and lower
+where $C$ refers to the channel being manipulated.
+The _high_ and _low_ values refer to the $p$-th percentile of histogram values that are set as the upper and lower
 thresholds, respectively. This is actually the algorithm used by GIMP's auto
 white balance. We can see from the resulting image in Fig.&nbsp;
 [1b](#fig-constretch) that the reddish color cast has generally been
@@ -79,8 +79,8 @@ values are manipulated according to [[2](#Soriano2019)]
     $
 </span>
 
-where `<I>` is the overall
-average and `C` is the
+where $\langle I \rangle$ is the overall
+average and $C$ is the
 channel average. The result of this manipulation is shown in Fig.&nbsp;
 [1c](#fig-grayworld). Note that the image is at roughly the same exposure
 level as the original because we did not perform contrast stretching on this one,
@@ -148,8 +148,8 @@ and the modified contrast-stretching is
     $
   </span>
 
-where `C_{low}` and `C_{high}` are the lower and upper
-thresholds, respectively, and `I_{min}` and `I_{max}` are the overall maximum and
+where $C_{low}$ and $C_{high}$ are the lower and upper
+thresholds, respectively, and $I_{min}$ and $I_{max}$ are the overall maximum and
 minimum pixel values, respectively. The image intensity values are scaled
 according to the thresholds and not the extrema as to avoid over-stretching.
 The weight is then calculated as
@@ -162,12 +162,12 @@ The weight is then calculated as
     $
   </span>
 
-where `\langle C_b \rangle , \langle C_r \rangle`
+where $\langle C_b \rangle$, $\langle C_r \rangle$
 are calculated by converting the image to YC<sub>r</sub>C<sub>b</sub> and
-taking the averages of the C channels, and `\sigma` are the standard deviations of the
-RGB channels. The paper stated that `n` was
+taking the averages of the C channels, and $\sigma$ are the standard deviations of the
+RGB channels. The paper stated that $n$ was
 a constant taken to be 200 and was obtained experimentally, but do not
-elaborate on how exactly it was obtained. Essentially, `w` is the weight of the heavy color cast.
+elaborate on how exactly it was obtained. Essentially, $w$ is the weight of the heavy color cast.
 The final image is obtained by
 
 <span id="eq-weight" className="math-container">
@@ -178,7 +178,7 @@ The final image is obtained by
     $
   </span>
 
-where `CS` and `GW` are the images enhanced
+where $\textrm{CS}$ and $\textrm{GW}$ are the images enhanced
 using the modified contrast stretching and gray world algorithms,
 respectively. The result is shown in Fig. [3c](#fig-awbaet)
 alongside the other algorithms for comparison. Because

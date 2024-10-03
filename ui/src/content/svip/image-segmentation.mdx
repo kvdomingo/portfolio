@@ -120,10 +120,10 @@ first converted to NCC space [[3](#Soriano2019)] via
 
 ##### 1. Parametric Segmentation
 
-The means `mu_r`, `mu_g` and standard
-deviations `sigma_r`, `sigma_g` of the
-`r` and `g` channels of the region of interest (ROI) are computed, and the
-probabilities that the original image values `x := (r, g)`
+The means $\mu_r$, $\mu_g$ and standard
+deviations $\sigma_r$, $\sigma_g$ of the
+$r$ and $g$ channels of the region of interest (ROI) are computed, and the
+probabilities that the original image values $x := (r, g)$
 belong to the ROI are computed via
 
 <span id="eq-param" className="mx-auto">
@@ -134,12 +134,12 @@ belong to the ROI are computed via
     $
 </span>
 
-assuming that the `r` and `g` pixel values are normally distributed. The final segmented
-image is produced by obtaining the joint probability `Pr(r) x Pr(g)`.
+assuming that the $r$ and $g$ pixel values are normally distributed. The final segmented
+image is produced by obtaining the joint probability $\textrm{Pr}(r) \times \textrm{Pr}(g)$.
 
 ##### 2. Non-parametric Segmentation
 
-The ROI `r`, `g` values are binned into 32x32 unique combinations of `r`, `g`
+The ROI $r$, $g$ values are binned into 32x32 unique combinations of $r$, $g$
 values to form a 2D histogram. This will serve as the lookup table (LUT)
 for segmenting the original image. The backprojection portion of the code
 was formulated with some help from [[4](#Bartolome2015)].

@@ -103,7 +103,7 @@ lines. We can use this to calculate the thickness of the staff lines and the
 spacing between them in pixels, which are more or less equal. We define
 standard A (A<sub>5</sub>) to be 440 Hz, such that middle A (A<sub>4</sub>) is
 220 Hz. From there, we can determine the frequency of every other note by
-incrementing by a factor of `\sqrt[12]{2}`,
+incrementing by a factor of $\sqrt[12]{2}$,
 assuming equal temperament. Since we are in the major mode of G, the note
 intervals are defined by W-W-H-W-W-W-H, which gives us the heptatonic sequence
 G-A-B-C-D-E-F#. For easy reference, we set our origin to be G4 (second staff
@@ -111,11 +111,10 @@ line), with a frequency of 196 Hz. In order to know the duration of one note,
 the sheet defines one quarter note to be 180 bpm, i.e., 0.33 seconds per
 quarter note. Instead of storing a lookup table for each note, we store
 instead the note intervals defined earlier whether we are jumping a whole step
-or a half step x `\sqrt[12]{2}` or `\sqrt[6]{2}`,
-respectively) based on the number of lines (or spaces) away from middle G.
-With this, coupled with the note duration, we are ready to generate our audio.
-The `MIDIFile` function renders notes as if they were played on
-a piano:
+or a half step x $\sqrt[12]{2}$ or $\sqrt[6]{2}$, respectively) based
+on the number of lines (or spaces) away from middle G. With this, coupled with
+the note duration, we are ready to generate our audio. The `MIDIFile` function
+renders notes as if they were played on a piano:
 
 <audio controls class="mx-auto">
   <source

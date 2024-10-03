@@ -1,8 +1,8 @@
 ---
 import { getCollection, getEntry } from "astro:content";
+import ClientDate from "@/components/common/svelte/ClientDate.svelte";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
-import ClientDate from "@/components/common/svelte/ClientDate.svelte";
 
 export async function getStaticPaths() {
   const svipEntries = await getCollection("svip");
@@ -45,3 +45,14 @@ const { Content } = await entry.render();
     </div>
   </div>
 </Layout>
+
+<style is:inline>
+  svg {
+    display: inline;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+</style>

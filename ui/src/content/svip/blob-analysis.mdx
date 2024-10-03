@@ -1,0 +1,85 @@
+---
+title: "Activity 10: Blob Analysis"
+keywords:
+  - image processing
+  - computer vision
+  - blob analysis
+  - scikit-image
+cover: "svip/186/10-BlobAnalysis/3468.jpg"
+courseSlug: "ap186"
+created: "2019-11-04T10:14:00.0000Z"
+
+histData: [
+  { url: "area_hist", caption: "area", key: "fig-blob-area" },
+  { url: "ecc_hist", caption: "eccentricity", key: "fig-blob-ecc" },
+  { url: "majax_hist", caption: "major axis length", key: "fig-blob-majax" },
+  { url: "per_hist", caption: "perimeter", key: "fig-blob-per" },
+]
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity [[1](#Soriano2019)], we'll use the provided image of a cell. First, we convert it to grayscale
+(Fig.&nbsp;[1a](#fig-cell-blob)) and obtain its histogram (Fig.&nbsp;[1b](#fig-cell-blob). Notice that there is a huge
+peak somewhere between the 200 and 250 grayscale values, and another relatively smaller peak at around 200. We can
+interpret the huge peak as the background values and the small peak as the cell values. Thus, we can use Otsu's method
+to automatically select the best threshold value. From here, we can use the `skimage` library to automatically detect
+the blobs and label them. Each detected unique blob is labeled by assigning it a unique integer. A total of 150 blobs
+were detected. The result of the blob detection and labeling is shown in Fig.&nbsp; [1c](#fig-cell-blob), and its
+grayscale histogram in Fig. [1d](#fig-cell-blob). Note that Otsu's method was able to separate the two peaks.
+
+<figure id="fig-cell-blob" class="container">
+  <img
+    src={buildCldUrl("svip/186/10-BlobAnalysis/cell_blob.png")}
+    alt="cell_blob"
+  />
+  <figcaption class="text-center">
+    Figure 1: (a) Grayscaled cell image, (b) grayscale histogram, (c) Filtered and labeled cell blobs, and (d) cell
+    blobs histogram.
+  </figcaption>
+</figure>
+
+Initial inspection of the blob detection showed that there were some smaller blobs being detected. Using the
+`regionprops` function to obtain the blob areas, it was observed that there was a fairly narrow peak at around
+175&nbsp;px<sup>2</sup>, with some outlier values < 100 and > 300 px<sup>2</sup>. We then perform filtering by blob
+area such that only blobs with $100 < A < 300$ px<sup>2</sup> remain. The final area histogram is shown in
+Fig.&nbsp;[2a](#fig-blob-area). This distribution gives us a best estimate of the cell area of
+$\boxed{A = 172 \pm 26 \textrm{px}^2}$.
+
+We also obtain the eccentricities of the blobs and filter them this time by the best estimate of the blob area. The
+resulting histogram is shown in Fig.&nbsp;[2b](#fig-blob-ecc). The best estimate for the eccentricity of the filtered
+blobs is $\boxed{e = 0.47 \pm 0.25}$. This means that most of the blobs, even those that appear circular in
+Fig.&nbsp;[1c](#fig-cell-blob), are ever so slightly elliptical.
+
+We also obtain the major axis lengths―which we will essentially treat as the blob diameter―of the blobs and filter them
+again by the best estimate of the blob area. The resulting histogram is shown in Fig.&nbsp;[2c](#fig-blob-majax). The
+best estimate for the major axis lengths of the filtered blobs is $\boxed{2a = 16 \pm 1 \textrm{px}}$. This shows that
+the cell blobs do not vary much in diameter.
+
+Finally, we obtain the perimeter of the blobs. Following the same procedures as before, we obtain a histogram in
+Fig.&nbsp;[2d](#fig-blob-per) and a best estimate of the perimeter $\boxed{P = 59 \pm 10 \textrm{px}}$.
+
+<figure id="fig-hists" class="container grid grid-cols-4 gap-4">
+  {frontmatter.histData.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/186/10-BlobAnalysis/${d.url}`)}
+        alt={d.caption}
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-4 text-center">
+    Figure 2: Histograms of the blob properties.
+  </figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _A10 - Blob analysis_ (2019).</li>
+</ol>
