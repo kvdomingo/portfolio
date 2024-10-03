@@ -1,0 +1,92 @@
+---
+title: "Activity 15: Expectation Maximization"
+keywords:
+  - image processing
+  - computer vision
+  - expectation maximization
+cover: "svip/186/15-ExpectationMax/em-feature-space.png"
+courseSlug: "ap186"
+created: "2019-11-21T07:14:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity [[1](#Soriano2019)], I used the separated banana, apple, and orange feature data from a
+[previous activity](/svip/ap186/feature-extract). The fruits form clear clusters in $a^*-b^*$ feature space and is
+suitable for this activity. Figure&nbsp;[1](#fig-ab-space) shows the clustering of the fruit data.
+
+<figure id="fig-ab-space" class="container">
+  <img
+    src={buildCldUrl("svip/186/15-ExpectationMax/ab-space.png")}
+    alt="ab space"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: $a^*-b^*$ feature space of fruit data.
+  </figcaption>
+</figure>
+
+Since we are working only with two dimensions (two features), we assume a 2D Gaussian distribution, given by
+
+<span id="eq-2d-gaussian" class="mx-auto">
+$
+\begin{equation}
+  p_l (\vec{x} | \vec{\mu_l}, \vec{\Sigma_l}) = \frac{1}{2\pi |\vec{\Sigma_l}|^{1/2}} \exp\left[-\frac{1}{2} (\vec{x} - \vec{\mu_l})^\top \vec{\Sigma_l}^{-1} (\vec{x} - \vec{\mu_l})\right]
+\end{equation}
+$
+</span>
+
+In the interest of computational efficiency, we define an intermediate matrix $\vec{\omega}$ whose elements are given by
+
+<span id="eq-inter-matrix" class="mx-auto">
+$
+\begin{equation}
+  \omega_{li} = p_l (\vec{x}_i | \vec{\mu_l}, \vec{\Sigma_l})
+\end{equation}
+$
+</span>
+
+which are used throughout one entire iteration, in order to avoid redundant calculation of exponentials and matrix
+inversions. We then iterate with the update rules
+
+<span id="eq-iterate" class="mx-auto">
+$
+\begin{align}
+  P_l^\prime &= \frac{1}{N} \sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g) \\
+	\vec{\mu_l}^\prime &= \frac{\sum_{i=1}^N \vec{x}_i P (l | \vec{x}_i, \vec{\Theta}^g)}{\sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g)} \\
+	\vec{\Sigma_l}^\prime &= \frac{\sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g) (\vec{x}_i - \vec{\mu_l}^\prime) (\vec{x}_i - \vec{\mu_l}^\prime)^\top}{\sum_{i=1}^N P (l | \vec{x}_i \vec{\Theta}^g)}
+\end{align}
+$
+</span>
+
+until the log-likelihood goes above some pre-set value. The log-likelihood is given by
+
+<span id="eq-log-likelihood" class="mx-auto">
+$
+\begin{equation}
+  L = \ln \left[\sum_i \sum_l P_l^\prime p_l (\vec{x}_i | \vec{\mu_l}, \vec{\Sigma_l})\right]
+\end{equation}
+$
+</span>
+
+<figure id="fig-crushed" class="container">
+  <img
+    src={buildCldUrl("svip/186/15-ExpectationMax/em-feature-space.png")}
+    alt="EM feature space"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: Estimated PDF in the $a^*$-$b^*$ feature space of bananas, apples, and oranges.
+  </figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _A15 - Expectation maximization_ (2019).</li>
+  <li id="Chan2017">C. Chan, and J. McCarthy,
+    [_Expectation maximization (EM) algorithm_](https://people.duke.edu/~ccc14/sta-663/EMAlgorithm.html)
+    (2017).</li>
+</ol>
