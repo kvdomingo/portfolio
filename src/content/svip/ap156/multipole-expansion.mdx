@@ -1,0 +1,124 @@
+---
+title: "Investigatory Project: Multipole Expansion"
+keywords:
+  - multipole expansion
+  - electrostatics
+  - charge distribution
+  - electric potential
+  - electric field
+  - dipole approximation
+cover: "svip/156/Proj-MultipoleExpansion/114"
+courseSlug: "ap156"
+created: "2019-11-14T06:44:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+---
+
+#### Investigation of the potentials and electric fields of an arbitrary discrete charge distribution using multipole expansion
+
+#### Physics
+
+In electrostatics, a multipole expansion is a useful tool in approximating the behavior of electromagnetic potentials
+and fields at a certain distance from a charge distribution. Multipole expansions are mathematical series that can be
+truncated in order to approximate a function within a reasonable margin of error [[1](#Kinzel1998)]. The terms of the
+multipole expansion are expressed in powers of the reciprocal distance from the origin [[2](#Griffiths1999)].
+
+For an arbitrary, discrete charge distribution, the individual charges are assumed to have unit charge and are
+point-like. Thus, the potential at any point $P$ defined by the position vector $\vec{r}$ is given by
+
+<span id="eq-potential" class="mx-auto">
+$
+\begin{equation}
+  \Phi(\vec{r}) = \frac{1}{4\pi\epsilon_0} \sum_{i=1}^N \frac{q_i}{|\vec{r} - \vec{r}_i|}
+  \end{equation}
+$
+</span>
+
+where $\epsilon_0$ is the electric permittivity in a vacuum, $q_i$ is the the $i$th charge, and $\vec{r}_i$ is the
+position vector from the origin to the $i$th charge. The electric field $\vec{E}$ is given by
+
+<span id="eq-efield" class="mx-auto">
+$
+\begin{equation}
+  \vec{E}(\vec{r}) =  -\nabla \Phi(\vec{r})
+\end{equation}
+$
+</span>
+
+For $|\vec{r} - \vec{r}_i| \rightarrow \infty$, the potential's multipole expansion up to the quadrupole term is given
+by [[3](#Gradshteyn1994)]
+
+<span id="eq-multipole" class="mx-auto">
+$
+\begin{equation}
+  \Phi(\vec{r}) = \frac{q}{r} + \frac{\vec{p} \cdot \vec{r}}{r^3} + \frac{1}{2r^5}\vec{r}\vec{Q}\vec{r} + \mathcal{O}\left(\frac{1}{r^4}\right)
+\end{equation}
+$
+</span>
+
+where $q$ is the total charge, $\vec{p}$ is the dipole moment, and $\vec{Q}$ is the quadrupole tensor, given by
+
+<span id="eq-charge" class="mx-auto">
+$
+\begin{equation}
+  q = \sum_{i=1}^N q_i
+\end{equation}
+$
+</span>
+
+<span id="eq-dipole" class="mx-auto">
+$
+\begin{equation}
+  \vec{p} = \sum_{i=1}^N q_i \vec{r}_i
+\end{equation}
+$
+</span>
+
+<span id="eq-quadrupole" class="mx-auto">
+$
+\begin{equation}
+  \vec{Q}_{kl} = \sum_{i=1}^N q_i \left[ 3r_i^{(k)}r_i^{(l)} - \delta_{kl}\vec{r}_i^2 \right]
+\end{equation}
+  $
+</span>
+
+where $\delta_{kl}$ is the Kronecker delta, and $\vec{r}_i^{(k)}$ is the $k$th component of $\vec{r}_i$.
+
+#### References
+
+<ol className="reference">
+  <li id="Kinzel1998">
+    Kinzel, M., and G. Reents (1998). Multipole expansion. In M. Clajus, and B. Freeland-Clajus (Trans.),
+    _Physics by computer: programming physical problems using Mathematica and C_,
+    pp. 30-36. New York: Springer (Original work published 1996).
+  </li>
+  <li id="Griffiths1999">
+    Griffiths, D.J. (1999). Multipole expansion.
+    _Introduction to electrodynamics_ (3rd ed.), pp. 146-159.
+    New Jersey: Prentice-Hall.
+  </li>
+  <li id="Gradshteyn1994">
+    Gradshteyn, I.S., and I.M. Ryzhik. (1994).
+    _Table of integrals, series, and products_.
+    Boston, MA: Academic Press.
+  </li>
+  <li id="Hunter2007">
+    Hunter, J.D. (2007). Matplotlib: a 2D graphics environment.
+    _Computing in science and engineering_ **9**(3), 90-95.
+  </li>
+  <li id="Wilmott1995">
+    Wilmott, P., S. Howison, and J. Dewynne. (1995).
+    _The mathematics of financial derivatives: a student introduction_,
+    p. 137. Cambridge University Press.
+  </li>
+  <li id="Olver2013">
+    Olver, P. (2013).
+    _Introduction to partial differential equations_, p. 182.
+    Springer Science & Business Media.
+  </li>
+  <li id="Christian2015">
+    christian. (2015, 10 December). Visualizing a vector field with Matplotlib.
+    Retrieved 12 October 2018, from
+    [_Learning scientific programming with Python_](https://scipython.com/blog/visualizing-a-vector-field-with-matplotlib/).
+  </li>
+</ol>
