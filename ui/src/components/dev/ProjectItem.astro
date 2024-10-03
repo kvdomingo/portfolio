@@ -13,7 +13,7 @@ const {
 ---
 
 <div
-  class="mb-8 grid grid-cols-1 md:grid-cols-4 place-content-start gap-8 border-t border-solid border-slate-600 pt-8"
+  class="mb-8 grid grid-cols-1 md:grid-cols-2 place-content-start gap-8 border-t border-solid border-slate-600 pt-8 items-center"
 >
   <div>
     <a
@@ -24,26 +24,14 @@ const {
       <img
         src={buildCldUrl(project.cover)}
         alt={project.title}
-        class="aspect-square h-[300px] w-auto object-cover"
+        class="aspect-video h-[300px] w-auto object-cover"
       />
     </a>
   </div>
 
-  <div class="col-span-3">
-    <div class="grid grid-cols-1 md:grid-cols-2">
-      <div>
-        <h4 class="text-xl">{project.title}</h4>
-      </div>
-      <div class="flex md:place-content-end place-items-center text-gray-400">
-        <p class="small-caps">
-          🕑{dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
-          {
-            project.endDate
-              ? dateFormat(new Date(project.endDate), "mmm yyyy")
-              : "present"
-          }
-        </p>
-      </div>
+  <div>
+    <div>
+      <h4 class="text-xl">{project.title}</h4>
     </div>
 
     {
@@ -62,6 +50,16 @@ const {
         </div>
       )
     }
+
+    <p class="small-caps text-gray-400">
+      {dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
+      {
+        project.endDate
+          ? dateFormat(new Date(project.endDate), "mmm yyyy")
+          : "present"
+      }
+    </p>
+      
     <p class="my-8">{project.summary}</p>
     <div>
       {
