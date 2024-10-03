@@ -1,0 +1,61 @@
+---
+title: "Activity 6: Color Order System"
+keywords:
+  - image processing
+  - computer vision
+  - neural networks
+cover: "svip/187/6-ColorOrder/locus.png"
+courseSlug: "ap187"
+created: "2019-09-03T06:29:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity, the CIE 1964 standard observer values for 380--780 nm was obtained from [[2](#CIE64)]. The
+tristimulus values were calculated using [[1](#Soriano2019)]
+
+<span id="eq-tristimulus" class="mx-auto">
+$
+\begin{align}
+  X &= \int P(\lambda) \bar{x}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \nonumber \\
+	Y &= \int P(\lambda) \bar{y}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \\
+	Z &= \int P(\lambda) \bar{z}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \nonumber
+\end{align}
+$
+</span>
+
+Their $xy$ coordinates were obtained by normalizing each value by their sum. Figure&nbsp;[1](#fig-locus) shows the
+obtained boundaries for the CIE tongue by considering monochromatic lights ($P(\lambda) = \delta(\lambda)$). The
+Planckian locus was obtained by substituting into $P(\lambda)$ the spectral radiant exitance for a blackbody, given by
+
+<span id="eq-planck" class="mx-auto">
+$
+\begin{equation}
+  M(\lambda, T) = \frac{2\pi hc^2}{\lambda^5} \frac{1}{\exp\left[\frac{hc}{k\lambda T}\right] - 1}
+\end{equation}
+$
+</span>
+
+<figure id="fig-locus" class="container">
+  <img
+    src={buildCldUrl("svip/187/6-ColorOrder/locus")}
+    alt="Calculated boundaries of the CIE tongue (blue circles), and the associated Planckian locus (black spines)"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: Calculated boundaries of the CIE tongue (blue circles), and the associated Planckian locus (black spines).
+  </figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _Color order system and color matching functions_ (2019).</li>
+  <li id="CIE64">
+    Public.Resource.Org,
+    [_CIE 15B tables_](https://law.resource.org/pub/cfr/ibr/cie.15.2004.tables.xls)
+    (2004).
+  </li>
+</ol>
