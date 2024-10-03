@@ -3,7 +3,6 @@ repos:
     rev: v0.1.0
     hooks:
       - id: biome-check
-        args: [ '--config-path', './ui/biome.json' ]
         additional_dependencies: [ '@biomejs/biome@1.8.2' ]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0
