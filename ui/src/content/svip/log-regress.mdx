@@ -1,0 +1,99 @@
+---
+title: "Activity 14: Logistic Regression"
+keywords:
+  - image processing
+  - computer vision
+  - feature extraction
+cover: "svip/186/14-LogisticRegression/Lab_decision.png"
+courseSlug: "ap186"
+created: "2019-11-07T10:15:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+
+featureData: [
+  { url: "Lab_extract.png", caption: "Feature space of overripe (1) and unripe (0) bananas in L*a*b*.", key: "fig-lab-features" },
+  { url: "Lab_preds.png", caption: "Final activations of the midripe banana images in L*a*b*.", key: "fig-lab-preds" },
+  { url: "Lab_decision.png", caption: "Decision contours of overripe (1) and unripe (0) bananas in L*a*b* feature space.", key: "fig-lab-decision" },
+  { url: "sigmoid_map.png", caption: "Images of bananas of varying ripeness corresponding to their activation levels.", key: "fig-sigmoid-map" },
+]
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity [[1](#Soriano2019)], I used the banana dataset from [[2](#Mazen2019)] which has 273 images of bananas
+separated by underripe, midripe, yellowish-green, and overripe labels.
+
+#### Feature extraction: RGB
+
+For the training set I decided to take only images of underripe (green) and ripe (yellow) bananas and assign them class
+numbers 0 and 1, respectively. The feature vector extracted from the images consist only of the mean of each color
+channel (whose values are normalized to 1), without any further preprocessing or segmentation. I simply reused my code
+from the [previous activity](/svip/ap186/perceptron), with minor modifications. The feature space in RGB is shown in
+Fig.&nbsp;[1](#fig-rgb-features).
+
+<figure id="fig-rgb-features" class="container">
+  <img
+    src={buildCldUrl(`svip/186/14-LogisticRegression/RGB_extract.png`)}
+    alt="RGB extract"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: Feature space of ripe (1) and unripe (0) bananas in RGB.
+  </figcaption>
+</figure>
+
+After training all the ripe/unripe images, I then fed in the midripe images and plotted their activations. We can see
+from Fig.&nbsp;[2](#fig-rgb-preds) that the predictions appear biased toward the upper half, which subjectively does not
+agree with the corresponding images. Preferably, the predictions are nicely distributed about the center. To this end, I
+try another approach.
+
+<figure id="fig-rgb-preds" class="container">
+  <img
+    src={buildCldUrl(`svip/186/14-LogisticRegression/RGB_preds.png`)}
+    alt="RGB predictions"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 2: Final activations of the midripe banana images in RGB.
+  </figcaption>
+</figure>
+
+#### Feature extraction: $L^*a^*b^*$
+
+In order to be able to plot the decision contours as well as reduce the computational complexity, I decided to convert
+the images to $L^* a^* b^*$ color space and feed only the $a^* b^*$ features. Also, I decided to feed in overripe
+bananas as class 1 in order to be able to include ripe and overripe predictions. Figure&nbsp;[2a](#fig-lab-features)
+shows the feature space in $L^* a^* b^*$, and we can see that the two classes are easily separable. Plotting the midripe
+activations in Fig.&nbsp;[2b](#fig-lab-preds) now shows that the predictions are nicely distributed around the activation
+region. In Fig.&nbsp;[2c](#fig-lab-decision), we show the decision contours on the feature plane. In this view, we can
+see the sigmoid activation as a contour map―with blue being 0 and red being 1―and our training set falls in the
+extremes, save for a few outliers. In Fig.&nbsp;[2d](#fig-sigmoid-map), we show representative images for varying
+activation levels. We can confirm that an activation $\approx 0$ corresponds to unripe (green) bananas, an activation
+$\approx 1$ corresponds to overripe (yellow-brown) bananas while the regime which is approximately linear may correspond
+to midripe/ripe bananas. Specifically, the range $\approx$ 0.2-0.4 corresponds to the midripe (yellowish-green)
+bananas, while the range $\approx$ 0.6-0.8 corresponds to the ripe (dominantly yellow) bananas.
+
+<figure id="fig-boundaries" class="container grid grid-cols-2 gap-4 items-end">
+  {frontmatter.featureData.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/186/14-LogisticRegression/${d.url}`)}
+        alt={d.caption}
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-2 text-center">
+    Figure 2:
+  </figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _A14 - Logistic regression_ (2019).</li>
+  <li id="Mazen2019">F. Mazen, and A. Nashat, Ripeness classification of bananas using an artificial neural network.
+    _Arabian Journal for Science and Engineering_ (2019).</li>
+</ol>
