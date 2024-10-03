@@ -1,0 +1,73 @@
+---
+title: "Activity 13: Perceptron"
+keywords:
+  - image processing
+  - computer vision
+  - feature extraction
+cover: "svip/186/13-Perceptron/ban-app_decision.png"
+courseSlug: "ap186"
+created: "2019-10-28T12:37:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+
+boundaryData: [
+  { url: "ban-app_decision.png", caption: "banana-apple", key: "fig-ban-app" },
+  { url: "ban-ora_decision.png", caption: "banana-orange", key: "fig-ban-ora" },
+  { url: "app-ora_decision.png", caption: "apple-orange", key: "fig-app-ora" },
+]
+---
+
+import { buildCldUrl } from "@/utils/cloudinary";
+
+For this activity [[1](#Soriano2019)], I used the features extracted from the fruits (50 each of apples, mangoes,
+bananas) from the [previous activity](/svip/ap186/feature-extract). The feature space in $a^*$-$b^*$ (obtained from the
+$L^*a^*b^*$ color space) is shown in Fig.&nbsp;[1](#fig-ab-space). Since we'll be working with a linear classifier for
+now, we need to process only two classes at a time. We design the perceptron so that it follows a simple weight update
+rule
+
+<span id="eq-weight-update" class="mx-auto">
+$
+\begin{equation}
+  \Delta w_j = \eta (y^i - z^i) x_j^i
+\end{equation}
+$
+</span>
+
+where $y$ is the ground truth label, $z$ is the predicted label, and $\eta$ is the learning rate, which we set to
+10<sup>-2</sup>. The perceptron is trained for 100 epochs or until the sum of squares error (SSE) drops below some
+selected tolerance $\epsilon = 10^{-6}$ and the decision boundary is obtained from the final weights. The decision
+boundary and decision contours for each class pair is shown in Fig.&nbsp;[2](#fig-boundaries).
+
+<figure id="fig-ab-space" class="container">
+  <img
+    src={buildCldUrl(`svip/186/13-Perceptron/ab-space.png`)}
+    alt="ab space"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: Feature space in $a^*$-$b^*$.
+  </figcaption>
+</figure>
+
+<figure id="fig-boundaries" class="container grid grid-cols-3 gap-4">
+  {frontmatter.boundaryData.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/186/13-Perceptron/${d.url}`)}
+        alt={d.caption}
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-3 text-center">
+    Figure 2:
+  </figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _A13 - Perceptron_ (2019).</li>
+</ol>
