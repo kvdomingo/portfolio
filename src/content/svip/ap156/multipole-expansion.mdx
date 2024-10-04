@@ -7,12 +7,25 @@ keywords:
   - electric potential
   - electric field
   - dipole approximation
+  - quadrupole approximation
 cover: "svip/156/Proj-MultipoleExpansion/114"
 courseSlug: "ap156"
 created: "2019-11-14T06:44:00.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
+
+chargesData: [
+  { url: "113", caption: "", key: "fig-plane" },
+  { url: "115", caption: "", key: "fig-contour" },
+]
+
+fieldsData: [
+  { url: "117-2", caption: "", key: "fig-field-2m" },
+  { url: "117-64", caption: "", key: "fig-field-64m" },
+]
 ---
+
+import { buildCldUrl } from "@/utils/cloudinary";
 
 #### Investigation of the potentials and electric fields of an arbitrary discrete charge distribution using multipole expansion
 
@@ -83,6 +96,90 @@ $
 </span>
 
 where $\delta_{kl}$ is the Kronecker delta, and $\vec{r}_i^{(k)}$ is the $k$th component of $\vec{r}_i$.
+
+<figure id="fig-projections" class="container grid grid-cols-2 gap-4 items-end">
+  {frontmatter.chargesData.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/156/Proj-MultipoleExpansion/${d.url}`)}
+        alt={d.caption}
+        class="mx-auto"
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-2 text-center">
+    Figure 1: (a) Random distribution of charges on the $x$-$y$ plane.
+    (b) Potential of 10 unit charges on the plane $z=0.1$.
+  </figcaption>
+</figure>
+
+With the random seed fixed for reproducibility, all the pre-execution code was defined as a `MultipoleExpansion` class
+that takes an arbitrary even number $N$ of charges as the sole argument. The behavior of the electrostatic potentials
+and fields was investigated by generating $N$ unit point charges, scattered within a $2 \times 2$ meter box on the
+$x$-$y$ plane, centered at the origin. Random numbers were then drawn from a uniform distribution and inserted into the
+row vectors of an array $\texttt{r}$. Thus, $\texttt{r}$ is a $3 \times N$ matrix, with the rows representing the
+position vectors of the charges and all the $z$-components set to zero. From these vectors, the first half were assigned
+to be the positive charges, while the latter half were assigned as the negative charges.
+
+The electric potential was calculated for a $4 \times 4$ meter box on the $x$-$y$ plane by dividing it into a
+$500 \times 500$ `meshgrid` for $x,y \in [-2,2]$, then evaluating the exact $\Phi$ for each point in the meshgrid
+using ([1](#eq-potential)), and setting units of $4\pi\epsilon_0 = 1$. The potential was then plotted as a contour
+projection on the $x$-$y$ plane using the `Axes3D` object [[4](#Hunter2007)]. To quantify the accuracy of the dipole and
+quadrupole approximations, the potential was also plotted as a function of $y$ using the dipole and quadrupole
+approximations given by ([3](#eq-multipole)), superimposed with the exact potential given by ([6](#eq-potential)).
+
+Finally, the electric field was numerically evaluated using the central difference algorithm, as defined in
+[[5](#Wilmott1995), [6](#Olver2013)], and was plotted using `streamplot` [[7](#Christian2015)].
+
+#### Results
+
+<figure id="fig-approx" class="container">
+  <img
+    src={buildCldUrl("svip/156/Proj-MultipoleExpansion/116")}
+    alt="Potentials for different approximations at x = z = 0.1"
+    class="mx-auto"
+  />
+  <figcaption class="col-span-2 text-center">
+    Figure 2: Potentials for different approximations at $x = z = 0.1$.
+  </figcaption>
+</figure>
+
+A total of ten (10) point charges were generated for the purposes of this paper. Their distribution on the $x$-$y$ plane
+is shown in Figure&nbsp;[1a](#fig-plane). On the plane $z = 0.1$, they generate a potential, which is shown as contours
+of constant $\Phi$ in Figure&nbsp;[1b](#fig-contour).
+
+To compare the dipole and quadrupole approximations to the exact potential, a plane parallel to the $y$-axis was
+selected and "cut" at the location $x = z = 0.1$. This plane was of particular interest due to the fact that it passes
+close to two positive charges at $y \approx \pm 1$, and runs right in the middle of a dipole near $y \approx 0$.
+Figure&nbsp;[2](#fig-approx) shows the result. It can be observed that the dipole approximation cannot account for both
+of the positive charges on either side of the origin. This is due to the fact that the dipole approximation only allows
+for two turning points in its curve. Even with the quadrupole correction, the actual potential is emulated only in a
+very rough manner.
+
+Calculation of the electric field yields the graphs in Figure&nbsp;[3](#fig-field). Figure&nbsp;[3a](#fig-field-2m)
+shows the complex structure of the electric field for multiple charges, and as one moves away from the charge
+distribution, the field appears to be that of a dipole, as can be seen in Figure&nbsp;[3b](#fig-field-64m).
+
+<figure id="fig-field" class="container grid grid-cols-2 gap-4 items-end">
+  {frontmatter.fieldsData.map((d, index) => (
+    <figure id={d.key}>
+      <img
+        src={buildCldUrl(`svip/156/Proj-MultipoleExpansion/${d.url}`)}
+        alt={d.caption}
+        class="mx-auto"
+      />
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {d.caption}
+      </figcaption>
+    </figure>
+  ))}
+  <figcaption class="col-span-2 text-center">
+    Figure 3: Electric field of 10 unit charges viewed at (a) 2 m, and (b) 64 m away from the charge distribution.
+  </figcaption>
+</figure>
 
 #### References
 
