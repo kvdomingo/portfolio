@@ -105,7 +105,8 @@ small {
 
 ol.reference {
   counter-reset: spp-counter;
-  list-style: none;
+  list-style-type: none;
+  list-style-position: inside;
 }
 
 ol.reference li {
