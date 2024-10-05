@@ -11,73 +11,75 @@ cover: "svip/186/4-MeasuringArea/csamphi_map.png"
 courseSlug: "ap186"
 created: "2019-08-20T06:25:09.0000Z"
 
+alphabet: abcdefghijklmnopqrstuvwxyz
+
 algoData: ["spot", "Sobel", "Prewitt", "Laplacian", "Canny"]
 
 shapeData: ["circle", "square", "trapezoid", "triangle"]
 
 areaData: [
 {
-shape: "circle",
-data: {
-actual: { area: "502,655", error: 0, best: false },
-spot: { area: "501,584", error: 0.21, best: false },
-sobel: { area: "503,187", error: 0.11, best: false },
-prewitt: { area: "503,187", error: 0.11, best: false },
-laplacian: { area: "503,198", error: 0.11, best: false },
-canny: { area: "503,182", error: 0.10, best: true },
-}
+  shape: "circle",
+  data: {
+    actual: { area: 502655, error: 0, best: false },
+    spot: { area: 501584, error: 0.21, best: false },
+    sobel: { area: 503187, error: 0.11, best: false },
+    prewitt: { area: 503187, error: 0.11, best: false },
+    laplacian: { area: 503198, error: 0.11, best: false },
+    canny: { area: 503182, error: 0.10, best: true },
+  }
 },
 {
-shape: "square",
-data: {
-actual: { area: "640,000", error: 0, best: false },
-spot: { area: "639,800", error: 0.03, best: true },
-sobel: { area: "641,404", error: 0.22, best: false },
-prewitt: { area: "641,404", error: 0.22, best: false },
-laplacian: { area: "641,416", error: 0.22, best: false },
-canny: { area: "641,398", error: 0.22, best: false },
-}
+  shape: "square",
+  data: {
+    actual: { area: 640000, error: 0, best: false },
+    spot: { area: 639800, error: 0.03, best: true },
+    sobel: { area: 641404, error: 0.22, best: false },
+    prewitt: { area: 641404, error: 0.22, best: false },
+    laplacian: { area: 641416, error: 0.22, best: false },
+    canny: { area: 641398, error: 0.22, best: false },
+  }
 },
 {
-shape: "trapezoid",
-data: {
-actual: { area: "426,667", error: 0, best: false },
-spot: { area: "426,399", error: 0.06, best: true },
-sobel: { area: "428,002", error: 0.31, best: false },
-prewitt: { area: "428,002", error: 0.31, best: false },
-laplacian: { area: "428,013", error: 0.32, best: false },
-canny: { area: "427,731", error: 0.25, best: false },
-}
+  shape: "trapezoid",
+  data: {
+    actual: { area: 426667, error: 0, best: false },
+    spot: { area: 426399, error: 0.06, best: true },
+    sobel: { area: 428002, error: 0.31, best: false },
+    prewitt: { area: 428002, error: 0.31, best: false },
+    laplacian: { area: 428013, error: 0.32, best: false },
+    canny: { area: 427731, error: 0.25, best: false },
+  }
 },
 {
-shape: "triangle",
-data: {
-actual: { area: "320,000", error: 0, best: false },
-spot: { area: "319,102", error: 0.28, best: false },
-sobel: { area: "320,705", error: 0.22, best: false },
-prewitt: { area: "320,705", error: 0.22, best: false },
-laplacian: { area: "320,714", error: 0.22, best: false },
-canny: { area: "320,304", error: 0.09, best: true },
-}
+  shape: "triangle",
+  data: {
+    actual: { area: 320000, error: 0, best: false },
+    spot: { area: 319102, error: 0.28, best: false },
+    sobel: { area: 320705, error: 0.22, best: false },
+    prewitt: { area: 320705, error: 0.22, best: false },
+    laplacian: { area: 320714, error: 0.22, best: false },
+    canny: { area: 320304, error: 0.09, best: true },
+  }
 },
 ]
 
 ampAreaData: [
-{ method: "actual", area: "4485.92", error: 0, best: false },
-{ method: "spot", area: "4600.44", error: 2.55, best: true },
-{ method: "sobel", area: "4630.52", error: 3.22, best: false },
-{ method: "prewitt", area: "4630.55", error: 3.22, best: false },
-{ method: "laplacian", area: "4629.64", error: 3.20, best: false },
-{ method: "canny", area: "4634.90", error: 3.32, best: false },
+  { method: "actual", area: 4485.92, error: 0, best: false },
+  { method: "spot", area: 4600.44, error: 2.55, best: true },
+  { method: "sobel", area: 4630.52, error: 3.22, best: false },
+  { method: "prewitt", area: 4630.55, error: 3.22, best: false },
+  { method: "laplacian", area: 4629.64, error: 3.20, best: false },
+  { method: "canny", area: 4634.90, error: 3.32, best: false },
 ]
 
 detectData: [
-{ publicId: "svip/186/4-MeasuringArea/csamphi_map", caption: "Enclosed area in Google Earth" },
-{ publicId: "svip/186/4-MeasuringArea/csamphi", caption: "Applying threshold and isolating the ROI" },
-{ publicId: "svip/186/4-MeasuringArea/csamphi_spot", caption: "spot" },
-{ publicId: "svip/186/4-MeasuringArea/csamphi_sobel", caption: "Sobel/Prewitt" },
-{ publicId: "svip/186/4-MeasuringArea/csamphi_laplacian", caption: "Laplacian" },
-{ publicId: "svip/186/4-MeasuringArea/csamphi_canny", caption: "Canny" },
+  { publicId: "svip/186/4-MeasuringArea/csamphi_map", caption: "Enclosed area in Google Earth" },
+  { publicId: "svip/186/4-MeasuringArea/csamphi", caption: "Applying threshold and isolating the ROI" },
+  { publicId: "svip/186/4-MeasuringArea/csamphi_spot", caption: "spot" },
+  { publicId: "svip/186/4-MeasuringArea/csamphi_sobel", caption: "Sobel/Prewitt" },
+  { publicId: "svip/186/4-MeasuringArea/csamphi_laplacian", caption: "Laplacian" },
+  { publicId: "svip/186/4-MeasuringArea/csamphi_canny", caption: "Canny" },
 ]
 ---
 
@@ -86,19 +88,19 @@ import cn from "@/utils/cn";
 
 For this activity, I generated the basic shapes using the Python Imaging Library (PIL). This let me define the
 centroid and pseudo-radius (distance from the centroid to the midpoint of an edge) for each shape analytically,
-and therefore, I know precisely what their dimensions and areas will be. The shapes are shown in Fig. 1, all
-with size 1024x1024.
+and therefore, I know precisely what their dimensions and areas will be. The shapes are shown in Fig.&nbsp;1, all
+with size 1024$\times$1024.
 
 <div id="fig-shapes" class="container mx-auto">
   <figure class="grid grid-cols-1 gap-4 md:grid-cols-4">
-    {frontmatter.shapeData.map(image => (
+    {frontmatter.shapeData.map((image, index) => (
       <figure>
         <img
           src={buildCldUrl(`svip/186/4-MeasuringArea/${image}`)}
           alt={image.split("_").slice(-1)[0]}
         />
         <figcaption class="text-center">
-          {image.split("_").slice(-1)[0]}
+          ({frontmatter.alphabet[index]}) {image.split("_").slice(-1)[0]}
         </figcaption>
       </figure>
     ))}
@@ -163,24 +165,21 @@ discretized form of Green's theorem [[6](#Soriano2019)]
   {equation}$
 </span>
 
-where `x_i`, `y_i` are the pixel coordinates,
-and `N` is the number of pixels on the
+where $x_i$, $y_i$ are the pixel coordinates, and $N$ is the number of pixels on the
 boundary. The results for each algorithm, along with their relative errors,
 are shown in Table [1](#Table-areas), and the edge-traced images
 are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
 
 <div id="fig-circles" class="container mx-auto">
   <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
-    {frontmatter.algoData.map(image => (
+    {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
-          src={buildCldUrl(
-            `svip/186/4-MeasuringArea/circle_${image.toLowerCase()}`,
-          )}
+          src={buildCldUrl(`svip/186/4-MeasuringArea/circle_${image.toLowerCase()}`)}
           alt={image.split("_").slice(-1)[0]}
         />
         <figcaption class="text-center">
-          {image.split("_").slice(-1)[0]}
+          ({frontmatter.alphabet[index]}) {image.split("_").slice(-1)[0]}
         </figcaption>
       </figure>
     ))}
@@ -192,7 +191,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
 
 <div id="fig-squares" class="container mx-auto">
   <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
-    {frontmatter.algoData.map(image => (
+    {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
           src={buildCldUrl(
@@ -201,7 +200,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
           alt={image.split("_").slice(-1)[0]}
         />
         <figcaption class="text-center">
-          {image.split("_").slice(-1)[0]}
+          ({frontmatter.alphabet[index]}) {image.split("_").slice(-1)[0]}
         </figcaption>
       </figure>
     ))}
@@ -213,7 +212,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
 
 <div id="fig-trapezoids" class="container mx-auto">
   <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
-    {frontmatter.algoData.map(image => (
+    {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
           src={buildCldUrl(
@@ -222,7 +221,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
           alt={image.split("_").slice(-1)[0]}
         />
         <figcaption class="text-center">
-          {image.split("_").slice(-1)[0]}
+          ({frontmatter.alphabet[index]}) {image.split("_").slice(-1)[0]}
         </figcaption>
       </figure>
     ))}
@@ -234,7 +233,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
 
 <div id="fig-triangles" class="container mx-auto">
   <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
-    {frontmatter.algoData.map(image => (
+    {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
           src={buildCldUrl(
@@ -243,7 +242,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
           alt={image.split("_").slice(-1)[0]}
         />
         <figcaption class="text-center">
-          {image.split("_").slice(-1)[0]}
+          ({frontmatter.alphabet[index]}) {image.split("_").slice(-1)[0]}
         </figcaption>
       </figure>
     ))}
@@ -280,7 +279,7 @@ clean edge but is somewhat low in magnitude.
         <tr>
           <td rowSpan={2}>{row.shape}</td>
           {Object.keys(row.data).map(method => (
-            <td>{row.data[method].area}</td>
+            <td>{row.data[method].area.toLocaleString()}</td>
           ))}
         </tr>
         <tr>
@@ -308,27 +307,27 @@ meters was also provided by Google Earth's Ruler tool, I was able to formulate
 the pixel-to-meter conversion as
 
 <span id="eq-calibration" class="mx-auto">
-  $
-  \begin{equation}
-    x_{\mathrm{m}} = x_{\mathrm{px}} \times \frac{37.62\textrm{m}}{389\textrm{px}}
-    \end{equation}
-    $
+$
+\begin{equation}
+  x_{\mathrm{m}} = x_{\mathrm{px}} \times \frac{37.62\textrm{m}}{389\textrm{px}}
+\end{equation}
+$
 </span>
 
 Via Green's theorem, I was able to obtain the Amphitheater's area in pixels.
 However, this cannot be converted directly to real units using ([6](#eq-calibration)) because our current units are area, while the
 conversion equation only works for units of length. Since the amphitheater
 appears fairly circular, I used the formula for the area of a circle
-`A = \pi r^2` and solved for `r`. I can now plug in this `r` directly into ([6](#eq-calibration))
-and finally, multiply it again by `\pi r` to get the area in real units. The
+$A = \pi r^2$ and solved for $r$. I can now plug in this $r$ directly into ([6](#eq-calibration))
+and finally, multiply it again by $\pi r$ to get the area in real units. The
 calculated areas for the different algorithms are shown in Table
 [2](#tab-amphi), and the edge-traced images are shown in Fig. [6](#fig-amphi).
 
 <table id="Table-areas" class="table table-lg">
   <caption>
-    Table 2: Actual and calculated areas (px<sup>2</sup>) of each shape and
-    their corresponding relative errors. The percentages in bold indicate the
-    best-performing algorithm for each shape.
+    Table 2: Actual and calculated areas (m<sup>2</sup>) of each shape and
+    their corresponding relative errors. The percentage in bold indicates the
+    best-performing algorithm.
   </caption>
   <thead align="center" class="capitalize">
     <tr>
@@ -340,7 +339,7 @@ calculated areas for the different algorithms are shown in Table
   <tbody align="right">
     <tr>
       {frontmatter.ampAreaData.map(row => (
-        <td>{row.area}</td>
+        <td>{row.area.toLocaleString()}</td>
       ))}
     </tr>
     <tr>
@@ -354,10 +353,10 @@ calculated areas for the different algorithms are shown in Table
 </table>
 
 <div class="container mx-auto grid grid-cols-1 items-end gap-4 md:grid-cols-2">
-  {frontmatter.detectData.map(data => (
+  {frontmatter.detectData.map((data, index) => (
     <figure>
       <img src={buildCldUrl(data.publicId)} alt={data.caption} />
-      <figcaption class="text-center">{data.caption}</figcaption>
+      <figcaption class="text-center">({frontmatter.alphabet[index]}) {data.caption}</figcaption>
     </figure>
   ))}
 </div>
