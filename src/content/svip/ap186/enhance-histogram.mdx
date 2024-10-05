@@ -103,19 +103,20 @@ be seen in Fig. [1d](#fig-nonlinear), and its histogram in Fig.
 exposed, but now is high in contrast. We can also see in the histogram that the
 middle values are stretched more than the outer values.
 
-<figure id="fig-enhance" class="container grid grid-cols-4 gap-4">
+<figure id="fig-enhance" class="container grid grid-cols-2 lg:grid-cols-4 gap-4">
   {frontmatter.data.map((d, index) => (
     <figure id={d.key}>
       <img
         src={buildCldUrl(`svip/186/5-EnhanceHistogram/${d.url}`)}
         alt={d.caption}
+        class="mx-auto"
       />
       <figcaption class="text-center">
         ({frontmatter.alphabet[index]}) {d.caption}
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-4 text-center">
+  <figcaption class="col-span-2 lg:col-span-4 text-center">
     Figure 1: Grayscale-converted image and its histogram manipulations, their
     respective histograms, and their respective CDFs.
   </figcaption>
@@ -142,19 +143,20 @@ the classic Kodak Tri-X film. Its histogram in Fig.[2c](#fig-sigmoid)
 also shows the squeezing of the pixel values and con rms that the technique
 acts like _contrast compressing_.
 
-<figure id="fig-crushed" class="container grid grid-cols-3 items-end gap-4">
+<figure id="fig-crushed" class="container grid grid-cols-1 lg:grid-cols-3 items-end gap-4">
   {frontmatter.crushedData.map((d, index) => (
     <figure id={d.key}>
       <img
         src={buildCldUrl(`svip/186/5-EnhanceHistogram/${d.url}`)}
         alt={d.caption}
+        class="mx-auto"
       />
       <figcaption class="text-center">
         ({frontmatter.alphabet[index]}) {d.caption}
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-3 text-center">
+  <figcaption class="lg:col-span-3 text-center">
     Figure 2: "Crushed blacks/whites" post-processing technique using histogram
     manipulation.
   </figcaption>

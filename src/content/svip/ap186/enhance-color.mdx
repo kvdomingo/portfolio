@@ -96,19 +96,20 @@ in Fig. [1d](#fig-whitepatch). We can see that the guitarist's skin tone
 still looks realistic, and the background is now a warmer white as compared to
 the previous algorithms.
 
-<figure id="fig-enhance" class="container grid grid-cols-4 gap-4">
+<figure id="fig-enhance" class="container grid grid-cols-2 lg:grid-cols-4 gap-4">
   {frontmatter.algorithmsData.map((d, index) => (
     <figure id={d.key}>
       <img
         src={buildCldUrl(`svip/186/6-EnhanceColor/${d.url}`)}
         alt={d.caption}
+        class="mx-auto"
       />
       <figcaption class="text-center">
         ({frontmatter.alphabet[index]}) {d.caption}
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-4 text-center">
+  <figcaption class="col-span-2 lg:col-span-4 text-center">
     Figure 1: Image enhanced using different algorithms (top) and their
     respective histograms (bottom).
   </figcaption>
@@ -186,19 +187,20 @@ of the heavy red color cast in the original image, the CS portion of the algorit
 is given a greater weight, so the final image looks more like the CS-corrected
 image.
 
-<figure id="fig-awbaet" class="container grid grid-cols-3 gap-4">
+<figure id="fig-awbaet" class="container grid grid-cols-1 lg:grid-cols-3 gap-4 items-end">
   {frontmatter.awbaetData.map((d, index) => (
     <figure id={d.key}>
       <img
         src={buildCldUrl(`svip/186/6-EnhanceColor/${d.url}`)}
         alt={d.caption}
+        class="mx-auto"
       />
       <figcaption class="text-center">
         ({frontmatter.alphabet[index]}) {d.caption}
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-3 text-center">
+  <figcaption class="lg:col-span-3 text-center">
     Figure 3: Comparison of the different auto white balance algorithms.
   </figcaption>
 </figure>

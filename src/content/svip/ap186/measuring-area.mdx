@@ -92,19 +92,20 @@ and therefore, I know precisely what their dimensions and areas will be. The sha
 with size 1024$\times$1024.
 
 <div id="fig-shapes" class="container mx-auto">
-  <figure class="grid grid-cols-1 gap-4 md:grid-cols-4">
+  <figure class="grid grid-cols-2 gap-4 lg:grid-cols-4">
     {frontmatter.shapeData.map((image, index) => (
       <figure>
         <img
           src={buildCldUrl(`svip/186/4-MeasuringArea/${image}`)}
           alt={image.split("_").slice(-1)[0]}
+          class="mx-auto"
         />
         <figcaption class="text-center">
           ({frontmatter.alphabet[index]}) {image.split("_").slice(-1)[0]}
         </figcaption>
       </figure>
     ))}
-    <figcaption class="figcaption col-span-4">
+    <figcaption class="figcaption col-span-2 lg:col-span-4">
       Figure 1: Basic binary shapes generated using the Python PIL library.
     </figcaption>
   </figure>
@@ -171,7 +172,7 @@ are shown in Table [1](#Table-areas), and the edge-traced images
 are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
 
 <div id="fig-circles" class="container mx-auto">
-  <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
+  <figure class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
     {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
@@ -183,14 +184,14 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
         </figcaption>
       </figure>
     ))}
-    <figcaption class="figcaption col-span-5">
+    <figcaption class="figcaption md:col-span-3 lg:col-span-5">
       Figure 2: Edges extracted from the circle using different algorithms.
     </figcaption>
   </figure>
 </div>
 
 <div id="fig-squares" class="container mx-auto">
-  <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
+  <figure class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
     {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
@@ -204,14 +205,14 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
         </figcaption>
       </figure>
     ))}
-    <figcaption class="figcaption col-span-5">
+    <figcaption class="figcaption md:col-span-3 lg:col-span-5">
       Figure 3: Edges extracted from the square using different algorithms.
     </figcaption>
   </figure>
 </div>
 
 <div id="fig-trapezoids" class="container mx-auto">
-  <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
+  <figure class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
     {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
@@ -225,14 +226,14 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
         </figcaption>
       </figure>
     ))}
-    <figcaption class="figcaption col-span-5">
+    <figcaption class="figcaption md:col-span-3 lg:col-span-5">
       Figure 4: Edges extracted from the trapezoid using different algorithms.
     </figcaption>
   </figure>
 </div>
 
 <div id="fig-triangles" class="container mx-auto">
-  <figure class="grid grid-cols-1 gap-4 md:grid-cols-5">
+  <figure class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
     {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
@@ -246,7 +247,7 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
         </figcaption>
       </figure>
     ))}
-    <figcaption class="figcaption col-span-5">
+    <figcaption class="figcaption md:col-span-3 lg:col-span-5">
       Figure 5: Edges extracted from the triangle using different algorithms.
     </figcaption>
   </figure>
@@ -260,41 +261,43 @@ being detected but are very faint (low magnitude). Spot and Canny, on the
 other hand, produce very clean and accurate edges. Laplacian also detects a
 clean edge but is somewhat low in magnitude.
 
-<table class="table table-lg" id="Table-areas">
-  <caption>
-    Table 1: Actual and calculated areas (px<sup>2</sup>) of each shape and
-    their corresponding relative errors. The percentages in bold indicate the
-    best-performing algorithm for each shape.
-  </caption>
-  <thead class="capitalize">
-    <tr align="center">
-      {["Shape", "Actual", ...frontmatter.algoData].map(head => (
-        <th scope="col">{head}</th>
+<div class="overflow-x-auto">
+  <table class="table table-lg" id="Table-areas">
+    <caption>
+      Table 1: Actual and calculated areas (px<sup>2</sup>) of each shape and
+      their corresponding relative errors. The percentages in bold indicate the
+      best-performing algorithm for each shape.
+    </caption>
+    <thead class="capitalize">
+      <tr align="center">
+        {["Shape", "Actual", ...frontmatter.algoData].map(head => (
+          <th scope="col">{head}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody align="right">
+      {frontmatter.areaData.map(row => (
+        <>
+          <tr>
+            <td rowSpan={2}>{row.shape}</td>
+            {Object.keys(row.data).map(method => (
+              <td>{row.data[method].area.toLocaleString()}</td>
+            ))}
+          </tr>
+          <tr>
+            {Object.keys(row.data).map(method => (
+              <td class={cn({ "font-bold": row.data[method].best })}>
+                {row.data[method].error === 0
+                  ? null
+                  : `${row.data[method].error.toFixed(2)}%`}
+              </td>
+            ))}
+          </tr>
+        </>
       ))}
-    </tr>
-  </thead>
-  <tbody align="right">
-    {frontmatter.areaData.map(row => (
-      <>
-        <tr>
-          <td rowSpan={2}>{row.shape}</td>
-          {Object.keys(row.data).map(method => (
-            <td>{row.data[method].area.toLocaleString()}</td>
-          ))}
-        </tr>
-        <tr>
-          {Object.keys(row.data).map(method => (
-            <td class={cn({ "font-bold": row.data[method].best })}>
-              {row.data[method].error === 0
-                ? null
-                : `${row.data[method].error.toFixed(2)}%`}
-            </td>
-          ))}
-        </tr>
-      </>
-    ))}
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 I chose the CS Amphitheater as a location of interest for calculating the area
 on a map. I obtained its actual area using Google Earth's Ruler tool, then
@@ -323,36 +326,38 @@ and finally, multiply it again by $\pi r$ to get the area in real units. The
 calculated areas for the different algorithms are shown in Table
 [2](#tab-amphi), and the edge-traced images are shown in Fig. [6](#fig-amphi).
 
-<table id="Table-areas" class="table table-lg">
-  <caption>
-    Table 2: Actual and calculated areas (m<sup>2</sup>) of each shape and
-    their corresponding relative errors. The percentage in bold indicates the
-    best-performing algorithm.
-  </caption>
-  <thead align="center" class="capitalize">
-    <tr>
-      {frontmatter.ampAreaData.map(row => (
-        <th scope="col">{row.method}</th>
-      ))}
-    </tr>
-  </thead>
-  <tbody align="right">
-    <tr>
-      {frontmatter.ampAreaData.map(row => (
-        <td>{row.area.toLocaleString()}</td>
-      ))}
-    </tr>
-    <tr>
-      {frontmatter.ampAreaData.map(row => (
-        <td class={cn({ "font-bold": row.best })}>
-          {row.error === 0 ? null : `${row.error.toFixed(2)}%`}
-        </td>
-      ))}
-    </tr>
-  </tbody>
-</table>
+<div class="overflow-x-auto">
+  <table id="Table-areas" class="table table-lg">
+    <caption>
+      Table 2: Actual and calculated areas (m<sup>2</sup>) of each shape and
+      their corresponding relative errors. The percentage in bold indicates the
+      best-performing algorithm.
+    </caption>
+    <thead align="center" class="capitalize">
+      <tr>
+        {frontmatter.ampAreaData.map(row => (
+          <th scope="col">{row.method}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody align="right">
+      <tr>
+        {frontmatter.ampAreaData.map(row => (
+          <td>{row.area.toLocaleString()}</td>
+        ))}
+      </tr>
+      <tr>
+        {frontmatter.ampAreaData.map(row => (
+          <td class={cn({ "font-bold": row.best })}>
+            {row.error === 0 ? null : `${row.error.toFixed(2)}%`}
+          </td>
+        ))}
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<div class="container mx-auto grid grid-cols-1 items-end gap-4 md:grid-cols-2">
+<div class="container mx-auto grid grid-cols-1 items-end gap-4 lg:grid-cols-2">
   {frontmatter.detectData.map((data, index) => (
     <figure>
       <img src={buildCldUrl(data.publicId)} alt={data.caption} />

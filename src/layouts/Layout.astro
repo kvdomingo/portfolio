@@ -19,7 +19,7 @@ const { title = info.title, spotlight = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -67,7 +67,7 @@ const { title = info.title, spotlight = false } = Astro.props;
     <ViewTransitions handleForms />
   </head>
 
-  <body class="min-h-screen dark bg-gradient-to-b from-ctp-base to-ctp-crust">
+  <body class="min-h-screen bg-gradient-to-b from-ctp-base to-ctp-crust">
     {!spotlight && <Navbar />}
 
     <main>
