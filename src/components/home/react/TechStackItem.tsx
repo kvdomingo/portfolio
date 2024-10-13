@@ -1,4 +1,8 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip.tsx";
 
 interface TechStackItemProps {
   name: string;

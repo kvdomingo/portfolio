@@ -86,14 +86,19 @@ const { title = info.title, spotlight = false } = Astro.props;
         -moz-osx-font-smoothing: grayscale;
       }
 
-      h1, h2, h3, h4, h5, h6 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         color: theme("colors.ctp-text.DEFAULT");
       }
 
       code {
         color: theme("colors.ctp-mauve.DEFAULT");
-        font-family: "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas,
-          "Courier New", monospace;
+        font-family: "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco,
+          Consolas, "Courier New", monospace;
       }
 
       .section-header {

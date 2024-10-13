@@ -10,13 +10,21 @@ import { Mail } from "lucide-astro";
 import CvSectionMdx from "../components/about/CvSectionMdx.astro";
 
 const backgroundImage = cld
-  .image("kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1")
+  .image(
+    "kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1",
+  )
   .resize(Resize.scale().width("auto"))
   .toURL();
 
-const logo = cld.image("logo/logo-white").resize(Resize.scale().width("auto")).toURL();
+const logo = cld
+  .image("logo/logo-white")
+  .resize(Resize.scale().width("auto"))
+  .toURL();
 
-const image = cld.image(info.about.photo).resize(Resize.scale().width("auto")).toURL();
+const image = cld
+  .image(info.about.photo)
+  .resize(Resize.scale().width("auto"))
+  .toURL();
 
 const workExperience = (await getCollection("workExperience")).sort(
   (a, b) =>
@@ -29,7 +37,7 @@ const workExperience = (await getCollection("workExperience")).sort(
 
 <Layout title="About | KVD Studio">
   <div
-    class="h-[75vh] bg-cover bg-fixed bg-center bg-no-repeat mb-14"
+    class="mb-14 h-[75vh] bg-cover bg-fixed bg-center bg-no-repeat"
     style={`background-image: url('${backgroundImage}')`}
     id="cover"
   >
@@ -53,8 +61,11 @@ const workExperience = (await getCollection("workExperience")).sort(
     <div class="flex flex-col gap-16 md:col-span-3 md:pr-24">
       <div>
         <p class="whitespace-pre-line">{info.about.text}</p>
-        <a href={`mailto:${info.email}`} class="btn btn-outline btn-wide btn-accent my-6">
-          <Mail /> 
+        <a
+          href={`mailto:${info.email}`}
+          class="btn btn-outline btn-accent btn-wide my-6"
+        >
+          <Mail />
           Contact
         </a>
       </div>

@@ -32,29 +32,24 @@ entries.sort((a, b) => b.data.created.localeCompare(a.data.created));
 
     {
       entries.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {
-            entries.map(entry => (
-              <div class="card image-full aspect-square bg-base-300 shadow-xl">
-                <figure>
-                  <img
-                    src={buildCldUrl(entry.data.cover)}
-                    alt={entry.data.title}
-                    class="aspect-square"
-                  />
-                </figure>
-                <a
-                  href={`/svip/${entry.slug}`}
-                  class="card-body"
-                >
-                  <h2 class="card-title">{entry.data.title}</h2>
-                </a>
-              </div>
-            ))
-          }
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {entries.map(entry => (
+            <div class="card image-full aspect-square bg-base-300 shadow-xl">
+              <figure>
+                <img
+                  src={buildCldUrl(entry.data.cover)}
+                  alt={entry.data.title}
+                  class="aspect-square"
+                />
+              </figure>
+              <a href={`/svip/${entry.slug}`} class="card-body">
+                <h2 class="card-title">{entry.data.title}</h2>
+              </a>
+            </div>
+          ))}
         </div>
       ) : (
-        <div class="text-center py-12 text-md text-gray-400">
+        <div class="py-12 text-center text-md text-gray-400">
           No posts yet. Come back later!
         </div>
       )

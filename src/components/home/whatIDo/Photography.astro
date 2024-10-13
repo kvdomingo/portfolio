@@ -22,16 +22,18 @@ const images = carousel.map(c => ({
   </div>
 
   <div
-    class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
   >
-    {images.map(im => (
-      <div class="h-full flex items-center flex-col">
-        <img src={im.url} alt={im.caption} client:load loading="lazy" />
-      </div>
-    ))}
+    {
+      images.map(im => (
+        <div class="flex h-full flex-col items-center">
+          <img src={im.url} alt={im.caption} client:load loading="lazy" />
+        </div>
+      ))
+    }
   </div>
 
-  <div class="flex justify-center gap-4 flex-col md:flex-row">
+  <div class="flex flex-col justify-center gap-4 md:flex-row">
     <div>
       <a href="/photography" class="btn btn-outline btn-accent btn-wide">
         See in portfolio

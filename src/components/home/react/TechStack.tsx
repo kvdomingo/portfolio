@@ -1,5 +1,6 @@
 import { TooltipProvider } from "@/components/ui/tooltip.tsx";
 import info from "@/info.json";
+
 import TechStackItem from "./TechStackItem.tsx";
 
 export default function TechStack() {
@@ -13,7 +14,11 @@ export default function TechStack() {
             </div>
             <div className="col-span-3 my-auto grid grid-cols-4 gap-4 md:grid-cols-6 md:gap-12">
               {technologies.map(tech => (
-                <TechStackItem key={tech.name} name={tech.name} logo={tech.logo} />
+                <TechStackItem
+                  key={tech.name}
+                  name={tech.name}
+                  logo={tech.logo}
+                />
               ))}
             </div>
           </div>

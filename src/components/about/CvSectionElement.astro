@@ -39,15 +39,17 @@ const { data } = Astro.props;
 
     <slot>
       <p>
-        {typeof(data.body) === "string" ? (
-          data.body
-        ) : Array.isArray(data.body) ? (
-          <ul class="px-4">
-            {(data.body as string[]).map((item) => (
-              <li class="list-disc">{item}</li>
-            ))}
-          </ul>
-        ) : null}
+        {
+          typeof data.body === "string" ? (
+            data.body
+          ) : Array.isArray(data.body) ? (
+            <ul class="px-4">
+              {(data.body as string[]).map(item => (
+                <li class="list-disc">{item}</li>
+              ))}
+            </ul>
+          ) : null
+        }
       </p>
       {
         data.bodyLink ? (
