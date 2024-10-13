@@ -5,7 +5,9 @@
 <script>
   import posthog from "posthog-js";
 
-  posthog.init(import.meta.env.PUBLIC_POSTHOG_TOKEN, {
-    api_host: "https://us.posthog.com",
-  });
+  if (import.meta.env.PROD) {
+    posthog.init(import.meta.env.PUBLIC_POSTHOG_TOKEN, {
+      api_host: "https://us.posthog.com",
+    });
+  }
 </script>
