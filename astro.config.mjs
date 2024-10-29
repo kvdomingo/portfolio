@@ -40,6 +40,12 @@ export default defineConfig({
       rehypePlugins: [mathjaxConfig],
     }),
   ],
+  redirects: {
+    "/about": {
+      destination: "/cv",
+      status: 307,
+    },
+  },
   output: "server",
   server: {
     host: "0.0.0.0",
