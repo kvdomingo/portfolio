@@ -20,7 +20,6 @@ const dev = defineCollection({
     organizationUrl: z.string().url().nullable(),
     startDate: z.date(),
     endDate: z.date().nullable(),
-    summary: z.string(),
     technologies: z.array(z.string()),
     cover: z.string(),
     status: z.enum(["live", "in progress", "archived"]),

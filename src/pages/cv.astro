@@ -28,10 +28,8 @@ const image = cld
 
 const workExperience = (await getCollection("workExperience")).sort(
   (a, b) =>
-    compareDesc(
-      a.data.endDate ?? new Date(9999, 11, 31),
-      b.data.endDate ?? new Date(9999, 11, 31),
-    ) || compareDesc(a.data.startDate, b.data.startDate),
+    compareDesc(a.data.endDate ?? new Date(), b.data.endDate ?? new Date()) ||
+    compareDesc(a.data.startDate, b.data.startDate),
 );
 ---
 

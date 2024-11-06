@@ -193,122 +193,6 @@
         }
       ]
     },
-    "workExperience": {
-      "icon": "",
-      "data": [
-        {
-          "title": "Photographer",
-          "subtitle": "KVD Studio",
-          "subtitleLink": "/photography",
-          "body": "",
-          "bodyLink": "/photography",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2017-11-01",
-          "endDate": ""
-        },
-        {
-          "title": "Software Engineer",
-          "subtitle": "Thinking Machines Data Science",
-          "subtitleLink": "https://thinkingmachin.es",
-          "body": [
-            "Technical lead for the development of the UNICEF Giga DataOps Platform: led a team of 5 data, analytics, and software engineers to architect and develop a fully open-source master data management platform deployed on Azure Kubernetes Service.",
-            "Developed GenAI applications for enterprise clients in the financial sector, leveraging Azure OpenAI LLMs: developed responsive chat interfaces and designed backend processes for security and compliance requirements.",
-            "Developed process tooling for an international carbon registry: involved in backend development in Django deployed to a Google Cloud environment, and optimized database model design to maintain performant queries.",
-            "Developed an internal geospatial analytics platform for a local telecommunications company: involved in migrating user interface components to a modern tech stack and increasing test coverage."
-          ],
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2023-01-09",
-          "endDate": "2024-10-07"
-        },
-        {
-          "title": "Software Developer",
-          "subtitle": "Stevnbooks",
-          "subtitleLink": "",
-          "body": "Developed the API and infrastructure for an inventory management and profit calculator system deployed on DigitalOcean: integrated with PayMongo API to process customer payments and AWS Cognito as a B2C identity provider.",
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2022-11-01",
-          "endDate": "2023-01-01"
-        },
-        {
-          "title": "Software Engineer",
-          "subtitle": "Demand Science (Cobena Business Analytics & Strategy)",
-          "subtitleLink": "https://demandscience.com",
-          "body": [
-            "Developed multiple user interfaces for an internal data lakehouse platform: led the design and development of in-house UI components of the platform. Spearheaded the company-wide adoption of modern frontend tooling using Figma and TypeScript.",
-            "Developed a user-facing tool for a foreign market research firm: involved in the design and development of the backend architecture using Django & Redis deployed to an AWS environment.",
-            "Involved in the development of Gateway, an in-house B2B geospatial analytics platform: led weekly code reviews to maintain quality standards and optimize the team's delivery.",
-            "Developed internal tooling for an FMCG client: initiated the migration from manual testing to automated API testing using Python scripts, reducing testing time from 2 days to 30 minutes."
-          ],
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2020-11-04",
-          "endDate": "2022-11-04"
-        },
-        {
-          "title": "Software Developer Intern",
-          "subtitle": "Cobena Business Analytics & Strategy",
-          "subtitleLink": "https://cobenagroup.com",
-          "body": "",
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2020-10-05",
-          "endDate": "2020-11-03"
-        },
-        {
-          "title": "Backend Developer",
-          "subtitle": "DetectPH",
-          "subtitleLink": "https://detectph.com/",
-          "body": [
-            "Developed the API for a COVID-19 contact-tracing mobile application, written with Express and MongoDB."
-          ],
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2020-03-22",
-          "endDate": "2020-05-19"
-        },
-        {
-          "title": "Bioinformatics Intern",
-          "subtitle": "Philippine Genome Center",
-          "subtitleLink": "https://pgc.up.edu.ph",
-          "body": "Underwent training in bioinformatics; developed a command-line tool and web application for designing primers for site-directed mutagenesis.",
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2020-01-20",
-          "endDate": "2020-02-28"
-        },
-        {
-          "title": "Corps Non-Commissioned Officer for Documentation",
-          "subtitle": "University of the Philippines Reserve Officers' Training Corps",
-          "subtitleLink": "https://www.uprotc.org/",
-          "body": "Official photographer of the UPD ROTC Corps of Cadets for the C.Y. 2018-2019.",
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2018-08-11",
-          "endDate": "2019-05-04"
-        },
-        {
-          "title": "Student Assistant",
-          "subtitle": "Philippine Coral Reef and Mangrove Remote Sensing Project",
-          "subtitleLink": "",
-          "body": "Performed ground-truth validation of images involving corals classified by a deep neural network.",
-          "bodyLink": "",
-          "caption": "",
-          "captionLink": "",
-          "startDate": "2018-12-07",
-          "endDate": "2019-01-07"
-        }
-      ]
-    },
     "certification": {
       "icon": "",
       "data": [
@@ -398,48 +282,273 @@
       }
     ]
   },
-  "svip": {
-    "courses": [
-      {
-        "name": "App Physics 187",
-        "slug": "ap187",
-        "title": "Photonics and Applied Optics",
-        "cover": "svip/187/13-PhotoStereo/intensity_maps.png",
-        "description": "Design of Data Acquisition Systems (DAQ), Signal Processing-based instrumentation systems, current topics and techniques for engineering and design of optical instruments, non-destructive testing/measurement using optical methods, interferometry",
-        "posts": []
+  "dev": {
+    "technologies": {
+      "python": {
+        "label": "Python",
+        "icon": "Python",
+        "color": "#3776AB"
       },
-      {
-        "name": "App Physics 186",
-        "slug": "ap186",
-        "title": "Instrumentation Physics II",
-        "cover": "svip/186/17-NeuralNetworks/func-fit.png",
-        "description": "Imaging systems, image processing, multidimensional detection techniques, pattern recognition",
-        "posts": [
-          {
-            "title": "Activity 4: Measuring Area from Images",
-            "slug": "measuring-area",
-            "cover": "svip/186/4-MeasuringArea/csamphi_map.png"
-          },
-          {
-            "title": "Activity 3: Image Types and Formats",
-            "slug": "image-types",
-            "cover": "svip/186/3-ImageTypes/DSC_8805.png"
-          },
-          {
-            "title": "Activity 2: Practical Image Processing II",
-            "slug": "practical-2",
-            "cover": "svip/186/2-Practical2/final_overlay.png"
-          }
-        ]
+      "javascript": {
+        "label": "JavaScript",
+        "icon": "Javascript",
+        "color": "#F7DF1E"
       },
-      {
-        "name": "App Physics 156",
-        "slug": "ap156",
-        "title": "Computer Methods in Physics II",
-        "cover": "svip/156/Proj-MultipoleExpansion/117.png",
-        "description": "Advanced computer programming methods, numerical modeling and simulations, discrete models, stochastic methods, current approaches in numerical modeling",
-        "posts": []
+      "typescript": {
+        "label": "TypeScript",
+        "icon": "Typescript",
+        "color": "#3178C6"
+      },
+      "fastapi": {
+        "label": "FastAPI",
+        "icon": "Fastapi",
+        "color": "#009688"
+      },
+      "django": {
+        "label": "Django",
+        "icon": "Django",
+        "color": "#092E20"
+      },
+      "svelte": {
+        "label": "Svelte",
+        "icon": "Svelte",
+        "color": "#FF3E00"
+      },
+      "sveltekit": {
+        "label": "SvelteKit",
+        "icon": "Svelte",
+        "color": "#FF3E00"
+      },
+      "react": {
+        "label": "React",
+        "icon": "React",
+        "color": "#61DAFB"
+      },
+      "docker": {
+        "label": "Docker",
+        "icon": "Docker",
+        "color": "#2496ED"
+      },
+      "kubernetes": {
+        "label": "Kubernetes",
+        "icon": "Kubernetes",
+        "color": "#326CE5"
+      },
+      "helm": {
+        "label": "Helm",
+        "icon": "Helm",
+        "color": "#0F1689"
+      },
+      "apache spark": {
+        "label": "Apache Spark",
+        "icon": "Apachespark",
+        "color": "#E25A1C"
+      },
+      "apache superset": {
+        "label": "Apache Superset",
+        "icon": "Apachesuperset",
+        "color": "#20A6C9"
+      },
+      "apache hive": {
+        "label": "Apache Hive",
+        "icon": "Apachehive",
+        "color": "#FDEE21"
+      },
+      "apache hive metastore": {
+        "label": "Apache Hive Metastore",
+        "icon": "Apachehive",
+        "color": "#FDEE21"
+      },
+      "trino": {
+        "label": "Trino",
+        "icon": "Trino",
+        "color": "#DD00A1"
+      },
+      "openstreetmap": {
+        "label": "OpenStreetMap",
+        "icon": "Openstreetmap",
+        "color": "#7EBC6F"
+      },
+      "maplibre": {
+        "label": "MapLibre",
+        "icon": "Maplibre",
+        "color": "#396CB2"
+      },
+      "shadcn": {
+        "label": "Shadcn UI",
+        "icon": "Shadcnui",
+        "color": "#000000"
+      },
+      "next.js": {
+        "label": "Next.js",
+        "icon": "Nextdotjs",
+        "color": "#000000"
+      },
+      "openai": {
+        "label": "OpenAI",
+        "icon": "Openai",
+        "color": "#412991"
+      },
+      "tailwindcss": {
+        "label": "TailwindCSS",
+        "icon": "Tailwindcss",
+        "color": "#06B6D4"
+      },
+      "webassembly": {
+        "label": "WebAssembly",
+        "icon": "Webassembly",
+        "color": "#654FF0"
+      },
+      "ffmpeg": {
+        "label": "FFmpeg",
+        "icon": "Ffmpeg",
+        "color": "#007808"
+      },
+      "material ui": {
+        "label": "Material UI",
+        "icon": "Mui",
+        "color": "#007FFF"
+      },
+      "postgresql": {
+        "label": "PostgreSQL",
+        "icon": "Postgresql",
+        "color": "#4169E1"
+      },
+      "flask": {
+        "label": "Flask",
+        "icon": "Flask",
+        "color": "#000000"
+      },
+      "sphinx": {
+        "label": "Sphinx",
+        "icon": "Sphinx",
+        "color": "#000000"
+      },
+      "discord": {
+        "label": "Discord API",
+        "icon": "Discord",
+        "color": "#5865F2"
+      },
+      "twitter": {
+        "label": "Twitter API",
+        "icon": "X",
+        "color": "#000000"
+      },
+      "pandas": {
+        "label": "Pandas",
+        "icon": "Pandas",
+        "color": "#150458"
+      },
+      "d3": {
+        "label": "D3.js",
+        "icon": "D3dotjs",
+        "color": "#F9A03C"
+      },
+      "redis": {
+        "label": "Redis",
+        "icon": "Redis",
+        "color": "#FF4438"
+      },
+      "numpy": {
+        "label": "Numpy",
+        "icon": "Numpy",
+        "color": "#013243"
+      },
+      "material design bootstrap": {
+        "label": "Material Design Bootstrap",
+        "icon": "Materialdesign",
+        "color": "#757575"
+      },
+      "chart.js": {
+        "label": "Chart.js",
+        "icon": "Chartdotjs",
+        "color": "#FF6384"
+      },
+      "mapbox": {
+        "label": "Mapbox",
+        "icon": "Mapbox",
+        "color": "#000000"
+      },
+      "astro": {
+        "label": "Astro",
+        "icon": "Astro",
+        "color": "#BC52EE"
+      },
+      "bun": {
+        "label": "Bun",
+        "icon": "Bun",
+        "color": "#ffffff"
+      },
+      "google cloud platform": {
+        "label": "Google Cloud Platform",
+        "icon": "Googlecloud",
+        "color": "#4285F4"
+      },
+      "aws": {
+        "label": "Amazon Web Services",
+        "icon": "Amazonwebservices",
+        "color": "#232F3E"
+      },
+      "bigquery": {
+        "label": "Google BigQuery",
+        "icon": "Googlebigquery",
+        "color": "#669DF6"
+      },
+      "vercel": {
+        "label": "Vercel",
+        "icon": "Vercel",
+        "color": "#000000"
+      },
+      "vite": {
+        "label": "Vite",
+        "icon": "Vite",
+        "color": "#646CFF"
+      },
+      "github": {
+        "label": "GitHub",
+        "icon": "Github",
+        "color": "#181717"
+      },
+      "github actions": {
+        "label": "GitHub Actions",
+        "icon": "Github",
+        "color": "#181717"
+      },
+      "prometheus": {
+        "label": "Prometheus",
+        "icon": "Prometheus",
+        "color": "#E6522C"
+      },
+      "grafana": {
+        "label": "Grafana",
+        "icon": "Grafana",
+        "color": "#F46800"
+      },
+      "sentry": {
+        "label": "Sentry",
+        "icon": "Sentry",
+        "color": "#362D59"
+      },
+      "swagger ui": {
+        "label": "Swagger UI",
+        "icon": "Swagger",
+        "color": "#85EA2D"
+      },
+      "mkdocs": {
+        "label": "Mkdocs",
+        "icon": "Materialformkdocs",
+        "color": "#526CFE"
+      },
+      "supabase": {
+        "label": "Supabase",
+        "icon": "Supabase",
+        "color": "#3FCF8E"
+      },
+      "webpack": {
+        "label": "Webpack",
+        "icon": "Webpack",
+        "color": "#8DD6F9"
       }
-    ]
+    }
   }
 }
