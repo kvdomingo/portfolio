@@ -39,7 +39,7 @@
     "simple-icons-astro": "^13.16.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/svelte": "^5.7.2",

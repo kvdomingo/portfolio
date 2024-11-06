@@ -15,14 +15,15 @@ const dev = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    url: z.string().url(),
+    url: z.string().url().nullable(),
     organization: z.string().nullable(),
     organizationUrl: z.string().url().nullable(),
     startDate: z.date(),
     endDate: z.date().nullable(),
     technologies: z.array(z.string()),
-    cover: z.string(),
+    cover: z.string().nullable(),
     status: z.enum(["live", "in progress", "archived"]),
+    confidential: z.boolean().default(false),
   }),
 });
 
