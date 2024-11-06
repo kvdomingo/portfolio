@@ -282,6 +282,34 @@
       }
     ]
   },
+  "svip": {
+    "courses": [
+      {
+        "name": "App Physics 187",
+        "slug": "ap187",
+        "title": "Photonics and Applied Optics",
+        "cover": "svip/187/13-PhotoStereo/intensity_maps.png",
+        "description": "Design of Data Acquisition Systems (DAQ), Signal Processing-based instrumentation systems, current topics and techniques for engineering and design of optical instruments, non-destructive testing/measurement using optical methods, interferometry",
+        "posts": []
+      },
+      {
+        "name": "App Physics 186",
+        "slug": "ap186",
+        "title": "Instrumentation Physics II",
+        "cover": "svip/186/17-NeuralNetworks/func-fit.png",
+        "description": "Imaging systems, image processing, multidimensional detection techniques, pattern recognition",
+        "posts": []
+      },
+      {
+        "name": "App Physics 156",
+        "slug": "ap156",
+        "title": "Computer Methods in Physics II",
+        "cover": "svip/156/Proj-MultipoleExpansion/117.png",
+        "description": "Advanced computer programming methods, numerical modeling and simulations, discrete models, stochastic methods, current approaches in numerical modeling",
+        "posts": []
+      }
+    ]
+  },
   "dev": {
     "technologies": {
       "python": {
