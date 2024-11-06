@@ -6,7 +6,7 @@ import Layout from "@/layouts/Layout.astro";
 import cld from "@/utils/cloudinary";
 import { Resize } from "@cloudinary/url-gen/actions";
 import { compareDesc } from "date-fns";
-import { Mail } from "lucide-astro";
+import { Mail, FileDown } from "lucide-astro";
 import CvSectionMdx from "../components/about/CvSectionMdx.astro";
 
 const backgroundImage = cld
@@ -59,13 +59,25 @@ const workExperience = (await getCollection("workExperience")).sort(
     <div class="flex flex-col gap-16 md:col-span-3 md:pr-24">
       <div>
         <p class="whitespace-pre-line">{info.about.text}</p>
-        <a
-          href={`mailto:${info.email}`}
-          class="btn btn-outline btn-accent btn-wide my-6"
-        >
-          <Mail />
-          Contact
-        </a>
+
+        <div class="flex gap-4">
+          <a
+            href={`mailto:${info.email}`}
+            class="btn btn-outline btn-accent btn-wide my-6"
+          >
+            <Mail />
+            Contact
+          </a>
+          <a
+            href="https://raw.githubusercontent.com/kvdomingo/cv/refs/heads/main/rendercv_output/Kenneth_V._Domingo_CV.pdf"
+            class="btn btn-outline btn-accent btn-wide my-6"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FileDown />
+            Download CV
+          </a>
+        </div>
       </div>
 
       <div>
