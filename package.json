@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.16.0",
-    "@fontsource-variable/bricolage-grotesque": "^5.0.6",
     "@fontsource-variable/figtree": "^5.0.21",
     "@fontsource-variable/rubik": "^5.0.22",
+    "@fontsource-variable/space-grotesk": "^5.1.1",
     "@fontsource/figtree": "^5.0.18",
     "@fontsource/rubik": "^5.0.18",
     "@fontsource/space-mono": "^5.0.20",
