@@ -1,0 +1,61 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+
+const entries = await getCollection("blog");
+
+entries.sort((a, b) => b.data.created.localeCompare(a.data.created));
+
+const samples = [
+  {
+    title: "Blog 1",
+    slug: "blog-1",
+    created: "2022-01-01T00:34:00.000Z",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+    is_draft: false,
+  },
+  {
+    title: "Blog 2",
+    slug: "blog-2",
+    created: "2022-03-29T01:02:00.000Z",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+    is_draft: false,
+  },
+  {
+    title: "Blog 3",
+    slug: "blog-3",
+    created: "2022-05-03T19:35:00.000Z",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+    is_draft: true,
+  },
+];
+
+samples.sort((a, b) => b.created.localeCompare(a.created));
+---
+
+<Layout title="Blog | KVD Studio">
+  <div class="container text-center">
+    <div class="flex flex-col gap-4 text-left">
+      {
+        samples.map(sample => (
+          <a
+            href={`/blog/${sample.slug}`}
+            class="rounded-xl p-4 transition-[border] duration-100 hover:border hover:border-solid hover:border-white"
+          >
+            <div class="flex items-center gap-2">
+              <h3>{sample.title}</h3>
+              {sample.is_draft && (
+                <span class="badge badge-neutral badge-lg">Draft</span>
+              )}
+            </div>
+            <small class="text-ctp-subtext0">
+              {format(new Date(sample.created), "MMMM dd, yyyy")}
+            </small>
+            <p>{sample.body}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

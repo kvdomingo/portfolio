@@ -51,4 +51,18 @@ const workExperience = defineCollection({
   }),
 });
 
-export const collections = { dev, svip, workExperience };
+const blog = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    keywords: z.array(z.string()),
+    slug: z.string(),
+    created: z
+      .string()
+      .datetime()
+      .default(() => new Date().toISOString()),
+    is_draft: z.boolean().default(true),
+  }),
+});
+
+export const collections = { blog, dev, svip, workExperience };
