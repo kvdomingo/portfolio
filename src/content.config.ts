@@ -55,12 +55,9 @@ const blog = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    summary: z.string(),
     keywords: z.array(z.string()),
-    slug: z.string(),
-    created: z
-      .string()
-      .datetime()
-      .default(() => new Date().toISOString()),
+    created: z.date().default(() => new Date()),
     is_draft: z.boolean().default(true),
   }),
 });
