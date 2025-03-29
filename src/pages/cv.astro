@@ -64,6 +64,7 @@ const workExperience = (await getCollection("workExperience")).sort(
           <a
             href={`mailto:${info.email}`}
             class="btn btn-outline btn-accent btn-wide my-6"
+            onclick="window.umami.track('Contact button')"
           >
             <Mail />
             Contact
@@ -73,6 +74,7 @@ const workExperience = (await getCollection("workExperience")).sort(
             class="btn btn-outline btn-accent btn-wide my-6"
             target="_blank"
             rel="noopener noreferrer"
+            onclick="window.umami.track('Download CV button')"
           >
             <FileDown />
             Download CV

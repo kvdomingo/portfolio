@@ -16,6 +16,7 @@ const projects = await getCollection("dev");
         target="_blank"
         rel="noopener noreferrer"
         class="btn btn-circle btn-ghost btn-sm h-16 w-16"
+        onclick="window.umami.track('External link - GitHub')"
       >
         <Github size="48" />
       </a>
@@ -24,6 +25,7 @@ const projects = await getCollection("dev");
         target="_blank"
         rel="noopener noreferrer"
         class="btn btn-circle btn-ghost btn-sm h-16 w-16"
+        onclick="window.umami.track('External link - PyPI')"
       >
         <Pypi size="48" />
       </a>

@@ -9,6 +9,7 @@ import "@fontsource-variable/bricolage-grotesque";
 import "@fontsource/space-mono/400.css";
 import "@fontsource/space-mono/700.css";
 import Posthog from "@/analytics/posthog.astro";
+import Umami from "@/analytics/umami.astro";
 
 interface Props {
   title?: string;
@@ -63,18 +64,10 @@ const { title = info.title, spotlight = false } = Astro.props;
       content="O8dXlE8aWPqHSuA4FwbY6-L1AjW7ch4613PIr_5_fII"
     />
 
-    {
-      import.meta.env.PROD && (
-        <script
-          defer
-          src="https://umami.kvd.studio/script.js"
-          data-website-id="e8f2b1ca-e250-4210-ae13-8d69c10da232"
-        />
-      )
-    }
-
     <title>{title}</title>
-    <ViewTransitions handleForms />
+
+    <ViewTransitions />
+    <Umami />
   </head>
 
   <body class="min-h-screen bg-gradient-to-b from-ctp-base to-ctp-crust">

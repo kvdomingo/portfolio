@@ -1,0 +1,30 @@
+---
+
+---
+
+{import.meta.env.PROD && (
+  <script
+    async
+    is:inline
+    defer
+    src="https://umami.kvd.studio/script.js"
+    data-website-id="e8f2b1ca-e250-4210-ae13-8d69c10da232"
+    data-auto-track="false"
+  ></script>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      void window.umami.track(props => ({
+        ...props,
+        url: window.location.href,
+        referrer: document.referrer,
+        title: document.title,
+        pathname: window.location.pathname,
+        hostname: window.location.hostname,
+        userAgent: navigator.userAgent,
+        params: window.location.search,
+        hash: window.location.hash,
+      }));
+      })
+  </script>
+)}
