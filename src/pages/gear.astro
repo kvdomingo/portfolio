@@ -1,0 +1,117 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+interface Gear {
+  name: string;
+  image?: string;
+  url?: string;
+}
+
+const photographyGear: Gear[] = [
+  {
+    name: "Nikon D3400",
+  },
+  {
+    name: "Nikon Z50",
+  },
+  {
+    name: "Nikon AF-P 18-55mm f/3.5-5.6G DX VR",
+  },
+  {
+    name: "Nikon AF-P 70-300mm f/4.5-6.3G ED DX VR",
+  },
+  {
+    name: "Nikon AF 50mm f/1.8D",
+  },
+  {
+    name: "Nikon AF-S 35mm f/1.8G DX",
+  },
+  {
+    name: "Nikon AF-S 50mm f/1.8G",
+  },
+  {
+    name: "Nikon AF-S 85mm f/1.8G",
+  },
+  {
+    name: "Sigma 24-70mm f/2.8",
+  },
+  {
+    name: "Tamron 18-400mm f/3.5-6.3 Di II VC HLD",
+  },
+  {
+    name: "Nikon Z 16-50mm f/3.5-6.3 DX",
+  },
+  {
+    name: "Nikon FTZ II",
+  },
+  {
+    name: "Yashica Half 17",
+  },
+  {
+    name: "Instax Mini 99",
+  },
+];
+
+const musicGear: Gear[] = [
+  {
+    name: "Chord Stratocaster",
+  },
+  {
+    name: "JCraft Telecaster",
+  },
+  {
+    name: "Mooer Yellow Comp",
+  },
+  {
+    name: "Caline Pure Sky Overdrive",
+  },
+  {
+    name: "Nux MFX-10",
+  },
+  {
+    name: "Vitoos PS-1",
+  },
+  {
+    name: "Boss PS-6 Harmonist",
+  },
+  {
+    name: "EHX Nano POG",
+  },
+  {
+    name: "Strymon BlueSky",
+  },
+  {
+    name: "Akai MPK mini Mk3",
+  },
+];
+
+const sections: { title: string; gear: Gear[] }[] = [
+  {
+    title: "Photography",
+    gear: photographyGear,
+  },
+  {
+    title: "Music",
+    gear: musicGear,
+  },
+];
+---
+
+<Layout title="Gear | KVD Studio">
+  <div class="container flex flex-col gap-8">
+    {
+      sections.map(section => (
+        <section>
+          <h2>{section.title}</h2>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {section.gear.map(gear => (
+              <div class="flex items-center justify-center border border-white p-4">
+                {gear.name}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Layout>
