@@ -18,7 +18,10 @@ const mathjaxConfig = () =>
 
 // https://astro.build/config
 export default defineConfig({
-  prefetch: true,
+  prefetch: {
+    defaultStrategy: "viewport",
+    prefetchAll: true,
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
