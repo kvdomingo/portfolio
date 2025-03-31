@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
 import ClientDate from "@/components/common/svelte/ClientDate.svelte";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
@@ -7,15 +7,24 @@ import Layout from "@/layouts/Layout.astro";
 export async function getStaticPaths() {
   const svipEntries = await getCollection("svip");
   return svipEntries.map(entry => ({
-    params: { postSlug: entry.slug, courseSlug: entry.data.courseSlug },
+    params: { postSlug: entry.id, courseSlug: entry.data.courseSlug },
   }));
 }
 
 const { postSlug, courseSlug } = Astro.params;
 const course = info.svip.courses.find(course => course.slug === courseSlug);
 
+if (!course) {
+  return Astro.redirect("/404");
+}
+
 const entry = await getEntry("svip", `${courseSlug}/${postSlug}`);
-const { Content } = await entry.render();
+
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await render(entry);
 ---
 
 <Layout title={`${entry.data.title} | SVIP | KVD Studio`}>

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
@@ -70,4 +70,13 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  env: {
+    schema: {
+      PUBLIC_POSTHOG_TOKEN: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+    },
+  },
 });

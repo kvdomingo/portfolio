@@ -4,9 +4,10 @@
 
 <script>
   import posthog from "posthog-js";
+  import { PUBLIC_POSTHOG_TOKEN } from "astro:env/client";
 
-  if (import.meta.env.PROD) {
-    posthog.init(import.meta.env.PUBLIC_POSTHOG_TOKEN, {
+  if (import.meta.env.PROD && PUBLIC_POSTHOG_TOKEN) {
+    posthog.init(PUBLIC_POSTHOG_TOKEN, {
       api_host: "https://us.posthog.com",
     });
   }

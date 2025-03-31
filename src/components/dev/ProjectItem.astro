@@ -1,20 +1,18 @@
 ---
-import { CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import { buildCldUrl } from "@/utils/cloudinary";
 import dateFormat from "dateformat";
-import info from "@/info.json";
 import TechBadge from "../icons/TechBadge.astro";
 import { FolderLock } from "lucide-astro";
+import { render } from "astro:content";
 
 interface Props {
   project: CollectionEntry<"dev">;
 }
 
-const { technologies } = info.dev;
-
 const { project } = Astro.props;
 
-const { Content } = await project.render();
+const { Content } = await render(project);
 ---
 
 <div
@@ -34,7 +32,7 @@ const { Content } = await project.render();
       rel="noopener noreferrer"
     >
       {
-        project.data.confidential ? (
+        project.data.confidential || !project.data.cover ? (
           <FolderLock class="mx-auto" size="4rem" />
         ) : (
           <img

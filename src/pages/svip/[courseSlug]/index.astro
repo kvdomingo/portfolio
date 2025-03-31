@@ -14,6 +14,10 @@ const { courseSlug = "" } = Astro.params;
 
 const course = info.svip.courses.find(course => course.slug === courseSlug);
 
+if (!course) {
+  return Astro.redirect("/404");
+}
+
 const entries = await getCollection(
   "svip",
   entry => entry.data.courseSlug === courseSlug,
@@ -42,7 +46,7 @@ entries.sort((a, b) => b.data.created.localeCompare(a.data.created));
                   class="aspect-square"
                 />
               </figure>
-              <a href={`/svip/${entry.slug}`} class="card-body">
+              <a href={`/svip/${entry.id}`} class="card-body">
                 <h2 class="card-title">{entry.data.title}</h2>
               </a>
             </div>
