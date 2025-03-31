@@ -10,9 +10,13 @@ interface Gear {
 const photographyGear: Gear[] = [
   {
     name: "Nikon D3400",
+    url: "https://www.amazon.com/Nikon-D3400-NIKKOR-18-55mm-3-5-5-6G/dp/B01KITZKDE",
+    image: "https://m.media-amazon.com/images/I/71UF7joAgOL._AC_SL1500_.jpg",
   },
   {
     name: "Nikon Z50",
+    url: "https://www.amazon.com/Nikon-Z-50-Body-Only/dp/B07YXH9LXV",
+    image: "https://m.media-amazon.com/images/I/91OTo+rL0kL._AC_SL1500_.jpg",
   },
   {
     name: "Nikon AF-P 18-55mm f/3.5-5.6G DX VR",
@@ -105,9 +109,18 @@ const sections: { title: string; gear: Gear[] }[] = [
           <h2>{section.title}</h2>
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {section.gear.map(gear => (
-              <div class="flex items-center justify-center border border-white p-4">
-                {gear.name}
-              </div>
+              <a
+                href={gear.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-col items-center justify-center border border-white"
+                data-umami-event="Outbound link"
+                data-umami-event-url={gear.url}
+                data-umami-event-label={gear.name}
+              >
+                <img src={gear.image} />
+                <p class="py-4">{gear.name}</p>
+              </a>
             ))}
           </div>
         </section>
