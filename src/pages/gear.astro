@@ -3,93 +3,261 @@ import Layout from "@/layouts/Layout.astro";
 
 interface Gear {
   name: string;
-  image?: string;
   url?: string;
 }
 
-const photographyGear: Gear[] = [
-  {
-    name: "Nikon D3400",
-    url: "https://www.amazon.com/Nikon-D3400-NIKKOR-18-55mm-3-5-5-6G/dp/B01KITZKDE",
-    image: "https://m.media-amazon.com/images/I/71UF7joAgOL._AC_SL1500_.jpg",
-  },
-  {
-    name: "Nikon Z50",
-    url: "https://www.amazon.com/Nikon-Z-50-Body-Only/dp/B07YXH9LXV",
-    image: "https://m.media-amazon.com/images/I/91OTo+rL0kL._AC_SL1500_.jpg",
-  },
-  {
-    name: "Nikon AF-P 18-55mm f/3.5-5.6G DX VR",
-  },
-  {
-    name: "Nikon AF-P 70-300mm f/4.5-6.3G ED DX VR",
-  },
-  {
-    name: "Nikon AF 50mm f/1.8D",
-  },
-  {
-    name: "Nikon AF-S 35mm f/1.8G DX",
-  },
-  {
-    name: "Nikon AF-S 50mm f/1.8G",
-  },
-  {
-    name: "Nikon AF-S 85mm f/1.8G",
-  },
-  {
-    name: "Sigma 24-70mm f/2.8",
-  },
-  {
-    name: "Tamron 18-400mm f/3.5-6.3 Di II VC HLD",
-  },
-  {
-    name: "Nikon Z 16-50mm f/3.5-6.3 DX",
-  },
-  {
-    name: "Nikon FTZ II",
-  },
-  {
-    name: "Yashica Half 17",
-  },
-  {
-    name: "Instax Mini 99",
-  },
-];
+const photographyGear: Record<string, Gear[]> = {
+  "Camera Body": [
+    {
+      name: "Nikon D3400",
+    },
+    {
+      name: "Nikon Z50",
+    },
+    {
+      name: "Yashica Half 17",
+    },
+    {
+      name: "Instax Mini 99",
+    },
+  ],
+  "Lens": [
+    {
+      name: "Nikon AF-P DX 18-55mm f/3.5-5.6G VR",
+    },
+    {
+      name: "Nikon AF-P DX 70-300mm f/4.5-6.3G ED VR",
+    },
+    {
+      name: "Nikon AF 50mm f/1.8D",
+    },
+    {
+      name: "Nikon AF-S DX 35mm f/1.8G",
+    },
+    {
+      name: "Nikon AF-S 50mm f/1.8G",
+    },
+    {
+      name: "Nikon AF-S 85mm f/1.8G",
+    },
+    {
+      name: "Sigma 24-70mm f/2.8",
+    },
+    {
+      name: "Tamron 18-400mm f/3.5-6.3 Di II VC HLD",
+    },
+    {
+      name: "Nikon Z DX 16-50mm f/3.5-6.3 VR",
+    },
+  ],
+  "Adapters": [
+    {
+      name: "Nikon FTZ II",
+    },
+  ],
+};
 
-const musicGear: Gear[] = [
-  {
-    name: "Chord Stratocaster",
-  },
-  {
-    name: "JCraft Telecaster",
-  },
-  {
-    name: "Mooer Yellow Comp",
-  },
-  {
-    name: "Caline Pure Sky Overdrive",
-  },
-  {
-    name: "Nux MFX-10",
-  },
-  {
-    name: "Vitoos PS-1",
-  },
-  {
-    name: "Boss PS-6 Harmonist",
-  },
-  {
-    name: "EHX Nano POG",
-  },
-  {
-    name: "Strymon BlueSky",
-  },
-  {
-    name: "Akai MPK mini Mk3",
-  },
-];
+const musicGear: Record<string, Gear[]> = {
+  "Guitars": [
+    {
+      name: "Chord Stratocaster",
+    },
+    {
+      name: "JCraft Telecaster",
+    },
+    {
+      name: "D&D Slim Steel Mahogany",
+    },
+  ],
+  "Effects Pedals": [
+    {
+      name: "Mooer Yellow Comp",
+    },
+    {
+      name: "Caline Pure Sky Overdrive",
+    },
+    {
+      name: "Nux MFX-10",
+    },
+    {
+      name: "Boss PS-6 Harmonist",
+    },
+    {
+      name: "EHX Nano POG",
+    },
+    {
+      name: "Strymon BlueSky",
+    },
+    {
+      name: "Vitoos PS-1",
+    },
+  ],
+  "MIDI Controllers": [
+    {
+      name: "Akai MPK mini Mk3",
+    },
+  ],
+  "Digital Plugins": [
+    {
+      name: "Neural DSP Archetype: Plini X",
+    },
+    {
+      name: "Neural DSP Archetype: Tim Henson X",
+    },
+    {
+      name: "Neural DSP Archetype: Cory Wong X",
+    },
+    {
+      name: "Valhalla Supermassive",
+    },
+  ],
+};
 
-const sections: { title: string; gear: Gear[] }[] = [
+const computerGear: Record<string, Gear[]> = {
+  "Daily Driver": [
+    {
+      name: "AMD Ryzen 9 5950X (16C/32T)",
+    },
+    {
+      name: "GIGABYTE GeForce RTX 3070 Ti VISION OC",
+    },
+    {
+      name: "ASUS ROG Strix B550-A Gaming",
+    },
+    {
+      name: "Corsair Vengeance LPX 4x16GB DDR4 3600MT/s CL18",
+    },
+    {
+      name: "Noctua NH-D15 chromax.black",
+    },
+    {
+      name: "Crucial P3 Plus 1TB M.2 NVMe",
+    },
+    {
+      name: "WD Blue 2x2TB 5400RPM",
+    },
+    {
+      name: "Seasonic FOCUS Plus GX-850 White",
+    },
+    {
+      name: "Lian Li O11 Air Mini White",
+    },
+  ],
+  "Homelab Server": [
+    {
+      name: "Intel Xeon E5-2670v3 (12C/24T)",
+    },
+    {
+      name: "X99 mATX",
+    },
+    {
+      name: "Samsung 4x32GB REG ECC DDR4 2133MT/s",
+    },
+    {
+      name: "Noctua NH-U12S chromax.black",
+    },
+    {
+      name: "ADATA XPG SX8200 Pro 1TB M.2 NVMe",
+    },
+    {
+      name: "WD Red Plus 4x4TB 7200RPM",
+    },
+    {
+      name: "Seasonic Focus Plus Gold 650W",
+    },
+    {
+      name: "Fractal Node 804",
+    },
+    {
+      name: "Intel I225-V 2.5GbE",
+    },
+  ],
+  "Router": [
+    {
+      name: "Intel Celeron N4100 (4C/4T)",
+    },
+    {
+      name: "8GB SODIMM DDR4 2400MT/s",
+    },
+    {
+      name: "EXRAM mSATA SSD 256GB",
+    },
+    {
+      name: "Intel I226 4x2.5GbE",
+    },
+  ],
+  "Homelab-Pi Rack": [
+    {
+      name: "4x Raspberry Pi 5 8GB",
+    },
+    {
+      name: "MikroTik CSS610-8G-2S+IN",
+    },
+    {
+      name: "UGREEN Nexode 200W GaN PD",
+    },
+    {
+      name: "GeeekPi Raspberry Pi Rack Mount 2U",
+    },
+    {
+      name: "GeeekPi DC PDU Lite 7-CH 0.5U",
+    },
+    {
+      name: "Rapink Patch Panel Mini 12 Port CAT6A 1U",
+    },
+    {
+      name: "DeskPi RackMate T1 8U",
+    },
+  ],
+};
+
+const keyboardGear: Record<string, Gear[]> = {
+  "Akko JIN01": [
+    {
+      name: "Akko Rosewood Linear 40g",
+    },
+  ],
+  "Monsgeek M2 Purple": [
+    {
+      name: "Gateron Ink Black V2 Linear 60g",
+    },
+    {
+      name: "Akko Very Peri ASA Doubleshot PBT",
+    },
+    {
+      name: "Durock Stabilizers",
+    },
+  ],
+  "Royal Kludge RK100": [
+    {
+      name: "Alpaca V2 Linear 62g",
+    },
+    {
+      name: "Akko Very Peri ASA Doubleshot PBT",
+    },
+    {
+      name: "Durock Stabilizers",
+    },
+  ],
+  "GMMK2 96%": [
+    {
+      name: "Gazzew Boba U4Tx RGB 65g",
+    },
+    {
+      name: "White Pudding PBT OEM",
+    },
+    {
+      name: "Durock Stabilizers",
+    },
+  ],
+  "Ducky One 3 Fuji": [
+    {
+      name: "Kailh Box Jade",
+    },
+  ],
+};
+
+const sections: { title: string; gear: Record<string, Gear[]> }[] = [
   {
     title: "Photography",
     gear: photographyGear,
@@ -98,33 +266,53 @@ const sections: { title: string; gear: Gear[] }[] = [
     title: "Music",
     gear: musicGear,
   },
+  {
+    title: "Computers",
+    gear: computerGear,
+  },
+  {
+    title: "Keyboards",
+    gear: keyboardGear,
+  },
 ];
 ---
 
 <Layout title="Gear | KVD Studio">
-  <div class="container flex flex-col gap-8">
+  <div class="container flex flex-col gap-8 pb-12">
     {
       sections.map(section => (
         <section>
           <h2>{section.title}</h2>
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {section.gear.map(gear => (
-              <a
-                href={gear.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex flex-col items-center justify-center border border-white"
-                data-umami-event="Outbound link"
-                data-umami-event-url={gear.url}
-                data-umami-event-label={gear.name}
-              >
-                <img src={gear.image} />
-                <p class="py-4">{gear.name}</p>
-              </a>
-            ))}
-          </div>
+          {Object.entries(section.gear).map(([subsection, gears]) => (
+            <div class="my-4">
+              <h4>{subsection}</h4>
+              <ul>
+                {gears.map(gear => (
+                  <li>
+                    <a
+                      href={gear.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-umami-event="Outbound link"
+                      data-umami-event-url={gear.url}
+                      data-umami-event-label={gear.name}
+                    >
+                      {gear.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </section>
       ))
     }
   </div>
 </Layout>
+
+<style is:inline>
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+</style>

@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import rehypeMathJax from "rehype-mathjax";
 import remarkMath from "remark-math";
 
