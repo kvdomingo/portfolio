@@ -1,0 +1,97 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+
+interface Gear {
+  name: string;
+  url?: string;
+}
+
+const photographyGear: Record<string, Gear[]> = {
+  Camera: [
+    {
+      name: "Nikon D3400",
+    },
+    {
+      name: "Nikon Z50",
+    },
+    {
+      name: "Yashica Half 17",
+    },
+    {
+      name: "Instax Mini 99",
+    },
+  ],
+  Lens: [
+    {
+      name: "Nikon AF-P DX 18-55mm f/3.5-5.6G VR",
+    },
+    {
+      name: "Nikon AF-P DX 70-300mm f/4.5-6.3G ED VR",
+    },
+    {
+      name: "Nikon AF 50mm f/1.8D",
+    },
+    {
+      name: "Nikon AF-S DX 35mm f/1.8G",
+    },
+    {
+      name: "Nikon AF-S 50mm f/1.8G",
+    },
+    {
+      name: "Nikon AF-S 85mm f/1.8G",
+    },
+    {
+      name: "Sigma EX 24-70mm f/2.8 DG HSM",
+    },
+    {
+      name: "Tamron 18-400mm f/3.5-6.3 Di II VC HLD",
+    },
+    {
+      name: "Nikon Z DX 16-50mm f/3.5-6.3 VR",
+    },
+  ],
+  Adapters: [
+    {
+      name: "Nikon FTZ II",
+    },
+  ],
+};
+---
+
+<Layout title="Gear | Photography | KVD Studio">
+  <PhotographyLayout>
+    <div class="container flex flex-col gap-8 pb-12">
+      {
+        Object.entries(photographyGear).map(([section, gears]) => (
+          <div>
+            <h4>{section}</h4>
+            <ul>
+              {gears.map(gear => (
+                <li>
+                  <a
+                    href={gear.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="Outbound link"
+                    data-umami-event-url={gear.url}
+                    data-umami-event-label={gear.name}
+                  >
+                    {gear.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </PhotographyLayout>
+</Layout>
+
+<style is:inline>
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+</style>

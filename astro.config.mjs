@@ -1,11 +1,11 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import rehypeMathJax from "rehype-mathjax";
 import remarkMath from "remark-math";
 
@@ -18,7 +18,10 @@ const mathjaxConfig = () =>
 
 // https://astro.build/config
 export default defineConfig({
-  prefetch: true,
+  prefetch: {
+    defaultStrategy: "viewport",
+    prefetchAll: true,
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -67,4 +70,13 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  env: {
+    schema: {
+      PUBLIC_POSTHOG_TOKEN: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+    },
+  },
 });

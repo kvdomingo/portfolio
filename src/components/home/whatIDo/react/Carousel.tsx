@@ -13,8 +13,8 @@ const { carousel } = info.home.photography;
 export default function Carousel() {
   const [activeStep, setActiveStep] = useState(0);
   const images = carousel.map(c => ({
-    publicId: c,
-    url: buildCldUrl(c),
+    publicId: c.publicId,
+    url: buildCldUrl(c.publicId),
   }));
 
   return (
