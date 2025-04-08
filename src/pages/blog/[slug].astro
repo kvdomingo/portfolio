@@ -48,11 +48,35 @@ const { Content } = await render(entry);
 <style is:inline>
   ul {
     list-style-type: disc;
-    list-style-position: inside;
+    list-style-position: outside;
+    padding-left: 1.5em;
+  }
+
+  ul li {
+    margin-bottom: 0.5em;
   }
 
   ol {
     list-style-type: decimal;
-    list-style-position: inside;
+    list-style-position: outside;
+    padding-left: 1.5em;
+  }
+
+  ol li {
+    margin-bottom: 0.5em;
+  }
+
+  blockquote {
+    color: #a6adc8;
+    border-color: white;
+    border-left-width: 4px;
+    border-left-style: solid;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+
+  pre {
+    padding: 1rem;
+    border-radius: 0.5rem;
   }
 </style>

@@ -85,11 +85,11 @@ export default {
   plugins: [
     require("tailwindcss-animate"),
     require("tailwindcss-opentype"),
+    require("daisyui"),
     require("@catppuccin/tailwindcss")({
       prefix: "ctp",
       defaultFlavour: "mocha",
     }),
-    require("daisyui"),
   ],
   daisyui: {
     themes: [
