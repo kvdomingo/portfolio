@@ -52,7 +52,10 @@ const workExperience = defineCollection({
 });
 
 const blog = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/blog",
+  }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),

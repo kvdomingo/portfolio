@@ -1,9 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { NODE_ENV } from "astro:env/server";
 import { format, compareDesc } from "date-fns";
 
-const entries = await getCollection("blog");
+const entries = (await getCollection("blog")).filter(entry =>
+  NODE_ENV === "production" ? !entry.data.is_draft : true,
+);
 
 entries.sort((a, b) => compareDesc(a.data.created, b.data.created));
 ---
@@ -13,21 +16,27 @@ entries.sort((a, b) => compareDesc(a.data.created, b.data.created));
     <div class="flex flex-col gap-4 text-left">
       {
         entries.map(entry => (
-          <a
-            href={`/blog/${entry.slug}`}
-            class="rounded-xl p-4 transition-[border] duration-100 hover:border hover:border-solid hover:border-white"
-          >
-            <div class="flex items-center gap-2">
-              <h3>{entry.data.title}</h3>
-              {entry.data.is_draft && (
-                <span class="badge badge-neutral badge-lg">Draft</span>
-              )}
+          <div class="space-y-4 rounded-xl p-4 transition-[border] duration-100 hover:border hover:border-solid hover:border-white">
+            <a href={`/blog/${entry.id}`}>
+              <div class="flex items-center gap-2">
+                <h3>{entry.data.title}</h3>
+                {entry.data.is_draft && (
+                  <span class="badge badge-neutral badge-lg">Draft</span>
+                )}
+              </div>
+              <p class="text-ctp-subtext0">
+                {format(new Date(entry.data.created), "MMMM dd, yyyy")}
+              </p>
+              <p>{entry.data.summary}</p>
+            </a>
+            <div>
+              {entry.data.keywords.map(keyword => (
+                <span class="badge badge-neutral badge-lg mx-0.5">
+                  {keyword}
+                </span>
+              ))}
             </div>
-            <small class="text-ctp-subtext0">
-              {format(new Date(entry.data.created), "MMMM dd, yyyy")}
-            </small>
-            <p>{entry.data.summary}</p>
-          </a>
+          </div>
         ))
       }
     </div>

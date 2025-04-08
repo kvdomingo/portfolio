@@ -72,6 +72,12 @@ export default defineConfig({
   }),
   env: {
     schema: {
+      NODE_ENV: envField.enum({
+        values: ["development", "production"],
+        access: "public",
+        context: "server",
+        default: "production",
+      }),
       PUBLIC_POSTHOG_TOKEN: envField.string({
         access: "public",
         context: "client",
