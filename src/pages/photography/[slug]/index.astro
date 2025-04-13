@@ -3,9 +3,7 @@ import { Resize } from "@cloudinary/url-gen/actions/resize";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
 import Gallery from "@/components/photography/Gallery.astro";
-import { DEFAULT_OPTIONS } from "@/server/utils/cloudinary";
-import cld from "@/utils/cloudinary";
-import { cld2 } from "@/utils/cloudinary";
+import cld, { cld2, DEFAULT_OPTIONS } from "@/server/utils/cloudinary";
 import type { ResourceApiResponse } from "cloudinary";
 
 export function getStaticPaths() {
@@ -28,15 +26,17 @@ const body = (await cld2.api.resources({
 
 const { resources = [] } = body;
 
-const images = resources
-  .map(resource => ({
+const images = resources.map<ResourceApiResponse["resources"][number]>(
+  resource => ({
     ...resource,
     secure_url: cld
       .image(resource.public_id)
       .resize(Resize.scale().width("auto"))
       .toURL(),
-  }))
-  .sort((a, b) => b.created_at.localeCompare(a.created_at));
+  }),
+);
+
+images.sort((a, b) => b.created_at.localeCompare(a.created_at));
 ---
 
 <Layout title={`${title} | Photography | KVD Studio`}>

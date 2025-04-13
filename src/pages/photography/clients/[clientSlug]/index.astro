@@ -3,10 +3,10 @@ import { Resize } from "@cloudinary/url-gen/actions/resize";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
-import Gallery from "@/components/photography/Gallery.astro";
 import cld, { cld2 } from "@/utils/cloudinary";
 import { DEFAULT_OPTIONS } from "@/server/utils/cloudinary";
 import type { ResourceApiResponse } from "cloudinary";
+import Masonry from "@/components/photography/react/Masonry";
 
 export function getStaticPaths() {
   return info.photography.clients.map(({ slug }) => ({ params: { slug } }));
@@ -46,6 +46,9 @@ const images = resources
         <li>{title}</li>
       </ul>
     </div>
-    <Gallery images={images} />
+
+    <div class="w-full px-4">
+      <Masonry images={images} client:only="react" />
+    </div>
   </PhotographyLayout>
 </Layout>
