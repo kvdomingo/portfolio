@@ -12,7 +12,7 @@ created: "2019-11-13T04:02:00.0000Z"
 alphabet: abcdefghijklmnopqrstuvwxyz
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity [[1](#Soriano2019)], we are given four $128 \times 128$ px intensity maps with different lighting
 conditions, shown in Fig.&nbsp[1](#fig-intensity). We can stack these intensity maps into one multidimensional array
@@ -20,23 +20,17 @@ $\vec{I} \in \mathbb{R}^{4 \times 128 \times 128}$. The source matrix $\vec{V} \
 and is defined as
 
 <span id="eq-source-matrix" class="mx-auto">
-$
-\begin{pmatrix}
-  0.085832 & -0.17365 & 0.98106 \\
-  0.17365  &  0		  & 0.98481 \\
-  0.16318  & -0.34202 & 0.92542
-\end{pmatrix}
-$
+  $ \begin{pmatrix}
+  0.085832 & -0.17365 & 0.98106 \\ 0.17365 & 0 & 0.98481 \\ 0.16318 & -0.34202 &
+  0.92542 \end{pmatrix}$
 </span>
 
 We can then solve for $\vec{g}$ by least squares approximation:
 
 <span id="eq-least-squares" class="mx-auto">
-$
-\begin{equation}
+  $ \begin{equation}
   \vec{g} = (\vec{V}^\top \vec{V})^{-1} \vec{V}^\top \vec{I}
-\end{equation}
-$
+  \end{equation}$
 </span>
 
 and then normalize to get the surface normal vectors
@@ -52,11 +46,7 @@ $
 The surface elevation is expressed as
 
 <span id="eq-elevation" class="mx-auto">
-$
-\begin{equation}
-  z = f(x, y)
-\end{equation}
-$
+  $ \begin{equation}z = f(x, y) \end{equation}$
 </span>
 
 which are related to the surface normals by
@@ -101,7 +91,8 @@ surface and its contour projection is shown in Fig.&nbsp;[2](#fig-surface).
     class="mx-auto"
   />
   <figcaption class="text-center">
-    Figure 1: Given 2D intensity maps of a 3D surface under varying illumination.
+    Figure 1: Given 2D intensity maps of a 3D surface under varying
+    illumination.
   </figcaption>
 </figure>
 
@@ -111,9 +102,7 @@ surface and its contour projection is shown in Fig.&nbsp;[2](#fig-surface).
     alt="Recovered surface"
     class="mx-auto"
   />
-  <figcaption class="text-center">
-    Figure 2: Recovered surface.
-  </figcaption>
+  <figcaption class="text-center">Figure 2: Recovered surface.</figcaption>
 </figure>
 
 #### References
@@ -121,8 +110,8 @@ surface and its contour projection is shown in Fig.&nbsp;[2](#fig-surface).
 <ol className="reference">
   <li id="Soriano2019">M. N. Soriano, _A13 - Photometric stereo_ (2019).</li>
   <li id="Frankot1988">
-    R.T. Frankot, and R. Chellappa,
-    A method for enforcing integrability in shape from shading algorithms.
-    _IEEE Trans. on Pattern Analysis and Machine Intelligence_ **10**(4) (1988).
+    R.T. Frankot, and R. Chellappa, A method for enforcing integrability in
+    shape from shading algorithms. _IEEE Trans. on Pattern Analysis and Machine
+    Intelligence_ **10**(4) (1988).
   </li>
 </ol>

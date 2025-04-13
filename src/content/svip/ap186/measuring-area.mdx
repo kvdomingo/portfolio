@@ -83,7 +83,7 @@ detectData: [
 ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 import cn from "@/utils/cn";
 
 For this activity, I generated the basic shapes using the Python Imaging Library (PIL). This let me define the
@@ -139,8 +139,8 @@ algorithms, eventually settling with the following:
 
 <span id="eq-prewitt" class="mx-auto">
   $ \begin{equation}
-  G_x = \begin{pmatrix}1 & 0 & -1 \\ 1 & 0 & -1 \\ 1 & 0 & -1 \end{pmatrix} = G_y^\top
-  \end{equation}$
+  G_x = \begin{pmatrix}1 & 0 & -1 \\ 1 & 0 & -1 \\ 1 & 0 & -1 \end{pmatrix} =
+  G_y^\top \end{equation}$
 </span>
 
 - **Laplacian filter**: calculates the second-order derivatives
@@ -176,7 +176,9 @@ are shown in Figs. [2](#fig-circles)-[5](#fig-triangles).
     {frontmatter.algoData.map((image, index) => (
       <figure>
         <img
-          src={buildCldUrl(`svip/186/4-MeasuringArea/circle_${image.toLowerCase()}`)}
+          src={buildCldUrl(
+            `svip/186/4-MeasuringArea/circle_${image.toLowerCase()}`,
+          )}
           alt={image.split("_").slice(-1)[0]}
         />
         <figcaption class="text-center">
@@ -361,7 +363,9 @@ calculated areas for the different algorithms are shown in Table
   {frontmatter.detectData.map((data, index) => (
     <figure>
       <img src={buildCldUrl(data.publicId)} alt={data.caption} />
-      <figcaption class="text-center">({frontmatter.alphabet[index]}) {data.caption}</figcaption>
+      <figcaption class="text-center">
+        ({frontmatter.alphabet[index]}) {data.caption}
+      </figcaption>
     </figure>
   ))}
 </div>

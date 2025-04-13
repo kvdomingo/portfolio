@@ -1,6 +1,5 @@
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 
-import Config from "@cloudinary/url-gen/config/BaseConfig";
 import { useWindowSize } from "@react-hook/window-size";
 import type { ResourceApiResponse } from "cloudinary";
 import {
@@ -52,7 +51,7 @@ export default function Masonry({ images }: MasonryProps) {
     windowHeight,
   ]);
 
-  function getColumnBreakpoint(width: number) {
+  const getColumnBreakpoint = useCallback(() => {
     for (const [key, value] of Object.entries(widthBreakpoints)) {
       if (windowWidth < value) {
         return columnBreakpoints[key as keyof typeof columnBreakpoints];
@@ -60,13 +59,10 @@ export default function Masonry({ images }: MasonryProps) {
     }
 
     return 4;
-  }
+  }, [windowWidth]);
 
   const gutter = 12;
-  const columnCount = useMemo(
-    () => getColumnBreakpoint(windowWidth),
-    [windowWidth],
-  );
+  const columnCount = getColumnBreakpoint();
 
   const positioner = usePositioner({
     width,

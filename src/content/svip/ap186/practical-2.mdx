@@ -11,7 +11,7 @@ courseSlug: "ap186"
 created: "2019-08-14T05:19:26.0000Z"
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 Today's activity involved the basics on digitally extracting values from hand-drawn plots. The image I used is
 shown in Fig. [1](#fig:radial-profile). For the pixel coordinate extraction, I used Photoshop, and
@@ -81,14 +81,17 @@ have already calculated conversion factors earlier. The end product is shown in 
 
 Even though it was suggested to use Paint, GIMP, and/or a spreadsheet software, I opted to use Photoshop and matplotlib
 since I have been accustomed to using them and I believe I can work faster and more efficiently by using them.
-Personally, I find using Excel cumbersome and *makalat tignan* for data processing, and I am especially not fond of the
+Personally, I find using Excel cumbersome and _makalat tignan_ for data processing, and I am especially not fond of the
 appearance of its plots.
 
 #### References
+
 <ol class="reference">
   <li id="kadota1984">
-    K. Kadota, H. Matsuoka, H. J. Ramos, S. Miyake, K. Tsuchida, J. Fujita, T. Usui, and T. Oda, Neutral beam probe
-    spectroscopy for edge plasma diagnostics, [*J. Nucl. Mater.*](http://dx.doi.org/10.1016/0022-3115(84)90494-X)
-    **128-129**, 960 (1984).
+    K. Kadota, H. Matsuoka, H. J. Ramos, S. Miyake, K. Tsuchida, J. Fujita, T.
+    Usui, and T. Oda, Neutral beam probe spectroscopy for edge plasma
+    diagnostics, [*J. Nucl.
+    Mater.*](http://dx.doi.org/10.1016/0022-3115(84)90494-X) **128-129**, 960
+    (1984).
   </li>
 </ol>

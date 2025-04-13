@@ -12,14 +12,27 @@ created: "2019-10-28T12:37:00.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 
-boundaryData: [
-  { url: "ban-app_decision.png", caption: "banana-apple", key: "fig-ban-app" },
-  { url: "ban-ora_decision.png", caption: "banana-orange", key: "fig-ban-ora" },
-  { url: "app-ora_decision.png", caption: "apple-orange", key: "fig-app-ora" },
-]
+boundaryData:
+  [
+    {
+      url: "ban-app_decision.png",
+      caption: "banana-apple",
+      key: "fig-ban-app",
+    },
+    {
+      url: "ban-ora_decision.png",
+      caption: "banana-orange",
+      key: "fig-ban-ora",
+    },
+    {
+      url: "app-ora_decision.png",
+      caption: "apple-orange",
+      key: "fig-app-ora",
+    },
+  ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity [[1](#Soriano2019)], I used the features extracted from the fruits (50 each of apples, mangoes,
 bananas) from the [previous activity](/svip/ap186/feature-extract). The feature space in $a^*$-$b^*$ (obtained from the
@@ -28,11 +41,8 @@ now, we need to process only two classes at a time. We design the perceptron so 
 rule
 
 <span id="eq-weight-update" class="mx-auto">
-$
-\begin{equation}
-  \Delta w_j = \eta (y^i - z^i) x_j^i
-\end{equation}
-$
+  $ \begin{equation}
+  \Delta w_j = \eta (y^i - z^i) x_j^i \end{equation}$
 </span>
 
 where $y$ is the ground truth label, $z$ is the predicted label, and $\eta$ is the learning rate, which we set to
@@ -63,9 +73,7 @@ boundary and decision contours for each class pair is shown in Fig.&nbsp;[2](#fi
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-3 text-center">
-    Figure 2:
-  </figcaption>
+  <figcaption class="col-span-3 text-center">Figure 2:</figcaption>
 </figure>
 
 #### References

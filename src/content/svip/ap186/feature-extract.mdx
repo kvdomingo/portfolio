@@ -10,14 +10,15 @@ created: "2019-10-24T12:02:00.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 
-spaceData: [
-  { url: "ab_space", caption: "a*-b*", key: "fig-ab-space" },
-  { url: "ae_space", caption: "a*-e", key: "fig-ae-space" },
-  { url: "be_space", caption: "b*-e", key: "fig-be-space" },
-]
+spaceData:
+  [
+    { url: "ab_space", caption: "a*-b*", key: "fig-ab-space" },
+    { url: "ae_space", caption: "a*-e", key: "fig-ae-space" },
+    { url: "be_space", caption: "b*-e", key: "fig-be-space" },
+  ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity [[1](#Soriano2019)], I obtained the Fruits-360 dataset from Kaggle [[2](#Muresan2018)] which contains
 thousands of labeled fruit images under the same lighting and capture settings but with varying angles. I took 50
@@ -37,6 +38,7 @@ property from each detected blob. An $e = 0$ corresponds to a perfect circle, wh
 parabola. Values $0 < e < 1$ are ellipses.
 
 #### Discussion
+
 Figure&nbsp;[1](#fig-feature-space) shows the feature space of the selected dataset in $a^*$, $b^*$, and $e$. We can observe
 that all the classes show distinct clustering. The projections on each of the planes are shown in
 Fig.&nbsp;[2](#fig-projections). The banana cluster shows a large variation in eccentricity but mostly resides in
@@ -53,7 +55,8 @@ either $a^*$-$b^*$ or $b^*$-$e$ feature spaces, though the former appears to max
     class="mx-auto"
   />
   <figcaption class="text-center">
-    Figure 1: Feature space in $a^*$, $b^*$, and $e$ of apples, bananas, and oranges.
+    Figure 1: Feature space in $a^*$, $b^*$, and $e$ of apples, bananas, and
+    oranges.
   </figcaption>
 </figure>
 
@@ -79,7 +82,7 @@ either $a^*$-$b^*$ or $b^*$-$e$ feature spaces, though the former appears to max
 <ol className="reference">
   <li id="Soriano2019">M. N. Soriano, _A12 - Feature extraction_ (2019).</li>
   <li id="Muresan2018">
-    H. Muresan, and M. Oltean, Fruit recognition from images using deep learning.
-    _Acta Univ. Sapientiae, Informatica_ **10**(1), 26-42 (2018).
+    H. Muresan, and M. Oltean, Fruit recognition from images using deep
+    learning. _Acta Univ. Sapientiae, Informatica_ **10**(1), 26-42 (2018).
   </li>
 </ol>

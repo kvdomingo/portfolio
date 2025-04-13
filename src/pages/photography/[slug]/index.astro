@@ -1,10 +1,9 @@
 ---
-import { Resize } from "@cloudinary/url-gen/actions/resize";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
 import Gallery from "@/components/photography/Gallery.astro";
-import cld, { cld2, DEFAULT_OPTIONS } from "@/server/utils/cloudinary";
-import type { ResourceApiResponse } from "cloudinary";
+
+import { actions } from "astro:actions";
 
 export function getStaticPaths() {
   return [
@@ -19,24 +18,9 @@ const { slug = "" } = Astro.params;
 
 const title = slug[0].toUpperCase() + slug.slice(1);
 
-const body = (await cld2.api.resources({
-  ...DEFAULT_OPTIONS,
-  prefix: `kdphotography/portfolio/static/portfolio/media-private/${title}`,
-})) as ResourceApiResponse;
-
-const { resources = [] } = body;
-
-const images = resources.map<ResourceApiResponse["resources"][number]>(
-  resource => ({
-    ...resource,
-    secure_url: cld
-      .image(resource.public_id)
-      .resize(Resize.scale().width("auto"))
-      .toURL(),
-  }),
-);
-
-images.sort((a, b) => b.created_at.localeCompare(a.created_at));
+const { data: images = [] } = await Astro.callAction(actions.listPhotos, {
+  slug: title,
+});
 ---
 
 <Layout title={`${title} | Photography | KVD Studio`}>

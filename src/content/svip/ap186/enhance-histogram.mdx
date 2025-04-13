@@ -33,7 +33,7 @@ crushedData: [
 ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity, I chose a low-light portrait that I shot at the Light Bridge at the Mind Museum (Fig.
 [1](#fig-original)) last April. I imported it as `uint8` for ease in the histogram
@@ -103,7 +103,10 @@ be seen in Fig. [1d](#fig-nonlinear), and its histogram in Fig.
 exposed, but now is high in contrast. We can also see in the histogram that the
 middle values are stretched more than the outer values.
 
-<figure id="fig-enhance" class="container grid grid-cols-2 lg:grid-cols-4 gap-4">
+<figure
+  id="fig-enhance"
+  class="container grid grid-cols-2 gap-4 lg:grid-cols-4"
+>
   {frontmatter.data.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -116,7 +119,7 @@ middle values are stretched more than the outer values.
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-2 lg:col-span-4 text-center">
+  <figcaption class="col-span-2 text-center lg:col-span-4">
     Figure 1: Grayscale-converted image and its histogram manipulations, their
     respective histograms, and their respective CDFs.
   </figcaption>
@@ -143,7 +146,10 @@ the classic Kodak Tri-X film. Its histogram in Fig.[2c](#fig-sigmoid)
 also shows the squeezing of the pixel values and con rms that the technique
 acts like _contrast compressing_.
 
-<figure id="fig-crushed" class="container grid grid-cols-1 lg:grid-cols-3 items-end gap-4">
+<figure
+  id="fig-crushed"
+  class="container grid grid-cols-1 items-end gap-4 lg:grid-cols-3"
+>
   {frontmatter.crushedData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -156,7 +162,7 @@ acts like _contrast compressing_.
       </figcaption>
     </figure>
   ))}
-  <figcaption class="lg:col-span-3 text-center">
+  <figcaption class="text-center lg:col-span-3">
     Figure 2: "Crushed blacks/whites" post-processing technique using histogram
     manipulation.
   </figcaption>

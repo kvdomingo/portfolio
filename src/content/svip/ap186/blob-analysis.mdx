@@ -10,17 +10,18 @@ cover: "svip/186/10-BlobAnalysis/3468.jpg"
 courseSlug: "ap186"
 created: "2019-11-04T10:14:00.0000Z"
 
-histData: [
-  { url: "area_hist", caption: "area", key: "fig-blob-area" },
-  { url: "ecc_hist", caption: "eccentricity", key: "fig-blob-ecc" },
-  { url: "majax_hist", caption: "major axis length", key: "fig-blob-majax" },
-  { url: "per_hist", caption: "perimeter", key: "fig-blob-per" },
-]
+histData:
+  [
+    { url: "area_hist", caption: "area", key: "fig-blob-area" },
+    { url: "ecc_hist", caption: "eccentricity", key: "fig-blob-ecc" },
+    { url: "majax_hist", caption: "major axis length", key: "fig-blob-majax" },
+    { url: "per_hist", caption: "perimeter", key: "fig-blob-per" },
+  ]
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity [[1](#Soriano2019)], we'll use the provided image of a cell. First, we convert it to grayscale
 (Fig.&nbsp;[1a](#fig-cell-blob)) and obtain its histogram (Fig.&nbsp;[1b](#fig-cell-blob). Notice that there is a huge
@@ -37,8 +38,8 @@ grayscale histogram in Fig. [1d](#fig-cell-blob). Note that Otsu's method was ab
     alt="cell_blob"
   />
   <figcaption class="text-center">
-    Figure 1: (a) Grayscaled cell image, (b) grayscale histogram, (c) Filtered and labeled cell blobs, and (d) cell
-    blobs histogram.
+    Figure 1: (a) Grayscaled cell image, (b) grayscale histogram, (c) Filtered
+    and labeled cell blobs, and (d) cell blobs histogram.
   </figcaption>
 </figure>
 

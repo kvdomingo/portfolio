@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 export async function getStaticPaths() {
   return info.svip.courses.map(course => ({

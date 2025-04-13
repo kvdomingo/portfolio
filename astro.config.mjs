@@ -86,9 +86,9 @@ export default defineConfig({
         access: "secret",
         context: "server",
       }),
-      CLOUDINARY_CLOUD_NAME: envField.string({
+      PUBLIC_CLOUDINARY_CLOUD_NAME: envField.string({
         access: "public",
-        context: "server",
+        context: "client",
       }),
       PUBLIC_POSTHOG_TOKEN: envField.string({
         access: "public",

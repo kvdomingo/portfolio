@@ -12,16 +12,17 @@ created: "2019-10-15T14:08:00.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 
-segmentData: [
-  { url: "0.png", caption: "frame 1", key: "seg-0" },
-  { url: "9.png", caption: "frame 10", key: "seg-9" },
-  { url: "18.png", caption: "frame 19", key: "seg-18" },
-  { url: "22.png", caption: "frame 23", key: "seg-22" },
-  { url: "28.png", caption: "frame 29", key: "seg-28" },
-]
+segmentData:
+  [
+    { url: "0.png", caption: "frame 1", key: "seg-0" },
+    { url: "9.png", caption: "frame 10", key: "seg-9" },
+    { url: "18.png", caption: "frame 19", key: "seg-18" },
+    { url: "22.png", caption: "frame 23", key: "seg-22" },
+    { url: "28.png", caption: "frame 29", key: "seg-28" },
+  ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 #### Experimental phase
 
@@ -74,10 +75,12 @@ centroid and diameter properties. The result of these operations is shown in Fig
     </figure>
   ))}
   <figcaption class="col-span-5 text-center">
-    Figure 1: Representative frames as a result of successful segmentation and morphological cleaning. Notice in the
-    middle frames that the ball appears to be squashed. This is due to the motion blur along the vertical, and in this
-    case, the color of the ball starts to "blend" with the background. During this phenomenon, we measure the diameter
-    horizontally, since there is no motion blur along this dimension.
+    Figure 1: Representative frames as a result of successful segmentation and
+    morphological cleaning. Notice in the middle frames that the ball appears to
+    be squashed. This is due to the motion blur along the vertical, and in this
+    case, the color of the ball starts to "blend" with the background. During
+    this phenomenon, we measure the diameter horizontally, since there is no
+    motion blur along this dimension.
   </figcaption>
 </figure>
 
@@ -113,11 +116,8 @@ Calculating the acceleration due to gravity $g$ can be done in two ways. First, 
 the point when it first bounces (first 30 frames), and fit this curve to an equation of the form
 
 <span id="eq-curve-fit" class="mx-auto">
-$
-\begin{equation}
-  f(t; g, v_0, x_0) = gt^2 + v_0 t + x_0
-\end{equation}
-$
+  $ \begin{equation}
+  f(t; g, v_0, x_0) = gt^2 + v_0 t + x_0 \end{equation}$
 </span>
 
 via nonlinear least-squares fitting. Using this method, we obtain a value of $\boxed{g = -9.68 \textrm{ m/s}^2}$, which
@@ -129,5 +129,7 @@ obtained earlier. This method yields $\boxed{g = -9.61 \textrm{ m/s}^2}$, which 
 #### References
 
 <ol className="reference">
-  <li id="Soriano2019">M. N. Soriano, _A11 - Basic video processing_ (2019).</li>
+  <li id="Soriano2019">
+    M. N. Soriano, _A11 - Basic video processing_ (2019).
+  </li>
 </ol>

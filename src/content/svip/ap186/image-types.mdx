@@ -31,7 +31,7 @@ rgbData: [
 ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 #### File formats
 
@@ -68,18 +68,18 @@ longer include the images saved in other file formats if there is no perceivable
     Table 1: File sizes for various saved formats of Fig. [1](#fig:original).
   </caption>
   <thead>
-  <tr align="center">
-    <th>Format</th>
-    <th>Size (kB)</th>
-  </tr>
+    <tr align="center">
+      <th>Format</th>
+      <th>Size (kB)</th>
+    </tr>
   </thead>
   <tbody align="center">
-  {frontmatter.sizeData.map(d => (
-    <tr>
-      <td class="py-2">{d.format}</td>
-      <td>{d.size}</td>
-    </tr>
-  ))}
+    {frontmatter.sizeData.map(d => (
+      <tr>
+        <td class="py-2">{d.format}</td>
+        <td>{d.size}</td>
+      </tr>
+    ))}
   </tbody>
 </table>
 
@@ -122,27 +122,28 @@ is uniform.
 
 <table class="table table-lg" id="tab:index">
   <caption>
-    Table 2: First and last few elements of the color table for Fig. [4](#fig:tiff).
+    Table 2: First and last few elements of the color table for Fig.
+    [4](#fig:tiff).
   </caption>
   <thead align="center">
-  <tr>
-    <th>Index</th>
-    <th>R</th>
-    <th>G</th>
-    <th>B</th>
-    <th>Color</th>
-  </tr>
+    <tr>
+      <th>Index</th>
+      <th>R</th>
+      <th>G</th>
+      <th>B</th>
+      <th>Color</th>
+    </tr>
   </thead>
   <tbody align="center">
-  {frontmatter.rgbData.map(d => (
-    <tr>
-      <td>{d.index}</td>
-      <td>{d.r}</td>
-      <td>{d.g}</td>
-      <td>{d.b}</td>
-      <td style={`background-color: rgb(${d.r}, ${d.g}, ${d.b});`} />
-    </tr>
-  ))}
+    {frontmatter.rgbData.map(d => (
+      <tr>
+        <td>{d.index}</td>
+        <td>{d.r}</td>
+        <td>{d.g}</td>
+        <td>{d.b}</td>
+        <td style={`background-color: rgb(${d.r}, ${d.g}, ${d.b});`} />
+      </tr>
+    ))}
   </tbody>
 </table>
 
@@ -156,7 +157,6 @@ is uniform.
     Figure 5: Fig. [1](#fig:original) saved as a `GIF` indexed image.
   </figcaption>
 </figure>
-
 
 #### History
 
@@ -198,6 +198,7 @@ as the alpha channel), redundant self-verification of data integrity, interlacin
 schemes (indexed, grayscale, or true-color RGB).
 
 #### Programming basic imaging functions
+
 Some of the libraries that can be used for image processing in Python include the `matplotlib`,
 `opencv2`, and `PIL` modules. Some basic functions include:
 
@@ -208,13 +209,15 @@ Some of the libraries that can be used for image processing in Python include th
 - `cv2.COLOR_RGB2GRAY`: converts an RGB image to grayscale; can be passed as an argument in `cv.imread`.
 
 #### References
+
 <ol class="reference">
   <li id="Roelofs1999">
-    Roelofs, G. (1999). [History of the portable networks graphics format](http://www.libpng.org/pub/png/pnghist.html)
-    (1999).
+    Roelofs, G. (1999). [History of the portable networks graphics
+    format](http://www.libpng.org/pub/png/pnghist.html) (1999).
   </li>
   <li id="Wiggins2001">
-    R. H. Wiggins, C. Davidson, R. Harnsberger, J. R. Lauman, and P. A. Goede, Image formats: Past, present, and
-    future, [*RadioGraphics* **21**](http://dx.doi.org/10.1148/radiographics.21.3.g01ma25789) (2001).
+    R. H. Wiggins, C. Davidson, R. Harnsberger, J. R. Lauman, and P. A. Goede,
+    Image formats: Past, present, and future, [*RadioGraphics*
+    **21**](http://dx.doi.org/10.1148/radiographics.21.3.g01ma25789) (2001).
   </li>
 </ol>

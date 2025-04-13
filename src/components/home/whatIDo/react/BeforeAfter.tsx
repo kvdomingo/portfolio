@@ -1,7 +1,7 @@
 import BeforeAfterSlider from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 
-import cld from "@/utils/cloudinary";
+import cld from "@/actions/_utils/cloudinary.client";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 
 export default function BeforeAfter() {

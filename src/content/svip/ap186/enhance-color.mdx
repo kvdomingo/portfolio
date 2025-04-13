@@ -33,7 +33,7 @@ awbaetData: [
 ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity, I will be using the raw image (Fig. [1a](#fig-original)) I took during the
 FST Week Concert at the College of Fine Arts. I felt this would be a good image to work on since there is a
@@ -96,7 +96,10 @@ in Fig. [1d](#fig-whitepatch). We can see that the guitarist's skin tone
 still looks realistic, and the background is now a warmer white as compared to
 the previous algorithms.
 
-<figure id="fig-enhance" class="container grid grid-cols-2 lg:grid-cols-4 gap-4">
+<figure
+  id="fig-enhance"
+  class="container grid grid-cols-2 gap-4 lg:grid-cols-4"
+>
   {frontmatter.algorithmsData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -109,7 +112,7 @@ the previous algorithms.
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-2 lg:col-span-4 text-center">
+  <figcaption class="col-span-2 text-center lg:col-span-4">
     Figure 1: Image enhanced using different algorithms (top) and their
     respective histograms (bottom).
   </figcaption>
@@ -187,7 +190,10 @@ of the heavy red color cast in the original image, the CS portion of the algorit
 is given a greater weight, so the final image looks more like the CS-corrected
 image.
 
-<figure id="fig-awbaet" class="container grid grid-cols-1 lg:grid-cols-3 gap-4 items-end">
+<figure
+  id="fig-awbaet"
+  class="container grid grid-cols-1 items-end gap-4 lg:grid-cols-3"
+>
   {frontmatter.awbaetData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -200,7 +206,7 @@ image.
       </figcaption>
     </figure>
   ))}
-  <figcaption class="lg:col-span-3 text-center">
+  <figcaption class="text-center lg:col-span-3">
     Figure 3: Comparison of the different auto white balance algorithms.
   </figcaption>
 </figure>

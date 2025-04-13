@@ -12,17 +12,22 @@ created: "2019-11-28T04:41:00.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 
-functionData: [
-  { url: "fit-1-pred.png", caption: "linear", key: "fig-linear" },
-  { url: "fit-2-pred.png", caption: "quadratic", key: "fig-quadratic" },
-  { url: "fit-3-pred.png", caption: "cubic", key: "fig-cubic" },
-  { url: "fit-tanh-pred.png", caption: "tanh", key: "fig-tanh" },
-  { url: "fit-sigmoid-pred.png", caption: "logistic sigmoid", key: "fig-sigmoid" },
-  { url: "fit-sin1Hz-pred.png", caption: "sine", key: "fig-sine" },
-]
+functionData:
+  [
+    { url: "fit-1-pred.png", caption: "linear", key: "fig-linear" },
+    { url: "fit-2-pred.png", caption: "quadratic", key: "fig-quadratic" },
+    { url: "fit-3-pred.png", caption: "cubic", key: "fig-cubic" },
+    { url: "fit-tanh-pred.png", caption: "tanh", key: "fig-tanh" },
+    {
+      url: "fit-sigmoid-pred.png",
+      caption: "logistic sigmoid",
+      key: "fig-sigmoid",
+    },
+    { url: "fit-sin1Hz-pred.png", caption: "sine", key: "fig-sine" },
+  ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 #### Function fitter
 
@@ -87,7 +92,10 @@ mean-squared error because, from experience, the former is more perceptually acc
 For the test data, I generated 1000 equally-spaced numbers in the range $[-1,1]$. Figure&nbsp;[2](#fig-function-fitter)
 shows the predictions for each function.
 
-<figure id="fig-function-fitter" class="container grid grid-cols-3 gap-4 items-end">
+<figure
+  id="fig-function-fitter"
+  class="container grid grid-cols-3 items-end gap-4"
+>
   {frontmatter.functionData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -160,7 +168,8 @@ and do not overlap.
     class="mx-auto"
   />
   <figcaption class="text-center">
-    Figure 4: Decision boundaries for bananas, apples, and oranges in $a^*-b^*$ feature space.
+    Figure 4: Decision boundaries for bananas, apples, and oranges in $a^*-b^*$
+    feature space.
   </figcaption>
 </figure>
 
@@ -191,7 +200,8 @@ now is `2376-237-23-4` (3 hidden layers, 4 output nodes). Plugging in the test d
     class="mx-auto"
   />
   <figcaption class="text-center">
-    Figure 6: Decision boundaries for bananas, apples, oranges, and cherries in $a^*-b^*$ feature space.
+    Figure 6: Decision boundaries for bananas, apples, oranges, and cherries in
+    $a^*-b^*$ feature space.
   </figcaption>
 </figure>
 
@@ -204,7 +214,7 @@ now is `2376-237-23-4` (3 hidden layers, 4 output nodes). Plugging in the test d
     _Journal of Open Source Software_ **4**(33) 747 (2019).
   </li>
   <li id="Muresan2018">
-    H. Muresan, and M. Oltean, Fruit recognition from images using deep learning.
-    _Acta Univ. Sapientiae, Informatica_ **10**(1), 26-42 (2018).
+    H. Muresan, and M. Oltean, Fruit recognition from images using deep
+    learning. _Acta Univ. Sapientiae, Informatica_ **10**(1), 26-42 (2018).
   </li>
 </ol>

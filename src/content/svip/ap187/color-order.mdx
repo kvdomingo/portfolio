@@ -13,7 +13,7 @@ created: "2019-09-03T06:29:00.0000Z"
 alphabet: abcdefghijklmnopqrstuvwxyz
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity, the CIE 1964 standard observer values for 380--780 nm was obtained from [[2](#CIE64)]. The
 tristimulus values were calculated using [[1](#Soriano2019)]
@@ -47,17 +47,20 @@ $
     class="mx-auto"
   />
   <figcaption class="text-center">
-    Figure 1: Calculated boundaries of the CIE tongue (blue circles), and the associated Planckian locus (black spines).
+    Figure 1: Calculated boundaries of the CIE tongue (blue circles), and the
+    associated Planckian locus (black spines).
   </figcaption>
 </figure>
 
 #### References
 
 <ol className="reference">
-  <li id="Soriano2019">M. N. Soriano, _Color order system and color matching functions_ (2019).</li>
+  <li id="Soriano2019">
+    M. N. Soriano, _Color order system and color matching functions_ (2019).
+  </li>
   <li id="CIE64">
-    Public.Resource.Org,
-    [_CIE 15B tables_](https://law.resource.org/pub/cfr/ibr/cie.15.2004.tables.xls)
+    Public.Resource.Org, [_CIE 15B
+    tables_](https://law.resource.org/pub/cfr/ibr/cie.15.2004.tables.xls)
     (2004).
   </li>
 </ol>

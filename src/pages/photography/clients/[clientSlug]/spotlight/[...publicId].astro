@@ -1,8 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 const { clientSlug, publicId } = Astro.params;
+
+if (!publicId) {
+  Astro.redirect("/404");
+}
 ---
 
 <Layout title="Photography | KVD Studio" spotlight={true}>
@@ -14,7 +18,7 @@ const { clientSlug, publicId } = Astro.params;
     </div>
 
     <img
-      src={buildCldUrl(publicId)}
+      src={buildCldUrl(publicId!)}
       alt={publicId}
       class="max-h-screen object-cover"
       transition:name={publicId}

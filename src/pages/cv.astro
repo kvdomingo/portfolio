@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import CvSection from "@/components/about/CvSection.astro";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
-import cld from "@/utils/cloudinary";
+import cld from "@/actions/_utils/cloudinary.client";
 import { Resize } from "@cloudinary/url-gen/actions";
 import { compareDesc } from "date-fns";
 import { Mail, FileDown } from "lucide-astro";

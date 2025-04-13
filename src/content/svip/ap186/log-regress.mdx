@@ -11,15 +11,32 @@ created: "2019-11-07T10:15:00.0000Z"
 
 alphabet: abcdefghijklmnopqrstuvwxyz
 
-featureData: [
-  { url: "Lab_extract.png", caption: "Feature space of overripe (1) and unripe (0) bananas in L*a*b*.", key: "fig-lab-features" },
-  { url: "Lab_preds.png", caption: "Final activations of the midripe banana images in L*a*b*.", key: "fig-lab-preds" },
-  { url: "Lab_decision.png", caption: "Decision contours of overripe (1) and unripe (0) bananas in L*a*b* feature space.", key: "fig-lab-decision" },
-  { url: "sigmoid_map.png", caption: "Images of bananas of varying ripeness corresponding to their activation levels.", key: "fig-sigmoid-map" },
-]
+featureData:
+  [
+    {
+      url: "Lab_extract.png",
+      caption: "Feature space of overripe (1) and unripe (0) bananas in L*a*b*.",
+      key: "fig-lab-features",
+    },
+    {
+      url: "Lab_preds.png",
+      caption: "Final activations of the midripe banana images in L*a*b*.",
+      key: "fig-lab-preds",
+    },
+    {
+      url: "Lab_decision.png",
+      caption: "Decision contours of overripe (1) and unripe (0) bananas in L*a*b* feature space.",
+      key: "fig-lab-decision",
+    },
+    {
+      url: "sigmoid_map.png",
+      caption: "Images of bananas of varying ripeness corresponding to their activation levels.",
+      key: "fig-sigmoid-map",
+    },
+  ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity [[1](#Soriano2019)], I used the banana dataset from [[2](#Mazen2019)] which has 273 images of bananas
 separated by underripe, midripe, yellowish-green, and overripe labels.
@@ -74,7 +91,7 @@ $\approx 1$ corresponds to overripe (yellow-brown) bananas while the regime whic
 to midripe/ripe bananas. Specifically, the range $\approx$ 0.2-0.4 corresponds to the midripe (yellowish-green)
 bananas, while the range $\approx$ 0.6-0.8 corresponds to the ripe (dominantly yellow) bananas.
 
-<figure id="fig-boundaries" class="container grid grid-cols-2 gap-4 items-end">
+<figure id="fig-boundaries" class="container grid grid-cols-2 items-end gap-4">
   {frontmatter.featureData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -86,15 +103,16 @@ bananas, while the range $\approx$ 0.6-0.8 corresponds to the ripe (dominantly y
       </figcaption>
     </figure>
   ))}
-  <figcaption class="col-span-2 text-center">
-    Figure 2:
-  </figcaption>
+  <figcaption class="col-span-2 text-center">Figure 2:</figcaption>
 </figure>
 
 #### References
 
 <ol className="reference">
   <li id="Soriano2019">M. N. Soriano, _A14 - Logistic regression_ (2019).</li>
-  <li id="Mazen2019">F. Mazen, and A. Nashat, Ripeness classification of bananas using an artificial neural network.
-    _Arabian Journal for Science and Engineering_ (2019).</li>
+  <li id="Mazen2019">
+    F. Mazen, and A. Nashat, Ripeness classification of bananas using an
+    artificial neural network. _Arabian Journal for Science and Engineering_
+    (2019).
+  </li>
 </ol>

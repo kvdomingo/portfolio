@@ -22,7 +22,7 @@ macbethData: [
 ]
 ---
 
-import { buildCldUrl } from "@/utils/cloudinary";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 For this activity, I used the light source emittance data and leaf reflectance data that our group obtained from the
 previous activities. Our reference light source is a 20W LED with a CCT of 6500K. All images were taken with a Nikon
@@ -52,7 +52,7 @@ $
 The actual and generated colors are shown in Fig.&nbsp;[1](#fig-render). We can see that the reconstructed color already
 captures the general color of the leaf.
 
-<figure id="fig-render" class="container grid grid-cols-2 gap-4 items-end">
+<figure id="fig-render" class="container grid grid-cols-2 items-end gap-4">
   {frontmatter.renderData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -78,7 +78,7 @@ for the spectral distribution of a standard D65 illuminant. I was able to obtain
 and the final rendered colors are shown in Fig.&nbsp;[2](#fig-macbeth). From these figures, we can see that the rendered
 colors are generally more saturated than the actual, while the gray patches are much less saturated.
 
-<figure id="fig-macbeth" class="container grid grid-cols-2 gap-4 items-end">
+<figure id="fig-macbeth" class="container grid grid-cols-2 items-end gap-4">
   {frontmatter.macbethData.map((d, index) => (
     <figure id={d.key}>
       <img
@@ -101,13 +101,11 @@ colors are generally more saturated than the actual, while the gray patches are 
 <ol className="reference">
   <li id="Soriano2019">M. N. Soriano, _Sensors_ (2019).</li>
   <li id="NaeLab2014">
-    Naemura Lab,
-    [_Spectral sensitivity database_](https://nae-lab.org/~rei/research/cs/zhao/database.html)
-    (2014).
+    Naemura Lab, [_Spectral sensitivity
+    database_](https://nae-lab.org/~rei/research/cs/zhao/database.html) (2014).
   </li>
   <li id="CVRL2007">
-    Colour and Vision Research Laboratory,
-    [_Relative SPD of D65_](https://nae-lab.org/~rei/research/cs/zhao/database.html)
-    (2007).
+    Colour and Vision Research Laboratory, [_Relative SPD of
+    D65_](https://nae-lab.org/~rei/research/cs/zhao/database.html) (2007).
   </li>
 </ol>
