@@ -78,6 +78,18 @@ export default defineConfig({
         context: "server",
         default: "production",
       }),
+      CLOUDINARY_API_KEY: envField.string({
+        access: "secret",
+        context: "server",
+      }),
+      CLOUDINARY_API_SECRET: envField.string({
+        access: "secret",
+        context: "server",
+      }),
+      CLOUDINARY_CLOUD_NAME: envField.string({
+        access: "public",
+        context: "server",
+      }),
       PUBLIC_POSTHOG_TOKEN: envField.string({
         access: "public",
         context: "client",

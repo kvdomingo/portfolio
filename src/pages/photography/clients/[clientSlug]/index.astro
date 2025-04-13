@@ -1,16 +1,12 @@
 ---
-import qs from "qs";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
 import Gallery from "@/components/photography/Gallery.astro";
-import cld from "@/utils/cloudinary";
-import {
-  AUTHORIZATION,
-  BASE_URL,
-  DEFAULT_OPTIONS,
-} from "@/server/utils/cloudinary";
+import cld, { cld2 } from "@/utils/cloudinary";
+import { DEFAULT_OPTIONS } from "@/server/utils/cloudinary";
+import type { ResourceApiResponse } from "cloudinary";
 
 export function getStaticPaths() {
   return info.photography.clients.map(({ slug }) => ({ params: { slug } }));
@@ -22,21 +18,10 @@ const title =
   info.photography.clients.find(client => client.slug === clientSlug)?.name ??
   "";
 
-const params = qs.stringify({
+const body = (await cld2.api.resources({
   ...DEFAULT_OPTIONS,
   prefix: `kdphotography/portfolio/static/portfolio/media-private/clients/${clientSlug}`,
-});
-
-const url = `${BASE_URL}?${params}`;
-
-const res = await fetch(url, {
-  headers: {
-    "Authorization": AUTHORIZATION,
-    "Content-Type": "application/json",
-  },
-});
-
-const body = await res.json();
+})) as ResourceApiResponse;
 
 const { resources = [] } = body;
 
@@ -48,7 +33,7 @@ const images = resources
       .resize(Resize.scale().width("auto"))
       .toURL(),
   }))
-  .sort((a, b) => b.created_at.localeCompare(a.createdAt));
+  .sort((a, b) => b.created_at.localeCompare(a.created_at));
 ---
 
 <Layout title={`${title} | Clients | KVD Studio`}>
