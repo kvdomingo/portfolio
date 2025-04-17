@@ -1,1 +1,5 @@
+**/build
+**/public
+routeTree.gen.ts
+
 content/**/*.mdx
