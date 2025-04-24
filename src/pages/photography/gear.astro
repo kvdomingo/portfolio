@@ -1,7 +1,7 @@
 ---
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
-import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 interface Gear {
   name: string;
@@ -17,6 +17,10 @@ const photographyGear: Record<string, Gear[]> = {
     {
       name: "Nikon Z50",
       publicId: "NikonZ50",
+    },
+    {
+      name: "Nikon F90X",
+      publicId: "NikonF90X",
     },
     {
       name: "Yashica Half 17",
