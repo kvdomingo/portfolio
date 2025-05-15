@@ -1,11 +1,11 @@
-import { defineConfig, envField } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
-import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
 import rehypeMathJax from "rehype-mathjax";
 import remarkMath from "remark-math";
 
@@ -23,9 +23,6 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     sitemap(),
     svelte({
       include: ["**/svelte/*"],
@@ -60,6 +57,7 @@ export default defineConfig({
         "@": "src",
       },
     },
+    plugins: [tailwindcss()],
   },
   site: "https://kvd.studio",
   adapter: vercel({

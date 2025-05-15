@@ -1,6 +1,7 @@
 ---
 import cld from "@/actions/_utils/cloudinary.client";
 import { Resize } from "@cloudinary/url-gen/actions";
+import { Button } from "@/components/ui/button";
 
 const LIGHT_LOGO = cld
   .image("logo/logo-white")
@@ -23,23 +24,23 @@ const NAV_LINKS = [
         <img
           src={LIGHT_LOGO}
           alt="logo"
-          class="opacity-1 my-2 h-14 w-auto transition-all duration-300 ease-in-out"
+          class="my-2 h-14 w-auto opacity-1 transition-all duration-300 ease-in-out"
         />
       </a>
     </div>
 
-    <ul
-      class="section-header md:menu md:menu-horizontal hidden flex-auto items-center justify-end gap-6 md:visible md:flex"
+    <div
+      class="hidden flex-auto items-center justify-end gap-4 tracking-widest md:visible md:flex"
     >
       {
         NAV_LINKS.map(nav => (
-          <li>
-            <a href={nav.path}>
-              <span class="text-white">{nav.label}</span>
-            </a>
-          </li>
+          <a href={nav.path}>
+            <Button variant="ghost" className="uppercase">
+              {nav.label}
+            </Button>
+          </a>
         ))
       }
-    </ul>
+    </div>
   </nav>
 </header>

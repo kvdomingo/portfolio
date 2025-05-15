@@ -2,6 +2,14 @@
 import { getEntry, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import ClientDate from "@/components/common/svelte/ClientDate.svelte";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Badge } from "@/components/ui/badge";
 
 const { slug = "" } = Astro.params;
 
@@ -16,12 +24,19 @@ const { Content } = await render(entry);
 
 <Layout title={`${entry.data.title} | Blog | KVD Studio`}>
   <div class="container flex flex-col gap-8 py-6">
-    <div class="breadcrumbs">
-      <ul>
-        <li><a href="/blog">Blog</a></li>
-        <li>{entry.data.title}</li>
-      </ul>
-    </div>
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href={`/blog/${entry.id}`}>
+            {entry.data.title}
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
 
     <div>
       <h1 class="text-3xl">{entry.data.title}</h1>
@@ -35,11 +50,7 @@ const { Content } = await render(entry);
     <div>
       <h4>Keywords</h4>
       <div class="flex flex-wrap gap-2">
-        {
-          entry.data.keywords.map(keyword => (
-            <div class="badge badge-neutral badge-lg">{keyword}</div>
-          ))
-        }
+        {entry.data.keywords.map(keyword => <Badge>{keyword}</Badge>)}
       </div>
     </div>
   </div>
@@ -64,24 +75,5 @@ const { Content } = await render(entry);
 
   ol li {
     margin-bottom: 0.5em;
-  }
-
-  blockquote {
-    color: #a6adc8;
-    border-color: white;
-    border-left-width: 4px;
-    border-left-style: solid;
-    padding: 1rem;
-    border-radius: 0.25rem;
-  }
-
-  pre {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    font-variant-ligatures: no-common-ligatures;
-  }
-
-  code {
-    font-variant-ligatures: no-common-ligatures;
   }
 </style>

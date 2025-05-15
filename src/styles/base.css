@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@config "tailwind.config.ts";
+@plugin "@tailwindcss/typography";
 
 @layer base {
   :root {
@@ -122,7 +123,7 @@
 }
 
 h6 {
-  font-size: theme("fontSize.base");
+  font-size: theme("fontSize.md");
 }
 
 h5 {
@@ -189,4 +190,22 @@ mjx-container[jax="SVG"] > svg a {
   @media screen and (min-width: theme("screens.md")) {
     width: 50%;
   }
+}
+
+blockquote {
+  border-color: var(--primary-foreground);
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+code {
+  font-variant-ligatures: no-common-ligatures;
+}
+
+pre {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-variant-ligatures: no-common-ligatures;
 }

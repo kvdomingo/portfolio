@@ -71,7 +71,7 @@ const { title = info.title, spotlight = false } = Astro.props;
     <Umami />
   </head>
 
-  <body class="from-ctp-base to-ctp-crust min-h-screen bg-gradient-to-b">
+  <body class="bg-background min-h-screen">
     {!spotlight && <Navbar />}
 
     <main>
@@ -96,11 +96,11 @@ const { title = info.title, spotlight = false } = Astro.props;
       h4,
       h5,
       h6 {
-        color: var("--primary-foreground");
+        color: var("--primary");
       }
 
       code {
-        color: var("--primary-foreground");
+        color: var("--primary");
         font-family:
           "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas,
           "Courier New", monospace;

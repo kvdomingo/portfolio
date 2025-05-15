@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+import { type Config } from "tailwindcss";
+
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
@@ -14,6 +15,7 @@ export default {
       fontSize: {
         "xs": "0.563rem",
         "sm": "0.75rem",
+        "base": "1rem",
         "md": "1.333rem",
         "lg": "1.777rem",
         "xl": "2.369rem",
@@ -82,5 +84,4 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("tailwindcss-opentype")],
-};
+} satisfies Config;
