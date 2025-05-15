@@ -6,6 +6,7 @@ import {
   formatDuration,
 } from "date-fns";
 import dateFormat from "dateformat";
+import { Button } from "../ui/button";
 
 interface Props {
   data: CollectionEntry<"workExperience">;
@@ -41,9 +42,9 @@ const duration = formatDuration(
 );
 ---
 
-<li class="ml-[1.5rem] mt-[1.5rem]">
+<li class="mt-[1.5rem] ml-[1.5rem]">
   <div
-    class="absolute -ml-[2rem] h-[1rem] w-[1rem] rounded-[50%] border-2 border-solid border-primary bg-ctp-mauve"
+    class="bg-primary border-primary-foreground -ml-[2rem] size-[1rem] rounded-full border-2 border-solid"
   >
   </div>
   <div class="flex flex-col gap-4">
@@ -56,7 +57,7 @@ const duration = formatDuration(
           <p>{data.data.subtitle}</p>
         )
       }
-      <div class="text-gray-400 small-caps">
+      <div class="small-caps text-muted-foreground">
         {formattedStartDate} – {formattedEndDate} • {duration}
       </div>
     </div>
@@ -71,11 +72,8 @@ const duration = formatDuration(
       {
         data.data.bodyLink ? (
           <div>
-            <a
-              href={data.data.bodyLink}
-              class="btn btn-outline btn-accent btn-sm"
-            >
-              See in portfolio
+            <a href={data.data.bodyLink}>
+              <Button variant="outline">See in portfolio</Button>
             </a>
           </div>
         ) : null

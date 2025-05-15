@@ -8,6 +8,7 @@ import { Resize } from "@cloudinary/url-gen/actions";
 import { compareDesc } from "date-fns";
 import { Mail, FileDown } from "lucide-astro";
 import CvSectionMdx from "../components/about/CvSectionMdx.astro";
+import { Button } from "@/components/ui/button";
 
 const backgroundImage = cld
   .image(
@@ -57,27 +58,31 @@ const workExperience = (await getCollection("workExperience")).sort(
       alt="Mind Museum, 2019. Shot by Qeren Bartido."
     />
     <div class="flex flex-col gap-16 md:col-span-3 md:pr-24">
-      <div>
+      <div class="flex flex-col gap-4">
         <p class="whitespace-pre-line">{info.about.text}</p>
 
         <div class="flex gap-4">
-          <a
-            href={`mailto:${info.email}`}
-            class="btn btn-outline btn-accent btn-wide my-6"
-            onclick="window.umami.track('Contact button')"
-          >
-            <Mail />
-            Contact
+          <a href={`mailto:${info.email}`}>
+            <Button
+              variant="outline"
+              onClick={() => window.umami.track("Contact button")}
+            >
+              <Mail />
+              Contact
+            </Button>
           </a>
           <a
             href="https://raw.githubusercontent.com/kvdomingo/cv/refs/heads/main/rendercv_output/Kenneth_V._Domingo_CV.pdf"
-            class="btn btn-outline btn-accent btn-wide my-6"
             target="_blank"
             rel="noopener noreferrer"
-            onclick="window.umami.track('Download CV button')"
           >
-            <FileDown />
-            Download CV
+            <Button
+              variant="outline"
+              onClick={() => window.umami.track("Download CV button")}
+            >
+              <FileDown />
+              Download CV
+            </Button>
           </a>
         </div>
       </div>

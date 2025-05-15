@@ -209,3 +209,7 @@ pre {
   border-radius: 0.5rem;
   font-variant-ligatures: no-common-ligatures;
 }
+
+.small-caps {
+  font-variant: small-caps;
+}
