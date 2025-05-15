@@ -14,7 +14,7 @@ const { title, data } = Astro.props;
   <h3 class="text-xl">{title}</h3>
 
   <slot>
-    <ul class="border-l border-gray-500">
+    <ul class="border-secondary border-l">
       {data.map(d => <CvSectionElementMdx data={d} />)}
     </ul>
   </slot>

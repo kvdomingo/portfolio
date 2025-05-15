@@ -1,4 +1,13 @@
 ---
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { NODE_ENV } from "astro:env/server";
@@ -13,30 +22,32 @@ entries.sort((a, b) => compareDesc(a.data.created, b.data.created));
 
 <Layout title="Blog | KVD Studio">
   <div class="container text-center">
-    <div class="flex flex-col gap-4 text-left">
+    <div class="flex flex-col gap-2 text-left">
       {
         entries.map(entry => (
-          <div class="space-y-4 rounded-xl p-4 transition-[border] duration-100 hover:border hover:border-solid hover:border-white">
-            <a href={`/blog/${entry.id}`}>
-              <div class="flex items-center gap-2">
-                <h3>{entry.data.title}</h3>
-                {entry.data.is_draft && (
-                  <span class="badge badge-neutral badge-lg">Draft</span>
-                )}
-              </div>
-              <p class="text-ctp-subtext0">
-                {format(new Date(entry.data.created), "MMMM dd, yyyy")}
-              </p>
-              <p>{entry.data.summary}</p>
-            </a>
-            <div>
-              {entry.data.keywords.map(keyword => (
-                <span class="badge badge-neutral badge-lg mx-0.5">
-                  {keyword}
-                </span>
-              ))}
-            </div>
-          </div>
+          <a href={`/blog/${entry.id}`}>
+            <Card className="cursor-pointer hover:bg-card/70 transition-colors">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {entry.data.title}
+                  {entry.data.is_draft && (
+                    <Badge variant="secondary">Draft</Badge>
+                  )}
+                </CardTitle>
+                <CardDescription>
+                  {format(new Date(entry.data.created), "MMMM dd, yyyy")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>{entry.data.summary}</p>
+              </CardContent>
+              <CardFooter>
+                {entry.data.keywords.map(keyword => (
+                  <Badge className="mr-1">{keyword}</Badge>
+                ))}
+              </CardFooter>
+            </Card>
+          </a>
         ))
       }
     </div>
