@@ -17,28 +17,29 @@ const { Content } = await render(project);
 
 <div
   class:list={[
-    "mb-8 grid grid-cols-1 place-content-start items-start gap-8 border-t border-solid border-slate-600 pt-8 md:grid-cols-2",
+    "border-secondary mb-8 grid grid-cols-1 place-content-start items-start gap-8 border-t border-solid pt-8 md:grid-cols-2",
     {
       "items-center": project.data.confidential,
     },
   ]}
 >
-  <div>
+  <div class="h-full">
     <a
       href={project.data.status === "archived" || project.data.confidential
         ? undefined
         : project.data.url}
       target="_blank"
       rel="noopener noreferrer"
+      class="flex h-full items-center justify-center"
     >
       {
         project.data.confidential || !project.data.cover ? (
-          <FolderLock class="mx-auto" size="4rem" />
+          <FolderLock size="4rem" />
         ) : (
           <img
             src={buildCldUrl(project.data.cover)}
             alt={project.data.title}
-            class="mx-auto aspect-video h-[300px] w-auto object-cover"
+            class="aspect-video h-[300px] w-auto object-cover"
           />
         )
       }
@@ -67,7 +68,7 @@ const { Content } = await render(project);
       )
     }
 
-    <p class="text-gray-400 small-caps">
+    <p class="small-caps text-muted-foreground">
       {dateFormat(new Date(project.data.startDate), "mmm yyyy")} -{" "}
       {
         project.data.endDate
