@@ -17,7 +17,7 @@ const NAV_LINKS = [
 ---
 
 <header class="z-10 w-full">
-  <nav class="navbar px-12">
+  <nav class="flex items-center px-12">
     <div class="flex flex-auto items-center">
       <a href="/">
         <img
@@ -29,7 +29,7 @@ const NAV_LINKS = [
     </div>
 
     <ul
-      class="section-header hidden flex-auto items-center justify-end gap-6 md:menu md:menu-horizontal md:visible md:flex"
+      class="section-header md:menu md:menu-horizontal hidden flex-auto items-center justify-end gap-6 md:visible md:flex"
     >
       {
         NAV_LINKS.map(nav => (

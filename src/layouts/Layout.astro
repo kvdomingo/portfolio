@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "@/styles/base.css";
 import Navbar from "@/components/common/Navbar.astro";
 import info from "@/info.json";
@@ -67,11 +67,11 @@ const { title = info.title, spotlight = false } = Astro.props;
 
     <title>{title}</title>
 
-    <ViewTransitions />
+    <ClientRouter />
     <Umami />
   </head>
 
-  <body class="min-h-screen bg-gradient-to-b from-ctp-base to-ctp-crust">
+  <body class="from-ctp-base to-ctp-crust min-h-screen bg-gradient-to-b">
     {!spotlight && <Navbar />}
 
     <main>
@@ -85,7 +85,7 @@ const { title = info.title, spotlight = false } = Astro.props;
         margin: 0;
         padding: 0;
         font-family: "Figtree Variable", "Rubik Variable", sans-serif;
-        color: theme("colors.ctp-text.DEFAULT");
+        color: var("--primary-foreground");
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
@@ -96,13 +96,14 @@ const { title = info.title, spotlight = false } = Astro.props;
       h4,
       h5,
       h6 {
-        color: theme("colors.ctp-text.DEFAULT");
+        color: var("--primary-foreground");
       }
 
       code {
-        color: theme("colors.ctp-mauve.DEFAULT");
-        font-family: "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco,
-          Consolas, "Courier New", monospace;
+        color: var("--primary-foreground");
+        font-family:
+          "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas,
+          "Courier New", monospace;
       }
 
       .section-header {
@@ -111,7 +112,7 @@ const { title = info.title, spotlight = false } = Astro.props;
       }
 
       a[href] {
-        color: theme("colors.ctp-mauve.DEFAULT");
+        color: var("--primary");
         text-decoration: none;
       }
 
