@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "3.0.1",
   "scripts": {
-    "dev": "TAILWIND_MODE=watch astro dev",
+    "dev": "TAILWIND_MODE=watch infisical run -- astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

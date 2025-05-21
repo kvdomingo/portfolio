@@ -4,8 +4,6 @@ import cld from "@/actions/_utils/cloudinary.client";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Instagram } from "simple-icons-astro";
 
-const text = info.home.photography.text.normalize();
-
 const { carousel } = info.home.photography;
 const images = carousel.map(c => ({
   ...c,
@@ -27,7 +25,7 @@ const images = carousel.map(c => ({
     {
       images.map(im => (
         <div class="flex h-full flex-col items-center">
-          <img src={im.url} alt={im.caption} client:load loading="lazy" />
+          <img src={im.url} alt={im.caption} loading="lazy" />
         </div>
       ))
     }
