@@ -1,11 +1,12 @@
 ---
 import info from "@/info.json";
 import BeforeAfter from "./react/BeforeAfter";
+import { Button } from "@/components/ui/button";
 ---
 
 <section class="flex flex-col gap-12">
   <div>
-    <h2 class="text-xl uppercase tracking-[0.5rem]">
+    <h2 class="text-xl tracking-[0.5rem] uppercase">
       Video & Image Processing
     </h2>
     <div class="container">
@@ -18,8 +19,8 @@ import BeforeAfter from "./react/BeforeAfter";
   </div>
 
   <div>
-    <a href="/svip" class="btn btn-outline btn-accent btn-wide">
-      See in portfolio
+    <a href="/svip">
+      <Button variant="outline"> See in portfolio </Button>
     </a>
   </div>
 </section>

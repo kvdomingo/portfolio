@@ -3,6 +3,8 @@ import info from "@/info.json";
 import cld from "@/actions/_utils/cloudinary.client";
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { Instagram } from "simple-icons-astro";
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
 
 const { carousel } = info.home.photography;
 const images = carousel.map(c => ({
@@ -16,7 +18,7 @@ const images = carousel.map(c => ({
 
 <section class="flex flex-col gap-12">
   <div>
-    <h2 class="text-xl uppercase tracking-[0.5rem]">Photography</h2>
+    <h2 class="text-xl tracking-[0.5rem] uppercase">Photography</h2>
   </div>
 
   <div
@@ -25,7 +27,7 @@ const images = carousel.map(c => ({
     {
       images.map(im => (
         <div class="flex h-full flex-col items-center">
-          <img src={im.url} alt={im.caption} loading="lazy" />
+          <Image src={im.url} alt={im.caption} inferSize />
         </div>
       ))
     }
@@ -33,19 +35,20 @@ const images = carousel.map(c => ({
 
   <div class="flex flex-col justify-center gap-4 md:flex-row">
     <div>
-      <a href="/photography" class="btn btn-outline btn-accent btn-wide">
-        See in portfolio
+      <a href="/photography">
+        <Button variant="outline"> See in portfolio </Button>
       </a>
     </div>
     <div>
       <a
         href="https://instagram.com/arockentothemoon"
-        class="btn btn-outline btn-accent btn-wide"
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Instagram />
-        Instagram
+        <Button variant="outline">
+          <Instagram />
+          Instagram
+        </Button>
       </a>
     </div>
   </div>
