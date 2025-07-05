@@ -1,26 +1,31 @@
 repos:
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+  - repo: https://github.com/biomejs/pre-commit
+    rev: v2.0.6
     hooks:
-      - id: prettier
+      - id: biome-check
         additional_dependencies:
-          - prettier@3.5.3
-          - prettier-plugin-astro@0.14.1
-          - prettier-plugin-svelte@3.3.3
-          - prettier-plugin-tailwindcss@0.6.11
-          - "@trivago/prettier-plugin-sort-imports@5.2.2"
+          - "@biomejs/biome@2.0.6"
+        args:
+          - --unsafe
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
-        args: ["--maxkb=500"]
+        args: [ '--maxkb=500' ]
+      - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: mixed-line-ending
-        args: ["--fix=lf"]
+        args: [ '--fix=lf' ]
       - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
       - id: check-yaml
-  - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.16.1
+        args: [ '--allow-multiple-documents' ]
+        exclude: templates/.+\.ya?ml$
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.24.3
     hooks:
       - id: gitleaks
-        args: ["--verbose"]
+        args: [ '--verbose' ]

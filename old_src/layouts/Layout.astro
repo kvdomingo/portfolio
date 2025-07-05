@@ -1,0 +1,164 @@
+---
+import "@/styles/base.css";
+import info from "@/info.json";
+import "@fontsource-variable/figtree";
+import "@fontsource-variable/rubik";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/space-mono/400.css";
+import "@fontsource/space-mono/700.css";
+
+interface Props {
+  title?: string;
+  spotlight?: boolean;
+}
+
+const { title = info.title, spotlight = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="delegate-ch"
+      content="sec-ch-width https://res.cloudinary.com; sec-ch-dpr https://res.cloudinary.com; sec-ch-viewport-width https://res.cloudinary.com;"
+    />
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/favicon.png"
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="apple-touch-icon" href="/logo-black.png" />
+
+    <meta name="p:domain_verify" content="8e4753adcb7e777965ab4bcea65b7c85" />
+
+    <meta name="author" content="Kenneth V. Domingo" />
+
+    <meta property="og:url" content="https://kvd.studio" />
+    <meta property="og:site_name" content={info.title} />
+    <meta property="og:title" content={info.title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_PH" />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
+    />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:creator" content="@rockentothemoon" />
+    <meta property="twitter:site" content="@rockentothemoon" />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
+    />
+    <meta name="twitter:title" content={info.title} />
+    <meta name="twitter:image:alt" content={info.title} />
+
+    <meta
+      name="google-site-verification"
+      content="O8dXlE8aWPqHSuA4FwbY6-L1AjW7ch4613PIr_5_fII"
+    />
+
+    <title>{title}</title>
+
+    <ViewTransitions />
+    <Umami />
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-b from-ctp-base to-ctp-crust">
+    {!spotlight && <Navbar />}
+
+    <main>
+      <slot />
+    </main>
+
+    <Posthog />
+
+    <style is:global>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Figtree Variable", "Rubik Variable", sans-serif;
+        color: theme("colors.ctp-text.DEFAULT");
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: theme("colors.ctp-text.DEFAULT");
+      }
+
+      code {
+        color: theme("colors.ctp-mauve.DEFAULT");
+        font-family: "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco,
+          Consolas, "Courier New", monospace;
+      }
+
+      .section-header {
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+
+      a[href] {
+        color: theme("colors.ctp-mauve.DEFAULT");
+        text-decoration: none;
+      }
+
+      ol.reference {
+        counter-reset: spp-counter;
+        list-style: none;
+      }
+
+      ol.reference li {
+        counter-increment: spp-counter;
+      }
+
+      ol.reference li::before {
+        content: "[" counter(spp-counter) "]";
+        margin-left: -2rem;
+        margin-right: 1rem;
+      }
+
+      .math-container {
+        overflow-x: auto;
+      }
+
+      .gallery {
+        width: 100%;
+      }
+
+      .gallery-sizer,
+      .gallery-item {
+        width: 100%;
+      }
+
+      @media screen and (min-width: theme("screens.sm")) {
+        .gallery-sizer,
+        .gallery-item {
+          width: 50%;
+        }
+      }
+
+      @media screen and (min-width: theme("screens.md")) {
+        .gallery-sizer,
+        .gallery-item {
+          width: 33.333%;
+        }
+      }
+
+      @media screen and (min-width: theme("screens.lg")) {
+        .gallery-sizer,
+        .gallery-item {
+          width: 25%;
+        }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+---
+import { actions } from "astro:actions";
+import info from "@/info.json";
+
+export function getStaticPaths() {
+  return info.photography.clients.map(({ slug }) => ({ params: { slug } }));
+}
+
+const { clientSlug } = Astro.params;
+
+const title =
+  info.photography.clients.find((client) => client.slug === clientSlug)?.name ??
+  "";
+
+const { data: images = [] } = await Astro.callAction(actions.listPhotos, {
+  slug: title,
+  isClient: true,
+});
+---
+
+<Layout title={`${title} | Clients | KVD Studio`}>
+  <PhotographyLayout>
+    <div class="breadcrumbs px-6">
+      <ul>
+        <li>
+          <a href="/photography/clients"> Clients</a>
+        </li>
+        <li>{title}</li>
+      </ul>
+    </div>
+
+    <div class="w-full px-4">
+      <Masonry images={images} client:only="react" />
+    </div>
+  </PhotographyLayout>
+</Layout>

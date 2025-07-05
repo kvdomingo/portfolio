@@ -1,0 +1,26 @@
+---
+import { actions } from "astro:actions";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "latest" } },
+    { params: { slug: "live" } },
+    { params: { slug: "portraits" } },
+    { params: { slug: "samoetikerffa" } },
+  ];
+}
+
+const { slug = "" } = Astro.params;
+
+const title = slug[0].toUpperCase() + slug.slice(1);
+
+const { data: images = [] } = await Astro.callAction(actions.listPhotos, {
+  slug: title,
+});
+---
+
+<Layout title={`${title} | Photography | KVD Studio`}>
+  <PhotographyLayout>
+    <Gallery images={images} />
+  </PhotographyLayout>
+</Layout>
