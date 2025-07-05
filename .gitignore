@@ -26,6 +26,7 @@ dist-ssr
 # build output
 .vercel/
 .astro/
+.tanstack/
 
 # environment variables
 .env

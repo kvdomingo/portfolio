@@ -1,0 +1,687 @@
+{
+  "title": "KVD Studio",
+  "email": "hello@kvd.studio",
+  "home": {
+    "photography": {
+      "text": "As the former Executive Officer for Promotions and Documentation of UP Iris—a university-wide student organization\u2014I received and conducted training in the art of storytelling through photography. Today, I continue to draw inspiration and learnings from established photographers, both foreign and local, in order to hone my own craft. I mainly focus on concert and portrait photography. However, I do like to be well-rounded, and I don't mind venturing into street, landscape, and product photography every once in a while.",
+      "carousel": [
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/KVD-0835.jpg",
+          "caption": "John Roa at Backyard Live Episode 3 (2025-05-18)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/KVD-0663.jpg",
+          "caption": "Sunkissed Lola at Backyard Live Episode 3 (2025-05-18)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/KVD-0534.jpg",
+          "caption": "Gabba Santiago at Backyard Live Episode 3 (2025-05-18)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/KVD-0345.jpg",
+          "caption": "SOS at Backyard Live Episode 3 (2025-05-18)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20240715_29.jpg",
+          "caption": "Yujin of IVE at The 1st World Tour <Show What I Have> in Manila (2024-07-15)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20240715_40.jpg",
+          "caption": "Gaeul of IVE at The 1st World Tour <Show What I Have> in Manila (2024-07-15)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20240715_4.jpg",
+          "caption": "Wonyoung of IVE at The 1st World Tour <Show What I Have> in Manila (2024-07-15)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20240715_21.jpg",
+          "caption": "Rei of IVE at The 1st World Tour <Show What I Have> in Manila (2024-07-15)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20200213_124.jpg",
+          "caption": "6cyclemind at UP Fair: Roots 2020 (2020-02-13)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20200213_120.jpg",
+          "caption": "Moonstar88 at UP Fair: Roots 2020 (2020-02-13)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20200212_20.jpg",
+          "caption": "Gloc-9 at UP Fair: Elements 2020 (2020-02-12)",
+          "tags": []
+        },
+        {
+          "publicId": "kdphotography/portfolio/static/portfolio/media-private/live/20200213_109.jpg",
+          "caption": "Rico Blanco at UP Fair: Roots 2020 (2020-02-13)",
+          "tags": []
+        }
+      ]
+    },
+    "dev": {
+      "text": "I am a full-time software engineer and certified as a Microsoft Azure AI Engineer and Google Professional Cloud Architect. Python and TypeScript are my primary development languages, and my go-to stack is Django + React. Outside of work, I like to explore other technologies (this website is written in Astro + Svelte!). Some of my work involves architecting and developing cloud solutions, web applications, data platforms, APIs, command-line interfaces, and chat bots, among others."
+    },
+    "vip": {
+      "text": "For my undergraduate thesis, I joined the Instrumentation Physics Laboratory-Video & Image Processing subgroup. My research was initially on blood spatter analysis (BPA). Due to limited equipment, I was tasked to find a way to extract useful information from possibly incomplete measurements. This led me to the field of compressive sensing (CS), which became my main field of research. In this endeavor, I utilized various technologies such as established signal processing techniques, as well as more contemporary machine learning and artificial intelligence approaches."
+    },
+    "technologies": {
+      "backend": [
+        {
+          "name": "Python",
+          "logo": "https://www.svgrepo.com/show/354238/python.svg"
+        },
+        {
+          "name": "Django",
+          "logo": "https://www.svgrepo.com/show/353657/django-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "logo": "https://www.svgrepo.com/show/330413/fastapi.svg"
+        },
+        {
+          "name": "Flask",
+          "logo": "https://www.svgrepo.com/show/508915/flask.svg"
+        },
+        {
+          "name": "Go",
+          "logo": "https://www.svgrepo.com/show/452214/go.svg"
+        },
+        {
+          "name": "GoFiber",
+          "logo": "https://gofiber.io/assets/images/logo.svg"
+        }
+      ],
+      "frontend": [
+        {
+          "name": "TypeScript",
+          "logo": "https://www.svgrepo.com/show/354478/typescript-icon.svg"
+        },
+        {
+          "name": "React",
+          "logo": "https://www.svgrepo.com/show/452092/react.svg"
+        },
+        {
+          "name": "Svelte",
+          "logo": "https://www.svgrepo.com/show/354416/svelte-icon.svg"
+        },
+        {
+          "name": "Astro",
+          "logo": "https://www.svgrepo.com/show/373446/astro.svg"
+        },
+        {
+          "name": "TailwindCSS",
+          "logo": "https://www.svgrepo.com/show/374118/tailwind.svg"
+        },
+        {
+          "name": "Next.js",
+          "logo": "https://www.svgrepo.com/show/354113/nextjs-icon.svg"
+        }
+      ],
+      "infra": [
+        {
+          "name": "Docker",
+          "logo": "https://www.svgrepo.com/show/448221/docker.svg"
+        },
+        {
+          "name": "Kubernetes",
+          "logo": "https://www.svgrepo.com/show/448233/kubernetes.svg"
+        },
+        {
+          "name": "Terraform",
+          "logo": "https://www.svgrepo.com/show/448253/terraform.svg"
+        },
+        {
+          "name": "Ansible",
+          "logo": "https://www.svgrepo.com/show/373429/ansible.svg"
+        }
+      ],
+      "cloud": [
+        {
+          "name": "GitHub",
+          "logo": "https://www.svgrepo.com/show/512317/github-142.svg"
+        },
+        {
+          "name": "Google Cloud Platform",
+          "logo": "https://www.svgrepo.com/show/353805/google-cloud.svg"
+        },
+        {
+          "name": "Amazon Web Services",
+          "logo": "https://www.svgrepo.com/show/448266/aws.svg"
+        },
+        {
+          "name": "Microsoft Azure",
+          "logo": "https://www.svgrepo.com/show/331302/azure-v2.svg"
+        },
+        {
+          "name": "Vercel",
+          "logo": "https://www.svgrepo.com/show/378475/vercel-fill.svg"
+        },
+        {
+          "name": "Firebase",
+          "logo": "https://www.svgrepo.com/show/373595/firebase.svg"
+        }
+      ]
+    }
+  },
+  "about": {
+    "photo": "kdphotography/portfolio/static/portfolio/media-private/about/bio",
+    "text": "Hi, I'm Kenneth! I'm a software engineer based in the Philippines whose daily tasks revolve around a healthy mix of software, DevSecOps, data, analytics, and AI engineering. I am also a Microsoft-certified Azure AI Engineer, and a Google Cloud Certified Professional Cloud Architect. I graduated with a degree in Applied Physics from the University of the Philippines, and for my undergraduate thesis, I joined the Instrumentation Physics Laboratory with a research concentration on signal, video, and image processing. Outside of work, a like to dabble in a bit of everything like photography, music, gaming, mechanical keyboards, to name a few. \n\nFeel free to contact me for inquiries, collaborations, consultations, hiring, and other concerns!"
+  },
+  "cv": {
+    "education": {
+      "icon": "",
+      "data": [
+        {
+          "title": "University of the Philippines",
+          "subtitle": "National Institute of Physics",
+          "subtitleLink": "https://nip.upd.edu.ph",
+          "body": "B.S. Applied Physics (Major in Instrumentation)",
+          "bodyLink": "",
+          "caption": "Thesis: Compressive sensing: Applications from 1-D to N-D",
+          "captionLink": "",
+          "startDate": "2015-08-03",
+          "endDate": "2020-07-26"
+        }
+      ]
+    },
+    "certification": {
+      "icon": "",
+      "data": [
+        {
+          "title": "Azure AI Engineer Associate",
+          "subtitle": "Microsoft",
+          "subtitleLink": "https://learn.microsoft.com/api/credentials/share/en-us/KennethDomingo-4666/970CBB2EEB4ACD4A?sharingId=791A05E133CA70AF",
+          "body": "",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2024-05-30",
+          "endDate": null
+        },
+        {
+          "title": "Professional Cloud Architect",
+          "subtitle": "Google Cloud",
+          "subtitleLink": "https://www.credential.net/0300e26a-fcdc-40db-a4a0-689fad65ac9b#gs.755e2e",
+          "body": "",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2021-07-22",
+          "endDate": null
+        }
+      ]
+    },
+    "publication": {
+      "icon": "",
+      "data": [
+        {
+          "title": "Compressively sampled speech: How good is the recovery?",
+          "subtitle": "Proceedings of the Samahang Pisika ng Pilipinas 38 SPP-2020-4C-04",
+          "subtitleLink": "https://paperview.spp-online.org/proceedings/article/view/SPP-2020-4C-04",
+          "body": "Modern signal acquisition technologies are made possible by the Nyquist-Shannon sampling theorem (NST). However, this paradigm is extremely wasteful as the signal is compressed before storing it by systematically discarding imperceptible information. Compressive sensing (CS) aims to directly sense the relevant information. Current literature focus either on formulating more computationally-efficient algorithms, or methods which improve the reconstruction quality. In this paper, we quantify the reconstruction quality of compressively sampled speech with a perceptually intuitive metric―the Perceptual Evaluation of Speech Quality (PESQ)―and with the standard average segmental SNR (SNRseg). The quality of recovery of compressively sampled speech evaluated using PESQ is dependent on the compression ratio, and independent of the number of subbands used to represent the signal in the spectrogram domain.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2020-09-11",
+          "endDate": "2020-09-11"
+        },
+        {
+          "title": "Frequency domain reconstruction of stochastically sampled signals based on compressive sensing",
+          "subtitle": "Proceedings of the Samahang Pisika ng Pilipinas 37 SPP-2019-PB-38",
+          "subtitleLink": "https://paperview.spp-online.org/proceedings/article/view/SPP-2019-PB-38",
+          "body": "The field of compressed sensing (CS) has recently been gaining traction as a viable workaround to the Nyquist-Shannon sampling theorem (NSST). This allows highly accurate signal recovery from incomplete frequency information. In this paper, we investigate the ability of compressive sampling to recover the higher harmonics of a recorded guitar signal. Sampling is done in the temporal domain, and the reconstruction is performed in the frequency domain. It is shown that even when taking a small number of random samples corresponding to some underlying sub-Nyquist rate, the base frequency, including up to fifth-order harmonics, can be recovered. The performance of three algorithms, namely least absolute shrinkage and selection operator (LASSO), orthogonal matching pursuit (OMP), and smoothed L0 norm (SL0) algorithm in terms of computation time and reconstruction error (cosine similarity) were investigated.",
+          "bodyLink": "",
+          "caption": "",
+          "captionLink": "",
+          "startDate": "2019-05-31",
+          "endDate": "2019-05-31"
+        }
+      ]
+    }
+  },
+  "photography": {
+    "clients": [
+      {
+        "name": "UP Corps of Sponsors",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/04_upcos.jpg",
+        "slug": "up-cos"
+      },
+      {
+        "name": "UP Reserve Officers' Training Corps",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/03_uprotc.jpg",
+        "slug": "uprotc"
+      },
+      {
+        "name": "UP Concert Chorus",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients/upcc/RITMO1-1.jpg",
+        "slug": "upcc"
+      },
+      {
+        "name": "UP Phi Delta Alpha Sorority",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/05_uppda.jpg",
+        "slug": "up-pda"
+      },
+      {
+        "name": "UP Sigma Alpha Nu Sorority",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/02_upsan2019.jpg",
+        "slug": "up-san"
+      },
+      {
+        "name": "UP Club for the Environment and Tourism",
+        "cover": "kdphotography/portfolio/static/portfolio/media-private/clients-landing/01_ecotour.jpg",
+        "slug": "up-ecotour"
+      }
+    ]
+  },
+  "svip": {
+    "courses": [
+      {
+        "name": "App Physics 187",
+        "slug": "ap187",
+        "title": "Photonics and Applied Optics",
+        "cover": "svip/187/13-PhotoStereo/intensity_maps.png",
+        "description": "Design of Data Acquisition Systems (DAQ), Signal Processing-based instrumentation systems, current topics and techniques for engineering and design of optical instruments, non-destructive testing/measurement using optical methods, interferometry",
+        "posts": []
+      },
+      {
+        "name": "App Physics 186",
+        "slug": "ap186",
+        "title": "Instrumentation Physics II",
+        "cover": "svip/186/17-NeuralNetworks/func-fit.png",
+        "description": "Imaging systems, image processing, multidimensional detection techniques, pattern recognition",
+        "posts": []
+      },
+      {
+        "name": "App Physics 156",
+        "slug": "ap156",
+        "title": "Computer Methods in Physics II",
+        "cover": "svip/156/Proj-MultipoleExpansion/117.png",
+        "description": "Advanced computer programming methods, numerical modeling and simulations, discrete models, stochastic methods, current approaches in numerical modeling",
+        "posts": []
+      }
+    ]
+  },
+  "dev": {
+    "technologies": {
+      "python": {
+        "label": "Python",
+        "icon": "Python",
+        "color": "#3776AB"
+      },
+      "javascript": {
+        "label": "JavaScript",
+        "icon": "Javascript",
+        "color": "#F7DF1E"
+      },
+      "typescript": {
+        "label": "TypeScript",
+        "icon": "Typescript",
+        "color": "#3178C6"
+      },
+      "fastapi": {
+        "label": "FastAPI",
+        "icon": "Fastapi",
+        "color": "#009688"
+      },
+      "django": {
+        "label": "Django",
+        "icon": "Django",
+        "color": "#092E20"
+      },
+      "svelte": {
+        "label": "Svelte",
+        "icon": "Svelte",
+        "color": "#FF3E00"
+      },
+      "sveltekit": {
+        "label": "SvelteKit",
+        "icon": "Svelte",
+        "color": "#FF3E00"
+      },
+      "react": {
+        "label": "React",
+        "icon": "React",
+        "color": "#61DAFB"
+      },
+      "docker": {
+        "label": "Docker",
+        "icon": "Docker",
+        "color": "#2496ED"
+      },
+      "kubernetes": {
+        "label": "Kubernetes",
+        "icon": "Kubernetes",
+        "color": "#326CE5"
+      },
+      "helm": {
+        "label": "Helm",
+        "icon": "Helm",
+        "color": "#0F1689"
+      },
+      "apache spark": {
+        "label": "Apache Spark",
+        "icon": "Apachespark",
+        "color": "#E25A1C"
+      },
+      "apache superset": {
+        "label": "Apache Superset",
+        "icon": "Apachesuperset",
+        "color": "#20A6C9"
+      },
+      "apache hive": {
+        "label": "Apache Hive",
+        "icon": "Apachehive",
+        "color": "#FDEE21"
+      },
+      "apache hive metastore": {
+        "label": "Apache Hive Metastore",
+        "icon": "Apachehive",
+        "color": "#FDEE21"
+      },
+      "trino": {
+        "label": "Trino",
+        "icon": "Trino",
+        "color": "#DD00A1"
+      },
+      "openstreetmap": {
+        "label": "OpenStreetMap",
+        "icon": "Openstreetmap",
+        "color": "#7EBC6F"
+      },
+      "maplibre": {
+        "label": "MapLibre",
+        "icon": "Maplibre",
+        "color": "#396CB2"
+      },
+      "shadcn": {
+        "label": "Shadcn UI",
+        "icon": "Shadcnui",
+        "color": "#000000"
+      },
+      "next.js": {
+        "label": "Next.js",
+        "icon": "Nextdotjs",
+        "color": "#000000"
+      },
+      "openai": {
+        "label": "OpenAI",
+        "icon": "Openai",
+        "color": "#412991"
+      },
+      "tailwindcss": {
+        "label": "TailwindCSS",
+        "icon": "Tailwindcss",
+        "color": "#06B6D4"
+      },
+      "webassembly": {
+        "label": "WebAssembly",
+        "icon": "Webassembly",
+        "color": "#654FF0"
+      },
+      "ffmpeg": {
+        "label": "FFmpeg",
+        "icon": "Ffmpeg",
+        "color": "#007808"
+      },
+      "material ui": {
+        "label": "Material UI",
+        "icon": "Mui",
+        "color": "#007FFF"
+      },
+      "postgresql": {
+        "label": "PostgreSQL",
+        "icon": "Postgresql",
+        "color": "#4169E1"
+      },
+      "flask": {
+        "label": "Flask",
+        "icon": "Flask",
+        "color": "#000000"
+      },
+      "sphinx": {
+        "label": "Sphinx",
+        "icon": "Sphinx",
+        "color": "#000000"
+      },
+      "discord": {
+        "label": "Discord API",
+        "icon": "Discord",
+        "color": "#5865F2"
+      },
+      "twitter": {
+        "label": "Twitter API",
+        "icon": "X",
+        "color": "#000000"
+      },
+      "pandas": {
+        "label": "Pandas",
+        "icon": "Pandas",
+        "color": "#150458"
+      },
+      "polars": {
+        "label": "Polars",
+        "icon": "Polars",
+        "color": "#CD792C"
+      },
+      "d3": {
+        "label": "D3.js",
+        "icon": "D3dotjs",
+        "color": "#F9A03C"
+      },
+      "redis": {
+        "label": "Redis",
+        "icon": "Redis",
+        "color": "#FF4438"
+      },
+      "numpy": {
+        "label": "Numpy",
+        "icon": "Numpy",
+        "color": "#013243"
+      },
+      "material design bootstrap": {
+        "label": "Material Design Bootstrap",
+        "icon": "Materialdesign",
+        "color": "#757575"
+      },
+      "chart.js": {
+        "label": "Chart.js",
+        "icon": "Chartdotjs",
+        "color": "#FF6384"
+      },
+      "mapbox": {
+        "label": "Mapbox",
+        "icon": "Mapbox",
+        "color": "#000000"
+      },
+      "astro": {
+        "label": "Astro",
+        "icon": "Astro",
+        "color": "#BC52EE"
+      },
+      "bun": {
+        "label": "Bun",
+        "icon": "Bun",
+        "color": "#ffffff"
+      },
+      "google cloud platform": {
+        "label": "Google Cloud Platform",
+        "icon": "Googlecloud",
+        "color": "#4285F4"
+      },
+      "aws": {
+        "label": "Amazon Web Services",
+        "icon": "Amazonwebservices",
+        "color": "#FF9900"
+      },
+      "bigquery": {
+        "label": "Google BigQuery",
+        "icon": "Googlebigquery",
+        "color": "#669DF6"
+      },
+      "vercel": {
+        "label": "Vercel",
+        "icon": "Vercel",
+        "color": "#000000"
+      },
+      "vite": {
+        "label": "Vite",
+        "icon": "Vite",
+        "color": "#646CFF"
+      },
+      "github": {
+        "label": "GitHub",
+        "icon": "Github",
+        "color": "#181717"
+      },
+      "github actions": {
+        "label": "GitHub Actions",
+        "icon": "Github",
+        "color": "#181717"
+      },
+      "prometheus": {
+        "label": "Prometheus",
+        "icon": "Prometheus",
+        "color": "#E6522C"
+      },
+      "grafana": {
+        "label": "Grafana",
+        "icon": "Grafana",
+        "color": "#F46800"
+      },
+      "sentry": {
+        "label": "Sentry",
+        "icon": "Sentry",
+        "color": "#362D59"
+      },
+      "swagger ui": {
+        "label": "Swagger UI",
+        "icon": "Swagger",
+        "color": "#85EA2D"
+      },
+      "mkdocs": {
+        "label": "Mkdocs",
+        "icon": "Materialformkdocs",
+        "color": "#526CFE"
+      },
+      "supabase": {
+        "label": "Supabase",
+        "icon": "Supabase",
+        "color": "#3FCF8E"
+      },
+      "webpack": {
+        "label": "Webpack",
+        "icon": "Webpack",
+        "color": "#8DD6F9"
+      },
+      "express": {
+        "label": "Express",
+        "icon": "Express",
+        "color": "#ffffff"
+      },
+      "hono": {
+        "label": "Hono",
+        "icon": "Hono",
+        "color": "#E36002"
+      },
+      "node.js": {
+        "label": "Node.js",
+        "icon": "Nodedotjs",
+        "color": "#5FA04E"
+      },
+      "terraform": {
+        "label": "Terraform",
+        "icon": "Terraform",
+        "color": "#844FBA"
+      },
+      "langchain": {
+        "label": "LangChain",
+        "icon": "Langchain",
+        "color": "#1C3C3C"
+      },
+      "auth0": {
+        "label": "Auth0",
+        "icon": "Auth0",
+        "color": "#EB5424"
+      },
+      "snowflake": {
+        "label": "Snowflake",
+        "icon": "Snowflake",
+        "color": "#29B5E8"
+      },
+      "jenkins": {
+        "label": "Jenkins",
+        "icon": "Jenkins",
+        "color": "#D24939"
+      },
+      "chakra ui": {
+        "label": "Chakra UI",
+        "icon": "Chakraui",
+        "color": "#319795"
+      },
+      "digitalocean": {
+        "label": "DigitalOcean",
+        "icon": "Digitalocean",
+        "color": "#0080FF"
+      },
+      "go": {
+        "label": "Go",
+        "icon": "Go",
+        "color": "#00ADD8"
+      },
+      "graphql": {
+        "label": "GraphQL",
+        "icon": "Graphql",
+        "color": "#E10098"
+      },
+      "linux": {
+        "label": "Linux",
+        "icon": "Linux",
+        "color": "#FCC624"
+      },
+      "proxmox": {
+        "label": "Proxmox",
+        "icon": "Proxmox",
+        "color": "#E57000"
+      },
+      "k3s": {
+        "label": "K3s",
+        "icon": "K3s",
+        "color": "#FFC61C"
+      },
+      "ansible": {
+        "label": "Ansible",
+        "icon": "Ansible",
+        "color": "#EE0000"
+      },
+      "raspberry pi": {
+        "label": "Raspberry Pi",
+        "icon": "Raspberrypi",
+        "color": "#A22846"
+      },
+      "pfsense": {
+        "label": "pfSense",
+        "icon": "Pfsense",
+        "color": "#212121"
+      },
+      "traefik": {
+        "label": "Traefik",
+        "icon": "Traefikproxy",
+        "color": "#24A1C1"
+      },
+      "pi-hole": {
+        "label": "Pi-hole",
+        "icon": "Pihole",
+        "color": "#96060C"
+      }
+    }
+  }
+}
