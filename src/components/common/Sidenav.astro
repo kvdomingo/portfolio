@@ -11,23 +11,30 @@ const TABS = [
 const { pathname } = Astro.url;
 ---
 
-<ul class="menu menu-lg items-end">
+<ul class="flex flex-col items-end gap-4">
   {
-    TABS.map(tab => (
-      <li>
-        <a
-          class:list={[
-            {
-              active: tab.path.includes("/clients")
-                ? pathname.includes("/clients") && tab.path.includes("/clients")
-                : pathname === `/photography${tab.path}`,
-            },
-          ]}
-          href={`/photography${tab.path}`}
-        >
-          {tab.label}
-        </a>
-      </li>
-    ))
+    TABS.map(tab => {
+      const isActive = tab.path.includes("/clients")
+        ? pathname.includes("/clients") && tab.path.includes("/clients")
+        : pathname === `/photography${tab.path}`;
+
+      return (
+        <li>
+          <a
+            class:list={[
+              "rounded px-4 py-2",
+              {
+                "bg-primary text-primary-foreground hover:bg-primary/90":
+                  isActive,
+                "hover:bg-primary/10": !isActive,
+              },
+            ]}
+            href={`/photography${tab.path}`}
+          >
+            {tab.label}
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
