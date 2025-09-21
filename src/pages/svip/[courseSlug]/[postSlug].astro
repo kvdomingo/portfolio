@@ -1,8 +1,8 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
-import ClientDate from "@/components/common/svelte/ClientDate.svelte";
+import ClientDate from "@/components/common/ClientDate.astro";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
+import { getCollection, getEntry, render } from "astro:content";
 
 export async function getStaticPaths() {
   const svipEntries = await getCollection("svip");

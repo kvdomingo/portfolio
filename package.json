@@ -24,7 +24,7 @@
     "@react-hook/window-size": "^3.1.1",
     "@tanstack/query-core": "^4.36.1",
     "@tanstack/svelte-query": "^4.36.1",
-    "caniuse-lite": "^1.0.30001707",
+    "caniuse-lite": "^1.0.30001743",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.6.0",
     "date-fns": "^4.1.0",
