@@ -1,7 +1,8 @@
+import type { Dev } from "@content";
 import ProjectItem from "./ProjectItem";
 
 interface ProjectGroupProps {
-  projects: any[];
+  projects: Dev[];
   status: "live" | "in progress" | "archived";
 }
 

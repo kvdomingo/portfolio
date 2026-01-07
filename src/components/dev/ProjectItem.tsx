@@ -1,3 +1,4 @@
+import type { Dev } from "@content";
 import dateFormat from "dateformat";
 import { FolderLock } from "lucide-react";
 import { buildCldUrl } from "@/utils/cloudinary.client";
@@ -5,7 +6,7 @@ import Mdx from "../common/Mdx";
 import TechBadge from "../icons/TechBadge";
 
 interface ProjectItemProps {
-  project: any;
+  project: Dev;
 }
 
 export default function ProjectItem({ project }: ProjectItemProps) {
@@ -18,7 +19,7 @@ export default function ProjectItem({ project }: ProjectItemProps) {
       <div>
         <a
           href={
-            project.status === "archived" || project.confidential
+            project.status === "archived" || project.confidential || project.url == null
               ? undefined
               : project.url
           }
@@ -47,7 +48,7 @@ export default function ProjectItem({ project }: ProjectItemProps) {
             <p>
               🌏{" "}
               <a
-                href={project.organizationUrl}
+                href={project.organizationUrl ?? undefined}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-ctp-mauve hover:underline"

@@ -6,17 +6,20 @@ interface TechBadgeProps {
 }
 
 export default function TechBadge({ name }: TechBadgeProps) {
-  const { technologies } = info.dev as any;
-  const si = SimpleIcons as any;
+  const { technologies } = info.dev as {
+    technologies: Record<string, { label: string; icon: string; color: string }>;
+  };
+  const si = SimpleIcons as unknown as Record<string, SimpleIcons.IconType>;
 
-  let Icon: any = null;
+  let Icon: SimpleIcons.IconType | null = null;
   let obj: { label: string; icon: string; color: string } | null = null;
   let iconExists = false;
 
   if (Object.keys(technologies).includes(name)) {
     obj = technologies[name];
-    if (Object.keys(si).includes(obj?.icon)) {
-      Icon = si[obj?.icon];
+
+    if (obj?.icon && Object.keys(si).includes(`Si${obj.icon}`)) {
+      Icon = si[`Si${obj.icon}`];
       iconExists = true;
     }
   }
@@ -27,7 +30,7 @@ export default function TechBadge({ name }: TechBadgeProps) {
         iconExists ? "flex gap-1" : ""
       }`}
     >
-      {iconExists ? (
+      {iconExists && Icon ? (
         <>
           <Icon color={obj?.color} size={16} />
           {obj?.label.toLowerCase() ?? name}
