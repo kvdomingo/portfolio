@@ -1,6 +1,25 @@
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/mocha.css";
 
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "studio";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-primary: #818cf8;
+  --color-secondary: #1fb2a6;
+  --color-accent: #ffffff;
+  --color-neutral: #2a323c;
+  --color-base-100: #321e81;
+  --color-base-200: #1e1b4b;
+  --color-info: #3abff8;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #f87272;
+}
+
 body {
   color: var(--color-ctp-text);
   margin: 0;
