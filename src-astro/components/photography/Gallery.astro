@@ -1,0 +1,14 @@
+---
+import Masonry from "./react/Masonry";
+import type { ResourceApiResponse } from "cloudinary";
+
+interface Props {
+  images: Array<ResourceApiResponse["resources"][number]>;
+}
+
+const { images } = Astro.props;
+---
+
+<div class="w-full px-4">
+  <Masonry images={images} client:only="react" />
+</div>

@@ -1,0 +1,75 @@
+---
+import dateFormat from "dateformat";
+
+interface Props {
+  data: Record<string, string>;
+}
+
+const { data } = Astro.props;
+---
+
+<li class="ml-[1.5rem] mt-[1.5rem]">
+  <div
+    class="absolute -ml-[2rem] h-[1rem] w-[1rem] rounded-[50%] border-2 border-solid border-primary bg-ctp-mauve"
+  >
+  </div>
+  <div class="flex flex-col gap-4">
+    <div class="-mt-[0.5rem]">
+      <div class="grid md:grid-cols-2">
+        <h5 class="text-lg">{data.title}</h5>
+        <div class="flex justify-start text-gray-300 small-caps md:justify-end">
+          🕑{dateFormat(new Date(data.startDate), "mmm yyyy")}
+          {
+            data.endDate === ""
+              ? " – present"
+              : data.endDate == null
+                ? ""
+                : ` – ${dateFormat(new Date(data.endDate), "mmm yyyy")}`
+          }
+        </div>
+      </div>
+      {
+        data.subtitleLink ? (
+          <a href={data.subtitleLink}>{data.subtitle}</a>
+        ) : (
+          <p>{data.subtitle}</p>
+        )
+      }
+    </div>
+
+    <slot>
+      <p>
+        {
+          typeof data.body === "string" ? (
+            data.body
+          ) : Array.isArray(data.body) ? (
+            <ul class="px-4">
+              {(data.body as string[]).map(item => (
+                <li class="list-disc">{item}</li>
+              ))}
+            </ul>
+          ) : null
+        }
+      </p>
+      {
+        data.bodyLink ? (
+          <div>
+            <a href={data.bodyLink} class="btn btn-outline btn-accent btn-sm">
+              See in portfolio
+            </a>
+          </div>
+        ) : null
+      }
+    </slot>
+
+    {
+      data.captionLink ? (
+        <a href={data.captionLink} class="text-sm">
+          {data.caption}
+        </a>
+      ) : (
+        <p class="text-sm">{data.caption}</p>
+      )
+    }
+  </div>
+</li>

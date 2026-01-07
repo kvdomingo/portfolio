@@ -1,0 +1,99 @@
+---
+title: Azurite setup guide for local blob storage emulation
+summary: Use Azurite to locally emulate Azure Storage for development and testing.
+created: 2024-09-20T05:33:00.000Z
+keywords:
+  - tech
+  - software
+is_draft: false
+---
+
+Azurite is Microsoft’s official Azure Storage local
+emulator. It implements the full Azure Storage API, so
+you can use the official Azure SDKs to
+programmatically interact with it. When developing
+apps that need to interact with Azure Storage, you’ll
+want to test locally first before interacting with live
+data. Follow this guide to launch your own local
+instance of Azurite.
+
+#### Prerequisites
+
+- Docker
+- [Azurite Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer)
+
+#### Setup
+
+Copy the following `docker-compose.yml`:
+
+```yaml
+services:
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    restart: unless-stopped
+    environment:
+      AZURITE_ACCOUNT_NAME: ${AZURITE_ACCOUNT_NAME}
+      AZURITE_ACCOUNT_KEY: ${AZURITE_ACCOUNT_KEY}
+      AZURITE_CONTAINER_BLOB_URL: ${AZURITE_CONTAINER_BLOB_URL}
+      AZURITE_ACCOUNTS: ${AZURITE_ACCOUNTS}
+      MODE: ${MODE}
+    ports:
+      - "10000-10002:10000-10002"
+    volumes:
+      - ./azurite:/data
+```
+
+Use the following environment variables in your `.envrc`:
+
+```shell
+# These only work for local emulation and are safe to commit
+export AZURITE_ACCOUNT_NAME="devstoreaccount1"
+export AZURITE_ACCOUNT_KEY="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" #gitleaks:allow
+export AZURITE_CONTAINER_BLOB_URL="http://localhost:10000/${AZURITE_ACCOUNT_NAME}"
+export AZURITE_ACCOUNTS="${AZURITE_ACCOUNT_NAME}:${AZURITE_ACCOUNT_KEY}"
+```
+
+Spin up the Azurite instance:
+
+```shell
+docker compose up --detach
+```
+
+Open Azure Storage Explorer. In the Explorer sidebar, right click on **Storage
+Accounts** and click "Connect to Azure Storage…". This will bring up the connection wizard.
+At the "Select Resource" step, select "Local storage emulator".
+At the "Enter Connection Info" step, the default values should already be entered, including
+the account name and account key. Only change "Display name" to a user-friendly value,
+and make sure "Use HTTPS" is unchecked.
+At the "Summary" step click on "Connect".
+The local storage emulator should now show up in the main GUI Explorer.
+
+Under your local storage account, you should see entries for Blob Containers, Queues,
+and Tables. Right click on Blob Containers, then select "Create Blob Container". For
+simplicity, use the same name that you will be using for the blob container in production.
+
+You should now see the blob container in the Explorer. You can now interact with the
+blob container to perform actions such as directly uploading/downloading files.
+
+In order to programmatically connect to your local blob container, here is a minimum working
+example using the Azure SDK for Python:
+
+```python
+from azure.storage.blob import BlobServiceClient
+from where_you_store_your_envs import AZURITE_ACCOUNT_KEY, AZURITE_ACCOUNT_NAME
+
+account_url = f"http://localhost:10000/{AZURITE_ACCOUNT_NAME}"
+blob_service_client = BlobServiceClient(account_url, credential=AZURITE_ACCOUNT_KEY)
+container_name = "your-container-name"
+client = blob_service_client.get_container_client(container_name)
+
+# `client` is the blob container client
+# You can now interact with the blob container and perform actions
+# such as client.list_blobs() etc.
+client.list_blobs()
+```
+
+To translate this into prod, simply replace `account_url` and `container_name`
+with the appropriate values, and replace `AZURITE_ACCOUNT_KEY`
+with the storage account key, which you can get via the Azure portal or through the
+`az` CLI.

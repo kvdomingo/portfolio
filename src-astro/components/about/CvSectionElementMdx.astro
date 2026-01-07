@@ -1,0 +1,103 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import {
+  differenceInMonths,
+  differenceInYears,
+  formatDuration,
+} from "date-fns";
+import dateFormat from "dateformat";
+
+interface Props {
+  data: CollectionEntry<"workExperience">;
+}
+
+const { data } = Astro.props;
+
+const { Content } = await render(data);
+
+const formattedStartDate = dateFormat(data.data.startDate, "mmm yyyy");
+
+const formattedEndDate =
+  data.data.endDate == null
+    ? "present"
+    : `${dateFormat(data.data.endDate, "mmm yyyy")}`;
+
+const diffYears = differenceInYears(
+  data.data.endDate ?? new Date(),
+  data.data.startDate,
+);
+
+const diffMonths = differenceInMonths(
+  data.data.endDate ?? new Date(),
+  data.data.startDate,
+);
+
+const duration = formatDuration(
+  {
+    years: diffYears,
+    months: Math.max(1, diffMonths % 12),
+  },
+  { format: ["years", "months"] },
+);
+---
+
+<li class="ml-[1.5rem] mt-[1.5rem]">
+  <div
+    class="absolute -ml-[2rem] h-[1rem] w-[1rem] rounded-[50%] border-2 border-solid border-primary bg-ctp-mauve"
+  >
+  </div>
+  <div class="flex flex-col gap-4">
+    <div class="-mt-[0.5rem]">
+      <h5 class="text-lg">{data.data.title}</h5>
+      {
+        data.data.subtitleLink ? (
+          <a href={data.data.subtitleLink}>{data.data.subtitle}</a>
+        ) : (
+          <p>{data.data.subtitle}</p>
+        )
+      }
+      <div class="text-gray-400 small-caps">
+        {formattedStartDate} – {formattedEndDate} • {duration}
+      </div>
+    </div>
+
+    <slot>
+      <div class="grid grid-cols-1 md:grid-cols-4">
+        <div class="list-styled col-span-1 md:col-span-3">
+          <Content />
+        </div>
+        <div></div>
+      </div>
+      {
+        data.data.bodyLink ? (
+          <div>
+            <a
+              href={data.data.bodyLink}
+              class="btn btn-outline btn-accent btn-sm"
+            >
+              See in portfolio
+            </a>
+          </div>
+        ) : null
+      }
+    </slot>
+
+    {
+      data.data.captionLink ? (
+        <a href={data.data.captionLink} class="text-sm">
+          {data.data.caption}
+        </a>
+      ) : (
+        <p class="text-sm">{data.data.caption}</p>
+      )
+    }
+  </div>
+</li>
+
+<style is:inline>
+  .list-styled ul {
+    list-style-position: outside;
+    list-style-type: disc;
+    padding-left: 1rem;
+  }
+</style>

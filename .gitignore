@@ -1,9 +1,18 @@
 # build output
 dist/
+dist-ssr/
+*.local
 .vercel/
+.output/
+.vinxi/
+.velite/
+.tanstack/
+.nitro/
+.wrangler/
 
 # generated types
 .astro/
+routeTree.gen.ts
 
 # dependencies
 node_modules/

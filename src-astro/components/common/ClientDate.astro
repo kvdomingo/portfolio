@@ -1,0 +1,13 @@
+---
+import { default as dateFormat } from "dateformat";
+
+interface Props {
+  date: string;
+}
+
+const { date } = Astro.props;
+
+const formatted = dateFormat(date, "HH:MM, d mmm yyyy");
+---
+
+🕑{formatted}

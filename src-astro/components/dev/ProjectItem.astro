@@ -1,0 +1,87 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
+import dateFormat from "dateformat";
+import TechBadge from "../icons/TechBadge.astro";
+import { FolderLock } from "lucide-astro";
+import { render } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"dev">;
+}
+
+const { project } = Astro.props;
+
+const { Content } = await render(project);
+---
+
+<div
+  class:list={[
+    "mb-8 grid grid-cols-1 place-content-start items-start gap-8 border-t border-solid border-slate-600 pt-8 md:grid-cols-2",
+    {
+      "items-center": project.data.confidential,
+    },
+  ]}
+>
+  <div>
+    <a
+      href={project.data.status === "archived" || project.data.confidential
+        ? undefined
+        : project.data.url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {
+        project.data.confidential || !project.data.cover ? (
+          <FolderLock class="mx-auto" size="4rem" />
+        ) : (
+          <img
+            src={buildCldUrl(project.data.cover)}
+            alt={project.data.title}
+            class="mx-auto aspect-video h-[300px] w-auto object-cover"
+          />
+        )
+      }
+    </a>
+  </div>
+
+  <div>
+    <div>
+      <h4 class="text-xl">{project.data.title}</h4>
+    </div>
+
+    {
+      project.data.organization && (
+        <div class="my-4 flex place-items-center">
+          <p>
+            🌏
+            <a
+              href={project.data.organizationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.data.organization}
+            </a>
+          </p>
+        </div>
+      )
+    }
+
+    <p class="text-gray-400 small-caps">
+      {dateFormat(new Date(project.data.startDate), "mmm yyyy")} -{" "}
+      {
+        project.data.endDate
+          ? dateFormat(new Date(project.data.endDate), "mmm yyyy")
+          : "present"
+      }
+    </p>
+
+    <div class="my-8">
+      <Content />
+    </div>
+
+    <div class="flex flex-wrap">
+      {project.data.technologies.map(tech => <TechBadge name={tech} />)}
+    </div>
+  </div>
+</div>

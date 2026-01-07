@@ -1,0 +1,70 @@
+---
+title: Giga DataOps Platform
+url: https://sync.giga.global
+organization: Thinking Machines Data Science
+organizationUrl: https://thinkingmachin.es
+startDate: 2023-07-01
+endDate: 2024-09-06
+technologies:
+  - python
+  - dagster
+  - fastapi
+  - postgresql
+  - redis
+  - typescript
+  - react
+  - vite
+  - tailwindcss
+  - carbon design system
+  - swagger ui
+  - docker
+  - kubernetes
+  - helm
+  - github
+  - azure devops
+  - azure entra id
+  - azure data lake storage
+  - azure kubernetes service
+  - apache spark
+  - apache hive metastore
+  - delta lake
+  - delta sharing
+  - datahub
+  - apache superset
+  - trino
+  - prometheus
+  - grafana
+  - sentry
+cover: v1/dev/gigasync.png
+status: live
+---
+
+An [open-source](https://github.com/unicef/giga-data-ingestion) master data management platform developed with
+[Giga](https://giga.global), a UNICEF x ITU initiative to connect all schools around the world to the internet by 2030.
+
+- [Giga Sync](https://sync.giga.global) ([GitHub](https://github.com/unicef/giga-data-ingestion)) is the data
+  ingestion portal, allowing users---such as country representatives, government agencies, and NGO partners---to
+  upload school data in a variety of formats. Here, users can also monitor the progress of ingestion and quality check
+  reports of their previously uploaded data.
+
+- [Giga Dagster](https://dagster.giga.global) ([GitHub](https://github.com/unicef/giga-dagster)) is the heart of the
+  data platform, responsible for orchestrating data tasks such as ingestion, transformation, and data quality checks.
+  Data is stored in the data lake in the Delta Lake open table format, allowing various access methods and maintaining
+  a full change history via the change data feed.
+
+- [Giga Data Sharing](https://datasharing.giga.global) ([GitHub](https://github.com/unicef/giga-data-sharing)) allows
+  open access to the school master data, subject to role-based access control. The API is compliant with the Delta
+  Sharing Protocol, allowing users to interact with the data using the Delta Sharing client libraries.
+
+- [Giga Superset](https://superset.giga.global) ([GitHub](https://github.com/unicef/giga-superset)) is the business
+  intelligence platform, allowing data analysts to explore, visualize, and extract insights from the data stored in
+  the data lake.
+
+- [Giga Datahub](https://datahub.giga.global) ([GitHub](https://github.com/unicef/giga-datahub)) is the data catalog,
+  allowing for the discovery of data stored in the data lake.
+
+- Giga Trino ([GitHub](https://github.com/unicef/giga-trino)) is the query engine, allowing Delta Lake tables to be
+  queried as SQL for business intelligence applications such as Superset.
+
+- Giga Monitoring ([GitHub](https://github.com/unicef/giga-monitoring)) provides for the monitoring and logging of
+  all deployed applications on UNICEF Giga's Kubernetes cluster.
