@@ -14,7 +14,7 @@ function SvipIndex() {
       {courses.map((course) => (
         <div
           key={course.slug}
-          className="card image-full bg-base-300 shadow-xl overflow-hidden group"
+          className="card image-full group overflow-hidden bg-base-300 shadow-xl"
         >
           <figure>
             <img

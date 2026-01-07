@@ -1,22 +1,22 @@
-import { createFileRoute, Link, notFound } from '@tanstack/react-router'
-import info from '@/info.json'
-import PhotographyLayout from '@/components/PhotographyLayout'
-import Masonry from '@/components/photography/react/Masonry'
-import { listPhotos } from '@/utils/photography'
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import PhotographyLayout from "@/components/PhotographyLayout";
+import Masonry from "@/components/photography/Masonry";
+import info from "@/info.json";
+import { listPhotos } from "@/utils/photography";
 
-export const Route = createFileRoute('/photography/clients/$clientSlug/')({
+export const Route = createFileRoute("/photography/clients/$clientSlug/")({
   loader: async ({ params }) => {
-    const client = info.photography.clients.find(c => c.slug === params.clientSlug)
-    if (!client) throw notFound()
-    
-    const images = await listPhotos({ data: { slug: client.name, isClient: true } })
-    return { client, images }
+    const client = info.photography.clients.find((c) => c.slug === params.clientSlug);
+    if (!client) throw notFound();
+
+    const images = await listPhotos({ data: { slug: client.name, isClient: true } });
+    return { client, images };
   },
   component: ClientGallery,
-})
+});
 
 function ClientIndex() {
-  const { client, images } = Route.useLoaderData()
+  const { client, images } = Route.useLoaderData();
 
   return (
     <PhotographyLayout>
@@ -33,9 +33,9 @@ function ClientIndex() {
         <Masonry images={images} />
       </div>
     </PhotographyLayout>
-  )
+  );
 }
 
 function ClientGallery() {
-  return <ClientIndex />
+  return <ClientIndex />;
 }

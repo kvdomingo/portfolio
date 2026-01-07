@@ -10,18 +10,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h6 { font-size: var(--text-base); }
-h5 { font-size: var(--text-lg); }
-h4 { font-size: var(--text-xl); }
-h3 { font-size: var(--text-2xl); }
-h2 { font-size: var(--text-3xl); }
-h1 { font-size: var(--text-4xl); }
+h6 {
+  font-size: var(--text-base);
+}
+h5 {
+  font-size: var(--text-lg);
+}
+h4 {
+  font-size: var(--text-xl);
+}
+h3 {
+  font-size: var(--text-2xl);
+}
+h2 {
+  font-size: var(--text-3xl);
+}
+h1 {
+  font-size: var(--text-4xl);
+}
 
-small { font-size: var(--text-sm); }
+small {
+  font-size: var(--text-sm);
+}
 
 code {
   color: var(--color-ctp-mauve);
-  font-family: "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family:
+    "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
 
 .section-header {
@@ -54,6 +70,6 @@ ol.reference li::before {
 }
 
 mjx-container[jax="SVG"] > svg a {
-  fill: var(--color-indigo-400) !important;
-  stroke: var(--color-indigo-400) !important;
+  fill: var(--color-indigo-400);
+  stroke: var(--color-indigo-400);
 }

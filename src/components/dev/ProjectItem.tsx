@@ -1,24 +1,24 @@
-import { buildCldUrl } from '@/utils/cloudinary.client'
-import dateFormat from 'dateformat'
-import TechBadge from '../icons/TechBadge'
-import { FolderLock } from 'lucide-react'
-import Mdx from '../common/Mdx'
+import dateFormat from "dateformat";
+import { FolderLock } from "lucide-react";
+import { buildCldUrl } from "@/utils/cloudinary.client";
+import Mdx from "../common/Mdx";
+import TechBadge from "../icons/TechBadge";
 
 interface ProjectItemProps {
-  project: any
+  project: any;
 }
 
 export default function ProjectItem({ project }: ProjectItemProps) {
   return (
     <div
-      className={`mb-8 grid grid-cols-1 place-content-start items-start gap-8 border-t border-solid border-slate-600 pt-8 md:grid-cols-2 ${
-        project.confidential ? 'items-center' : ''
+      className={`mb-8 grid grid-cols-1 place-content-start items-start gap-8 border-slate-600 border-t border-solid pt-8 md:grid-cols-2 ${
+        project.confidential ? "items-center" : ""
       }`}
     >
       <div>
         <a
           href={
-            project.status === 'archived' || project.confidential
+            project.status === "archived" || project.confidential
               ? undefined
               : project.url
           }
@@ -39,13 +39,13 @@ export default function ProjectItem({ project }: ProjectItemProps) {
 
       <div>
         <div>
-          <h4 className="text-xl font-bold">{project.title}</h4>
+          <h4 className="font-bold text-xl">{project.title}</h4>
         </div>
 
         {project.organization && (
           <div className="my-4 flex place-items-center">
             <p>
-              🌏{' '}
+              🌏{" "}
               <a
                 href={project.organizationUrl}
                 target="_blank"
@@ -58,12 +58,14 @@ export default function ProjectItem({ project }: ProjectItemProps) {
           </div>
         )}
 
-        <p className="text-gray-400 small-caps text-sm">
-          {dateFormat(new Date(project.startDate), 'mmm yyyy')} -{' '}
-          {project.endDate ? dateFormat(new Date(project.endDate), 'mmm yyyy') : 'present'}
+        <p className="small-caps text-gray-400 text-sm">
+          {dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
+          {project.endDate
+            ? dateFormat(new Date(project.endDate), "mmm yyyy")
+            : "present"}
         </p>
 
-        <div className="my-8 prose prose-invert max-w-none">
+        <div className="prose prose-invert my-8 max-w-none">
           <Mdx code={project.content} />
         </div>
 
@@ -74,5 +76,5 @@ export default function ProjectItem({ project }: ProjectItemProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,21 +1,27 @@
-import type { ReactNode } from 'react'
-import CvSectionElement from './CvSectionElement'
+import type { ReactNode } from "react";
+import CvSectionElement from "./CvSectionElement";
 
-interface CvSectionProps {
-  title: string
-  data?: any[]
-  children?: ReactNode
+interface CvSectionProps<T extends Record<string, any>> {
+  title: string;
+  data?: T[];
+  children?: ReactNode;
 }
 
-export default function CvSection({ title, data, children }: CvSectionProps) {
+export function CvSection<T extends Record<string, any>>({
+  title,
+  data,
+  children,
+}: CvSectionProps<T>) {
   return (
     <div className="mb-12">
-      <h3 className="text-xl uppercase tracking-widest mb-4">{title}</h3>
+      <h3 className="mb-4 text-xl uppercase tracking-widest">{title}</h3>
       {children || (
-        <ul className="border-l border-gray-500 relative">
-          {data?.map((d, i) => <CvSectionElement key={i} data={d} />)}
+        <ul className="relative border-gray-500 border-l">
+          {data?.map((d, i) => (
+            <CvSectionElement key={i} data={d} />
+          ))}
         </ul>
       )}
     </div>
-  )
+  );
 }

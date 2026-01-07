@@ -41,5 +41,13 @@ export const env = createEnv({
    * In order to solve these issues, we recommend that all new projects
    * explicitly specify this option as true.
    */
+  shared: {
+    NODE_ENV: z.enum(["development", "production"]),
+    DEV: z.boolean(),
+    PROD: z.boolean(),
+    BASE_URL: z.string().optional(),
+    MODE: z.string(),
+    SSR: z.boolean(),
+  },
   emptyStringAsUndefined: true,
 });

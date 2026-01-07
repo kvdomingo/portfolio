@@ -1,4 +1,5 @@
-import rehypeMathJax from "rehype-mathjax";
+import rehypeShiki, { type RehypeShikiOptions } from "@shikijs/rehype";
+import rehypeMathJax, { type Options as MathJaxOptions } from "rehype-mathjax";
 import remarkMath from "remark-math";
 import { defineCollection, defineConfig, s } from "velite";
 
@@ -66,12 +67,6 @@ const blog = defineCollection({
   }),
 });
 
-const mathjaxConfig = {
-  tex: {
-    tags: "ams",
-  },
-};
-
 export default defineConfig({
   root: "./content",
   output: {
@@ -83,7 +78,22 @@ export default defineConfig({
   },
   collections: { dev, svip, workExperience, blog },
   mdx: {
-    rehypePlugins: [[rehypeMathJax, mathjaxConfig]],
+    rehypePlugins: [
+      [
+        rehypeMathJax,
+        {
+          tex: {
+            tags: "ams",
+          },
+        } satisfies MathJaxOptions,
+      ],
+      [
+        rehypeShiki,
+        {
+          theme: "catppuccin-mocha",
+        } satisfies RehypeShikiOptions,
+      ],
+    ],
     remarkPlugins: [remarkMath],
   },
 });

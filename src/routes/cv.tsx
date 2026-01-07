@@ -3,16 +3,16 @@ import { workExperience } from "@content";
 import { createFileRoute } from "@tanstack/react-router";
 import { compareDesc } from "date-fns";
 import { FileDown, Mail } from "lucide-react";
-import CvSection from "@/components/about/CvSection";
-import CvSectionMdx from "@/components/about/CvSectionMdx";
+import { CvSection } from "@/components/about/CvSection";
+import { CvSectionMdx } from "@/components/about/CvSectionMdx";
 import info from "@/info.json";
 import cld from "@/utils/cloudinary.client";
 
 export const Route = createFileRoute("/cv")({
-  component: Cv,
+  component: CurriculumVitae,
 });
 
-function Cv() {
+function CurriculumVitae() {
   const backgroundImage = cld
     .image("kdphotography/portfolio/static/portfolio/media-private/latest/20180713_1")
     .resize(Resize.scale().width("auto"))
@@ -39,7 +39,7 @@ function Cv() {
   return (
     <div className="flex flex-col">
       <div
-        className="mb-14 h-[75vh] bg-cover bg-fixed bg-center bg-no-repeat"
+        className="mb-14 h-[75vh] bg-center bg-cover bg-fixed bg-no-repeat"
         style={{ backgroundImage: `url('${backgroundImage}')` }}
         id="cover"
       >
@@ -47,7 +47,7 @@ function Cv() {
           <img
             src={logo}
             alt="KVD Studio"
-            className="w-[75vw] border-[3px] border-solid border-white p-6 md:w-[25vw]"
+            className="w-[75vw] border-[3px] border-white border-solid p-6 md:w-[25vw]"
           />
         </div>
       </div>
@@ -64,7 +64,7 @@ function Cv() {
               {info.about.text}
             </p>
 
-            <div className="flex gap-4 mt-8">
+            <div className="mt-8 flex gap-4">
               <a
                 href={`mailto:${info.email}`}
                 className="btn btn-outline btn-accent btn-wide"

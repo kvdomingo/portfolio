@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
-import Sidenav from './common/Sidenav'
+import type { ReactNode } from "react";
+import Sidenav from "./common/Sidenav";
 
 export default function PhotographyLayout({ children }: { children: ReactNode }) {
   return (
@@ -7,9 +7,7 @@ export default function PhotographyLayout({ children }: { children: ReactNode })
       <div className="mb-8 lg:flex-none lg:pl-16">
         <Sidenav />
       </div>
-      <div className="lg:flex-auto">
-        {children}
-      </div>
+      <div className="lg:flex-auto">{children}</div>
     </div>
-  )
+  );
 }

@@ -1,21 +1,27 @@
-import type { ReactNode } from 'react'
-import CvSectionElementMdx from './CvSectionElementMdx'
+import type { ReactNode } from "react";
+import { CvSectionElementMdx } from "./CvSectionElementMdx";
 
-interface CvSectionMdxProps {
-  title: string
-  data?: any[]
-  children?: ReactNode
+interface CvSectionMdxProps<T extends Record<string, any>> {
+  title: string;
+  data?: T[];
+  children?: ReactNode;
 }
 
-export default function CvSectionMdx({ title, data, children }: CvSectionMdxProps) {
+export function CvSectionMdx<T extends Record<string, any>>({
+  title,
+  data,
+  children,
+}: CvSectionMdxProps<T>) {
   return (
     <div className="mb-12">
-      <h3 className="text-xl uppercase tracking-widest mb-4">{title}</h3>
+      <h3 className="mb-4 text-xl uppercase tracking-widest">{title}</h3>
       {children || (
-        <ul className="border-l border-gray-500 relative">
-          {data?.map((d, i) => <CvSectionElementMdx key={i} data={d} />)}
+        <ul className="relative border-gray-500 border-l">
+          {data?.map((d, i) => (
+            <CvSectionElementMdx key={i} data={d} />
+          ))}
         </ul>
       )}
     </div>
-  )
+  );
 }

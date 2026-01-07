@@ -1,5 +1,5 @@
-import Masonry from "./react/Masonry";
 import type { ResourceApiResponse } from "cloudinary";
+import Masonry from "./Masonry";
 
 interface GalleryProps {
   images: Array<ResourceApiResponse["resources"][number]>;

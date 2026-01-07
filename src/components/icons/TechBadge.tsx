@@ -1,30 +1,30 @@
-import info from '@/info.json'
-import * as SimpleIcons from '@icons-pack/react-simple-icons'
+import * as SimpleIcons from "@icons-pack/react-simple-icons";
+import info from "@/info.json";
 
 interface TechBadgeProps {
-  name: string
+  name: string;
 }
 
 export default function TechBadge({ name }: TechBadgeProps) {
-  const { technologies } = info.dev as any
-  const si = SimpleIcons as any
+  const { technologies } = info.dev as any;
+  const si = SimpleIcons as any;
 
-  let Icon: any = null
-  let obj: { label: string; icon: string; color: string } | null = null
-  let iconExists = false
+  let Icon: any = null;
+  let obj: { label: string; icon: string; color: string } | null = null;
+  let iconExists = false;
 
   if (Object.keys(technologies).includes(name)) {
-    obj = technologies[name]
-    if (Object.keys(si).includes(obj!.icon)) {
-      Icon = si[obj!.icon]
-      iconExists = true
+    obj = technologies[name];
+    if (Object.keys(si).includes(obj?.icon)) {
+      Icon = si[obj?.icon];
+      iconExists = true;
     }
   }
 
   return (
     <div
-      className={`badge badge-neutral badge-xs mb-2 mr-2 p-4 md:badge-md ${
-        iconExists ? 'flex gap-1' : ''
+      className={`badge badge-neutral badge-xs md:badge-md mr-2 mb-2 p-4 ${
+        iconExists ? "flex gap-1" : ""
       }`}
     >
       {iconExists ? (
@@ -36,5 +36,5 @@ export default function TechBadge({ name }: TechBadgeProps) {
         name
       )}
     </div>
-  )
+  );
 }

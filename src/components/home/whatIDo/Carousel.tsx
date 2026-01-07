@@ -1,10 +1,9 @@
+import { MobileStepper } from "@mui/material";
 import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
-
-import { buildCldUrl } from "@/utils/cloudinary.client";
 import info from "@/info.json";
-import { MobileStepper } from "@mui/material";
+import { buildCldUrl } from "@/utils/cloudinary.client";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -12,7 +11,7 @@ const { carousel } = info.home.photography;
 
 export default function Carousel() {
   const [activeStep, setActiveStep] = useState(0);
-  const images = carousel.map(c => ({
+  const images = carousel.map((c) => ({
     publicId: c.publicId,
     url: buildCldUrl(c.publicId),
   }));
@@ -48,9 +47,9 @@ export default function Carousel() {
         className="bg-transparent"
         sx={{
           "& .MuiMobileStepper-dot": {
-            "backgroundColor": "rgba(255, 255, 255, 0.5)",
-            "zIndex": 10,
-            "mt": -6,
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            zIndex: 10,
+            mt: -6,
             "&.MuiMobileStepper-dotActive": {
               backgroundColor: "#818cf8",
             },

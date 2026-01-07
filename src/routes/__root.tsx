@@ -8,11 +8,11 @@ import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   HeadContent,
-  Outlet,
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import Navbar from "@/components/common/Navbar";
+import { env } from "@/env";
 import info from "@/info.json";
 import TanStackQueryDevtools from "@/integrations/tanstack-query/devtools";
 import appCss from "@/styles/base.css?url";
@@ -66,19 +66,19 @@ export const Route = createRootRouteWithContext<RouterContext>()({
           "https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png",
       },
       {
-        property: "twitter:card",
+        name: "twitter:card",
         content: "summary",
       },
       {
-        property: "twitter:creator",
+        name: "twitter:creator",
         content: "@rockentothemoon",
       },
       {
-        property: "twitter:site",
+        name: "twitter:site",
         content: "@rockentothemoon",
       },
       {
-        property: "twitter:image",
+        name: "twitter:image",
         content:
           "https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png",
       },
@@ -132,21 +132,28 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         href: "/logo-black.png",
       },
     ],
+    scripts: [
+      env.PROD
+        ? {
+            src: "https://umami.kvd.studio/script.js",
+            "data-website-id": "e8f2b1ca-e250-4210-ae13-8d69c10da232",
+            defer: true,
+          }
+        : undefined,
+    ],
   }),
-  component: Layout,
+  shellComponent: Layout,
 });
 
-function Layout() {
+function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-linear-to-b from-ctp-base to-ctp-crust">
+      <body className="min-h-screen w-full bg-linear-to-b from-ctp-base to-ctp-crust">
         <Navbar />
-        <main>
-          <Outlet />
-        </main>
+        <main>{children}</main>
         <TanStackDevtools
           config={{
             position: "bottom-right",

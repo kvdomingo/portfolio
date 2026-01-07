@@ -17,7 +17,7 @@ function BlogIndex() {
         {entries.map((entry) => (
           <div
             key={entry.slug}
-            className="space-y-4 rounded-xl p-4 transition-[border] duration-100 hover:border hover:border-solid hover:border-white"
+            className="space-y-4 rounded-xl p-4 transition-[border] duration-100 hover:border hover:border-white hover:border-solid"
           >
             <Link to="/blog/$slug" params={{ slug: entry.slug }}>
               <div className="flex items-center gap-2">

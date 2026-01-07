@@ -36,7 +36,7 @@ function CourseIndex() {
           {entries.map((entry) => (
             <div
               key={entry.slug}
-              className="card image-full aspect-square bg-base-300 shadow-xl group overflow-hidden"
+              className="card image-full group aspect-square overflow-hidden bg-base-300 shadow-xl"
             >
               <figure>
                 <img
@@ -56,7 +56,7 @@ function CourseIndex() {
           ))}
         </div>
       ) : (
-        <div className="py-12 text-center text-md text-gray-400">
+        <div className="py-12 text-center text-gray-400 text-md">
           No posts yet. Come back later!
         </div>
       )}

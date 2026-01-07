@@ -1,5 +1,3 @@
-import { useCallback, useRef } from "react";
-
 import { useWindowSize } from "@react-hook/window-size";
 import type { ResourceApiResponse } from "cloudinary";
 import {
@@ -8,6 +6,7 @@ import {
   usePositioner,
   useResizeObserver,
 } from "masonic";
+import { useCallback, useRef } from "react";
 
 interface MasonryItemProps {
   index: number;
