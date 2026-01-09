@@ -7,7 +7,7 @@ interface CvSectionElementProps {
   children?: ReactNode;
 }
 
-export default function CvSectionElement({ data, children }: CvSectionElementProps) {
+export function CvSectionElement({ data, children }: CvSectionElementProps) {
   const startDate = data.startDate
     ? dateFormat(new Date(data.startDate), "mmm yyyy")
     : "";

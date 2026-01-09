@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import PhotographyLayout from "@/components/PhotographyLayout";
-import Masonry from "@/components/photography/Masonry";
+import { Masonry } from "@/components/photography/masonry";
+import { PhotographyLayout } from "@/components/photography-layout";
 import info from "@/info.json";
 import { listPhotos } from "@/utils/photography";
 

@@ -13,7 +13,7 @@ const images = carousel.map((c) => ({
     .toURL(),
 }));
 
-export default function Photography() {
+export function Photography() {
   return (
     <section className="flex flex-col gap-12">
       <div>

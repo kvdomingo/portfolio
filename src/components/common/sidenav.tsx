@@ -9,7 +9,7 @@ const TABS = [
   { path: "/gear", label: "gear" },
 ];
 
-export default function Sidenav() {
+export function Sidenav() {
   const { pathname } = useLocation();
 
   return (

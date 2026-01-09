@@ -4,14 +4,14 @@ import figtree from "@fontsource-variable/figtree?url";
 import rubik from "@fontsource-variable/rubik?url";
 import spaceGrotesk from "@fontsource-variable/space-grotesk?url";
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import type { QueryClient } from "@tanstack/react-query";
+import { type QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import Navbar from "@/components/common/Navbar";
+import { Navbar } from "@/components/common/navbar";
 import { env } from "@/env";
 import info from "@/info.json";
 import TanStackQueryDevtools from "@/integrations/tanstack-query/devtools";
@@ -146,27 +146,34 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 });
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const { queryClient } = Route.useRouteContext();
+
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen w-full bg-linear-to-b from-ctp-base to-ctp-crust">
-        <Navbar />
-        <main>{children}</main>
-        <TanStackDevtools
-          config={{
-            position: "bottom-right",
-          }}
-          plugins={[
-            {
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            TanStackQueryDevtools,
-          ]}
-        />
-        <Scripts />
+      <body className="dark min-h-screen bg-linear-to-b from-ctp-base to-ctp-crust">
+        <QueryClientProvider client={queryClient}>
+          <Navbar />
+
+          <main>{children}</main>
+
+          <TanStackDevtools
+            config={{
+              position: "bottom-right",
+            }}
+            plugins={[
+              {
+                name: "Tanstack Router",
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+              TanStackQueryDevtools,
+            ]}
+          />
+
+          <Scripts />
+        </QueryClientProvider>
       </body>
     </html>
   );

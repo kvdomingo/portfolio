@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { CvSectionElementMdx } from "./CvSectionElementMdx";
+import { CvSectionElementMdx } from "./cv-section-element-mdx";
 
 interface CvSectionMdxProps<T extends Record<string, any>> {
   title: string;

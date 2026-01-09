@@ -48,6 +48,7 @@ export const env = createEnv({
     BASE_URL: z.string().optional(),
     MODE: z.string(),
     SSR: z.boolean(),
+    APP_URL: z.url(),
   },
   emptyStringAsUndefined: true,
 });

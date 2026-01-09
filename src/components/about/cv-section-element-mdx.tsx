@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { differenceInMonths, differenceInYears, formatDuration } from "date-fns";
 import dateFormat from "dateformat";
-import Mdx from "@/components/common/Mdx";
+import { Mdx } from "@/components/common/mdx";
 
 interface CvSectionElementMdxProps<T extends Record<string, any>> {
   data: T;

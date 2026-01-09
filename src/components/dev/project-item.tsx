@@ -2,14 +2,14 @@ import type { Dev } from "@content";
 import dateFormat from "dateformat";
 import { FolderLock } from "lucide-react";
 import { buildCldUrl } from "@/utils/cloudinary.client";
-import Mdx from "../common/Mdx";
-import TechBadge from "../icons/TechBadge";
+import { Mdx } from "../common/mdx";
+import { TechBadge } from "../icons/tech-badge";
 
 interface ProjectItemProps {
   project: Dev;
 }
 
-export default function ProjectItem({ project }: ProjectItemProps) {
+export function ProjectItem({ project }: ProjectItemProps) {
   return (
     <div
       className={`mb-8 grid grid-cols-1 place-content-start items-start gap-8 border-slate-600 border-t border-solid pt-8 md:grid-cols-2 ${

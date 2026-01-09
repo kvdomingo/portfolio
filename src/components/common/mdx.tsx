@@ -13,7 +13,7 @@ function useMDXComponent(code: string) {
   return fn({ ...runtime }).default;
 }
 
-export default function Mdx({ code, components }: MdxProps) {
+export function Mdx({ code, components }: MdxProps) {
   const Content = useMDXComponent(code);
   return <Content components={{ ...sharedComponents, ...components }} />;
 }

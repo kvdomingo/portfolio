@@ -5,7 +5,7 @@ interface TechBadgeProps {
   name: string;
 }
 
-export default function TechBadge({ name }: TechBadgeProps) {
+export function TechBadge({ name }: TechBadgeProps) {
   const { technologies } = info.dev as {
     technologies: Record<string, { label: string; icon: string; color: string }>;
   };

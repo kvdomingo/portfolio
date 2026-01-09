@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import PhotographyLayout from "@/components/PhotographyLayout";
-import Gallery from "@/components/photography/Gallery";
+import { Gallery } from "@/components/photography/gallery";
+import { PhotographyLayout } from "@/components/photography-layout";
 import { listPhotos } from "@/utils/photography";
 
 export const Route = createFileRoute("/photography/$slug")({

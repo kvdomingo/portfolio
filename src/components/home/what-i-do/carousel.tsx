@@ -9,7 +9,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const { carousel } = info.home.photography;
 
-export default function Carousel() {
+export function Carousel() {
   const [activeStep, setActiveStep] = useState(0);
   const images = carousel.map((c) => ({
     publicId: c.publicId,

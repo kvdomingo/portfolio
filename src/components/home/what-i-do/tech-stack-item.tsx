@@ -5,7 +5,7 @@ interface TechStackItemProps {
   logo: string;
 }
 
-export default function TechStackItem({ name, logo }: TechStackItemProps) {
+export function TechStackItem({ name, logo }: TechStackItemProps) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>

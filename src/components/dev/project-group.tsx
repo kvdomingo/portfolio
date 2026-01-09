@@ -1,12 +1,12 @@
 import type { Dev } from "@content";
-import ProjectItem from "./ProjectItem";
+import { ProjectItem } from "./project-item";
 
 interface ProjectGroupProps {
   projects: Dev[];
   status: "live" | "in progress" | "archived";
 }
 
-export default function ProjectGroup({ projects, status }: ProjectGroupProps) {
+export function ProjectGroup({ projects, status }: ProjectGroupProps) {
   return (
     <div className="mb-12">
       <h2 className="mb-4 border-gray-700 border-b pb-2 font-bold text-2xl capitalize">

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import CvSectionElement from "./CvSectionElement";
+import { CvSectionElement } from "./cv-section-element";
 
 interface CvSectionProps<T extends Record<string, any>> {
   title: string;

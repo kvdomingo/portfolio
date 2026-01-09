@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import PhotographyLayout from "@/components/PhotographyLayout";
+import { PhotographyLayout } from "@/components/photography-layout";
 import { buildCldUrl } from "@/utils/cloudinary.client";
 
 const photographyGear: Record<string, { name: string; publicId: string }[]> = {

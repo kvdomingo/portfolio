@@ -1,8 +1,8 @@
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Link } from "@tanstack/react-router";
-import TechStack from "./TechStack";
+import { TechStack } from "./tech-stack";
 
-export default function Dev() {
+export function Dev() {
   return (
     <section className="flex flex-col gap-12">
       <div>

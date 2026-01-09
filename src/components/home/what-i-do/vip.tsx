@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import info from "@/info.json";
-import BeforeAfter from "./BeforeAfter";
+import { BeforeAfter } from "./before-after";
 
-export default function Vip() {
+export function Vip() {
   return (
     <section className="flex flex-col gap-12">
       <div>

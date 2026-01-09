@@ -3,8 +3,8 @@ import { workExperience } from "@content";
 import { createFileRoute } from "@tanstack/react-router";
 import { compareDesc } from "date-fns";
 import { FileDown, Mail } from "lucide-react";
-import { CvSection } from "@/components/about/CvSection";
-import { CvSectionMdx } from "@/components/about/CvSectionMdx";
+import { CvSection } from "@/components/about/cv-section";
+import { CvSectionMdx } from "@/components/about/cv-section-mdx";
 import info from "@/info.json";
 import cld from "@/utils/cloudinary.client";
 

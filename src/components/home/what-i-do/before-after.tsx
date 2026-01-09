@@ -3,7 +3,7 @@ import "react-before-after-slider-component/dist/build.css";
 import { Resize } from "@cloudinary/url-gen/actions";
 import cld from "@/utils/cloudinary.client";
 
-export default function BeforeAfter() {
+export function BeforeAfter() {
   const imgBefore = cld
     .image("svip/186/7-ImageSegment/cancer")
     .resize(Resize.scale().width("auto"));

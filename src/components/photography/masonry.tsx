@@ -42,7 +42,7 @@ const columnBreakpoints: Record<"sm" | "md" | "lg", number> = {
   lg: 3,
 };
 
-export default function Masonry({ images }: MasonryProps) {
+export function Masonry({ images }: MasonryProps) {
   const containerRef = useRef<HTMLElement>(null);
   const [windowWidth, windowHeight] = useWindowSize();
   const { offset, width } = useContainerPosition(containerRef, [

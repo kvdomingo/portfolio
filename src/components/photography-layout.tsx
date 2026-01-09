@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import Sidenav from "./common/Sidenav";
+import { Sidenav } from "./common/sidenav";
 
-export default function PhotographyLayout({ children }: { children: ReactNode }) {
+export function PhotographyLayout({ children }: { children: ReactNode }) {
   return (
     <div className="lg:flex lg:gap-8">
       <div className="mb-8 lg:flex-none lg:pl-16">

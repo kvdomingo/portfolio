@@ -1,7 +1,7 @@
 import { blog } from "@content";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import ClientDate from "@/components/common/ClientDate";
-import Mdx from "@/components/common/Mdx";
+import { ClientDate } from "@/components/common/client-date";
+import { Mdx } from "@/components/common/mdx";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import PhotographyLayout from "@/components/PhotographyLayout";
+import { PhotographyLayout } from "@/components/photography-layout";
 import info from "@/info.json";
 import { buildCldUrl } from "@/utils/cloudinary.client";
 

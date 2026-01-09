@@ -2,7 +2,7 @@ import { dev } from "@content";
 import { SiGithub, SiPython } from "@icons-pack/react-simple-icons";
 import { createFileRoute } from "@tanstack/react-router";
 import { compareDesc } from "date-fns";
-import ProjectGroup from "@/components/dev/ProjectGroup";
+import { ProjectGroup } from "@/components/dev/project-group";
 
 export const Route = createFileRoute("/dev")({
   component: Dev,

@@ -1,9 +1,8 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
 import info from "@/info.json";
+import { TechStackItem } from "./tech-stack-item";
 
-import TechStackItem from "./TechStackItem";
-
-export default function TechStack() {
+export function TechStack() {
   return (
     <TooltipProvider>
       {Object.entries(info.home.technologies).map(([header, technologies]) => (

@@ -15,12 +15,12 @@ const NAV_LINKS = [
   { path: "/blog", label: "Blog" },
 ];
 
-export default function Navbar() {
+export function Navbar() {
   return (
     <header className="z-10 w-full">
       <nav className="navbar px-12">
         <div className="flex flex-auto items-center">
-          <Link to="/">
+          <Link to="/" viewTransition>
             <img
               src={LIGHT_LOGO}
               alt="logo"
@@ -32,7 +32,13 @@ export default function Navbar() {
         <ul className="section-header md:menu md:menu-horizontal hidden flex-auto items-center justify-end gap-6 md:visible md:flex">
           {NAV_LINKS.map((nav) => (
             <li key={nav.path}>
-              <Link to={nav.path}>
+              <Link
+                to={nav.path}
+                viewTransition
+                activeProps={{
+                  className: "bg-ctp-mauve",
+                }}
+              >
                 <span className="text-white">{nav.label}</span>
               </Link>
             </li>
