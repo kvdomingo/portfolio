@@ -1,0 +1,152 @@
+---
+title: "Activity 9: Playing Notes by Image Processing"
+keywords:
+  - playing notes
+  - image processing
+  - computer vision
+  - image segmentation
+  - otsu's method
+  - object detection
+  - staff detection
+  - morphological operation
+  - audio synthesis
+cover: "svip/186/9-PlayingNotes/anc_truncated.png"
+courseSlug: "ap186"
+created: "2019-10-04T06:00:51.0000Z"
+
+alphabet: "abcdefghijklmnopqrstuvwxyz"
+---
+
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
+
+For this activity [[1](#Soriano2019)], I recreated the tapping part of Tom's Story's "Anchors" using Guitar Pro and
+exported it as a `png`. The excerpt is shown in Fig. [1](#fig-excerpt). Notice that the song is in the key of G, as
+denoted by the sharp accidental next to the treble clef. This sort of makes things easier as we won't have to worry
+about accidentals in the rest of the sheet, but this only works assuming that there are no borrowed chords or if we work
+strictly within the major mode. The methodology I will be following is based on [[2](#Harris2015)], with some
+inspiration from [[3](#Romero2016)] and [[4](#Medrana2016)].
+
+<figure class="figure" id="fig-excerpt">
+  <img
+    src={buildCldUrl("svip/186/9-PlayingNotes/anc_truncated")}
+    alt={`Tapping portion of "Anchors" by Tom's Story.`}
+    class="w-full"
+  />
+  <figcaption class="figcaption">
+    Figure 1: Tapping portion of "Anchors" by Tom's Story.
+  </figcaption>
+</figure>
+
+#### Pre-processing
+
+First, the image is binarized using Otsu's method. The full track consists of 5 rows, so the image is first
+separated by row. This is achieved by searching for blocks with high variation and minimum vertical size [[5](#Gent2017)].
+The location of the staff lines can be obtained by projecting the image onto the y-axis;
+the staff lines show up as five distinct peaks. After obtaining their index locations using Python's
+`peakutils` library, the staff lines can be removed by using an opening morphological operator with a
+horizontal line. The result of this operation is shown in Fig. [2](#fig-nostaff).
+
+<figure class="figure" id="fig-excerpt">
+  <img
+    src={buildCldUrl("svip/186/9-PlayingNotes/anc_nolines")}
+    alt="First row, binarized with staff lines removed."
+    class="w-full"
+  />
+  <figcaption class="figcaption">
+    Figure 2: First row, binarized with staff lines removed.
+  </figcaption>
+</figure>
+
+#### Object detection
+
+The quarter, eighth, and sixteenth notes can easily be detected because their common denominator is their filled
+ellipsoid bodies. Telling them apart will depend on their connection to adjacent notes (or lack thereof). To do
+this, the image is eroded by a vertical line so that only the note body and horizontal stems remain (Fig. [3](#fig-nostems)).
+Next, the location of the note bodies are obtained by further eroding the image
+using an ellipse kernel and using the Determinant of Hessian blob detection algorithm from the
+`skimage` library (Fig. [4](#fig-bodies)). We then go back to the prior image and
+scan the entire column spanned by one blob. If a large peak is detected, then the note is classified as an
+eighth. If two peaks are detected, then the classification is a sixteenth. If no other features are detected, the
+classification is quarter.
+
+Whole and half notes are detected by detecting the location of regions enclosing an empty space using watershed
+algorithm [[6](#Bienek2000)]. Similarly, we can tell apart whole and half notes by scanning the columns spanned by the
+note and looking for other features. Other features such as dotted notes and rests will not be detected.
+
+<figure class="figure" id="fig-nostems">
+  <img
+    src={buildCldUrl("svip/186/9-PlayingNotes/anc_cutstem")}
+    alt="First row with eroded vertical stems."
+    class="w-full"
+  />
+  <figcaption class="figcaption">
+    Figure 3: First row with eroded vertical stems.
+  </figcaption>
+</figure>
+
+<figure class="figure" id="fig-bodies">
+  <img
+    src={buildCldUrl("svip/186/9-PlayingNotes/anc_notebodies")}
+    alt="First row with only the note bodies."
+    class="w-full"
+  />
+  <figcaption class="figcaption">
+    Figure 4: First row with only the note bodies.
+  </figcaption>
+</figure>
+
+#### Audio synthesis
+
+For this section, I used the `midiutil` library to generate and
+save the notes as a MIDI file. Earlier, we saved the locations of the staff
+lines. We can use this to calculate the thickness of the staff lines and the
+spacing between them in pixels, which are more or less equal. We define
+standard A (A<sub>5</sub>) to be 440 Hz, such that middle A (A<sub>4</sub>) is
+220 Hz. From there, we can determine the frequency of every other note by
+incrementing by a factor of $\sqrt[12]{2}$,
+assuming equal temperament. Since we are in the major mode of G, the note
+intervals are defined by W-W-H-W-W-W-H, which gives us the heptatonic sequence
+G-A-B-C-D-E-F#. For easy reference, we set our origin to be G4 (second staff
+line), with a frequency of 196 Hz. In order to know the duration of one note,
+the sheet defines one quarter note to be 180 bpm, i.e., 0.33 seconds per
+quarter note. Instead of storing a lookup table for each note, we store
+instead the note intervals defined earlier whether we are jumping a whole step
+or a half step x $\sqrt[12]{2}$ or $\sqrt[6]{2}$, respectively) based
+on the number of lines (or spaces) away from middle G. With this, coupled with
+the note duration, we are ready to generate our audio. The `MIDIFile` function
+renders notes as if they were played on a piano:
+
+<audio controls class="mx-auto">
+  <source
+    src="https://storage.googleapis.com/kvdomingo-xyz-306716-assets/anchors.mp3"
+    type="audio/mp3"
+  />
+  Your browser does not support HTML5 audio.
+</audio>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">
+    M. N. Soriano, *Playing notes by image processing* (2019).
+  </li>
+  <li id="Harris2015">
+    S. Harris and V. Prateek, *Sheet music reader* (2015).
+  </li>
+  <li id="Romero2016">
+    R. A. Romero, [A9 - playing notes by image
+    processing](https://raaromeroap186.wordpress.com/2016/12/04/a9-playing-notes-by-image-processing/playing-notes.tsx)
+    (2016).
+  </li>
+  <li id="Medrana2016">
+    M. L. Medrana, Playing notes through image processing (AP186 A9) (2016).
+  </li>
+  <li id="Gent2017">
+    P. van Gent, [Deep learning music with
+    Python](http://www.paulvangent.com/2017/12/07/deep-learning-music/) (2017).
+  </li>
+  <li id="Bienek2000">
+    A. Bienek and A. Moga, An efficient watershed algorithm based on connected
+    components, *Pattern Recognition* **33**, 907 (2000).
+  </li>
+</ol>

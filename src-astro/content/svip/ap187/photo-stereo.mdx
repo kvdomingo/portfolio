@@ -1,0 +1,117 @@
+---
+title: "Activity 13: Photometric Stereometry"
+keywords:
+  - image processing
+  - computer vision
+  - photometric stereometry
+  - frankot-chellappa algorithm
+cover: "svip/187/13-PhotoStereo/intensity_maps.png"
+courseSlug: "ap187"
+created: "2019-11-13T04:02:00.0000Z"
+
+alphabet: abcdefghijklmnopqrstuvwxyz
+---
+
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
+
+For this activity [[1](#Soriano2019)], we are given four $128 \times 128$ px intensity maps with different lighting
+conditions, shown in Fig.&nbsp[1](#fig-intensity). We can stack these intensity maps into one multidimensional array
+$\vec{I} \in \mathbb{R}^{4 \times 128 \times 128}$. The source matrix $\vec{V} \in \mathbb{R}^{4 \times 3}$ is provided
+and is defined as
+
+<span id="eq-source-matrix" class="mx-auto">
+  $ \begin{pmatrix}
+  0.085832 & -0.17365 & 0.98106 \\ 0.17365 & 0 & 0.98481 \\ 0.16318 & -0.34202 &
+  0.92542 \end{pmatrix}$
+</span>
+
+We can then solve for $\vec{g}$ by least squares approximation:
+
+<span id="eq-least-squares" class="mx-auto">
+  $ \begin{equation}
+  \vec{g} = (\vec{V}^\top \vec{V})^{-1} \vec{V}^\top \vec{I}
+  \end{equation}$
+</span>
+
+and then normalize to get the surface normal vectors
+
+<span id="eq-normal" class="mx-auto">
+$
+\begin{equation}
+  \hat{\vec{n}} = \frac{\vec{g}}{|\vec{g}|}
+\end{equation}
+$
+</span>
+
+The surface elevation is expressed as
+
+<span id="eq-elevation" class="mx-auto">
+  $ \begin{equation}z = f(x, y) \end{equation}$
+</span>
+
+which are related to the surface normals by
+
+<span id="eq-elevation-normals" class="mx-auto">
+$
+\begin{equation}
+  \frac{\partial f}{\partial x} = -\frac{n_x}{n_z} \qquad \frac{\partial f}{\partial y} = -\frac{n_y}{n_z}
+\end{equation}
+$
+</span>
+
+The surface elevation $z$ at point $(u,v)$ is given by
+
+<span id="eq-surface-elevation-point" class="mx-auto">
+$
+\begin{equation}
+  f(u,v) = \int_0^u \frac{\partial f}{\partial x} \frac{\rm{d}}{\rm{d} x} + \int_u^v \frac{\partial f}{\partial y} \frac{\rm{d}}{\rm{d} y}
+\end{equation}
+$
+</span>
+
+Using the Frankot-Chellappa algorithm [[2](#Frankot1988)], we can numerically perform this integral using Fourier
+transforms:
+
+<span id="eq-surface-elevation-point" class="mx-auto">
+$
+\begin{equation}
+  f(u,v) = \mathcal{F}^{-1}{\frac{1}{\omega_x^2 + \omega_y^2 + \epsilon} \left[-i\omega_x \mathcal{F}\left(\frac{\partial f}{\partial x}\right) - i\omega_y \mathcal{F}\left(\frac{\partial f}{\partial y}\right)\right]}
+\end{equation}
+$
+</span>
+
+where $\mathcal{F}$ and $\mathcal{F}^{-1}$ are the Fourier transform and its inverse, respectively, and $\epsilon > 0$
+is an arbitrarily small constant that allows the formulation to remain valid at $\omega_x,\omega_y = 0$. The recovered
+surface and its contour projection is shown in Fig.&nbsp;[2](#fig-surface).
+
+<figure id="fig-intensity" class="container">
+  <img
+    src={buildCldUrl("svip/187/13-PhotoStereo/intensity_maps")}
+    alt="Given 2D intensity maps of a 3D surface under varying illumination"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">
+    Figure 1: Given 2D intensity maps of a 3D surface under varying
+    illumination.
+  </figcaption>
+</figure>
+
+<figure id="fig-surface" class="container">
+  <img
+    src={buildCldUrl("svip/187/13-PhotoStereo/surface")}
+    alt="Recovered surface"
+    class="mx-auto"
+  />
+  <figcaption class="text-center">Figure 2: Recovered surface.</figcaption>
+</figure>
+
+#### References
+
+<ol className="reference">
+  <li id="Soriano2019">M. N. Soriano, _A13 - Photometric stereo_ (2019).</li>
+  <li id="Frankot1988">
+    R.T. Frankot, and R. Chellappa, A method for enforcing integrability in
+    shape from shading algorithms. _IEEE Trans. on Pattern Analysis and Machine
+    Intelligence_ **10**(4) (1988).
+  </li>
+</ol>

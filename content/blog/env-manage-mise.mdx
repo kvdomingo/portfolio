@@ -1,0 +1,135 @@
+---
+title: ez environment management with mise
+summary: >
+  Mise is a polyglot tool version manager. It replaces tools like asdf, pyenv, nvm, etc.
+created: 2025-04-08T14:15:00.000Z
+keywords:
+  - tech
+  - software
+is_draft: false
+---
+
+> Like [`asdf`](https://asdf-vm.com/) (or [`nvm`](https://github.com/nvm-sh/nvm) or
+> [`pyenv`](https://github.com/pyenv/pyenv) but for any language), it manages dev tools like
+> node, python, cmake, terraform, and [hundreds more](https://mise.jdx.dev/registry.html).
+
+Recently, I found myself reformatting several servers and switching between development
+machines. I've been automating the setup of system packages, command line tools, and system
+settings using [Ansible](https://www.ansible.com/). With this, I could also install programming
+languages and other CLI tools that are not available via the system package manager (i.e. via
+network installers or shell scripts). However, I frequently run into a couple of problems:
+
+- In my line of work, I often work on multiple projects that potentially use different versions
+  of the same tools/programming languages. It's not always straightforward nor possible to install and
+  switch between versions of these tools.
+
+- I can't tell if a tool has updates unless I check the tool's website or if the tool has a
+  self-update feature.
+
+To resolve the first problem, I've been using [`pyenv`](https://github.com/pyenv/pyenv) and
+[`nvm`](https://github.com/nvm-sh/nvm) to manage different versions of Python and Node.js,
+respectively. However, this will quickly become unweildy if I need a version manager for each tool,
+and I use A LOT of tools. I eventually stumbled upon [`asdf`](https://asdf-vm.com/), which is
+essentially "one manager to replace them all".
+
+However, this doesn't solve the second problem, and `asdf` makes the terminal feel sluggish
+at times. I recently discovered [`mise`](https://mise.jdx.dev/), which solves both problems,
+doesn't perceivably affect terminal interactions, and has a lot more supported tools through
+the [`mise` registry](https://mise.jdx.dev/registry.html). It also doubles as a task runner, though
+I prefer to use [`task`](https://taskfile.dev/) for that, so I won't cover that use case here.
+
+`mise` is a polyglot tool version manager and is available for Linux, macOS, and Windows. For this
+post, I'll be focusing on a WSL setup, since this is what I daily drive.
+
+To install `mise` on WSL, simply run
+
+```shell
+curl https://mise.run | sh
+```
+
+If all goes well, running `mise` should print the help text. If you get an error along the lines
+of `command not found`, you need to add `~/.local/bin` to your `PATH`:
+
+```shell
+# bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+. ~/.bashrc
+
+# zsh
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+. ~/.zshrc
+```
+
+To enable the `mise` registry, you need to enable the experimental flag. Create a file at the
+location `~/.config/mise/config.toml` if it does not yet exist and add the following:
+
+```toml
+[experimental]
+enable = true
+```
+
+To see all available tools, run
+
+```shell
+mise registry
+```
+
+Now for the fun part, we can install specific versions of tools to be used globally. For example:
+
+```shell
+mise use -g python@latest node@latest go@latest
+```
+
+This is great to quickly get up and running with the latest versions of tools. However, one of
+`mise`'s powerful features is setting constraints for versions. Typically, you won't always use
+the latest version because you need to wait for libraries to update and be compatible. You aren't
+limited to specifying full version numbers - you can specify minor or major versions:
+
+```shell
+mise use -g python@3.12 node@22 go@1.22.4
+```
+
+An even more powerful feature is specifying what I like to call a "variable version". In 
+my use case, I want to enforce the following constraints:
+
+- stay one *minor* version behind the latest Python version
+- stay one *patch* version beind the latest Go version
+- stay on the LTS version for Node.js
+
+I achieve this as follows:
+
+```shell
+mise use -g python@sub-0.1:latest node@lts go@sub-0.0.1:latest
+```
+
+The `sub-0.1:latest` syntax basically translates to "the latest version subtract 0.1". As of writing,
+the latest minor version of Python is 3.13, so `mise` will install version 3.12. When 3.14 is
+released, `mise` will automatically upgrade to 3.13. `mise` will automatically check for tool
+version updates, and you can update all tools by running
+
+```shell
+mise up -y
+```
+
+How then does this become reproducible on multiple machines? `mise` stores the information about
+install tool versions in the same `mise.toml` file you created earlier. After running the above
+commands, your `mise.toml` file should look like this:
+
+```toml
+[settings]
+experimental = true
+
+[tools]
+python = "sub-0.1:latest"
+node = "lts"
+go = "sub-0.0.1:latest"
+```
+
+You can then copy this to other machines by including `mise.toml` as part of your dotrepo,
+which deserves its own blog post.
+
+How do we now use different versions of tools for different projects? So far, we've been installing
+tools globally, but we can install tools locally to a project by navigating to the project directory
+and running the same commands as above, but omitting the `-g` (global) flag. This will create a new
+`mise.toml` file in the project directory with the tool versions for that project, which should
+be committed to version control.

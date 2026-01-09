@@ -1,0 +1,229 @@
+---
+title: Automated hostnames for apps running on localhost
+summary: Use Traefik to give your Docker apps hostnames on localhost.
+created: 2024-09-20T05:32:00.000Z
+keywords:
+  - tech
+  - software
+is_draft: false
+---
+
+Give hostnames to your Docker applications running
+on your local machine using [Traefik Proxy](https://traefik.io/). Traefik
+(pronounced like traffic) is an _edge router_ that can
+serve many functions such as reverse proxying and
+load balancing.
+
+#### Why would I want to give localhost applications hostnames?
+
+Suppose you are working on multiple projects/apps at
+the same time, and each of those projects are fully
+Dockerized and have their own `docker-compose.yaml`
+configurations. Or suppose that you have some apps that you
+always want running in the background, like [Portainer](https://portainer.io).
+If you are using a standard full-stack tech stack like mine,
+chances are you have some application exposed on
+port 8000 or 3000 (or both). You will run into problems
+launching containers when you already have another
+container listening on one of those common ports. You
+might think a quick solution would be to just change
+the port number of the second app, and you would be
+right. However, this tactic quickly becomes unwieldy
+as you have more apps running, and it can be easy to
+forget which ports correspond to which apps.
+The solution: forget port numbers and deal with
+containers the same way the larger internet has dealt
+with IP addresses: use hostnames.
+
+#### Prerequisites
+
+- Docker
+- Knowledge of docker-compose syntax
+- Some knowledge of networking, particularly subnetting, CIDR blocks, RFC 1918 networks
+
+> [!INFO]
+>
+> **RFC 1918 networks** are **private networks**,
+> meaning they are used only for local networks and are not publicly routable on the internet. The RFC 1918 address ranges are divided into blocks as follows:
+>
+> - **the 16 block**: 192.168.0.0/16 (192.168.0.0 -192.168.255.255)
+> - **the 12 block**: 172.16.0.0/12 (172.16.0.0-172.31.255.255)
+> - **the 8 block**: 10.0.0.0/8 (10.0.0.0 -10.255.255.255)
+>
+> Most devices understand this, so if you enter any of these addresses in a browser, they will always be searched within the local network and such requests will never leave said network.
+
+For ideal results, we'll set up a single, global Traefik instance so that we can forget about it later on.
+
+First, determine your Docker installation's default subnet. You can do this by running. Assuming you haven't tinkered around with it, the default is
+`172.16.0.0/12`. If you have, then you already know enough to figure this out.
+Find an unused `/16` CIDR block that falls within your Docker subnet. For our purposes, let's take
+`172.20.0.0/16`. Then use the following Traefik config `traefik.yml`:
+
+```yaml
+api:
+  dashboard: true
+  debug: true
+
+log:
+  filePath: /var/log/traefik/traefik.log
+
+accessLog:
+  filePath: /var/log/traefik/access.log
+
+entryPoints:
+  http:
+    address: ":80"
+
+providers:
+  docker:
+    exposedByDefault: false
+```
+
+Let's break this down:
+
+```yaml
+api:
+  dashboard: true
+  debug: true
+```
+
+enables the Traefik dashboard and debug logging.
+
+The top-level `log` and `accessLog` keys determine where the logs will be stored.
+
+```yaml
+entryPoints:
+  http:
+    address: ":80"
+```
+
+`entryPoints` tell Traefik what ports to expose to the host system. We create an entrypoint named
+http and expose it on the host's port 80, which is the default HTTP port (we will deal with HTTPS in another blog).
+
+```yaml
+providers:
+  docker:
+    exposedByDefault: false
+```
+
+enables the Docker integration, but we want to control which apps should integrate with Traefik.
+
+We then use the following `docker-compose.yml`:
+
+```yaml
+name: global-traefik
+
+networks:
+  default:
+    name: traefik
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+    driver_opts:
+      com.docker.network.bridge.name: traefik
+
+services:
+  traefik:
+    image: traefik:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.yml:/traefik.yml:ro
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik
+      traefik.http.routers.traefik.rule: Host(`traefik.localhost`)
+      traefik.http.routers.traefik.entrypoints: http
+      traefik.http.routers.traefik.service: api@internal
+      traefik.http.services.traefik.loadbalancer.server.port: 8080
+```
+
+Let's break this down as well:
+
+```yaml
+ports:
+  - 80:80
+```
+
+corresponds to the `http` entrypoint we set up in `traefik.yml`.
+
+```yaml
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock:ro
+```
+
+mounts the host's Docker socket into the container and give it read-only access to other running containers.
+
+```yaml
+labels:
+  traefik.enable: "true"
+  traefik.docker.network: traefik
+  traefik.http.routers.traefik.rule: Host(`traefik.localhost`)
+  traefik.http.routers.traefik.entrypoints: http
+  traefik.http.routers.traefik.service: api@internal
+  traefik.http.services.traefik.loadbalancer.server.port: 8080
+```
+
+Labels are the key to Traefik integration. We explicitly enable the integration of the
+Traefik container itself with the Traefik proxy. We add a rule so that the Traefik dashboard
+becomes accessible using the hostname `traefik.localhost`. Note that the hostname is
+surrounded by backticks (<code>`</code>) and not quotes.
+
+Finally, spin up the Traefik instance:
+
+```shell
+docker compose up --detach
+```
+
+In a browser, navigate to `traefik.localhost` to view the Traefik dashboard.
+
+To try out our first app with a custom hostname, check out the following NGINX test
+app `docker-compose.yaml`:
+
+```yaml
+services:
+  nginx:
+    image: bitnami/nginx:latest
+    restart: unless-stopped
+    environment:
+      NGINX_HTTP_PORT_NUMBER: 8000
+    ports:
+      - "8000:8000"
+```
+
+This is how we would normally write a Docker app, and it would be accessible on
+`localhost:8000`. To make it work with Traefik, we need to modify it a bit:
+
+```yaml
+networks:
+  traefik:
+    external: true
+
+services:
+  nginx:
+    image: bitnami/nginx:latest
+    restart: unless-stopped
+    environment:
+      NGINX_HTTP_PORT_NUMBER: 8000
+    networks:
+      - traefik
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.nginx.rule: Host(`nginx-test-app.localhost`)
+      traefik.http.routers.nginx.entrypoints: http
+      traefik.http.services.nginx.loadbalancer.server.port: 8000
+```
+
+Launch the test app instance:
+
+```shell
+docker compose up --detach
+```
+
+The app should now be accessible on `nginx-test-app.localhost`.
