@@ -6,10 +6,10 @@ import cld from "@/utils/cloudinary.client";
 export function BeforeAfter() {
   const imgBefore = cld
     .image("svip/186/7-ImageSegment/cancer")
-    .resize(Resize.scale().width("auto"));
+    .resize(Resize.scale().width("auto").height(600));
   const imgAfter = cld
     .image("svip/186/7-ImageSegment/cancer_otsu")
-    .resize(Resize.scale().width("auto"));
+    .resize(Resize.scale().width("auto").height(600));
 
   return (
     <BeforeAfterSlider

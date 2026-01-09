@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import info from "@/info.json";
 import { BeforeAfter } from "./before-after";
 
 export function Vip() {
   return (
-    <section className="flex flex-col gap-12">
+    <section className="flex flex-col items-center gap-12">
       <div>
         <h2 className="text-xl uppercase tracking-[0.5rem]">
           Video & Image Processing
@@ -14,15 +15,13 @@ export function Vip() {
         </div>
       </div>
 
-      <div className="col-span-3 my-auto">
+      <div className="my-auto">
         <BeforeAfter />
       </div>
 
-      <div>
-        <Link to="/svip" className="btn btn-outline btn-accent btn-wide">
-          See in portfolio
-        </Link>
-      </div>
+      <Button asChild size="wide-lg">
+        <Link to="/svip">See in portfolio</Link>
+      </Button>
     </section>
   );
 }

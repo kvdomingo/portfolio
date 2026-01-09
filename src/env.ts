@@ -13,10 +13,19 @@ export const env = createEnv({
    * a type-level and at runtime.
    */
   clientPrefix: "VITE_",
-
   client: {
     VITE_APP_TITLE: z.string().min(1).optional(),
     VITE_CLOUDINARY_CLOUD_NAME: z.string(),
+    VITE_APP_URL: z.url(),
+  },
+
+  shared: {
+    NODE_ENV: z.enum(["development", "production"]),
+    DEV: z.boolean(),
+    PROD: z.boolean(),
+    BASE_URL: z.string().optional(),
+    MODE: z.string(),
+    SSR: z.boolean(),
   },
 
   /**
@@ -26,6 +35,8 @@ export const env = createEnv({
   runtimeEnv: {
     ...process.env,
     ...import.meta.env,
+    NODE_ENV:
+      process.env.NODE_ENV ?? (import.meta.env.PROD ? "production" : "development"),
   },
 
   /**
@@ -41,14 +52,5 @@ export const env = createEnv({
    * In order to solve these issues, we recommend that all new projects
    * explicitly specify this option as true.
    */
-  shared: {
-    NODE_ENV: z.enum(["development", "production"]),
-    DEV: z.boolean(),
-    PROD: z.boolean(),
-    BASE_URL: z.string().optional(),
-    MODE: z.string(),
-    SSR: z.boolean(),
-    APP_URL: z.url(),
-  },
   emptyStringAsUndefined: true,
 });

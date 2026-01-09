@@ -1,6 +1,7 @@
 import { blog } from "@content";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { compareDesc, format } from "date-fns";
+import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/blog/")({
   component: BlogIndex,
@@ -12,7 +13,7 @@ function BlogIndex() {
     .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
 
   return (
-    <div className="container text-center">
+    <div className="container py-6 text-center">
       <div className="flex flex-col gap-4 text-left">
         {entries.map((entry) => (
           <div
@@ -22,20 +23,18 @@ function BlogIndex() {
             <Link to="/blog/$slug" params={{ slug: entry.slug }}>
               <div className="flex items-center gap-2">
                 <h3>{entry.title}</h3>
-                {entry.is_draft && (
-                  <span className="badge badge-neutral badge-lg">Draft</span>
-                )}
+                {entry.is_draft && <Badge variant="secondary">Draft</Badge>}
               </div>
-              <p className="text-ctp-subtext0">
-                {format(new Date(entry.created), "MMMM dd, yyyy")}
+              <p className="font-mono text-secondary text-xs uppercase">
+                {format(new Date(entry.created), "dd MMMM yyyy")}
               </p>
-              <p>{entry.summary}</p>
+              <p className="text-secondary">{entry.summary}</p>
             </Link>
-            <div>
+            <div className="mt-2">
               {entry.keywords.map((keyword: string) => (
-                <span key={keyword} className="badge badge-neutral badge-lg mx-0.5">
+                <Badge key={keyword} className="mx-0.5">
                   {keyword}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>

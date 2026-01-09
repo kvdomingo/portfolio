@@ -1,6 +1,7 @@
 import { Resize } from "@cloudinary/url-gen/actions/resize";
 import { SiInstagram } from "@icons-pack/react-simple-icons";
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import info from "@/info.json";
 import cld from "@/utils/cloudinary.client";
 
@@ -29,22 +30,19 @@ export function Photography() {
       </div>
 
       <div className="flex flex-col justify-center gap-4 md:flex-row">
-        <div>
-          <Link to="/photography" className="btn btn-outline btn-accent btn-wide">
-            See in portfolio
-          </Link>
-        </div>
-        <div>
+        <Button asChild size="wide-lg">
+          <Link to="/photography">See in portfolio</Link>
+        </Button>
+        <Button asChild variant="outline" size="wide-lg">
           <a
             href="https://instagram.com/arockentothemoon"
-            className="btn btn-outline btn-accent btn-wide"
             rel="noopener noreferrer"
             target="_blank"
           >
             <SiInstagram size={24} />
             Instagram
           </a>
-        </div>
+        </Button>
       </div>
     </section>
   );

@@ -18,10 +18,10 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <main className="container flex flex-col gap-36 py-12 text-center">
+    <div className="flex flex-col gap-36 py-12 text-center">
       <Photography />
       <Dev />
       <Vip />
-    </main>
+    </div>
   );
 }

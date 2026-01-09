@@ -89,15 +89,20 @@ limited to specifying full version numbers - you can specify minor or major vers
 mise use -g python@3.12 node@22 go@1.22.4
 ```
 
-An even more powerful feature is specifying what I like to call a "variable version". In my use case,
-for Python and Go, I want to stay one minor version behind the latest, and the LTS version for Node.js.
-I can do this as follows:
+An even more powerful feature is specifying what I like to call a "variable version". In 
+my use case, I want to enforce the following constraints:
+
+- stay one *minor* version behind the latest Python version
+- stay one *patch* version beind the latest Go version
+- stay on the LTS version for Node.js
+
+I achieve this as follows:
 
 ```shell
-mise use -g python@sub-0.1:latest node@lts go@sub-0.1:latest
+mise use -g python@sub-0.1:latest node@lts go@sub-0.0.1:latest
 ```
 
-The `sub-0.1:latest` syntax basically translates to "the latest version minus 0.1". As of writing,
+The `sub-0.1:latest` syntax basically translates to "the latest version subtract 0.1". As of writing,
 the latest minor version of Python is 3.13, so `mise` will install version 3.12. When 3.14 is
 released, `mise` will automatically upgrade to 3.13. `mise` will automatically check for tool
 version updates, and you can update all tools by running
@@ -117,7 +122,7 @@ experimental = true
 [tools]
 python = "sub-0.1:latest"
 node = "lts"
-go = "sub-0.1:latest"
+go = "sub-0.0.1:latest"
 ```
 
 You can then copy this to other machines by including `mise.toml` as part of your dotrepo,

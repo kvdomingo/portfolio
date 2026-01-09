@@ -26,7 +26,11 @@ const config = defineConfig({
         host: process.env.APP_URL,
       },
     }),
-    react(),
+    react({
+      babel: {
+        plugins: ["babel-plugin-react-compiler"],
+      },
+    }),
   ],
   server: {
     host: "0.0.0.0",

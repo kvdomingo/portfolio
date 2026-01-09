@@ -1,31 +1,11 @@
 @import "tailwindcss";
-@import "@catppuccin/tailwindcss/mocha.css";
 
-@plugin "daisyui";
-@plugin "daisyui/theme" {
-  name: "studio";
-  default: true;
-  prefersdark: true;
-  color-scheme: dark;
-
-  --color-primary: #818cf8;
-  --color-secondary: #1fb2a6;
-  --color-accent: #ffffff;
-  --color-neutral: #2a323c;
-  --color-base-100: #321e81;
-  --color-base-200: #1e1b4b;
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #f87272;
-}
-
-/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: "Figtree Variable", "Rubik Variable", sans-serif;
   --font-mono:
-    "Inconsolata", "Space Mono", source-code-pro, Menlo, Monaco, Consolas,
+    "Geist Mono", "Inconsolata", source-code-pro, Menlo, Monaco, Consolas,
     "Courier New", monospace;
   --font-serif: Georgia, serif;
   --radius: 0.35rem;
@@ -214,14 +194,19 @@
 }
 
 @layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--color-ring);
+  }
+
   body {
     letter-spacing: var(--tracking-normal);
   }
 }
 
 body {
-  color: var(--color-ctp-text);
-  background-color: var(--color-ctp-base);
+  color: var(--foreground);
+  background-image: linear-gradient(to bottom, var(--background), var(--card));
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -258,11 +243,6 @@ code {
 .section-header {
   letter-spacing: 0.25em;
   text-transform: uppercase;
-}
-
-a[href] {
-  color: var(--color-ctp-mauve);
-  text-decoration: none;
 }
 
 ol.reference {
@@ -341,10 +321,10 @@ mjx-container[jax="SVG"] > svg a {
 
 html:active-view-transition-type(fade) {
   &::view-transition-old(main-content) {
-    animation: 300ms ease-in-out both fade-out;
+    animation: 100ms ease-in-out both fade-out;
   }
   &::view-transition-new(main-content) {
-    animation: 300ms ease-in-out both fade-in;
+    animation: 100ms ease-in-out both fade-in;
   }
 }
 

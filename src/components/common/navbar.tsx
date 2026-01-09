@@ -1,6 +1,14 @@
 import { Resize } from "@cloudinary/url-gen/actions";
 import { Link } from "@tanstack/react-router";
+import { cn } from "@/utils";
 import cld from "@/utils/cloudinary.client";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "../ui/navigation-menu";
 
 const LIGHT_LOGO = cld
   .image("logo/logo-white")
@@ -17,34 +25,43 @@ const NAV_LINKS = [
 
 export function Navbar() {
   return (
-    <header className="z-10 w-full">
-      <nav className="navbar px-12">
-        <div className="flex flex-auto items-center">
-          <Link to="/" viewTransition>
-            <img
-              src={LIGHT_LOGO}
-              alt="logo"
-              className="my-2 h-14 w-auto opacity-1 transition-all duration-300 ease-in-out"
-            />
-          </Link>
-        </div>
+    <NavigationMenu>
+      <NavigationMenuList className="px-12 py-2">
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "hover:bg-transparent focus:bg-transparent",
+            )}
+          >
+            <Link to="/">
+              <img src={LIGHT_LOGO} alt="logo" className="h-14 w-auto" />
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
 
-        <ul className="section-header md:menu md:menu-horizontal hidden flex-auto items-center justify-end gap-6 md:visible md:flex">
-          {NAV_LINKS.map((nav) => (
-            <li key={nav.path}>
+        {NAV_LINKS.map((nav) => (
+          <NavigationMenuItem key={nav.path}>
+            <NavigationMenuLink
+              asChild
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "uppercase tracking-[0.2rem]",
+              )}
+            >
               <Link
                 to={nav.path}
-                viewTransition
                 activeProps={{
-                  className: "bg-ctp-mauve",
+                  className: "bg-primary text-primary-foreground focus:bg-primary",
                 }}
               >
-                <span className="text-white">{nav.label}</span>
+                {nav.label}
               </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }

@@ -1,5 +1,6 @@
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { TechStack } from "./tech-stack";
 
 export function Dev() {
@@ -12,22 +13,19 @@ export function Dev() {
       <TechStack />
 
       <div className="flex flex-col justify-center gap-4 md:flex-row">
-        <div>
-          <Link to="/dev" className="btn btn-outline btn-accent btn-wide">
-            See in portfolio
-          </Link>
-        </div>
-        <div>
+        <Button asChild size="wide-lg">
+          <Link to="/dev">See in portfolio</Link>
+        </Button>
+        <Button asChild size="wide-lg" variant="outline">
           <a
             href="https://github.com/kvdomingo"
-            className="btn btn-outline btn-accent btn-wide"
             target="_blank"
             rel="noopener noreferrer"
           >
             <SiGithub size={24} />
             GitHub
           </a>
-        </div>
+        </Button>
       </div>
     </section>
   );

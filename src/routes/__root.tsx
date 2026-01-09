@@ -1,10 +1,8 @@
-import spaceMono400 from "@fontsource/space-mono/400?url";
-import spaceMono700 from "@fontsource/space-mono/700?url";
 import figtree from "@fontsource-variable/figtree?url";
+import geistMono from "@fontsource-variable/geist-mono?url";
 import rubik from "@fontsource-variable/rubik?url";
-import spaceGrotesk from "@fontsource-variable/space-grotesk?url";
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { type QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   HeadContent,
@@ -113,15 +111,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       },
       {
         rel: "stylesheet",
-        href: spaceGrotesk,
-      },
-      {
-        rel: "stylesheet",
-        href: spaceMono400,
-      },
-      {
-        rel: "stylesheet",
-        href: spaceMono700,
+        href: geistMono,
       },
       {
         rel: "icon",
@@ -146,34 +136,30 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 });
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const { queryClient } = Route.useRouteContext();
-
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body className="dark min-h-screen bg-linear-to-b from-ctp-base to-ctp-crust">
-        <QueryClientProvider client={queryClient}>
-          <Navbar />
+        <Navbar />
 
-          <main>{children}</main>
+        <main className="container mx-auto">{children}</main>
 
-          <TanStackDevtools
-            config={{
-              position: "bottom-right",
-            }}
-            plugins={[
-              {
-                name: "Tanstack Router",
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-              TanStackQueryDevtools,
-            ]}
-          />
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+            TanStackQueryDevtools,
+          ]}
+        />
 
-          <Scripts />
-        </QueryClientProvider>
+        <Scripts />
       </body>
     </html>
   );
