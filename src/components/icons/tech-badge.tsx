@@ -1,5 +1,6 @@
 import * as SimpleIcons from "@icons-pack/react-simple-icons";
 import info from "@/info.json";
+import { Badge } from "../ui/badge";
 
 interface TechBadgeProps {
   name: string;
@@ -25,10 +26,9 @@ export function TechBadge({ name }: TechBadgeProps) {
   }
 
   return (
-    <div
-      className={`badge badge-neutral badge-xs md:badge-md mr-2 mb-2 p-4 ${
-        iconExists ? "flex gap-1" : ""
-      }`}
+    <Badge
+      className={`mr-2 mb-2 px-2 py-1 text-sm ${iconExists ? "flex gap-1" : ""}`}
+      variant="secondary"
     >
       {iconExists && Icon ? (
         <>
@@ -38,6 +38,6 @@ export function TechBadge({ name }: TechBadgeProps) {
       ) : (
         name
       )}
-    </div>
+    </Badge>
   );
 }

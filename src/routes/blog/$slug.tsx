@@ -10,7 +10,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { cn } from "@/utils";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -45,19 +44,7 @@ function BlogPost() {
         </p>
       </div>
 
-      <div
-        className={cn(
-          "space-y-4",
-          "[&_a]:text-primary",
-          "[&_p]:prose",
-          "[&_blockquote]:rounded-lg [&_blockquote]:border-ring [&_blockquote]:border-l-4 [&_blockquote]:bg-muted [&_blockquote]:p-4 [&_blockquote]:text-muted-foreground",
-          "[&_pre]:rounded-lg [&_pre]:p-4",
-          "[&_ul]:list-outside [&_ul]:list-disc [&_ul]:pl-8",
-          "[&_ol]:list-outside [&_ol]:list-decimal [&_ol]:pl-8",
-        )}
-      >
-        <Mdx code={entry.content} />
-      </div>
+      <Mdx code={entry.content} />
 
       <div>
         <h4>Keywords</h4>

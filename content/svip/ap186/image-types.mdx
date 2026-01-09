@@ -11,27 +11,7 @@ keywords:
 cover: "svip/186/3-ImageTypes/DSC_8805.png"
 courseSlug: "ap186"
 created: "2019-08-15T02:23:09.0000Z"
-
-sizeData: [
-  { format: "16-bit BMP", size: 3418 },
-  { format: "8-bit PNG", size: 3240 },
-  { format: "24-bit JPG", size: 1474 },
-  { format: "8-bit TIFF", size: 1053 },
-  { format: "8-bit GIF", size: 533 },
-  { format: "JPG (binary)", size: 391 },
-]
-
-rgbData: [
-  { index: 0, r: 74, g: 24, b: 26 },
-  { index: 1, r: 177, g: 168, b: 169 },
-  { index: 2, r: 248, g: 168, b: 184 },
-  { index: 3, r: 232, g: 168, b: 184 },
-  { index: 254, r: 7, g: 7, b: 7 },
-  { index: 255, r: 255, g: 255, b: 255 },
-]
 ---
-
-import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 #### File formats
 
@@ -42,42 +22,41 @@ sizes themselves are shown in Table [1](#tab:sizes). In the interest of minimizi
 longer include the images saved in other file formats if there is no perceivable change in quality/characteristics.
 
 <figure class="figure" id="fig:original">
-  <img
-    src={buildCldUrl("svip/186/3-ImageTypes/DSC_8805")}
-    alt="Image used for comparison of file sizes"
-    class="w-full"
-  />
+  <Image publicId="svip/186/3-ImageTypes/DSC_8805" />
   <figcaption class="figcaption">
     Figure 1: Image used for comparison of file sizes.
   </figcaption>
 </figure>
 
 <figure class="figure" id="fig:histogram">
-  <img
-    src={buildCldUrl("svip/186/3-ImageTypes/histogram")}
-    alt="Red, green, blue, and gray histograms"
-    class="w-full"
-  />
+  <Image publicId="svip/186/3-ImageTypes/histogram" />
   <figcaption class="figcaption">
     Figure 2: Red, green, blue, and gray histograms of Fig. [1](#fig:original).
   </figcaption>
 </figure>
 
-<table class="table table-lg" id="tab:sizes">
+<table class="w-full table table-auto border border-collapse" id="tab:sizes">
   <caption>
     Table 1: File sizes for various saved formats of Fig. [1](#fig:original).
   </caption>
   <thead>
     <tr align="center">
-      <th>Format</th>
-      <th>Size (kB)</th>
+      <th class="border">Format</th>
+      <th class="border">Size (kB)</th>
     </tr>
   </thead>
   <tbody align="center">
-    {frontmatter.sizeData.map(d => (
+    {[
+      { format: "16-bit BMP", size: 3418 },
+      { format: "8-bit PNG", size: 3240 },
+      { format: "24-bit JPG", size: 1474 },
+      { format: "8-bit TIFF", size: 1053 },
+      { format: "8-bit GIF", size: 533 },
+      { format: "JPG (binary)", size: 391 },
+    ].map(d => (
       <tr>
-        <td class="py-2">{d.format}</td>
-        <td>{d.size}</td>
+        <td class="border py-2">{d.format}</td>
+        <td class="border">{d.size}</td>
       </tr>
     ))}
   </tbody>
@@ -87,11 +66,7 @@ In order to produce a binary image, I applied a threshold of 192 to Fig. [1](#fi
 Fig. [3](#fig:binary).
 
 <figure class="figure" id="fig:binary">
-  <img
-    src={buildCldUrl("svip/186/3-ImageTypes/DSC_8805_bin")}
-    alt="Binary image"
-    class="w-full"
-  />
+  <Image publicId="svip/186/3-ImageTypes/DSC_8805_bin" />
   <figcaption class="figcaption">
     Figure 3: Fig. [1](#fig:original) saved as a binary image.
   </figcaption>
@@ -110,49 +85,48 @@ colors is locally adaptive, which allows transition of colors to be smoother, wh
 is uniform.
 
 <figure class="figure" id="fig:tiff">
-  <img
-    src={buildCldUrl("svip/186/3-ImageTypes/DSC_8805_tiff_indexed")}
-    alt="TIFF indexed image"
-    class="w-full"
-  />
+  <Image publicId="svip/186/3-ImageTypes/DSC_8805_tiff_indexed" />
   <figcaption class="figcaption">
     Figure 4: Fig.[1](#fig:original) saved as a `TIFF` indexed image.
   </figcaption>
 </figure>
 
-<table class="table table-lg" id="tab:index">
+<table class="w-full table table-auto border border-border border-collapse" id="tab:index">
   <caption>
     Table 2: First and last few elements of the color table for Fig.
     [4](#fig:tiff).
   </caption>
   <thead align="center">
     <tr>
-      <th>Index</th>
-      <th>R</th>
-      <th>G</th>
-      <th>B</th>
-      <th>Color</th>
+      <th class="border">Index</th>
+      <th class="border">R</th>
+      <th class="border">G</th>
+      <th class="border">B</th>
+      <th class="border">Color</th>
     </tr>
   </thead>
   <tbody align="center">
-    {frontmatter.rgbData.map(d => (
+    {[
+      { index: 0, r: 74, g: 24, b: 26 },
+      { index: 1, r: 177, g: 168, b: 169 },
+      { index: 2, r: 248, g: 168, b: 184 },
+      { index: 3, r: 232, g: 168, b: 184 },
+      { index: 254, r: 7, g: 7, b: 7 },
+      { index: 255, r: 255, g: 255, b: 255 },
+    ].map(d => (
       <tr>
-        <td>{d.index}</td>
-        <td>{d.r}</td>
-        <td>{d.g}</td>
-        <td>{d.b}</td>
-        <td style={`background-color: rgb(${d.r}, ${d.g}, ${d.b});`} />
+        <td class="border">{d.index}</td>
+        <td class="border">{d.r}</td>
+        <td class="border">{d.g}</td>
+        <td class="border">{d.b}</td>
+        <td class="border" style={{ backgroundColor: `rgb(${d.r}, ${d.g}, ${d.b})` }} />
       </tr>
     ))}
   </tbody>
 </table>
 
 <figure class="figure" id="fig:gif">
-  <img
-    src={buildCldUrl("svip/186/3-ImageTypes/DSC_8805_gif_indexed")}
-    alt="GIF indexed image"
-    class="w-full"
-  />
+  <Image publicId="svip/186/3-ImageTypes/DSC_8805_gif_indexed" />
   <figcaption class="figcaption">
     Figure 5: Fig. [1](#fig:original) saved as a `GIF` indexed image.
   </figcaption>

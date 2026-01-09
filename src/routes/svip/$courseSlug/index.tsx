@@ -1,7 +1,15 @@
 import { svip } from "@content";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Tilt } from "@/components/ui/tilt";
 import info from "@/info.json";
-import { buildCldUrl } from "@/utils/cloudinary.client";
+import { buildCld } from "@/utils/cloudinary.client";
 
 export const Route = createFileRoute("/svip/$courseSlug/")({
   loader: ({ params }) => {
@@ -14,49 +22,54 @@ export const Route = createFileRoute("/svip/$courseSlug/")({
 
     return { course, entries };
   },
-  component: CourseIndex,
+  component: Page,
 });
 
-function CourseIndex() {
+function Page() {
   const { course, entries } = Route.useLoaderData();
 
   return (
     <div className="container flex flex-col gap-4 pb-12">
-      <div className="breadcrumbs">
-        <ul>
-          <li>
-            <Link to="/svip">Courses</Link>
-          </li>
-          <li>{course.name}</li>
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link to="/svip" className="text-primary">
+                Courses
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>{course.name}</BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       {entries.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {entries.map((entry) => (
-            <div
+            <Link
               key={entry.slug}
-              className="card image-full group aspect-square overflow-hidden bg-base-300 shadow-xl"
+              to="/svip/$courseSlug/$postSlug"
+              params={{ courseSlug: course.slug, postSlug: entry.slug }}
+              className="card-body"
             >
-              <figure>
-                <img
-                  src={buildCldUrl(entry.cover)}
-                  alt={entry.title}
-                  className="aspect-square object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-              </figure>
-              <Link
-                to="/svip/$courseSlug/$postSlug"
-                params={{ courseSlug: course.slug, postSlug: entry.slug }}
-                className="card-body"
-              >
-                <h2 className="card-title text-white">{entry.title}</h2>
-              </Link>
-            </div>
+              <Tilt rotationFactor={6} isRevese className="h-full">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-xl">
+                  <div className="absolute top-0 left-0 h-full w-full p-6 backdrop-brightness-30">
+                    <h2>{entry.title}</h2>
+                  </div>
+                  <img
+                    src={buildCld(entry.cover).backgroundColor("white").toURL()}
+                    alt={entry.title}
+                    className="aspect-square h-auto w-full object-cover transition-transform duration-300"
+                  />
+                </div>
+              </Tilt>
+            </Link>
           ))}
         </div>
       ) : (
-        <div className="py-12 text-center text-gray-400 text-md">
+        <div className="py-12 text-center text-md text-secondary-foreground">
           No posts yet. Come back later!
         </div>
       )}

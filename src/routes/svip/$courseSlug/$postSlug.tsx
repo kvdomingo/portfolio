@@ -2,6 +2,14 @@ import { svip } from "@content";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ClientDate } from "@/components/common/client-date";
 import { Mdx } from "@/components/common/mdx";
+import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import info from "@/info.json";
 
 export const Route = createFileRoute("/svip/$courseSlug/$postSlug")({
@@ -16,43 +24,55 @@ export const Route = createFileRoute("/svip/$courseSlug/$postSlug")({
 
     return { course, entry };
   },
-  component: SvipPost,
+  component: Page,
 });
 
-function SvipPost() {
+function Page() {
   const { course, entry } = Route.useLoaderData();
 
   return (
     <div className="container flex flex-col gap-8 py-8">
-      <div className="breadcrumbs">
-        <ul>
-          <li>
-            <Link to="/svip">Courses</Link>
-          </li>
-          <li>
-            <Link to="/svip/$courseSlug" params={{ courseSlug: course.slug }}>
-              {course.name}
-            </Link>
-          </li>
-          <li>{entry.title}</li>
-        </ul>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link to="/svip" className="text-primary">
+                Courses
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link
+                to="/svip/$courseSlug"
+                params={{ courseSlug: course.slug }}
+                className="text-primary"
+              >
+                {course.name}
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>{entry.title}</BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       <h3>{entry.title}</h3>
-      <p className="text-neutral-400">
+      <p className="font-mono text-muted-foreground uppercase">
         <ClientDate date={new Date(entry.created).toISOString()} />
       </p>
 
-      <div className="prose prose-invert max-w-none">
+      <div className="max-w-none">
         <Mdx code={entry.content} />
       </div>
 
       <h4>Keywords</h4>
       <div className="flex flex-wrap gap-2">
         {entry.keywords.map((keyword: string) => (
-          <div key={keyword} className="badge badge-neutral badge-lg">
+          <Badge key={keyword} variant="secondary">
             {keyword}
-          </div>
+          </Badge>
         ))}
       </div>
     </div>

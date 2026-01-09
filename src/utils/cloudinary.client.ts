@@ -20,6 +20,10 @@ const cld = new Cloudinary({
 
 export default cld;
 
+export function buildCld(publicId: string) {
+  return cld.image(publicId).resize(Resize.scale().width("auto"));
+}
+
 export function buildCldUrl(publicId: string) {
   return cld.image(publicId).resize(Resize.scale().width("auto")).toURL();
 }

@@ -51,7 +51,7 @@ export function ProjectItem({ project }: ProjectItemProps) {
                 href={project.organizationUrl ?? undefined}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-ctp-mauve hover:underline"
+                className="text-primary hover:underline"
               >
                 {project.organization}
               </a>
@@ -59,14 +59,14 @@ export function ProjectItem({ project }: ProjectItemProps) {
           </div>
         )}
 
-        <p className="small-caps text-gray-400 text-sm">
+        <p className="font-mono text-muted-foreground text-sm uppercase">
           {dateFormat(new Date(project.startDate), "mmm yyyy")} -{" "}
           {project.endDate
             ? dateFormat(new Date(project.endDate), "mmm yyyy")
             : "present"}
         </p>
 
-        <div className="prose prose-invert my-8 max-w-none">
+        <div className="my-8 max-w-none">
           <Mdx code={project.content} />
         </div>
 

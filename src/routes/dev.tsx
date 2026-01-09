@@ -3,6 +3,7 @@ import { SiGithub, SiPython } from "@icons-pack/react-simple-icons";
 import { createFileRoute } from "@tanstack/react-router";
 import { compareDesc } from "date-fns";
 import { ProjectGroup } from "@/components/dev/project-group";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/dev")({
   component: Dev,
@@ -14,22 +15,24 @@ function Dev() {
   return (
     <div className="container pb-8">
       <div className="mb-8 flex justify-start gap-4 md:justify-end">
-        <a
-          href="https://github.com/kvdomingo"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-circle btn-ghost h-16 w-16"
-        >
-          <SiGithub size={48} />
-        </a>
-        <a
-          href="https://pypi.org/user/kvdomingo/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-circle btn-ghost h-16 w-16"
-        >
-          <SiPython size={48} />
-        </a>
+        <Button variant="ghost" size="icon-lg" asChild>
+          <a
+            href="https://github.com/kvdomingo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SiGithub size={48} className="size-8" />
+          </a>
+        </Button>
+        <Button variant="ghost" size="icon-lg" asChild>
+          <a
+            href="https://pypi.org/user/kvdomingo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SiPython className="size-8" />
+          </a>
+        </Button>
       </div>
 
       {statuses.map((status) => {
@@ -44,7 +47,6 @@ function Dev() {
           );
 
         if (filteredProjects.length === 0) return null;
-
         return (
           <ProjectGroup key={status} status={status} projects={filteredProjects} />
         );

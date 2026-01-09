@@ -26,7 +26,7 @@ const NAV_LINKS = [
 export function Navbar() {
   return (
     <NavigationMenu>
-      <NavigationMenuList className="px-12 py-2">
+      <NavigationMenuList className="mb-6 px-12 py-2">
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
