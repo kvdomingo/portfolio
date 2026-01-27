@@ -1,0 +1,32 @@
+{
+  "languages": {
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll": true
+      }
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll": true
+      }
+    },
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll": true
+      }
+    },
+    "JSON": {
+      "code_actions_on_format": {
+        "source.fixAll": true
+      }
+    },
+    "JSONC": {
+      "code_actions_on_format": {
+        "source.fixAll": true
+      }
+    }
+  },
+  "lsp": {
+    "biome": {}
+  }
+}

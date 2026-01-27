@@ -1,6 +1,9 @@
-import BeforeAfterSlider from "react-before-after-slider-component";
-import "react-before-after-slider-component/dist/build.css";
 import { Resize } from "@cloudinary/url-gen/actions";
+import {
+  ImageComparison,
+  ImageComparisonImage,
+  ImageComparisonSlider,
+} from "@/components/ui/image-comparison";
 import cld from "@/utils/cloudinary.client";
 
 export function BeforeAfter() {
@@ -12,14 +15,16 @@ export function BeforeAfter() {
     .resize(Resize.scale().width("auto").height(600));
 
   return (
-    <BeforeAfterSlider
-      className="rounded-2xl"
-      firstImage={{ imageUrl: imgAfter.toURL(), alt: "cancer otsu" }}
-      secondImage={{ imageUrl: imgBefore.toURL(), alt: "cancer" }}
-      delimiterIconStyles={{
-        border: "3px solid #818cf8",
+    <ImageComparison
+      className="aspect-video h-[600px] rounded-2xl"
+      enableHover
+      springOptions={{
+        bounce: 0.3,
       }}
-      currentPercentPosition={33}
-    />
+    >
+      <ImageComparisonImage src={imgBefore.toURL()} position="left" alt="cancer" />
+      <ImageComparisonImage src={imgAfter.toURL()} position="right" alt="cancer otsu" />
+      <ImageComparisonSlider className="w-0.5 bg-white/30 backdrop-blur-xs" />
+    </ImageComparison>
   );
 }

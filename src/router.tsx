@@ -17,9 +17,7 @@ export const getRouter = () => {
 
     defaultPreload: "intent",
     scrollRestoration: true,
-    defaultViewTransition: {
-      types: ["fade"],
-    },
+    defaultViewTransition: true,
   });
 
   setupRouterSsrQueryIntegration({ router, queryClient: rqContext.queryClient });

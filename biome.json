@@ -39,6 +39,9 @@
       "suspicious": {
         "noArrayIndexKey": "warn"
       },
+      "a11y": {
+        "noStaticElementInteractions": "off"
+      },
       "nursery": {
         "useSortedClasses": "on"
       }
