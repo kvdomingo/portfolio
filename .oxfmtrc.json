@@ -29,5 +29,5 @@
   },
   "svelte": true,
   "astro": true,
-  "ignorePatterns": ["content/**/*.mdx"]
+  "ignorePatterns": ["**/*.md", "**/*.mdx"]
 }
