@@ -6,10 +6,11 @@ disable = ["MD001", "MD033", "MD041", "MD059"]
 "**/*.mdx" = "mdx"
 
 [MD013]
-line-length = 80
+line-length = 88
 reflow = true
 code-blocks = false
 code-spans = false
+headings = false
 
 [MD077]
-indent = 4
+indent = 2

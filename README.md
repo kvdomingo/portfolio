@@ -55,3 +55,19 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into
 our [Discord server](https://astro.build/chat).
+
+## Photography cache
+
+Album and per-photo pages are cached on Vercel's CDN until purged, tagged
+`photos-<album>` (e.g. `photos-live`) or `photos-client-<clientSlug>`.
+
+Cloudinary purges them automatically: in Cloudinary
+**Settings → Webhook Notifications**, point a notification at
+`https://kvd.studio/api/cloudinary-notify` for the **upload**, **delete** and
+**rename** event types. Requests are verified against the account's API secret.
+
+If a notification is missed, purge an album by hand:
+
+```sh
+vercel cache invalidate --tag photos-<album>
+```

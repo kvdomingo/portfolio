@@ -1,0 +1,510 @@
+---
+import type { Photo } from "@/actions/_utils/photography";
+
+import {
+  GRID_SIZES,
+  gridSrc,
+  gridSrcset,
+  lightboxSrcset,
+  placeholderUrl,
+} from "@/actions/_utils/cloudinary.client";
+
+import { assignColumns } from "./columns";
+
+interface Props {
+  photos: Photo[];
+  basePath: string;
+  initialPhotoId?: string;
+}
+
+const { photos, basePath, initialPhotoId } = Astro.props;
+
+const initialIndex = initialPhotoId
+  ? photos.findIndex(p => p.id === initialPhotoId)
+  : -1;
+
+const layoutScript = `(() => {
+  const assign = ${assignColumns.toString()};
+  const queries = ["(min-width: 768px)", "(min-width: 1024px)", "(min-width: 1280px)"].map(q => matchMedia(q));
+  const layout = () => {
+    const grid = document.querySelector(".pg-grid");
+    if (!grid) return;
+    const count = 1 + queries.filter(q => q.matches).length;
+    if (grid.dataset.cols === String(count)) return;
+    const items = [...grid.querySelectorAll(".pg-item")].sort((a, b) => a.dataset.i - b.dataset.i);
+    const cols = assign(items.map(el => +el.dataset.ratio), count).map(idx => {
+      const col = document.createElement("div");
+      col.className = "pg-col";
+      col.append(...idx.map(i => items[i]));
+      return col;
+    });
+    grid.replaceChildren(...cols);
+    grid.dataset.cols = String(count);
+  };
+  if (!window.__pgLayout) queries.forEach(q => q.addEventListener("change", () => window.__pgLayout()));
+  window.__pgLayout = layout;
+  layout();
+})();`;
+---
+
+<div
+  class="photo-gallery w-full px-4"
+  data-base={basePath}
+  data-initial={initialIndex >= 0 ? initialIndex : undefined}
+>
+  <div class="pg-grid">
+    {photos.map((p, i) => (
+      <figure
+        class="pg-item"
+        data-i={i}
+        data-ratio={p.height / p.width}
+        style={`aspect-ratio: ${p.width} / ${p.height}; background-image: url("${placeholderUrl(p.publicId)}")`}
+      >
+        <a
+          href={`${basePath}/${p.id}`}
+          data-astro-prefetch="false"
+          data-index={i}
+        >
+          <img
+            src={gridSrc(p.publicId)}
+            srcset={gridSrcset(p.publicId)}
+            sizes={GRID_SIZES}
+            width={p.width}
+            height={p.height}
+            alt={p.id}
+            class="pg-loading"
+            loading={i < 8 ? "eager" : "lazy"}
+            fetchpriority={i < 4 ? "high" : undefined}
+            decoding="async"
+          />
+        </a>
+      </figure>
+    ))}
+  </div>
+  <script is:inline data-astro-rerun set:html={layoutScript} />
+  <script is:inline data-astro-rerun>
+    (() => {
+      const root = document.currentScript.closest(".photo-gallery");
+      root.classList.add("pg-js");
+      for (const img of root.querySelectorAll("img.pg-loading")) {
+        if (img.complete) img.classList.remove("pg-loading");
+      }
+      if (window.__pgFade) return;
+      window.__pgFade = true;
+      const done = e => e.target.classList?.remove("pg-loading");
+      document.addEventListener("load", done, true);
+      document.addEventListener("error", done, true);
+    })();
+  </script>
+  <dialog class="pg-dialog" aria-label="Photo viewer">
+    <button
+      class="pg-btn pg-close btn btn-circle btn-ghost"
+      aria-label="Close"
+      autofocus
+    >
+      ✕
+    </button>
+    <button
+      class="pg-btn pg-prev btn btn-circle btn-ghost"
+      aria-label="Previous photo"
+    >
+      ‹
+    </button>
+    <button
+      class="pg-btn pg-next btn btn-circle btn-ghost"
+      aria-label="Next photo"
+    >
+      ›
+    </button>
+    <div class="pg-strip">
+      {photos.map((p, i) => (
+        <div class="pg-slide">
+          <div
+            class="pg-frame"
+            style={`aspect-ratio: ${p.width} / ${p.height}; width: min(100%, calc(100dvh * ${p.width / p.height})); background-image: url("${placeholderUrl(p.publicId)}")`}
+          >
+            <img
+              src={gridSrc(p.publicId)}
+              data-srcset={lightboxSrcset(p.publicId)}
+              srcset={
+                i === initialIndex ? lightboxSrcset(p.publicId) : undefined
+              }
+              sizes={`min(100vw, ${(100 * p.width) / p.height}vh)`}
+              width={p.width}
+              height={p.height}
+              alt={p.id}
+              class="pg-loading"
+              loading={i === initialIndex ? "eager" : "lazy"}
+              fetchpriority={i === initialIndex ? "high" : undefined}
+              decoding="async"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </dialog>
+  <script is:inline data-astro-rerun>
+    (() => {
+      const root = document.currentScript.closest(".photo-gallery");
+      if (!root.dataset.initial) return;
+      const dialog = root.querySelector("dialog");
+      dialog.showModal();
+      const strip = dialog.querySelector(".pg-strip");
+      strip.scrollLeft = root.dataset.initial * strip.clientWidth;
+    })();
+  </script>
+</div>
+
+<script>
+  // Entries we push carry null state so ClientRouter ignores them; this is
+  // true while the open lightbox owns the current history entry.
+  let pushed = false;
+
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+  const ui = () => {
+    const root = document.querySelector<HTMLElement>(".photo-gallery");
+    if (!root) return null;
+    const dialog = root.querySelector("dialog")!;
+    const strip = root.querySelector<HTMLElement>(".pg-strip")!;
+    return {
+      root,
+      dialog,
+      strip,
+      base: root.dataset.base!,
+      links: [
+        ...root.querySelectorAll<HTMLAnchorElement>("a[data-index]"),
+      ].sort((a, b) => +a.dataset.index! - +b.dataset.index!),
+      slides: [...strip.querySelectorAll("img")],
+      prev: root.querySelector<HTMLButtonElement>(".pg-prev")!,
+      next: root.querySelector<HTMLButtonElement>(".pg-next")!,
+    };
+  };
+  type UI = NonNullable<ReturnType<typeof ui>>;
+
+  const indexOf = (u: UI) =>
+    Math.round(u.strip.scrollLeft / u.strip.clientWidth);
+
+  const indexFromPath = (u: UI, path: string) =>
+    u.links.findIndex(a => new URL(a.href).pathname === path);
+
+  async function withTransition(animate: boolean, update: () => unknown) {
+    if (!animate || !document.startViewTransition || reducedMotion.matches) {
+      await update();
+      return;
+    }
+    await document.startViewTransition(async () => {
+      await update();
+    }).finished;
+  }
+
+  // Changing srcset on a visible img blanks it until the new source loads,
+  // so fetch and decode off-DOM first, then swap from cache.
+  function preload(u: UI, i: number) {
+    for (const img of u.slides.slice(Math.max(0, i - 2), i + 3)) {
+      if (img.srcset || "preloading" in img.dataset) continue;
+      img.dataset.preloading = "";
+      const pre = new Image();
+      pre.sizes = img.sizes;
+      pre.srcset = img.dataset.srcset!;
+      pre
+        .decode()
+        .then(() => {
+          img.loading = "eager";
+          img.srcset = pre.srcset;
+        })
+        .catch(() => delete img.dataset.preloading);
+    }
+  }
+
+  function settle(u: UI, i: number) {
+    u.prev.disabled = i === 0;
+    u.next.disabled = i === u.slides.length - 1;
+    preload(u, i);
+  }
+
+  async function open(u: UI, i: number) {
+    const thumb = u.links[i].querySelector("img")!;
+    const slide = u.slides[i];
+    thumb.style.viewTransitionName = "photo";
+    await withTransition(true, async () => {
+      thumb.style.viewTransitionName = "";
+      u.dialog.showModal();
+      u.strip.scrollTo({ left: i * u.strip.clientWidth, behavior: "instant" });
+      if (!slide.srcset) slide.src = thumb.currentSrc || slide.src;
+      slide.style.viewTransitionName = "photo";
+      await slide.decode().catch(() => {});
+      slide.classList.remove("pg-loading");
+    });
+    thumb.style.viewTransitionName = "";
+    slide.style.viewTransitionName = "";
+    settle(u, i);
+  }
+
+  async function close(u: UI) {
+    const i = indexOf(u);
+    const link = u.links[i];
+    const thumb = link.querySelector("img")!;
+    const slide = u.slides[i];
+    thumb.scrollIntoView({ block: "nearest" });
+    slide.style.viewTransitionName = "photo";
+    await withTransition(true, () => {
+      slide.style.viewTransitionName = "";
+      u.dialog.close();
+      thumb.style.viewTransitionName = "photo";
+    });
+    thumb.style.viewTransitionName = "";
+    slide.style.viewTransitionName = "";
+    link.focus({ preventScroll: true });
+  }
+
+  function requestClose(u: UI) {
+    if (pushed) {
+      history.back();
+      return;
+    }
+    history.replaceState(history.state, "", u.base);
+    close(u);
+  }
+
+  function step(u: UI, dir: number) {
+    const target = indexOf(u) + dir;
+    if (target < 0 || target >= u.slides.length) return;
+    preload(u, target);
+    u.strip.scrollBy({ left: dir * u.strip.clientWidth, behavior: "smooth" });
+  }
+
+  function onSettled(u: UI) {
+    if (!u.dialog.open) return;
+    const i = indexOf(u);
+    history.replaceState(history.state, "", u.links[i].pathname);
+    settle(u, i);
+  }
+
+  // Called from a listener in Layout.astro that runs before ClientRouter's,
+  // which would otherwise re-fetch the album when Back lands on its entry.
+  Object.assign(window, {
+    __lightboxPopState: (e: PopStateEvent) => {
+      const u = ui();
+      if (!u) return;
+      const path = location.pathname.replace(/\/$/, "");
+      if (path === u.base) {
+        if (!u.dialog.open) return;
+        e.stopImmediatePropagation();
+        pushed = false;
+        close(u);
+        return;
+      }
+      const i = indexFromPath(u, path);
+      if (i < 0) return;
+      e.stopImmediatePropagation();
+      if (u.dialog.open) {
+        u.strip.scrollTo({
+          left: i * u.strip.clientWidth,
+          behavior: "instant",
+        });
+        return;
+      }
+      pushed = true;
+      open(u, i);
+    },
+  });
+
+  function init() {
+    const u = ui();
+    if (!u || u.root.dataset.ready) return;
+    u.root.dataset.ready = "";
+    pushed = false;
+
+    u.root.querySelector(".pg-grid")!.addEventListener("click", e => {
+      const me = e as MouseEvent;
+      if (
+        me.button !== 0 ||
+        me.metaKey ||
+        me.ctrlKey ||
+        me.shiftKey ||
+        me.altKey
+      )
+        return;
+      const a = (e.target as Element).closest<HTMLAnchorElement>(
+        "a[data-index]",
+      );
+      if (!a) return;
+      e.preventDefault();
+      history.pushState(null, "", a.pathname);
+      pushed = true;
+      open(u, +a.dataset.index!);
+    });
+
+    u.root
+      .querySelector(".pg-close")!
+      .addEventListener("click", () => requestClose(u));
+    u.dialog.addEventListener("cancel", e => {
+      e.preventDefault();
+      requestClose(u);
+    });
+    u.prev.addEventListener("click", () => step(u, -1));
+    u.next.addEventListener("click", () => step(u, 1));
+    u.dialog.addEventListener("keydown", e => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault();
+      step(u, e.key === "ArrowLeft" ? -1 : 1);
+    });
+
+    if ("onscrollend" in window) {
+      u.strip.addEventListener("scrollend", () => onSettled(u));
+    } else {
+      let timer: ReturnType<typeof setTimeout>;
+      u.strip.addEventListener("scroll", () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => onSettled(u), 150);
+      });
+    }
+
+    if (u.dialog.open) settle(u, indexOf(u));
+  }
+
+  // May run after the initial astro:page-load has already fired.
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>
+
+<style>
+  .pg-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--pg-cols, 1), minmax(0, 1fr));
+    align-items: start;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .pg-grid {
+      --pg-cols: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pg-grid {
+      --pg-cols: 3;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .pg-grid {
+      --pg-cols: 4;
+    }
+  }
+
+  .pg-grid[data-cols] {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .pg-grid :global(.pg-col) {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .pg-item {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-box, 0.5rem);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .photo-gallery img {
+    /* Hides alt text while the image loads. */
+    color: transparent;
+    transition: opacity 0.3s ease;
+  }
+
+  .pg-js img.pg-loading {
+    opacity: 0;
+  }
+
+  .pg-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pg-dialog {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgb(0 0 0 / 0.95);
+    overflow: hidden;
+  }
+
+  .pg-dialog::backdrop {
+    background: black;
+  }
+
+  .pg-strip {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    overscroll-behavior: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .pg-slide {
+    display: grid;
+    flex: 0 0 100%;
+    place-items: center;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .pg-frame {
+    max-height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .pg-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pg-btn {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    background: rgb(0 0 0 / 0.4);
+    font-size: 1.5rem;
+  }
+
+  .pg-btn:disabled {
+    visibility: hidden;
+  }
+
+  .pg-close {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .pg-prev,
+  .pg-next {
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  .pg-prev {
+    left: 1rem;
+  }
+
+  .pg-next {
+    right: 1rem;
+  }
+</style>

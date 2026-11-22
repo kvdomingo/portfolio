@@ -105,12 +105,12 @@ common UI components, semantic colors, and themes.
 Before you write daisyUI code, do these steps in sequence:
 
 1. Identify the intended function, behavior, and layout in the request. Do not
-   use only the exact words.
+  use only the exact words.
 2. Use the component list in this file to select the best candidate components.
 3. If the choice is not clear, read the guides for the candidate components that
-   can meet the request before you select one.
+  can meet the request before you select one.
 4. Compare the description, behavior, syntax, and rules of each candidate with
-   the request.
+  the request.
 5. Select the best component or component combination. Obey all its constraints.
 6. Use the exact structure and constraints of the selected components.
 

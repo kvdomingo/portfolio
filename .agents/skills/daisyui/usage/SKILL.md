@@ -6,30 +6,30 @@ description: Usage rules that you must use with daisyUI 5
 ## daisyUI 5 usage rules
 
 1. To style an HTML element, add daisyUI class names to it. Add the necessary
-   component class name. Also add the applicable part and modifier class names.
+  component class name. Also add the applicable part and modifier class names.
 2. If the current daisyUI classes cannot make a necessary change, use Tailwind
-   CSS utility classes. For example, `btn px-10` sets custom horizontal padding
-   on a `btn`.
+  CSS utility classes. For example, `btn px-10` sets custom horizontal padding
+  on a `btn`.
 3. If CSS specificity prevents a change to a daisyUI style, add `!` to the end
-   of the Tailwind utility. For example, `btn bg-red-500!` overrides the
-   background color of a `btn`. Use this method only if other methods do not
-   work. Do not use it frequently.
+  of the Tailwind utility. For example, `btn bg-red-500!` overrides the
+  background color of a `btn`. Use this method only if other methods do not
+  work. Do not use it frequently.
 4. If daisyUI does not have an applicable component, make a component with
-   Tailwind CSS utilities.
+  Tailwind CSS utilities.
 5. When you use Tailwind CSS `flex` or `grid` for a layout, add responsive
-   utility prefixes.
+  utility prefixes.
 6. Use only current daisyUI class names or Tailwind CSS utility classes.
 7. If custom CSS is not necessary, do not write it. If possible, use daisyUI
-   class names or Tailwind CSS utility classes.
+  class names or Tailwind CSS utility classes.
 8. If you need placeholder images, use <https://picsum.photos/200/300> with the
-   necessary dimensions.
+  necessary dimensions.
 9. If a custom font is not necessary, do not add one.
 10. If `bg-base-100 text-base-content` is not necessary, do not add it to the
-    body.
+  body.
 11. For design decisions, use the methods in the Refactoring UI book.
 12. If the user does not request a variant or color, use the default variant.
-    For example, use `btn` for a button. If the user does not request that
-    variant, do not use `btn btn-primary`.
+  For example, use `btn` for a button. If the user does not request that
+  variant, do not use `btn btn-primary`.
 
 Each daisyUI 5 class name is in one of these categories. These category names
 are for reference only. Do not use them in code.

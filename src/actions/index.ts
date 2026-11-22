@@ -1,11 +1,10 @@
 import type { ResourceApiResponse } from "cloudinary";
 
-import { Resize } from "@cloudinary/url-gen/actions";
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
 
-import cld from "./_utils/cloudinary.client";
 import { DEFAULT_OPTIONS, cld2 } from "./_utils/cloudinary.server";
+import { PHOTO_ROOT, type Photo, photoIdOf } from "./_utils/photography";
 
 export const server = {
   listPhotos: defineAction({
@@ -13,27 +12,21 @@ export const server = {
       slug: z.string().nonempty(),
       isClient: z.boolean().optional().default(false),
     }),
-    handler: async ({ slug: title, isClient }) => {
-      const body = (await cld2.api.resources({
+    handler: async ({ slug: title, isClient }): Promise<Photo[]> => {
+      const { resources } = (await cld2.api.resources({
         ...DEFAULT_OPTIONS,
-        prefix: `kdphotography/portfolio/static/portfolio/media-private/${isClient ? "clients/" : ""}${title}`,
+        prefix: `${PHOTO_ROOT}/${isClient ? "clients/" : ""}${title}`,
       })) as ResourceApiResponse;
 
-      const { resources } = body;
-
-      const images = resources.map<ResourceApiResponse["resources"][number]>(
-        resource => ({
-          ...resource,
-          secure_url: cld
-            .image(resource.public_id)
-            .resize(Resize.scale().width("auto"))
-            .toURL(),
-        }),
-      );
-
-      images.sort((a, b) => b.created_at.localeCompare(a.created_at));
-
-      return images;
+      return resources
+        .map(r => ({
+          id: photoIdOf(r.public_id),
+          publicId: r.public_id,
+          width: r.width,
+          height: r.height,
+          createdAt: r.created_at,
+        }))
+        .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
     },
   }),
 };

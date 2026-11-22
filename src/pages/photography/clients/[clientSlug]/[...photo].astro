@@ -1,0 +1,52 @@
+---
+import { actions } from "astro:actions";
+
+import { ogImageUrl } from "@/actions/_utils/cloudinary.client";
+import { clientTag, setCacheHeaders } from "@/actions/_utils/photography";
+import PhotoGallery from "@/components/photography/PhotoGallery.astro";
+import info from "@/info.json";
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+
+const { clientSlug = "", photo } = Astro.params;
+
+const client = info.photography.clients.find(c => c.slug === clientSlug);
+if (!client) {
+  return new Response(null, { status: 404 });
+}
+
+const { data: photos, error } = await Astro.callAction(actions.listPhotos, {
+  slug: client.slug,
+  isClient: true,
+});
+if (error) throw error;
+
+const current = photo ? photos.find(p => p.id === photo) : undefined;
+if (photo && !current) {
+  return new Response(null, { status: 404 });
+}
+
+setCacheHeaders(Astro.response.headers, clientTag(clientSlug));
+---
+
+<Layout
+  title={`${current ? `${current.id} | ` : ""}${client.name} | Clients | KVD Studio`}
+  image={current && ogImageUrl(current.publicId)}
+>
+  <PhotographyLayout>
+    <div class="breadcrumbs px-6">
+      <ul>
+        <li>
+          <a href="/photography/clients"> Clients</a>
+        </li>
+        <li>{client.name}</li>
+      </ul>
+    </div>
+
+    <PhotoGallery
+      photos={photos}
+      basePath={`/photography/clients/${clientSlug}`}
+      initialPhotoId={current?.id}
+    />
+  </PhotographyLayout>
+</Layout>

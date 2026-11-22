@@ -15,10 +15,15 @@ import info from "@/info.json";
 
 interface Props {
   title?: string;
-  spotlight?: boolean;
+  image?: string;
+  description?: string;
 }
 
-const { title = info.title, spotlight = false } = Astro.props;
+const {
+  title = info.title,
+  image = "https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png",
+  description,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -47,18 +52,17 @@ const { title = info.title, spotlight = false } = Astro.props;
     <meta property="og:title" content={info.title} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_PH" />
-    <meta
-      property="og:image"
-      content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
-    />
+    <meta property="og:image" content={image} />
+    {description && <meta name="description" content={description} />}
+    {description && <meta property="og:description" content={description} />}
 
-    <meta property="twitter:card" content="summary" />
+    <meta
+      property="twitter:card"
+      content={Astro.props.image ? "summary_large_image" : "summary"}
+    />
     <meta property="twitter:creator" content="@rockentothemoon" />
     <meta property="twitter:site" content="@rockentothemoon" />
-    <meta
-      name="twitter:image"
-      content="https://res.cloudinary.com/kdphotography-assets/image/upload/v1/logo/logo-black.png"
-    />
+    <meta name="twitter:image" content={image} />
     <meta name="twitter:title" content={info.title} />
     <meta name="twitter:image:alt" content={info.title} />
 
@@ -69,12 +73,17 @@ const { title = info.title, spotlight = false } = Astro.props;
 
     <title>{title}</title>
 
+    <script is:inline>
+      // Registered before ClientRouter's listener so the photo lightbox can
+      // claim its history entries (capture doesn't preempt it at the window).
+      addEventListener("popstate", e => window.__lightboxPopState?.(e));
+    </script>
     <ClientRouter />
     <Umami />
   </head>
 
   <body class="min-h-screen bg-linear-to-b from-ctp-base to-ctp-crust">
-    {!spotlight && <Navbar />}
+    <Navbar />
 
     <main>
       <slot />
@@ -135,36 +144,6 @@ const { title = info.title, spotlight = false } = Astro.props;
 
       .math-container {
         overflow-x: auto;
-      }
-
-      .gallery {
-        width: 100%;
-      }
-
-      .gallery-sizer,
-      .gallery-item {
-        width: 100%;
-      }
-
-      @media (width >= 40rem) {
-        .gallery-sizer,
-        .gallery-item {
-          width: 50%;
-        }
-      }
-
-      @media (width >= 48rem) {
-        .gallery-sizer,
-        .gallery-item {
-          width: 33.333%;
-        }
-      }
-
-      @media (width >= 64rem) {
-        .gallery-sizer,
-        .gallery-item {
-          width: 25%;
-        }
       }
     </style>
   </body>

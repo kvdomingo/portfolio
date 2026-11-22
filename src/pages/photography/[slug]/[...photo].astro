@@ -1,0 +1,47 @@
+---
+import { actions } from "astro:actions";
+
+import { ogImageUrl } from "@/actions/_utils/cloudinary.client";
+import {
+  ALBUMS,
+  albumFolder,
+  albumTag,
+  setCacheHeaders,
+} from "@/actions/_utils/photography";
+import PhotoGallery from "@/components/photography/PhotoGallery.astro";
+import Layout from "@/layouts/Layout.astro";
+import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
+
+const { slug = "", photo } = Astro.params;
+
+if (!(ALBUMS as readonly string[]).includes(slug)) {
+  return new Response(null, { status: 404 });
+}
+
+const title = albumFolder(slug);
+
+const { data: photos, error } = await Astro.callAction(actions.listPhotos, {
+  slug: title,
+});
+if (error) throw error;
+
+const current = photo ? photos.find(p => p.id === photo) : undefined;
+if (photo && !current) {
+  return new Response(null, { status: 404 });
+}
+
+setCacheHeaders(Astro.response.headers, albumTag(slug));
+---
+
+<Layout
+  title={`${current ? `${current.id} | ` : ""}${title} | Photography | KVD Studio`}
+  image={current && ogImageUrl(current.publicId)}
+>
+  <PhotographyLayout>
+    <PhotoGallery
+      photos={photos}
+      basePath={`/photography/${slug}`}
+      initialPhotoId={current?.id}
+    />
+  </PhotographyLayout>
+</Layout>

@@ -32,27 +32,27 @@ description: Color rules that you must use with daisyUI 5
 
 1. daisyUI adds semantic color names to the Tailwind CSS colors.
 2. Use daisyUI color names in utility classes as you use other Tailwind CSS
-   color names. For example, `bg-primary` uses the primary color for the
-   background.
+  color names. For example, `bg-primary` uses the primary color for the
+  background.
 3. The value of each daisyUI color name is a variable. Thus, the color can
-   change with the theme.
+  change with the theme.
 4. Do not use `dark:` with daisyUI color names.
 5. If possible, use only daisyUI color names. This lets colors change
-   automatically with the theme.
+  automatically with the theme.
 6. If you use a Tailwind CSS color name such as `red-500`, its color stays the
-   same in all themes.
+  same in all themes.
 7. If you use a daisyUI color name such as `primary`, its color changes with the
-   theme.
+  theme.
 8. Avoid Tailwind CSS color names for text. For example, `text-gray-800` on
-   `bg-base-100` becomes unreadable in a dark theme because `bg-base-100` is
-   dark.
+  `bg-base-100` becomes unreadable in a dark theme because `bg-base-100` is
+  dark.
 9. `*-content` colors must have clear contrast with their related colors.
 10. Use `base-*` colors for most of the page. Use the default variant for all
-    elements. Use `primary` only for the most important element on the page. Use
-    it only once.
+  elements. Use `primary` only for the most important element on the page. Use
+  it only once.
 11. In rare cases, you can use a Tailwind CSS color if content must keep the
-    same color in all themes. For example, you can use `text-red-500` instead of
-    `text-error`. For an SVG icon or chart, a fixed color can be necessary.
+  same color in all themes. For example, you can use `text-red-500` instead of
+  `text-error`. For an SVG icon or chart, a fixed color can be necessary.
 
 ### Enable and apply themes
 
