@@ -43,6 +43,7 @@
     "simple-icons-astro": "^13.16.0"
   },
   "devDependencies": {
+    "@astrojs/compiler-rs": "^0.5.3",
     "@astrojs/mdx": "4.3.5",
     "@astrojs/react": "4.3.1",
     "@astrojs/sitemap": "3.6.0",
