@@ -17,7 +17,7 @@ const { pathname } = Astro.url;
       <a
         class:list={[
           {
-            active: tab.path.includes("/clients")
+            "menu-active": tab.path.includes("/clients")
               ? pathname.includes("/clients") && tab.path.includes("/clients")
               : pathname === `/photography${tab.path}`,
           },
