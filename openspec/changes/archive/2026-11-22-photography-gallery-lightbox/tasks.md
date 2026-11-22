@@ -2,7 +2,7 @@
 
 ## 1. Spike: ClientRouter + dialog view transition
 
-- [ ] 1.1 On a throwaway page, wrap an `<a>` in a grid with a click handler that
+- [x] 1.1 On a throwaway page, wrap an `<a>` in a grid with a click handler that
   calls `preventDefault()` + `pushState(null, …)` + `startViewTransition` into a
   `showModal()` dialog. Verify in Chrome and Safari:
   - the click does not trigger an Astro navigation (no network request for the
@@ -58,7 +58,7 @@
 
     Verify the test passes, and that resizing across breakpoints in DevTools
     re-lays out with no new image requests in the Network tab.
-- [ ] 4.3 Lighthouse/DevTools check on `/photography/live` with throttled "Fast
+- [x] 4.3 Lighthouse/DevTools check on `/photography/live` with throttled "Fast
       4G": the first row is requested before any JS executes, and no image
       request exceeds ~1600px wide on a 1440px desktop viewport.
 
@@ -145,7 +145,7 @@
       preview, upload a test photo to an album, and confirm the next page load
       shows it. Then delete it, confirm it disappears and its photo path 404s.
       Restore the notification URL afterwards.
-- [ ] 7.4 Add a short section to the README covering the Cloudinary notification
+- [x] 7.4 Add a short section to the README covering the Cloudinary notification
       setup (URL, event types) and the manual purge escape hatch
       (`vercel cache invalidate --tag photos-<album>`). Verify the documented
       command runs.
@@ -158,7 +158,7 @@
 - [x] 8.2 Run `bunx oxlint --fix`, `bunx oxfmt`, then
       `bunx oxlint --deny-warnings --format=agent`; verify the final lint is
       clean.
-- [ ] 8.3 Final pass on production after merge:
+- [x] 8.3 Final pass on production after merge:
   - set the production Cloudinary notification URL;
   - smoke-test an album, a client album, a shared photo link (incl. a link
     preview via a card validator), swipe on a phone, and arrow keys plus Esc on
