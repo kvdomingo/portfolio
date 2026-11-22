@@ -1,0 +1,13 @@
+{
+  "prettier.enable": false,
+  "[javascript][typescript][javascriptreact][typescriptreact][html][css][json][jsonc][vue][astro]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.oxc": "explicit",
+      "source.removeUnusedImports.oxc": "explicit",
+      "source.organizeImports.oxc": "explicit"
+    },
+    "editor.indentSize": 2
+  }
+}
