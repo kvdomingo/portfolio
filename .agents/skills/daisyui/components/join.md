@@ -1,6 +1,8 @@
 ### Join
 
-A join is a container that groups more than one item. Use it to group buttons, inputs, or other elements. The join applies a border radius to the first and last items. It can make a horizontal or vertical list of items.
+A join is a container that groups more than one item. Use it to group buttons,
+inputs, or other elements. The join applies a border radius to the first and
+last items. It can make a horizontal or vertical list of items.
 
 [Join documentation](https://daisyui.com/components/join/)
 

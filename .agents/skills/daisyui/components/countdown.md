@@ -18,6 +18,8 @@ A countdown gives a transition effect when a number changes from 0 through 999.
 
 #### Rules
 
-- The `--value` CSS variable and the text must contain a number from 0 through 999.
+- The `--value` CSS variable and the text must contain a number from 0 through
+  999.
 - Use JavaScript to change the span text and the `--value` CSS variable.
-- Add `aria-live="polite"` and `aria-label="{number}"`. These attributes let screen readers read changes correctly.
+- Add `aria-live="polite"` and `aria-label="{number}"`. These attributes let
+  screen readers read changes correctly.

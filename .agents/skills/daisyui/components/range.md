@@ -7,7 +7,8 @@ Move a range-slider handle to select a value.
 #### Class names
 
 - component: `range`
-- color: `range-neutral`, `range-primary`, `range-secondary`, `range-accent`, `range-success`, `range-warning`, `range-info`, `range-error`
+- color: `range-neutral`, `range-primary`, `range-secondary`, `range-accent`,
+  `range-success`, `range-warning`, `range-info`, `range-error`
 - size: `range-xs`, `range-sm`, `range-md`, `range-lg`, `range-xl`
 - direction: `range-vertical` (vertical slider)
 
@@ -19,6 +20,7 @@ Move a range-slider handle to select a value.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one color class name and one size class name.
+- `{MODIFIER}` is optional. It can include one color class name and one size
+  class name.
 - For a vertical slider, use `range-vertical`.
 - You must specify the `min` and `max` attributes.

@@ -27,7 +27,10 @@ The content has this structure:
 #### Rules
 
 - `{MODIFIER}` is optional. It can be one of the modifier class names.
-- The accordion uses radio inputs. Radio inputs that have the same name operate as one group. Only one input in the group can be open at a time.
-- If a page has more than one accordion group, use a different radio-input name for each group.
+- The accordion uses radio inputs. Radio inputs that have the same name operate
+  as one group. Only one input in the group can be open at a time.
+- If a page has more than one accordion group, use a different radio-input name
+  for each group.
 - Replace `{name}` with a unique name for the accordion group.
-- To open an accordion item by default, replace `{checked}` with `checked="checked"`.
+- To open an accordion item by default, replace `{checked}` with
+  `checked="checked"`.

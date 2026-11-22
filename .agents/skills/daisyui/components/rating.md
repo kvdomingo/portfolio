@@ -18,7 +18,8 @@ A rating is a set of radio buttons that lets the user give a rating.
 </div>
 ```
 
-For a read-only, noninteractive rating, use `<div>` elements instead of radio inputs. Add `aria-current="true"` to the selected element:
+For a read-only, noninteractive rating, use `<div>` elements instead of radio
+inputs. Add `aria-current="true"` to the selected element:
 
 ```html
 <div class="rating">
@@ -30,7 +31,11 @@ For a read-only, noninteractive rating, use `<div>` elements instead of radio in
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one size class name.
-- Recommendation: Use a unique `name` attribute for each rating-input group. This prevents conflicts with other ratings on the same page.
-- Add `rating-hidden` to the first radio input to hide it. This lets the user clear the rating.
-- For a read-only, noninteractive rating, use `<div>` elements instead of radio inputs. Add `aria-current="true"` to the selected element.
+- `{MODIFIER}` is optional. It can include one modifier class name and one size
+  class name.
+- Recommendation: Use a unique `name` attribute for each rating-input group.
+  This prevents conflicts with other ratings on the same page.
+- Add `rating-hidden` to the first radio input to hide it. This lets the user
+  clear the rating.
+- For a read-only, noninteractive rating, use `<div>` elements instead of radio
+  inputs. Add `aria-current="true"` to the selected element.

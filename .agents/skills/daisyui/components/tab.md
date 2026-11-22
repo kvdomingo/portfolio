@@ -33,6 +33,8 @@ Radio inputs:
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one style class name and one size class name.
+- `{MODIFIER}` is optional. It can include one style class name and one size
+  class name.
 - To change the tab content after the user clicks a tab, use radio inputs.
-- If you add a background to `tabs`, the two top corners of each tab become rounded.
+- If you add a background to `tabs`, the two top corners of each tab become
+  rounded.

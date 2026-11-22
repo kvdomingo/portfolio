@@ -19,5 +19,6 @@ Use an alert to give users information about an important event.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one class name from each style, color, and direction category.
+- `{MODIFIER}` is optional. It can include one class name from each style,
+  color, and direction category.
 - For responsive layouts, add `sm:alert-horizontal`.

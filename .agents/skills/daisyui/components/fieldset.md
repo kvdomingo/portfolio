@@ -1,6 +1,7 @@
 ### Fieldset
 
-Use a fieldset as a container for related form elements. Use `fieldset-legend` as the title. Use `label` as the description.
+Use a fieldset as a container for related form elements. Use `fieldset-legend`
+as the title. Use `label` as the description.
 
 [Fieldset documentation](https://daisyui.com/components/fieldset/)
 

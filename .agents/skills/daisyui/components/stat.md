@@ -7,7 +7,8 @@ Use a stat component to show numbers and data in a block.
 #### Class names
 
 - component: `stats`
-- part: `stat`, `stat-title`, `stat-value`, `stat-desc`, `stat-figure`, `stat-actions`
+- part: `stat`, `stat-title`, `stat-value`, `stat-desc`, `stat-figure`,
+  `stat-actions`
 - direction: `stats-horizontal`, `stats-vertical`
 
 #### Syntax
@@ -21,5 +22,6 @@ Use a stat component to show numbers and data in a block.
 #### Rules
 
 - `{MODIFIER}` is optional. It can be one of the direction class names.
-- The default layout is horizontal. To make it vertical, use the `stats-vertical` class.
+- The default layout is horizontal. To make it vertical, use the
+  `stats-vertical` class.
 - Put `stat-title`, `stat-value`, and `stat-desc` in a `stat` element.

@@ -86,7 +86,8 @@ import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
 #### Grayscale Segmentation
 
-As a warmup for this activity, let's start with a grayscale image of a check (Fig. [1a](#fig-check-orig)).
+As a warmup for this activity, let's start with a grayscale image of a check
+(Fig. [1a](#fig-check-orig)).
 
 <figure
   class="container mx-auto grid grid-cols-1 items-center gap-4 md:grid-cols-2"
@@ -110,25 +111,24 @@ As a warmup for this activity, let's start with a grayscale image of a check (Fi
   </figcaption>
 </figure>
 
-First we'll try to segment the text manually. Looking at its histogram
-(Fig. [1b](#fig-check-hist)), we can see that there is a high concentration of pixel values around 200,
-which corresponds to the background. For now, 125 looks like a good threshold
-value, so we'll choose to display only pixel values less than 125. The output
-(Fig. [2a](#fig-check-seg-random)) shows that we have a decent
+First we'll try to segment the text manually. Looking at its histogram (Fig.
+[1b](#fig-check-hist)), we can see that there is a high concentration of pixel
+values around 200, which corresponds to the background. For now, 125 looks like
+a good threshold value, so we'll choose to display only pixel values less than
+125. The output (Fig. [2a](#fig-check-seg-random)) shows that we have a decent
 segmentation, and we can choose to leave it at that. However, we don't want to
-just randomly pick a threshold that looks "good enough", so we'll try a
-slightly more elaborate method. I recall that when I was applying for IPL, I
-read and presented a paper, whose very rough gist is that it made use of
-Otsu's method of thresholding to detect malaria in red blood cells [[1](#Mas2015)].
-Otsu's method searches exhaustively for the threshold value that minimizes
-the intra-class variance [[2](#Wiki2019)] and works most effectively if the gray histogram is bimodal.
-Looking back at Fig. [1b](#fig-check-hist), we can see two general peaks: one about 200
-and another about 150, so we expect that Otsu's method will work just fine.
-Applying Otsu's method yields a threshold value of 146, and the result is
-shown in Fig. [2b](#fig-check-seg-otsu). Aside from the text
-being much clearer, we won't see much difference because it's quite a simple
-image. We'll check again later on to see how well this method fares with
-color images.
+just randomly pick a threshold that looks "good enough", so we'll try a slightly
+more elaborate method. I recall that when I was applying for IPL, I read and
+presented a paper, whose very rough gist is that it made use of Otsu's method of
+thresholding to detect malaria in red blood cells [[1](#Mas2015)]. Otsu's method
+searches exhaustively for the threshold value that minimizes the intra-class
+variance [[2](#Wiki2019)] and works most effectively if the gray histogram is
+bimodal. Looking back at Fig. [1b](#fig-check-hist), we can see two general
+peaks: one about 200 and another about 150, so we expect that Otsu's method will
+work just fine. Applying Otsu's method yields a threshold value of 146, and the
+result is shown in Fig. [2b](#fig-check-seg-otsu). Aside from the text being
+much clearer, we won't see much difference because it's quite a simple image.
+We'll check again later on to see how well this method fares with color images.
 
 <figure
   class="container mx-auto grid grid-cols-1 items-center gap-4 md:grid-cols-2"
@@ -181,7 +181,8 @@ belong to the ROI are computed via
     $
 </span>
 
-assuming that the $r$ and $g$ pixel values are normally distributed. The final segmented
+assuming that the $r$ and $g$ pixel values are normally distributed. The final
+segmented
 image is produced by obtaining the joint probability $\textrm{Pr}(r) \times \textrm{Pr}(g)$.
 
 ##### 2. Non-parametric Segmentation
@@ -195,8 +196,9 @@ was formulated with some help from [[4](#Bartolome2015)].
 
 ##### 1. Macbeth ColorChecker
 
-For the first trial, the region of interest is the red patch from the Macbeth ColorChecker. The original
-image along with outputs from the two algorithms are shown in Figs. [5](#fig-macbeth-first)-[9](#fig-macbeth-last).
+For the first trial, the region of interest is the red patch from the Macbeth
+ColorChecker. The original image along with outputs from the two algorithms are
+shown in Figs. [5](#fig-macbeth-first)-[9](#fig-macbeth-last).
 
 {frontmatter.macbethData.map(data => (
 
@@ -211,23 +213,29 @@ image along with outputs from the two algorithms are shown in Figs. [5](#fig-mac
 
 ##### 2. Skin
 
-To realize these methods' effectivity in a more practical situation, let's try applying them to images with
-more chromatic and luminant variety. I'll be using a fairly simple portrait which has a well-defined
-background and foreground, taken with natural light, and I'll try to segment only the skin. Let's call the
-subject Clarize. Note that the image has already been post-processed, meaning white balance corrections,
-contrast adjustments, exposure corrections, and artistic color grading have all been applied. As a human
-observer, the separation between foreground and background is pretty clear-cut. However, we can expect a
-machine to have some problems because the color of Clarize's shirt is quite close to the color of her skin
-and to the background. Notice also that due to direct sunlight, there is a lot of specular reflection on her
-face and hands. Also, due to the image being taken at high ISO (around 400, to account for the fast shutter
-speed used in order for the confetti not to blur, and the considerably narrow aperture used in order for as
-much of the elements to be in focus as possible), we can observe some visible grain in the shadows,
-particularly on the side of her right forearm facing away from the light. Figures
-[10](#fig-skin-first)-[13](#fig-skin-last) show the results of varying the location of the ROI.
+To realize these methods' effectivity in a more practical situation, let's try
+applying them to images with more chromatic and luminant variety. I'll be using
+a fairly simple portrait which has a well-defined background and foreground,
+taken with natural light, and I'll try to segment only the skin. Let's call the
+subject Clarize. Note that the image has already been post-processed, meaning
+white balance corrections, contrast adjustments, exposure corrections, and
+artistic color grading have all been applied. As a human observer, the
+separation between foreground and background is pretty clear-cut. However, we
+can expect a machine to have some problems because the color of Clarize's shirt
+is quite close to the color of her skin and to the background. Notice also that
+due to direct sunlight, there is a lot of specular reflection on her face and
+hands. Also, due to the image being taken at high ISO (around 400, to account
+for the fast shutter speed used in order for the confetti not to blur, and the
+considerably narrow aperture used in order for as much of the elements to be in
+focus as possible), we can observe some visible grain in the shadows,
+particularly on the side of her right forearm facing away from the light.
+Figures [10](#fig-skin-first)-[13](#fig-skin-last) show the results of varying
+the location of the ROI.
 
-We can observe that although parametric segmentation seems to work best in the Macbeth trial, non-parametric
-segmentation seems to work consistently better when it comes to practical images because pixel values are
-rarely normally distributed about the mean.
+We can observe that although parametric segmentation seems to work best in the
+Macbeth trial, non-parametric segmentation seems to work consistently better
+when it comes to practical images because pixel values are rarely normally
+distributed about the mean.
 
 {frontmatter.clarizeData.map(data => (
 
@@ -242,14 +250,17 @@ rarely normally distributed about the mean.
 
 ##### 3. Cancer Cells
 
-For the last application we'll try segmenting a sample of red blood cells with acute lymphoma, sourced
-from [[5](#Levey2013)], using everything we've discussed so far. The original image along with its parametric and
-non-parametric segmentation outputs are shown in Fig.[14](#fig-cancer), while the output from Otsu's
-method is in Fig. [15](#fig-cancer-otsu). The reason we are applying Otsu's method for this
-image and not for the Macbeth or Clarize images is because we have a clear-cut foreground and background in
-this image. The Macbeth image contains too many different patches of different colors, so its histogram is
-hardly bimodal. The Clarize image does have a separable foreground/background, but what we want to segment
-is the skin, not the foreground; Otsu's method will most likely segment Clarize's entire body.
+For the last application we'll try segmenting a sample of red blood cells with
+acute lymphoma, sourced from [[5](#Levey2013)], using everything we've discussed
+so far. The original image along with its parametric and non-parametric
+segmentation outputs are shown in Fig.[14](#fig-cancer), while the output from
+Otsu's method is in Fig. [15](#fig-cancer-otsu). The reason we are applying
+Otsu's method for this image and not for the Macbeth or Clarize images is
+because we have a clear-cut foreground and background in this image. The Macbeth
+image contains too many different patches of different colors, so its histogram
+is hardly bimodal. The Clarize image does have a separable
+foreground/background, but what we want to segment is the skin, not the
+foreground; Otsu's method will most likely segment Clarize's entire body.
 
 {frontmatter.cancerData.map(data => (
 

@@ -15,22 +15,25 @@ alphabet: abcdefghijklmnopqrstuvwxyz
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity, the CIE 1964 standard observer values for 380--780 nm was obtained from [[2](#CIE64)]. The
-tristimulus values were calculated using [[1](#Soriano2019)]
+For this activity, the CIE 1964 standard observer values for 380--780 nm was
+obtained from [[2](#CIE64)]. The tristimulus values were calculated using
+[[1](#Soriano2019)]
 
 <span id="eq-tristimulus" class="mx-auto">
 $
 \begin{align}
   X &= \int P(\lambda) \bar{x}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \nonumber \\
-	Y &= \int P(\lambda) \bar{y}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \\
-	Z &= \int P(\lambda) \bar{z}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \nonumber
+    Y &= \int P(\lambda) \bar{y}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \\
+    Z &= \int P(\lambda) \bar{z}(\lambda) \frac{\rm{d}}{\rm{d}\lambda} \nonumber
 \end{align}
 $
 </span>
 
-Their $xy$ coordinates were obtained by normalizing each value by their sum. Figure&nbsp;[1](#fig-locus) shows the
-obtained boundaries for the CIE tongue by considering monochromatic lights ($P(\lambda) = \delta(\lambda)$). The
-Planckian locus was obtained by substituting into $P(\lambda)$ the spectral radiant exitance for a blackbody, given by
+Their $xy$ coordinates were obtained by normalizing each value by their sum.
+Figure&nbsp;[1](#fig-locus) shows the obtained boundaries for the CIE tongue by
+considering monochromatic lights ($P(\lambda) = \delta(\lambda)$). The Planckian
+locus was obtained by substituting into $P(\lambda)$ the spectral radiant
+exitance for a blackbody, given by
 
 <span id="eq-planck" class="mx-auto">
 $

@@ -1,0 +1,15 @@
+[global]
+disable = ["MD001", "MD033", "MD041", "MD059"]
+
+[per-file-flavor]
+"**/*.md" = "gfm"
+"**/*.mdx" = "mdx"
+
+[MD013]
+line-length = 80
+reflow = true
+code-blocks = false
+code-spans = false
+
+[MD077]
+indent = 4

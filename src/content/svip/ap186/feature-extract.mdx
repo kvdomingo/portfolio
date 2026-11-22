@@ -20,33 +20,41 @@ spaceData:
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity [[1](#Soriano2019)], I obtained the Fruits-360 dataset from Kaggle [[2](#Muresan2018)] which contains
-thousands of labeled fruit images under the same lighting and capture settings but with varying angles. I took 50
+For this activity [[1](#Soriano2019)], I obtained the Fruits-360 dataset from
+Kaggle [[2](#Muresan2018)] which contains thousands of labeled fruit images
+under the same lighting and capture settings but with varying angles. I took 50
 samples each from the set of apples, oranges, and bananas.
 
 #### Feature extraction: $L^*a^*b^*$ color space
 
-I first imported the images into Python and converted them to $L^*a^*b^*$ color space. For each image, I extracted the
-mean values from the $a^*$ and $b^*$ channels. The $a^*$ channel represents a chromaticity from green to red, while the
-$b^*$ channel represents a chromaticity from blue to yellow.
+I first imported the images into Python and converted them to $L^*a^*b^*$ color
+space. For each image, I extracted the mean values from the $a^*$ and $b^*$
+channels. The $a^*$ channel represents a chromaticity from green to red, while
+the $b^*$ channel represents a chromaticity from blue to yellow.
 
 #### Feature extraction: eccentricity $e$
 
-Using the same images, I applied Otsu's method since the images contain only one fruit on a plain white background. Each
-fruit is then easily detected as a single large blob. I then used the `regionprops` function to extract the eccentricity
-property from each detected blob. An $e = 0$ corresponds to a perfect circle, while an $e = 1$ corresponds to a
-parabola. Values $0 < e < 1$ are ellipses.
+Using the same images, I applied Otsu's method since the images contain only one
+fruit on a plain white background. Each fruit is then easily detected as a
+single large blob. I then used the `regionprops` function to extract the
+eccentricity property from each detected blob. An $e = 0$ corresponds to a
+perfect circle, while an $e = 1$ corresponds to a parabola. Values $0 < e < 1$
+are ellipses.
 
 #### Discussion
 
-Figure&nbsp;[1](#fig-feature-space) shows the feature space of the selected dataset in $a^*$, $b^*$, and $e$. We can observe
-that all the classes show distinct clustering. The projections on each of the planes are shown in
-Fig.&nbsp;[2](#fig-projections). The banana cluster shows a large variation in eccentricity but mostly resides in
-high-eccentricity space. This can be attributed to the various rotations of the banana images, but are still
-significantly elongated compared to the other fruit classes. Apples and oranges overlap in $a^*$ space (red and orange
-have very close chromaticities), but can be separated in the $b^*$-$e$ space (orange is closer to yellow than red is;
-apples are less rounded compared to oranges). If we needed to reduce the complexity, it is sufficient to choose between
-either $a^*$-$b^*$ or $b^*$-$e$ feature spaces, though the former appears to maximize the class separation.
+Figure&nbsp;[1](#fig-feature-space) shows the feature space of the selected
+dataset in $a^*$, $b^*$, and $e$. We can observe that all the classes show
+distinct clustering. The projections on each of the planes are shown in
+Fig.&nbsp;[2](#fig-projections). The banana cluster shows a large variation in
+eccentricity but mostly resides in high-eccentricity space. This can be
+attributed to the various rotations of the banana images, but are still
+significantly elongated compared to the other fruit classes. Apples and oranges
+overlap in $a^*$ space (red and orange have very close chromaticities), but can
+be separated in the $b^*$-$e$ space (orange is closer to yellow than red is;
+apples are less rounded compared to oranges). If we needed to reduce the
+complexity, it is sufficient to choose between either $a^*$-$b^*$ or $b^*$-$e$
+feature spaces, though the former appears to maximize the class separation.
 
 <figure id="fig-feature-space" class="container">
   <img

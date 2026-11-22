@@ -43,10 +43,12 @@ tableData:
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity, the values for CIE 1964 standard observer, standard illuminant D65, illuminant D55, and their
-respective white point tristimulus values were obtained from [[2](#CIE64)]. The reflectances of the Macbeth patches were
-obtained from [[1](#Soriano2019)]. Interpolation was performed for all the data to ensure that they are all aligned and
-of the same length. The tristimulus values for each patch under an illuminant were obtained by
+For this activity, the values for CIE 1964 standard observer, standard
+illuminant D65, illuminant D55, and their respective white point tristimulus
+values were obtained from [[2](#CIE64)]. The reflectances of the Macbeth patches
+were obtained from [[1](#Soriano2019)]. Interpolation was performed for all the
+data to ensure that they are all aligned and of the same length. The tristimulus
+values for each patch under an illuminant were obtained by
 
 <span id="eq-tristimulus" class="mx-auto">
 $
@@ -57,7 +59,8 @@ $
 </span>
 
 where $M$ is the spectral power distribution of the illuminant, $R$ is the reflectance of a patch, $\bar{t}$ is a
-standard observer, and $T$ is a tristimulus value. From here, conversion to $La^\star b^\star$ was performed using
+standard observer, and $T$ is a tristimulus value. From here, conversion to
+$La^\star b^\star$ was performed using
 
 <span id="eq-xyz2lab" class="mx-auto">
   $ \begin{equation}
@@ -76,16 +79,17 @@ where
 $
 \begin{align*}
   f(t) &=
-	\begin{cases}
+    \begin{cases}
     \sqrt[3]{t} & t > \delta^3 \\
     \frac{t}{3\delta^2} + \frac{4}{29} & \textrm{otherwise}
   \end{cases} \\
-	\delta &= \frac{6}{29}
+    \delta &= \frac{6}{29}
 \end{align*}
 $
 </span>
 
-where $X_n, Y_n, Z_n$ are the white point tristimulus values. Conversion to $LC^\star h$ was performed using
+where $X_n, Y_n, Z_n$ are the white point tristimulus values. Conversion to
+$LC^\star h$ was performed using
 
 <span id="eq-lab2lch" class="mx-auto">
 $
@@ -98,19 +102,21 @@ $
 $
 </span>
 
-The color differences in $La^\star b^\star$ and $LC^\star h$ are respectively calculated by
+The color differences in $La^\star b^\star$ and $LC^\star h$ are respectively
+calculated by
 
 <span id="eq-delta-e" class="mx-auto">
 $
 \begin{align}
   \Delta E(a^\star, b^\star) &= \sqrt{(\Delta L)^2 + (\Delta a^\star)^2 + (\Delta b^\star)^2} \\
-	\Delta E(C^\star, h) &= \sqrt{(\Delta L)^2 + (\Delta C^\star)^2 + (\Delta h)^2}
+    \Delta E(C^\star, h) &= \sqrt{(\Delta L)^2 + (\Delta C^\star)^2 + (\Delta h)^2}
 \end{align}
 $
 </span>
 
-The results of applying ([4](#eq-delta-e))-([5](#eq-delta-e)) on each Macbeth patch is shown in Table&nbsp;[1](#tab-color-diff).
-Figure&nbsp;[1](#fig-macbeth) shows the reference Macbeth chart.
+The results of applying ([4](#eq-delta-e))-([5](#eq-delta-e)) on each Macbeth
+patch is shown in Table&nbsp;[1](#tab-color-diff). Figure&nbsp;[1](#fig-macbeth)
+shows the reference Macbeth chart.
 
 <table class="table" id="tab-color-diff">
   <caption>

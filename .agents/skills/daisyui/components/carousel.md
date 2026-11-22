@@ -19,6 +19,8 @@ Use a carousel to show images or content in a scrollable area.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one direction class name.
-- The content is a list of `carousel-item` divs: `<div class="carousel-item"></div>`.
+- `{MODIFIER}` is optional. It can include one modifier class name and one
+  direction class name.
+- The content is a list of `carousel-item` divs:
+  `<div class="carousel-item"></div>`.
 - To make a full-width carousel, add `w-full` to each carousel item.

@@ -21,4 +21,5 @@ Use the diff component to show a side-by-side comparison of two items.
 
 #### Rules
 
-- To keep the aspect ratio, add `aspect-16/9` or another aspect-ratio class to the `<figure class="diff">` element.
+- To keep the aspect ratio, add `aspect-16/9` or another aspect-ratio class to
+  the `<figure class="diff">` element.

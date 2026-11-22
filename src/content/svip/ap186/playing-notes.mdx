@@ -19,12 +19,15 @@ alphabet: "abcdefghijklmnopqrstuvwxyz"
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity [[1](#Soriano2019)], I recreated the tapping part of Tom's Story's "Anchors" using Guitar Pro and
-exported it as a `png`. The excerpt is shown in Fig. [1](#fig-excerpt). Notice that the song is in the key of G, as
-denoted by the sharp accidental next to the treble clef. This sort of makes things easier as we won't have to worry
-about accidentals in the rest of the sheet, but this only works assuming that there are no borrowed chords or if we work
-strictly within the major mode. The methodology I will be following is based on [[2](#Harris2015)], with some
-inspiration from [[3](#Romero2016)] and [[4](#Medrana2016)].
+For this activity [[1](#Soriano2019)], I recreated the tapping part of Tom's
+Story's "Anchors" using Guitar Pro and exported it as a `png`. The excerpt is
+shown in Fig. [1](#fig-excerpt). Notice that the song is in the key of G, as
+denoted by the sharp accidental next to the treble clef. This sort of makes
+things easier as we won't have to worry about accidentals in the rest of the
+sheet, but this only works assuming that there are no borrowed chords or if we
+work strictly within the major mode. The methodology I will be following is
+based on [[2](#Harris2015)], with some inspiration from [[3](#Romero2016)] and
+[[4](#Medrana2016)].
 
 <figure class="figure" id="fig-excerpt">
   <img
@@ -39,12 +42,14 @@ inspiration from [[3](#Romero2016)] and [[4](#Medrana2016)].
 
 #### Pre-processing
 
-First, the image is binarized using Otsu's method. The full track consists of 5 rows, so the image is first
-separated by row. This is achieved by searching for blocks with high variation and minimum vertical size [[5](#Gent2017)].
-The location of the staff lines can be obtained by projecting the image onto the y-axis;
-the staff lines show up as five distinct peaks. After obtaining their index locations using Python's
-`peakutils` library, the staff lines can be removed by using an opening morphological operator with a
-horizontal line. The result of this operation is shown in Fig. [2](#fig-nostaff).
+First, the image is binarized using Otsu's method. The full track consists of 5
+rows, so the image is first separated by row. This is achieved by searching for
+blocks with high variation and minimum vertical size [[5](#Gent2017)]. The
+location of the staff lines can be obtained by projecting the image onto the
+y-axis; the staff lines show up as five distinct peaks. After obtaining their
+index locations using Python's `peakutils` library, the staff lines can be
+removed by using an opening morphological operator with a horizontal line. The
+result of this operation is shown in Fig. [2](#fig-nostaff).
 
 <figure class="figure" id="fig-excerpt">
   <img
@@ -59,19 +64,23 @@ horizontal line. The result of this operation is shown in Fig. [2](#fig-nostaff)
 
 #### Object detection
 
-The quarter, eighth, and sixteenth notes can easily be detected because their common denominator is their filled
-ellipsoid bodies. Telling them apart will depend on their connection to adjacent notes (or lack thereof). To do
-this, the image is eroded by a vertical line so that only the note body and horizontal stems remain (Fig. [3](#fig-nostems)).
-Next, the location of the note bodies are obtained by further eroding the image
-using an ellipse kernel and using the Determinant of Hessian blob detection algorithm from the
-`skimage` library (Fig. [4](#fig-bodies)). We then go back to the prior image and
-scan the entire column spanned by one blob. If a large peak is detected, then the note is classified as an
-eighth. If two peaks are detected, then the classification is a sixteenth. If no other features are detected, the
-classification is quarter.
+The quarter, eighth, and sixteenth notes can easily be detected because their
+common denominator is their filled ellipsoid bodies. Telling them apart will
+depend on their connection to adjacent notes (or lack thereof). To do this, the
+image is eroded by a vertical line so that only the note body and horizontal
+stems remain (Fig. [3](#fig-nostems)). Next, the location of the note bodies are
+obtained by further eroding the image using an ellipse kernel and using the
+Determinant of Hessian blob detection algorithm from the `skimage` library (Fig.
+[4](#fig-bodies)). We then go back to the prior image and scan the entire column
+spanned by one blob. If a large peak is detected, then the note is classified as
+an eighth. If two peaks are detected, then the classification is a sixteenth. If
+no other features are detected, the classification is quarter.
 
-Whole and half notes are detected by detecting the location of regions enclosing an empty space using watershed
-algorithm [[6](#Bienek2000)]. Similarly, we can tell apart whole and half notes by scanning the columns spanned by the
-note and looking for other features. Other features such as dotted notes and rests will not be detected.
+Whole and half notes are detected by detecting the location of regions enclosing
+an empty space using watershed algorithm [[6](#Bienek2000)]. Similarly, we can
+tell apart whole and half notes by scanning the columns spanned by the note and
+looking for other features. Other features such as dotted notes and rests will
+not be detected.
 
 <figure class="figure" id="fig-nostems">
   <img

@@ -8,7 +8,8 @@ A dropdown can open a menu or another element when the user clicks the button.
 
 - component: `dropdown`
 - part: `dropdown-content`
-- placement: `dropdown-start`, `dropdown-center`, `dropdown-end`, `dropdown-top`, `dropdown-bottom`, `dropdown-left`, `dropdown-right`
+- placement: `dropdown-start`, `dropdown-center`, `dropdown-end`,
+  `dropdown-top`, `dropdown-bottom`, `dropdown-left`, `dropdown-right`
 - modifier: `dropdown-hover`, `dropdown-open`, `dropdown-close`
 
 #### Syntax
@@ -22,7 +23,8 @@ Popover API:
 </ul>
 ```
 
-The `details` and `summary` elements open and close only when the user clicks them:
+The `details` and `summary` elements open and close only when the user clicks
+them:
 
 ```html
 <details class="dropdown">
@@ -35,7 +37,10 @@ The `details` and `summary` elements open and close only when the user clicks th
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one placement class name.
-- Replace `{id}` and `{anchor}` with the same name. Do not use this name for another element.
+- `{MODIFIER}` is optional. It can include one modifier class name and one
+  placement class name.
+- Replace `{id}` and `{anchor}` with the same name. Do not use this name for
+  another element.
 - The content is not limited to `<ul>`. It can be a different HTML element.
-- For the popover API method, use only a button and `dropdown`. Do not use `dropdown-content`.
+- For the popover API method, use only a button and `dropdown`. Do not use
+  `dropdown-content`.

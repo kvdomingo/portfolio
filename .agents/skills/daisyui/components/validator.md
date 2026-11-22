@@ -1,6 +1,7 @@
 ### Validator
 
-The validator class sets an error color or a success color on a form element. The input validation rules control the color.
+The validator class sets an error color or a success color on a form element.
+The input validation rules control the color.
 
 [Validator documentation](https://daisyui.com/components/validator/)
 

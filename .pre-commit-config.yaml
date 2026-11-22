@@ -4,6 +4,13 @@ repos:
     hooks:
       - id: oxlint
         verbose: true
+  - repo: https://github.com/rvben/rumdl-pre-commit
+    rev: v0.3.5
+    hooks:
+      - id: rumdl
+        args: [--fix, --config, .rumdl.toml]
+      - id: rumdl-fmt
+        args: [--config, .rumdl.toml]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:

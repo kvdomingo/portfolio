@@ -17,10 +17,12 @@ A footer can contain a logo, a copyright notice, and links to other pages.
 <footer class="{MODIFIER} footer">{CONTENT}</footer>
 ```
 
-The content can contain more than one `<nav>` tag. Each tag can contain `footer-title` and links.
+The content can contain more than one `<nav>` tag. Each tag can contain
+`footer-title` and links.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one placement class name and one direction class name.
+- `{MODIFIER}` is optional. It can include one placement class name and one
+  direction class name.
 - To make the footer responsive, use `sm:footer-horizontal`.
 - You can use `base-200` for the background color.

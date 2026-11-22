@@ -39,25 +39,32 @@ with IP addresses: use hostnames.
 
 - Docker
 - Knowledge of docker-compose syntax
-- Some knowledge of networking, particularly subnetting, CIDR blocks, RFC 1918 networks
+- Some knowledge of networking, particularly subnetting, CIDR blocks, RFC 1918
+  networks
 
 > [!INFO]
 >
-> **RFC 1918 networks** are **private networks**,
-> meaning they are used only for local networks and are not publicly routable on the internet. The RFC 1918 address ranges are divided into blocks as follows:
+> **RFC 1918 networks** are **private networks**, meaning they are used only for
+> local networks and are not publicly routable on the internet. The RFC 1918
+> address ranges are divided into blocks as follows:
 >
 > - **the 16 block**: 192.168.0.0/16 (192.168.0.0 -192.168.255.255)
 > - **the 12 block**: 172.16.0.0/12 (172.16.0.0-172.31.255.255)
 > - **the 8 block**: 10.0.0.0/8 (10.0.0.0 -10.255.255.255)
 >
-> Most devices understand this, so if you enter any of these addresses in a browser, they will always be searched within the local network and such requests will never leave said network.
+> Most devices understand this, so if you enter any of these addresses in a
+> browser, they will always be searched within the local network and such
+> requests will never leave said network.
 
-For ideal results, we'll set up a single, global Traefik instance so that we can forget about it later on.
+For ideal results, we'll set up a single, global Traefik instance so that we can
+forget about it later on.
 
-First, determine your Docker installation's default subnet. You can do this by running. Assuming you haven't tinkered around with it, the default is
+First, determine your Docker installation's default subnet. You can do this by
+running. Assuming you haven't tinkered around with it, the default is
 `172.16.0.0/12`. If you have, then you already know enough to figure this out.
-Find an unused `/16` CIDR block that falls within your Docker subnet. For our purposes, let's take
-`172.20.0.0/16`. Then use the following Traefik config `traefik.yml`:
+Find an unused `/16` CIDR block that falls within your Docker subnet. For our
+purposes, let's take `172.20.0.0/16`. Then use the following Traefik config
+`traefik.yml`:
 
 ```yaml
 api:
@@ -89,7 +96,8 @@ api:
 
 enables the Traefik dashboard and debug logging.
 
-The top-level `log` and `accessLog` keys determine where the logs will be stored.
+The top-level `log` and `accessLog` keys determine where the logs will be
+stored.
 
 ```yaml
 entryPoints:
@@ -97,8 +105,9 @@ entryPoints:
     address: ":80"
 ```
 
-`entryPoints` tell Traefik what ports to expose to the host system. We create an entrypoint named
-http and expose it on the host's port 80, which is the default HTTP port (we will deal with HTTPS in another blog).
+`entryPoints` tell Traefik what ports to expose to the host system. We create an
+entrypoint named http and expose it on the host's port 80, which is the default
+HTTP port (we will deal with HTTPS in another blog).
 
 ```yaml
 providers:
@@ -106,7 +115,8 @@ providers:
     exposedByDefault: false
 ```
 
-enables the Docker integration, but we want to control which apps should integrate with Traefik.
+enables the Docker integration, but we want to control which apps should
+integrate with Traefik.
 
 We then use the following `docker-compose.yml`:
 
@@ -158,7 +168,8 @@ volumes:
   - /var/run/docker.sock:/var/run/docker.sock:ro
 ```
 
-mounts the host's Docker socket into the container and give it read-only access to other running containers.
+mounts the host's Docker socket into the container and give it read-only access
+to other running containers.
 
 ```yaml
 labels:
@@ -170,9 +181,10 @@ labels:
   traefik.http.services.traefik.loadbalancer.server.port: 8080
 ```
 
-Labels are the key to Traefik integration. We explicitly enable the integration of the
-Traefik container itself with the Traefik proxy. We add a rule so that the Traefik dashboard
-becomes accessible using the hostname `traefik.localhost`. Note that the hostname is
+Labels are the key to Traefik integration. We explicitly enable the integration
+of the Traefik container itself with the Traefik proxy. We add a rule so that
+the Traefik dashboard becomes accessible using the hostname `traefik.localhost`.
+Note that the hostname is
 surrounded by backticks (<code>`</code>) and not quotes.
 
 Finally, spin up the Traefik instance:
@@ -183,8 +195,8 @@ docker compose up --detach
 
 In a browser, navigate to `traefik.localhost` to view the Traefik dashboard.
 
-To try out our first app with a custom hostname, check out the following NGINX test
-app `docker-compose.yaml`:
+To try out our first app with a custom hostname, check out the following NGINX
+test app `docker-compose.yaml`:
 
 ```yaml
 services:

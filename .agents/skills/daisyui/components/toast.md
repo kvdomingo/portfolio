@@ -7,7 +7,8 @@ A toast is a wrapper that stacks elements in a corner of the page.
 #### Class names
 
 - component: `toast`
-- placement: `toast-start`, `toast-center`, `toast-end`, `toast-top`, `toast-middle`, `toast-bottom`
+- placement: `toast-start`, `toast-center`, `toast-end`, `toast-top`,
+  `toast-middle`, `toast-bottom`
 
 #### Syntax
 

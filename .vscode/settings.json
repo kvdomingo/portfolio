@@ -13,5 +13,9 @@
       "source.organizeImports.oxc": "explicit"
     },
     "editor.indentSize": 2
+  },
+  "[mdx]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rvben.rumdl"
   }
 }

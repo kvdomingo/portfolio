@@ -8,8 +8,11 @@ A textarea lets users enter text on more than one line.
 
 - component: `textarea`
 - style: `textarea-ghost`
-- color: `textarea-neutral`, `textarea-primary`, `textarea-secondary`, `textarea-accent`, `textarea-info`, `textarea-success`, `textarea-warning`, `textarea-error`
-- size: `textarea-xs`, `textarea-sm`, `textarea-md`, `textarea-lg`, `textarea-xl`
+- color: `textarea-neutral`, `textarea-primary`, `textarea-secondary`,
+  `textarea-accent`, `textarea-info`, `textarea-success`, `textarea-warning`,
+  `textarea-error`
+- size: `textarea-xs`, `textarea-sm`, `textarea-md`, `textarea-lg`,
+  `textarea-xl`
 
 #### Syntax
 
@@ -19,4 +22,5 @@ A textarea lets users enter text on more than one line.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one class name from each style, color, and size category.
+- `{MODIFIER}` is optional. It can include one class name from each style,
+  color, and size category.

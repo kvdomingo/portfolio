@@ -15,9 +15,11 @@ alphabet: abcdefghijklmnopqrstuvwxyz
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity [[1](#Soriano2019), [2](#Veksler)], I used the extracted fruit color features in $a^*-b^*$ space from
-a [previous activity](/svip/ap186/feature-extract). I used only the data for oranges and apples, and assigned them
-labels of $-1$ \& $+1$, respectively. The objective for SVM is
+For this activity [[1](#Soriano2019), [2](#Veksler)], I used the extracted fruit
+color features in $a^*-b^*$ space from a
+[previous activity](/svip/ap186/feature-extract). I used only the data for
+oranges and apples, and assigned them labels of $-1$ \& $+1$, respectively. The
+objective for SVM is
 
 <span id="eq-objective" class="mx-auto">
 $
@@ -40,7 +42,8 @@ we have two features, the separating hyperplane is a line defined by
   \end{equation}$
 </span>
 
-so we can plot the margins on opposite sides of the decision line using trigonometric identities:
+so we can plot the margins on opposite sides of the decision line using
+trigonometric identities:
 
 <span id="eq-objective" class="mx-auto">
 $
@@ -50,8 +53,9 @@ $
 $
 </span>
 
-Figure&nbsp;[1](#fig-svm-db) shows the optimum decision boundary with maximized margins in the $a^*-b^*$ feature space,
-along with the input data points and support vectors.
+Figure&nbsp;[1](#fig-svm-db) shows the optimum decision boundary with maximized
+margins in the $a^*-b^*$ feature space, along with the input data points and
+support vectors.
 
 <figure id="fig-svm-db" class="container">
   <img

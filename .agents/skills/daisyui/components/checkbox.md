@@ -7,8 +7,11 @@ Use a checkbox to select or deselect a value.
 #### Class names
 
 - component: `checkbox`
-- color: `checkbox-primary`, `checkbox-secondary`, `checkbox-accent`, `checkbox-neutral`, `checkbox-success`, `checkbox-warning`, `checkbox-info`, `checkbox-error`
-- size: `checkbox-xs`, `checkbox-sm`, `checkbox-md`, `checkbox-lg`, `checkbox-xl`
+- color: `checkbox-primary`, `checkbox-secondary`, `checkbox-accent`,
+  `checkbox-neutral`, `checkbox-success`, `checkbox-warning`, `checkbox-info`,
+  `checkbox-error`
+- size: `checkbox-xs`, `checkbox-sm`, `checkbox-md`, `checkbox-lg`,
+  `checkbox-xl`
 
 #### Syntax
 
@@ -18,4 +21,5 @@ Use a checkbox to select or deselect a value.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one color class name and one size class name.
+- `{MODIFIER}` is optional. It can include one color class name and one size
+  class name.

@@ -18,4 +18,5 @@ A stack puts elements on top of each other.
 #### Rules
 
 - `{MODIFIER}` is optional. It can be one of the modifier class names.
-- Use the `w-*` and `h-*` classes to set the stack width and height. These classes make all items the same size.
+- Use the `w-*` and `h-*` classes to set the stack width and height. These
+  classes make all items the same size.

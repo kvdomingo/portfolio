@@ -45,21 +45,22 @@ awbaetData:
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity, I will be using the raw image (Fig. [1a](#fig-original)) I took during the
-FST Week Concert at the College of Fine Arts. I felt this would be a good image to work on since there is a
-significant and discernible color cast due to the lighting of the venue. The photo was taken with auto white
+For this activity, I will be using the raw image (Fig. [1a](#fig-original)) I
+took during the FST Week Concert at the College of Fine Arts. I felt this would
+be a good image to work on since there is a significant and discernible color
+cast due to the lighting of the venue. The photo was taken with auto white
 balance (which didn't do a really good job of white balancing).
 
 #### Contrast Stretching
 
 I imported the original image as <code>uint8</code>. However, when performing
-any manipulation, I converted it first to <code>float64</code> before casting
-it back to <code>uint8</code> for displaying and saving purposes. Upon
-examination, I realized it was futile to perform contrast stretching since the
-maximum value of each channel was already <code>1.0</code>. Further reading
-brought me to an article [[1](#Wang2011)], where we can discard a certain percentile
-from the low and high ends of the histogram
-and stretch the remaining bins to fill the full range, according to
+any manipulation, I converted it first to <code>float64</code> before casting it
+back to <code>uint8</code> for displaying and saving purposes. Upon examination,
+I realized it was futile to perform contrast stretching since the maximum value
+of each channel was already <code>1.0</code>. Further reading brought me to an
+article [[1](#Wang2011)], where we can discard a certain percentile from the low
+and high ends of the histogram and stretch the remaining bins to fill the full
+range, according to
 
 <span id="eq-constretch" className="mx-auto">
   $
@@ -69,12 +70,12 @@ and stretch the remaining bins to fill the full range, according to
     $
 </span>
 
-where $C$ refers to the channel being manipulated.
-The _high_ and _low_ values refer to the $p$-th percentile of histogram values that are set as the upper and lower
-thresholds, respectively. This is actually the algorithm used by GIMP's auto
-white balance. We can see from the resulting image in Fig.&nbsp;
-[1b](#fig-constretch) that the reddish color cast has generally been
-removed, and the guitarist's skin tone looks much more realistic.
+where $C$ refers to the channel being manipulated. The _high_ and _low_ values
+refer to the $p$-th percentile of histogram values that are set as the upper and
+lower thresholds, respectively. This is actually the algorithm used by GIMP's
+auto white balance. We can see from the resulting image in Fig.&nbsp;
+[1b](#fig-constretch) that the reddish color cast has generally been removed,
+and the guitarist's skin tone looks much more realistic.
 
 #### Gray World
 
@@ -89,12 +90,11 @@ values are manipulated according to [[2](#Soriano2019)]
     $
 </span>
 
-where $\langle I \rangle$ is the overall
-average and $C$ is the
-channel average. The result of this manipulation is shown in Fig.&nbsp;
-[1c](#fig-grayworld). Note that the image is at roughly the same exposure
-level as the original because we did not perform contrast stretching on this one,
-but the white balance is similar to that of contrast stretching.
+where $\langle I \rangle$ is the overall average and $C$ is the channel average.
+The result of this manipulation is shown in Fig.&nbsp; [1c](#fig-grayworld).
+Note that the image is at roughly the same exposure level as the original
+because we did not perform contrast stretching on this one, but the white
+balance is similar to that of contrast stretching.
 
 #### White Patch
 
@@ -176,13 +176,13 @@ The weight is then calculated as
     $
   </span>
 
-where $\langle C_b \rangle$, $\langle C_r \rangle$
-are calculated by converting the image to YC<sub>r</sub>C<sub>b</sub> and
-taking the averages of the C channels, and $\sigma$ are the standard deviations of the
-RGB channels. The paper stated that $n$ was
-a constant taken to be 200 and was obtained experimentally, but do not
-elaborate on how exactly it was obtained. Essentially, $w$ is the weight of the heavy color cast.
-The final image is obtained by
+where $\langle C_b \rangle$, $\langle C_r \rangle$ are calculated by converting
+the image to YC<sub>r</sub>C<sub>b</sub> and taking the averages of the C
+channels, and $\sigma$ are the standard deviations of the RGB channels. The
+paper stated that $n$ was a constant taken to be 200 and was obtained
+experimentally, but do not elaborate on how exactly it was obtained.
+Essentially, $w$ is the weight of the heavy color cast. The final image is
+obtained by
 
 <span id="eq-weight" className="math-container">
     $
@@ -193,12 +193,11 @@ The final image is obtained by
   </span>
 
 where $\textrm{CS}$ and $\textrm{GW}$ are the images enhanced
-using the modified contrast stretching and gray world algorithms,
-respectively. The result is shown in Fig. [3c](#fig-awbaet)
-alongside the other algorithms for comparison. Because
-of the heavy red color cast in the original image, the CS portion of the algorithm
-is given a greater weight, so the final image looks more like the CS-corrected
-image.
+using the modified contrast stretching and gray world algorithms, respectively.
+The result is shown in Fig. [3c](#fig-awbaet) alongside the other algorithms for
+comparison. Because of the heavy red color cast in the original image, the CS
+portion of the algorithm is given a greater weight, so the final image looks
+more like the CS-corrected image.
 
 <figure
   id="fig-awbaet"

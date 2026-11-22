@@ -1,6 +1,7 @@
 ### Swap
 
-Use the swap component to change the visibility of two elements. Control the swap with a checkbox or a class name.
+Use the swap component to change the visibility of two elements. Control the
+swap with a checkbox or a class name.
 
 [Swap documentation](https://daisyui.com/components/swap/)
 
@@ -34,6 +35,9 @@ Class name:
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one style class name.
-- Use only a hidden checkbox to control the swap state. As an alternative, use JavaScript to add or remove the `swap-active` class.
-- To show content when the checkbox is indeterminate, use the `swap-indeterminate` class.
+- `{MODIFIER}` is optional. It can include one modifier class name and one style
+  class name.
+- Use only a hidden checkbox to control the swap state. As an alternative, use
+  JavaScript to add or remove the `swap-active` class.
+- To show content when the checkbox is indeterminate, use the
+  `swap-indeterminate` class.

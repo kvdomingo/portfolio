@@ -1,13 +1,15 @@
 ### Drawer
 
-A drawer is a grid layout that can show and hide a sidebar. The sidebar can be on either side of the page.
+A drawer is a grid layout that can show and hide a sidebar. The sidebar can be
+on either side of the page.
 
 [Drawer documentation](https://daisyui.com/components/drawer/)
 
 #### Class names
 
 - component: `drawer`
-- part: `drawer-toggle`, `drawer-content`, `drawer-side`, `drawer-overlay`, `drawer-button`
+- part: `drawer-toggle`, `drawer-content`, `drawer-side`, `drawer-overlay`,
+  `drawer-button`
 - placement: `drawer-end`
 - modifier: `drawer-open`
 - variant: `is-drawer-open:`, `is-drawer-close:`
@@ -32,13 +34,15 @@ The `{SIDEBAR}` can contain a menu:
 </ul>
 ```
 
-To open and close the drawer, use a label whose `for` attribute matches the `drawer-toggle` input ID:
+To open and close the drawer, use a label whose `for` attribute matches the
+`drawer-toggle` input ID:
 
 ```html
 <label for="my-drawer" class="drawer-button btn">Open/close drawer</label>
 ```
 
-Example: This sidebar is always visible on large screens. The user can toggle it on small screens:
+Example: This sidebar is always visible on large screens. The user can toggle it
+on small screens:
 
 ```html
 <div class="drawer lg:drawer-open">
@@ -64,7 +68,8 @@ Example: This sidebar is always visible on large screens. The user can toggle it
 </div>
 ```
 
-Example: This sidebar is always visible. In the closed state, it shows only icons. In the open state, it shows icons and text:
+Example: This sidebar is always visible. In the closed state, it shows only
+icons. In the open state, it shows icons and text:
 
 ```html
 <div class="drawer lg:drawer-open">
@@ -123,9 +128,15 @@ Example: This sidebar is always visible. In the closed state, it shows only icon
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one placement class name.
-- You must add an `id` to the `drawer-toggle` input. Change `my-drawer` to a unique HTML ID.
+- `{MODIFIER}` is optional. It can include one modifier class name and one
+  placement class name.
+- You must add an `id` to the `drawer-toggle` input. Change `my-drawer` to a
+  unique HTML ID.
 - To make the sidebar visible on larger screens, use `lg:drawer-open`.
-- The `drawer-toggle` is a hidden checkbox. Use a label with a `for` attribute to change the checkbox state.
-- To open the drawer with a button, use `<label for="my-drawer" class="btn drawer-button">Open drawer</label>`. The `my-drawer` value is the ID of the `drawer-toggle` input.
-- When you use a drawer, put all page content in the `drawer-content` element. Put the navbar and footer inside the `drawer`.
+- The `drawer-toggle` is a hidden checkbox. Use a label with a `for` attribute
+  to change the checkbox state.
+- To open the drawer with a button, use
+  `<label for="my-drawer" class="btn drawer-button">Open drawer</label>`. The
+  `my-drawer` value is the ID of the `drawer-toggle` input.
+- When you use a drawer, put all page content in the `drawer-content` element.
+  Put the navbar and footer inside the `drawer`.

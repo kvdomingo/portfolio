@@ -25,7 +25,9 @@ Use a timeline to show a list of events in chronological order.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one direction class name.
-- The default timeline is vertical. You can also add the `timeline-vertical` class to the `ul` element.
+- `{MODIFIER}` is optional. It can include one modifier class name and one
+  direction class name.
+- The default timeline is vertical. You can also add the `timeline-vertical`
+  class to the `ul` element.
 - Add `timeline-snap-icon` to put the icon at the start instead of the middle.
 - Add the `timeline-compact` class to put all items on one side.

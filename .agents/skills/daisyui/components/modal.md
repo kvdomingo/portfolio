@@ -9,7 +9,8 @@ A modal shows a dialog or box when the user clicks a button.
 - component: `modal`
 - part: `modal-box`, `modal-action`, `modal-backdrop`, `modal-toggle`
 - modifier: `modal-open`
-- placement: `modal-top`, `modal-middle`, `modal-bottom`, `modal-start`, `modal-end`
+- placement: `modal-top`, `modal-middle`, `modal-bottom`, `modal-start`,
+  `modal-end`
 
 #### Syntax
 
@@ -90,6 +91,8 @@ Anchor links. This method is legacy:
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one placement class name.
+- `{MODIFIER}` is optional. It can include one modifier class name and one
+  placement class name.
 - Use a unique HTML ID for each modal.
-- For an HTML `dialog` element, add `<form method="dialog">`. This lets the submit action close the modal.
+- For an HTML `dialog` element, add `<form method="dialog">`. This lets the
+  submit action close the modal.

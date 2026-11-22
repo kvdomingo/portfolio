@@ -22,4 +22,5 @@ Use breadcrumbs to help users navigate.
 
 - The breadcrumbs component has one main class name.
 - You can put icons in the links.
-- If you set `max-width` or the list becomes wider than its container, the breadcrumbs list scrolls.
+- If you set `max-width` or the list becomes wider than its container, the
+  breadcrumbs list scrolls.

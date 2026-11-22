@@ -15,9 +15,10 @@ alphabet: abcdefghijklmnopqrstuvwxyz
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity [[1](#Soriano2019)], I used the separated banana, apple, and orange feature data from a
-[previous activity](/svip/ap186/feature-extract). The fruits form clear clusters in $a^*-b^*$ feature space and is
-suitable for this activity. Figure&nbsp;[1](#fig-ab-space) shows the clustering of the fruit data.
+For this activity [[1](#Soriano2019)], I used the separated banana, apple, and
+orange feature data from a [previous activity](/svip/ap186/feature-extract). The
+fruits form clear clusters in $a^*-b^*$ feature space and is suitable for this
+activity. Figure&nbsp;[1](#fig-ab-space) shows the clustering of the fruit data.
 
 <figure id="fig-ab-space" class="container">
   <img
@@ -30,7 +31,8 @@ suitable for this activity. Figure&nbsp;[1](#fig-ab-space) shows the clustering 
   </figcaption>
 </figure>
 
-Since we are working only with two dimensions (two features), we assume a 2D Gaussian distribution, given by
+Since we are working only with two dimensions (two features), we assume a 2D
+Gaussian distribution, given by
 
 <span id="eq-2d-gaussian" class="mx-auto">
 $
@@ -50,20 +52,22 @@ $
 $
 </span>
 
-which are used throughout one entire iteration, in order to avoid redundant calculation of exponentials and matrix
-inversions. We then iterate with the update rules
+which are used throughout one entire iteration, in order to avoid redundant
+calculation of exponentials and matrix inversions. We then iterate with the
+update rules
 
 <span id="eq-iterate" class="mx-auto">
 $
 \begin{align}
   P_l^\prime &= \frac{1}{N} \sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g) \\
-	\vec{\mu_l}^\prime &= \frac{\sum_{i=1}^N \vec{x}_i P (l | \vec{x}_i, \vec{\Theta}^g)}{\sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g)} \\
-	\vec{\Sigma_l}^\prime &= \frac{\sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g) (\vec{x}_i - \vec{\mu_l}^\prime) (\vec{x}_i - \vec{\mu_l}^\prime)^\top}{\sum_{i=1}^N P (l | \vec{x}_i \vec{\Theta}^g)}
+    \vec{\mu_l}^\prime &= \frac{\sum_{i=1}^N \vec{x}_i P (l | \vec{x}_i, \vec{\Theta}^g)}{\sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g)} \\
+    \vec{\Sigma_l}^\prime &= \frac{\sum_{i=1}^N P (l | \vec{x}_i, \vec{\Theta}^g) (\vec{x}_i - \vec{\mu_l}^\prime) (\vec{x}_i - \vec{\mu_l}^\prime)^\top}{\sum_{i=1}^N P (l | \vec{x}_i \vec{\Theta}^g)}
 \end{align}
 $
 </span>
 
-until the log-likelihood goes above some pre-set value. The log-likelihood is given by
+until the log-likelihood goes above some pre-set value. The log-likelihood is
+given by
 
 <span id="eq-log-likelihood" class="mx-auto">
 $

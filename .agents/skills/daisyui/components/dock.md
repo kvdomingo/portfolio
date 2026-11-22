@@ -1,6 +1,7 @@
 ### Dock
 
-A dock is also called bottom navigation or a bottom bar. It gives navigation options and stays at the bottom of the screen.
+A dock is also called bottom navigation or a bottom bar. It gives navigation
+options and stays at the bottom of the screen.
 
 [Dock documentation](https://daisyui.com/components/dock/)
 
@@ -30,4 +31,5 @@ The content is a list of buttons:
 
 - `{MODIFIER}` is optional. It can be one of the size class names.
 - To make a button active, add the `dock-active` class to the button.
-- For a responsive dock in iOS, add `<meta name="viewport" content="viewport-fit=cover">`.
+- For a responsive dock in iOS, add
+  `<meta name="viewport" content="viewport-fit=cover">`.

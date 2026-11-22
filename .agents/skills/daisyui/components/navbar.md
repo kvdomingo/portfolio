@@ -17,6 +17,7 @@ Use a navbar to show navigation at the top of the page.
 
 #### Rules
 
-- Use `navbar-start`, `navbar-center`, and `navbar-end` to put content in horizontal positions.
+- Use `navbar-start`, `navbar-center`, and `navbar-end` to put content in
+  horizontal positions.
 - Put the applicable content in each section.
 - You can use `base-200` for the background color.

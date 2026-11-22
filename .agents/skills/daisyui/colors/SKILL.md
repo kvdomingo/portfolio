@@ -31,20 +31,33 @@ description: Color rules that you must use with daisyUI 5
 ### daisyUI color rules
 
 1. daisyUI adds semantic color names to the Tailwind CSS colors.
-2. Use daisyUI color names in utility classes as you use other Tailwind CSS color names. For example, `bg-primary` uses the primary color for the background.
-3. The value of each daisyUI color name is a variable. Thus, the color can change with the theme.
+2. Use daisyUI color names in utility classes as you use other Tailwind CSS
+   color names. For example, `bg-primary` uses the primary color for the
+   background.
+3. The value of each daisyUI color name is a variable. Thus, the color can
+   change with the theme.
 4. Do not use `dark:` with daisyUI color names.
-5. If possible, use only daisyUI color names. This lets colors change automatically with the theme.
-6. If you use a Tailwind CSS color name such as `red-500`, its color stays the same in all themes.
-7. If you use a daisyUI color name such as `primary`, its color changes with the theme.
-8. Avoid Tailwind CSS color names for text. For example, `text-gray-800` on `bg-base-100` becomes unreadable in a dark theme because `bg-base-100` is dark.
+5. If possible, use only daisyUI color names. This lets colors change
+   automatically with the theme.
+6. If you use a Tailwind CSS color name such as `red-500`, its color stays the
+   same in all themes.
+7. If you use a daisyUI color name such as `primary`, its color changes with the
+   theme.
+8. Avoid Tailwind CSS color names for text. For example, `text-gray-800` on
+   `bg-base-100` becomes unreadable in a dark theme because `bg-base-100` is
+   dark.
 9. `*-content` colors must have clear contrast with their related colors.
-10. Use `base-*` colors for most of the page. Use the default variant for all elements. Use `primary` only for the most important element on the page. Use it only once.
-11. In rare cases, you can use a Tailwind CSS color if content must keep the same color in all themes. For example, you can use `text-red-500` instead of `text-error`. For an SVG icon or chart, a fixed color can be necessary.
+10. Use `base-*` colors for most of the page. Use the default variant for all
+    elements. Use `primary` only for the most important element on the page. Use
+    it only once.
+11. In rare cases, you can use a Tailwind CSS color if content must keep the
+    same color in all themes. For example, you can use `text-red-500` instead of
+    `text-error`. For an SVG icon or chart, a fixed color can be necessary.
 
 ### Enable and apply themes
 
-The default configuration enables `light` and `dark`. In the daisyUI plugin, select specified themes, all themes, or no built-in themes:
+The default configuration enables `light` and `dark`. In the daisyUI plugin,
+select specified themes, all themes, or no built-in themes:
 
 ```css
 @plugin "daisyui" {
@@ -56,8 +69,10 @@ The default configuration enables `light` and `dark`. In the daisyUI plugin, sel
 ```
 
 - Use `themes: all;` to enable all built-in themes.
-- Use `themes: false;` to disable all built-in themes. Usually, do this before you define only custom themes.
-- Add `data-theme="THEME_NAME"` to `<html>` or a nested element. You can nest themes with no depth limit.
+- Use `themes: false;` to disable all built-in themes. Usually, do this before
+  you define only custom themes.
+- Add `data-theme="THEME_NAME"` to `<html>` or a nested element. You can nest
+  themes with no depth limit.
 
 ```html
 <html data-theme="dark">
@@ -69,7 +84,8 @@ The default configuration enables `light` and `dark`. In the daisyUI plugin, sel
 
 ### daisyUI custom theme with custom colors
 
-A CSS file that contains Tailwind CSS, daisyUI, and a custom daisyUI theme has this structure:
+A CSS file that contains Tailwind CSS, daisyUI, and a custom daisyUI theme has
+this structure:
 
 ```css
 @import "tailwindcss";
@@ -120,13 +136,16 @@ A CSS file that contains Tailwind CSS, daisyUI, and a custom daisyUI theme has t
 
 - You must include all CSS variables in the example.
 - Colors can use OKLCH, hex, or another format.
-- If you generate a custom theme, do not include the comments from the example. Give only the code.
+- If you generate a custom theme, do not include the comments from the example.
+  Give only the code.
 
-Optional: Use the visual tool at https://daisyui.com/theme-generator/ to make a custom theme.
+Optional: Use the visual tool at <https://daisyui.com/theme-generator/> to make
+a custom theme.
 
 ### Change a built-in theme
 
-Use the built-in theme name. Change only the necessary values. daisyUI inherits the other values:
+Use the built-in theme name. Change only the necessary values. daisyUI inherits
+the other values:
 
 ```css
 @plugin "daisyui/theme" {
@@ -137,7 +156,8 @@ Use the built-in theme name. Change only the necessary values. daisyUI inherits 
 }
 ```
 
-For a custom CDN theme, define the same variables in a selector. The selector must match the selected `data-theme` and theme controller:
+For a custom CDN theme, define the same variables in a selector. The selector
+must match the selected `data-theme` and theme controller:
 
 ```css
 :root:has(input.theme-controller[value="mytheme"]:checked),
@@ -148,7 +168,8 @@ For a custom CDN theme, define the same variables in a selector. The selector mu
 }
 ```
 
-To make the Tailwind `dark:` variant follow one or more daisyUI themes, define a custom variant:
+To make the Tailwind `dark:` variant follow one or more daisyUI themes, define a
+custom variant:
 
 ```css
 @custom-variant dark (&:where([data-theme=night], [data-theme=night] *));

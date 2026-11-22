@@ -59,24 +59,26 @@ Spin up the Azurite instance:
 docker compose up --detach
 ```
 
-Open Azure Storage Explorer. In the Explorer sidebar, right click on **Storage
-Accounts** and click "Connect to Azure Storage…". This will bring up the connection wizard.
-At the "Select Resource" step, select "Local storage emulator".
-At the "Enter Connection Info" step, the default values should already be entered, including
-the account name and account key. Only change "Display name" to a user-friendly value,
-and make sure "Use HTTPS" is unchecked.
-At the "Summary" step click on "Connect".
-The local storage emulator should now show up in the main GUI Explorer.
+Open Azure Storage Explorer. In the Explorer sidebar, right click on
+**Storage Accounts** and click "Connect to Azure Storage…". This will bring up
+the connection wizard. At the "Select Resource" step, select "Local storage
+emulator". At the "Enter Connection Info" step, the default values should
+already be entered, including the account name and account key. Only change
+"Display name" to a user-friendly value, and make sure "Use HTTPS" is unchecked.
+At the "Summary" step click on "Connect". The local storage emulator should now
+show up in the main GUI Explorer.
 
-Under your local storage account, you should see entries for Blob Containers, Queues,
-and Tables. Right click on Blob Containers, then select "Create Blob Container". For
-simplicity, use the same name that you will be using for the blob container in production.
+Under your local storage account, you should see entries for Blob Containers,
+Queues, and Tables. Right click on Blob Containers, then select "Create Blob
+Container". For simplicity, use the same name that you will be using for the
+blob container in production.
 
-You should now see the blob container in the Explorer. You can now interact with the
-blob container to perform actions such as directly uploading/downloading files.
+You should now see the blob container in the Explorer. You can now interact with
+the blob container to perform actions such as directly uploading/downloading
+files.
 
-In order to programmatically connect to your local blob container, here is a minimum working
-example using the Azure SDK for Python:
+In order to programmatically connect to your local blob container, here is a
+minimum working example using the Azure SDK for Python:
 
 ```python
 from azure.storage.blob import BlobServiceClient
@@ -94,6 +96,5 @@ client.list_blobs()
 ```
 
 To translate this into prod, simply replace `account_url` and `container_name`
-with the appropriate values, and replace `AZURITE_ACCOUNT_KEY`
-with the storage account key, which you can get via the Azure portal or through the
-`az` CLI.
+with the appropriate values, and replace `AZURITE_ACCOUNT_KEY` with the storage
+account key, which you can get via the Azure portal or through the `az` CLI.

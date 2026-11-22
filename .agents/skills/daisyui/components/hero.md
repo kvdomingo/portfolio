@@ -19,5 +19,6 @@ Use a hero to show a large box or image with a title and description.
 
 - `{MODIFIER}` is optional.
 - Use `hero-content` for the text content.
-- Put `hero-overlay` in the hero. It adds a color layer above the background image.
+- Put `hero-overlay` in the hero. It adds a color layer above the background
+  image.
 - The content can contain a figure.

@@ -7,7 +7,9 @@ Use a progress bar to show task progress or the passage of time.
 #### Class names
 
 - component: `progress`
-- color: `progress-neutral`, `progress-primary`, `progress-secondary`, `progress-accent`, `progress-info`, `progress-success`, `progress-warning`, `progress-error`
+- color: `progress-neutral`, `progress-primary`, `progress-secondary`,
+  `progress-accent`, `progress-info`, `progress-success`, `progress-warning`,
+  `progress-error`
 
 #### Syntax
 

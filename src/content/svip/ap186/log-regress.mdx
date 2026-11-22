@@ -38,16 +38,19 @@ featureData:
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity [[1](#Soriano2019)], I used the banana dataset from [[2](#Mazen2019)] which has 273 images of bananas
-separated by underripe, midripe, yellowish-green, and overripe labels.
+For this activity [[1](#Soriano2019)], I used the banana dataset from
+[[2](#Mazen2019)] which has 273 images of bananas separated by underripe,
+midripe, yellowish-green, and overripe labels.
 
 #### Feature extraction: RGB
 
-For the training set I decided to take only images of underripe (green) and ripe (yellow) bananas and assign them class
-numbers 0 and 1, respectively. The feature vector extracted from the images consist only of the mean of each color
-channel (whose values are normalized to 1), without any further preprocessing or segmentation. I simply reused my code
-from the [previous activity](/svip/ap186/perceptron), with minor modifications. The feature space in RGB is shown in
-Fig.&nbsp;[1](#fig-rgb-features).
+For the training set I decided to take only images of underripe (green) and ripe
+(yellow) bananas and assign them class numbers 0 and 1, respectively. The
+feature vector extracted from the images consist only of the mean of each color
+channel (whose values are normalized to 1), without any further preprocessing or
+segmentation. I simply reused my code from the
+[previous activity](/svip/ap186/perceptron), with minor modifications. The
+feature space in RGB is shown in Fig.&nbsp;[1](#fig-rgb-features).
 
 <figure id="fig-rgb-features" class="container">
   <img
@@ -60,10 +63,11 @@ Fig.&nbsp;[1](#fig-rgb-features).
   </figcaption>
 </figure>
 
-After training all the ripe/unripe images, I then fed in the midripe images and plotted their activations. We can see
-from Fig.&nbsp;[2](#fig-rgb-preds) that the predictions appear biased toward the upper half, which subjectively does not
-agree with the corresponding images. Preferably, the predictions are nicely distributed about the center. To this end, I
-try another approach.
+After training all the ripe/unripe images, I then fed in the midripe images and
+plotted their activations. We can see from Fig.&nbsp;[2](#fig-rgb-preds) that
+the predictions appear biased toward the upper half, which subjectively does not
+agree with the corresponding images. Preferably, the predictions are nicely
+distributed about the center. To this end, I try another approach.
 
 <figure id="fig-rgb-preds" class="container">
   <img
@@ -78,18 +82,25 @@ try another approach.
 
 #### Feature extraction: $L^*a^*b^*$
 
-In order to be able to plot the decision contours as well as reduce the computational complexity, I decided to convert
-the images to $L^* a^* b^*$ color space and feed only the $a^* b^*$ features. Also, I decided to feed in overripe
-bananas as class 1 in order to be able to include ripe and overripe predictions. Figure&nbsp;[2a](#fig-lab-features)
-shows the feature space in $L^* a^* b^*$, and we can see that the two classes are easily separable. Plotting the midripe
-activations in Fig.&nbsp;[2b](#fig-lab-preds) now shows that the predictions are nicely distributed around the activation
-region. In Fig.&nbsp;[2c](#fig-lab-decision), we show the decision contours on the feature plane. In this view, we can
-see the sigmoid activation as a contour map―with blue being 0 and red being 1―and our training set falls in the
-extremes, save for a few outliers. In Fig.&nbsp;[2d](#fig-sigmoid-map), we show representative images for varying
-activation levels. We can confirm that an activation $\approx 0$ corresponds to unripe (green) bananas, an activation
-$\approx 1$ corresponds to overripe (yellow-brown) bananas while the regime which is approximately linear may correspond
-to midripe/ripe bananas. Specifically, the range $\approx$ 0.2-0.4 corresponds to the midripe (yellowish-green)
-bananas, while the range $\approx$ 0.6-0.8 corresponds to the ripe (dominantly yellow) bananas.
+In order to be able to plot the decision contours as well as reduce the
+computational complexity, I decided to convert the images to $L^* a^* b^*$ color
+space and feed only the $a^* b^*$ features. Also, I decided to feed in overripe
+bananas as class 1 in order to be able to include ripe and overripe predictions.
+Figure&nbsp;[2a](#fig-lab-features) shows the feature space in $L^* a^* b^*$,
+and we can see that the two classes are easily separable. Plotting the midripe
+activations in Fig.&nbsp;[2b](#fig-lab-preds) now shows that the predictions are
+nicely distributed around the activation region. In
+Fig.&nbsp;[2c](#fig-lab-decision), we show the decision contours on the feature
+plane. In this view, we can see the sigmoid activation as a contour map―with
+blue being 0 and red being 1―and our training set falls in the extremes, save
+for a few outliers. In Fig.&nbsp;[2d](#fig-sigmoid-map), we show representative
+images for varying activation levels. We can confirm that an activation
+$\approx 0$ corresponds to unripe (green) bananas, an activation $\approx 1$
+corresponds to overripe (yellow-brown) bananas while the regime which is
+approximately linear may correspond to midripe/ripe bananas. Specifically, the
+range $\approx$ 0.2-0.4 corresponds to the midripe (yellowish-green) bananas,
+while the range $\approx$ 0.6-0.8 corresponds to the ripe (dominantly yellow)
+bananas.
 
 <figure id="fig-boundaries" class="container grid grid-cols-2 items-end gap-4">
   {frontmatter.featureData.map((d, index) => (

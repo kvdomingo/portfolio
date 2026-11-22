@@ -1,6 +1,7 @@
 ### Chat
 
-A chat bubble shows one line of a conversation and its related data. This data can include the author image, name, and time.
+A chat bubble shows one line of a conversation and its related data. This data
+can include the author image, name, and time.
 
 [Chat documentation](https://daisyui.com/components/chat/)
 
@@ -9,7 +10,9 @@ A chat bubble shows one line of a conversation and its related data. This data c
 - component: `chat`
 - part: `chat-image`, `chat-header`, `chat-footer`, `chat-bubble`
 - placement: `chat-start`, `chat-end`
-- color: `chat-bubble-neutral`, `chat-bubble-primary`, `chat-bubble-secondary`, `chat-bubble-accent`, `chat-bubble-info`, `chat-bubble-success`, `chat-bubble-warning`, `chat-bubble-error`
+- color: `chat-bubble-neutral`, `chat-bubble-primary`, `chat-bubble-secondary`,
+  `chat-bubble-accent`, `chat-bubble-info`, `chat-bubble-success`,
+  `chat-bubble-warning`, `chat-bubble-error`
 
 #### Syntax
 
@@ -26,4 +29,5 @@ A chat bubble shows one line of a conversation and its related data. This data c
 
 - You must specify `{PLACEMENT}` as `chat-start` or `chat-end`.
 - `{COLOR}` is optional. It can be one of the color class names.
-- To add an avatar, use `<div class="chat-image avatar">`. Put the avatar content in this element.
+- To add an avatar, use `<div class="chat-image avatar">`. Put the avatar
+  content in this element.

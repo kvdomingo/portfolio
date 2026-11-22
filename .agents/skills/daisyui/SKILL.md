@@ -8,7 +8,8 @@ metadata:
 
 # daisyUI 5
 
-daisyUI 5 is a CSS library for Tailwind CSS 4. It supplies class names for common UI components, semantic colors, and themes.
+daisyUI 5 is a CSS library for Tailwind CSS 4. It supplies class names for
+common UI components, semantic colors, and themes.
 
 ## When to use this skill
 
@@ -103,13 +104,19 @@ daisyUI 5 is a CSS library for Tailwind CSS 4. It supplies class names for commo
 
 Before you write daisyUI code, do these steps in sequence:
 
-1. Identify the intended function, behavior, and layout in the request. Do not use only the exact words.
+1. Identify the intended function, behavior, and layout in the request. Do not
+   use only the exact words.
 2. Use the component list in this file to select the best candidate components.
-3. If the choice is not clear, read the guides for the candidate components that can meet the request before you select one.
-4. Compare the description, behavior, syntax, and rules of each candidate with the request.
+3. If the choice is not clear, read the guides for the candidate components that
+   can meet the request before you select one.
+4. Compare the description, behavior, syntax, and rules of each candidate with
+   the request.
 5. Select the best component or component combination. Obey all its constraints.
 6. Use the exact structure and constraints of the selected components.
 
-You must match the meaning, even when the words are different from component names. A component with a different name can still be the best match. Always examine the intended function and meaning.
+You must match the meaning, even when the words are different from component
+names. A component with a different name can still be the best match. Always
+examine the intended function and meaning.
 
-If the user requests a named component and a guide with that name exists, read that guide first.
+If the user requests a named component and a guide with that name exists, read
+that guide first.

@@ -8,8 +8,11 @@ Use a file input to upload files.
 
 - component: `file-input`
 - style: `file-input-ghost`
-- color: `file-input-neutral`, `file-input-primary`, `file-input-secondary`, `file-input-accent`, `file-input-info`, `file-input-success`, `file-input-warning`, `file-input-error`
-- size: `file-input-xs`, `file-input-sm`, `file-input-md`, `file-input-lg`, `file-input-xl`
+- color: `file-input-neutral`, `file-input-primary`, `file-input-secondary`,
+  `file-input-accent`, `file-input-info`, `file-input-success`,
+  `file-input-warning`, `file-input-error`
+- size: `file-input-xs`, `file-input-sm`, `file-input-md`, `file-input-lg`,
+  `file-input-xl`
 
 #### Syntax
 
@@ -19,4 +22,5 @@ Use a file input to upload files.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one class name from each style, color, and size category.
+- `{MODIFIER}` is optional. It can include one class name from each style,
+  color, and size category.

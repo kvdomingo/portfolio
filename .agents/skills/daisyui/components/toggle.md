@@ -7,7 +7,9 @@ A toggle is a checkbox with the style of a switch button.
 #### Class names
 
 - component: `toggle`
-- color: `toggle-primary`, `toggle-secondary`, `toggle-accent`, `toggle-neutral`, `toggle-success`, `toggle-warning`, `toggle-info`, `toggle-error`
+- color: `toggle-primary`, `toggle-secondary`, `toggle-accent`,
+  `toggle-neutral`, `toggle-success`, `toggle-warning`, `toggle-info`,
+  `toggle-error`
 - size: `toggle-xs`, `toggle-sm`, `toggle-md`, `toggle-lg`, `toggle-xl`
 
 #### Syntax
@@ -18,4 +20,5 @@ A toggle is a checkbox with the style of a switch button.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one color class name and one size class name.
+- `{MODIFIER}` is optional. It can include one color class name and one size
+  class name.

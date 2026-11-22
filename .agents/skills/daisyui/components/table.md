@@ -31,5 +31,7 @@ Use a table to show data in rows and columns.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one size class name.
-- To make the table scroll horizontally on small screens, add `overflow-x-auto` to the wrapper `<div>`.
+- `{MODIFIER}` is optional. It can include one modifier class name and one size
+  class name.
+- To make the table scroll horizontally on small screens, add `overflow-x-auto`
+  to the wrapper `<div>`.

@@ -27,7 +27,8 @@ Use cards to group and show content.
 
 #### Rules
 
-- `{MODIFIER}` is optional. It can include one modifier class name and one size class name.
+- `{MODIFIER}` is optional. It can include one modifier class name and one size
+  class name.
 - `<figure>` and `<div class="card-body">` are optional.
 - For responsive layouts, use `sm:card-side`.
 - If the image is after `card-body`, it is at the bottom of the card.

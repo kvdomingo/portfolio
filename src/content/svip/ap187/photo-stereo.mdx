@@ -14,8 +14,10 @@ alphabet: abcdefghijklmnopqrstuvwxyz
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 
-For this activity [[1](#Soriano2019)], we are given four $128 \times 128$ px intensity maps with different lighting
-conditions, shown in Fig.&nbsp[1](#fig-intensity). We can stack these intensity maps into one multidimensional array
+For this activity [[1](#Soriano2019)], we are given four $128 \times 128$ px
+intensity maps with different lighting conditions, shown in
+Fig.&nbsp[1](#fig-intensity). We can stack these intensity maps into one
+multidimensional array
 $\vec{I} \in \mathbb{R}^{4 \times 128 \times 128}$. The source matrix $\vec{V} \in \mathbb{R}^{4 \times 3}$ is provided
 and is defined as
 
@@ -69,8 +71,8 @@ $
 $
 </span>
 
-Using the Frankot-Chellappa algorithm [[2](#Frankot1988)], we can numerically perform this integral using Fourier
-transforms:
+Using the Frankot-Chellappa algorithm [[2](#Frankot1988)], we can numerically
+perform this integral using Fourier transforms:
 
 <span id="eq-surface-elevation-point" class="mx-auto">
 $
@@ -81,8 +83,9 @@ $
 </span>
 
 where $\mathcal{F}$ and $\mathcal{F}^{-1}$ are the Fourier transform and its inverse, respectively, and $\epsilon > 0$
-is an arbitrarily small constant that allows the formulation to remain valid at $\omega_x,\omega_y = 0$. The recovered
-surface and its contour projection is shown in Fig.&nbsp;[2](#fig-surface).
+is an arbitrarily small constant that allows the formulation to remain valid at
+$\omega_x,\omega_y = 0$. The recovered surface and its contour projection is
+shown in Fig.&nbsp;[2](#fig-surface).
 
 <figure id="fig-intensity" class="container">
   <img

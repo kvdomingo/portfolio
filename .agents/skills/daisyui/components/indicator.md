@@ -8,7 +8,8 @@ Use an indicator to put an element at the corner of another element.
 
 - component: `indicator`
 - part: `indicator-item`
-- placement: `indicator-start`, `indicator-center`, `indicator-end`, `indicator-top`, `indicator-middle`, `indicator-bottom`
+- placement: `indicator-start`, `indicator-center`, `indicator-end`,
+  `indicator-top`, `indicator-middle`, `indicator-bottom`
 
 #### Syntax
 
@@ -21,5 +22,7 @@ Use an indicator to put an element at the corner of another element.
 
 #### Rules
 
-- Put all indicator elements with the `indicator-item` class before the main content.
-- `{placement}` is optional. It can include one horizontal class name and one vertical class name. The default is `indicator-end indicator-top`.
+- Put all indicator elements with the `indicator-item` class before the main
+  content.
+- `{placement}` is optional. It can include one horizontal class name and one
+  vertical class name. The default is `indicator-end indicator-top`.

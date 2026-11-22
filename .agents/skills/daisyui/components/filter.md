@@ -1,6 +1,8 @@
 ### Filter
 
-A filter is a group of radio buttons. When the user selects an option, the filter hides the other options. It also shows a reset button next to the selected option.
+A filter is a group of radio buttons. When the user selects an option, the
+filter hides the other options. It also shows a reset button next to the
+selected option.
 
 [Filter documentation](https://daisyui.com/components/filter/)
 
@@ -34,7 +36,9 @@ No HTML form:
 #### Rules
 
 - Replace `{NAME}` with a value that identifies the filter.
-- Use a different `name` attribute for each set of radio inputs. This prevents conflicts.
-- If the context permits, use the `<form>` tag. If you cannot use an HTML form, use `<div>`.
+- Use a different `name` attribute for each set of radio inputs. This prevents
+  conflicts.
+- If the context permits, use the `<form>` tag. If you cannot use an HTML form,
+  use `<div>`.
 - Use the `filter-reset` class for the reset button.
 - Do not select a radio input by default.

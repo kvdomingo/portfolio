@@ -5,7 +5,7 @@ description: Configuration options for daisyUI 5
 
 ## Configuration
 
-daisyUI 5 configuration documentation: https://daisyui.com/docs/config/
+daisyUI 5 configuration documentation: <https://daisyui.com/docs/config/>
 
 daisyUI with no configuration:
 
@@ -36,10 +36,12 @@ daisyUI with all default settings:
 }
 ```
 
-Example configuration:
-This configuration enables all built-in themes. The `bumblebee` theme is the default theme. The `synthwave` theme is the `prefersdark` theme, which is the default dark mode.
-To use another enabled theme, add `data-theme="THEME_NAME"` to the `<html>` element.
-The configuration excludes the root scrollbar gutter. It uses the `daisy-` prefix for all daisyUI classes and disables console logs.
+Example configuration: This configuration enables all built-in themes. The
+`bumblebee` theme is the default theme. The `synthwave` theme is the
+`prefersdark` theme, which is the default dark mode. To use another enabled
+theme, add `data-theme="THEME_NAME"` to the `<html>` element. The configuration
+excludes the root scrollbar gutter. It uses the `daisy-` prefix for all daisyUI
+classes and disables console logs.
 
 ```css
 @plugin "daisyui" {

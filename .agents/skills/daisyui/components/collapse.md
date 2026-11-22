@@ -22,5 +22,6 @@ Use the collapse component to show and hide content.
 #### Rules
 
 - `{MODIFIER}` is optional. It can be one of the modifier class names.
-- As an alternative to `tabindex="0"`, use `<input type="checkbox">` as the first child.
+- As an alternative to `tabindex="0"`, use `<input type="checkbox">` as the
+  first child.
 - You can also use `details` and `summary` tags.
