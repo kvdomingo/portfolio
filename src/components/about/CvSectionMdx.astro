@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+
 import CvSectionElementMdx from "./CvSectionElementMdx.astro";
 
 interface Props {
@@ -15,7 +16,9 @@ const { title, data } = Astro.props;
 
   <slot>
     <ul class="border-l border-gray-500">
-      {data.map(d => <CvSectionElementMdx data={d} />)}
+      {data.map(d => (
+        <CvSectionElementMdx data={d} />
+      ))}
     </ul>
   </slot>
 </div>

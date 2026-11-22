@@ -1,7 +1,8 @@
 ---
+import { getEntry, render } from "astro:content";
+
 import ClientDate from "@/components/common/ClientDate.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getEntry, render } from "astro:content";
 
 const { slug = "" } = Astro.params;
 
@@ -18,7 +19,9 @@ const { Content } = await render(entry);
   <div class="container flex flex-col gap-8 py-6">
     <div class="breadcrumbs">
       <ul>
-        <li><a href="/blog">Blog</a></li>
+        <li>
+          <a href="/blog">Blog</a>
+        </li>
         <li>{entry.data.title}</li>
       </ul>
     </div>
@@ -35,11 +38,9 @@ const { Content } = await render(entry);
     <div>
       <h4>Keywords</h4>
       <div class="flex flex-wrap gap-2">
-        {
-          entry.data.keywords.map(keyword => (
-            <div class="badge badge-neutral badge-lg">{keyword}</div>
-          ))
-        }
+        {entry.data.keywords.map(keyword => (
+          <div class="badge badge-lg badge-neutral">{keyword}</div>
+        ))}
       </div>
     </div>
   </div>
@@ -73,6 +74,21 @@ const { Content } = await render(entry);
     border-left-style: solid;
     padding: 1rem;
     border-radius: 0.25rem;
+  }
+
+  blockquote.alert-block {
+    color: inherit;
+    border-color: var(--alert-color);
+    background: color-mix(in oklch, var(--alert-color) 10%, transparent);
+  }
+
+  .alert-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--alert-color);
+    font-weight: bold;
   }
 
   pre {

@@ -1,6 +1,6 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
+import Layout from "@/layouts/Layout.astro";
 
 const { slug, publicId } = Astro.params;
 
@@ -11,7 +11,7 @@ if (!publicId) {
 
 <Layout title="Photography | KVD Studio" spotlight={true}>
   <div class="flex h-screen items-center justify-center">
-    <div class="absolute right-0 top-0 z-10 p-4">
+    <div class="absolute top-0 right-0 z-10 p-4">
       <a href={`/photography/${slug}`}>
         <button class="btn btn-circle btn-ghost text-md text-white">✕</button>
       </a>

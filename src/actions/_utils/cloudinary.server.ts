@@ -1,8 +1,8 @@
+import type { AdminAndResourceOptions } from "cloudinary";
+
 import { PUBLIC_CLOUDINARY_CLOUD_NAME } from "astro:env/client";
 import { CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } from "astro:env/server";
-
 import { v2 as cloudinary } from "cloudinary";
-import type { AdminAndResourceOptions } from "cloudinary";
 
 export const DEFAULT_OPTIONS = {
   max_results: 500,

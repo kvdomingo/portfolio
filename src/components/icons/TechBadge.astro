@@ -1,6 +1,7 @@
 ---
-import info from "@/info.json";
 import * as SimpleIcons from "simple-icons-astro";
+
+import info from "@/info.json";
 
 interface Props {
   name: string;
@@ -29,23 +30,21 @@ if (Object.keys(technologies).includes(name)) {
 ---
 
 {
-  (
-    <div
-      class:list={[
-        "badge badge-neutral badge-xs mb-2 mr-2 p-4 md:badge-md",
-        {
-          "flex gap-1": iconExists,
-        },
-      ]}
-    >
-      {iconExists ? (
-        <Fragment>
-          <Icon color={obj?.color} size="1rem" />
-          {obj?.label.toLowerCase() ?? name}
-        </Fragment>
-      ) : (
-        name
-      )}
-    </div>
-  )
+  <div
+    class:list={[
+      "mr-2 mb-2 badge p-4 badge-xs badge-neutral md:badge-md",
+      {
+        "flex gap-1": iconExists,
+      },
+    ]}
+  >
+    {iconExists ? (
+      <Fragment>
+        <Icon color={obj?.color} size="1rem" />
+        {obj?.label.toLowerCase() ?? name}
+      </Fragment>
+    ) : (
+      name
+    )}
+  </div>
 }

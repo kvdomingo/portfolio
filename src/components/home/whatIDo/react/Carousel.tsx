@@ -1,10 +1,10 @@
+import { MobileStepper } from "@mui/material";
 import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 
-import { buildCldUrl } from "@/actions/_utils/cloudinary.client.client";
+import { buildCldUrl } from "@/actions/_utils/cloudinary.client";
 import info from "@/info.json";
-import { MobileStepper } from "@mui/material";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 

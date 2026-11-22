@@ -1,8 +1,8 @@
-import { defineAction } from "astro:actions";
-import { z } from "astro:schema";
+import type { ResourceApiResponse } from "cloudinary";
 
 import { Resize } from "@cloudinary/url-gen/actions";
-import type { ResourceApiResponse } from "cloudinary";
+import { defineAction } from "astro:actions";
+import { z } from "astro:schema";
 
 import cld from "./_utils/cloudinary.client";
 import { DEFAULT_OPTIONS, cld2 } from "./_utils/cloudinary.server";
@@ -19,7 +19,7 @@ export const server = {
         prefix: `kdphotography/portfolio/static/portfolio/media-private/${isClient ? "clients/" : ""}${title}`,
       })) as ResourceApiResponse;
 
-      const { resources = [] } = body;
+      const { resources } = body;
 
       const images = resources.map<ResourceApiResponse["resources"][number]>(
         resource => ({

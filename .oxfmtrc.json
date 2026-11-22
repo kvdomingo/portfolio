@@ -27,17 +27,7 @@
     "functions": ["clsx", "cn", "cva"],
     "preserveWhitespace": true
   },
-  "svelte": {},
-  "astro": {},
-  "associations": [
-    {
-      "files": ["*.astro"],
-      "language": "astro"
-    },
-    {
-      "files": ["*.svelte"],
-      "language": "svelte"
-    }
-  ],
+  "svelte": true,
+  "astro": true,
   "ignorePatterns": ["content/**/*.mdx"]
 }

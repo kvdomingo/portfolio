@@ -1,10 +1,10 @@
 ---
+import { actions } from "astro:actions";
+
+import Masonry from "@/components/photography/react/Masonry";
 import info from "@/info.json";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
-import Masonry from "@/components/photography/react/Masonry";
-
-import { actions } from "astro:actions";
 
 export function getStaticPaths() {
   return info.photography.clients.map(({ slug }) => ({ params: { slug } }));

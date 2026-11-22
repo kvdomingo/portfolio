@@ -17,70 +17,89 @@ algoData: ["spot", "Sobel", "Prewitt", "Laplacian", "Canny"]
 
 shapeData: ["circle", "square", "trapezoid", "triangle"]
 
-areaData: [
-{
-  shape: "circle",
-  data: {
-    actual: { area: 502655, error: 0, best: false },
-    spot: { area: 501584, error: 0.21, best: false },
-    sobel: { area: 503187, error: 0.11, best: false },
-    prewitt: { area: 503187, error: 0.11, best: false },
-    laplacian: { area: 503198, error: 0.11, best: false },
-    canny: { area: 503182, error: 0.10, best: true },
-  }
-},
-{
-  shape: "square",
-  data: {
-    actual: { area: 640000, error: 0, best: false },
-    spot: { area: 639800, error: 0.03, best: true },
-    sobel: { area: 641404, error: 0.22, best: false },
-    prewitt: { area: 641404, error: 0.22, best: false },
-    laplacian: { area: 641416, error: 0.22, best: false },
-    canny: { area: 641398, error: 0.22, best: false },
-  }
-},
-{
-  shape: "trapezoid",
-  data: {
-    actual: { area: 426667, error: 0, best: false },
-    spot: { area: 426399, error: 0.06, best: true },
-    sobel: { area: 428002, error: 0.31, best: false },
-    prewitt: { area: 428002, error: 0.31, best: false },
-    laplacian: { area: 428013, error: 0.32, best: false },
-    canny: { area: 427731, error: 0.25, best: false },
-  }
-},
-{
-  shape: "triangle",
-  data: {
-    actual: { area: 320000, error: 0, best: false },
-    spot: { area: 319102, error: 0.28, best: false },
-    sobel: { area: 320705, error: 0.22, best: false },
-    prewitt: { area: 320705, error: 0.22, best: false },
-    laplacian: { area: 320714, error: 0.22, best: false },
-    canny: { area: 320304, error: 0.09, best: true },
-  }
-},
-]
+areaData:
+  [
+    {
+      shape: "circle",
+      data:
+        {
+          actual: { area: 502655, error: 0, best: false },
+          spot: { area: 501584, error: 0.21, best: false },
+          sobel: { area: 503187, error: 0.11, best: false },
+          prewitt: { area: 503187, error: 0.11, best: false },
+          laplacian: { area: 503198, error: 0.11, best: false },
+          canny: { area: 503182, error: 0.10, best: true },
+        },
+    },
+    {
+      shape: "square",
+      data:
+        {
+          actual: { area: 640000, error: 0, best: false },
+          spot: { area: 639800, error: 0.03, best: true },
+          sobel: { area: 641404, error: 0.22, best: false },
+          prewitt: { area: 641404, error: 0.22, best: false },
+          laplacian: { area: 641416, error: 0.22, best: false },
+          canny: { area: 641398, error: 0.22, best: false },
+        },
+    },
+    {
+      shape: "trapezoid",
+      data:
+        {
+          actual: { area: 426667, error: 0, best: false },
+          spot: { area: 426399, error: 0.06, best: true },
+          sobel: { area: 428002, error: 0.31, best: false },
+          prewitt: { area: 428002, error: 0.31, best: false },
+          laplacian: { area: 428013, error: 0.32, best: false },
+          canny: { area: 427731, error: 0.25, best: false },
+        },
+    },
+    {
+      shape: "triangle",
+      data:
+        {
+          actual: { area: 320000, error: 0, best: false },
+          spot: { area: 319102, error: 0.28, best: false },
+          sobel: { area: 320705, error: 0.22, best: false },
+          prewitt: { area: 320705, error: 0.22, best: false },
+          laplacian: { area: 320714, error: 0.22, best: false },
+          canny: { area: 320304, error: 0.09, best: true },
+        },
+    },
+  ]
 
-ampAreaData: [
-  { method: "actual", area: 4485.92, error: 0, best: false },
-  { method: "spot", area: 4600.44, error: 2.55, best: true },
-  { method: "sobel", area: 4630.52, error: 3.22, best: false },
-  { method: "prewitt", area: 4630.55, error: 3.22, best: false },
-  { method: "laplacian", area: 4629.64, error: 3.20, best: false },
-  { method: "canny", area: 4634.90, error: 3.32, best: false },
-]
+ampAreaData:
+  [
+    { method: "actual", area: 4485.92, error: 0, best: false },
+    { method: "spot", area: 4600.44, error: 2.55, best: true },
+    { method: "sobel", area: 4630.52, error: 3.22, best: false },
+    { method: "prewitt", area: 4630.55, error: 3.22, best: false },
+    { method: "laplacian", area: 4629.64, error: 3.20, best: false },
+    { method: "canny", area: 4634.90, error: 3.32, best: false },
+  ]
 
-detectData: [
-  { publicId: "svip/186/4-MeasuringArea/csamphi_map", caption: "Enclosed area in Google Earth" },
-  { publicId: "svip/186/4-MeasuringArea/csamphi", caption: "Applying threshold and isolating the ROI" },
-  { publicId: "svip/186/4-MeasuringArea/csamphi_spot", caption: "spot" },
-  { publicId: "svip/186/4-MeasuringArea/csamphi_sobel", caption: "Sobel/Prewitt" },
-  { publicId: "svip/186/4-MeasuringArea/csamphi_laplacian", caption: "Laplacian" },
-  { publicId: "svip/186/4-MeasuringArea/csamphi_canny", caption: "Canny" },
-]
+detectData:
+  [
+    {
+      publicId: "svip/186/4-MeasuringArea/csamphi_map",
+      caption: "Enclosed area in Google Earth",
+    },
+    {
+      publicId: "svip/186/4-MeasuringArea/csamphi",
+      caption: "Applying threshold and isolating the ROI",
+    },
+    { publicId: "svip/186/4-MeasuringArea/csamphi_spot", caption: "spot" },
+    {
+      publicId: "svip/186/4-MeasuringArea/csamphi_sobel",
+      caption: "Sobel/Prewitt",
+    },
+    {
+      publicId: "svip/186/4-MeasuringArea/csamphi_laplacian",
+      caption: "Laplacian",
+    },
+    { publicId: "svip/186/4-MeasuringArea/csamphi_canny", caption: "Canny" },
+  ]
 ---
 
 import { buildCldUrl } from "@/actions/_utils/cloudinary.client";

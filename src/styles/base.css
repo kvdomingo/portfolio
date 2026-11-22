@@ -1,6 +1,142 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@catppuccin/tailwindcss/mocha.css";
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: "studio";
+  default: true;
+  color-scheme: dark;
+  --color-primary: #818cf8;
+  --color-primary-content: color-mix(in oklch, #818cf8 20%, black);
+  --color-secondary: #1fb2a6;
+  --color-secondary-content: color-mix(in oklch, #1fb2a6 20%, black);
+  --color-accent: #ffffff;
+  --color-accent-content: color-mix(in oklch, #ffffff 20%, black);
+  --color-neutral: #2a323c;
+  --color-neutral-content: color-mix(in oklch, #2a323c 20%, white);
+  --color-base-100: #321e81;
+  --color-base-200: #1e1b4b;
+  --color-base-300: color-mix(in oklch, #1e1b4b 93%, black);
+  --color-base-content: color-mix(in oklch, #321e81 20%, white);
+  --color-info: #3abff8;
+  --color-info-content: color-mix(in oklch, #3abff8 20%, black);
+  --color-success: #36d399;
+  --color-success-content: color-mix(in oklch, #36d399 20%, black);
+  --color-warning: #fbbd23;
+  --color-warning-content: color-mix(in oklch, #fbbd23 20%, black);
+  --color-error: #f87272;
+  --color-error-content: color-mix(in oklch, #f87272 20%, black);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --text-xs: 0.563rem;
+  --text-sm: 0.75rem;
+  --text-md: 1.333rem;
+  --text-lg: 1.777rem;
+  --text-xl: 2.369rem;
+  --text-2xl: 3.157rem;
+  --text-3xl: 4.209rem;
+  --text-4xl: 5.61rem;
+  --text-5xl: 7.478rem;
+  --text-6xl: 9.969rem;
+  --text-7xl: 13.288rem;
+  --text-8xl: 17.713rem;
+  --text-9xl: 23.612rem;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 @layer base {
   :root {
@@ -76,31 +212,31 @@
 }
 
 h6 {
-  font-size: theme("fontSize.base");
+  font-size: var(--text-base);
 }
 
 h5 {
-  font-size: theme("fontSize.lg");
+  font-size: var(--text-lg);
 }
 
 h4 {
-  font-size: theme("fontSize.xl");
+  font-size: var(--text-xl);
 }
 
 h3 {
-  font-size: theme("fontSize.2xl");
+  font-size: var(--text-2xl);
 }
 
 h2 {
-  font-size: theme("fontSize.3xl");
+  font-size: var(--text-3xl);
 }
 
 h1 {
-  font-size: theme("fontSize.4xl");
+  font-size: var(--text-4xl);
 }
 
 small {
-  font-size: theme("fontSize.sm");
+  font-size: var(--text-sm);
 }
 
 ol.reference {
@@ -121,8 +257,8 @@ ol.reference li::before {
 }
 
 mjx-container[jax="SVG"] > svg a {
-  fill: theme("colors.indigo.400") !important;
-  stroke: theme("colors.indigo.400") !important;
+  fill: var(--color-indigo-400) !important;
+  stroke: var(--color-indigo-400) !important;
 }
 
 .figcaption p {
@@ -130,17 +266,17 @@ mjx-container[jax="SVG"] > svg a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: theme("gap.1");
+  gap: --spacing(1);
 }
 
 .figure {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: theme("gap.4");
+  gap: --spacing(4);
   width: 100%;
 
-  @media screen and (min-width: theme("screens.md")) {
+  @media (width >= --theme(--breakpoint-md)) {
     width: 50%;
   }
 }

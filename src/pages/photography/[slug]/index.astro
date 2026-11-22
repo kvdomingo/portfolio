@@ -1,9 +1,9 @@
 ---
+import { actions } from "astro:actions";
+
+import Gallery from "@/components/photography/Gallery.astro";
 import Layout from "@/layouts/Layout.astro";
 import PhotographyLayout from "@/layouts/PhotographyLayout.astro";
-import Gallery from "@/components/photography/Gallery.astro";
-
-import { actions } from "astro:actions";
 
 export function getStaticPaths() {
   return [
