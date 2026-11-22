@@ -121,7 +121,7 @@ const layoutScript = `(() => {
         <div class="pg-slide">
           <div
             class="pg-frame"
-            style={`aspect-ratio: ${p.width} / ${p.height}; width: min(100%, calc(100dvh * ${p.width / p.height})); background-image: url("${placeholderUrl(p.publicId)}")`}
+            style={`aspect-ratio: ${p.width} / ${p.height}; width: min(100vw, calc(100dvh * ${p.width / p.height})); background-image: url("${placeholderUrl(p.publicId)}")`}
           >
             <img
               src={gridSrc(p.publicId)}
@@ -465,8 +465,10 @@ const layoutScript = `(() => {
     scroll-snap-stop: always;
   }
 
+  /* Viewport units, not %: Safari sizes the slide's auto grid track from the
+     frame's percentage width and overflows it. */
   .pg-frame {
-    max-height: 100%;
+    max-height: 100dvh;
     background-size: cover;
     background-position: center;
   }

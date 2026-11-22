@@ -18,7 +18,7 @@
 ## 2. Spike: tagged CDN cache purge
 
 - [x] 2.1 Add `@vercel/functions` and verify `bun install` succeeds.
-- [ ] 2.2 On a Vercel preview, serve a test SSR page with
+- [x] 2.2 On a Vercel preview, serve a test SSR page with
       `CDN-Cache-Control: public, s-maxage=31536000` and
       `Vercel-Cache-Tag: spike`. Call `dangerouslyDeleteByTag("spike")` from a
       test endpoint. Verify the `x-vercel-cache` header goes HIT → (purge) →
@@ -126,7 +126,7 @@
 
 ## 7. Content freshness
 
-- [ ] 7.1 Set `Cache-Control`, `CDN-Cache-Control` and `Vercel-Cache-Tag`
+- [x] 7.1 Set `Cache-Control`, `CDN-Cache-Control` and `Vercel-Cache-Tag`
       (`photos-<album>` / `photos-client-<clientSlug>`) on album and photo page
       responses. Verify the headers on a preview deployment.
 - [x] 7.2 Add `src/pages/api/cloudinary-notify.ts`:
@@ -141,7 +141,7 @@
     album folder (case-insensitive), client folder, rename across albums (both
     tags), and an unrelated folder (no tags). Verify the tests pass, and that an
     unsigned `curl` POST returns 401.
-- [ ] 7.3 End to end on a preview: point the Cloudinary notification URL at the
+- [x] 7.3 End to end on a preview: point the Cloudinary notification URL at the
       preview, upload a test photo to an album, and confirm the next page load
       shows it. Then delete it, confirm it disappears and its photo path 404s.
       Restore the notification URL afterwards.
